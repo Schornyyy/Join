@@ -42,13 +42,49 @@ html {
   width: 100%;
 }
 
-@media only screen and (max-width: 600px) and (min-width: 350px) {
+@media only screen and (max-width: 750px) and (min-width: 350px) {
   .container {
     display: flex;
     flex-direction: column;
   }
 
-  .menu_template {
+  .mobileHeader {
     display: flex;
+    flex-direction: row;
+    height: 4rem;
+    padding: 1rem;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .summaryContent {
+    display: flex;
+    height: 100vh;
+    min-width: 350px;
+    /* position: ; */
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(170, 113, 113);
+    padding: 1rem;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menuTemplate {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    padding: 1rem;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: large;
   }
 }
