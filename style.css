@@ -9,17 +9,6 @@
   --mint-green: #1fd7c1;
 }
 
-root {
-  --primary-color: #000;
-  --secondary-color: #2a3647;
-  --tertiary-color: #a8a8a8;
-  --quaternary-color: #d1d1d1;
-  --join-color: #29abe2;
-  --background-color: #fff;
-  --menu-color: #42526e;
-  --border-shadow: rgba(0, 0, 0, 0.08);
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -30,16 +19,36 @@ html {
   scroll-behavior: smooth;
 }
 
-#container {
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--light-blue);
+  /* background-color: #29abe2; */
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100%;
 }
 
-@media screen and (max-width: 1280px) {
-  #container {
+@media only screen and (max-width: 600px) and (min-width: 350px) {
+  .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+  }
+
+  .menu_template {
+    display: flex;
   }
 }

@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="includehtml.js"></script>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
     <title>Join</title>
   </head>
   <body onload="init()">
-    <div id="container">
-      <div id="content"></div>
-      <div w3-include-html="./assets/templates/menu_template.html"></div>
+    <div class="container" id="container">
+      <div
+        w3-include-html="./assets/templates/header_template.html"
+        id="header_template"
+        class="header_template"
+      ></div>
+
+      <div w3-include-html="summary.html" id="content" class="content"></div>
+
+      <div
+        w3-include-html="./assets/templates/menu_template.html"
+        id="menu_template"
+        class="menu_template"
+      ></div>
     </div>
   </body>
 </html>
