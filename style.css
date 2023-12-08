@@ -26,7 +26,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Chrome, Edge, and Safari */
+/* Chrome, Edge, and Safari
 *::-webkit-scrollbar {
   width: 12px;
 }
@@ -37,10 +37,10 @@ html {
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--light-blue);
-  /* background-color: #29abe2; */
+  /* background-color: #29abe2; 
   border-radius: 10px;
   border: 2px solid #ffffff;
-}
+} */
 
 .container {
   display: flex;
