@@ -15,4 +15,8 @@
     justify-content: center;
   }
 
+  .summaryToDos {
+    display: flex;
+    flex-direction: row;
+  }
 }
