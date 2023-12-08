@@ -15,6 +15,10 @@ async function includeHTML() {
     }
 }
 
+/**
+ * Was macht diese Funktion?
+ * @param {*} path 
+ */
 async function includeContentHTML(path) {
     let content = document.getElementById("content");
     content.innerHTML = "";
