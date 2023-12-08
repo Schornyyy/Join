@@ -6,17 +6,67 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgb(170, 113, 113);
+    background-color: #9cc3e9; /* TODO Original */
     padding: 1rem;
     margin: 0;
     flex-direction: column;
     gap: 1rem;
-    align-items: center;
+    align-items: flex-start;
+    /* align-items: center; */
     justify-content: center;
   }
 
   .summaryToDos {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .group65 {
+    display: flex;
     flex-direction: row;
+    gap: 1rem;
+    /* align-items: center; */
+    justify-content: center;
+  }
+
+  .group65 > div {
+    width: 6rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .urgencyMobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: auto;
+  }
+
+  .group64 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    /* align-items: center;
+    justify-content: center; */
+  }
+
+  .group64 > div {
+    width: 6rem;
+    height: 8rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* short style */
+  .borderRadius {
+    border-radius: 20px;
+  }
+
+  .backgroundColor {
+    background-color: #ffffff;
   }
 }
