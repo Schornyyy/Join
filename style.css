@@ -54,8 +54,7 @@ html {
 }
 
 @media only screen and (max-width: 750px) and (min-width: 350px) {
-
-/*  main div in Body */
+  /*  main div in Body */
   .container {
     display: flex;
     flex-direction: column;
