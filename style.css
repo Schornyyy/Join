@@ -55,7 +55,7 @@ html {
     flex-direction: column;
   }
 
-  .mobileHeader {
+  .headerTemplate {
     display: flex;
     flex-direction: row;
     height: 4rem;
