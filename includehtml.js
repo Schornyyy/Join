@@ -16,8 +16,9 @@ async function includeHTML() {
 }
 
 /**
- * Was macht diese Funktion?
- * @param {*} path 
+ * Wird beim MenuItem click ausgeführt um den Content zu laden. 
+ * 
+ * @param {path zum template} path 
  */
 async function includeContentHTML(path) {
     let content = document.getElementById("content");
