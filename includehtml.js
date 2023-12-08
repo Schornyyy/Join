@@ -14,3 +14,14 @@ async function includeHTML() {
         }
     }
 }
+
+async function includeContentHTML(path) {
+    let content = document.getElementById("content");
+    content.innerHTML = "";
+    let resp = await fetch(path);
+    if(resp.ok) {
+        content.innerHTML = await resp.text();
+    } else {
+        content.innerHTML = "Page not found. " + resp.status;
+    }
+} 
