@@ -1,3 +1,6 @@
+/**
+ * Kurze erläuterung
+ */
 class Task{
 
     title;
@@ -16,6 +19,10 @@ class Task{
         this.id = id;
     }
 
+    /**
+     * Methoden auf die propertys der Task Klasse.
+     * @param {*} description 
+     */
     setDescription(description) {
         this.description = description;
     }
