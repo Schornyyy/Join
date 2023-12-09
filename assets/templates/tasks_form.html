@@ -2,7 +2,33 @@
   <!-- Muss die forn nicht ein "onsubmit" haben? -->
   <form action="POST" class="tasks-form">
     <label for="form-title">
+      <p>Title <span>*</span></p>
       <input type="text" placeholder="Enter a title" required id="form-title" />
     </label>
+    <label for="form-desc">
+      <p>Description</p>
+      <textarea
+        placeholder="Enter a Description"
+        required
+        id="form-desc"
+      ></textarea>
+    </label>
+      <div class="prios-container">
+        <p>Prio</p>
+        <div class="prios">
+            <div class="prio">
+                <label for="prio-urgent">Urgent <img src="./assets/img/summary/Frame59_urgent.svg" alt=""></label>
+                <input type="radio" name="prio" id="prio-urgent" value="Urgent" checked/>
+              </div>
+              <div class="prio">
+                  <label for="prio-medium">Medium</label>
+                  <input type="radio" name="prio" id="prio-medium" value="Medium"/>
+              </div>
+              <div class="prio">
+                  <label for="prio-low">Low</label>
+                  <input type="radio" name="prio" id="prio-low" value="Low" />
+              </div>
+        </div>
+
   </form>
 </div>

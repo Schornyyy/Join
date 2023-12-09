@@ -1,0 +1,96 @@
+.tasks-form-container {
+  display: flex;
+  position: relative;
+  background-color: var(--lighter-grey);
+  width: 100%;
+}
+
+.tasks-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin: 15px;
+}
+
+.tasks-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: lighter;
+  width: 100%;
+}
+
+.tasks-form p {
+  margin: 0;
+  padding: 0;
+}
+
+.tasks-form span {
+  color: red;
+}
+
+.tasks-form input,
+textarea {
+  flex: 1 3 auto;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.tasks-form input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.tasks-form textarea {
+  min-height: 3.5rem;
+  resize: none;
+}
+
+.prios-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prios {
+  display: flex;
+  flex: row;
+  justify-content: space-between;
+}
+
+.prio {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10px 15px;
+  background-color: white;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.prio label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.prio label img {
+  height: 24px;
+  width: 24px;
+  object-fit: contain;
+}
+
+.prio input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+}
+
+.prio > #prio-urgent:focus {
+  background-color: var(--organe);
+}
