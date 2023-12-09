@@ -64,16 +64,48 @@ html {
   .mobileHeader {
     display: flex;
     align-items: center;
-    background-color: var(--white-grey);    
+    justify-content: space-around;
+    background-color: var(--white-grey); 
 }
 
-.logoImgContainer {
-    width: 100%;
+.logoImgContainer {  
+  width: 100%;
 }
 
 .logoImg {
     width: 100px;
     height: 100px;
+}
+
+.signUpContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.signUpParagraph {
+  width: 120px;
+}
+
+.sign_up_Button {
+  background-color: var(--light-grey);
+  color: white;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  width: 70px;
+  height: 35px;
+}
+
+.userSymbolContainer{
+  display: flex;
+  display: none;
+}
+
+.userLogoImg {
+  width: 110px;
+  height: 40px;  
 }
 
   .menuTemplate {
