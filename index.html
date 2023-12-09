@@ -9,9 +9,11 @@
     <script src="./assets/templates/contacs/contacts.js"></script>
     <script src="./assets/templates/add_tasks/add_tasks.js"></script>
     <script src="./assets/templates/board/board.js"></script>
-    <script src="./assets/templates/summary/summary.js"></script>
+    <script src="./assets/templates/summary/summary.js"></script>    
     <title>Join</title>
+
   </head>
+
   <body onload="init()">
     <div class="container" id="container">
       <div
@@ -20,7 +22,7 @@
         class="headerTemplate"
       ></div>
 
-      <div w3-include-html="summary.html" id="content" class="content"></div>
+      <div w3-include-html="assets/templates/summary/summary_template.html" id="content" class="content"></div>
 
       <div
         w3-include-html="./assets/templates/menu_template.html"
@@ -29,4 +31,5 @@
       ></div>
     </div>
   </body>
+
 </html>

@@ -1,17 +1,3 @@
-body {
-    background-color: black;
-}
+@media only screen and (max-width: 750px) and (min-width: 350px) {    
 
-@media only screen and (max-width: 750px) and (min-width: 350px) {
-    
-
-    .mobileHeader {
-        display: flex;
-        align-items: center;
-        background-color: #F6F7F8;
-    }
-    
-    .logoImgContainer {
-        width: 100%;
-    }
 }
