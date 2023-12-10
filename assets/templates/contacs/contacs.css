@@ -1,3 +1,40 @@
 @media only screen and (max-width: 750px) and (min-width: 350px) {    
+    .contactsH2 {
+        font-size: 3em;        
+    }
+
+    .conactsContent {
+        background-color: #F6F7F8;
+        border: 1px solid black;
+    }
+
+    .oneContactContainer {
+        display: flex;
+    }
+
+    .userImg {
+        width: 10px;
+        height: 10px;
+    }
+
+    .userNameP {
+        color: black;
+    }
+
+    .userMailAddress {
+        color: #409DF2;
+        cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 }
