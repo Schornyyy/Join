@@ -14,14 +14,21 @@
   --yellow: #ffa800;
   --pink: #fc71ff;
   --mint-green: #1fd7c1;
-  --white-grey:#F6F7F8;
+  --white-grey: #f6f7f8;
 }
 
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Hat keinen effekt auf h1 und p */
+/* body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
 
 html {
   scroll-behavior: smooth;
@@ -65,48 +72,48 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: var(--white-grey); 
-}
+    background-color: var(--white-grey);
+  }
 
-.logoImgContainer {  
-  width: 100%;
-}
+  .logoImgContainer {
+    width: 100%;
+  }
 
-.logoImg {
+  .logoImg {
     width: 100px;
     height: 100px;
-}
+  }
 
-.signUpContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
+  .signUpContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
 
-.signUpParagraph {
-  width: 120px;
-}
+  .signUpParagraph {
+    width: 120px;
+  }
 
-.sign_up_Button {
-  background-color: var(--light-grey);
-  color: white;
-  border-radius: 8px;
-  border: 0;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  width: 70px;
-  height: 35px;
-}
+  .sign_up_Button {
+    background-color: var(--light-grey);
+    color: white;
+    border-radius: 8px;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    width: 70px;
+    height: 35px;
+  }
 
-.userSymbolContainer{
-  display: flex;
-  display: none;
-}
+  .userSymbolContainer {
+    display: flex;
+    display: none;
+  }
 
-.userLogoImg {
-  width: 110px;
-  height: 40px;  
-}
+  .userLogoImg {
+    width: 110px;
+    height: 40px;
+  }
 
   .menuTemplate {
     display: flex;
