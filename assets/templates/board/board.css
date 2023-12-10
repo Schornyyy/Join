@@ -9,11 +9,20 @@ https://fonts.google.com/specimen/Inter
     --reini-lighter-grey: #D1D1D1;
     --reini-light-grey: #A8A8A8;
     --reini-dark-blue: #2A3647;
+    --reini-category-blue: #0038FF;
+    --reini-category-turquoise: #1FD7C1;
+    --reini-progressbar-grey: #F4F4F4;
+    --reini-progressbar-blue: #4589FF;
+
 
     --reini-padding-main: 0 64px;
 }
 
 /*************** GLOBAL ***************/
+
+body {
+    background-color: #F6F7F8;
+}
 
 .headline-section,
 .sections-container {
@@ -22,6 +31,14 @@ https://fonts.google.com/specimen/Inter
 
 .reini-d-none {
     display: none;
+}
+
+.category-technical-task {
+    background-color: var(--reini-category-turquoise);
+}
+
+.category-user-story {
+    background-color: var(--reini-category-blue);
 }
 
 /*************** HEADLINE SECTION ***************/
@@ -49,14 +66,23 @@ https://fonts.google.com/specimen/Inter
     padding: 8px 16px;
     border-radius: 10px;
     border-color: var(--reini-light-grey);
+    background-color: white;
 }
 
 .input-wrapper input {
     flex-grow: 1;
     font-size: 20px;
-    color: var(--reini-light-grey);
     border: none;
 }
+
+.input-wrapper input::placeholder {
+    color: var(--reini-light-grey);
+}
+
+.input-wrapper input:focus-visible {
+    outline: none;
+}
+
 
 .input-devider {
     height: 31px;
@@ -85,7 +111,8 @@ https://fonts.google.com/specimen/Inter
 
 span.plus-button-text {
     color: white;
-    font-size: 21px;font-weight: 700;
+    font-size: 21px;
+    font-weight: 700;
 }
 
 .headline-plus-icon {
@@ -96,6 +123,7 @@ span.plus-button-text {
 
 .sections-container {
     display: flex;
+    justify-content: center;
     padding: var(--reini-padding-main);
     gap: 26px;
 }
@@ -107,11 +135,11 @@ span.plus-button-text {
 /*************** TASK SECTIONS ***************/
 
 .task-section {
+    flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     align-items: center;
-    border: 1px solid red;
     flex-basis: 246px;
 }
 
@@ -120,7 +148,7 @@ span.plus-button-text {
     margin: 0;
 }
 
-.task-section > .plus-icon {
+.task-section>.plus-icon {
     justify-self: end;
     height: 24px;
 }
@@ -135,7 +163,7 @@ span.plus-button-text {
     justify-content: space-between;
 }
 
-.members-prio-container > img {
+.members-prio-container>img {
     width: 1em;
 }
 
@@ -146,6 +174,7 @@ span.plus-button-text {
     color: var(--reini-light-grey);
     border-radius: 10px;
     border: 1px dotted var(--reini-light-grey);
+    margin-top: 32px;
 }
 
 .card-container-empty p {
@@ -154,8 +183,50 @@ span.plus-button-text {
 }
 
 
+/*************** TASK CARDS ***************/
 
+.task-card {
+    background-color: white;
+    margin: 16px 0;
+    border-radius: 24px;
+    padding: 16px;
+}
 
+.task-category {
+    font-size: 16px;
+    display: inline-block;
+    color: white;
+    padding: 4px 16px;
+    border-radius: 8px;
+    margin: 0;
+}
+
+.task-description {
+    color: var(--reini-light-grey);
+}
+
+.progress-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    -webkit-appearance: none;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 100px;
+    background-color: var(--reini-progressbar-blue);
+}
+
+progress[value]::-webkit-progress-bar {
+    border-radius: 100px;
+    background-color: var(--reini-progressbar-grey);
+}
 
 
 
@@ -183,7 +254,7 @@ span.plus-button-text {
     }
 
     .plus-button-text {
-        display:none;
+        display: none;
     }
 
     .input-wrapper {
