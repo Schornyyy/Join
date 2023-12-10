@@ -1,4 +1,6 @@
 let selectedPrio;
+let selectedCategory;
+let dropdown = false;
 
 function clickedPrio(prioElement) {
     selectedPrio = prioElement;
@@ -28,4 +30,24 @@ function clickedPrio(prioElement) {
             p.style = "filter: none;";
         }
     })
+}
+
+function handelDropDown() {
+    let category_dropdown_menu = document.getElementById("category-dropdown-menu");
+    let dropdownArrow = document.getElementById("category-dropdown-arrow");
+    
+    dropdown ? category_dropdown_menu.classList.add("show") : category_dropdown_menu.classList.remove("show");
+    dropdown ? dropdownArrow.src = "./assets/img/add_tasks/arrow_up.svg" : dropdownArrow.src = "./assets/img/add_tasks/arrow_drop.svg"
+
+    dropdown = !dropdown;
+}
+
+function selectCategory(category) {
+    selectedCategory = category;
+
+    let categoryField = document.getElementById("categorys-dropdown");
+    categoryField.innerHTML = category;
+    categoryField.style = "color: black;"
+    dropdown = false;
+    handelDropDown();
 }

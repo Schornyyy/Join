@@ -121,8 +121,8 @@ button:focus {
   position: relative;
 }
 
-.category-dropdown-menu {
-  display: flex;
+#category-dropdown-menu {
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -132,12 +132,16 @@ button:focus {
   border-radius: 0px 0px 5px 5px;
 }
 
-.category-dropdown-menu label {
+.show {
+  display: flex !important;
+}
+
+#category-dropdown-menu label {
   flex-direction: row;
   cursor: pointer;
 }
 
-.category-dropdown-menu input {
+#category-dropdown-menu input {
   -webkit-appearance: none;
   appearance: none;
   background-color: #fff;

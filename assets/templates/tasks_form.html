@@ -59,7 +59,7 @@
     </label>
     <div class="category-container">
       <p>Caregory <span>*</span></p>
-      <div class="catgory-dropdown">
+      <div class="catgory-dropdown" onclick="handelDropDown()">
         <p class="category-dropdown-button" id="categorys-dropdown">
           Select task category
         </p>
@@ -68,12 +68,12 @@
           id="category-dropdown-arrow"
         />
       </div>
-      <div class="category-dropdown-menu">
-        <label for="technical-task"
+      <div id="category-dropdown-menu">
+        <label for="technical-task" onclick="selectCategory('Technical Task')"
           >Technical Task
           <input type="radio" name="technical" id="technical-task" />
         </label>
-        <label for="user-story"
+        <label for="user-story" onclick="selectCategory('User Story')"
           >User Story
           <input type="radio" name="technical" id="user-story" />
         </label>
