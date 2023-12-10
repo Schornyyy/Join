@@ -35,47 +35,17 @@
     <div class="sections-container">
         <!------------------ TODO SECTION ------------------>
         <section class="task-section">
-            <h2>To do</h2>
+            <h2 class="task-headline">To do</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
             <div class="card-container">
-                <div class="task-card">
-                    <p class="task-category">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress id="progressBar" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone">1</span>/<span id="subtasksAmount">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <p class="member-icon">AB</p>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
-                </div>
 
-                <div class="task-card">
-                    <p class="task-category">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress id="progressBar2" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone2">1</span>/<span id="subtasksAmount2">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <p class="member-icon">AB</p>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
+                <div class="card-container-empty">
+                    <p>No tasks To do</p>
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
-            </div>
         </section>
 
 
@@ -83,7 +53,7 @@
 
         <!------------------ IN PROGRESS SECTION ------------------>
         <section class="task-section">
-            <h2>In progress</h2>
+            <h2 class="task-headline">In progress</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
@@ -121,8 +91,8 @@
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks in progress</p>
             </div>
         </section>
 
@@ -130,7 +100,7 @@
 
         <!------------------ AWAIT FEEDBACK SECTION ------------------>
         <section class="task-section">
-            <h2>Await feedback</h2>
+            <h2 class="task-headline">Await feedback</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
@@ -168,8 +138,8 @@
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks awaiting feedback</p>
             </div>
         </section>
 
@@ -179,7 +149,7 @@
 
         <!------------------ DONE SECTION ------------------>
         <section class="task-section">
-            <h2>Done</h2>
+            <h2 class="task-headline">Done</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
@@ -217,8 +187,8 @@
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks done</p>
             </div>
         </section>
     </div>
