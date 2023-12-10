@@ -196,6 +196,8 @@ span.plus-button-text {
     margin: 0;
     margin-top: 32px;
     height: 48px;
+    grid-column: 1 / 3;
+    align-self: start;
 }
 
 .card-container-empty p {
@@ -306,6 +308,16 @@ progress[value]::-webkit-progress-bar {
     }
 
     /*** TASK-CARDS ***/
+
+    .card-container {
+        display: flex;
+        overflow-x: scroll;
+        gap: 12px;
+    }
+
+    .card-container::-webkit-scrollbar {
+        display: none;
+      }
 
     .card-container-empty {
         margin-top: 16px;
