@@ -23,7 +23,6 @@ function clickedPrio(prioElement) {
                 default:
                     break;
             }
-            console.log(prioAttribute);
         } else {
             parentEle.style = "background-color: white;";
             p.style = "filter: none;";
