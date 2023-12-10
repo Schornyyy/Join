@@ -54,9 +54,11 @@
   .squareButton01 {
     align-items: center;
     justify-content: center;
+    padding: 1rem;
   }
 
 .squareButton01 img {
+  min-width: 4rem;
   max-width: 7rem;
   height: auto;
 }
