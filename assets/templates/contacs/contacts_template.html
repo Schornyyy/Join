@@ -1,1 +1,57 @@
-<h1>Contacts</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    
+    <script src="./includehtml.js"></script>
+    <script src="./script.js"></script>
+    <script src="./assets/models/task.class.js"></script>
+    <script src="./assets/templates/contacs/contacts.js"></script>
+    <script src="./assets/templates/add_tasks/add_tasks.js"></script>
+    <script src="./assets/templates/board/board.js"></script>
+    <script src="./assets/templates/summary/summary.js"></script>
+    
+    <!-- Fav Icon inegration </!-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div
+          w3-include-html="./assets/templates/header_template.html"
+          id="headerTemplate"
+          class="headerTemplate"
+        ></div>
+
+        <div class="conactsContent">
+            <h2 class="contactsH2">A</h2>
+            <div class="oneContactContainer">
+                <div>
+                    <div>
+                        <img class="userImg" src="../assets/img/antonMayer.svg" alt="">
+                    </div>                    
+                </div>
+
+                <div class="userNameAndEmail">
+                    <p class="userNameP">
+                        Anton Mayer
+                    </p>
+
+                    <p class="userMailAddress">
+                        antonm@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+    
+</body>
+
+</html>
