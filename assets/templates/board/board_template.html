@@ -35,47 +35,17 @@
     <div class="sections-container">
         <!------------------ TODO SECTION ------------------>
         <section class="task-section">
-            <h2>To do</h2>
+            <h2 class="task-headline">To do</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
             <div class="card-container">
-                <div class="task-card">
-                    <p class="task-category">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress id="progressBar" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone">1</span>/<span id="subtasksAmount">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <p class="member-icon">AB</p>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
-                </div>
 
-                <div class="task-card">
-                    <p class="task-category">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress id="progressBar2" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone2">1</span>/<span id="subtasksAmount2">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <p class="member-icon">AB</p>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
+                <div class="card-container-empty">
+                    <p>No tasks To do</p>
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
-            </div>
         </section>
 
 
@@ -83,17 +53,17 @@
 
         <!------------------ IN PROGRESS SECTION ------------------>
         <section class="task-section">
-            <h2>In progress</h2>
+            <h2 class="task-headline">In progress</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
             <div class="card-container">
                 <div class="task-card">
-                    <p class="task-category">Technical Task</p>
+                    <p class="task-category category-technical-task">Technical Task</p>
                     <h3>HTML Base Template Creation</h3>
-                    <p>Create reusable HTML base templates</p>
+                    <p class="task-description">Create reusable HTML base templates</p>
                     <div class="progress-container">
-                        <progress id="progressBar3" value="50" max="100"></progress>
+                        <progress class="progress-bar" id="progressBar3" value="50" max="100"></progress>
                         <label for="progressBar"><span id="subtasksDone3">1</span>/<span id="subtasksAmount3">2</span> Subtasks</label>
                     </div>
                     <div class="members-prio-container">
@@ -105,11 +75,11 @@
                 </div>
 
                 <div class="task-card">
-                    <p class="task-category">User Story</p>
+                    <p class="task-category category-user-story">User Story</p>
                     <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
+                    <p class="task-description">Build start page with recipe recommendation...</p>
                     <div class="progress-container">
-                        <progress id="progressBar2" value="50" max="100"></progress>
+                        <progress class="progress-bar" id="progressBar2" value="50" max="100"></progress>
                         <label for="progressBar"><span id="subtasksDone2">1</span>/<span id="subtasksAmount2">2</span> Subtasks</label>
                     </div>
                     <div class="members-prio-container">
@@ -121,8 +91,8 @@
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks in progress</p>
             </div>
         </section>
 
@@ -130,17 +100,17 @@
 
         <!------------------ AWAIT FEEDBACK SECTION ------------------>
         <section class="task-section">
-            <h2>Await feedback</h2>
+            <h2 class="task-headline">Await feedback</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
             <div class="card-container">
                 <div class="task-card">
-                    <p class="task-category">User Story</p>
+                    <p class="task-category category-user-story">User Story</p>
                     <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
+                    <p class="task-description">Build start page with recipe recommendation...</p>
                     <div class="progress-container">
-                        <progress id="progressBar" value="50" max="100"></progress>
+                        <progress class="progress-bar" id="progressBar" value="50" max="100"></progress>
                         <label for="progressBar"><span id="subtasksDone">1</span>/<span id="subtasksAmount">2</span> Subtasks</label>
                     </div>
                     <div class="members-prio-container">
@@ -152,12 +122,12 @@
                 </div>
 
                 <div class="task-card">
-                    <p class="task-category">User Story</p>
+                    <p class="task-category category-user-story">User Story</p>
                     <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
+                    <p class="task-description">Build start page with recipe recommendation...</p>
                     <div class="progress-container">
-                        <progress id="progressBar2" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone2">1</span>/<span id="subtasksAmount2">2</span> Subtasks</label>
+                        <progress class="progress-bar" id="progressBar4" value="50" max="100"></progress>
+                        <label for="progressBar"><span id="subtasksDone4">1</span>/<span id="subtasksAmount4">2</span> Subtasks</label>
                     </div>
                     <div class="members-prio-container">
                         <div class="members-container">
@@ -168,8 +138,8 @@
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks awaiting feedback</p>
             </div>
         </section>
 
@@ -179,18 +149,18 @@
 
         <!------------------ DONE SECTION ------------------>
         <section class="task-section">
-            <h2>Done</h2>
+            <h2 class="task-headline">Done</h2>
             <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
 
 
             <div class="card-container">
                 <div class="task-card">
-                    <p class="task-category">User Story</p>
+                    <p class="task-category category-user-story">User Story</p>
                     <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
+                    <p class="task-description">Build start page with recipe recommendation...</p>
                     <div class="progress-container">
-                        <progress id="progressBar" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone">1</span>/<span id="subtasksAmount">2</span> Subtasks</label>
+                        <progress class="progress-bar" id="progressBar5" value="50" max="100"></progress>
+                        <label for="progressBar"><span id="subtasksDone5">1</span>/<span id="subtasksAmount5">2</span> Subtasks</label>
                     </div>
                     <div class="members-prio-container">
                         <div class="members-container">
@@ -201,12 +171,12 @@
                 </div>
 
                 <div class="task-card">
-                    <p class="task-category">User Story</p>
+                    <p class="task-category category-user-story">User Story</p>
                     <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p>Build start page with recipe recommendation...</p>
+                    <p class="task-description">Build start page with recipe recommendation...</p>
                     <div class="progress-container">
-                        <progress id="progressBar2" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone2">1</span>/<span id="subtasksAmount2">2</span> Subtasks</label>
+                        <progress class="progress-bar" id="progressBar6" value="50" max="100"></progress>
+                        <label for="progressBar"><span id="subtasksDone6">1</span>/<span id="subtasksAmount6">2</span> Subtasks</label>
                     </div>
                     <div class="members-prio-container">
                         <div class="members-container">
@@ -217,8 +187,8 @@
                 </div>
             </div>
 
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks done</p>
             </div>
         </section>
     </div>
