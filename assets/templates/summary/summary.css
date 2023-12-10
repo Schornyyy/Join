@@ -46,17 +46,20 @@
   .group64 {
     display: flex;
     gap: 1rem;
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: center;
     flex-wrap: wrap;
   }
 
-  .group64 > div {
-    /* width: 6rem;
-    height: 8rem; */
+  .squareButton01 {
     align-items: center;
     justify-content: center;
   }
+
+.squareButton01 img {
+  min-width: auto;
+  height: 5rem;
+}
 
   .borderRadius {
     border-radius: 20px;
@@ -88,13 +91,22 @@
   }
 }
 
-@container (min-width: 350px) {
+/* @container (min-width: 350px) {
   .group65 {
     flex-direction: row;
     align-items: stretch;
   }
 
   .group65 img {
+    max-width: 5rem;
+  }
+
+  .group64 {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .group64 img {
     max-width: 3rem;
   }
 }
@@ -109,4 +121,4 @@
   .group64 {
     width: 100%;
   }
-}
+} */

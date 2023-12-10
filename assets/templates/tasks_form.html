@@ -13,22 +13,65 @@
         id="form-desc"
       ></textarea>
     </label>
-      <div class="prios-container">
-        <p>Prio</p>
-        <div class="prios">
-            <div class="prio">
-                <label for="prio-urgent">Urgent <img src="./assets/img/summary/Frame59_urgent.svg" alt=""></label>
-                <input type="radio" name="prio" id="prio-urgent" value="Urgent" checked/>
-              </div>
-              <div class="prio">
-                  <label for="prio-medium">Medium</label>
-                  <input type="radio" name="prio" id="prio-medium" value="Medium"/>
-              </div>
-              <div class="prio">
-                  <label for="prio-low">Low</label>
-                  <input type="radio" name="prio" id="prio-low" value="Low" />
-              </div>
+    <div class="prios-container">
+      <p>Prio</p>
+      <div class="prios">
+        <div class="prio">
+          <label
+            for="prio-urgent"
+            class="prio-self"
+            onclick="clickedPrio(this)"
+            data-prio="prio"
+            >Urgent <img src="./assets/img/add_tasks/prio_urgent.svg" alt=""
+          /></label>
+          <input type="radio" id="prio-urgent" value="Urgent" />
         </div>
-
+        <div class="prio">
+          <label for="prio-medium" onclick="clickedPrio(this)" data-prio="prio"
+            >Medium <img src="./assets/img/add_tasks/prio_medium.svg" alt=""
+          /></label>
+          <input type="radio" id="prio-medium" value="Medium" />
+        </div>
+        <div class="prio">
+          <label for="prio-low" onclick="clickedPrio(this)" data-prio="prio"
+            >Low <img src="./assets/img/add_tasks/prio_low.svg" alt=""
+          /></label>
+          <input type="radio" id="prio-low" value="Low" />
+        </div>
+      </div>
+    </div>
+    <label for="form-date">
+      <p>Due date <span>*</span></p>
+      <input
+        type="text"
+        placeholder="dd/mm/yyyy"
+        required
+        id="form-date"
+        onfocus="(this.type='date')"
+        onblur="(this.type='text')"
+      />
+    </label>
+    <div class="category-container">
+      <p>Caregory <span>*</span></p>
+      <div class="catgory-dropdown">
+        <p class="category-dropdown-button" id="categorys-dropdown">
+          Select task category
+        </p>
+        <img
+          src="./assets/img/add_tasks/arrow_drop.svg"
+          id="category-dropdown-arrow"
+        />
+      </div>
+      <div class="category-dropdown-menu">
+        <label for="technical-task"
+          >Technical Task
+          <input type="radio" name="technical" id="technical-task" />
+        </label>
+        <label for="user-story"
+          >User Story
+          <input type="radio" name="technical" id="user-story" />
+        </label>
+      </div>
+    </div>
   </form>
 </div>
