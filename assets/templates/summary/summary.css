@@ -10,58 +10,81 @@
     padding: 1rem;
     margin: 0;
     flex-direction: column;
-    /* gap: 1rem;
-    align-items: center;
-    justify-content: center; */
   }
 
   .summaryToDos {
-    container-type: inline-size;
     margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .summaryHelper {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .group65 {
+  /* ROW #1 START */
+  .row1 {
     display: flex;
     gap: 1rem;
     flex-direction: row;
     justify-content: center;
   }
 
-  .group65 > div {
-    /* width: 6rem;
-    height: 4rem; */
+  .reactangle {
+    align-items: center;
     justify-content: center;
+    padding: 1rem;
+    min-width: 9rem;
   }
 
-  .urgencyMobile {
+  .reactangle img {
+    min-width: 3rem;
+    height: auto;
+  }
+  /* ROW #1 END */
+  /* ROW #2 START */
+  .row2Helper {
+
+    align-items: center;
+    justify-content: center;
+    max-width: 15rem;
+
+    width: 100%;
+  }
+
+  .row2 {
     display: flex;
-    height: 4rem;
-    flex-direction: row;
+
+    min-height: 6rem;
     justify-content: center;
+    align-items: center;
   }
 
-  .group64 {
+  /* ROW #2 END */
+  /* ROW #3 START */
+  .row3 {
     display: flex;
     gap: 1rem;
-    /* flex-direction: row; */
     justify-content: center;
     flex-wrap: wrap;
   }
 
-  .squareButton01 {
+  .squareButton {
     align-items: center;
     justify-content: center;
     padding: 1rem;
   }
 
-.squareButton01 img {
-  min-width: 4rem;
-  max-width: 7rem;
-  height: auto;
-}
+  .squareButton img {
+    min-width: 3.5rem;
+    max-width: 7rem;
+    height: auto;
+  }
+  /* ROW #3 END */
 
   .borderRadius {
     border-radius: 20px;
@@ -92,35 +115,3 @@
     font-size: medium;
   }
 }
-
-/* @container (min-width: 350px) {
-  .group65 {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .group65 img {
-    max-width: 5rem;
-  }
-
-  .group64 {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .group64 img {
-    max-width: 3rem;
-  }
-}
-
-@media (max-width: 350px) {
-  .summaryToDos {
-    flex-direction: column;
-  }
-
-  .group65,
-  .urgencyMobile,
-  .group64 {
-    width: 100%;
-  }
-} */
