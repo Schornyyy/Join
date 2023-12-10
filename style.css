@@ -61,7 +61,7 @@ html {
   background-color: var(--light-grey);
 }
 
-@media only screen and (max-width: 750px) and (min-width: 350px) {
+@media only screen and (max-width: 750px) and (min-width: 250px) {
   /*  main div in Body */
   .container {
     display: flex;
