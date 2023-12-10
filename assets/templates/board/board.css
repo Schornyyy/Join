@@ -163,18 +163,38 @@ span.plus-button-text {
     justify-content: space-between;
 }
 
+.members-container {
+    display: flex;
+}
+
+.member-icon {
+    height: 32px;
+    width: 32px;
+    background-color: lightcoral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 2px solid white;
+    position: relative;
+}
+
+.members-prio-container {
+    margin-top: 14px;
+}
+
 .members-prio-container>img {
     width: 1em;
 }
 
 .card-container-empty {
-    grid-row: 2;
-    grid-column: 1 / 3;
     background-color: var(--reini-lighter-grey);
     color: var(--reini-light-grey);
+    border: 2px dashed var(--reini-light-grey);
     border-radius: 10px;
-    border: 1px dotted var(--reini-light-grey);
+    margin: 0;
     margin-top: 32px;
+    height: 48px;
 }
 
 .card-container-empty p {
