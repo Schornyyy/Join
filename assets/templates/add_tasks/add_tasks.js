@@ -1,22 +1,28 @@
-let prio;
+let selectedPrio;
 
 function clickedPrio(prioElement) {
-    prio = prioElement.getAttribute("for");
-    let ele = prioElement.parentNode;
+    selectedPrio = prioElement.getAttribute("for");
+    let parentEle = prioElement.parentElement;
     let prios = document.querySelectorAll("[data-prio]");
-    prios.forEach(p => {
-        if(p.getAttribute("for") === prio) {
-            if(prio === "prio-urgent") {
-                ele.style = "background-color: #ff3d00";
-            } else if(prio === "prio-medium") {
-                ele.style = "background-color: #ffa800";
-            } else if(prio === "prio-low") {
-                ele.style = "background-color: #1fd7c1";
+    prios.forEach((p) => {
+        let prioAttribute = p.getAttribute("for");
+        if(prioAttribute.match(selectedPrio)) {
+            switch (selectedPrio) {
+                case "prio-urgent":
+                    parentEle.style = "background-color: #ff3d00;";
+                    break;
+                case "prio-medium":
+                    parentEle.style = "background-color: #ffa800;";
+                    break;
+                case "prio-low":
+                    parentEle.style = "background-color: #1fd7c1;";
+                    break;
+                default:
+                    break;
             }
-            p.parentNode.style = "filter: brightness(0) invert(1);";
         } else {
-            p.style = "background-color: white;"
-            prioElement.style = "filter: none";
+            parentEle.style = "background-color: white;"
+            parentEle.style = "filter: none";
         }
     })
 }

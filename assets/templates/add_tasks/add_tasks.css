@@ -93,18 +93,6 @@ button:focus {
   padding: 0;
 }
 
-.prio:has(#prio-low:focus) img {
-  filter: brightness(0) invert(1);
-}
-
-.prio:has(#prio-urgent:focus) img {
-  filter: brightness(0) invert(1);
-}
-
-.prio:has(#prio-medium:focus) img {
-  filter: brightness(0) invert(1);
-}
-
 .category-container {
   width: 100%;
   display: flex;
