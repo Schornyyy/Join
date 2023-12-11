@@ -172,3 +172,26 @@ button:focus {
   margin: 0;
   padding: 0;
 }
+
+#subtasks-search-list {
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  display: none;
+  background-color: white;
+}
+
+#subtask_search {
+  border-bottom: 1px solid var(--light-blue);
+}
+
+#btn-subtask-search {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 100%;
+}

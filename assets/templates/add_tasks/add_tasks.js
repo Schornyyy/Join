@@ -4,7 +4,7 @@ let selectedContacts = [];
 
 /**
  * Die Funktion dient dem Vergleich des geklicket und der Setzung der jeweiliegen Farbe.
- * @param {3 Mögliche stufen} prioElement
+ * @param {3 Mögliche stufen} prioElement - Kann sein <prio-urgent | prio-medium | prio-low>
  */
 function clickedPrio(prioElement) {
   selectedPrio = prioElement; // Global setzen wirklich nötig?
@@ -43,7 +43,6 @@ function clickedPrio(prioElement) {
  * @param {dropdownMenuID} dropdownMenu - Das Element das als Dropdown Container fungiert
  * @param {arrowImage} arrowImage - Das Image für die Navigation
  */
-
 function handelDropDown(dropdownMenu, arrowImage) {
   let dropdown_menu = document.getElementById(dropdownMenu);
 
@@ -68,4 +67,15 @@ function selectCategory(category) {
   categoryField.innerHTML = category;
   categoryField.style = "color: black;";
   document.getElementById("category-dropdown-menu").classList.remove('show');
+}
+
+function handleSubtaskDropDown() {
+    let dropdown_menu = document.getElementById('subtasks-search-list');
+    let dropdown = dropdown_menu.classList.contains("show") ? false : true;
+
+    dropdown
+    ? dropdown_menu.classList.add("show")
+    : dropdown_menu.classList.remove("show");
+
+    dropdown = !dropdown;
 }

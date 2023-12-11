@@ -103,14 +103,26 @@
       </div>
     </div>
     <div class="subtasks-to-container">
-      <p class="dropdown-button">Add new subtask</p>
-      <div class="dropdown">
-        <p id="subtasks-to-dropdown">Select contacts to assign</p>
+      <p class="dropdown-button">Subtasks</p>
+      <div class="dropdown" onclick="handleSubtaskDropDown()">
+        <p id="subtasks-to-dropdown">Add new subtask</p>
         <img
           src="./assets/img/add_tasks/plus_icon.svg"
           id="subtasks-to-dropdown-arrow"
         />
       </div>
+      <div id="subtasks-search-list">
+        <input
+          type="text"
+          placeholder="search for tasks by title"
+          id="subtask_search"
+        />
+        <button id="btn-subtask-search">Search</button>
+        <div id="loaded-subtasks">
+          <!-- finded subtasks -->
+        </div>
+      </div>
+      <div class="subtasks-list"></div>
     </div>
   </form>
 </div>
