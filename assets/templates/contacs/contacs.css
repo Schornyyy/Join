@@ -3,7 +3,7 @@
         font-size: 3em;        
     }
 
-    .conactsContent {
+    .contactsContent {
         background-color: #F6F7F8;
         border: 1px solid black;
     }
@@ -26,11 +26,19 @@
         cursor: pointer;
     }
 
+    .contact-card {
+        border: 10px solid rgb(221,221,221);
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+    }
 
 
 
-
-
+    
 
 
 
