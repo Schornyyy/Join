@@ -71,10 +71,11 @@ html {
   .mobileHeader {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: var(--background-color);
-    box-shadow: 0px 4px 4px 0px rgba(250, 1, 1, 0.1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 1.0);
     /* Der Box Shadow hat keinen Effekt. Warum nicht? */
+    height: 4rem;
   }
 
   .logoImgContainer {
@@ -82,15 +83,15 @@ html {
   }
 
   .logoImg {
-    width: 100px;
-    height: 100px;
+    width: 2.5rem;
+    height: 2rem;
   }
 
   .signUpContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
+    display: none; Is ON for Design!
   }
 
   .signUpParagraph {
@@ -109,7 +110,7 @@ html {
 
   .userSymbolContainer {
     display: flex;
-    display: none;
+    /* display: none; Is ON for Design! */
   }
 
   .userLogoImg {
