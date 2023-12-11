@@ -26,6 +26,10 @@
     gap: 1rem;
   }
 
+  .cursorPointer {
+    cursor: pointer;
+  }
+
   /* ROW #1 START */
   .row1 {
     display: flex;
@@ -48,7 +52,6 @@
   /* ROW #1 END */
   /* ROW #2 START */
   .row2Helper {
-
     align-items: center;
     justify-content: center;
     max-width: 15rem;
