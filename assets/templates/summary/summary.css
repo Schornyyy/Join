@@ -30,6 +30,21 @@
     cursor: pointer;
   }
 
+  .verticalLine {
+    width: 4rem;
+    height: 1px;
+    border: 1px solid #29abe2;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .prioVerticalLine {
+    width: 1px;
+    height: 3.5rem;
+    border: 1px solid #D1D1D1;
+    border-radius: 0.5rem;
+  }
+
   .summaryHeader {
     display: flex;
     flex-direction: column;
