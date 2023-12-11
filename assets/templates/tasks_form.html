@@ -58,9 +58,12 @@
       />
     </label>
     <div class="category-container">
-      <p>Caregory <span>*</span></p>
-      <div class="catgory-dropdown" onclick="handelDropDown()">
-        <p class="category-dropdown-button" id="categorys-dropdown">
+      <p style="margin-bottom: 5px">Category <span>*</span></p>
+      <div
+        class="dropdown"
+        onclick="handelDropDown('category-dropdown-menu', 'category-dropdown-arrow')"
+      >
+        <p class="dropdown-button" id="categorys-dropdown">
           Select task category
         </p>
         <img
@@ -78,6 +81,48 @@
           <input type="radio" name="technical" id="user-story" />
         </label>
       </div>
+    </div>
+    <div class="assigned-to-container">
+      <p class="dropdown-button">Assigned to</p>
+      <div
+        class="dropdown"
+        onclick="handelDropDown('assigned-to-dropdown-menu', 'assigned-to-dropdown-arrow')"
+      >
+        <p id="aissgned-to-dropdown">Select contacts to assign</p>
+        <img
+          src="./assets/img/add_tasks/arrow_drop.svg"
+          id="assigned-to-dropdown-arrow"
+        />
+      </div>
+      <div id="assigned-to-dropdown-menu">
+        <!-- Alle Contacte müssen gerendert werden -->
+        <!-- <label for="technical-task" onclick="selectCategory('Technical Task')"
+          >Technical Task
+          <input type="radio" name="technical" id="technical-task" />
+        </label> -->
+      </div>
+    </div>
+    <div class="subtasks-to-container">
+      <p class="dropdown-button">Subtasks</p>
+      <div class="dropdown" onclick="handleSubtaskDropDown()">
+        <p id="subtasks-to-dropdown">Add new subtask</p>
+        <img
+          src="./assets/img/add_tasks/plus_icon.svg"
+          id="subtasks-to-dropdown-arrow"
+        />
+      </div>
+      <div id="subtasks-search-list">
+        <input
+          type="text"
+          placeholder="search for tasks by title"
+          id="subtask_search"
+        />
+        <button id="btn-subtask-search">Search</button>
+        <div id="loaded-subtasks">
+          <!-- finded subtasks -->
+        </div>
+      </div>
+      <div class="subtasks-list"></div>
     </div>
   </form>
 </div>

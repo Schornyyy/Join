@@ -11,12 +11,14 @@ class Task{
     assignedTo;
     subtasks = [];
     id;
+    finished;
 
     constructor(title, dueDate, category, id) {
         this.title = title;
         this.dueDate = dueDate;
         this.category = category;
         this.id = id;
+        this.finished = false;
     }
 
     /**
