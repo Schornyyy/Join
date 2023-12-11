@@ -91,7 +91,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none; Is ON for Design!
+    display: none; /*Is ON for Design!*/
   }
 
   .signUpParagraph {
