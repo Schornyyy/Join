@@ -159,36 +159,6 @@ span.plus-button-text {
     align-self: start;
 }
 
-.members-prio-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-}
-
-.members-container {
-    display: flex;
-}
-
-.member-icon {
-    height: 32px;
-    width: 32px;
-    background-color: lightcoral;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100px;
-    border: 2px solid white;
-    position: relative;
-}
-
-.members-prio-container {
-    margin-top: 14px;
-}
-
-.members-prio-container>img {
-    width: 1em;
-}
-
 .card-container-empty {
     background-color: var(--reini-lighter-grey);
     color: var(--reini-light-grey);
@@ -261,6 +231,32 @@ progress[value]::-webkit-progress-bar {
 .progress-container label {
     font-size: 0.7em;
     white-space: nowrap;
+}
+
+.members-prio-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.members-container {
+    display: flex;
+}
+
+.member-icon {
+    height: 32px;
+    width: 32px;
+    background-color: lightcoral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 2px solid white;
+    position: relative;
+}
+
+.members-prio-container > img {
+    width: 1em;
 }
 
 
