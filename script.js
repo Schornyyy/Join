@@ -1,7 +1,7 @@
-const STORAGE_TOKEN = '1WGJFXCVU20M8HTON9ZTKKZ6YH67E347XBHJGJS3';
+const STORAGE_TOKEN = 'MU03W9OLC4M9O5ZLSW91OZWGA938X4EBLQKC0CNW';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let contacts = [];
-let tasks;
+let tasks = [];
 
 /**
  * 
@@ -43,6 +43,7 @@ async function getItem(key) {
  */
 async function loadData() {
     await loadContacts();
+    await loadTasks();
 }
 
 /**
@@ -53,31 +54,27 @@ async function loadContacts() {
    if(contactsResp == "404") {
     contacts = []
    } else {
-    contacts.push(contactsResp);
+    contacts.push(contactsResp.data);
    }
-   console.log(contacts, "laden");
-    saveContacts();
 }
 
 /**
  * Lädt alle Tasks aus dem backend.
  */
 async function loadTasks() {
-    tasks = await getItem('tasks');
-    if(tasks.status != 'error') {
-        tasks = tasks;
-    } else {
-        tasks = [];
-    }
+    let tasksResp = await getItem("tasks");
+   if(tasksResp == "404") {
+    tasks = []
+   } else {
+    tasks.push(tasksResp.data);
+   }
 }
 
 /**
  * speichert alle Contacte von dem Array contacts im Backend.
  */
 async function saveContacts() {
-    contacts.push({test: "test"});
-    await setItem('contacts', [{}]);
-    console.log(await getItem('contacts'));
+    await setItem('contacts', contacts);
 }
 
 /**
