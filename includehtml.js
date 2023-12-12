@@ -33,7 +33,7 @@ async function includeContentHTML(contentView) {
         case 'Add Tasks':
             var includedContent = await includeTemplate('./assets/templates/add_tasks/add_tasks_template.html');
             content.innerHTML = includedContent;
-            // add form to formContainer
+            await includeAddTaskFormTempalte();
         break;
         case 'Contacts':
             var includedContent = await includeTemplate('./assets/templates/contacs/contacts_template.html');

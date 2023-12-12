@@ -1,7 +1,13 @@
 let selectedPrio;
 let selectedCategory;
 let selectedContacts = [];
-console.log(contacts);
+
+
+async function includeAddTaskFormTempalte() {
+  let taskForm = document.getElementById("taskForm");
+  let resp = await includeTemplate('./assets/templates/tasks_form.html')
+  taskForm.innerHTML = resp;
+}
 
 
 /**
