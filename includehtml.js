@@ -19,15 +19,47 @@ async function includeHTML() {
 /**
  * Wird beim MenuItem click ausgeführt um den Content zu laden. 
  * 
- * @param {path zum template} path 
+ * @param {String} contentView - <Board|Add Tasks|Contacts|Summary> 
  */
-async function includeContentHTML(path) {
+async function includeContentHTML(contentView) {
     let content = document.getElementById("content");
     content.innerHTML = "";
+    switch (contentView) {
+        case 'Board':
+            var includedContent = await includeTemplate('./assets/templates/board/board_template.html');
+            content.innerHTML = includedContent;
+            break;
+        case 'Add Tasks':
+            var includedContent = await includeTemplate('./assets/templates/add_tasks/add_tasks_template.html');
+            content.innerHTML = includedContent;
+        break;
+        case 'Contacts':
+            var includedContent = await includeTemplate('./assets/templates/contacs/contacts_template.html');
+            content.innerHTML = includedContent;
+            contactsInit();
+        break;
+        case 'Summary':
+            var includedContent = await includeTemplate('./assets/templates/summary/summary_template.html');
+            content.innerHTML = includedContent;
+        break;
+    
+        default:
+            break;
+    }
+}
+
+/**
+ * Included HTML Content und returnt diesen.
+ * @param {*} path - Path to template.
+ * @returns - returns response Text
+ */
+async function includeTemplate(path) {
+    let content;
     let resp = await fetch(path);
     if(resp.ok) {
-        content.innerHTML = await resp.text();
+        content = await resp.text();
     } else {
-        content.innerHTML = "Page not found. " + resp.status;
+        content = "Page not found. " + resp.status;
     }
+    return content;
 }
