@@ -1,4 +1,4 @@
-let selectedPrio; // Es gibt 3 Mögliche Prioritäten die mit dem onclick als ein Parameter überreicht werden. Es wird aber nur einer für die if Abfrage in gebrauch genohmen.
+let selectedPrio;
 let selectedCategory;
 let selectedContacts = [];
 
@@ -60,6 +60,10 @@ function handelDropDown(dropdownMenu, arrowImage) {
   dropdown = !dropdown;
 }
 
+/**
+ * Setzt die aktuelle Kategorie.
+ * @param {String} category  
+ */
 function selectCategory(category) {
   selectedCategory = category;
 
@@ -69,6 +73,9 @@ function selectCategory(category) {
   document.getElementById("category-dropdown-menu").classList.remove('show');
 }
 
+/**
+ * Zeigt oder verbergt das Dropdown von den Subtasks.
+ */
 function handleSubtaskDropDown() {
     let dropdown_menu = document.getElementById('subtasks-search-list');
     let dropdown = dropdown_menu.classList.contains("show") ? false : true;
@@ -78,4 +85,44 @@ function handleSubtaskDropDown() {
     : dropdown_menu.classList.remove("show");
 
     dropdown = !dropdown;
+}
+
+/**
+ * Ändert den Sytle des ausgewählten Subtasks.
+ * @param {HTMLElement} subtaskInput 
+ */
+function changeSubtaskInput(subtaskInput) {
+  let ele = subtaskInput;
+  let parentEle = ele.parentElement.parentElement;
+  ele.classList.add("subtask-edit-input");
+  let id = ele.getAttribute('id').split('-')[1];
+  if(document.activeElement === subtaskInput) {
+    parentEle.style = 'list-style-type: none;'
+    let inter = setInterval(()=> {
+      if(document.activeElement != subtaskInput) {
+        clearInterval(inter);
+        parentEle.style = 'list-style-type: disc;'
+        ele.classList.remove("subtask-edit-input");
+      }
+    }, 100)
+  }
+  changeSubtaskImages(id, subtaskInput);
+}
+
+function changeSubtaskImages(id, subtaskInput) {
+  let img1 = document.getElementById(`subtask-img-${id}`);
+  let img2 = document.getElementById(`subtask-img2-${id}`);
+
+  let parentEle = subtaskInput.parentElement.parentElement;
+  if(document.activeElement === subtaskInput) {
+    img1.src = './assets/img/add_tasks/trash_icon.svg';
+    img2.src = './assets/img/add_tasks/check_icon.svg';
+    let inter = setInterval(()=> {
+      if(document.activeElement != subtaskInput) {
+        img1.src = './assets/img/add_tasks/edit_icon.svg';
+        img2.src = './assets/img/add_tasks/trash_icon.svg';
+        clearInterval(inter);
+      }
+    }, 100)
+  } 
 }

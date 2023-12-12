@@ -117,12 +117,43 @@
           placeholder="search for tasks by title"
           id="subtask_search"
         />
-        <button id="btn-subtask-search">Search</button>
+        <button id="btn-subtask-search">
+          <img src="./assets/img/add_tasks/search_icon.svg" alt="" />
+        </button>
         <div id="loaded-subtasks">
           <!-- finded subtasks -->
         </div>
       </div>
-      <div class="subtasks-list"></div>
+      <div class="subtasks-list">
+        <ul>
+          <li>
+            <div class="subtask-list-item">
+              <input
+                type="text"
+                value="test"
+                class="disabled-input"
+                id="subtask-1"
+                onclick="changeSubtaskInput(this)"
+              />
+              <div class="subtask-fake-input-btns">
+                <button>
+                  <img
+                    src="./assets/img/add_tasks/edit_icon.svg"
+                    id="subtask-img-1"
+                  />
+                </button>
+                <div class="btn-divieder"></div>
+                <button>
+                  <img
+                    src="./assets/img/add_tasks/trash_icon.svg"
+                    id="subtask-img2-1"
+                  />
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </form>
 </div>

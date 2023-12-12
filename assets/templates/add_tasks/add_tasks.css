@@ -191,7 +191,74 @@ button:focus {
   position: absolute;
   right: 10px;
   bottom: 20px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   border: none;
   border-radius: 100%;
+  background-color: transparent;
+}
+
+.subtasks-list {
+  width: 100%;
+  padding: 15px;
+}
+
+.subtasks-list li {
+  list-style-type: disc;
+}
+
+.subtask-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+.subtask-fake-input-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.disabled-input {
+  border: none !important;
+  background-color: transparent;
+  position: relative;
+  padding: 10px !important;
+}
+
+.subtask-fake-input-btns button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.btn-divieder {
+  height: 24px;
+  width: 1px;
+  background-color: black;
+}
+
+.subtask-edit-input {
+  background-color: white;
+  border-radius: 0px !important;
+  border-bottom: 1px solid var(--light-blue) !important;
+}
+
+.add-tasks-board {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-tasks-board-header {
+  display: flex;
+  height: 10vh;
+  position: absolute;
+  z-index: 10;
+}
+
+.add-tasks-board-content {
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
