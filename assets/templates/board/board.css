@@ -162,6 +162,7 @@ span.plus-button-text {
 .members-prio-container {
     display: flex;
     justify-content: space-between;
+    margin: 0;
 }
 
 .members-container {
@@ -215,13 +216,16 @@ span.plus-button-text {
     padding: 16px;
 }
 
+.task-card > * {
+    margin-bottom: 20px;
+}
+
 .task-category {
     font-size: 16px;
     display: inline-block;
     color: white;
     padding: 4px 16px;
     border-radius: 8px;
-    margin: 0;
 }
 
 .task-description {
@@ -230,7 +234,7 @@ span.plus-button-text {
 
 .progress-container {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     align-items: center;
     justify-content: space-between;
 }
@@ -251,7 +255,10 @@ progress[value]::-webkit-progress-bar {
     background-color: var(--reini-progressbar-grey);
 }
 
-
+.progress-container label {
+    font-size: 0.7em;
+    white-space: nowrap;
+}
 
 
 /*************** MOBILE ***************/

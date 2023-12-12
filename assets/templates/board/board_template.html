@@ -1,233 +1,221 @@
-<!DOCTYPE html>
+<!------------------ HEADLINE SECTION ------------------>
+<section class="headline-section">
+    <h1 class="headline-board">Board</h1>
+    <button class="headline-plus-button">
+        <span class="plus-button-text">Add task</span>
+        <img class="headline-plus-icon" src="./assets/img/board/plus-icon-dark.svg" alt="plus dark">
+    </button>
+    <div class="input-wrapper">
+        <input type="text" placeholder="Find Task">
+        <div class="input-devider"></div>
+        <img src="./assets/img/board/magnifier-icon-thin.svg" alt="magnifier">
+    </div>
+</section>
 
-<!-- 
--) Umschließende html-, head-, und body-Tags kommen noch weg.
--) Alles innerhalb der .task-container kommt auch weg. Wird dann zur Laufzeit gerendert.
--->
 
-<html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join - Board</title>
-    <link rel="stylesheet" href="./board.css">
-</head>
 
-<body>
-    <!------------------ HEADLINE SECTION ------------------>
-    <section class="headline-section">
-        <h1 class="headline-board">Board</h1>
-        <button class="headline-plus-button">
-            <span class="plus-button-text">Add task</span>
-            <img class="headline-plus-icon" src="../../img/board/plus-icon-dark.svg" alt="plus dark">
-        </button>
-        <div class="input-wrapper">
-            <input type="text" placeholder="Find Task">
-            <div class="input-devider"></div>
-            <img src="../../img/board/magnifier-icon-thin.svg" alt="magnifier">
+<div class="sections-container">
+    <!------------------ TODO SECTION ------------------>
+    <section class="task-section">
+        <h2 class="section-headline">To do</h2>
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
+
+
+        <div class="card-container reini-d-none"></div>
+        <div class="card-container-empty">
+            <p>No tasks To do</p>
         </div>
+
     </section>
 
 
 
 
-    <div class="sections-container">
-        <!------------------ TODO SECTION ------------------>
-        <section class="task-section">
-            <h2 class="section-headline">To do</h2>
-            <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
+    <!------------------ IN PROGRESS SECTION ------------------>
+    <section class="task-section">
+        <h2 class="section-headline">In progress</h2>
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
 
 
-            <div class="card-container reini-d-none"></div>
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
-            </div>
-
-        </section>
-
-
-
-
-        <!------------------ IN PROGRESS SECTION ------------------>
-        <section class="task-section">
-            <h2 class="section-headline">In progress</h2>
-            <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
-
-
-            <div class="card-container">
-                <div class="task-card">
-                    <p class="task-category category-technical-task">Technical Task</p>
-                    <h3>HTML Base Template Creation</h3>
-                    <p class="task-description">Create reusable HTML base templates</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar3" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone3">1</span>/<span id="subtasksAmount3">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                            <div class="member-icon" style="right:12px;">CD</div>
-                            <div class="member-icon" style="right:24px;">EF</div>
-                            <div class="member-icon" style="right:36px;">GH</div>
-                        </div>
-                        <img src="../../img/board/prio-low-icon.svg" alt="prio medium">
-                    </div>
+        <div class="card-container">
+            <div class="task-card">
+                <p class="task-category category-technical-task">Technical Task</p>
+                <h3>HTML Base Template Creation</h3>
+                <p class="task-description">Create reusable HTML base templates</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar3" value="50" max="100"></progress>
+                    <label for="progressBar"><span id="subtasksDone3">1</span>/<span id="subtasksAmount3">2</span>
+                        Subtasks</label>
                 </div>
-
-                <div class="task-card">
-                    <p class="task-category category-user-story">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p class="task-description">Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar2" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone2">1</span>/<span id="subtasksAmount2">2</span> Subtasks</label>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
+                        <div class="member-icon" style="right:12px;">CD</div>
+                        <div class="member-icon" style="right:24px;">EF</div>
+                        <div class="member-icon" style="right:36px;">GH</div>
                     </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                        </div>
-                        <img src="../../img/board/prio-urgent-icon.svg" alt="prio medium">
-                    </div>
-                </div>
-
-                <div class="task-card">
-                    <p class="task-category category-user-story">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p class="task-description">Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar4" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone4">1</span>/<span id="subtasksAmount4">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                        </div>
-                        <img src="../../img/board/prio-urgent-icon.svg" alt="prio medium">
-                    </div>
-                </div>
-
-                <div class="task-card">
-                    <p class="task-category category-user-story">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p class="task-description">Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar5" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone5">1</span>/<span id="subtasksAmount5">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                        </div>
-                        <img src="../../img/board/prio-urgent-icon.svg" alt="prio medium">
-                    </div>
-                </div>
-
-                <div class="card-container-empty reini-d-none">
-                    <p>No tasks in progress</p>
+                    <img src="./assets/img/board/prio-low-icon.svg" alt="prio medium">
                 </div>
             </div>
 
-        </section>
-
-
-
-        <!------------------ AWAIT FEEDBACK SECTION ------------------>
-        <section class="task-section">
-            <h2 class="section-headline">Await feedback</h2>
-            <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
-
-
-            <div class="card-container">
-                <div class="task-card">
-                    <p class="task-category category-user-story">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p class="task-description">Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone">1</span>/<span id="subtasksAmount">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
+            <div class="task-card">
+                <p class="task-category category-user-story">User Story</p>
+                <h3>Kochwelt Page &amp; Recipe Recommender</h3>
+                <p class="task-description">Build start page with recipe recommendation...</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar2" value="50" max="100"></progress>
+                    <label for="progressBar"><span id="subtasksDone2">1</span>/<span id="subtasksAmount2">2</span>
+                        Subtasks</label>
                 </div>
-
-                <div class="task-card">
-                    <p class="task-category category-user-story">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p class="task-description">Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar6" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone6">1</span>/<span id="subtasksAmount6">2</span> Subtasks</label>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
                     </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
-                </div>
-                
-                <div class="card-container-empty reini-d-none">
-                    <p>No tasks awaiting feedback</p>
+                    <img src="./assets/img/board/prio-urgent-icon.svg" alt="prio medium">
                 </div>
             </div>
 
-        </section>
-
-
-
-
-
-        <!------------------ DONE SECTION ------------------>
-        <section class="task-section">
-            <h2 class="section-headline">Done</h2>
-            <img class="plus-icon" src="../../img/board/plus-icon.svg" alt="plus">
-
-
-            <div class="card-container">
-                <div class="task-card">
-                    <p class="task-category category-user-story">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p class="task-description">Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar7" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone7">1</span>/<span id="subtasksAmount7">2</span> Subtasks</label>
-                    </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
+            <div class="task-card">
+                <p class="task-category category-user-story">User Story</p>
+                <h3>Kochwelt Page &amp; Recipe Recommender</h3>
+                <p class="task-description">Build start page with recipe recommendation...</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar4" value="50" max="100"></progress>
+                    <label for="progressBar"><span id="subtasksDone4">1</span>/<span id="subtasksAmount4">2</span>
+                        Subtasks</label>
                 </div>
-
-                <div class="task-card">
-                    <p class="task-category category-user-story">User Story</p>
-                    <h3>Kochwelt Page &amp; Recipe Recommender</h3>
-                    <p class="task-description">Build start page with recipe recommendation...</p>
-                    <div class="progress-container">
-                        <progress class="progress-bar" id="progressBar8" value="50" max="100"></progress>
-                        <label for="progressBar"><span id="subtasksDone8">1</span>/<span id="subtasksAmount8">2</span> Subtasks</label>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
                     </div>
-                    <div class="members-prio-container">
-                        <div class="members-container">
-                            <div class="member-icon">AB</div>
-                        </div>
-                        <img src="../../img/board/prio-medium-icon.svg" alt="prio medium">
-                    </div>
-                </div>
-                
-                <div class="card-container-empty reini-d-none">
-                    <p>No tasks done</p>
+                    <img src="./assets/img/board/prio-urgent-icon.svg" alt="prio medium">
                 </div>
             </div>
 
-        </section>
-    </div>
-</body>
+            <div class="task-card">
+                <p class="task-category category-user-story">User Story</p>
+                <h3>Kochwelt Page &amp; Recipe Recommender</h3>
+                <p class="task-description">Build start page with recipe recommendation...</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar5" value="50" max="100"></progress>
+                    <label for="progressBar"><span id="subtasksDone5">1</span>/<span id="subtasksAmount5">2</span>
+                        Subtasks</label>
+                </div>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
+                    </div>
+                    <img src="./assets/img/board/prio-urgent-icon.svg" alt="prio medium">
+                </div>
+            </div>
 
-</html>
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks in progress</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!------------------ AWAIT FEEDBACK SECTION ------------------>
+    <section class="task-section">
+        <h2 class="section-headline">Await feedback</h2>
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
+
+
+        <div class="card-container">
+            <div class="task-card">
+                <p class="task-category category-user-story">User Story</p>
+                <h3>Kochwelt Page &amp; Recipe Recommender</h3>
+                <p class="task-description">Build start page with recipe recommendation...</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar" value="50" max="100"></progress>
+                        <p class="progress-label"><span id="subtasksDone">1</span>/<span id="subtasksAmount">2</span>
+                        Subtasks </p>
+                </div>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
+                    </div>
+                    <img src="./assets/img/board/prio-medium-icon.svg" alt="prio medium">
+                </div>
+            </div>
+
+            <div class="task-card">
+                <p class="task-category category-user-story">User Story</p>
+                <h3>Kochwelt Page &amp; Recipe Recommender</h3>
+                <p class="task-description">Build start page with recipe recommendation...</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar6" value="50" max="100"></progress>
+                    <label for="progressBar"><span id="subtasksDone6">1</span>/<span id="subtasksAmount6">2</span>
+                        Subtasks</label>
+                </div>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
+                    </div>
+                    <img src="./assets/img/board/prio-medium-icon.svg" alt="prio medium">
+                </div>
+            </div>
+
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks awaiting feedback</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+    <!------------------ DONE SECTION ------------------>
+    <section class="task-section">
+        <h2 class="section-headline">Done</h2>
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
+
+
+        <div class="card-container">
+            <div class="task-card">
+                <p class="task-category category-user-story">User Story</p>
+                <h3>Kochwelt Page &amp; Recipe Recommender</h3>
+                <p class="task-description">Build start page with recipe recommendation...</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar7" value="50" max="100"></progress>
+                    <label for="progressBar"><span id="subtasksDone7">1</span>/<span id="subtasksAmount7">2</span>
+                        Subtasks</label>
+                </div>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
+                    </div>
+                    <img src="./assets/img/board/prio-medium-icon.svg" alt="prio medium">
+                </div>
+            </div>
+
+            <div class="task-card">
+                <p class="task-category category-user-story">User Story</p>
+                <h3>Kochwelt Page &amp; Recipe Recommender</h3>
+                <p class="task-description">Build start page with recipe recommendation...</p>
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar8" value="50" max="100"></progress>
+                    <label for="progressBar"><span id="subtasksDone8">1</span>/<span id="subtasksAmount8">2</span>
+                        Subtasks</label>
+                </div>
+                <div class="members-prio-container">
+                    <div class="members-container">
+                        <div class="member-icon">AB</div>
+                    </div>
+                    <img src="./assets/img/board/prio-medium-icon.svg" alt="prio medium">
+                </div>
+            </div>
+
+            <div class="card-container-empty reini-d-none">
+                <p>No tasks done</p>
+            </div>
+        </div>
+
+    </section>
+</div>
