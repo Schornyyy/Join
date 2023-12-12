@@ -1,6 +1,7 @@
 let selectedPrio;
 let selectedCategory;
 let selectedContacts = [];
+console.log(contacts);
 
 
 /**
