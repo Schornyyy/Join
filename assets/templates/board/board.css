@@ -199,6 +199,9 @@ span.plus-button-text {
     height: 48px;
     grid-column: 1 / 3;
     align-self: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-container-empty p {
