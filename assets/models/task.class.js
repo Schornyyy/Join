@@ -30,7 +30,7 @@ class Task{
     }
 
     /**
-     * 
+     * Ändert den Status des Tasks Objects.
      * @param {String} status - <Done|Feedback|Done|Progress> 
      */
     setStatus(status) {
