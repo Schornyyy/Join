@@ -1,13 +1,43 @@
 [
     {
-        "contactName": "antonM",
+        "contactName": "Anton Mayer",
         "contactMailAdress": "antonm@gmail.com",
         "contactImg": "../assets/img/antonMayer.svg"
     },
     {
-        "contactName": "antonM",
-        "contactMailAdress": "antonm@gmail.com",
-        "contactImg": "../assets/img/antonMayer.svg"
+        "contactName": "Anja Schulz",
+        "contactMailAdress": "schulz@hotmail.com",
+        "contactImg": "../assets/img/anjaSchulz.svg"
+    },
+    {
+        "contactName": "Benedikt Ziegler",
+        "contactMailAdress": "benedikt@gmail.com",
+        "contactImg": "../assets/img/benediktZiegler.svg"
+    },
+    {
+        "contactName": "David Eisenberg",
+        "contactMailAdress": "davidberg@gmail.com",
+        "contactImg": "../assets/img/davidEisenberg.svg"
+    },
+    {
+        "contactName": "Eva Fischer",
+        "contactMailAdress": "eva@gmail.com",
+        "contactImg": "../assets/img/evaFischer.svg"
+    },
+    {
+        "contactName": "Emmanuel Mauer",
+        "contactMailAdress": "emmanuelma@gmail.com",
+        "contactImg": "../assets/img/emmanuelMauer.svg"
+    },
+    {
+        "contactName": "Marcel Bauer",
+        "contactMailAdress": "bauer@gmail.com",
+        "contactImg": "../assets/img/marcelBauer.svg"
+    },
+    {
+        "contactName": "Tatjana Wolf",
+        "contactMailAdress": "wolf@gmail.com",
+        "contactImg": "../assets/img/tatjanaWolf.svg"
     }
     
 ]

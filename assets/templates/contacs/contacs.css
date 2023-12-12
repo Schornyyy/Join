@@ -1,48 +1,54 @@
-@media only screen and (max-width: 750px) and (min-width: 350px) {    
-    .contactsH2 {
-        font-size: 3em;        
-    }
-
+@media only screen and (max-width: 750px) and (min-width: 350px) { 
     .contactsContent {
-        background-color: #F6F7F8;
-        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        background-color: white;        
     }
 
     .oneContactContainer {
         display: flex;
+        flex-direction: row;
+        margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
     }
 
-    .userImg {
-        width: 10px;
-        height: 10px;
+    .letter-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Zentriere die Buchstaben horizontal */
+        margin-right: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
     }
 
-    .userNameP {
-        color: black;
+    .contact-first-letter {
+        margin: 0; /* Entferne den Standardabstand von h2 */
     }
 
-    .userMailAddress {
-        color: #409DF2;
-        cursor: pointer;
+    .contacts-info-column {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
     }
 
     .contact-card {
-        border: 10px solid rgb(221,221,221);
+        display: flex;     
         padding: 10px;
         text-align: center;
         box-sizing: border-box;
         text-decoration: none;
         color: black;
         background-color: white;
+    }   
+
+    .contact-card-Img-Container {
+        display: flex;
+        align-items: center; /* Zentriere das Bild vertikal im Container */
     }
 
+    .contact-info-container {
+        flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
+    }
 
-
-    
-
-
-
-
-
-
+    .contactImg {
+        height: 25px;
+        width: 25px;
+    }
 }
