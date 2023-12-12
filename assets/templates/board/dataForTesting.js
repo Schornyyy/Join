@@ -37,7 +37,7 @@ let tasks= [
         category: 'irgendwas',
         assignedTo: [],
         subtasks: [],
-        status: 'done'
+        status: 'in progress'
     },
     {
         id: 4,

@@ -3,25 +3,41 @@
 let urlPrefix= '../..';
 
 function testen() {
-    let cardContainerInProgress= document.getElementById('cardContainerInProgress');
-    cardContainerInProgress.innerHTML= taskToHTML(tasks[0]);
+    let tasksTemp= getTasksFromStatus('in progress');
+    console.log(tasksToHML(tasksTemp));
 }
 
 //////////////// FOR REAL
 
-function taskToHTML(task) {
+////// MULTIPLE TASKS
+
+function getTasksFromStatus(status){
+    return tasks.filter((task) => task.status==status);
+}
+
+function tasksToHML(tasksParam) {
+    let output= '';
+    for (task of tasksParam) {
+        output += singleTaskToHTML(task);
+    }
+    return output;
+}   
+
+////// SINGLE TASK
+
+function singleTaskToHTML(task) {
     return `
-    <div class="task-card">
-    ${categoryToHTML(task)}
-    <h3>${task.title}</h3>
-    <p class="task-description">${task.description}</p>
-    ${progressToHTML(task)}
-    <div class="members-prio-container">
-        ${membersToHTML(task)}
-        <img src="${getPrioImgURL(task)}" alt="prio img">
-    </div>
-</div>
-    `
+        <div class="task-card">
+            ${categoryToHTML(task)}
+            <h3>${task.title}</h3>
+            <p class="task-description">${task.description}</p>
+            ${progressToHTML(task)}
+            <div class="members-prio-container">
+                ${membersToHTML(task)}
+                <img src="${getPrioImgURL(task)}" alt="prio img">
+            </div>
+        </div>
+    `;
 }
 
 function getCategoryClass(task) {
