@@ -11,14 +11,14 @@ class Task{
     assignedTo;
     subtasks = [];
     id;
-    finished;
+    status;
 
-    constructor(title, dueDate, category, id) {
+    constructor(title, dueDate, category, id, status) {
         this.title = title;
         this.dueDate = dueDate;
         this.category = category;
         this.id = id;
-        this.finished = false;
+        this.status = status;
     }
 
     /**
@@ -27,6 +27,14 @@ class Task{
      */
     setDescription(description) {
         this.description = description;
+    }
+
+    /**
+     * 
+     * @param {String} status - <Done|Feedback|Done|Progress> 
+     */
+    setStatus(status) {
+        this.status = status;
     }
 
     setPrio(prio) {

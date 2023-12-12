@@ -5,8 +5,8 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
  * 
  * Speichert einen Value zum Key im Backend
  * 
- * @param {*} key 
- * @param {*} value 
+ * @param {String} key 
+ * @param {ArrayofObject} value 
  * 
  */
 async function setItem(key, value) {
@@ -18,7 +18,7 @@ async function setItem(key, value) {
 /**
  * Nimmt die Daten aus dem Backend mit dem Key
  * 
- * @param {*} key 
+ * @param {String} key 
  * @returns 
  */
 

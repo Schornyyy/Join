@@ -2,6 +2,7 @@ let selectedPrio;
 let selectedCategory;
 let selectedContacts = [];
 
+
 /**
  * Die Funktion dient dem Vergleich des geklicket und der Setzung der jeweiliegen Farbe.
  * @param {3 Mögliche stufen} prioElement - Kann sein <prio-urgent | prio-medium | prio-low>
