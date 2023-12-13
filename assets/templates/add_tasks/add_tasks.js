@@ -105,6 +105,8 @@ function changeSubtaskInput(subtaskInput) {
   let parentEle = ele.parentElement.parentElement;
   ele.classList.add("subtask-edit-input");
   let id = ele.getAttribute('id').split('-')[1];
+  document.getElementById("subtask-list-trash-btn").setAttribute("onclick", `changeSubtaskTitle("${ele.value}", ${id})`)
+  
   if(document.activeElement === subtaskInput) {
     parentEle.style = 'list-style-type: none;'
     let inter = setInterval(()=> {
@@ -112,6 +114,7 @@ function changeSubtaskInput(subtaskInput) {
         clearInterval(inter);
         parentEle.style = 'list-style-type: disc;'
         ele.classList.remove("subtask-edit-input");
+        document.getElementById("subtask-list-trash-btn").setAttribute("onclick", `deleteSubtask(${id})`)
       }
     }, 100)
   }
@@ -167,12 +170,35 @@ function validateForm() {
   return correct;
 }
 
-function initEventListener() {
+/**
+ * Fügt EventListener Hinzu.
+ */
+async function initEventListener() {
   document.getElementById("tasks-form-submit").addEventListener("click", (e) => {
     let validatet = validateForm();
+    if(!validatet) return;
+    let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value;
+    let taskDesc = document.getElementById("form-desc").value == "" ? "" : document.getElementById("form-desc").value;
+    let prio = selectedPrio;
+    let dueDate = document.getElementById("form-date").value;
+    let category = selectedCategory;
+    let subs = subtasks;
+
+    let task = new Task(taskTitle, dueDate, category, tasks.length+1, "Open");
+    task.setPrio(prio);
+    taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc);
+    subs.length > 0 ? task.subtasks = subs : subs  =[];
+    tasks.push(task);
+    let stat = saveTasks().then((res) => {
+      console.log(res);
+    });
   })
 }
 
+/**
+ * Ändert das aussehen und das verhalten des Subtask-list element.
+ * @param {HTMLElement} ele 
+ */
 function changeSubTaskValue(ele) {
   let input = ele;
   let c = input.value === "" ? true : false;
@@ -192,6 +218,9 @@ function changeSubTaskValue(ele) {
   }
 }
 
+/**
+ * Resetet das Subtask-list Item auf die Standart werte
+ */
 function setSubTaskInputToDefault() {
   document.getElementById("subtasks-to-dropdown").removeAttribute("data-check")
   document.getElementById("subtasks-to-dropdown-arrow").src = "./assets/img/add_tasks/plus_icon.svg";
@@ -199,6 +228,9 @@ function setSubTaskInputToDefault() {
   document.getElementById("hiden-divieder").style = 'display:none;'
 }
 
+/**
+ * Fügt das Subtask der Liste hinzu und rendert alle Elemente neu.
+ */
 function addSubtaskToList() {
   let ele = document.getElementById("subtasks-to-dropdown");
   let c = ele.hasAttribute("data-check");
@@ -210,11 +242,13 @@ function addSubtaskToList() {
   }
 }
 
+/**
+ * rendert alle Subtask Elemente.
+ */
 function renderSubtaskHTML() {
   let list = document.getElementById("subtask-list");
   list.innerHTML = "";
   subtasks.forEach((subtask, index) => {
-    console.log(subtask);
     list.innerHTML += /*html*/`
       <li>
             <div class="subtask-list-item">
@@ -226,14 +260,14 @@ function renderSubtaskHTML() {
                 onclick="changeSubtaskInput(this)"
               />
               <div class="subtask-fake-input-btns">
-                <button>
+                <button id="subtask-list-edit-btn" onclick='deleteSubtask(${index})'>
                   <img
                     src="./assets/img/add_tasks/edit_icon.svg"
                     id='subtask-img-${index}'
                   />
                 </button>
                 <div class="btn-divieder"></div>
-                <button>
+                <button id="subtask-list-trash-btn" onclick='deleteSubtask(${index})'>
                   <img
                     src="./assets/img/add_tasks/trash_icon.svg"
                     id='subtask-img2-${index}'
@@ -244,4 +278,23 @@ function renderSubtaskHTML() {
           </li>
     `
   })
+}
+
+/**
+ * Ändert den Title von dem Subtask mit dem Index.
+ * @param {String} title 
+ * @param {Number} subtaskIndex 
+ */
+function changeSubtaskTitle(title, subtaskIndex) {
+  let subtask = subtasks[subtaskIndex];
+  subtask.title = title;
+}
+
+/**
+ * Löscht das Subtasks aus der Liste mit dem Index.
+ * @param {Number} subtaskIndex 
+ */
+function deleteSubtask(subtaskIndex) {
+  subtasks.splice(subtaskIndex, 1)
+  renderSubtaskHTML();
 }

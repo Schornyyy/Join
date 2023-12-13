@@ -54,7 +54,7 @@ async function loadContacts() {
    if(contactsResp == "404") {
     contacts = []
    } else {
-    contacts.push(contactsResp.data);
+    contacts = JSON.parse(contactsResp.data.value);
    }
 }
 
@@ -62,12 +62,13 @@ async function loadContacts() {
  * Lädt alle Tasks aus dem backend.
  */
 async function loadTasks() {
-    let tasksResp = await getItem("tasks");
+   let tasksResp = await getItem("tasks");
    if(tasksResp == "404") {
     tasks = []
    } else {
-    tasks.push(tasksResp.data);
+    tasks = JSON.parse(tasksResp.data.value);
    }
+   console.log(tasks);
 }
 
 /**

@@ -1,6 +1,3 @@
-/**
- * Kurze erläuterung
- */
 class Task{
 
     title;
@@ -19,6 +16,7 @@ class Task{
         this.category = category;
         this.id = id;
         this.status = status;
+        this.assignedTo = []
     }
 
     /**
@@ -31,33 +29,50 @@ class Task{
 
     /**
      * Ändert den Status des Tasks Objects.
-     * @param {String} status - <Done|Feedback|Done|Progress> 
+     * @param {String} status - <Open|Feedback|Done|Progress> 
      */
     setStatus(status) {
         this.status = status;
     }
 
+    /**
+     * Setzt die Prio.
+     * @param {String} prio <prio-urgent| prio-medium | prio-low> 
+     */
     setPrio(prio) {
         this.prio = prio;
     }
 
-    setAsignedTo(contactName) {
-        this.assignedTo = contactName;
+    /**
+     * Fügt ein Kontaktnamen in die Array hinzu.
+     * @param {String} contactName 
+     */
+    addAsignedTo(contactName) {
+        this.assignedTo.push(contactName);
     }
 
+    /**
+     * Entfernt ein Array Object mit dem index.
+     * @param {Number} index 
+     */
+    removeAssignedTo(index) {
+        this.assignedTo.splice(index, 1);
+    }
+
+    /**
+     * Fügt ein Subtask in ein Array hinzu.
+     * @param {String} subtask 
+     */
     addSubtask(subtask) {
         this.subtasks.push(subtask);
     }
 
+    /**
+     * Entfernt ein Array Objekt mit dem Index.
+     * @param {Number} index 
+     */
     removeSubtask(index) {
         this.subtasks.splice(index, 1)
     }
-
-    async saveTask() {
-        let tasks = await getItem("tasks");
-        tasks.push(this);
-        setItem("tasks", tasks);
-    }
-    
 
 }
