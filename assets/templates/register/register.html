@@ -1,0 +1,76 @@
+<div class="firstLogin">
+  <div class="loginLayout">
+    <h1>Sign up</h1>
+    <div class="underlineFrame"></div>
+
+    <form
+      onsubmit="logIn(); return false;"
+      class="logForm"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 200px;
+      "
+    >
+      <div class="nameSingUp">
+        <!-- TODO 
+      den input stylen -->
+        <input
+          class="nameSingup"
+          required
+          minlength="10"
+          type="text"
+          placeholder="Name"
+          id="#"
+        />
+        <img src="assets/img/register/person.svg" />
+      </div>
+
+      <div class="emailDevision">
+        <!-- TODO 
+        den input stylen -->
+        <input
+          class="logInpMail"
+          required
+          minlength="10"
+          type="email"
+          placeholder="Email"
+          id="#"
+        />
+        <img src="assets/img/login/mail.svg" />
+      </div>
+
+      <div class="passwortDevision">
+        <!-- TODO 
+        den input stylen -->
+        <input
+          class="logInpPass"
+          required
+          minlength="6"
+          type="password"
+          placeholder="Password"
+        />
+        <img src="assets/img/login/lock.svg" />
+      </div>
+
+      <div class="forgotPassword">Forgot my password</div>
+
+      <div class="rememberBox">
+        <input
+          class="loginCeckbox"
+          type="checkbox"
+          name="checkRemember"
+          value="Remember me"
+        />
+        <label class="rememberLabel" for="saveToLocalStorage"
+          >I accept the Privacy policy</label
+        >
+      </div>
+
+      <div class="registerBtn">
+        <button>Sign up</button>
+      </div>
+    </form>
+  </div>
+</div>

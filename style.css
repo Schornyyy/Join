@@ -1,4 +1,5 @@
 @import url("./fonts.css");
+@import url("./assets/templates/register/register.css");
 @import url("./assets/templates/login/login.css");
 @import url("./assets/templates/contacs/contacs.css");
 @import url("./assets/templates/add_tasks/add_tasks.css");
