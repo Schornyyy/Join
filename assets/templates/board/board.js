@@ -2,12 +2,9 @@
 
 let urlPrefix= '../..';
 
-function testen() {
-    let tasksTemp= getTasksFromStatus('in progress');
-    console.log(tasksToHML(tasksTemp));
-}
-
 //////////////// FOR REAL
+
+function 
 
 ////// MULTIPLE TASKS
 
