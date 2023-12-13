@@ -1,3 +1,4 @@
+@import url("./fonts.css");
 @import url("./assets/templates/login/login.css");
 @import url("./assets/templates/contacs/contacs.css");
 @import url("./assets/templates/add_tasks/add_tasks.css");
@@ -22,6 +23,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Inter;
 }
 
 /* Hat keinen effekt auf h1 und p */

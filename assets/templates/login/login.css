@@ -19,11 +19,19 @@
   border-radius: 1.8rem;
 }
 
+.loginLayout h1 {
+  font-size: 2.5rem;
+}
+
+.logForm {
+  margin-top: 1rem;
+}
+
 .rememberBox {
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
-padding-right: 4rem;
+  padding-right: 4rem;
   gap: 0.5rem;
 }
 
@@ -55,7 +63,7 @@ padding-right: 4rem;
 }
 
 .rememberLabel {
-  font-size: 1rem;
+  font-size: 0.8rem !important;
   display: flex;
   align-self: normal;
 }
