@@ -5,6 +5,7 @@
 
     <form
       onsubmit="logIn(); return false;"
+      class="logForm"
       style="
         display: flex;
         flex-direction: column;
@@ -41,10 +42,20 @@
 
       <div class="forgotPassword">Forgot my password</div>
 
-      <input type="checkbox" name="checkRemember" value="Remember me" />
+      <div class="rememberBox">
+        <input
+          class="loginCeckbox"
+          type="checkbox"
+          name="checkRemember"
+          value="Remember me"
+        />
+        <label class="rememberLabel" for="saveToLocalStorage">Remember me</label>
+      </div>
 
-      <button>Log in</button>
-      <button>Guest Log in</button>
+      <div class="loginBtn">
+        <button>Log in</button>
+        <button>Guest Log in</button>
+      </div>
     </form>
   </div>
 </div>

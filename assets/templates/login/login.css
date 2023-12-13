@@ -19,12 +19,27 @@
   border-radius: 1.8rem;
 }
 
+.rememberBox {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+padding-right: 4rem;
+  gap: 0.5rem;
+}
+
 .emailDevision {
-  border: solid 1px black;
+  display: flex;
+  flex-direction: row;
+  border: solid 1px #d1d1d1;
+  padding: 0.2rem;
 }
 
 .passwortDevision {
-  border: solid 1px black;
+  display: flex;
+  flex-direction: row;
+  border: solid 1px #d1d1d1;
+  padding: 0.2rem;
+  margin-top: 1rem;
 }
 
 .logInpMail {
@@ -33,4 +48,32 @@
 
 .logInpPass {
   border: none;
+}
+
+.forgotPassword {
+  margin-top: 1rem;
+}
+
+.rememberLabel {
+  font-size: 1rem;
+  display: flex;
+  align-self: normal;
+}
+
+.loginBtn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 0.7rem;
+}
+
+.loginBtn button {
+  border: #2a3647 1px solid;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+}
+
+.loginBtn button:hover {
+  background-color: #2a3647;
+  color: #ffffff;
 }
