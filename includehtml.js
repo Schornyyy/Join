@@ -31,7 +31,7 @@ async function includeContentHTML(contentView) {
         "./assets/templates/board/board_template.html"
       );
       content.innerHTML = includedContent;
-      testen();
+      boardInit();
       break;
     case "Add Tasks":
       var includedContent = await includeTemplate(
