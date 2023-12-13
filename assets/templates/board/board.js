@@ -22,7 +22,7 @@ function renderTasks(containerID, status) {
     let cardContainer= document.getElementById(containerID);
     console.log('renderTasks(), containerID: ' + containerID);
     console.log('renderTasks(), cardContainer: ' + cardContainer);
-    let tasksStatus= getTasksFromStatus(tasksForTesting, status);
+    let tasksStatus= getTasksFromStatus(tasks, status);
     if (tasksStatus.length > 0) {
         cardContainer.innerHTML= tasksToHML(tasksStatus);
     }
