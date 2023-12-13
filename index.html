@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./fonts.css" />
     <link rel="stylesheet" href="./style.css" />
 
     <script src="./includehtml.js"></script>
@@ -16,8 +17,6 @@
     <script src="./assets/templates/add_tasks/add_tasks.js"></script>
     <script src="./assets/templates/board/board.js"></script>
     <script src="./assets/templates/summary/summary.js"></script>
-
-    <script src="./assets/templates/board/dataForTesting.js"></script>
 
     <!-- Fav Icon inegration </!-->
     <link
@@ -51,15 +50,21 @@
       ></div>
 
       <div
+        w3-include-html="assets/templates/register/register.html"
+        id="RegisterTemplate"
+        class="RegisterTemplate"
+      ></div>
+
+      <div
         w3-include-html="assets/templates/login/login.html"
         id="loginTemplate"
-        class="loginTemplat d-none"
+        class="loginTemplate d-none"
       ></div>
 
       <div
         w3-include-html="assets/templates/summary/summary_template.html"
         id="content"
-        class="content"
+        class="content d-none"
       ></div>
 
       <div
