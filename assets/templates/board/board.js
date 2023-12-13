@@ -1,36 +1,37 @@
 ///////////////// FOR TESTING
 
-let urlPrefix= '../..';
+let urlPrefix= './assets';
 
-function initForTesting() {
-    includeContentHTML('Board');
-}
 
 //////////////// INIT
 
 function boardInit() {
-    initForTesting();
     renderBoard();
 }
 
 //////////////// RENDER
 
 function renderBoard() {
-    renderTodo();
+    renderTasks('cardContainerTodo', 'todo');
+    renderTasks('cardContainerInprogress', 'in progress');
+    renderTasks('cardContainerAwaitfeedback', 'await feedback');
+    renderTasks('cardContainerDone', 'done');
 }
 
-function renderTodo() {
-    let cardContainerTodo= document.getElementById('cardContainerTodo');
-    let tasksTodo= getTasksFromStatus('todo');
-    if (tasksTodo.length > 0) {
-        cardContainerTodo.innerHTML= tasksToHML(tasksTodo);
+function renderTasks(containerID, status) {
+    let cardContainer= document.getElementById(containerID);
+    console.log('renderTasks(), containerID: ' + containerID);
+    console.log('renderTasks(), cardContainer: ' + cardContainer);
+    let tasksStatus= getTasksFromStatus(tasksForTesting, status);
+    if (tasksStatus.length > 0) {
+        cardContainer.innerHTML= tasksToHML(tasksStatus);
     }
 }
 
-////// MULTIPLE TASKS
+//////////////// GET TASKS
 
-function getTasksFromStatus(status){
-    return tasks.filter((task) => task.status==status);
+function getTasksFromStatus(tasksArray, status){
+    return tasksArray.filter((task) => task.status==status);
 }
 
 function tasksToHML(tasksParam) {
@@ -41,7 +42,7 @@ function tasksToHML(tasksParam) {
     return output;
 }   
 
-////// SINGLE TASK
+//////////////// TO HTML
 
 function singleTaskToHTML(task) {
     return `
@@ -59,6 +60,7 @@ function singleTaskToHTML(task) {
 }
 
 function getCategoryClass(task) {
+    // CSS Klasse für Kagegorie von Aufgabe bekommen
     return 'category-user-story';
 }
 
@@ -79,6 +81,9 @@ function membersToHTML(task) {
     <div class="member-icon">AB</div>
 </div>`;
 }
+
+//////////////// MISC
+
 
 function getPrioImgURL(task) {
     switch (task.prio) {
