@@ -1,6 +1,7 @@
 let selectedPrio;
 let selectedCategory;
 let selectedContacts = [];
+let subtasks = [];
 
 
 async function includeAddTaskFormTempalte() {
@@ -133,4 +134,114 @@ function changeSubtaskImages(id, subtaskInput) {
       }
     }, 100)
   } 
+}
+
+/**
+ * 
+ * @returns is Form validatet or not
+ */
+function validateForm() {
+  let correct = true;
+  let error = document.getElementById("task-form-error")
+
+  if(!selectedPrio) {
+    correct = false;
+    error.innerHTML = "U have to Select a Prio!"
+  }
+
+  if(!selectedCategory) {
+    correct = false;
+    error.innerHTML = "U have to select a Category!"
+  }
+
+  if(document.getElementById("form-title").value === "") {
+    correct = false;
+    error.innerHTML = "U must enter a Title!";
+  }
+
+  if(document.getElementById("form-date") .value === "") {
+    correct = false;
+    error.innerHTML = "U have to select a Due Date!"
+  }
+
+  return correct;
+}
+
+function initEventListener() {
+  document.getElementById("tasks-form-submit").addEventListener("click", (e) => {
+    let validatet = validateForm();
+  })
+}
+
+function changeSubTaskValue(ele) {
+  let input = ele;
+  let c = input.value === "" ? true : false;
+  if(document.activeElement == ele && !c) {
+    document.getElementById("subtasks-to-dropdown-arrow").src = './assets/img/add_tasks/check_icon.svg';
+    document.getElementById("hiden-divieder").style = "display:block;"
+    document.getElementById("subtask-accept-icon").src = './assets/img/add_tasks/trash_icon.svg';
+    document.getElementById("subtask-accept-icon").style = 'display: block';
+    ele.setAttribute("data-check", true);
+    let inter = setInterval(() => {
+      if(document.activeElement != ele) {
+      setSubTaskInputToDefault();
+      ele.value = "";
+        clearInterval(inter);
+      }
+    }, 100)
+  }
+}
+
+function setSubTaskInputToDefault() {
+  document.getElementById("subtasks-to-dropdown").removeAttribute("data-check")
+  document.getElementById("subtasks-to-dropdown-arrow").src = "./assets/img/add_tasks/plus_icon.svg";
+  document.getElementById("subtask-accept-icon").style = 'display:none;'
+  document.getElementById("hiden-divieder").style = 'display:none;'
+}
+
+function addSubtaskToList() {
+  let ele = document.getElementById("subtasks-to-dropdown");
+  let c = ele.hasAttribute("data-check");
+  if(c) {
+    setSubTaskInputToDefault()
+    subtasks.push(new Subtask(ele.value, subtasks.length+1));
+    ele.value = "";
+    renderSubtaskHTML();
+  }
+}
+
+function renderSubtaskHTML() {
+  let list = document.getElementById("subtask-list");
+  list.innerHTML = "";
+  subtasks.forEach((subtask, index) => {
+    console.log(subtask);
+    list.innerHTML += /*html*/`
+      <li>
+            <div class="subtask-list-item">
+              <input
+                type="text"
+                value='${subtask.title}'
+                class="disabled-input"
+                id='subtask-${index}'
+                onclick="changeSubtaskInput(this)"
+              />
+              <div class="subtask-fake-input-btns">
+                <button>
+                  <img
+                    src="./assets/img/add_tasks/edit_icon.svg"
+                    id='subtask-img-${index}'
+                  />
+                </button>
+                <div class="btn-divieder"></div>
+                <button>
+                  <img
+                    src="./assets/img/add_tasks/trash_icon.svg"
+                    id='subtask-img2-${index}'
+                  />
+                </button>
+              </div>
+            </div>
+          </li>
+    `
+  })
 }

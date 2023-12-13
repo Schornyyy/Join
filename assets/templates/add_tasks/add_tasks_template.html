@@ -4,8 +4,11 @@
   </div>
   <div id="taskForm" class="add-tasks-board-content"></div>
   <div class="add-tasks-board-footer">
-    <p><span>*</span>This field is required</p>
-    <button>
+    <div class="footer-msg">
+      <p><span>*</span>This field is required</p>
+      <p id="task-form-error" style="color: red"></p>
+    </div>
+    <button id="tasks-form-submit">
       Create Task <img src="./assets/img/add_tasks/check_icon.svg" alt="" />
     </button>
   </div>

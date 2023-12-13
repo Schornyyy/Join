@@ -104,55 +104,30 @@
     </div>
     <div class="subtasks-to-container">
       <p class="dropdown-button">Subtasks</p>
-      <div class="dropdown" onclick="handleSubtaskDropDown()">
-        <p id="subtasks-to-dropdown">Add new subtask</p>
-        <img
-          src="./assets/img/add_tasks/plus_icon.svg"
-          id="subtasks-to-dropdown-arrow"
-        />
-      </div>
-      <div id="subtasks-search-list">
+      <div class="dropdown subtasks-input">
         <input
           type="text"
-          placeholder="search for tasks by title"
-          id="subtask_search"
+          id="subtasks-to-dropdown"
+          placeholder="Add new Task"
+          oninput="
+          changeSubTaskValue(this)"
         />
-        <button id="btn-subtask-search">
-          <img src="./assets/img/add_tasks/search_icon.svg" alt="" />
-        </button>
-        <div id="loaded-subtasks">
-          <!-- finded subtasks -->
+        <div class="subtasks-input-btns">
+          <button onclick="addSubtaskToList()">
+            <img
+              src="./assets/img/add_tasks/plus_icon.svg"
+              id="subtasks-to-dropdown-arrow"
+              data-check="false"
+            />
+          </button>
+          <div class="btn-divieder" id="hiden-divieder"></div>
+          <button>
+            <img id="subtask-accept-icon" src="" />
+          </button>
         </div>
       </div>
       <div class="subtasks-list">
-        <ul>
-          <li>
-            <div class="subtask-list-item">
-              <input
-                type="text"
-                value="test"
-                class="disabled-input"
-                id="subtask-1"
-                onclick="changeSubtaskInput(this)"
-              />
-              <div class="subtask-fake-input-btns">
-                <button>
-                  <img
-                    src="./assets/img/add_tasks/edit_icon.svg"
-                    id="subtask-img-1"
-                  />
-                </button>
-                <div class="btn-divieder"></div>
-                <button>
-                  <img
-                    src="./assets/img/add_tasks/trash_icon.svg"
-                    id="subtask-img2-1"
-                  />
-                </button>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul id="subtask-list"></ul>
       </div>
     </div>
   </form>

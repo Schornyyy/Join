@@ -304,3 +304,28 @@ button:focus {
 .add-tasks-board-footer button img {
   filter: brightness(0) invert(1);
 }
+
+.footer-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.subtasks-input {
+  position: relative;
+}
+
+.subtasks-input-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.subtasks-input-btns button {
+  background-color: transparent;
+  border: none;
+}
+
+#hiden-divieder {
+  display: none;
+}
