@@ -70,7 +70,6 @@ async function includeContentHTML(contentView) {
       );
       content.innerHTML = includedContent;
       break;
-
     default:
       break;
   }

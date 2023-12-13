@@ -1,18 +1,37 @@
 ///////////////// FOR TESTING
 
-let urlPrefix= '../..';
+let urlPrefix= './assets';
 
-function testen() {
-    let tasksTemp= getTasksFromStatus('in progress');
-    console.log(tasksToHML(tasksTemp));
+
+//////////////// INIT
+
+function boardInit() {
+    renderBoard();
 }
 
-//////////////// FOR REAL
+//////////////// RENDER
 
-////// MULTIPLE TASKS
+function renderBoard() {
+    renderTasks('cardContainerTodo', 'todo');
+    renderTasks('cardContainerInprogress', 'in progress');
+    renderTasks('cardContainerAwaitfeedback', 'await feedback');
+    renderTasks('cardContainerDone', 'done');
+}
 
-function getTasksFromStatus(status){
-    return tasks.filter((task) => task.status==status);
+function renderTasks(containerID, status) {
+    let cardContainer= document.getElementById(containerID);
+    console.log('renderTasks(), containerID: ' + containerID);
+    console.log('renderTasks(), cardContainer: ' + cardContainer);
+    let tasksStatus= getTasksFromStatus(tasksForTesting, status);
+    if (tasksStatus.length > 0) {
+        cardContainer.innerHTML= tasksToHML(tasksStatus);
+    }
+}
+
+//////////////// GET TASKS
+
+function getTasksFromStatus(tasksArray, status){
+    return tasksArray.filter((task) => task.status==status);
 }
 
 function tasksToHML(tasksParam) {
@@ -23,7 +42,7 @@ function tasksToHML(tasksParam) {
     return output;
 }   
 
-////// SINGLE TASK
+//////////////// TO HTML
 
 function singleTaskToHTML(task) {
     return `
@@ -41,6 +60,7 @@ function singleTaskToHTML(task) {
 }
 
 function getCategoryClass(task) {
+    // CSS Klasse für Kagegorie von Aufgabe bekommen
     return 'category-user-story';
 }
 
@@ -61,6 +81,9 @@ function membersToHTML(task) {
     <div class="member-icon">AB</div>
 </div>`;
 }
+
+//////////////// MISC
+
 
 function getPrioImgURL(task) {
     switch (task.prio) {

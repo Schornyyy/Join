@@ -138,7 +138,7 @@ span.plus-button-text {
 .task-section {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 5fr 1fr;
     grid-template-rows: auto 1fr;
     align-items: center;
     flex-basis: 246px;
@@ -147,6 +147,8 @@ span.plus-button-text {
 .section-headline {
     font-size: 20px;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .plus-icon {
@@ -327,6 +329,7 @@ progress[value]::-webkit-progress-bar {
 
     .card-container-empty {
         margin-top: 16px;
+        flex-basis: 100%;
     }
 
 }
