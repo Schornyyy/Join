@@ -190,9 +190,25 @@ async function initEventListener() {
     subs.length > 0 ? task.subtasks = subs : subs  =[];
     tasks.push(task);
     let stat = saveTasks().then((res) => {
-      console.log(res);
+      document.getElementById("task-form-error").style = "color:green"
+      document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"
     });
   })
+}
+
+function clearTask() {
+document.getElementById("task-form-error").style = "color:red";
+document.getElementById("task-form-error").innerHTML = "";
+selectedCategory = null;
+selectedContacts = [];
+selectedPrio = null;
+subtasks = []
+document.getElementById("form-desc").value = "";
+document.getElementById("form-title").value = "";
+document.getElementById("form-date").value = "";
+document.getElementById("categorys-dropdow").innerHTML = "Select task category";
+
+renderSubtaskHTML();
 }
 
 /**
