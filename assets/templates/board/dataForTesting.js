@@ -49,6 +49,16 @@ let tasksForTesting= [
         subtasks: [0, 1],
         status: 'done'
     },
+    {
+        id: 5,
+        title: 'sechs',
+        description: 'Die Spalte ToDo braucht auch eine Aufgabe.',
+        prio: 'low',
+        category: 'farbe',
+        assignedTo: [],
+        subtasks: [],
+        status: 'todo'
+    },
 ];
 
 let subtasks= [

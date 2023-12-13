@@ -2,9 +2,30 @@
 
 let urlPrefix= '../..';
 
-//////////////// FOR REAL
+function initForTesting() {
+    includeContentHTML('Board');
+}
 
-function 
+//////////////// INIT
+
+function boardInit() {
+    initForTesting();
+    renderBoard();
+}
+
+//////////////// RENDER
+
+function renderBoard() {
+    renderTodo();
+}
+
+function renderTodo() {
+    let cardContainerTodo= document.getElementById('cardContainerTodo');
+    let tasksTodo= getTasksFromStatus('todo');
+    if (tasksTodo.length > 0) {
+        cardContainerTodo.innerHTML= tasksToHML(tasksTodo);
+    }
+}
 
 ////// MULTIPLE TASKS
 
