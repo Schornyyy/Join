@@ -1,11 +1,11 @@
-<div class="firstLogin">
-  <div class="loginLayout">
+<div class="secondRegister">
+  <div class="registerLayout">
     <h1>Sign up</h1>
     <div class="underlineFrame"></div>
 
     <form
       onsubmit="logIn(); return false;"
-      class="logForm"
+      class="regForm"
       style="
         display: flex;
         flex-direction: column;
@@ -13,16 +13,15 @@
         width: 200px;
       "
     >
-      <div class="nameSingUp">
+      <div class="nameRegist">
         <!-- TODO 
       den input stylen -->
         <input
-          class="nameSingup"
+          class="nameRegist borderNone"
           required
           minlength="10"
           type="text"
           placeholder="Name"
-          id="#"
         />
         <img src="assets/img/register/person.svg" />
       </div>
@@ -31,12 +30,11 @@
         <!-- TODO 
         den input stylen -->
         <input
-          class="logInpMail"
+          class="registerInpMail borderNone"
           required
           minlength="10"
           type="email"
           placeholder="Email"
-          id="#"
         />
         <img src="assets/img/login/mail.svg" />
       </div>
@@ -45,7 +43,7 @@
         <!-- TODO 
         den input stylen -->
         <input
-          class="logInpPass"
+          class="RegisterInpPass borderNone"
           required
           minlength="6"
           type="password"
@@ -54,16 +52,29 @@
         <img src="assets/img/login/lock.svg" />
       </div>
 
+      <div class="ConfirmPasswortDevision">
+        <!-- TODO 
+        den input stylen -->
+        <input
+          class="ConfirmPasswort borderNone"
+          required
+          minlength="6"
+          type="password"
+          placeholder="Confirm Password"
+        />
+        <img src="assets/img/login/lock.svg" />
+      </div>
+
       <div class="forgotPassword">Forgot my password</div>
 
-      <div class="rememberBox">
+      <div class="acceptPolicyBox">
         <input
-          class="loginCeckbox"
+          class="acceptPolicy"
           type="checkbox"
-          name="checkRemember"
-          value="Remember me"
+          name="acceptPolicy"
+          value="acceptPolicy"
         />
-        <label class="rememberLabel" for="saveToLocalStorage"
+        <label class="acceptPolicy" for="acceptPolicy"
           >I accept the Privacy policy</label
         >
       </div>
