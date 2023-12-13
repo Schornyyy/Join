@@ -1,0 +1,50 @@
+<div class="firstLogin">
+  <div class="loginLayout">
+    <h1>Log in</h1>
+    <div class="underlineFrame"></div>
+
+    <form
+      onsubmit="logIn(); return false;"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 200px;
+      "
+    >
+      <div class="emailDevision">
+        <!-- TODO 
+        den input stylen -->
+        <input
+          class="logInpMail"
+          required
+          minlength="10"
+          type="email"
+          placeholder="Email"
+          id="XY"
+        />
+        <img src="assets/img/login/mail.svg" />
+      </div>
+
+      <div class="passwortDevision">
+        <!-- TODO 
+        den input stylen -->
+        <input
+          class="logInpPass"
+          required
+          minlength="6"
+          type="password"
+          placeholder="Password"
+        />
+        <img src="assets/img/login/lock.svg" />
+      </div>
+
+      <div class="forgotPassword">Forgot my password</div>
+
+      <input type="checkbox" name="checkRemember" value="Remember me" />
+
+      <button>Log in</button>
+      <button>Guest Log in</button>
+    </form>
+  </div>
+</div>

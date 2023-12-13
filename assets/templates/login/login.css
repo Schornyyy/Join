@@ -1,0 +1,36 @@
+.firstLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Z INDEX MUSS RAUS */
+  z-index: 10;
+  height: 100vh;
+}
+
+.loginLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
+  width: 20rem;
+  height: 32rem;
+  border-radius: 1.8rem;
+}
+
+.emailDevision {
+  border: solid 1px black;
+}
+
+.passwortDevision {
+  border: solid 1px black;
+}
+
+.logInpMail {
+  border: none;
+}
+
+.logInpPass {
+  border: none;
+}
