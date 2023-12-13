@@ -2,6 +2,7 @@ const STORAGE_TOKEN = 'MU03W9OLC4M9O5ZLSW91OZWGA938X4EBLQKC0CNW';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let contacts = [];
 let tasks = [];
+let users = [];
 
 /**
  * 
@@ -44,6 +45,7 @@ async function getItem(key) {
 async function loadData() {
     await loadContacts();
     await loadTasks();
+    await loadUsers();
 }
 
 /**
@@ -57,6 +59,18 @@ async function loadContacts() {
     contacts = JSON.parse(contactsResp.data.value);
    }
 }
+
+/**
+ * Lädt alle User aus dem Backend.
+ */
+async function loadUsers() {
+    let usersResp = await getItem("users");
+    if(usersResp == "404") {
+     users = []
+    } else {
+        users = JSON.parse(usersResp.data.value);
+    }
+ }
 
 /**
  * Lädt alle Tasks aus dem backend.
@@ -76,6 +90,13 @@ async function loadTasks() {
  */
 async function saveContacts() {
     await setItem('contacts', contacts);
+}
+
+/**
+ * speichert alle User von dem Array contacts im Backend.
+ */
+async function saveUsers() {
+    await setItem('users', users);
 }
 
 /**

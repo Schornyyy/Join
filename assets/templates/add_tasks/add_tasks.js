@@ -3,7 +3,6 @@ let selectedCategory;
 let selectedContacts = [];
 let subtasks = [];
 
-
 async function includeAddTaskFormTempalte() {
   let taskForm = document.getElementById("taskForm");
   let resp = await includeTemplate('./assets/templates/tasks_form.html')
@@ -192,10 +191,14 @@ async function initEventListener() {
     let stat = saveTasks().then((res) => {
       document.getElementById("task-form-error").style = "color:green"
       document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"
+      clearTask();
     });
   })
 }
 
+/**
+ * Setzt alles auf anfang. 
+ */
 function clearTask() {
 document.getElementById("task-form-error").style = "color:red";
 document.getElementById("task-form-error").innerHTML = "";

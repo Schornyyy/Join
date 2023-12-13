@@ -29,7 +29,7 @@ class Task{
 
     /**
      * Ändert den Status des Tasks Objects.
-     * @param {String} status - <Open|Feedback|Done|Progress> 
+     * @param {String} status - <Open|Feedback|Done|Progress|Close> 
      */
     setStatus(status) {
         this.status = status;
