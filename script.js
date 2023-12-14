@@ -47,11 +47,13 @@ async function loadData() {
     await loadContacts();
     await loadTasks();
     await loadUsers();
-    if(localStorage.getItem("userData") != null & window.location.href == "/index.html") {
-        loadDataToUser();
-    } else {
-        window.location.href = "/assets/templates/login/login.html";
-    }
+    // if(localStorage.getItem("userData") != null) {
+    //     if(window.location.href.match("/index.html")) {
+    //         await loadDataToUser();
+    //     }
+    // } else if(!window.location.href.match("/assets/templates/login/login.html")){
+    //     window.location.href = "/assets/templates/login/login.html";
+    // }
 }
 
 /**
@@ -116,7 +118,7 @@ async function saveTasks() {
 /**
  * Lädt alle daten zum User.
  */
-function loadDataToUser() {
+async function loadDataToUser() {
     let userData = localStorage.getItem("userData");
     let userEmail = userData.email;
     let user = users.find(a => a.email == userEmail);
