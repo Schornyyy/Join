@@ -1,87 +1,98 @@
-<div class="secondRegister">
-  <div class="registerLayout">
-    <h1>Sign up</h1>
-    <div class="underlineFrame"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../style.css" />
+    <title>Join - Register</title>
+  </head>
+  <body>
+    <div class="secondRegister">
+      <div class="registerLayout">
+        <h1>Sign up</h1>
+        <div class="underlineFrame"></div>
 
-    <form
-      onsubmit="logIn(); return false;"
-      class="regForm"
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 200px;
-      "
-    >
-      <div class="nameRegist">
-        <!-- TODO 
-      den input stylen -->
-        <input
-          class="nameRegist borderNone"
-          required
-          minlength="10"
-          type="text"
-          placeholder="Name"
-        />
-        <img src="assets/img/register/person.svg" />
-      </div>
-
-      <div class="emailDevision">
-        <!-- TODO 
-        den input stylen -->
-        <input
-          class="registerInpMail borderNone"
-          required
-          minlength="10"
-          type="email"
-          placeholder="Email"
-        />
-        <img src="assets/img/login/mail.svg" />
-      </div>
-
-      <div class="passwortDevision">
-        <!-- TODO 
-        den input stylen -->
-        <input
-          class="RegisterInpPass borderNone"
-          required
-          minlength="6"
-          type="password"
-          placeholder="Password"
-        />
-        <img src="assets/img/login/lock.svg" />
-      </div>
-
-      <div class="ConfirmPasswortDevision">
-        <!-- TODO 
-        den input stylen -->
-        <input
-          class="ConfirmPasswort borderNone"
-          required
-          minlength="6"
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <img src="assets/img/login/lock.svg" />
-      </div>
-
-      <div class="forgotPassword">Forgot my password</div>
-
-      <div class="acceptPolicyBox">
-        <input
-          class="acceptPolicy"
-          type="checkbox"
-          name="acceptPolicy"
-          value="acceptPolicy"
-        />
-        <label class="acceptPolicy" for="acceptPolicy"
-          >I accept the Privacy policy</label
+        <form
+          onsubmit="logIn(); return false;"
+          class="regForm"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 200px;
+          "
         >
-      </div>
+          <div class="nameRegist">
+            <!-- TODO 
+        den input stylen -->
+            <input
+              class="nameRegist borderNone"
+              required
+              minlength="10"
+              type="text"
+              placeholder="Name"
+            />
+            <img src="assets/img/register/person.svg" />
+          </div>
 
-      <div class="registerBtn">
-        <button>Sign up</button>
+          <div class="emailDevision">
+            <!-- TODO 
+          den input stylen -->
+            <input
+              class="registerInpMail borderNone"
+              required
+              minlength="10"
+              type="email"
+              placeholder="Email"
+            />
+            <img src="assets/img/login/mail.svg" />
+          </div>
+
+          <div class="passwortDevision">
+            <!-- TODO 
+          den input stylen -->
+            <input
+              class="RegisterInpPass borderNone"
+              required
+              minlength="6"
+              type="password"
+              placeholder="Password"
+            />
+            <img src="assets/img/login/lock.svg" />
+          </div>
+
+          <div class="ConfirmPasswortDevision">
+            <!-- TODO 
+          den input stylen -->
+            <input
+              class="ConfirmPasswort borderNone"
+              required
+              minlength="6"
+              type="password"
+              placeholder="Confirm Password"
+            />
+            <img src="assets/img/login/lock.svg" />
+          </div>
+
+          <div class="forgotPassword">Forgot my password</div>
+
+          <div class="acceptPolicyBox">
+            <input
+              class="acceptPolicy"
+              type="checkbox"
+              name="acceptPolicy"
+              value="acceptPolicy"
+            />
+            <label class="acceptPolicy" for="acceptPolicy"
+              >I accept the Privacy policy</label
+            >
+          </div>
+
+          <div class="registerBtn">
+            <button>Sign up</button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</div>
+    </div>
+  </body>
+</html>

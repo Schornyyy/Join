@@ -26,20 +26,6 @@ async function includeContentHTML(contentView) {
   let content = document.getElementById("content");
   content.innerHTML = "";
   switch (contentView) {
-    case "Register":
-      var includedContent = await includeTemplate(
-        "./assets/templates/register/register.html"
-      );
-      content.innerHTML = includedContent;
-      break;
-
-    case "Log in":
-      var includedContent = await includeTemplate(
-        "./assets/templates/login/login.html"
-      );
-      content.innerHTML = includedContent;
-      break;
-
     case "Board":
       var includedContent = await includeTemplate(
         "./assets/templates/board/board_template.html"
