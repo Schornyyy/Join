@@ -82,7 +82,7 @@ async function loadTasks() {
    } else {
     tasks = JSON.parse(tasksResp.data.value);
    }
-   console.log(tasks);
+//    console.log(tasks);
 }
 
 /**
