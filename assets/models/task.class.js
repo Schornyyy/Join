@@ -9,15 +9,19 @@ class Task{
     subtasks = [];
     id;
     status;
+    from;
 
-    constructor(title, dueDate, category, id, status) {
+    constructor(title, dueDate, category, id, status, from) {
         this.title = title;
         this.dueDate = dueDate;
         this.category = category;
         this.id = id;
         this.status = status;
         this.assignedTo = []
+        this.from = from;
     }
+
+    
 
     /**
      * Methoden auf die propertys der Task Klasse.
