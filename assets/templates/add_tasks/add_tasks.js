@@ -176,16 +176,16 @@ async function initEventListener() {
   document.getElementById("tasks-form-submit").addEventListener("click", (e) => {
     let validatet = validateForm();
     if(!validatet) return;
-    let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value;
-    let taskDesc = document.getElementById("form-desc").value == "" ? "" : document.getElementById("form-desc").value;
+    let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value; //????
+    let taskDesc = document.getElementById("form-desc").value == "" ? "" : document.getElementById("form-desc").value; //????
     let prio = selectedPrio;
     let dueDate = document.getElementById("form-date").value;
     let category = selectedCategory;
     let subs = subtasks;
 
-    let task = new Task(taskTitle, dueDate, category, tasks.length+1, "Open");
+    let task = new Task(taskTitle, dueDate, category, tasks.length+1, "Open"); //+1 ???
     task.setPrio(prio);
-    taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc);
+    taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc); //??
     subs.length > 0 ? task.subtasks = subs : subs  =[];
     tasks.push(task);
     let stat = saveTasks().then((res) => {
