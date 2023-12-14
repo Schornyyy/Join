@@ -1,7 +1,6 @@
 async function init() {
   await includeHTML();
   await loadData();
-  includeContentHTML('Board');
 }
 
 async function includeHTML() {
@@ -46,7 +45,6 @@ async function includeContentHTML(contentView) {
         "./assets/templates/board/board_template.html"
       );
       content.innerHTML = includedContent;
-      boardInit();
       break;
 
     case "Add Tasks":
