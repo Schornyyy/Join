@@ -59,6 +59,16 @@ let tasksForTesting= [
         subtasks: [],
         status: 'todo'
     },
+    {
+        id: 6,
+        title: 'sieben',
+        description: 'Zum Testen von der Progressbar mit drei Subtasks',
+        prio: 'urgent',
+        category: 'TuEs!',
+        assignedTo: [],
+        subtasks: [2,3,4],
+        status: 'todo'
+    },
 ];
 
 let subtasksForTesting= [
@@ -70,6 +80,21 @@ let subtasksForTesting= [
     {
         id: 1,
         title: 'zweite Unteraufgabe',
+        finished: true
+    },
+    {
+        id: 2,
+        title: 'TuEs eins',
+        finished: false
+    },
+    {
+        id: 3,
+        title: 'TuEs zwo',
+        finished: true
+    },
+    {
+        id: 4,
+        title: 'TuEs drei',
         finished: true
     }
 ];
