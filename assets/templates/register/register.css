@@ -1,3 +1,17 @@
+/* Short style start */
+.borderNone {
+  border: none;
+}
+
+.outline {
+  outline: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+/* Short style end */
+
 .secondRegister {
   display: flex;
   align-items: center;
@@ -45,10 +59,6 @@
   border: solid 1px #d1d1d1;
   padding: 0.2rem;
   margin-top: 1rem;
-}
-
-.borderNone {
-  border: none;
 }
 
 .forgotPassword {

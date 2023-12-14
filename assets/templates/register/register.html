@@ -13,7 +13,7 @@
         <div class="underlineFrame"></div>
 
         <form
-          onsubmit="logIn(); return false;"
+          onsubmit="registerUser(); return false;"
           class="regForm"
           style="
             display: flex;
@@ -26,11 +26,12 @@
             <!-- TODO 
         den input stylen -->
             <input
-              class="nameRegist borderNone"
+              class="nameRegist borderNone outline cursor"
               required
-              minlength="10"
+              minlength="2"
               type="text"
               placeholder="Name"
+              autocomplete="username"
             />
             <img src="../../../assets/img/register/person.svg" />
           </div>
@@ -41,9 +42,10 @@
             <input
               class="registerInpMail borderNone"
               required
-              minlength="10"
+              minlength="2"
               type="email"
               placeholder="Email"
+              autocomplete="email"
             />
             <img src="../../../assets/img/login/mail.svg" />
           </div>
@@ -54,9 +56,10 @@
             <input
               class="RegisterInpPass borderNone"
               required
-              minlength="6"
+              minlength="2"
               type="password"
               placeholder="Password"
+              autocomplete="current-password"
             />
             <img src="../../../assets/img/login/lock.svg" />
           </div>
@@ -67,9 +70,10 @@
             <input
               class="ConfirmPasswort borderNone"
               required
-              minlength="6"
+              minlength="2"
               type="password"
               placeholder="Confirm Password"
+              autocomplete="current-password"
             />
             <img src="../../../assets/img/login/lock.svg" />
           </div>
@@ -77,11 +81,7 @@
           <div class="forgotPassword">Forgot my password</div>
 
           <div class="acceptPolicyBox">
-            <input
-              type="checkbox"
-              name="acceptPolicy"
-              value="acceptPolicy"
-            />
+            <input type="checkbox" name="acceptPolicy" value="acceptPolicy" />
             <label class="acceptPolicy" for="acceptPolicy"
               >I accept the Privacy policy</label
             >
