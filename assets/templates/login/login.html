@@ -1,61 +1,79 @@
-<div class="firstLogin">
-  <div class="loginLayout">
-    <h1>Log in</h1>
-    <div class="underlineFrame"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../../style.css" />
+    <script src="../../../script.js"></script>
+    <script src="../../models/user.class.js"></script>
+    <script src="./login.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join - Login</title>
+  </head>
+  <body onload="loadData();">
+    <div class="firstLogin">
+      <div class="loginLayout">
+        <h1>Log in</h1>
+        <div class="underlineFrame"></div>
 
-    <form
-      onsubmit="logIn(); return false;"
-      class="logForm"
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 200px;
-      "
-    >
-      <div class="emailDevision">
-        <!-- TODO 
-        den input stylen -->
-        <input
-          class="logInpMail"
-          required
-          minlength="10"
-          type="email"
-          placeholder="Email"
-          id="XY"
-        />
-        <img src="assets/img/login/mail.svg" />
+        <form
+          onsubmit="logIn(); return false;"
+          class="logForm"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 200px;
+          "
+        >
+          <div class="emailDevision">
+            <!-- TODO 
+          den input stylen -->
+            <input
+              class="logInpMail"
+              required
+              minlength="10"
+              type="email"
+              placeholder="Email"
+              id="login-input-email"
+            />
+            <img src="../../img/login/mail.svg" />
+          </div>
+
+          <div class="passwortDevision">
+            <!-- TODO 
+          den input stylen -->
+            <input
+              class="logInpPass"
+              required
+              minlength="6"
+              type="password"
+              placeholder="Password"
+              id="login-input-password"
+            />
+            <img src="../../img/login/lock.svg" />
+          </div>
+
+          <div class="forgotPassword">Forgot my password</div>
+
+          <div class="rememberBox">
+            <input
+              class="loginCeckbox"
+              type="checkbox"
+              name="checkRemember"
+              value="Remember me"
+              id="rememberMe"
+              onclick="handleRememberme(this)"
+            />
+            <label class="rememberLabel" for="rememberMe">Remember me</label>
+          </div>
+
+          <div class="loginBtn">
+            <p id="login-error"></p>
+            <button onclick="login()">Log in</button>
+            <button>Guest Log in</button>
+          </div>
+        </form>
       </div>
-
-      <div class="passwortDevision">
-        <!-- TODO 
-        den input stylen -->
-        <input
-          class="logInpPass"
-          required
-          minlength="6"
-          type="password"
-          placeholder="Password"
-        />
-        <img src="assets/img/login/lock.svg" />
-      </div>
-
-      <div class="forgotPassword">Forgot my password</div>
-
-      <div class="rememberBox">
-        <input
-          class="loginCeckbox"
-          type="checkbox"
-          name="checkRemember"
-          value="Remember me"
-        />
-        <label class="rememberLabel" for="saveToLocalStorage">Remember me</label>
-      </div>
-
-      <div class="loginBtn">
-        <button>Log in</button>
-        <button>Guest Log in</button>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
+  </body>
+</html>
