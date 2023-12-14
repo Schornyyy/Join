@@ -3,6 +3,7 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let contacts = [];
 let tasks = [];
 let users = [];
+let CurrentUser;
 
 /**
  * 
@@ -46,6 +47,11 @@ async function loadData() {
     await loadContacts();
     await loadTasks();
     await loadUsers();
+    if(localStorage.getItem("userData") != null & window.location.href == "/index.html") {
+        loadDataToUser();
+    } else {
+        window.location.href = "/assets/templates/login/login.html";
+    }
 }
 
 /**
@@ -104,4 +110,23 @@ async function saveUsers() {
  */
 async function saveTasks() {
     setItem('tasks', tasks);
+}
+
+
+/**
+ * Lädt alle daten zum User.
+ */
+function loadDataToUser() {
+    let userData = localStorage.getItem("userData");
+    let userEmail = userData.email;
+    let user = users.find(a => a.email == userEmail);
+    let u = new User(user.name, user.email, user.password);
+
+    tasks.forEach((task) => {
+        if(task.from == u.name) {
+            u.addTask(task);
+        }
+    })
+
+    CurrentUser = u;
 }
