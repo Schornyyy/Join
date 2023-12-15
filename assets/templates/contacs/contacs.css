@@ -5,6 +5,56 @@
         background-color: white;        
     }
 
+    .addContactContainerHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 50vh;
+        background-color: var(--light-grey);
+    }
+
+    .addContactContainerFooter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 50vh;
+        background-color: white;
+        gap: 20px;
+    }
+
+    .addContactInputName {
+
+    }
+
+    .addContactInputMailAddresss {
+
+    }
+
+    .createContactButtonImg {
+        height: 51px;
+    }
+
+    .addContactH1 {
+        color: white;
+        font-size: 3rem;
+    }
+
+    .addContactText {
+        color: white;
+    }
+
+    .addContactButtonContainer {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+    }
+
+    .addContactButtonImage {
+        width: 352px;
+    }
+    
     .oneContactContainer {
         display: flex;
         flex-direction: row;
