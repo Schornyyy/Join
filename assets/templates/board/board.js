@@ -1,5 +1,6 @@
-///////////////// FOR TESTING
 let urlPrefix = './assets';
+let tasksDatasource= tasksForTesting;
+let subtasksDatasource= subtasksForTesting;
 
 //////////////// INIT
 
@@ -18,7 +19,7 @@ function renderBoard() {
 
 function renderTasks(containerID, status) {
     let cardContainer = document.getElementById(containerID);
-    let tasksStatus = getTasksFromStatus(tasksForTesting, status);
+    let tasksStatus = getTasksFromStatus(tasksDatasource, status);
     if (tasksStatus.length > 0) {
         cardContainer.innerHTML = tasksToHML(tasksStatus);
     }
@@ -59,7 +60,7 @@ function getFinishedSubtasks(task) {
 }
 
 function getSubtaskById(idParam) {
-    return subtasksForTesting.find(subtask => subtask.id == idParam);
+    return subtasksDatasource.find(subtask => subtask.id == idParam);
 }
 
 function getMembers(task) {
@@ -240,7 +241,7 @@ function detailSubtasksToHTML(task) {
 function getSubtasks(task) {
     let output= [];
     for (let subtaskID of task.subtasks) {
-        output.push(subtasksForTesting.find(subt => subt.id==subtaskID));
+        output.push(subtasksDatasource.find(subt => subt.id==subtaskID));
     }
     return output;
 }
@@ -265,7 +266,7 @@ function showDialogDetail(taskID) {
     let detailDialogContainer= document.getElementById('detailDialogContainer');
     detailDialogContainer.classList.remove('reini-d-none');
     
-    let task= tasksForTesting[taskID]
+    let task= tasksDatasource[taskID]
     let detailDialog= document.getElementById('detailDialog');
     detailDialog.innerHTML= detailDialogToHTML(task);
 }
