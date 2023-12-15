@@ -57,7 +57,6 @@ function validateForm() {
 
 
 /**
- * Wo kann ich die Funktion abfragen?
  * @param {*} email 
  * @returns 
  */
@@ -73,15 +72,15 @@ function emailAlreadyTaken(email) {
 }
 
 
-async function registOnclick() {
-    let regNameInp = document.getElementById("nameRegist").value;
-    let regEmailInp = document.getElementById("registerInpMail").value;
-    let regPassInp = document.getElementById("RegisterInpPass").value;
-    let regConfirmPassInp = document.getElementById("ConfirmPasswort").value;
+// async function registOnclick() {
+//     let regNameInp = document.getElementById("nameRegist").value;
+//     let regEmailInp = document.getElementById("registerInpMail").value;
+//     let regPassInp = document.getElementById("RegisterInpPass").value;
+//     let regConfirmPassInp = document.getElementById("ConfirmPasswort").value;
 
-    await emailAlreadyTaken(regEmailInp);
-    registerUser(regNameInp, regEmailInp, regPassInp)
-}
+//     await emailAlreadyTaken(regEmailInp);
+//     registerUser(regNameInp, regEmailInp, regPassInp)
+// }
 // input validieren
 // email prüfen.
 // an registerUser(1,2,3) übergeben.
