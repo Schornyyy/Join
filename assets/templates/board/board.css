@@ -191,7 +191,7 @@ span.plus-button-text {
     padding: 16px;
 }
 
-.task-card > * {
+.task-card>* {
     margin-bottom: 20px;
 }
 
@@ -205,6 +205,8 @@ span.plus-button-text {
 
 .task-description {
     color: var(--reini-light-grey);
+    max-height: 220px;
+    overflow: hidden;
 }
 
 .progress-container {
@@ -248,7 +250,6 @@ progress[value]::-webkit-progress-bar {
 .member-icon {
     height: 32px;
     width: 32px;
-    background-color: lightcoral;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -257,7 +258,7 @@ progress[value]::-webkit-progress-bar {
     position: relative;
 }
 
-.members-prio-container > img {
+.members-prio-container>img {
     width: 1em;
 }
 
@@ -306,7 +307,7 @@ progress[value]::-webkit-progress-bar {
     .task-section {
         flex-basis: 0;
     }
-    
+
     .section-headline {
         font-size: 27px;
     }
@@ -325,7 +326,21 @@ progress[value]::-webkit-progress-bar {
 
     .card-container::-webkit-scrollbar {
         display: none;
-      }
+    }
+
+    .task-card {
+        flex: 252px 0 0;
+        height: 265px;
+    }
+
+    .task-description {
+        height: 60px;
+        overflow: hidden;
+    }
+
+    .progress-container {
+        height: 14px;
+    }
 
     .card-container-empty {
         margin-top: 16px;

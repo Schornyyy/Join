@@ -5,7 +5,7 @@ let tasksForTesting= [
         description: 'erste Aufgabe zum testen von Board',
         prio: 'urgent', //string oder number?
         category: 'testing Board', //Farbe für Kategorien muss wo gespeichert werden
-        assignedTo: [], //eigene Klasse für Kontake bzw. User?
+        assignedTo: ['hermann@li.df', 'tom@slayer.com', 'friedrich@schiller.de', 'modulfee@da.de'], //eigene Klasse für Kontake bzw. User?
         subtasks: [],
         status: 'in progress' //brauchen wir zum Einordnen in eine section (bzw. spalte). Vielleicht statt finished?
     },
@@ -15,7 +15,7 @@ let tasksForTesting= [
         description: 'zweite Aufgabe kommt in Spalte await feedback',
         prio: 'medium',
         category: 'another category', //
-        assignedTo: [],
+        assignedTo: ['hermann@li.df', 'modulfee@da.de'],
         subtasks: [],
         status: 'await feedback'
     },
@@ -25,7 +25,7 @@ let tasksForTesting= [
         description: 'lorem ipsum',
         prio: 'medium',
         category: 'third category',
-        assignedTo: [],
+        assignedTo: ['hermann@li.df'],
         subtasks: [],
         status: 'done'
     },
@@ -35,7 +35,7 @@ let tasksForTesting= [
         description: 'eine zweite Aufgabe für die Spalte in progress',
         prio: 'low',
         category: 'irgendwas',
-        assignedTo: [],
+        assignedTo: ['hermann@li.df', 'tom@slayer.com'],
         subtasks: [],
         status: 'in progress'
     },
@@ -45,7 +45,7 @@ let tasksForTesting= [
         description: 'Ich habe sogar Unteraufgaben ;)',
         prio: 'low',
         category: 'irgendwas',
-        assignedTo: [],
+        assignedTo: ['hermann@li.df'],
         subtasks: [0, 1],
         status: 'done'
     },
@@ -55,7 +55,7 @@ let tasksForTesting= [
         description: 'Die Spalte ToDo braucht auch eine Aufgabe.',
         prio: 'low',
         category: 'farbe',
-        assignedTo: [],
+        assignedTo: ['hermann@li.df'],
         subtasks: [],
         status: 'todo'
     },
@@ -65,8 +65,18 @@ let tasksForTesting= [
         description: 'Zum Testen von der Progressbar mit drei Subtasks',
         prio: 'urgent',
         category: 'TuEs!',
-        assignedTo: [],
+        assignedTo: ['hermann@li.df'],
         subtasks: [2,3,4],
+        status: 'todo'
+    },
+    {
+        id: 7,
+        title: 'acht',
+        description: 'Da steht sehr viel :O Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+        prio: 'medium',
+        category: 'TuEs!',
+        assignedTo: ['friedrich@schiller.de'],
+        subtasks: [],
         status: 'todo'
     },
 ];
@@ -97,4 +107,33 @@ let subtasksForTesting= [
         title: 'TuEs drei',
         finished: true
     }
+];
+
+let contactsForTesting= [
+    {
+        name: 'Hermann Li',
+        colorCode: '#230C33',
+        email: 'hermann@li.df',
+        phone: '123456'
+    },
+    {
+        name: 'Tom Araya',
+        // colorCode: '#131515',
+        colorCode: '#982649',
+        email: 'tom@slayer.com',
+        phone: '123456'
+    },
+    {
+        name: 'Friedrich Schiller',
+        colorCode: '#7DE2D1',
+        email: 'friedrich@schiller.de',
+        phone: '123456'
+    },
+    {
+        name: 'Die Mudulfee',
+        colorCode: '#BBA0B2',
+        email: 'modulfee@da.de',
+        phone: '123456'
+    },
+
 ];

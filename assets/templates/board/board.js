@@ -76,6 +76,18 @@ function getSubtaskById(idParam) {
     return subtasksForTesting.find(subtask => subtask.id==idParam);
 }
 
+function getMembers(task) {
+    let output= [];
+    for (let eMail of task.assignedTo) {
+        output.push(contactsForTesting.find(contact => contact.email==eMail));
+    }
+    return output;
+}
+
+function getFirstLetterOfName(member) {
+    return member.name.slice(0,1);
+}
+
 //////////////// TO HTML
 
 function singleTaskToHTML(task) {
@@ -86,7 +98,9 @@ function singleTaskToHTML(task) {
             <p class="task-description">${task.description}</p>
             ${progressToHTML(task)}
             <div class="members-prio-container">
-                ${membersToHTML(task)}
+                <div class="members-container">
+                    ${membersToHTML(task)}
+                </div>
                 <img src="${getPrioImgURL(task)}" alt="prio img">
             </div>
         </div>
@@ -106,18 +120,37 @@ function progressToHTML(task) {
     let amountOfSubtasks= getAmountOfSubtasks(task);
     if (amountOfSubtasks > 0) {
         let amountOfFinishedSubtasks= getAmountOfFinishedSubtasks(task);
-        return `<div class="progress-container">
-                    <progress class="progress-bar" value="${amountOfFinishedSubtasks}" max="${amountOfSubtasks}"></progress>
-                    <label for="progressBar"><span>${amountOfFinishedSubtasks}</span>/<span>${amountOfSubtasks}</span>Subtasks</label>
-                </div>`;
+        return `
+            <div class="progress-container">
+                <progress class="progress-bar" value="${amountOfFinishedSubtasks}" max="${amountOfSubtasks}"></progress>
+                <label for="progressBar"><span>${amountOfFinishedSubtasks}</span>/<span>${amountOfSubtasks}</span>Subtasks</label>
+            </div>
+        `;
     } else 
-        return '';
+        return '<div class="progress-container"></div>';
 }
 
 function membersToHTML(task) {
-    return `<div class="members-container">
-    <div class="member-icon">AB</div>
-</div>`;
+    let members= getMembers(task);
+    let output= '';
+    let i= 0;
+
+    for (let member of members) {
+        output+= singleMemberToHTML(member, i);
+        i++;
+    }
+    return output;
+}
+
+function singleMemberToHTML(member, index) {
+    let textcolor;
+    let iconRightStep= 10;
+    if(!isColorLight(member.colorCode)) textcolor= 'white';
+    return `
+        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index*iconRightStep}px">
+            ${getFirstLetterOfName(member)}
+        </div>    
+    `;
 }
 
 //////////////// MISC
@@ -130,6 +163,14 @@ function getPrioImgURL(task) {
         case 'low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
         default: return '';
     }
+}
+
+function isColorLight(hexcode) {
+    let r= parseInt(hexcode.slice(1,3),16);
+    let g= parseInt(hexcode.slice(3,5),16);
+    let b= parseInt(hexcode.slice(5),16);
+    var a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return (a < 0.5);
 }
 
 
