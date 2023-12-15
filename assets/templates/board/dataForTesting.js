@@ -69,6 +69,16 @@ let tasksForTesting= [
         subtasks: [2,3,4],
         status: 'todo'
     },
+    {
+        id: 7,
+        title: 'acht',
+        description: 'Da steht sehr viel :O Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+        prio: 'medium',
+        category: 'TuEs!',
+        assignedTo: ['friedrich@schiller.de'],
+        subtasks: [],
+        status: 'todo'
+    },
 ];
 
 let subtasksForTesting= [
@@ -108,7 +118,8 @@ let contactsForTesting= [
     },
     {
         name: 'Tom Araya',
-        colorCode: '#131515',
+        // colorCode: '#131515',
+        colorCode: '#982649',
         email: 'tom@slayer.com',
         phone: '123456'
     },

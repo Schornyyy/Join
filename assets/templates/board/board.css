@@ -248,7 +248,6 @@ progress[value]::-webkit-progress-bar {
 .member-icon {
     height: 32px;
     width: 32px;
-    background-color: lightcoral;
     display: flex;
     justify-content: center;
     align-items: center;

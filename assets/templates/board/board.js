@@ -98,7 +98,9 @@ function singleTaskToHTML(task) {
             <p class="task-description">${task.description}</p>
             ${progressToHTML(task)}
             <div class="members-prio-container">
-                ${membersToHTML(task)}
+                <div class="members-container">
+                    ${membersToHTML(task)}
+                </div>
                 <img src="${getPrioImgURL(task)}" alt="prio img">
             </div>
         </div>
@@ -131,20 +133,21 @@ function progressToHTML(task) {
 function membersToHTML(task) {
     let members= getMembers(task);
     let output= '';
+    let i= 0;
 
-    console.log('membersToHTML: ' + task.id);
     for (let member of members) {
-        output+= singleMemberToHTML(member);
+        output+= singleMemberToHTML(member, i);
+        i++;
     }
     return output;
 }
 
-function singleMemberToHTML(member) {
-    // console.log('singleMemberToHTML: ' + member.email);
+function singleMemberToHTML(member, index) {
     let textcolor;
+    let iconRightStep= 10;
     if(!isColorLight(member.colorCode)) textcolor= 'white';
     return `
-        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};">
+        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index*iconRightStep}px">
             ${getFirstLetterOfName(member)}
         </div>    
     `;
