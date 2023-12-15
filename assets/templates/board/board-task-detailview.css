@@ -1,0 +1,68 @@
+
+/*************** DIALOG DETAIL ***************/
+
+.detail-dialog-container {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsla(341, 0%, 0%, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-dialog {
+    background-color: white;
+}
+
+/*************** HEADER ***************/
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+/*************** DATE-PRIO-CONTAINER ***************/
+
+.detail-date-prio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.detail-date-prio-container img {
+    width: 1em;
+}
+
+/*************** MEMBERS ***************/
+
+.detail-member {
+    display: flex;
+    align-items: center;
+}
+
+.member-icon {
+    background-color: lightcoral;
+}
+
+/*************** STUBTASKS ***************/
+
+.detail-subtask {
+    display: flex;
+    align-items: center;
+}
+
+/*************** FOOTER ***************/
+
+.detail-footer {
+    display: flex;
+    justify-content: right;
+}
+
+.detail-footer-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

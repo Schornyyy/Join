@@ -1,27 +1,9 @@
 ///////////////// FOR TESTING
-
-document.addEventListener("DOMContentLoaded", function () {
-    boardInitForTesting();
-    boardInit();
-});
-
-let urlPrefix= './assets';
-
-function boardInitForTesting() {
-    includeContentHTML('Board');
-}
-
-function testen() {
-    let tempTask= tasksForTesting[4];
-    console.log(getAmountOfSubtasks(tempTask));
-    console.log(getAmountOfFinishedSubtasks(tempTask));
-    console.log(getSubtaskById(2));
-}
+let urlPrefix = './assets';
 
 //////////////// INIT
 
 function boardInit() {
-    boardInitForTesting();
     renderBoard();
 }
 
@@ -35,26 +17,26 @@ function renderBoard() {
 }
 
 function renderTasks(containerID, status) {
-    let cardContainer= document.getElementById(containerID);
-    let tasksStatus= getTasksFromStatus(tasksForTesting, status);
+    let cardContainer = document.getElementById(containerID);
+    let tasksStatus = getTasksFromStatus(tasksForTesting, status);
     if (tasksStatus.length > 0) {
-        cardContainer.innerHTML= tasksToHML(tasksStatus);
+        cardContainer.innerHTML = tasksToHML(tasksStatus);
     }
 }
 
 //////////////// GETTER
 
-function getTasksFromStatus(tasksArray, status){
-    return tasksArray.filter((task) => task.status==status);
+function getTasksFromStatus(tasksArray, status) {
+    return tasksArray.filter((task) => task.status == status);
 }
 
 function tasksToHML(tasksParam) {
-    let output= '';
+    let output = '';
     for (task of tasksParam) {
         output += singleTaskToHTML(task);
     }
     return output;
-}   
+}
 
 function getAmountOfSubtasks(task) {
     return task.subtasks.length;
@@ -65,10 +47,10 @@ function getAmountOfFinishedSubtasks(task) {
 }
 
 function getFinishedSubtasks(task) {
-    output= [];
+    output = [];
     let subtaskTemp;
     task.subtasks.forEach(subtaskID => {
-        subtaskTemp= getSubtaskById(subtaskID);
+        subtaskTemp = getSubtaskById(subtaskID);
         if (subtaskTemp.finished) {
             output.push(subtaskTemp);
         }
@@ -77,19 +59,19 @@ function getFinishedSubtasks(task) {
 }
 
 function getSubtaskById(idParam) {
-    return subtasksForTesting.find(subtask => subtask.id==idParam);
+    return subtasksForTesting.find(subtask => subtask.id == idParam);
 }
 
 function getMembers(task) {
-    let output= [];
+    let output = [];
     for (let eMail of task.assignedTo) {
-        output.push(contactsForTesting.find(contact => contact.email==eMail));
+        output.push(contactsForTesting.find(contact => contact.email == eMail));
     }
     return output;
 }
 
 function getFirstLetterOfName(member) {
-    return member.name.slice(0,1);
+    return member.name.slice(0, 1);
 }
 
 //////////////// TO HTML
@@ -121,26 +103,26 @@ function categoryToHTML(task) {
 }
 
 function progressToHTML(task) {
-    let amountOfSubtasks= getAmountOfSubtasks(task);
+    let amountOfSubtasks = getAmountOfSubtasks(task);
     if (amountOfSubtasks > 0) {
-        let amountOfFinishedSubtasks= getAmountOfFinishedSubtasks(task);
+        let amountOfFinishedSubtasks = getAmountOfFinishedSubtasks(task);
         return `
             <div class="progress-container">
                 <progress class="progress-bar" value="${amountOfFinishedSubtasks}" max="${amountOfSubtasks}"></progress>
                 <label for="progressBar"><span>${amountOfFinishedSubtasks}</span>/<span>${amountOfSubtasks}</span>Subtasks</label>
             </div>
         `;
-    } else 
+    } else
         return '<div class="progress-container"></div>';
 }
 
 function membersToHTML(task) {
-    let members= getMembers(task);
-    let output= '';
-    let i= 0;
+    let members = getMembers(task);
+    let output = '';
+    let i = 0;
 
     for (let member of members) {
-        output+= singleMemberToHTML(member, i);
+        output += singleMemberToHTML(member, i);
         i++;
     }
     return output;
@@ -148,10 +130,10 @@ function membersToHTML(task) {
 
 function singleMemberToHTML(member, index) {
     let textcolor;
-    let iconRightStep= 10;
-    if(!isColorLight(member.colorCode)) textcolor= 'white';
+    let iconRightStep = 10;
+    if (!isColorLight(member.colorCode)) textcolor = 'white';
     return `
-        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index*iconRightStep}px">
+        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
             ${getFirstLetterOfName(member)}
         </div>    
     `;
@@ -170,12 +152,22 @@ function getPrioImgURL(task) {
 }
 
 function isColorLight(hexcode) {
-    let r= parseInt(hexcode.slice(1,3),16);
-    let g= parseInt(hexcode.slice(3,5),16);
-    let b= parseInt(hexcode.slice(5),16);
+    let r = parseInt(hexcode.slice(1, 3), 16);
+    let g = parseInt(hexcode.slice(3, 5), 16);
+    let b = parseInt(hexcode.slice(5), 16);
     var a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
     return (a < 0.5);
 }
 
 
+
+
+
+/////////////////////////////////////////
+//////////////// DIALOG /////////////////
+/////////////////////////////////////////
+
+function showDialogDetail() {
+    let 
+}
 
