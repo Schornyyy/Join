@@ -167,7 +167,16 @@ function isColorLight(hexcode) {
 //////////////// DIALOG /////////////////
 /////////////////////////////////////////
 
+
+//////////////// SHOW HIDE
+
 function showDialogDetail() {
-    let 
+    let detailDialogContainer= document.getElementById('detailDialogContainer');
+    detailDialogContainer.classList.remove('reini-d-none');
+}
+
+function hideDialogDetail() {
+    let detailDialogContainer= document.getElementById('detailDialogContainer');
+    detailDialogContainer.classList.add('reini-d-none');
 }
 

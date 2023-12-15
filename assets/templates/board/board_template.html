@@ -1,3 +1,8 @@
+<section class="debug-container">
+    <button onclick="showDialogDetail()">showDialogDetail</button>
+</section>
+
+
 <!------------------ HEADLINE SECTION ------------------>
 <section class="headline-section">
     <h1 class="headline-board">Board</h1>
@@ -89,11 +94,11 @@
 
 
 <!------------------ DIALOG DETAIL ------------------>
-<div class="detail-dialog-container" >
+<div class="detail-dialog-container" id="detailDialogContainer">
     <div class="detail-dialog">
         <div class="detail-header">
             <p class="task-category category-user-story">User Story</p>
-            <img src="./assets/img/board/close-icon.svg" alt="close-icon">
+            <img src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialogDetail()">
         </div>
         <h3>Kochwelt &amp; Page &amp; Recipe Recommender</h3>
         <p class="detail-task-description">Build start page width recipe recommendation.</p>

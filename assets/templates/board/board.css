@@ -350,3 +350,16 @@ progress[value]::-webkit-progress-bar {
     }
 
 }
+
+
+
+
+
+
+/*************** DEBUG ***************/
+
+.debug-container {
+    width: 100%;
+    background-color: lightcoral;
+    border: 2px solid red;
+}
