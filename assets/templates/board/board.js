@@ -1,10 +1,14 @@
 ///////////////// FOR TESTING
 
+document.addEventListener("DOMContentLoaded", function () {
+    boardInitForTesting();
+    boardInit();
+});
+
 let urlPrefix= './assets';
 
 function boardInitForTesting() {
-    let contentElement= document.getElementById('content');
-    contentElement.classList.remove('d-none');
+    includeContentHTML('Board');
 }
 
 function testen() {
