@@ -76,6 +76,18 @@ function getSubtaskById(idParam) {
     return subtasksForTesting.find(subtask => subtask.id==idParam);
 }
 
+function getMembers(task) {
+    let output= [];
+    for (let eMail of task.assignedTo) {
+        output.push(contactsForTesting.find(contact => contact.email==eMail));
+    }
+    return output;
+}
+
+function getFirstLetterOfName(member) {
+    return member.name.slice(0,1);
+}
+
 //////////////// TO HTML
 
 function singleTaskToHTML(task) {
@@ -117,25 +129,23 @@ function progressToHTML(task) {
 }
 
 function membersToHTML(task) {
-    let iconMoveRightStep= 10;
+    let members= getMembers(task);
+    let output= '';
 
-    return `<div class="members-container">
-    <div class="member-icon">AB</div>
-</div>`;
+    for (let member of members) {
+        output+= singleMemberToHTML(member);
+    }
+    return output;
 }
 
-function singleMemberToHTML(eMail) {
-    let member= contactsForTesting.find(contact => contact.email==eMail);
+function singleMemberToHTML(member) {
+    let textcolor;
+    if(!isColorLight(member.colorCode)) textcolor= 'white';
     return `
-        <div class="member-icon" style="background-color: ${member.colorCode};">
+        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};">
             ${getFirstLetterOfName(member)}
         </div>    
     `;
-}
-
-function getFirstLetterOfName(eMail) {
-    let member= contactsForTesting.find(contact => contact.email==eMail);
-    return member.name.slice(0,1);
 }
 
 //////////////// MISC
@@ -151,9 +161,9 @@ function getPrioImgURL(task) {
 }
 
 function isColorLight(hexcode) {
-    let r= parseInt(hexcode.slice(0,2),16);
-    let g= parseInt(hexcode.slice(2,4),16);
-    let b= parseInt(hexcode.slice(4),16);
+    let r= parseInt(hexcode.slice(1,3),16);
+    let g= parseInt(hexcode.slice(3,5),16);
+    let b= parseInt(hexcode.slice(5),16);
     var a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
     return (a < 0.5);
 }
