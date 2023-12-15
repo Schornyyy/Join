@@ -47,14 +47,13 @@ async function loadData() {
     await loadContacts();
     await loadTasks();
     await loadUsers();
-    // await loadDataToUser();
-    // if(localStorage.getItem("userData") != null) {
-    //     if(window.location.href.match("/index.html")) {
-    //         await loadDataToUser();
-    //     }
-    // } else if(!window.location.href.match("/assets/templates/login/login.html")){
-    //     window.location.href = "/assets/templates/login/login.html";
-    // }
+    if(localStorage.getItem("userData") != null) {
+        if(window.location.href.match("/index.html")) {
+            await loadDataToUser();
+        }
+    } else if(!window.location.href.match("/assets/templates/login/login.html")){
+        window.location.href = "/assets/templates/login/login.html";
+    }
 }
 
 /**
@@ -67,7 +66,6 @@ async function loadContacts() {
    } else {
     contacts = JSON.parse(contactsResp.data.value);
    }
-   console.log(contacts);
 }
 
 /**
@@ -107,7 +105,6 @@ async function saveContacts() {
  */
 async function saveUsers() {
     let l = await setItem('users', users);
-    console.log(l);
 }
 
 /**
@@ -122,9 +119,9 @@ async function saveTasks() {
  * Lädt alle daten zum aktulisieren des offenen Tabs?
  */
 async function loadDataToUser() {
-    let userData = localStorage.getItem("userData");
+    let userData = JSON.parse(localStorage.getItem("userData"));
     let userEmail = userData.email;
-    let user = users.find(a => a.email == userEmail);
+    let user = await users.find(a => a.email == userEmail);
     let u = new User(user.name, user.email, user.password);
 
     tasks.forEach((task) => {
@@ -134,5 +131,4 @@ async function loadDataToUser() {
     })
 
     currentUser = u;
-    console.log("🚀 ~ file: script.js:136 ~ loadDataToUser ~ currentUser:", currentUser)
 }

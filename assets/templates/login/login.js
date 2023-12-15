@@ -25,7 +25,8 @@ function login() {
         return;
     }
     data.email = userEmail;
-    localStorage.setItem("userData", data);
+    localStorage.setItem("userData", JSON.stringify(data));
+    window.location.href = "/index.html";
 }
 
 
