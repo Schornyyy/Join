@@ -3,6 +3,8 @@ Font:
 https://fonts.google.com/specimen/Inter
 */
 
+@import url('./board-task-detailview.css');
+
 /*************** VARIABLES ***************/
 
 :root {
@@ -191,6 +193,10 @@ span.plus-button-text {
     padding: 16px;
 }
 
+.task-card:hover {
+    cursor: pointer;
+}
+
 .task-card>* {
     margin-bottom: 20px;
 }
@@ -199,7 +205,7 @@ span.plus-button-text {
     font-size: 16px;
     display: inline-block;
     color: white;
-    padding: 4px 16px;
+    padding: 4px 20px;
     border-radius: 8px;
 }
 
@@ -347,4 +353,17 @@ progress[value]::-webkit-progress-bar {
         flex-basis: 100%;
     }
 
+}
+
+
+
+
+
+
+/*************** DEBUG ***************/
+
+.debug-container {
+    width: 100%;
+    background-color: lightcoral;
+    border: 2px solid red;
 }
