@@ -35,7 +35,7 @@ let tasksForTesting= [
         description: 'eine zweite Aufgabe für die Spalte in progress',
         prio: 'low',
         category: 'irgendwas',
-        assignedTo: ['hermann@li.df', 'Tom Araya'],
+        assignedTo: ['hermann@li.df', 'tom@slayer.com'],
         subtasks: [],
         status: 'in progress'
     },

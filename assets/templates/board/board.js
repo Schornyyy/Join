@@ -132,6 +132,7 @@ function membersToHTML(task) {
     let members= getMembers(task);
     let output= '';
 
+    console.log('membersToHTML: ' + task.id);
     for (let member of members) {
         output+= singleMemberToHTML(member);
     }
@@ -139,6 +140,7 @@ function membersToHTML(task) {
 }
 
 function singleMemberToHTML(member) {
+    // console.log('singleMemberToHTML: ' + member.email);
     let textcolor;
     if(!isColorLight(member.colorCode)) textcolor= 'white';
     return `
