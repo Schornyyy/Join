@@ -30,6 +30,11 @@
   border-radius: 1.8rem;
 }
 
+.headerRegister {
+display: flex;
+flex-direction: row;
+}
+
 .registerLayout h1 {
   font-size: 2.5rem;
 }
