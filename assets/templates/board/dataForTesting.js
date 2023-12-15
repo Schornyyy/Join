@@ -4,6 +4,7 @@ let tasksForTesting= [
         title: 'eins',
         description: 'erste Aufgabe zum testen von Board',
         prio: 'urgent', //string oder number?
+        dueDate: 1704031200000,
         category: 'testing Board', //Farbe für Kategorien muss wo gespeichert werden
         assignedTo: ['hermann@li.df', 'tom@slayer.com', 'friedrich@schiller.de', 'modulfee@da.de'], //eigene Klasse für Kontake bzw. User?
         subtasks: [],
@@ -14,6 +15,7 @@ let tasksForTesting= [
         title: 'zwo',
         description: 'zweite Aufgabe kommt in Spalte await feedback',
         prio: 'medium',
+        dueDate: 1704031200000,
         category: 'another category', //
         assignedTo: ['hermann@li.df', 'modulfee@da.de'],
         subtasks: [],
@@ -24,6 +26,7 @@ let tasksForTesting= [
         title: 'drei',
         description: 'lorem ipsum',
         prio: 'medium',
+        dueDate: 1704031200000,
         category: 'third category',
         assignedTo: ['hermann@li.df'],
         subtasks: [],
@@ -34,6 +37,7 @@ let tasksForTesting= [
         title: 'vier',
         description: 'eine zweite Aufgabe für die Spalte in progress',
         prio: 'low',
+        dueDate: 1704031200000,
         category: 'irgendwas',
         assignedTo: ['hermann@li.df', 'tom@slayer.com'],
         subtasks: [],
@@ -44,6 +48,7 @@ let tasksForTesting= [
         title: 'fünf',
         description: 'Ich habe sogar Unteraufgaben ;)',
         prio: 'low',
+        dueDate: 1704031200000,
         category: 'irgendwas',
         assignedTo: ['hermann@li.df'],
         subtasks: [0, 1],
@@ -54,6 +59,7 @@ let tasksForTesting= [
         title: 'sechs',
         description: 'Die Spalte ToDo braucht auch eine Aufgabe.',
         prio: 'low',
+        dueDate: 1704031200000,
         category: 'farbe',
         assignedTo: ['hermann@li.df'],
         subtasks: [],
@@ -64,6 +70,7 @@ let tasksForTesting= [
         title: 'sieben',
         description: 'Zum Testen von der Progressbar mit drei Subtasks',
         prio: 'urgent',
+        dueDate: 1704031200000,
         category: 'TuEs!',
         assignedTo: ['hermann@li.df'],
         subtasks: [2,3,4],
@@ -74,6 +81,7 @@ let tasksForTesting= [
         title: 'acht',
         description: 'Da steht sehr viel :O Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
         prio: 'medium',
+        dueDate: 1704031200000,
         category: 'TuEs!',
         assignedTo: ['friedrich@schiller.de'],
         subtasks: [],

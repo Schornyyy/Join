@@ -78,7 +78,7 @@ function getFirstLetterOfName(member) {
 
 function singleTaskToHTML(task) {
     return `
-        <div class="task-card">
+        <div class="task-card" onclick="showDialogDetail(${task.id})">
             ${categoryToHTML(task)}
             <h3>${task.title}</h3>
             <p class="task-description">${task.description}</p>
@@ -168,15 +168,114 @@ function isColorLight(hexcode) {
 /////////////////////////////////////////
 
 
+//////////////// RENDER DETAIL DIALOG
+
+function detailDialogToHTML(task) {
+    let dueDate= new Date(task.dueDate);
+    // let dueDateString= `${dueDate.getDay()}/${dueDate.getMonth}/${dueDate.getFullYear()}`;
+    let dueDateString= `${dueDate.getDate()}/${dueDate.getMonth()+1}/${dueDate.getFullYear()}`;
+    return `
+        <div class="detail-header">
+            <p class="task-category category-user-story">${task.category}</p>
+            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialogDetail()">
+        </div>
+        <h3 class="detail-taskname">${task.title}</h3>
+        <p class="detail-task-description">${task.description}</p>
+        <div class="detail-date-prio-container">
+            <p>Due date:</p>
+            <p>${dueDateString}</p>
+            <p>Priority:</p>
+            <p class="detail-priority">${task.prio} <img class="" src="${getPrioImgURL(task)}" alt="prio-medium-icon"></p>
+        </div>
+        <div class="detail-members-container">
+            <p class="detail-members-container-headline">Assigned To:</p>
+            ${detailMembersToHTML(task)}
+        </div>
+        <div class="detail-subtasks-container">
+            <p class="detail-subtasks-headline">Subtasks</p>
+            ${detailSubtasksToHTML(task)}
+        </div>
+        <div class="detail-footer">
+            <div class="detail-footer-button">
+                <img src="./assets/img/board/delete-icon.svg" alt="trashcan">
+                <p>Delete</p>
+            </div>
+            <div class="detail-footer-button">
+                <img src="./assets/img/board/edit-icon.svg" alt="pencil">
+                <p>Edit</p>
+            </div>
+        </div>
+    `;
+}
+
+function detailMembersToHTML(task) {
+    members= getMembers(task);
+    let output= '';
+    for (let member of members) {
+        output += detailSingleMemberToHTML(member);
+    }
+    return output;
+}
+
+function detailSingleMemberToHTML(member) {
+    let textcolor;
+    if (!isColorLight(member.colorCode)) textcolor = 'white';
+    return `
+        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};">
+            ${getFirstLetterOfName(member)}
+            <p>${member.name}</p>
+        </div>    
+    `;
+}
+
+function detailSubtasksToHTML(task) {
+    let subtasksTemp= getSubtasks(task);
+    let output= '';
+    for (let subtaskTemp of subtasksTemp) {
+        output += detailSingleSubtaskToHTML(subtaskTemp);
+    }
+    return output;
+}
+
+function getSubtasks(task) {
+    let output= [];
+    for (let subtaskID of task.subtasks) {
+        output.push(subtasksForTesting.find(subt => subt.id==subtaskID));
+    }
+    return output;
+}
+
+function detailSingleSubtaskToHTML(subtask) {
+    return `
+        <div class="detail-subtask">
+            <img src="${getSubtaskCheckboxIconURL(subtask)}" alt="checkbox">
+            <p>${subtask.title}</p>
+        </div>
+    `;
+}
+
+function getSubtaskCheckboxIconURL(subtask) {
+    return subtask.finished ? './assets/img/board/checkbox-checked-icon.svg' : './assets/img/board/checkbox-icon.svg'
+}
+
+
 //////////////// SHOW HIDE
 
-function showDialogDetail() {
+function showDialogDetail(taskID) {
     let detailDialogContainer= document.getElementById('detailDialogContainer');
     detailDialogContainer.classList.remove('reini-d-none');
+    
+    let task= tasksForTesting[taskID]
+    let detailDialog= document.getElementById('detailDialog');
+    detailDialog.innerHTML= detailDialogToHTML(task);
 }
 
 function hideDialogDetail() {
     let detailDialogContainer= document.getElementById('detailDialogContainer');
     detailDialogContainer.classList.add('reini-d-none');
 }
+
+
+
+
 
