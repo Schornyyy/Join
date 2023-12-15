@@ -26,3 +26,19 @@ function emailAlreadyTaken(email) {
 
     return c;
 }
+
+
+async function registOnclick() {
+    let regNameInp = document.getElementById("nameRegist").value;
+    let regEmailInp = document.getElementById("registerInpMail").value;
+    let regPassInp = document.getElementById("RegisterInpPass").value;
+    let regConfirmPassInp = document.getElementById("ConfirmPasswort").value;
+
+    await emailAlreadyTaken(regEmailInp);
+    registerUser(regNameInp, regEmailInp, regPassInp)
+}
+// input validieren
+// email prüfen.
+// an registerUser(1,2,3) übergeben.
+
+// local storage "Remember me"
