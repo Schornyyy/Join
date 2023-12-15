@@ -221,8 +221,8 @@ function detailSingleMemberToHTML(member) {
     let textcolor;
     if (!isColorLight(member.colorCode)) textcolor = 'white';
     return `
-        <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};">
-            ${getFirstLetterOfName(member)}
+        <div class="detail-member">
+            <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};">${getFirstLetterOfName(member)}</div>
             <p>${member.name}</p>
         </div>    
     `;

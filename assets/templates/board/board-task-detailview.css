@@ -78,8 +78,8 @@
     align-items: center;
 }
 
-.member-icon {
-    background-color: lightcoral;
+.detail-member .member-icon {
+    margin-right: 5px
 }
 
 /*************** STUBTASKS ***************/
