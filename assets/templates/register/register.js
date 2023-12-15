@@ -4,11 +4,11 @@
  * @param {*} email 
  * @param {*} password 
  */
-function registerUser() {
+async function registerUser() {
     let username = document.getElementById("register-name");
     let email = document.getElementById("register-email");
     let password = document.getElementById("register-password");
-    let validated = validateForm();
+    let validated = await validateForm();
 
     if(!validated) return;
 
@@ -45,10 +45,9 @@ async function validateForm() {
     if(password == null || password_confirm == null || password.value == "" || password_confirm.value == "") {
         errorMsg.innerHTML = "U must enter a Password!";
         c = false;
-        return;
     }
 
-    if(!password.value.match(password_confirm.value)) {
+    if(password == null || !password.value.match(password_confirm.value)) {
         errorMsg.innerHTML = "Passwords dosnt match!";
         c = false;
     }

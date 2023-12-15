@@ -79,7 +79,6 @@ async function loadUsers() {
      users = []
     } else {
         users = JSON.parse(usersResp.data.value);
-        console.log("🚀 ~ file: script.js:82 ~ loadUsers ~ users:", users)
     }
  }
 
