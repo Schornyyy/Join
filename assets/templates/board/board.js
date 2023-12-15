@@ -127,7 +127,7 @@ function progressToHTML(task) {
             </div>
         `;
     } else 
-        return '';
+        return '<div class="progress-container"></div>';
 }
 
 function membersToHTML(task) {
