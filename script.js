@@ -47,6 +47,7 @@ async function loadData() {
     await loadContacts();
     await loadTasks();
     await loadUsers();
+    // await loadDataToUser();
     // if(localStorage.getItem("userData") != null) {
     //     if(window.location.href.match("/index.html")) {
     //         await loadDataToUser();
@@ -132,4 +133,5 @@ async function loadDataToUser() {
     })
 
     CurrentUser = u;
+    console.log(CurrentUser, "currentUser");
 }
