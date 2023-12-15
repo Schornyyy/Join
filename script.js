@@ -66,6 +66,7 @@ async function loadContacts() {
    } else {
     contacts = JSON.parse(contactsResp.data.value);
    }
+   console.log(contacts);
 }
 
 /**
@@ -116,7 +117,7 @@ async function saveTasks() {
 
 
 /**
- * Lädt alle daten zum User.
+ * Lädt alle daten zum aktulisieren des offenen Tabs?
  */
 async function loadDataToUser() {
     let userData = localStorage.getItem("userData");
