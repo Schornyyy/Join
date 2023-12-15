@@ -98,18 +98,18 @@
     <div class="detail-dialog">
         <div class="detail-header">
             <p class="task-category category-user-story">User Story</p>
-            <img src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialogDetail()">
+            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialogDetail()">
         </div>
-        <h3>Kochwelt &amp; Page &amp; Recipe Recommender</h3>
+        <h3 class="detail-taskname">Kochwelt &amp; Page &amp; Recipe Recommender</h3>
         <p class="detail-task-description">Build start page width recipe recommendation.</p>
         <div class="detail-date-prio-container">
             <p>Due date:</p>
             <p>10/05/2023</p>
             <p>Priority:</p>
-            <p>Medium <img class="" src="./assets/img/board/prio-medium-icon.svg" alt="prio-medium-icon"></p>
+            <p class="detail-priority">Medium <img class="" src="./assets/img/board/prio-medium-icon.svg" alt="prio-medium-icon"></p>
         </div>
-        <p>Assigned To:</p>
         <div class="detail-members-container">
+            <p class="detail-members-container-headline">Assigned To:</p>
             <div class="detail-member">
                 <div class="member-icon">E</div>
                 <p>Emmanuel Mauer</p> 
@@ -123,8 +123,8 @@
                 <p>Anton Mayer</p> 
             </div>
         </div>
-        <p>Subtasks</p>
         <div class="detail-subtasks-container">
+            <p class="detail-subtasks-headline">Subtasks</p>
             <div class="detail-subtask">
                 <img src="./assets/img/board/checkbox-checked-icon.svg" alt="checkbox">
                 <p>Implement Recipe Recommendation</p>

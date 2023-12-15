@@ -193,6 +193,10 @@ span.plus-button-text {
     padding: 16px;
 }
 
+.task-card:hover {
+    cursor: pointer;
+}
+
 .task-card>* {
     margin-bottom: 20px;
 }
@@ -201,7 +205,7 @@ span.plus-button-text {
     font-size: 16px;
     display: inline-block;
     color: white;
-    padding: 4px 16px;
+    padding: 4px 20px;
     border-radius: 8px;
 }
 
