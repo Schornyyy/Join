@@ -3,17 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../models/user.class.js"></script>
+    <script src="../../../script.js"></script>
+    <script src="./register.js"></script>
     <link rel="stylesheet" href="../../../style.css" />
     <title>Join - Register</title>
   </head>
-  <body>
+  <body onload="loadData();">
     <div class="secondRegister">
       <div class="registerLayout boxShadow">
         <h1>Sign up</h1>
         <div class="underlineFrame"></div>
 
-        <form
-          onsubmit="registerUser(); return false;"
+        <div
           class="regForm"
           style="
             display: flex;
@@ -32,6 +34,7 @@
               type="text"
               placeholder="Name"
               autocomplete="username"
+              id="register-name"
             />
             <img src="../../../assets/img/register/person.svg" />
           </div>
@@ -46,6 +49,7 @@
               type="email"
               placeholder="Email"
               autocomplete="email"
+              id="register-email"
             />
             <img src="../../../assets/img/login/mail.svg" />
           </div>
@@ -60,6 +64,7 @@
               type="password"
               placeholder="Password"
               autocomplete="current-password"
+              id="register-password"
             />
             <img src="../../../assets/img/login/lock.svg" />
           </div>
@@ -74,6 +79,7 @@
               type="password"
               placeholder="Confirm Password"
               autocomplete="current-password"
+              id="register-password-confirm"
             />
             <img src="../../../assets/img/login/lock.svg" />
           </div>
@@ -88,9 +94,10 @@
           </div>
 
           <div class="registerBtn">
-            <button>Sign up</button>
+            <p id="registerError" style="color: red"></p>
+            <button onclick="registerUser();">Sign up</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </body>

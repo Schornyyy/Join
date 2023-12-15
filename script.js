@@ -3,7 +3,7 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let contacts = [];
 let tasks = [];
 let users = [];
-let CurrentUser;
+let currentUser;
 
 /**
  * 
@@ -79,6 +79,7 @@ async function loadUsers() {
      users = []
     } else {
         users = JSON.parse(usersResp.data.value);
+        console.log("🚀 ~ file: script.js:82 ~ loadUsers ~ users:", users)
     }
  }
 
@@ -106,7 +107,8 @@ async function saveContacts() {
  * speichert alle User von dem Array contacts im Backend.
  */
 async function saveUsers() {
-    await setItem('users', users);
+    let l = await setItem('users', users);
+    console.log(l);
 }
 
 /**
@@ -132,6 +134,6 @@ async function loadDataToUser() {
         }
     })
 
-    CurrentUser = u;
-    console.log(CurrentUser, "currentUser");
+    currentUser = u;
+    console.log("🚀 ~ file: script.js:136 ~ loadDataToUser ~ currentUser:", currentUser)
 }

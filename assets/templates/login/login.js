@@ -47,7 +47,7 @@ function handleRememberme(element) {
  * @returns true | false
  */
 function userPasswordMatch(password) {
-    return user.password == password;
+    return user.passwor.match(password);
 }
 
 /**
