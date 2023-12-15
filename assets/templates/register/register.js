@@ -5,26 +5,26 @@
  * @param {*} password 
  */
 function registerUser() {
-    let username = document.getElementById("register-name").value;
-    let email = document.getElementById("register-email").value;
-    let password = document.getElementById("register-password").value;
+    let username = document.getElementById("register-name");
+    let email = document.getElementById("register-email");
+    let password = document.getElementById("register-password");
     let validated = validateForm();
 
     if(!validated) return;
 
-    let user = new User(username, email, password);
+    let user = new User(username.value, email.value, password.value);
     users.push(user);
     saveUsers();
     window.location.href = "/assets/templates/login/login.html";
 }
 
-function validateForm() {
+async function validateForm() {
     let c = true;
     let email = document.getElementById("register-email")
-    let emailTaken = emailAlreadyTaken(email);
+    let emailTaken = await emailAlreadyTaken(email);
     let errorMsg = document.getElementById("registerError");
 
-    if(email.value == "") {
+    if( email == null || email.value == "") {
         errorMsg.innerHTML = "U must enter a Email Adress!";
         c = false;
     }
@@ -34,7 +34,7 @@ function validateForm() {
         c = false;
     }
 
-    if(document.getElementById("register-name").value == "") {
+    if(document.getElementById("register-name") == null || document.getElementById("register-name").value == "") {
         errorMsg.innerHTML = "U must enter a Username!"
         c = false;
     }
@@ -42,9 +42,10 @@ function validateForm() {
     let password = document.getElementById("register-password");
     let password_confirm = document.getElementById("register-password-confirm");
     
-    if(password.value == "" || password_confirm.value == "") {
+    if(password == null || password_confirm == null || password.value == "" || password_confirm.value == "") {
         errorMsg.innerHTML = "U must enter a Password!";
         c = false;
+        return;
     }
 
     if(!password.value.match(password_confirm.value)) {
@@ -61,8 +62,8 @@ function validateForm() {
  * @param {*} email 
  * @returns 
  */
-function emailAlreadyTaken(email) {
-    let emails = users.find(a => a.email === email);
+async function emailAlreadyTaken(email) {
+    let emails = await users.find(a => a.email === email);
     let c = false;
 
     if(emails != null || emails != undefined) {
