@@ -57,6 +57,10 @@ button:focus {
   outline: none;
 }
 
+img {
+  pointer-events: none;
+}
+
 .tasks-form textarea {
   min-height: 3.5rem;
   resize: none;
@@ -84,18 +88,21 @@ button:focus {
   justify-content: center;
   align-items: center;
   width: fit-content !important;
+  cursor: pointer;
 }
 
 .prio label {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .prio img {
   height: 24px;
   width: 24px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .prio input {
@@ -104,6 +111,7 @@ button:focus {
   background-color: #fff;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .category-container {
@@ -402,7 +410,14 @@ label[for="form-date"] {
   filter: none !important;
 }
 
-@media only screen and (min-width: 1080px) {
+.tasks-form-row-divieder {
+  display: none;
+  background-color: #b3b3b3;
+  height: 100%;
+  width: 1px;
+}
+
+@media only screen and (min-width: 760px) {
   .add-tasks-board-footer {
     padding: 79px 96px;
   }
@@ -423,11 +438,21 @@ label[for="form-date"] {
 
   .add-tasks-board {
     height: fit-content;
+    width: fit-content;
     width: 100%;
   }
 
   .add-tasks-board-content {
     height: fit-content;
+  }
+
+  .tasks-form-row-divieder {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    justify-self: center;
+    display: block;
   }
 
   label[for="form-title"] {
@@ -443,19 +468,19 @@ label[for="form-date"] {
   }
 
   .prios-container {
-    grid-column-start: 2;
+    grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 2;
   }
 
   label[for="form-date"] {
-    grid-column-start: 2;
+    grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 1;
   }
 
   .category-container {
-    grid-column-start: 2;
+    grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 3;
   }
@@ -467,8 +492,12 @@ label[for="form-date"] {
   }
 
   .subtasks-to-container {
-    grid-column-start: 2;
+    grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 4;
+  }
+
+  button {
+    cursor: pointer;
   }
 }

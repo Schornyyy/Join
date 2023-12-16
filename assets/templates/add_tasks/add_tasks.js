@@ -194,24 +194,33 @@ async function initEventListener() {
       clearTask();
     });
   })
+
+  document.getElementById("subtask-submit-subtask").addEventListener("click", (e) => {
+    e.preventDefault();
+    addSubtaskToList()
+  })
 }
 
 /**
  * Setzt alles auf anfang. 
  */
 function clearTask() {
-document.getElementById("task-form-error").style = "color:red";
-document.getElementById("task-form-error").innerHTML = "";
-selectedCategory = null;
-selectedContacts = [];
-selectedPrio = null;
-subtasks = []
-document.getElementById("form-desc").value = "";
-document.getElementById("form-title").value = "";
-document.getElementById("form-date").value = "";
-document.getElementById("categorys-dropdow").innerHTML = "Select task category";
+try {
+  document.getElementById("task-form-error").style = "color:red";
+  document.getElementById("task-form-error").innerHTML = "";
+  selectedCategory = null;
+  selectedContacts = [];
+  selectedPrio = null;
+  subtasks = []
+  document.getElementById("form-desc").value = "";
+  document.getElementById("form-title").value = "";
+  document.getElementById("form-date").value = "";
+  document.getElementById("categorys-dropdow").innerHTML = "Select task category";
 
-renderSubtaskHTML();
+  renderSubtaskHTML();
+} catch (error) {
+  
+}
 }
 
 /**
@@ -233,7 +242,7 @@ function changeSubTaskValue(ele) {
       ele.value = "";
         clearInterval(inter);
       }
-    }, 100)
+    }, 1000)
   }
 }
 
@@ -252,13 +261,11 @@ function setSubTaskInputToDefault() {
  */
 function addSubtaskToList() {
   let ele = document.getElementById("subtasks-to-dropdown");
-  let c = ele.hasAttribute("data-check");
-  if(c) {
-    setSubTaskInputToDefault()
+    console.log("test");
     subtasks.push(new Subtask(ele.value, subtasks.length+1));
+    setSubTaskInputToDefault()
     ele.value = "";
     renderSubtaskHTML();
-  }
 }
 
 /**

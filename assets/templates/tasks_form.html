@@ -1,6 +1,7 @@
 <div class="tasks-form-container">
   <!-- Muss die forn nicht ein "onsubmit" haben? -->
   <div class="tasks-form">
+    <div class="tasks-form-row-divieder"></div>
     <label for="form-title">
       <p>Title <span>*</span></p>
       <input type="text" placeholder="Enter a title" required id="form-title" />
@@ -113,7 +114,7 @@
           changeSubTaskValue(this)"
         />
         <div class="subtasks-input-btns">
-          <button onclick="addSubtaskToList()">
+          <button id="subtask-submit-subtask"">
             <img
               src="./assets/img/add_tasks/plus_icon.svg"
               id="subtasks-to-dropdown-arrow"
