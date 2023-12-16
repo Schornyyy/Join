@@ -51,7 +51,8 @@ async function loadData() {
         if(window.location.href.match("/index.html")) {
             await loadDataToUser();
         }
-    } else if(!window.location.href.match("/assets/templates/login/login.html")){
+    } else if(!window.location.href.match("/assets/templates/login/login.html") 
+    && !window.location.href.match("/assets/templates/register/register.html")){
         window.location.href = "/assets/templates/login/login.html";
     }
 }
