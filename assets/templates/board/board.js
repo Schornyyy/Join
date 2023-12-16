@@ -5,8 +5,8 @@ let subtasksDatasource;
 //////////////// INIT
 
 function boardInit() {
-    tasksDatasource= tasks;
-    subtasksDatasource= [];
+    tasksDatasource= tasksForTesting;
+    subtasksDatasource= subtasksForTesting;
     renderBoard();
 }
 
@@ -147,9 +147,9 @@ function singleMemberToHTML(member, index) {
 
 function getPrioImgURL(task) {
     switch (task.prio) {
-        case 'prio-urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
-        case 'prio-medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
-        case 'prio-low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
+        case 'urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
+        case 'medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
+        case 'low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
         default: return '';
     }
 }
@@ -166,9 +166,9 @@ function isColorLight(hexcode) {
 
 
 
-/////////////////////////////////////////
-//////////////// DIALOG /////////////////
-/////////////////////////////////////////
+///////////////////////////////////////////////
+//////////////// DIALOG DETAIL ////////////////
+///////////////////////////////////////////////
 
 
 //////////////// RENDER DETAIL DIALOG
@@ -180,7 +180,7 @@ function detailDialogToHTML(task) {
     return `
         <div class="detail-header">
             <p class="task-category category-user-story">${task.category}</p>
-            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialogDetail()">
+            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialog()">
         </div>
         <h3 class="detail-taskname">${task.title}</h3>
         <p class="detail-task-description">${task.description}</p>
@@ -264,21 +264,39 @@ function getSubtaskCheckboxIconURL(subtask) {
 
 //////////////// SHOW HIDE
 
+function showDialogContainer() {
+    let dialogContainer= document.getElementById('dialogContainer');
+    dialogContainer.classList.remove('reini-d-none');
+}
+
+function hideDialog() {
+    let dialogContainer= document.getElementById('dialogContainer');
+    dialogContainer.classList.add('reini-d-none');
+}
+
 function showDialogDetail(taskID) {
-    let detailDialogContainer= document.getElementById('detailDialogContainer');
-    detailDialogContainer.classList.remove('reini-d-none');
+    let detailDialog= document.getElementById('detailDialog');
+    let editDialog= document.getElementById('editDialog');
+    showDialogContainer();
+    detailDialog.classList.remove('reini-d-none');
+    editDialog.classList.add('reini-d-none');
     
     let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
-    let detailDialog= document.getElementById('detailDialog');
     detailDialog.innerHTML= detailDialogToHTML(task);
 }
 
-function hideDialogDetail() {
-    let detailDialogContainer= document.getElementById('detailDialogContainer');
-    detailDialogContainer.classList.add('reini-d-none');
+function showDialogEdit(task) {
+    let detailDialog= document.getElementById('detailDialog');
+    let editDialog= document.getElementById('editDialog');
+    showDialogContainer();
+    detailDialog.classList.add('reini-d-none');
+    editDialog.classList.remove('reini-d-none');
 }
 
 
 
 
+///////////////////////////////////////////////
+//////////////// DIALOG EDIT ////////////////
+///////////////////////////////////////////////
 
