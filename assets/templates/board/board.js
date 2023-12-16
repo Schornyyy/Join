@@ -1,10 +1,12 @@
 let urlPrefix = './assets';
-let tasksDatasource= tasksForTesting;
-let subtasksDatasource= subtasksForTesting;
+let tasksDatasource;
+let subtasksDatasource;
 
 //////////////// INIT
 
 function boardInit() {
+    tasksDatasource= tasks;
+    subtasksDatasource= [];
     renderBoard();
 }
 
@@ -145,9 +147,9 @@ function singleMemberToHTML(member, index) {
 
 function getPrioImgURL(task) {
     switch (task.prio) {
-        case 'urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
-        case 'medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
-        case 'low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
+        case 'prio-urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
+        case 'prio-medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
+        case 'prio-low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
         default: return '';
     }
 }
@@ -266,7 +268,7 @@ function showDialogDetail(taskID) {
     let detailDialogContainer= document.getElementById('detailDialogContainer');
     detailDialogContainer.classList.remove('reini-d-none');
     
-    let task= tasksDatasource[taskID]
+    let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
     let detailDialog= document.getElementById('detailDialog');
     detailDialog.innerHTML= detailDialogToHTML(task);
 }
