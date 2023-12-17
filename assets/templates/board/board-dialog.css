@@ -1,5 +1,5 @@
 
-/*************** DIALOG ***************/
+/*************** GLOBAL ***************/
 
 .dialog-container {
     position: fixed;
@@ -22,9 +22,13 @@
     border-radius: 20px;
 }
 
-.detail-taskname {
-    font-size: 53px;
+.prio-icon {
+    width: 1em;
 }
+
+/*************************************/
+/*************** DETAIL **************/
+/*************************************/
 
 /*************** HEADER ***************/
 
@@ -36,6 +40,10 @@
 
 .detail-close-icon:hover {
     cursor: pointer;
+}
+
+.detail-taskname {
+    font-size: 53px;
 }
 
 /*************** DATE-PRIO-CONTAINER ***************/
@@ -52,11 +60,6 @@
     /* align-items: center; */
     gap: 6px;
 }
-
-.detail-date-prio-container img {
-    width: 1em;
-}
-
 
 /*************** MEMBERS ***************/
 
@@ -122,4 +125,93 @@
 
 .detail-footer-button:hover {
     cursor: pointer;
+}
+
+
+
+
+/***********************************/
+/*************** EDIT **************/
+/***********************************/
+
+.edit-header {
+    display: flex;
+    justify-content: right;
+}
+
+.edit-form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container label {
+    font-size: 18px;
+}
+
+.input-container input{
+    font-size: 20px;
+    border: 1px solid var(--reini-light-grey);
+    border-radius: 10px;
+    padding: 8px 16px;
+}
+
+.input-prio-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-prio-button {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.edit-select-members {
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: 10px;
+}
+
+.edit-subtaskList {
+    padding: 0 30px;
+}
+
+.edit-subtaskList li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.edit-footer {
+    display: flex;
+    justify-content: right;
+}
+
+button.edit-OKbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--reini-dark-blue);
+    font-weight: 700;
+    color: white;
+    font-size: 20px;
+    flex-basis: 80px;
+    padding: 16px 0px;
+    border-radius: 11px;
+}
+
+.edit-OKbutton img {
+    width: 0.8em;
 }

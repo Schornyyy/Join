@@ -98,56 +98,7 @@
 <div class="dialog-container reini-d-none" id="dialogContainer">
     <!------------------ DIALOG DETAIL------------------>
     <div class="dialog detail-dialog" id="detailDialog">
-        <div class="detail-header">
-            <p class="task-category category-user-story">User Story</p>
-            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon"
-                onclick="hideDialogDetail()">
-        </div>
-        <h3 class="detail-taskname">Kochwelt &amp; Page &amp; Recipe Recommender</h3>
-        <p class="detail-task-description">Build start page width recipe recommendation.</p>
-        <div class="detail-date-prio-container">
-            <p>Due date:</p>
-            <p>10/05/2023</p>
-            <p>Priority:</p>
-            <p class="detail-priority">Medium <img class="" src="./assets/img/board/prio-medium-icon.svg"
-                    alt="prio-medium-icon"></p>
-        </div>
-        <div class="detail-members-container">
-            <p class="detail-members-container-headline">Assigned To:</p>
-            <div class="detail-member">
-                <div class="member-icon">E</div>
-                <p>Emmanuel Mauer</p>
-            </div>
-            <div class="detail-member">
-                <div class="member-icon">M</div>
-                <p>Marcel Bauer</p>
-            </div>
-            <div class="detail-member">
-                <div class="member-icon">A</div>
-                <p>Anton Mayer</p>
-            </div>
-        </div>
-        <div class="detail-subtasks-container">
-            <p class="detail-subtasks-headline">Subtasks</p>
-            <div class="detail-subtask">
-                <img src="./assets/img/board/checkbox-checked-icon.svg" alt="checkbox">
-                <p>Implement Recipe Recommendation</p>
-            </div>
-            <div class="detail-subtask">
-                <img src="./assets/img/board/checkbox-icon.svg" alt="checkbox">
-                <p>Start Page Layout</p>
-            </div>
-        </div>
-        <div class="detail-footer">
-            <div class="detail-footer-button">
-                <img src="./assets/img/board/delete-icon.svg" alt="trashcan">
-                <p>Delete</p>
-            </div>
-            <div class="detail-footer-button">
-                <img src="./assets/img/board/edit-icon.svg" alt="pencil">
-                <p>Edit</p>
-            </div>
-        </div>
+        
     </div>
 
 
@@ -159,17 +110,17 @@
             <img class="edit-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon"
                 onclick="hideDialog()">
         </div>
-        <form action="">
+        <form class="edit-form" action="">
             <div class="input-container">
                 <label for="inputTaskTitle">Title</label>
                 <input type="text" id="inputTaskTitle">
             </div>
             <div class="input-container">
-                <label for="inputTaskDescription">Title</label>
+                <label for="inputTaskDescription">Description</label>
                 <input type="text" id="inputTaskDescription">
             </div>
             <div class="input-container">
-                <label for="inputTaskDuedate">Title</label>
+                <label for="inputTaskDuedate">Due Date</label>
                 <input type="date" id="inputTaskDuedate">
             </div>
             <div class="input-container">
@@ -177,21 +128,21 @@
                 <div class="input-prio-container">
                     <div class="input-prio-button">
                         <span>Urgent</span>
-                        <img src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon">
+                        <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon">
                     </div>
                     <div class="input-prio-button">
                         <span>Medium</span>
-                        <img src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon">
+                        <img class="prio-icon" src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon">
                     </div>
                     <div class="input-prio-button">
                         <span>Low</span>
-                        <img src="./assets/img/board/prio-low-icon.svg" alt="low-icon">
+                        <img class="prio-icon" src="./assets/img/board/prio-low-icon.svg" alt="low-icon">
                     </div>
                 </div>
             </div>
             <div class="input-container">
                 <label for="">Assigned to</label>
-                <select name="select-members" id="selectMembers"></select>
+                <select class="edit-select-members" name="select-members" id="selectMembers"></select>
                 <div id="editTaskMembersContainer">
                     <div class="member-icon">E</div>
                 </div>
@@ -213,8 +164,8 @@
 
                 </div>
             </div>
-            <div class="input-container">
-                <button>
+            <div class="edit-footer">
+                <button class="edit-OKbutton">
                     <span>Ok</span>
                     <img src="./assets/img/board/check-icon.svg" alt="chek-icon">
                 </button>

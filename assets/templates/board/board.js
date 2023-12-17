@@ -8,6 +8,7 @@ function boardInit() {
     tasksDatasource= tasksForTesting;
     subtasksDatasource= subtasksForTesting;
     renderBoard();
+    showDialogEdit();
 }
 
 //////////////// RENDER
@@ -188,7 +189,7 @@ function detailDialogToHTML(task) {
             <p>Due date:</p>
             <p>${dueDateString}</p>
             <p>Priority:</p>
-            <p class="detail-priority">${task.prio} <img class="" src="${getPrioImgURL(task)}" alt="prio-medium-icon"></p>
+            <p class="detail-priority">${task.prio} <img class="prio-icon" src="${getPrioImgURL(task)}" alt="prio-medium-icon"></p>
         </div>
         <div class="detail-members-container">
             <p class="detail-members-container-headline">Assigned To:</p>
