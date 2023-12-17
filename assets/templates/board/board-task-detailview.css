@@ -1,5 +1,5 @@
 
-/*************** DIALOG DETAIL ***************/
+/*************** DIALOG ***************/
 
 .dialog-container {
     position: fixed;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.detail-dialog {
+.dialog {
     background-color: white;
     width: 552px;
     padding: 48px 40px;

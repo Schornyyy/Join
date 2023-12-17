@@ -1,5 +1,6 @@
 <section class="debug-container">
     <button onclick="showDialogDetail()">showDialogDetail</button>
+    <button onclick="showDialogEdit()">showDialogEdit</button>
 </section>
 
 
@@ -46,7 +47,7 @@
 
 
         <div class="card-container" id="cardContainerInprogress">
-            
+
             <div class="card-container-empty reini-d-none">
                 <p>No tasks in progress</p>
             </div>
@@ -63,7 +64,7 @@
 
 
         <div class="card-container" id="cardContainerAwaitfeedback">
-            
+
             <div class="card-container-empty reini-d-none">
                 <p>No tasks awaiting feedback</p>
             </div>
@@ -82,7 +83,7 @@
 
 
         <div class="card-container" id="cardContainerDone">
-            
+
             <div class="card-container-empty reini-d-none">
                 <p>No tasks done</p>
             </div>
@@ -96,10 +97,11 @@
 <!------------------ DIALOG ------------------>
 <div class="dialog-container reini-d-none" id="dialogContainer">
     <!------------------ DIALOG DETAIL------------------>
-    <div class="detail-dialog" id="detailDialog">
+    <div class="dialog detail-dialog" id="detailDialog">
         <div class="detail-header">
             <p class="task-category category-user-story">User Story</p>
-            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialogDetail()">
+            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon"
+                onclick="hideDialogDetail()">
         </div>
         <h3 class="detail-taskname">Kochwelt &amp; Page &amp; Recipe Recommender</h3>
         <p class="detail-task-description">Build start page width recipe recommendation.</p>
@@ -107,21 +109,22 @@
             <p>Due date:</p>
             <p>10/05/2023</p>
             <p>Priority:</p>
-            <p class="detail-priority">Medium <img class="" src="./assets/img/board/prio-medium-icon.svg" alt="prio-medium-icon"></p>
+            <p class="detail-priority">Medium <img class="" src="./assets/img/board/prio-medium-icon.svg"
+                    alt="prio-medium-icon"></p>
         </div>
         <div class="detail-members-container">
             <p class="detail-members-container-headline">Assigned To:</p>
             <div class="detail-member">
                 <div class="member-icon">E</div>
-                <p>Emmanuel Mauer</p> 
+                <p>Emmanuel Mauer</p>
             </div>
             <div class="detail-member">
                 <div class="member-icon">M</div>
-                <p>Marcel Bauer</p> 
+                <p>Marcel Bauer</p>
             </div>
             <div class="detail-member">
                 <div class="member-icon">A</div>
-                <p>Anton Mayer</p> 
+                <p>Anton Mayer</p>
             </div>
         </div>
         <div class="detail-subtasks-container">
@@ -151,11 +154,72 @@
 
 
     <!------------------ DIALOG EDIT------------------>
-    <div class="edit-dialog" id="editDialog">
-        <h3>Edit Task </h3>
+    <div class="dialog edit-dialog" id="editDialog">
+        <div class="edit-header">
+            <img class="edit-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon"
+                onclick="hideDialog()">
+        </div>
+        <form action="">
+            <div class="input-container">
+                <label for="inputTaskTitle">Title</label>
+                <input type="text" id="inputTaskTitle">
+            </div>
+            <div class="input-container">
+                <label for="inputTaskDescription">Title</label>
+                <input type="text" id="inputTaskDescription">
+            </div>
+            <div class="input-container">
+                <label for="inputTaskDuedate">Title</label>
+                <input type="date" id="inputTaskDuedate">
+            </div>
+            <div class="input-container">
+                <label for="">Priority</label>
+                <div class="input-prio-container">
+                    <div class="input-prio-button">
+                        <span>Urgent</span>
+                        <img src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon">
+                    </div>
+                    <div class="input-prio-button">
+                        <span>Medium</span>
+                        <img src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon">
+                    </div>
+                    <div class="input-prio-button">
+                        <span>Low</span>
+                        <img src="./assets/img/board/prio-low-icon.svg" alt="low-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="">Assigned to</label>
+                <select name="select-members" id="selectMembers"></select>
+                <div id="editTaskMembersContainer">
+                    <div class="member-icon">E</div>
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="">Subtask</label>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Add new subtask">
+                    <img src="./assets/img/board/plus-icon.svg" alt="plus-icon">
+                </div>
+                <div class="edit-subtaskList">
+                    <li>
+                        <span>Implement Recipe Recommendations</span>
+                        <div class="edit-subtask-icon-container">
+                            <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon">
+                            <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon">
+                        </div>
+                    </li>
+
+                </div>
+            </div>
+            <div class="input-container">
+                <button>
+                    <span>Ok</span>
+                    <img src="./assets/img/board/check-icon.svg" alt="chek-icon">
+                </button>
+            </div>
+
+        </form>
     </div>
 </div>
-
-
-
-

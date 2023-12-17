@@ -285,13 +285,7 @@ function showDialogDetail(taskID) {
     detailDialog.innerHTML= detailDialogToHTML(task);
 }
 
-function showDialogEdit(task) {
-    let detailDialog= document.getElementById('detailDialog');
-    let editDialog= document.getElementById('editDialog');
-    showDialogContainer();
-    detailDialog.classList.add('reini-d-none');
-    editDialog.classList.remove('reini-d-none');
-}
+
 
 
 
@@ -300,3 +294,10 @@ function showDialogEdit(task) {
 //////////////// DIALOG EDIT ////////////////
 ///////////////////////////////////////////////
 
+function showDialogEdit(task) {
+    let detailDialog= document.getElementById('detailDialog');
+    let editDialog= document.getElementById('editDialog');
+    showDialogContainer();
+    detailDialog.classList.add('reini-d-none');
+    editDialog.classList.remove('reini-d-none');
+}
