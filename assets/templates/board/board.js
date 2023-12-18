@@ -1,14 +1,15 @@
 let urlPrefix = './assets';
 let tasksDatasource;
 let subtasksDatasource;
+let contactsDatasource;
 
 //////////////// INIT
 
 function boardInit() {
     tasksDatasource= tasksForTesting;
     subtasksDatasource= subtasksForTesting;
+    contactsDatasource= contactsForTesting;
     renderBoard();
-    showDialogEdit();
 }
 
 //////////////// RENDER
@@ -78,6 +79,15 @@ function getFirstLetterOfName(member) {
     return member.name.slice(0, 1);
 }
 
+function getPrioImgURL(task) {
+    switch (task.prio) {
+        case 'urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
+        case 'medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
+        case 'low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
+        default: return '';
+    }
+}
+
 //////////////// TO HTML
 
 function singleTaskToHTML(task) {
@@ -139,21 +149,11 @@ function singleMemberToHTML(member, index) {
     return `
         <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
             ${getFirstLetterOfName(member)}
-        </div>    
+        </div>
     `;
 }
 
 //////////////// MISC
-
-
-function getPrioImgURL(task) {
-    switch (task.prio) {
-        case 'urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
-        case 'medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
-        case 'low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
-        default: return '';
-    }
-}
 
 function isColorLight(hexcode) {
     let r = parseInt(hexcode.slice(1, 3), 16);
@@ -163,10 +163,22 @@ function isColorLight(hexcode) {
     return (a < 0.5);
 }
 
+function timeToInputValueString(time) {
+    let output= '';
+    let date= new Date(time);
+
+    output += date.getFullYear() + '-';
+    output += date.getMonth()+1 + '-';
+    output += date.getDate();
+
+    return output;
+}
 
 
-
-
+function hideDialog() {
+    let dialogContainer= document.getElementById('dialogContainer');
+    dialogContainer.classList.add('reini-d-none');
+}
 ///////////////////////////////////////////////
 //////////////// DIALOG DETAIL ////////////////
 ///////////////////////////////////////////////
@@ -204,7 +216,7 @@ function detailDialogToHTML(task) {
                 <img src="./assets/img/board/delete-icon.svg" alt="trashcan">
                 <p>Delete</p>
             </div>
-            <div class="detail-footer-button">
+            <div class="detail-footer-button" onclick="showDialogEdit(${task.id})">
                 <img src="./assets/img/board/edit-icon.svg" alt="pencil">
                 <p>Edit</p>
             </div>
@@ -228,7 +240,7 @@ function detailSingleMemberToHTML(member) {
         <div class="detail-member">
             <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};">${getFirstLetterOfName(member)}</div>
             <p>${member.name}</p>
-        </div>    
+        </div>
     `;
 }
 
@@ -270,18 +282,13 @@ function showDialogContainer() {
     dialogContainer.classList.remove('reini-d-none');
 }
 
-function hideDialog() {
-    let dialogContainer= document.getElementById('dialogContainer');
-    dialogContainer.classList.add('reini-d-none');
-}
-
 function showDialogDetail(taskID) {
     let detailDialog= document.getElementById('detailDialog');
     let editDialog= document.getElementById('editDialog');
     showDialogContainer();
     detailDialog.classList.remove('reini-d-none');
     editDialog.classList.add('reini-d-none');
-    
+
     let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
     detailDialog.innerHTML= detailDialogToHTML(task);
 }
@@ -295,10 +302,150 @@ function showDialogDetail(taskID) {
 //////////////// DIALOG EDIT ////////////////
 ///////////////////////////////////////////////
 
-function showDialogEdit(task) {
+//////////////// RENDER EDIT DIALOG
+
+function editDialogFillInputs(task) {
+    let inputTaskTitle= document.getElementById('inputTaskTitle');
+    let inputTaskDescription= document.getElementById('inputTaskDescription');
+    let inputTaskDuedate= document.getElementById('inputTaskDuedate');
+
+
+    inputTaskTitle.value= task.title;
+    inputTaskDescription.value= task.description;
+    inputTaskDuedate.value= timeToInputValueString(task.dueDate);
+}
+
+function editDialogToHTML(task) {
+    return `
+        <div class="edit-header">
+            <img class="edit-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="showDialogDetail(${task.id})">
+        </div>
+        <form class="edit-form" action="">
+            <div class="input-container">
+                <label for="inputTaskTitle">Title</label>
+                <input type="text" id="inputTaskTitle">
+            </div>
+            <div class="input-container">
+                <label for="inputTaskDescription">Description</label>
+                <input type="text" id="inputTaskDescription">
+            </div>
+            <div class="input-container">
+                <label for="inputTaskDuedate">Due Date</label>
+                <input type="date" id="inputTaskDuedate">
+            </div>
+            <div class="input-container">
+                <label for="">Priority</label>
+                <div class="input-prio-container">
+                    <div class="input-prio-button">
+                        <span>Urgent</span>
+                        <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon">
+                    </div>
+                    <div class="input-prio-button">
+                        <span>Medium</span>
+                        <img class="prio-icon" src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon">
+                    </div>
+                    <div class="input-prio-button">
+                        <span>Low</span>
+                        <img class="prio-icon" src="./assets/img/board/prio-low-icon.svg" alt="low-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="">Assigned to</label>
+                <select class="edit-select-members" name="select-members" id="selectMembers">
+                    <option value="" disabled selected>Select contancts to assign</option>
+                    ${editSelectMembersToHTML(task)}
+                </select>
+                <div id="editTaskMembersContainer">
+                    <div class="member-icon">E</div>
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="">Subtask</label>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Add new subtask">
+                    <img src="./assets/img/board/plus-icon.svg" alt="plus-icon">
+                </div>
+                <div class="edit-subtaskList">
+                    ${editSubtasksToHTML(task)}
+                </div>
+            </div>
+            <div class="edit-footer">
+                <button class="edit-OKbutton">
+                    <span>Ok</span>
+                    <img src="./assets/img/board/check-icon.svg" alt="chek-icon">
+                </button>
+            </div>
+
+        </form>
+    `;
+}
+
+function editSelectMembersToHTML(task) {
+    let output= '';
+    for (let contact of contactsDatasource) {
+        output += `
+            <option value="${contact.email}">${contact.name}</option>
+        `;
+    };
+    return output;
+}
+
+function editSubtasksToHTML(task) {
+    let output= '';
+    for (let subtask of subtasksDatasource) {
+        output += `
+            <li>
+                <span>${subtask.title}</span>
+                <div class="edit-subtask-icon-container">
+                    <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon">
+                    <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon">
+                </div>
+            </li>
+        `;
+    }
+    return output;
+}
+
+//////////////// SHOW HIDE
+
+function showDialogEdit(taskID) {
     let detailDialog= document.getElementById('detailDialog');
     let editDialog= document.getElementById('editDialog');
     showDialogContainer();
     detailDialog.classList.add('reini-d-none');
     editDialog.classList.remove('reini-d-none');
+
+    let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
+    editDialog.innerHTML= editDialogToHTML(task);
+    editDialogFillInputs(task);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function testen() {
+    let datum= new Date(1984,5,13);
+    console.log(datum);
+    console.log(InputValueString(datum));
+
+}
+
+
+
