@@ -214,6 +214,17 @@
     border: 2px solid var(--reini-light-grey);
 }
 
+#editTaskMembersContainer {
+    display: flex;
+    gap: 6px;
+}
+
+#editTaskMembersContainer .member-icon {
+    font-size: 20px;
+    height: 40px;
+    width: 40px;
+}
+
 .edit-subtaskList {
     padding: 0 30px;
 }

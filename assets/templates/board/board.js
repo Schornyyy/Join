@@ -419,7 +419,7 @@ function editDialogToHTML(task) {
                     ${editSelectMembersToHTML(task)}
                 </select>
                 <div id="editTaskMembersContainer">
-                    <div class="member-icon">E</div>
+                    ${editMembersToHTML(task)}
                 </div>
             </div>
             <div class="input-container">
@@ -468,6 +468,26 @@ function editSubtasksToHTML(task) {
         `;
     }
     return output;
+}
+
+function editMembersToHTML(task) {
+    let members = getMembers(task);
+    let output = '';
+
+    for (let member of members) {
+        output += editSingleMemberToHTML(member);
+    }
+    return output;
+}
+
+function editSingleMemberToHTML(member) {
+    let textcolor;
+    if (!isColorLight(member.colorCode)) textcolor = 'white';
+    return `
+        <div class="member-icon" style="background-color:${member.colorCode};color:${textcolor};">
+            ${getFirstLetterOfName(member)}
+        </div>
+    `;
 }
 
 
