@@ -57,7 +57,7 @@ button:focus {
   outline: none;
 }
 
-img {
+.tasks-form-container img {
   pointer-events: none;
 }
 
