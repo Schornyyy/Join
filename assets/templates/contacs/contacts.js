@@ -111,16 +111,13 @@ function addContactScreen() {
                         <img src="../assets/img/addContactBlankUserImg.svg" alt="">
                         </div>
 
-                        <div class="addContactContainerFooter">
-                            <input class="addContactInputName" type="text" required placeholder="Name">
-                            <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
-                            <input class="addContactInputPhone" type="text" required placeholder="Phone">
-
-                        <div>
-                            <img class="createContactButtonImg" src="../assets/img/createContactButton.svg" alt="">
-                        </div>
-                        </div>
-                        `;
-
-        
+                        <form onsubmit="addContact()">
+                            <div class="addContactContainerFooter">
+                                <input class="addContactInputName" type="text" required placeholder="Name">
+                                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
+                                <input class="addContactInputPhone" type="text" required placeholder="Phone">
+                                <img class="createContactButtonImg" src="../assets/img/createContactButton.svg" alt="">
+                            <div>
+                        </form>
+                        `;  
 }
