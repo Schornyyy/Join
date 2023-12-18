@@ -171,6 +171,6 @@ html {
 @media only screen and (min-width: 751px) {
   .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
   }
 }
