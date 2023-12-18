@@ -178,6 +178,27 @@
     gap: 8px;
 }
 
+.input-prio-button-low-set {
+    background-color: var(--reini-prio-low-green);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.input-prio-button-medium-set {
+    background-color: var(--reini-prio-medium-orange);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.input-prio-button-urgent-set {
+    background-color: var(--reini-prio-urgent-red);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
 .input-prio-button:hover {
     cursor: pointer;
 }

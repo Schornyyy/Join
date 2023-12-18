@@ -16,7 +16,9 @@ https://fonts.google.com/specimen/Inter
     --reini-category-turquoise: #1FD7C1;
     --reini-progressbar-grey: #F4F4F4;
     --reini-progressbar-blue: #4589FF;
-
+    --reini-prio-low-green: #7AE229;
+    --reini-prio-medium-orange: #FFA800;
+    --reini-prio-urgent-red: #FF3D00;
 
     --reini-padding-main: 0 64px;
     --reini-padding-main-mobile: 0 16px;

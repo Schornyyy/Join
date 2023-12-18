@@ -6,9 +6,9 @@ let contactsDatasource;
 //////////////// INIT
 
 function boardInit() {
-    tasksDatasource= tasksForTesting;
-    subtasksDatasource= subtasksForTesting;
-    contactsDatasource= contactsForTesting;
+    tasksDatasource = tasksForTesting;
+    subtasksDatasource = subtasksForTesting;
+    contactsDatasource = contactsForTesting;
     renderBoard();
 }
 
@@ -68,9 +68,9 @@ function getSubtaskById(idParam) {
 }
 
 function getSubtasks(task) {
-    let output='';
+    let output = '';
     for (let subtaskID of task.subtasks) {
-        output.push(subtasksDatasource.find(subtask => subtask.id==subtaskID));
+        output.push(subtasksDatasource.find(subtask => subtask.id == subtaskID));
     }
     return output;
 }
@@ -172,11 +172,11 @@ function isColorLight(hexcode) {
 }
 
 function timeToInputValueString(time) {
-    let output= '';
-    let date= new Date(time);
+    let output = '';
+    let date = new Date(time);
 
     output += date.getFullYear() + '-';
-    output += date.getMonth()+1 + '-';
+    output += date.getMonth() + 1 + '-';
     output += date.getDate();
 
     return output;
@@ -184,7 +184,7 @@ function timeToInputValueString(time) {
 
 
 function hideDialog() {
-    let dialogContainer= document.getElementById('dialogContainer');
+    let dialogContainer = document.getElementById('dialogContainer');
     dialogContainer.classList.add('reini-d-none');
 }
 ///////////////////////////////////////////////
@@ -195,9 +195,9 @@ function hideDialog() {
 //////////////// RENDER DETAIL DIALOG
 
 function detailDialogToHTML(task) {
-    let dueDate= new Date(task.dueDate);
+    let dueDate = new Date(task.dueDate);
     // let dueDateString= `${dueDate.getDay()}/${dueDate.getMonth}/${dueDate.getFullYear()}`;
-    let dueDateString= `${dueDate.getDate()}/${dueDate.getMonth()+1}/${dueDate.getFullYear()}`;
+    let dueDateString = `${dueDate.getDate()}/${dueDate.getMonth() + 1}/${dueDate.getFullYear()}`;
     return `
         <div class="detail-header">
             <p class="task-category category-user-story">${task.category}</p>
@@ -233,8 +233,8 @@ function detailDialogToHTML(task) {
 }
 
 function detailMembersToHTML(task) {
-    members= getMembers(task);
-    let output= '';
+    members = getMembers(task);
+    let output = '';
     for (let member of members) {
         output += detailSingleMemberToHTML(member);
     }
@@ -253,8 +253,8 @@ function detailSingleMemberToHTML(member) {
 }
 
 function detailSubtasksToHTML(task) {
-    let subtasksTemp= getSubtasks(task);
-    let output= '';
+    let subtasksTemp = getSubtasks(task);
+    let output = '';
     for (let subtaskTemp of subtasksTemp) {
         output += detailSingleSubtaskToHTML(subtaskTemp);
     }
@@ -262,9 +262,9 @@ function detailSubtasksToHTML(task) {
 }
 
 function getSubtasks(task) {
-    let output= [];
+    let output = [];
     for (let subtaskID of task.subtasks) {
-        output.push(subtasksDatasource.find(subt => subt.id==subtaskID));
+        output.push(subtasksDatasource.find(subt => subt.id == subtaskID));
     }
     return output;
 }
@@ -286,19 +286,19 @@ function getSubtaskCheckboxIconURL(subtask) {
 //////////////// SHOW HIDE
 
 function showDialogContainer() {
-    let dialogContainer= document.getElementById('dialogContainer');
+    let dialogContainer = document.getElementById('dialogContainer');
     dialogContainer.classList.remove('reini-d-none');
 }
 
 function showDialogDetail(taskID) {
-    let detailDialog= document.getElementById('detailDialog');
-    let editDialog= document.getElementById('editDialog');
+    let detailDialog = document.getElementById('detailDialog');
+    let editDialog = document.getElementById('editDialog');
     showDialogContainer();
     detailDialog.classList.remove('reini-d-none');
     editDialog.classList.add('reini-d-none');
 
-    let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
-    detailDialog.innerHTML= detailDialogToHTML(task);
+    let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    detailDialog.innerHTML = detailDialogToHTML(task);
 }
 
 
@@ -310,17 +310,71 @@ function showDialogDetail(taskID) {
 //////////////// DIALOG EDIT ////////////////
 ///////////////////////////////////////////////
 
+//////////////// SHOW HIDE
+
+function showDialogEdit(taskID) {
+    let detailDialog = document.getElementById('detailDialog');
+    let editDialog = document.getElementById('editDialog');
+    showDialogContainer();
+    detailDialog.classList.add('reini-d-none');
+    editDialog.classList.remove('reini-d-none');
+
+    let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    editDialog.innerHTML = editDialogToHTML(task);
+    editDialogFillInputs(task);
+}
+
 //////////////// RENDER EDIT DIALOG
 
 function editDialogFillInputs(task) {
-    let inputTaskTitle= document.getElementById('inputTaskTitle');
-    let inputTaskDescription= document.getElementById('inputTaskDescription');
-    let inputTaskDuedate= document.getElementById('inputTaskDuedate');
+    let inputTaskTitle = document.getElementById('inputTaskTitle');
+    let inputTaskDescription = document.getElementById('inputTaskDescription');
+    let inputTaskDuedate = document.getElementById('inputTaskDuedate');
 
+    inputTaskTitle.value = task.title;
+    inputTaskDescription.value = task.description;
+    inputTaskDuedate.value = timeToInputValueString(task.dueDate);
+    editSetPrioButton(task);
+}
 
-    inputTaskTitle.value= task.title;
-    inputTaskDescription.value= task.description;
-    inputTaskDuedate.value= timeToInputValueString(task.dueDate);
+function editSetPrioButton(task) {
+    editResetPrioButtons();
+    switch (task.prio) {
+        case 'low':
+            let prioButtonLow = document.getElementById('prioButtonLow');
+            let prioIconLow = document.getElementById('prioButtonIconLow');
+            prioButtonLow.classList.add('input-prio-button-low-set');
+            prioIconLow.src = './assets/img/board/prio-low-icon-white.svg';
+            break;
+        case 'medium':
+            let prioButtonMedium = document.getElementById('prioButtonMedium');
+            let prioIconMedium = document.getElementById('prioButtonIconMedium');
+            prioButtonMedium.classList.add('input-prio-button-medium-set');
+            prioIconMedium.src = './assets/img/board/prio-medium-icon-white.svg';
+            break;
+        case 'urgent':
+            let prioButtonUrgent = document.getElementById('prioButtonUrgent');
+            let prioIconUrgent = document.getElementById('prioButtonIconUrgent');
+            prioButtonUrgent.classList.add('input-prio-button-urgent-set');
+            prioIconUrgent.src = './assets/img/board/prio-urgent-icon-white.svg';
+            break;
+    }
+}
+
+function editResetPrioButtons() {
+    let prioButtonLow = document.getElementById('prioButtonLow');
+    let prioIconLow = document.getElementById('prioButtonIconLow');
+    let prioButtonMedium = document.getElementById('prioButtonMedium');
+    let prioIconMedium = document.getElementById('prioButtonIconMedium');
+    let prioButtonUrgent = document.getElementById('prioButtonUrgent');
+    let prioIconUrgent = document.getElementById('prioButtonIconUrgent');
+
+    prioButtonLow.classList.remove('input-prio-button-low-set');
+    prioIconLow.src = './assets/img/board/prio-low-icon.svg';
+    prioButtonMedium.classList.remove('input-prio-button-medium-set');
+    prioIconMedium.src = './assets/img/board/prio-medium-icon.svg';
+    prioButtonUrgent.classList.remove('input-prio-button-urgent-set');
+    prioIconUrgent.src = './assets/img/board/prio-urgent-icon.svg';
 }
 
 function editDialogToHTML(task) {
@@ -344,17 +398,17 @@ function editDialogToHTML(task) {
             <div class="input-container">
                 <label for="">Priority</label>
                 <div class="input-prio-container">
-                    <div class="input-prio-button">
+                    <div class="input-prio-button" id="prioButtonUrgent">
                         <span>Urgent</span>
-                        <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon">
+                        <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon" id="prioButtonIconUrgent">
                     </div>
-                    <div class="input-prio-button">
+                    <div class="input-prio-button" id="prioButtonMedium">
                         <span>Medium</span>
-                        <img class="prio-icon" src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon">
+                        <img class="prio-icon" src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon" id="prioButtonIconMedium">
                     </div>
-                    <div class="input-prio-button">
+                    <div class="input-prio-button" id="prioButtonLow">
                         <span>Low</span>
-                        <img class="prio-icon" src="./assets/img/board/prio-low-icon.svg" alt="low-icon">
+                        <img class="prio-icon" src="./assets/img/board/prio-low-icon.svg" alt="low-icon" id="prioButtonIconLow">
                     </div>
                 </div>
             </div>
@@ -390,7 +444,7 @@ function editDialogToHTML(task) {
 }
 
 function editSelectMembersToHTML(task) {
-    let output= '';
+    let output = '';
     for (let contact of contactsDatasource) {
         output += `
             <option value="${contact.email}">${contact.name}</option>
@@ -400,7 +454,7 @@ function editSelectMembersToHTML(task) {
 }
 
 function editSubtasksToHTML(task) {
-    let output= '';
+    let output = '';
     for (let subtask of getSubtasks(task)) {
         output += `
             <li>
@@ -414,20 +468,6 @@ function editSubtasksToHTML(task) {
         `;
     }
     return output;
-}
-
-//////////////// SHOW HIDE
-
-function showDialogEdit(taskID) {
-    let detailDialog= document.getElementById('detailDialog');
-    let editDialog= document.getElementById('editDialog');
-    showDialogContainer();
-    detailDialog.classList.add('reini-d-none');
-    editDialog.classList.remove('reini-d-none');
-
-    let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
-    editDialog.innerHTML= editDialogToHTML(task);
-    editDialogFillInputs(task);
 }
 
 
@@ -450,7 +490,7 @@ function showDialogEdit(taskID) {
 
 
 function testen() {
-    let datum= new Date(1984,5,13);
+    let datum = new Date(1984, 5, 13);
     console.log(datum);
     console.log(InputValueString(datum));
 
