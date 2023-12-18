@@ -15,7 +15,7 @@
         <h1>Log in</h1>
         <div class="underlineFrame"></div>
 
-        <form
+        <div
           onsubmit="logIn(); return false;"
           class="logForm"
           style="
@@ -29,7 +29,7 @@
             <input
               class="logInpMail"
               required
-              minlength="10"
+              minlength="2"
               type="email"
               placeholder="Email"
               id="login-input-email"
@@ -42,7 +42,7 @@
             <input
               class="logInpPass"
               required
-              minlength="6"
+              minlength="2"
               type="password"
               placeholder="Password"
               id="login-input-password"
@@ -69,7 +69,7 @@
             <button onclick="login()">Log in</button>
             <button>Guest Log in</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </body>

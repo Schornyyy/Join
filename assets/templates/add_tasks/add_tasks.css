@@ -1,5 +1,8 @@
 .tasks-form-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(100px);
+  grid-template-rows: max-content;
+  grid-gap: 10px;
   position: relative;
   background-color: var(--lighter-grey);
   width: 100%;
@@ -11,19 +14,23 @@
   display: none;
 }
 
+p {
+  color: black;
+}
+
 .tasks-form {
-  display: flex;
+  display: grid;
   flex-direction: column;
-  gap: 20px;
   width: 100%;
-  margin: 15px;
+  padding: 15px;
+  grid-template-columns: repeat(1fr);
+  grid-gap: 10px;
 }
 
 .tasks-form label {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  font-weight: lighter;
   width: 100%;
 }
 
@@ -48,6 +55,10 @@ textarea {
 textarea:focus,
 button:focus {
   outline: none;
+}
+
+img {
+  pointer-events: none;
 }
 
 .tasks-form textarea {
@@ -77,18 +88,21 @@ button:focus {
   justify-content: center;
   align-items: center;
   width: fit-content !important;
+  cursor: pointer;
 }
 
 .prio label {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .prio img {
   height: 24px;
   width: 24px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .prio input {
@@ -97,6 +111,7 @@ button:focus {
   background-color: #fff;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .category-container {
@@ -253,7 +268,7 @@ button:focus {
 
 .add-tasks-board {
   display: flex;
-  height: 81.7vh;
+  height: 84.7vh;
   flex-direction: column;
 }
 
@@ -332,4 +347,157 @@ button:focus {
 
 #hiden-divieder {
   display: none;
+}
+
+/* Grid Placement */
+
+label[for="form-title"] {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+}
+
+label[for="form-desc"] {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+}
+
+.prios-container {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+}
+
+label[for="form-date"] {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 4;
+}
+
+.category-container {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+}
+
+.assigned-to-container {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 6;
+}
+
+.subtasks-to-container {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 7;
+}
+
+.add-tasks-footer-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+#tasks-form-cancel {
+  border: 1px solid var(--light-grey);
+  background-color: transparent;
+  color: var(--light-grey);
+  display: none;
+}
+
+#tasks-form-cancel img {
+  filter: none !important;
+}
+
+.tasks-form-row-divieder {
+  display: none;
+  background-color: #b3b3b3;
+  height: 100%;
+  width: 1px;
+}
+
+@media only screen and (min-width: 760px) {
+  .add-tasks-board-footer {
+    padding: 79px 96px;
+  }
+
+  #tasks-form-cancel {
+    display: flex;
+  }
+
+  .add-tasks-board-header {
+    padding: 110px 96px 50px 96px;
+  }
+
+  .tasks-form {
+    column-gap: 50px;
+    row-gap: 25px;
+    padding: 0px 96px;
+  }
+
+  .add-tasks-board {
+    height: fit-content;
+    width: fit-content;
+    width: 100%;
+  }
+
+  .add-tasks-board-content {
+    height: fit-content;
+  }
+
+  .tasks-form-row-divieder {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    justify-self: center;
+    display: block;
+  }
+
+  label[for="form-title"] {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+  }
+
+  label[for="form-desc"] {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+  }
+
+  .prios-container {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+  }
+
+  label[for="form-date"] {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+  }
+
+  .category-container {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 3;
+  }
+
+  .assigned-to-container {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+  }
+
+  .subtasks-to-container {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 4;
+  }
+
+  button {
+    cursor: pointer;
+  }
 }
