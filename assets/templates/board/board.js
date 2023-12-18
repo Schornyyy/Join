@@ -353,7 +353,7 @@ function editDialogToHTML(task) {
             <div class="input-container">
                 <label for="">Assigned to</label>
                 <select class="edit-select-members" name="select-members" id="selectMembers">
-                    <option value="" disabled selected>Select contancts to assign</option>
+                    <option value="" disabled selected">Select contancts to assign</option>
                     ${editSelectMembersToHTML(task)}
                 </select>
                 <div id="editTaskMembersContainer">
@@ -362,8 +362,8 @@ function editDialogToHTML(task) {
             </div>
             <div class="input-container">
                 <label for="">Subtask</label>
-                <div class="input-wrapper">
-                    <input type="text" placeholder="Add new subtask">
+                <div class="input-wrapper edit-input-wrapper">
+                    <input class="input-add-subtask" type="text" placeholder="Add new subtask">
                     <img src="./assets/img/board/plus-icon.svg" alt="plus-icon">
                 </div>
                 <div class="edit-subtaskList">

@@ -64,13 +64,17 @@ body {
 .input-wrapper {
     display: flex;
     align-items: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     grid-column: 2 / 3;
     grid-row: 1;
     padding: 8px 16px;
     border-radius: 10px;
     border-color: var(--reini-light-grey);
     background-color: white;
+}
+
+.input-wrapper-board {
+    border: 1px solid black;
 }
 
 .input-wrapper input {
