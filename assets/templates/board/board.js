@@ -297,7 +297,7 @@ function showDialogDetail(taskID) {
     detailDialog.classList.remove('reini-d-none');
     editDialog.classList.add('reini-d-none');
 
-    let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    let task = tasksDatasource.find(taskElem => taskElem.id==taskID);
     detailDialog.innerHTML = detailDialogToHTML(task);
 }
 
@@ -307,8 +307,10 @@ function showDialogDetail(taskID) {
 
 
 ///////////////////////////////////////////////
-//////////////// DIALOG EDIT ////////////////
+//////////////// DIALOG EDIT //////////////////
 ///////////////////////////////////////////////
+
+let prioNew;
 
 //////////////// SHOW HIDE
 
@@ -382,7 +384,7 @@ function editDialogToHTML(task) {
         <div class="edit-header">
             <img class="edit-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="showDialogDetail(${task.id})">
         </div>
-        <form class="edit-form" action="">
+        <div class="edit-form">
             <div class="input-container">
                 <label for="inputTaskTitle">Title</label>
                 <input type="text" id="inputTaskTitle">
@@ -433,13 +435,13 @@ function editDialogToHTML(task) {
                 </div>
             </div>
             <div class="edit-footer">
-                <button class="edit-OKbutton">
+                <button class="edit-OKbutton" onclick="editSaveTask(${task.id})">
                     <span>Ok</span>
                     <img src="./assets/img/board/check-icon.svg" alt="chek-icon">
                 </button>
             </div>
 
-        </form>
+        </div>
     `;
 }
 
@@ -488,6 +490,22 @@ function editSingleMemberToHTML(member) {
             ${getFirstLetterOfName(member)}
         </div>
     `;
+}
+
+function editSaveTask(taskID) {
+    //TODO: Prio, Contacts, Subtasks
+    let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
+    let inputTaskTitle= document.getElementById('inputTaskTitle');
+    let inputTaskDescription= document.getElementById('inputTaskDescription');
+    let inputTaskDuedate= document.getElementById('inputTaskDuedate');
+
+    task.title= inputTaskTitle.value;
+    task.description= inputTaskDescription.value;
+    task.dueDate= new Date(inputTaskDuedate.value).getTime();
+
+    renderBoard();
+    // saveTasks();
+    showDialogDetail(taskID);
 }
 
 
