@@ -1,12 +1,14 @@
 let urlPrefix = './assets';
 let tasksDatasource;
 let subtasksDatasource;
+let contactsDatasource;
 
 //////////////// INIT
 
 function boardInit() {
-    tasksDatasource= tasks;
-    subtasksDatasource= [];
+    tasksDatasource = tasksForTesting;
+    subtasksDatasource = subtasksForTesting;
+    contactsDatasource = contactsForTesting;
     renderBoard();
 }
 
@@ -65,6 +67,14 @@ function getSubtaskById(idParam) {
     return subtasksDatasource.find(subtask => subtask.id == idParam);
 }
 
+function getSubtasks(task) {
+    let output = '';
+    for (let subtaskID of task.subtasks) {
+        output.push(subtasksDatasource.find(subtask => subtask.id == subtaskID));
+    }
+    return output;
+}
+
 function getMembers(task) {
     let output = [];
     for (let eMail of task.assignedTo) {
@@ -75,6 +85,15 @@ function getMembers(task) {
 
 function getFirstLetterOfName(member) {
     return member.name.slice(0, 1);
+}
+
+function getPrioImgURL(task) {
+    switch (task.prio) {
+        case 'urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
+        case 'medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
+        case 'low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
+        default: return '';
+    }
 }
 
 //////////////// TO HTML
@@ -138,21 +157,11 @@ function singleMemberToHTML(member, index) {
     return `
         <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
             ${getFirstLetterOfName(member)}
-        </div>    
+        </div>
     `;
 }
 
 //////////////// MISC
-
-
-function getPrioImgURL(task) {
-    switch (task.prio) {
-        case 'prio-urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
-        case 'prio-medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
-        case 'prio-low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
-        default: return '';
-    }
-}
 
 function isColorLight(hexcode) {
     let r = parseInt(hexcode.slice(1, 3), 16);
@@ -162,25 +171,37 @@ function isColorLight(hexcode) {
     return (a < 0.5);
 }
 
+function timeToInputValueString(time) {
+    let output = '';
+    let date = new Date(time);
+
+    output += date.getFullYear() + '-';
+    output += date.getMonth() + 1 + '-';
+    output += date.getDate();
+
+    return output;
+}
 
 
-
-
-/////////////////////////////////////////
-//////////////// DIALOG /////////////////
-/////////////////////////////////////////
+function hideDialog() {
+    let dialogContainer = document.getElementById('dialogContainer');
+    dialogContainer.classList.add('reini-d-none');
+}
+///////////////////////////////////////////////
+//////////////// DIALOG DETAIL ////////////////
+///////////////////////////////////////////////
 
 
 //////////////// RENDER DETAIL DIALOG
 
 function detailDialogToHTML(task) {
-    let dueDate= new Date(task.dueDate);
+    let dueDate = new Date(task.dueDate);
     // let dueDateString= `${dueDate.getDay()}/${dueDate.getMonth}/${dueDate.getFullYear()}`;
-    let dueDateString= `${dueDate.getDate()}/${dueDate.getMonth()+1}/${dueDate.getFullYear()}`;
+    let dueDateString = `${dueDate.getDate()}/${dueDate.getMonth() + 1}/${dueDate.getFullYear()}`;
     return `
         <div class="detail-header">
             <p class="task-category category-user-story">${task.category}</p>
-            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialogDetail()">
+            <img class="detail-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="hideDialog()">
         </div>
         <h3 class="detail-taskname">${task.title}</h3>
         <p class="detail-task-description">${task.description}</p>
@@ -188,7 +209,7 @@ function detailDialogToHTML(task) {
             <p>Due date:</p>
             <p>${dueDateString}</p>
             <p>Priority:</p>
-            <p class="detail-priority">${task.prio} <img class="" src="${getPrioImgURL(task)}" alt="prio-medium-icon"></p>
+            <p class="detail-priority">${task.prio} <img class="prio-icon" src="${getPrioImgURL(task)}" alt="prio-medium-icon"></p>
         </div>
         <div class="detail-members-container">
             <p class="detail-members-container-headline">Assigned To:</p>
@@ -203,7 +224,7 @@ function detailDialogToHTML(task) {
                 <img src="./assets/img/board/delete-icon.svg" alt="trashcan">
                 <p>Delete</p>
             </div>
-            <div class="detail-footer-button">
+            <div class="detail-footer-button" onclick="showDialogEdit(${task.id})">
                 <img src="./assets/img/board/edit-icon.svg" alt="pencil">
                 <p>Edit</p>
             </div>
@@ -212,8 +233,8 @@ function detailDialogToHTML(task) {
 }
 
 function detailMembersToHTML(task) {
-    members= getMembers(task);
-    let output= '';
+    members = getMembers(task);
+    let output = '';
     for (let member of members) {
         output += detailSingleMemberToHTML(member);
     }
@@ -227,13 +248,13 @@ function detailSingleMemberToHTML(member) {
         <div class="detail-member">
             <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};">${getFirstLetterOfName(member)}</div>
             <p>${member.name}</p>
-        </div>    
+        </div>
     `;
 }
 
 function detailSubtasksToHTML(task) {
-    let subtasksTemp= getSubtasks(task);
-    let output= '';
+    let subtasksTemp = getSubtasks(task);
+    let output = '';
     for (let subtaskTemp of subtasksTemp) {
         output += detailSingleSubtaskToHTML(subtaskTemp);
     }
@@ -241,9 +262,9 @@ function detailSubtasksToHTML(task) {
 }
 
 function getSubtasks(task) {
-    let output= [];
+    let output = [];
     for (let subtaskID of task.subtasks) {
-        output.push(subtasksDatasource.find(subt => subt.id==subtaskID));
+        output.push(subtasksDatasource.find(subt => subt.id == subtaskID));
     }
     return output;
 }
@@ -264,21 +285,254 @@ function getSubtaskCheckboxIconURL(subtask) {
 
 //////////////// SHOW HIDE
 
+function showDialogContainer() {
+    let dialogContainer = document.getElementById('dialogContainer');
+    dialogContainer.classList.remove('reini-d-none');
+}
+
 function showDialogDetail(taskID) {
-    let detailDialogContainer= document.getElementById('detailDialogContainer');
-    detailDialogContainer.classList.remove('reini-d-none');
-    
+    let detailDialog = document.getElementById('detailDialog');
+    let editDialog = document.getElementById('editDialog');
+    showDialogContainer();
+    detailDialog.classList.remove('reini-d-none');
+    editDialog.classList.add('reini-d-none');
+
+    let task = tasksDatasource.find(taskElem => taskElem.id==taskID);
+    detailDialog.innerHTML = detailDialogToHTML(task);
+}
+
+
+
+
+
+
+///////////////////////////////////////////////
+//////////////// DIALOG EDIT //////////////////
+///////////////////////////////////////////////
+
+let prioNew;
+
+//////////////// SHOW HIDE
+
+function showDialogEdit(taskID) {
+    let detailDialog = document.getElementById('detailDialog');
+    let editDialog = document.getElementById('editDialog');
+    showDialogContainer();
+    detailDialog.classList.add('reini-d-none');
+    editDialog.classList.remove('reini-d-none');
+
+    let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    editDialog.innerHTML = editDialogToHTML(task);
+    editDialogFillInputs(task);
+}
+
+//////////////// RENDER EDIT DIALOG
+
+function editDialogFillInputs(task) {
+    let inputTaskTitle = document.getElementById('inputTaskTitle');
+    let inputTaskDescription = document.getElementById('inputTaskDescription');
+    let inputTaskDuedate = document.getElementById('inputTaskDuedate');
+
+    inputTaskTitle.value = task.title;
+    inputTaskDescription.value = task.description;
+    inputTaskDuedate.value = timeToInputValueString(task.dueDate);
+    editSetPrioButton(task);
+}
+
+function editSetPrioButton(task) {
+    editResetPrioButtons();
+    switch (task.prio) {
+        case 'low':
+            let prioButtonLow = document.getElementById('prioButtonLow');
+            let prioIconLow = document.getElementById('prioButtonIconLow');
+            prioButtonLow.classList.add('input-prio-button-low-set');
+            prioIconLow.src = './assets/img/board/prio-low-icon-white.svg';
+            break;
+        case 'medium':
+            let prioButtonMedium = document.getElementById('prioButtonMedium');
+            let prioIconMedium = document.getElementById('prioButtonIconMedium');
+            prioButtonMedium.classList.add('input-prio-button-medium-set');
+            prioIconMedium.src = './assets/img/board/prio-medium-icon-white.svg';
+            break;
+        case 'urgent':
+            let prioButtonUrgent = document.getElementById('prioButtonUrgent');
+            let prioIconUrgent = document.getElementById('prioButtonIconUrgent');
+            prioButtonUrgent.classList.add('input-prio-button-urgent-set');
+            prioIconUrgent.src = './assets/img/board/prio-urgent-icon-white.svg';
+            break;
+    }
+}
+
+function editResetPrioButtons() {
+    let prioButtonLow = document.getElementById('prioButtonLow');
+    let prioIconLow = document.getElementById('prioButtonIconLow');
+    let prioButtonMedium = document.getElementById('prioButtonMedium');
+    let prioIconMedium = document.getElementById('prioButtonIconMedium');
+    let prioButtonUrgent = document.getElementById('prioButtonUrgent');
+    let prioIconUrgent = document.getElementById('prioButtonIconUrgent');
+
+    prioButtonLow.classList.remove('input-prio-button-low-set');
+    prioIconLow.src = './assets/img/board/prio-low-icon.svg';
+    prioButtonMedium.classList.remove('input-prio-button-medium-set');
+    prioIconMedium.src = './assets/img/board/prio-medium-icon.svg';
+    prioButtonUrgent.classList.remove('input-prio-button-urgent-set');
+    prioIconUrgent.src = './assets/img/board/prio-urgent-icon.svg';
+}
+
+function editDialogToHTML(task) {
+    return `
+        <div class="edit-header">
+            <img class="edit-close-icon" src="./assets/img/board/close-icon.svg" alt="close-icon" onclick="showDialogDetail(${task.id})">
+        </div>
+        <div class="edit-form">
+            <div class="input-container">
+                <label for="inputTaskTitle">Title</label>
+                <input type="text" id="inputTaskTitle">
+            </div>
+            <div class="input-container">
+                <label for="inputTaskDescription">Description</label>
+                <input type="text" id="inputTaskDescription">
+            </div>
+            <div class="input-container">
+                <label for="inputTaskDuedate">Due Date</label>
+                <input type="date" id="inputTaskDuedate">
+            </div>
+            <div class="input-container">
+                <label for="">Priority</label>
+                <div class="input-prio-container">
+                    <div class="input-prio-button" id="prioButtonUrgent">
+                        <span>Urgent</span>
+                        <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon" id="prioButtonIconUrgent">
+                    </div>
+                    <div class="input-prio-button" id="prioButtonMedium">
+                        <span>Medium</span>
+                        <img class="prio-icon" src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon" id="prioButtonIconMedium">
+                    </div>
+                    <div class="input-prio-button" id="prioButtonLow">
+                        <span>Low</span>
+                        <img class="prio-icon" src="./assets/img/board/prio-low-icon.svg" alt="low-icon" id="prioButtonIconLow">
+                    </div>
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="">Assigned to</label>
+                <select class="edit-select-members" name="select-members" id="selectMembers">
+                    <option value="" disabled selected">Select contancts to assign</option>
+                    ${editSelectMembersToHTML(task)}
+                </select>
+                <div id="editTaskMembersContainer">
+                    ${editMembersToHTML(task)}
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="">Subtask</label>
+                <div class="input-wrapper edit-input-wrapper">
+                    <input class="input-add-subtask" type="text" placeholder="Add new subtask">
+                    <img src="./assets/img/board/plus-icon.svg" alt="plus-icon">
+                </div>
+                <div class="edit-subtaskList">
+                    ${editSubtasksToHTML(task)}
+                </div>
+            </div>
+            <div class="edit-footer">
+                <button class="edit-OKbutton" onclick="editSaveTask(${task.id})">
+                    <span>Ok</span>
+                    <img src="./assets/img/board/check-icon.svg" alt="chek-icon">
+                </button>
+            </div>
+
+        </div>
+    `;
+}
+
+function editSelectMembersToHTML(task) {
+    let output = '';
+    for (let contact of contactsDatasource) {
+        output += `
+            <option value="${contact.email}">${contact.name}</option>
+        `;
+    };
+    return output;
+}
+
+function editSubtasksToHTML(task) {
+    let output = '';
+    for (let subtask of getSubtasks(task)) {
+        output += `
+            <li>
+
+                <span>&bull; ${subtask.title}</span>
+                <div class="edit-subtask-icon-container">
+                    <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon">
+                    <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon">
+                </div>
+            </li>
+        `;
+    }
+    return output;
+}
+
+function editMembersToHTML(task) {
+    let members = getMembers(task);
+    let output = '';
+
+    for (let member of members) {
+        output += editSingleMemberToHTML(member);
+    }
+    return output;
+}
+
+function editSingleMemberToHTML(member) {
+    let textcolor;
+    if (!isColorLight(member.colorCode)) textcolor = 'white';
+    return `
+        <div class="member-icon" style="background-color:${member.colorCode};color:${textcolor};">
+            ${getFirstLetterOfName(member)}
+        </div>
+    `;
+}
+
+function editSaveTask(taskID) {
+    //TODO: Prio, Contacts, Subtasks
     let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
-    let detailDialog= document.getElementById('detailDialog');
-    detailDialog.innerHTML= detailDialogToHTML(task);
+    let inputTaskTitle= document.getElementById('inputTaskTitle');
+    let inputTaskDescription= document.getElementById('inputTaskDescription');
+    let inputTaskDuedate= document.getElementById('inputTaskDuedate');
+
+    task.title= inputTaskTitle.value;
+    task.description= inputTaskDescription.value;
+    task.dueDate= new Date(inputTaskDuedate.value).getTime();
+
+    renderBoard();
+    // saveTasks();
+    showDialogDetail(taskID);
 }
 
-function hideDialogDetail() {
-    let detailDialogContainer= document.getElementById('detailDialogContainer');
-    detailDialogContainer.classList.add('reini-d-none');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function testen() {
+    let datum = new Date(1984, 5, 13);
+    console.log(datum);
+    console.log(InputValueString(datum));
+
 }
-
-
 
 
 

@@ -3,7 +3,8 @@ Font:
 https://fonts.google.com/specimen/Inter
 */
 
-@import url('./board-task-detailview.css');
+@import url('./board-dialog.css');
+
 
 /*************** VARIABLES ***************/
 
@@ -15,7 +16,9 @@ https://fonts.google.com/specimen/Inter
     --reini-category-turquoise: #1FD7C1;
     --reini-progressbar-grey: #F4F4F4;
     --reini-progressbar-blue: #4589FF;
-
+    --reini-prio-low-green: #7AE229;
+    --reini-prio-medium-orange: #FFA800;
+    --reini-prio-urgent-red: #FF3D00;
 
     --reini-padding-main: 0 64px;
     --reini-padding-main-mobile: 0 16px;
@@ -63,13 +66,17 @@ body {
 .input-wrapper {
     display: flex;
     align-items: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     grid-column: 2 / 3;
     grid-row: 1;
     padding: 8px 16px;
     border-radius: 10px;
     border-color: var(--reini-light-grey);
     background-color: white;
+}
+
+.input-wrapper-board {
+    border: 1px solid black;
 }
 
 .input-wrapper input {
