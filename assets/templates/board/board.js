@@ -67,6 +67,14 @@ function getSubtaskById(idParam) {
     return subtasksDatasource.find(subtask => subtask.id == idParam);
 }
 
+function getSubtasks(task) {
+    let output='';
+    for (let subtaskID of task.subtasks) {
+        output.push(subtasksDatasource.find(subtask => subtask.id==subtaskID));
+    }
+    return output;
+}
+
 function getMembers(task) {
     let output = [];
     for (let eMail of task.assignedTo) {
@@ -393,10 +401,11 @@ function editSelectMembersToHTML(task) {
 
 function editSubtasksToHTML(task) {
     let output= '';
-    for (let subtask of subtasksDatasource) {
+    for (let subtask of getSubtasks(task)) {
         output += `
             <li>
-                <span>${subtask.title}</span>
+
+                <span>&bull; ${subtask.title}</span>
                 <div class="edit-subtask-icon-container">
                     <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon">
                     <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon">

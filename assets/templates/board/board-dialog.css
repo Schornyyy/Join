@@ -178,6 +178,10 @@
     gap: 8px;
 }
 
+.input-prio-button:hover {
+    cursor: pointer;
+}
+
 .edit-select-members {
     font-size: 20px;
     padding: 8px 16px;
@@ -199,12 +203,16 @@
     font-size: 18px;
 }
 
+.edit-subtask-icon-container img:hover {
+    cursor: pointer;
+}
+
 .edit-footer {
     display: flex;
     justify-content: right;
 }
 
-button.edit-OKbutton {
+.edit-OKbutton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -216,6 +224,10 @@ button.edit-OKbutton {
     flex-basis: 80px;
     padding: 16px 0px;
     border-radius: 11px;
+}
+
+.edit-OKbutton:hover {
+    cursor: pointer;
 }
 
 .edit-OKbutton img {
