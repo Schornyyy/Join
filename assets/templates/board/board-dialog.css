@@ -1,0 +1,267 @@
+
+/*************** GLOBAL ***************/
+
+.dialog-container {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsla(341, 0%, 0%, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog {
+    background-color: white;
+    width: 552px;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 20px;
+}
+
+.prio-icon {
+    width: 1em;
+}
+
+/*************************************/
+/*************** DETAIL **************/
+/*************************************/
+
+/*************** HEADER ***************/
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.detail-close-icon:hover {
+    cursor: pointer;
+}
+
+.detail-taskname {
+    font-size: 53px;
+}
+
+/*************** DATE-PRIO-CONTAINER ***************/
+
+.detail-date-prio-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 24px;
+}
+
+.detail-priority {
+    display: flex;
+    /* align-items: center; */
+    gap: 6px;
+}
+
+/*************** MEMBERS ***************/
+
+.detail-members-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 12px;
+}
+
+.detail-members-container-headline,
+.detail-subtasks-headline {
+    position: relative;
+    right: 12px;
+}
+
+.detail-member {
+    display: flex;
+    align-items: center;
+}
+
+.detail-member .member-icon {
+    margin-right: 5px
+}
+
+/*************** STUBTASKS ***************/
+
+
+.detail-subtasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-left: 12px;
+}
+
+.detail-subtask {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.detail-subtask:hover {
+    cursor: pointer;
+}
+
+.detail-subtask img {
+    height: 1.3em;
+}
+
+/*************** FOOTER ***************/
+
+.detail-footer {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+}
+
+.detail-footer-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-footer-button:hover {
+    cursor: pointer;
+}
+
+
+
+
+/***********************************/
+/*************** EDIT **************/
+/***********************************/
+
+.edit-header {
+    display: flex;
+    justify-content: right;
+}
+
+.edit-form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-container label {
+    font-size: 18px;
+}
+
+.input-container input{
+    font-size: 20px;
+    border: 2px solid var(--reini-light-grey);
+    border-radius: 10px;
+    padding: 8px 16px;
+}
+
+.input-prio-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-prio-button {
+    border: 2px solid var(--reini-light-grey);
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.input-prio-button-low-set {
+    background-color: var(--reini-prio-low-green);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.input-prio-button-medium-set {
+    background-color: var(--reini-prio-medium-orange);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.input-prio-button-urgent-set {
+    background-color: var(--reini-prio-urgent-red);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.input-prio-button:hover {
+    cursor: pointer;
+}
+
+.edit-select-members {
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 2px solid var(--reini-light-grey);
+}
+
+.edit-input-wrapper {
+    border: 2px solid var(--reini-light-grey);
+}
+
+#editTaskMembersContainer {
+    display: flex;
+    gap: 6px;
+}
+
+#editTaskMembersContainer .member-icon {
+    font-size: 20px;
+    height: 40px;
+    width: 40px;
+}
+
+.edit-subtaskList {
+    padding: 0 30px;
+}
+
+.edit-subtaskList li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.edit-subtask-icon-container img:hover {
+    cursor: pointer;
+}
+
+.edit-footer {
+    display: flex;
+    justify-content: right;
+}
+
+.edit-OKbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--reini-dark-blue);
+    font-weight: 700;
+    color: white;
+    font-size: 20px;
+    flex-basis: 80px;
+    padding: 16px 0px;
+    border-radius: 11px;
+}
+
+.edit-OKbutton:hover {
+    cursor: pointer;
+}
+
+.edit-OKbutton img {
+    width: 0.8em;
+}
