@@ -32,6 +32,10 @@
 
     }
 
+    .addContactImage {
+        pointer-events: visible!important; /* Wichtig um die onklick Funktion ausführen zu können */
+    }
+
     .createContactButtonImg {
         height: 51px;
     }
@@ -59,17 +63,19 @@
         display: flex;
         flex-direction: row;
         margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
+        border-bottom: 2px solid #D1D1D1;
+        padding-bottom: 10px; /* Füget zusätzlichen Raum unterhalb des Strichs hinzu */
     }
 
     .letter-column {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Zentriere die Buchstaben horizontal */
+        align-items: center; /* Zentriet die Buchstaben horizontal */
         margin-right: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
     }
 
     .contact-first-letter {
-        margin: 0; /* Entferne den Standardabstand von h2 */
+        margin: 0; /* Entfernt den Standardabstand von h2 */
     }
 
     .contacts-info-column {
