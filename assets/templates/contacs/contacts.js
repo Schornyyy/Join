@@ -82,9 +82,12 @@ function addContactScreen() {
     const content = document.getElementById("contactsContent");
     content.innerHTML = /*html*/`
                         <div class="addContactContainerHeader">
-                            <h1 class="addContactH1">Add contact</h1>
-                            <p class="addContactText">Tasks are better with a team!</p>
-                        </div>
+                            <div class="addContactBlockHeader">
+                                <p class="addContactH1">Add contact</p>
+                                <p class="addContactText">Tasks are better with a team!</p>
+                                <img class="addContactBlueStroked" src="../assets/img/addContactBlueStroked.svg" alt="">
+                            </div>
+                        </div>                        
 
                         <div>
                             <img src="../assets/img/addContactBlankUserImg.svg" alt="">

@@ -17,6 +17,10 @@
     background-color: var(--light-grey);
   }
 
+  .addContactBlockHeader {
+    display: block;
+  }
+
   .addContactContainerFooter {
     display: flex;
     justify-content: center;
@@ -58,6 +62,10 @@
     width: 20em;
     height: 2em;
     position: relative;
+  }
+
+  .addContactBlueStroked {
+    margin-right: 7em;
   }
 
   .createContactInputListItem {
