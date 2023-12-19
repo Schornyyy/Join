@@ -437,8 +437,6 @@ label[for="form-date"] {
   }
 
   .add-tasks-board {
-    height: fit-content;
-    width: fit-content;
     width: 100%;
   }
 

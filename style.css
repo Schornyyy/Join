@@ -59,8 +59,9 @@ html {
 } */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(100px);
+  grid-template-rows: max-content;
   height: 100vh;
   width: 100%;
 }
@@ -72,10 +73,6 @@ html {
 /*  Mobile Responsive */
 @media only screen and (max-width: 750px) and (min-width: 250px) {
   /*  main div in Body */
-  .container {
-    display: flex;
-    flex-direction: column;
-  }
 
   .mobileHeader {
     display: flex;
@@ -84,6 +81,10 @@ html {
     background-color: var(--background-color);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     height: 4rem;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 4;
   }
 
   .boxShadow {
@@ -170,7 +171,68 @@ html {
 /*  Desktop Responsive */
 @media only screen and (min-width: 751px) {
   .container {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-template-rows: repeat(1fr);
+    grid-template-areas:
+      "eins zwei zwei"
+      "eins drei drei";
+    height: 100vh;
+  }
+
+  .menuTemplate {
+    grid-area: eins;
+    position: sticky;
+    height: 100vh;
+  }
+
+  .headerTemplate {
+    grid-area: zwei;
+  }
+
+  .logoImgContainer {
+    display: none;
+  }
+
+  .mobileHeader {
     display: flex;
-    flex-wrap: wrap;    
+    justify-content: flex-end;
+    width: 100%;
+    padding: 20px 40px;
+  }
+
+  .userSymbolContainer {
+    margin-left: 16px;
+  }
+
+  .menuTemplate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .menu-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .menu-item img {
+    margin-right: 16px;
+  }
+
+  .menu-item p {
+    width: 80px;
+    color: var(--white-grey);
+  }
+  .content {
+    grid-area: drei;
   }
 }
