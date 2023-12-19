@@ -336,12 +336,13 @@ function editDialogFillInputs(task) {
     inputTaskTitle.value = task.title;
     inputTaskDescription.value = task.description;
     inputTaskDuedate.value = timeToInputValueString(task.dueDate);
-    editSetPrioButton(task);
+    editSetPrioButton(task.prio);
 }
 
-function editSetPrioButton(task) {
+function editSetPrioButton(prio) {
     editResetPrioButtons();
-    switch (task.prio) {
+    prioNew= prio;
+    switch (prio) {
         case 'low':
             let prioButtonLow = document.getElementById('prioButtonLow');
             let prioIconLow = document.getElementById('prioButtonIconLow');
@@ -400,15 +401,15 @@ function editDialogToHTML(task) {
             <div class="input-container">
                 <label for="">Priority</label>
                 <div class="input-prio-container">
-                    <div class="input-prio-button" id="prioButtonUrgent">
+                    <div class="input-prio-button" id="prioButtonUrgent" onclick="editSetPrioButton('urgent')">
                         <span>Urgent</span>
                         <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon" id="prioButtonIconUrgent">
                     </div>
-                    <div class="input-prio-button" id="prioButtonMedium">
+                    <div class="input-prio-button" id="prioButtonMedium" onclick="editSetPrioButton('medium')">
                         <span>Medium</span>
                         <img class="prio-icon" src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon" id="prioButtonIconMedium">
                     </div>
-                    <div class="input-prio-button" id="prioButtonLow">
+                    <div class="input-prio-button" id="prioButtonLow" onclick="editSetPrioButton('low')">
                         <span>Low</span>
                         <img class="prio-icon" src="./assets/img/board/prio-low-icon.svg" alt="low-icon" id="prioButtonIconLow">
                     </div>
@@ -502,6 +503,7 @@ function editSaveTask(taskID) {
     task.title= inputTaskTitle.value;
     task.description= inputTaskDescription.value;
     task.dueDate= new Date(inputTaskDuedate.value).getTime();
+    task.prio= prioNew;
 
     renderBoard();
     // saveTasks();
