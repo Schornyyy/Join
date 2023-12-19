@@ -80,7 +80,7 @@ function renderContacts() {
 
 function addContactScreen() {
     const content = document.getElementById("contactsContent");
-    content.innerHTML = `<div class="addContactContainerHeader">
+    content.innerHTML = /*html*/`<div class="addContactContainerHeader"'
                             <h1 class="addContactH1">Add contact</h1>
                             <p class="addContactText">Tasks are better with a team!</p>
                         </div>
@@ -89,9 +89,9 @@ function addContactScreen() {
                         <img src="../assets/img/addContactBlankUserImg.svg" alt="">
                         </div>
 
-                        <form onsubmit="addContact()">
+                        <form onsubmit="createContact()">
                             <div class="addContactContainerFooter">
-                                <input class="addContactInputName" type="text" required placeholder="Name">
+                                <input class="addContactInputName" type="text" required placeholder="Name"> 
                                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
                                 <input class="addContactInputPhone" type="text" required placeholder="Phone">
                                 <img class="createContactButtonImg" src="../assets/img/createContactButton.svg" alt="" onclick="createContact()">
@@ -102,18 +102,11 @@ function addContactScreen() {
 }
 
 function hideHeaderAndFooter() {    
-    const mobileHeader = document.querySelector(".mobileHeader");  // Verstecke mobileHeader und menuTemplate
-    const menuTemplate = document.querySelector(".menuTemplate");
+    const mobileHeader = document.getElementById("headerTemplate");  // Verstecke mobileHeader und menuTemplate
+    const menuTemplate = document.getElementById("menuTemplate");
         mobileHeader.style.display = "none";
         menuTemplate.style.display = "none";
 }
-
-
-
-
-
-
-
 
 function createContact() {
     const nameInput = document.querySelector('.addContactInputName');
@@ -142,30 +135,14 @@ function createContact() {
     contactsData.push(newContact);
 
     // JSON-Array speichern (z.B. auf dem Server)
-    saveContactsData(contactsData);
+    saveContactsData(newContact);
 
     // Zurück zur Kontaktliste wechseln
     renderContacts();
 }
 
 async function saveContactsData(data) {
-    try {
-        const authToken = STORAGE_TOKEN; // Authentifizierungstoken einfügen
-        const response = await fetch('../assets/templates/contacs/allContacts.json', {
-            method: 'Post', // Änderet die Methode auf PUT oder POST, je nach Serverkonfiguration
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authToken}`, // Füget den Authentifizierungstoken zum Header hinzu
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-            throw new Error('Fehler beim Speichern der Kontakte. Status: ' + response.status);
-        }
-
-        console.log('Kontakte erfolgreich gespeichert.');
-    } catch (error) {
-        console.error('Fehler beim Speichern der Kontakte:', error);        
-    }
+    let contact = new Contact(data.contactName, data.contactMailAdress, data.contactPhone)
+    contacts.push(contact);
+    saveContacts()
 }

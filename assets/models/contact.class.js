@@ -13,6 +13,19 @@ class Contact {
         this.phone = phone;
     }
 
+    createNameImage(appendTo) {
+        let div = document.createElement("div").classList.add("profile-container");
+        let firstLetter = this.name.split(" ")[0][0];
+        let lastLetter = this.name.split(" ")[1][0];
+
+        let span = document.createElement("span");
+        span.innerHTML = `${firstLetter} ${lastLetter}`
+
+        div.appendChild(span)
+
+        appendTo.appendChild(div);
+    }
+
 }
 
 // let firstletter= [];

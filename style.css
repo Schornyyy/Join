@@ -223,6 +223,7 @@ html {
     width: 100%;
     align-items: center;
     margin-bottom: 15px;
+    cursor: pointer;
   }
 
   .menu-item img {
