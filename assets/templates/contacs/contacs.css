@@ -8,6 +8,12 @@
     position: relative;
   }
 
+  .addContactCloseXContainer {
+      position: fixed;
+      top: 1em;
+      right: 2em;
+  }
+
   .addContactContainerHeader {
     display: flex;
     justify-content: center;
@@ -24,8 +30,8 @@
   .addContactBlankUserImg {
     position: absolute;
     top: 40%;
-    left: 35%;
-    transform: translate(-40%, -35%);
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .addContactContainerFooter {
@@ -39,6 +45,7 @@
   }
 
   .addContactInputName {
+    border: 1px solid #D1D1D1;
     border-radius: 5px;
     background-image: url("../../img/addContactUserNameImg.svg");
     background-size: contain;
@@ -50,6 +57,7 @@
   }
 
   .addContactInputMailAddresss {
+    border: 1px solid #D1D1D1;
     border-radius: 5px;
     background-image: url("../../img/addContactmailIcon.svg");
     background-size: contain;
@@ -61,6 +69,7 @@
   }
 
   .addContactInputPhone {
+    border: 1px solid #D1D1D1;
     border-radius: 5px;
     background-image: url("../../img/addContactPhoneIcon.svg");
     background-size: contain;

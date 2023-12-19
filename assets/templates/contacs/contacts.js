@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function contactsInit() {
+    const content = document.getElementById("contactsContent");
+    content.innerHTML = "";    
     try {
         console.log("Vor dem Kontakt Laden");
         contactsData = await fetchContactsData();
@@ -12,6 +14,7 @@ async function contactsInit() {
     } catch (error) {
         console.error("Fehler beim Initialisieren der Kontakte:", error);
     }
+    showHeaderAndFooter();
 }
 
 function renderAddContactButton() {
@@ -38,8 +41,9 @@ async function fetchContactsData() {
 }
 
 function renderContacts() {
-    const content = document.getElementById("contactsContent");    
-    const contactsByFirstLetter = {};  // Erstellt ein Objekt, um die Kontakte nach dem Anfangsbuchstaben zu gruppieren
+    const content = document.getElementById("contactsContent");
+       
+    const contactsByFirstLetter = {};  // Erstellt ein Objekt, um die Kontakte nach dem Anfangsbuchstaben zu gruppieren    
 
     contactsData.forEach(oneContact => {
         const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
@@ -67,21 +71,24 @@ function renderContacts() {
         contactMailAddressElement.textContent = `${oneContact.contactMailAdress}`;
         userImgContainer.appendChild(contactImgElement);  // Fügt das contactImgElement dem infoContainer hinzu
         oneContactContainer.appendChild(userImgContainer);        
-        infoContainer.appendChild(nameElement);  // Füge die Elemente zum Info-Container hinzu
+        infoContainer.appendChild(nameElement);  // Füget die Elemente zum Info-Container hinzu
         infoContainer.appendChild(contactMailAddressElement);  
         oneContactContainer.appendChild(infoContainer);        
         contactsByFirstLetter[firstLetter].appendChild(contactImgElement);   // Fügt das Bild zur linken Spalte hinzu        
         contactsByFirstLetter[firstLetter].appendChild(infoContainer);  // Fügt den Info-Container zur rechten Spalte hinzu
     });    
-    Object.values(contactsByFirstLetter).forEach(section => {  // Füge die Abschnitte in den HTML-Code ein // Diese Zeile Verursacht einen Fehler bisher !
+    Object.values(contactsByFirstLetter).forEach(section => {  // Fügt die Abschnitte in den HTML-Code ein // Diese Zeile Verursacht einen Fehler bisher !
         content.appendChild(section);
     });
 }
 
 function addContactScreen() {
     const content = document.getElementById("contactsContent");
-    content.innerHTML = /*html*/`
+    content.innerHTML = /*html*/`                        
                         <div class="addContactContainerHeader">
+                            <div class="addContactCloseXContainer" onclick="contactsInit()">
+                                <img src="../assets/img/addContactCloseX.svg" alt="">
+                            </div>
                             <div class="addContactBlockHeader">
                                 <p class="addContactH1">Add contact</p>
                                 <p class="addContactText">Tasks are better with a team!</p>
@@ -110,6 +117,13 @@ function hideHeaderAndFooter() {
     const menuTemplate = document.getElementById("menuTemplate");
         mobileHeader.style.display = "none";
         menuTemplate.style.display = "none";
+}
+
+function showHeaderAndFooter() {
+    const mobileHeader = document.getElementById("headerTemplate");  // Verstecke mobileHeader und menuTemplate
+    const menuTemplate = document.getElementById("menuTemplate");
+        mobileHeader.style.display = "block";
+        menuTemplate.style.display = "block";
 }
 
 function createContact() {
