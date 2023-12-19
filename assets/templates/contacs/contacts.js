@@ -80,13 +80,14 @@ function renderContacts() {
 
 function addContactScreen() {
     const content = document.getElementById("contactsContent");
-    content.innerHTML = /*html*/`<div class="addContactContainerHeader"'
+    content.innerHTML = /*html*/`
+                        <div class="addContactContainerHeader">
                             <h1 class="addContactH1">Add contact</h1>
                             <p class="addContactText">Tasks are better with a team!</p>
                         </div>
 
                         <div>
-                        <img src="../assets/img/addContactBlankUserImg.svg" alt="">
+                            <img src="../assets/img/addContactBlankUserImg.svg" alt="">
                         </div>
 
                         <form onsubmit="createContact()">
@@ -95,7 +96,7 @@ function addContactScreen() {
                                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
                                 <input class="addContactInputPhone" type="text" required placeholder="Phone">
                                 <img class="createContactButtonImg" src="../assets/img/createContactButton.svg" alt="" onclick="createContact()">
-                            <div>
+                            </div>
                         </form>
                         `;
     hideHeaderAndFooter();
