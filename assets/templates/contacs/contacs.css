@@ -21,6 +21,13 @@
     display: block;
   }
 
+  .addContactBlankUserImg {
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    transform: translate(-40%, -35%);
+  }
+
   .addContactContainerFooter {
     display: flex;
     justify-content: center;

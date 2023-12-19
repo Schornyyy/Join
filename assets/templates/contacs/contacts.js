@@ -89,7 +89,7 @@ function addContactScreen() {
                             </div>
                         </div>                        
 
-                        <div>
+                        <div class="addContactBlankUserImg">
                             <img src="../assets/img/addContactBlankUserImg.svg" alt="">
                         </div>
 
