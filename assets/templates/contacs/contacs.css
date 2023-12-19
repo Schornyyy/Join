@@ -38,6 +38,28 @@
     position: relative;
   }
 
+  .addContactInputMailAddresss {
+    border-radius: 5px;
+    background-image: url("../../img/addContactmailIcon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 20em;
+    height: 2em;
+    position: relative;
+  }
+
+  .addContactInputPhone {
+    border-radius: 5px;
+    background-image: url("../../img/addContactPhoneIcon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 20em;
+    height: 2em;
+    position: relative;
+  }
+
   .createContactInputListItem {
     display: flex;
     flex-direction: row;
@@ -47,19 +69,7 @@
   #addContactUserNameImgID {
     position: absolute;
     right: 8px;
-  }
-
-  .addContactInputMailAddresss {
-    border-radius: 5px;
-    width: 20em;
-    height: 2em;
-  }
-
-  .addContactInputPhone {
-    border-radius: 5px;
-    width: 20em;
-    height: 2em;
-  }
+  } 
 
   .addContactImage {
     pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
