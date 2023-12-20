@@ -126,8 +126,7 @@
   }
 
   .letterAndContactsContainer {
-    display: flex;
-    flex-direction: column;
+    display: flex;    
     align-items: center;
     margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
     border-bottom: 2px solid #d1d1d1;
@@ -172,11 +171,21 @@
   }
 
   .contact-info-container {
+    display: flex;
+    flex-direction: column;
     flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
+    margin-left: 3em 
   }
 
   .contactImg {
     height: 25px;
     width: 25px;
   }
+}
+
+.justifyContentCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
 }
