@@ -98,7 +98,7 @@ async function loadTasks() {
  * speichert alle Contacte von dem Array contacts im Backend.
  */
 async function saveContacts() {
-    await setItem('contacts', contacts);
+    let c = await setItem('contacts', contacts);
 }
 
 /**
