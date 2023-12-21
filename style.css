@@ -238,7 +238,7 @@ html {
     grid-area: drei;
   }
 }
-=======
+
 @import url("./fonts.css");
 @import url("./assets/templates/register/register.css");
 @import url("./assets/templates/login/login.css");
@@ -479,4 +479,4 @@ html {
     grid-area: drei;
   }
 }
->>>>>>> 670ab22a6f30f56b4bfb02069a78faa9fa7bcbf5
+
