@@ -10,7 +10,8 @@ async function contactsInit() {
     try {
         console.log("Vor dem Kontakt Laden");
         contactsData = await fetchContactsData();
-        console.log("Nach dem Kontakt Laden");        
+        console.log("Nach dem Kontakt Laden");
+        showHeaderAndFooter();        
         renderContacts();
         renderAddContactButton();
     } catch (error) {

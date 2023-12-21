@@ -1,131 +1,190 @@
+@media only screen and (max-width: 750px) and (min-width: 350px) {
+  .contactsContent {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow-y: scroll;    
+    position: relative;
+  }
 
-@media only screen and (max-width: 750px) and (min-width: 350px) { 
-    .contactsContent {
-        display: flex;
-        flex-direction: column;
-        background-color: white;        
-    }
+  .addContactCloseXContainer {
+      position: fixed;
+      top: 1em;
+      right: 2em;
+  }
 
-    .addContactContainerHeader {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 50vh;
-        background-color: var(--light-grey);
-    }
+  .addContactContainerHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    background-color: var(--light-grey);
+  }
 
-    .addContactContainerFooter {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 50vh;
-        background-color: white;
-        gap: 20px;
-    }
+  .addContactBlockHeader {
+    display: block;
+  }
 
-    .addContactInputName {
-        border-radius: 5px;
-        width: 20em;
-        height: 2em;
-        background-image: url("./assets/img/addContactUserNameImg.svg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        flex-shrink: 0        
-    }
+  .addContactBlankUserImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    .addContactInputMailAddresss {
-        border-radius: 5px;
-        width: 20em;
-        height: 2em;
-    }
+  .addContactContainerFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    background-color: white;
+    gap: 20px;
+  }
 
-    .addContactInputPhone {
-        border-radius: 5px;
-        width: 20em;
-        height: 2em;
-    }
+  .addContactInputName {
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    background-image: url("../../img/addContactUserNameImg.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 20em;
+    height: 2em;
+    position: relative;
+  }
 
-    .addContactImage {
-        pointer-events: visible!important; /* Wichtig um die onklick Funktion ausführen zu können */
-    }
+  .addContactInputMailAddresss {
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    background-image: url("../../img/addContactmailIcon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 20em;
+    height: 2em;
+    position: relative;
+  }
 
-    .createContactButtonImg {
-        height: 51px;
-    }
+  .addContactInputPhone {
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    background-image: url("../../img/addContactPhoneIcon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 20em;
+    height: 2em;
+    position: relative;
+  }
 
-    .addContactH1 {
-        color: white;
-        font-size: 3rem;
-    }
+  .addContactBlueStroked {
+    margin-right: 7em;
+  }
 
-    .addContactText {
-        color: white;
-    }
+  .createContactInputListItem {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
 
-    .addContactButtonContainer {
-        display: flex;
-        justify-content: right;
-        align-items: center;
-    }
+  #addContactUserNameImgID {
+    position: absolute;
+    right: 8px;
+  } 
 
-    .addContactButtonImage {
-        width: 352px;
-    }
+  .addContactImage {
+    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
+  }
 
-    .letterAndContactsContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
-        border-bottom: 2px solid #D1D1D1;
-        padding-bottom: 10px; /* Füget zusätzlichen Raum unterhalb des Strichs hinzu */
-    }
-    
-    .oneContactContainer {
-        display: flex;
-        flex-direction: row;        
-    }
+  .createContactButtonImg {
+    height: 51px;
+  }
 
-    .letter-column {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Zentriet die Buchstaben horizontal */
-        margin-right: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
-    }
+  .addContactH1 {
+    color: white;
+    font-size: 3rem;
+  }
 
-    .contact-first-letter {
-        margin: 0; /* Entfernt den Standardabstand von h2 */
-    }
+  .addContactText {
+    color: white;
+  }
 
-    .contacts-info-column {
-        display: flex;
-        flex-direction: column;
-        margin-left: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
-    }
+  .addContactButtonContainer {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: sticky;
+    bottom: 32px;
+    right: 32px;
+  }
 
-    .contact-card {
-        display: flex;     
-        padding: 10px;
-        text-align: center;
-        box-sizing: border-box;
-        text-decoration: none;
-        color: black;
-        background-color: white;
-    }   
+  .addContactButtonImage {
+    width: 352px;
+  }
 
-    .contact-card-Img-Container {
-        display: flex;
-        align-items: center; /* Zentriere das Bild vertikal im Container */
-    }
+  .letterAndContactsContainer {
+    display: flex;    
+    align-items: center;
+    margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
+    border-bottom: 2px solid #d1d1d1;
+    padding-bottom: 10px; /* Füget zusätzlichen Raum unterhalb des Strichs hinzu */
+  }
 
-    .contact-info-container {
-        flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
-    }
+  .oneContactContainer {
+    display: flex;
+    flex-direction: row;
+  }
 
-    .contactImg {
-        height: 25px;
-        width: 25px;
-    }
+  .letter-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriet die Buchstaben horizontal */
+    margin-right: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
+  }
+
+  .contact-first-letter {
+    margin: 0; /* Entfernt den Standardabstand von h2 */
+  }
+
+  .contacts-info-column {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
+  }
+
+  .contact-card {
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+  }
+
+  .contact-card-Img-Container {
+    display: flex;
+    align-items: center; /* Zentriere das Bild vertikal im Container */
+  }
+
+  .contact-info-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
+    margin-left: 3em 
+  }
+
+  .contactImg {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.justifyContentCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
 }
