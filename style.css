@@ -1,5 +1,5 @@
-
 @import url("./fonts.css");
+@import url("./assets/templates/screen1/screen1.css");
 @import url("./assets/templates/register/register.css");
 @import url("./assets/templates/login/login.css");
 @import url("./assets/templates/contacs/contacs.css");
@@ -28,13 +28,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/* Hat keinen effekt auf h1 und p */
-/* body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
 html {
   scroll-behavior: smooth;
 }
@@ -42,22 +35,6 @@ html {
 .dNone {
   display: none;
 }
-
-/* Chrome, Edge, and Safari
-*::-webkit-scrollbar {
-  width: 12px;
-}
-
-*::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--light-blue);
-  /* background-color: #29abe2; 
-  border-radius: 10px;
-  border: 2px solid #ffffff;
-} */
 
 .container {
   display: grid;

@@ -1,7 +1,7 @@
 async function init() {
   await includeHTML();
   await loadData();
-  includeContentHTML('Board');
+  includeContentHTML("Board");
 }
 
 async function includeHTML() {
@@ -26,41 +26,41 @@ async function includeHTML() {
 async function includeContentHTML(contentView) {
   let content = document.getElementById("content");
   content.innerHTML = "";
-    switch (contentView) {
-      case "Board":
-        var includedContent = await includeTemplate(
-          "./assets/templates/board/board_template.html"
-        );
-        content.innerHTML = includedContent;
-        boardInit();
-        break;
-  
-      case "Add Tasks":
-        var includedContent = await includeTemplate(
-          "./assets/templates/add_tasks/add_tasks_template.html"
-        );
-        content.innerHTML = includedContent;
-        await includeAddTaskFormTempalte();
-        initEventListener();
-        break;
-  
-      case "Contacts":
-        var includedContent = await includeTemplate(
-          "./assets/templates/contacs/contacts_template.html"
-        );
-        content.innerHTML = includedContent;
-        contactsInit();
-        break;
-  
-      case "Summary":
-        var includedContent = await includeTemplate(
-          "./assets/templates/summary/summary_template.html"
-        );
-        content.innerHTML = includedContent;
-        break;
-      default:
-        break;
-    }
+  switch (contentView) {
+    case "Board":
+      var includedContent = await includeTemplate(
+        "./assets/templates/board/board_template.html"
+      );
+      content.innerHTML = includedContent;
+      boardInit();
+      break;
+
+    case "Add Tasks":
+      var includedContent = await includeTemplate(
+        "./assets/templates/add_tasks/add_tasks_template.html"
+      );
+      content.innerHTML = includedContent;
+      await includeAddTaskFormTempalte();
+      initEventListener();
+      break;
+
+    case "Contacts":
+      var includedContent = await includeTemplate(
+        "./assets/templates/contacs/contacts_template.html"
+      );
+      content.innerHTML = includedContent;
+      contactsInit();
+      break;
+
+    case "Summary":
+      var includedContent = await includeTemplate(
+        "./assets/templates/summary/summary_template.html"
+      );
+      content.innerHTML = includedContent;
+      break;
+    default:
+      break;
+  }
 }
 
 /**
