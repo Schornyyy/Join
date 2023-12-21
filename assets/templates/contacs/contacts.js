@@ -23,7 +23,7 @@ function renderAddContactButton() {
     const content = document.getElementById("contactsContent");
     const addContactButtonContainer = document.createElement("div");
     addContactButtonContainer.classList.add("addContactButtonContainer");    
-    addContactButtonContainer.innerHTML = '<img src="../assets/img/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">';  // onclick-Funktion direkt im HTML-Code
+    addContactButtonContainer.innerHTML = '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">';  // onclick-Funktion direkt im HTML-Code
     content.appendChild(addContactButtonContainer);
 }
 
@@ -83,7 +83,7 @@ function addContactScreen() {
                         </div>
 
                         <div>
-                        <img src="../assets/img/addContactBlankUserImg.svg" alt="">
+                        <img src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
                         </div>
 
                         <form onsubmit="addContact()">
@@ -91,7 +91,7 @@ function addContactScreen() {
                                 <input class="addContactInputName" type="text" required placeholder="Name">
                                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
                                 <input class="addContactInputPhone" type="text" required placeholder="Phone">
-                                <img class="createContactButtonImg" src="../assets/img/createContactButton.svg" alt="" onclick="createContact()">
+                                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
                             <div>
                         </form>
                         `;
@@ -177,7 +177,7 @@ function renderAddContactButton() {
     const content = document.getElementById("contactsContent");
     const addContactButtonContainer = document.createElement("div");
     addContactButtonContainer.classList.add("addContactButtonContainer");    
-    addContactButtonContainer.innerHTML = '<img src="../assets/img/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">';  // onclick-Funktion direkt im HTML-Code
+    addContactButtonContainer.innerHTML = '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">';  // onclick-Funktion direkt im HTML-Code
     content.appendChild(addContactButtonContainer);
 }
 
@@ -235,23 +235,23 @@ function addContactScreen() {
     content.innerHTML = /*html*/`                        
                         <div class="addContactContainerHeader">
                             <div class="addContactCloseXContainer" onclick="contactsInit()">
-                                <img src="../assets/img/addContactCloseX.svg" alt="">
+                                <img src="../assets/img/contact/addContactCloseX.svg" alt="">
                             </div>
                             <div class="addContactBlockHeader">
                                 <p class="addContactH1">Add contact</p>
                                 <p class="addContactText">Tasks are better with a team!</p>
-                                <img class="addContactBlueStroked" src="../assets/img/addContactBlueStroked.svg" alt="">
+                                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
                             </div>
                         </div> 
                         <div class="addContactBlankUserImg">
-                            <img src="../assets/img/addContactBlankUserImg.svg" alt="">
+                            <img src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
                         </div>
                         <form onsubmit="createContact()">
                             <div class="addContactContainerFooter">
                                 <input class="addContactInputName" type="text" required placeholder="Name"> 
                                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
                                 <input class="addContactInputPhone" type="text" required placeholder="Phone">
-                                <img class="createContactButtonImg" src="../assets/img/createContactButton.svg" alt="" onclick="createContact()">
+                                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
                             </div>
                         </form>
                         `;
@@ -305,15 +305,15 @@ function editContactScreen(contactId) {
     content.innerHTML = /*html*/`
         <div class="addContactContainerHeader">
                             <div class="addContactCloseXContainer" onclick="contactsInit()">
-                                <img src="../assets/img/addContactCloseX.svg" alt="">
+                                <img src="../assets/img/contact/addContactCloseX.svg" alt="">
                             </div>
                             <div class="addContactBlockHeader">
                                 <p class="addContactH1">Edit contact</p>                                
-                                <img class="addContactBlueStroked" src="../assets/img/addContactBlueStroked.svg" alt="">
+                                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
                             </div>
                         </div>
                         <div class="addContactBlankUserImg">
-                            <img src="../assets/img/antonMayer.svg" alt="">
+                            <img src="../assets/img/contact/antonMayer.svg" alt="">
                         </div>
         <form onsubmit="updateContact(${selectedContact.id})">
             <div class="addContactContainerFooter">
@@ -321,8 +321,8 @@ function editContactScreen(contactId) {
                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
                 <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div>
-                    <img class="createContactButtonImg" src="../assets/img/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
-                    <img class="createContactButtonImg" src="../assets/img/editContactSaveButtonImg.svg" alt="" onclick="saveContact(${selectedContact.id})">
+                    <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
+                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="saveContact(${selectedContact.id})">
                 </div>
                 
             </div>

@@ -46,7 +46,7 @@
   .addContactInputName {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
-    background-image: url("../../img/addContactUserNameImg.svg");
+    background-image: url("../../img/contact/addContactUserNameImg.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
@@ -58,7 +58,7 @@
   .addContactInputMailAddresss {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
-    background-image: url("../../img/addContactmailIcon.svg");
+    background-image: url("../../img/contact/addContactmailIcon.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
@@ -70,7 +70,7 @@
   .addContactInputPhone {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
-    background-image: url("../../img/addContactPhoneIcon.svg");
+    background-image: url("../../img/contact/addContactPhoneIcon.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
