@@ -158,8 +158,20 @@ async function saveContactsData(data) {
     } catch (error) {
         console.error('Fehler beim Speichern der Kontakte:', error);        
     }
+}
 
-
+async function contactsInit() {        
+    try {
+        console.log("Vor dem Kontakt Laden");
+        contactsData = await fetchContactsData();
+        console.log("Nach dem Kontakt Laden");               
+        renderContacts();
+        renderAddContactButton();
+    } catch (error) {
+        console.error("Fehler beim Initialisieren der Kontakte:", error);
+    }    
+    showHeaderAndFooter();
+}
 
 function renderAddContactButton() {
     const content = document.getElementById("contactsContent");
@@ -341,10 +353,10 @@ function updateContact(contactId) {
     renderContacts();  // Zurück zur Kontaktliste wechseln
 }
 
-function deleteContact(selectedContactID) {
-    pass
-}
+// function deleteContact(selectedContactID) {
+    // Muss noch defeniert werden
+//}
 
-function saveContact(selectedContactID) {
-    pass
-}
+// function saveContact(selectedContactID) {
+    // Muss noch defeniert werden
+//}v
