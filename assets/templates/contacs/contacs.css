@@ -1,3 +1,135 @@
+<<<<<<< HEAD
+@media only screen and (max-width: 750px) and (min-width: 350px) { 
+    .contactsContent {
+        display: flex;
+        flex-direction: column;
+        background-color: white;        
+    }
+
+    .addContactContainerHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 50vh;
+        background-color: var(--light-grey);
+    }
+
+    .addContactContainerFooter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 50vh;
+        background-color: white;
+        gap: 20px;
+    }
+
+    .addContactInputName {
+        border-radius: 5px;
+        width: 20em;
+        height: 2em;
+        background-image: url("./assets/img/addContactUserNameImg.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        flex-shrink: 0        
+    }
+
+    .addContactInputMailAddresss {
+        border-radius: 5px;
+        width: 20em;
+        height: 2em;
+    }
+
+    .addContactInputPhone {
+        border-radius: 5px;
+        width: 20em;
+        height: 2em;
+    }
+
+    .addContactImage {
+        pointer-events: visible!important; /* Wichtig um die onklick Funktion ausführen zu können */
+    }
+
+    .createContactButtonImg {
+        height: 51px;
+    }
+
+    .addContactH1 {
+        color: white;
+        font-size: 3rem;
+    }
+
+    .addContactText {
+        color: white;
+    }
+
+    .addContactButtonContainer {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+    }
+
+    .addContactButtonImage {
+        width: 352px;
+    }
+
+    .letterAndContactsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
+        border-bottom: 2px solid #D1D1D1;
+        padding-bottom: 10px; /* Füget zusätzlichen Raum unterhalb des Strichs hinzu */
+    }
+    
+    .oneContactContainer {
+        display: flex;
+        flex-direction: row;        
+    }
+
+    .letter-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Zentriet die Buchstaben horizontal */
+        margin-right: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
+    }
+
+    .contact-first-letter {
+        margin: 0; /* Entfernt den Standardabstand von h2 */
+    }
+
+    .contacts-info-column {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
+    }
+
+    .contact-card {
+        display: flex;     
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+    }   
+
+    .contact-card-Img-Container {
+        display: flex;
+        align-items: center; /* Zentriere das Bild vertikal im Container */
+    }
+
+    .contact-info-container {
+        flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
+    }
+
+    .contactImg {
+        height: 25px;
+        width: 25px;
+    }
+}
+=======
 @media only screen and (max-width: 750px) and (min-width: 350px) {
   .contactsContent {
     display: flex;
@@ -189,3 +321,4 @@
   align-items: center;
   margin-bottom: 1em;
 }
+>>>>>>> 670ab22a6f30f56b4bfb02069a78faa9fa7bcbf5

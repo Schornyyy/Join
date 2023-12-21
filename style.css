@@ -1,3 +1,244 @@
+<<<<<<< HEAD
+@import url("./fonts.css");
+@import url("./assets/templates/register/register.css");
+@import url("./assets/templates/login/login.css");
+@import url("./assets/templates/contacs/contacs.css");
+@import url("./assets/templates/add_tasks/add_tasks.css");
+@import url("./assets/templates/board/board.css");
+@import url("./assets/templates/summary/summary.css");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@400;500&display=swap");
+
+:root {
+  --lighter-grey: #d1d1d1;
+  --light-grey: #2a3647;
+  --light-blue: #29abe2;
+  --background-color: #fff;
+  --dark-blue: #091931;
+  --organe: #ff3d00;
+  --yellow: #ffa800;
+  --pink: #fc71ff;
+  --mint-green: #1fd7c1;
+  --white-grey: #f6f7f8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* Hat keinen effekt auf h1 und p */
+/* body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dNone {
+  display: none;
+}
+
+/* Chrome, Edge, and Safari
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--light-blue);
+  /* background-color: #29abe2; 
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+} */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(100px);
+  grid-template-rows: max-content;
+  height: 100vh;
+  width: 100%;
+}
+
+.menuTemplate {
+  background-color: var(--light-grey);
+}
+
+/*  Mobile Responsive */
+@media only screen and (max-width: 750px) and (min-width: 250px) {
+  /*  main div in Body */
+
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    height: 4rem;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  .boxShadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .logoImgContainer {
+    width: 100%;
+  }
+
+  .logoImg {
+    width: 2.5rem;
+    height: 2rem;
+  }
+
+  .signUpContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none; /*Is ON for Design!*/
+  }
+
+  .signUpParagraph {
+    width: 120px;
+  }
+
+  .sign_up_Button {
+    background-color: var(--light-grey);
+    color: white;
+    border-radius: 8px;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    width: 70px;
+    height: 35px;
+  }
+
+  .userSymbolContainer {
+    display: flex;
+    /* display: none; Is ON for Design! */
+  }
+
+  .userLogoImg {
+    width: 110px;
+    height: 40px;
+  }
+
+  .menuTemplate {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-item {
+    padding: 0.5rem 0px;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-item:hover {
+    background-color: var(--dark-blue);
+  }
+
+  .menu-item p {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    color: var(--lighter-grey);
+    font-size: 14;
+    margin-top: 5px;
+  }
+
+  h1 {
+    font-size: large;
+  }
+}
+
+/*  Desktop Responsive */
+@media only screen and (min-width: 751px) {
+  .container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "eins zwei zwei"
+      "eins drei drei";
+    grid-template-columns: 200px;
+    height: 100vh;
+  }
+
+  .menuTemplate {
+    grid-area: eins;
+    position: sticky;
+    height: 100vh;
+  }
+
+  .headerTemplate {
+    grid-area: zwei;
+  }
+
+  .logoImgContainer {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 20px 40px;
+  }
+
+  .userSymbolContainer {
+    margin-left: 16px;
+  }
+
+  .menuTemplate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .menu-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .menu-item img {
+    margin-right: 16px;
+  }
+
+  .menu-item p {
+    width: 80px;
+    color: var(--white-grey);
+  }
+  .content {
+    grid-area: drei;
+  }
+}
+=======
 @import url("./fonts.css");
 @import url("./assets/templates/register/register.css");
 @import url("./assets/templates/login/login.css");
@@ -238,3 +479,4 @@ html {
     grid-area: drei;
   }
 }
+>>>>>>> 670ab22a6f30f56b4bfb02069a78faa9fa7bcbf5

@@ -15,7 +15,7 @@ async function includeAddTaskFormTempalte() {
  * @param {3 Mögliche stufen} prioElement - Kann sein <prio-urgent | prio-medium | prio-low>
  */
 function clickedPrio(prioElement) {
-  selectedPrio = prioElement; // Global setzen wirklich nötig?
+  selectedPrio = prioElement;
   let prios = document.querySelectorAll("[data-prio]"); // Als Gruppierte Datas (NodeListOf<Element>) -> als ein Array.
   prios.forEach((p) => {
     // Die Prios weiter in der Arraw function als ein Paramter, mit dem Wert: Element.
