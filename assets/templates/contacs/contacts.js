@@ -34,8 +34,9 @@ function handleAddContactClick() {  // Diese Funktion wird direkt im HTML-Code a
 async function fetchContactsData() {
     try {
         const response = await fetch("../assets/templates/contacs/allContacts.json");
-        const data = await response.json();        
-        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));  // Sortiert die Kontakte nach dem Namen
+        let data = await response.json();        
+        data = data.map((contact, index) => ({ ...contact, id: index + 1 }));  // Fügt eine eindeutige ID zu jedem Kontakt hinzu
+        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
     } catch (error) {
         console.error("Fehler beim Laden der Kontakte:", error);
         throw error;
@@ -45,12 +46,9 @@ async function fetchContactsData() {
 function renderContacts() {
     const content = document.getElementById("contactsContent");
     content.innerHTML = "";
-
     const contactsByFirstLetter = {};
-
-    contactsData.forEach(oneContact => {
+    contactsData.forEach(oneContact => {  // Hier werden die Kontakte Jeweils erstellt und den Buchstaben zugeordnet
         const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
-
         if (!contactsByFirstLetter[firstLetter]) {
             contactsByFirstLetter[firstLetter] = /*html*/`
                 <div class="letterAndContactsContainer">
@@ -60,9 +58,8 @@ function renderContacts() {
                 </div>
             `;
         }
-
         const oneContactContainer = /*html*/`
-            <div class="justifyContentCenter">
+            <div class="justifyContentCenter" onclick="editContactScreen(${oneContact.id})">
                 <div>
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
@@ -72,10 +69,8 @@ function renderContacts() {
                 </div>
             </div>
         `;
-
         contactsByFirstLetter[firstLetter] += oneContactContainer;
     });
-
     Object.values(contactsByFirstLetter).forEach(section => {
         content.innerHTML += section;
     });
@@ -93,8 +88,7 @@ function addContactScreen() {
                                 <p class="addContactText">Tasks are better with a team!</p>
                                 <img class="addContactBlueStroked" src="../assets/img/addContactBlueStroked.svg" alt="">
                             </div>
-                        </div>                        
-
+                        </div> 
                         <div class="addContactBlankUserImg">
                             <img src="../assets/img/addContactBlankUserImg.svg" alt="">
                         </div>
@@ -128,38 +122,88 @@ function showHeaderAndFooter() {
 function createContact() {
     const nameInput = document.querySelector('.addContactInputName');
     const mailInput = document.querySelector('.addContactInputMailAddresss');
-    const phoneInput = document.querySelector('.addContactInputPhone');
-
-    // Daten aus den Input-Feldern lesen
-    const newName = nameInput.value.trim();
+    const phoneInput = document.querySelector('.addContactInputPhone');    
+    const newName = nameInput.value.trim();  // Daten aus den Input-Feldern lesen
     const newMail = mailInput.value.trim();
-    const newPhone = phoneInput.value.trim();
-
-    // Überprüfen, ob alle Felder ausgefüllt sind
-    if (newName === '' || newMail === '' || newPhone === '') {
+    const newPhone = phoneInput.value.trim();    
+    if (newName === '' || newMail === '' || newPhone === '') {  // Überprüfen, ob alle Felder ausgefüllt sind
         alert('Bitte füllen Sie alle Felder aus.');
         return;
-    }
-
-    // Neuen Kontakt erstellen
-    const newContact = {
+    }   
+    const newContact = {   // Neuen Kontakt erstellen
         contactName: newName,
         contactMailAdress: newMail,
         contactPhone: newPhone,        
-    };
-
-    // Daten zum JSON-Array hinzufügen
-    contactsData.push(newContact);
-
-    // JSON-Array speichern (z.B. auf dem Server)
-    saveContactsData(newContact);
-
-    // Zurück zur Kontaktliste wechseln
-    renderContacts();
+    };    
+    contactsData.push(newContact);  // Daten zum JSON-Array hinzufügen    
+    saveContactsData(newContact);  // JSON-Array speichern (z.B. auf dem Server)    
+    renderContacts();  // Zurück zur Kontaktliste wechseln
 }
 
 async function saveContactsData(data) {
     let contact = new Contact(data.contactName, data.contactMailAdress, data.contactPhone)
     contacts.push(contact);
     saveContacts()
+}
+
+function editContactScreen(contactId) {
+    const content = document.getElementById("contactsContent");    
+    const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID
+    content.innerHTML = /*html*/`
+        <div class="addContactContainerHeader">
+                            <div class="addContactCloseXContainer" onclick="contactsInit()">
+                                <img src="../assets/img/addContactCloseX.svg" alt="">
+                            </div>
+                            <div class="addContactBlockHeader">
+                                <p class="addContactH1">Edit contact</p>                                
+                                <img class="addContactBlueStroked" src="../assets/img/addContactBlueStroked.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="addContactBlankUserImg">
+                            <img src="../assets/img/antonMayer.svg" alt="">
+                        </div>
+        <form onsubmit="updateContact(${selectedContact.id})">
+            <div class="addContactContainerFooter">
+                <input class="addContactInputName" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
+                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
+                <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
+                <div>
+                    <img class="createContactButtonImg" src="../assets/img/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
+                    <img class="createContactButtonImg" src="../assets/img/editContactSaveButtonImg.svg" alt="" onclick="saveContact(${selectedContact.id})">
+                </div>
+                
+            </div>
+        </form>
+    `;
+    hideHeaderAndFooter();
+}
+
+function updateContact(contactId) {
+    const nameInput = document.querySelector('.addContactInputName');
+    const mailInput = document.querySelector('.addContactInputMailAddresss');
+    const phoneInput = document.querySelector('.addContactInputPhone');    
+    const updatedName = nameInput.value.trim();  // Daten aus den Input-Feldern lesen
+    const updatedMail = mailInput.value.trim();
+    const updatedPhone = phoneInput.value.trim();    
+    if (updatedName === '' || updatedMail === '' || updatedPhone === '') {  // Überprüfen, ob alle Felder ausgefüllt sind
+        alert('Bitte füllen Sie alle Felder aus.');
+        return;
+    }    
+    const updatedContactIndex = contactsData.findIndex(contact => contact.id === contactId);  // Aktualisiere den Kontakt in der Datenquelle
+    contactsData[updatedContactIndex] = {
+        ...contactsData[updatedContactIndex],
+        contactName: updatedName,
+        contactMailAdress: updatedMail,
+        contactPhone: updatedPhone,
+    };    
+    saveContactsData(contactsData[updatedContactIndex]);  // JSON-Array speichern (z.B. auf dem Server)    
+    renderContacts();  // Zurück zur Kontaktliste wechseln
+}
+
+function deleteContact(selectedContactID) {
+    // Muss noch defeniert werden
+}
+
+function saveContact(selectedContactID) {
+    // Muss noch defeniert werden
 }

@@ -2,42 +2,50 @@
     {
         "contactName": "Anton Mayer",
         "contactMailAdress": "antonm@gmail.com",
-        "contactImg": "../assets/img/antonMayer.svg"
+        "contactImg": "../assets/img/antonMayer.svg",
+        "contactPhone": "+49 1111 111 11 1"
     },
     {
         "contactName": "Anja Schulz",
         "contactMailAdress": "schulz@hotmail.com",
-        "contactImg": "../assets/img/anjaSchulz.svg"
+        "contactImg": "../assets/img/anjaSchulz.svg",
+        "contactPhone": "+49 2222 222 22 2"
     },
     {
         "contactName": "Benedikt Ziegler",
         "contactMailAdress": "benedikt@gmail.com",
-        "contactImg": "../assets/img/benediktZiegler.svg"
+        "contactImg": "../assets/img/benediktZiegler.svg",
+        "contactPhone": "+49 3333 333 33 3"
     },
     {
         "contactName": "David Eisenberg",
         "contactMailAdress": "davidberg@gmail.com",
-        "contactImg": "../assets/img/davidEisenberg.svg"
+        "contactImg": "../assets/img/davidEisenberg.svg",
+        "contactPhone": "+49 4444 444 44 4"
     },
     {
         "contactName": "Eva Fischer",
         "contactMailAdress": "eva@gmail.com",
-        "contactImg": "../assets/img/evaFischer.svg"
+        "contactImg": "../assets/img/evaFischer.svg",
+        "contactPhone": "+49 5555 555 55 5"
     },
     {
         "contactName": "Emmanuel Mauer",
         "contactMailAdress": "emmanuelma@gmail.com",
-        "contactImg": "../assets/img/emmanuelMauer.svg"
+        "contactImg": "../assets/img/emmanuelMauer.svg",
+        "contactPhone": "+49 6666 666 66 6"
     },
     {
         "contactName": "Marcel Bauer",
         "contactMailAdress": "bauer@gmail.com",
-        "contactImg": "../assets/img/marcelBauer.svg"
+        "contactImg": "../assets/img/marcelBauer.svg",
+        "contactPhone": "+49 7777 777 77 7"
     },
     {
         "contactName": "Tatjana Wolf",
         "contactMailAdress": "wolf@gmail.com",
-        "contactImg": "../assets/img/tatjanaWolf.svg"
+        "contactImg": "../assets/img/tatjanaWolf.svg",
+        "contactPhone": "+49 8888 888 88 8"
     }
     
 ]
