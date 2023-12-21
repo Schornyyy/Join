@@ -159,18 +159,7 @@ async function saveContactsData(data) {
         console.error('Fehler beim Speichern der Kontakte:', error);        
     }
 
-async function contactsInit() {        
-    try {
-        console.log("Vor dem Kontakt Laden");
-        contactsData = await fetchContactsData();
-        console.log("Nach dem Kontakt Laden");               
-        renderContacts();
-        renderAddContactButton();
-    } catch (error) {
-        console.error("Fehler beim Initialisieren der Kontakte:", error);
-    }    
-    showHeaderAndFooter();
-}
+
 
 function renderAddContactButton() {
     const content = document.getElementById("contactsContent");
@@ -353,9 +342,9 @@ function updateContact(contactId) {
 }
 
 function deleteContact(selectedContactID) {
-    // Muss noch defeniert werden
+    pass
 }
 
 function saveContact(selectedContactID) {
-    // Muss noch defeniert werden
+    pass
 }
