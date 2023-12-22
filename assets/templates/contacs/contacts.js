@@ -245,7 +245,7 @@ function updateContact(contactId) {
 
 function openContactScreen(contactId) {    
     const content = document.getElementById("content");    
-    content.style.height = "fit-content";    
+    //content.style.height = "fit-content";    
     const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID
     content.innerHTML = /*html*/`
         <div class="openContactContainerHeader">
