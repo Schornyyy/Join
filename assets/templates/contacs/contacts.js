@@ -34,8 +34,9 @@ function handleAddContactClick() {  // Diese Funktion wird direkt im HTML-Code a
 async function fetchContactsData() {
     try {
         const response = await fetch("../assets/templates/contacs/allContacts.json");
-        const data = await response.json();        
-        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));  // Sortiert die Kontakte nach dem Namen
+        let data = await response.json();       
+        data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Füge eine eindeutige ID zu jedem Kontakt hinzu
+        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
     } catch (error) {
         console.error("Fehler beim Laden der Kontakte:", error);
         throw error;
@@ -46,8 +47,10 @@ function renderContacts() {
     const content = document.getElementById("contactsContent");
     content.innerHTML = "";
     const contactsByFirstLetter = {};
-    contactsData.forEach(oneContact => {  // Hier werden die Kontakte Jeweils erstellt und den Buchstaben zugeordnet
+
+    contactsData.forEach(oneContact => {
         const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
+
         if (!contactsByFirstLetter[firstLetter]) {
             contactsByFirstLetter[firstLetter] = /*html*/`
                 <div class="letterAndContactsContainer">
@@ -57,8 +60,9 @@ function renderContacts() {
                 </div>
             `;
         }
+
         const oneContactContainer = /*html*/`
-            <div class="justifyContentCenter" onclick="openContactScreen()">
+            <div class="justifyContentCenter" onclick="openContactScreen(${oneContact.id})">
                 <div>
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
@@ -68,8 +72,10 @@ function renderContacts() {
                 </div>
             </div>
         `;
+
         contactsByFirstLetter[firstLetter] += oneContactContainer;
     });
+
     Object.values(contactsByFirstLetter).forEach(section => {
         content.innerHTML += section;
     });
@@ -238,13 +244,13 @@ function updateContact(contactId) {
 //}
 
 function openContactScreen(contactId) {    
-    const content = document.getElementById("content");
+    const content = document.getElementById("content");    
     content.style.height = "fit-content";    
     const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID
     content.innerHTML = /*html*/`
         <div class="openContactContainerHeader">
-            <div class="addContactCloseXContainer" onclick="contactsInit()">
-                <img src="../assets/img/contact/addContactCloseX.svg" alt="">
+            <div class="openContactCloseXContainer" onclick="contactsInit()">
+                <img src="../assets/img/contact/arrow-left-line.svg" alt="">
             </div>
             <div class="addContactBlockHeader">
                 <p class="openContactH1">Contacts</p>
@@ -258,16 +264,8 @@ function openContactScreen(contactId) {
             </div>
         </div>
     `;
-    showHeaderAndFooter();
-   // containerHeightOFF();
+    showHeaderAndFooter();   
 }
-
-function containerHeightOFF() {
-    const container = document.querySelector(".container");
-    container.style.height = "auto";
-}
-
-
 
 
 

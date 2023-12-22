@@ -190,11 +190,11 @@
 }
 
 .openContactContainerHeader {
-  display: flex;  
-  align-items: center;
+  display: flex;
   flex-direction: column;  
   background-color: var(--white-grey);
   height: 85vh;
+  margin-top: 2em;
 }
 
 .openContactH1 {
@@ -209,4 +209,11 @@
 .openContactContentContainer {
   display: flex;
   flex-direction: column;
+  margin-top: 2em;
+}
+
+.openContactCloseXContainer {
+  position: fixed;
+  top: 6em;
+  right: 1em;
 }
