@@ -188,3 +188,25 @@
   align-items: center;
   margin-bottom: 1em;
 }
+
+.openContactContainerHeader {
+  display: flex;  
+  align-items: center;
+  flex-direction: column;  
+  background-color: var(--white-grey);
+  height: 85vh;
+}
+
+.openContactH1 {
+  color: black;
+  font-size: 3rem;
+}
+
+.openContactText {
+  color: black;
+}
+
+.openContactContentContainer {
+  display: flex;
+  flex-direction: column;
+}
