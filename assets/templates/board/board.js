@@ -558,6 +558,26 @@ function editSaveTask(taskID) {
 
 
 
+///////////////////////////////////////////////
+//////////////// DRAG AND DROP ////////////////
+///////////////////////////////////////////////
+
+function initDragAndDrop() {
+
+}
+
+function addDragstartHandler() {
+
+}
+
+function dragstartHandler(event) {
+
+}
+
+
+
+
+
 
 
 

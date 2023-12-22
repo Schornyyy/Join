@@ -1,7 +1,6 @@
 async function init() {
   await includeHTML();
   await loadData();
-  includeContentHTML("Board");
 }
 
 async function includeHTML() {
