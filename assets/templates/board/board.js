@@ -1,3 +1,20 @@
+/*
+    -----TABLE OF CONTENTS-----
+    1. INIT
+    2. RENDER
+    3. GETTER
+    4. TO HTML
+    5. MISC
+    ------DIALOG DETAIL------
+    6. SHOW HIDE DETAIL
+    7. RENDER DETAIL DIALOG
+    ------DIALOG EDIT------
+    8. SHOW HIDE EDIT
+    9. RENDER EDIT DIALOG
+*/
+
+
+
 let urlPrefix = './assets';
 let tasksDatasource;
 let subtasksDatasource;
@@ -116,7 +133,7 @@ function singleTaskToHTML(task) {
 }
 
 function getCategoryClass(task) {
-    // CSS Klasse für Kagegorie von Aufgabe bekommen
+    // CSS Klasse für Kategorie von Aufgabe bekommen
     return 'category-user-story';
 }
 
@@ -187,10 +204,43 @@ function hideDialog() {
     let dialogContainer = document.getElementById('dialogContainer');
     dialogContainer.classList.add('reini-d-none');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////
 //////////////// DIALOG DETAIL ////////////////
 ///////////////////////////////////////////////
 
+//////////////// SHOW HIDE DETAIL
+
+function showDialogContainer() {
+    let dialogContainer = document.getElementById('dialogContainer');
+    dialogContainer.classList.remove('reini-d-none');
+}
+
+function showDialogDetail(taskID) {
+    let detailDialog = document.getElementById('detailDialog');
+    let editDialog = document.getElementById('editDialog');
+    showDialogContainer();
+    detailDialog.classList.remove('reini-d-none');
+    editDialog.classList.add('reini-d-none');
+
+    let task = tasksDatasource.find(taskElem => taskElem.id==taskID);
+    detailDialog.innerHTML = detailDialogToHTML(task);
+}
 
 //////////////// RENDER DETAIL DIALOG
 
@@ -283,23 +333,13 @@ function getSubtaskCheckboxIconURL(subtask) {
 }
 
 
-//////////////// SHOW HIDE
 
-function showDialogContainer() {
-    let dialogContainer = document.getElementById('dialogContainer');
-    dialogContainer.classList.remove('reini-d-none');
-}
 
-function showDialogDetail(taskID) {
-    let detailDialog = document.getElementById('detailDialog');
-    let editDialog = document.getElementById('editDialog');
-    showDialogContainer();
-    detailDialog.classList.remove('reini-d-none');
-    editDialog.classList.add('reini-d-none');
 
-    let task = tasksDatasource.find(taskElem => taskElem.id==taskID);
-    detailDialog.innerHTML = detailDialogToHTML(task);
-}
+
+
+
+
 
 
 
@@ -312,7 +352,7 @@ function showDialogDetail(taskID) {
 
 let prioNew;
 
-//////////////// SHOW HIDE
+//////////////// SHOW HIDE EDIT
 
 function showDialogEdit(taskID) {
     let detailDialog = document.getElementById('detailDialog');
