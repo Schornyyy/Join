@@ -79,6 +79,7 @@ async function loadUsers() {
     } else {
         users = JSON.parse(usersResp.data.value);
     }
+    console.log(users);
  }
 
 /**
