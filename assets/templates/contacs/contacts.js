@@ -34,8 +34,9 @@ function handleAddContactClick() {  // Diese Funktion wird direkt im HTML-Code a
 async function fetchContactsData() {
     try {
         const response = await fetch("../assets/templates/contacs/allContacts.json");
-        const data = await response.json();        
-        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));  // Sortiert die Kontakte nach dem Namen
+        let data = await response.json();       
+        data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Füge eine eindeutige ID zu jedem Kontakt hinzu
+        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
     } catch (error) {
         console.error("Fehler beim Laden der Kontakte:", error);
         throw error;
@@ -46,8 +47,10 @@ function renderContacts() {
     const content = document.getElementById("contactsContent");
     content.innerHTML = "";
     const contactsByFirstLetter = {};
-    contactsData.forEach(oneContact => {  // Hier werden die Kontakte Jeweils erstellt und den Buchstaben zugeordnet
+
+    contactsData.forEach(oneContact => {
         const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
+
         if (!contactsByFirstLetter[firstLetter]) {
             contactsByFirstLetter[firstLetter] = /*html*/`
                 <div class="letterAndContactsContainer">
@@ -57,8 +60,9 @@ function renderContacts() {
                 </div>
             `;
         }
+
         const oneContactContainer = /*html*/`
-            <div class="justifyContentCenter" onclick="editContactScreen(${oneContact.id})">
+            <div class="justifyContentCenter" onclick="openContactScreen(${oneContact.id})">
                 <div>
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
@@ -68,8 +72,10 @@ function renderContacts() {
                 </div>
             </div>
         `;
+
         contactsByFirstLetter[firstLetter] += oneContactContainer;
     });
+
     Object.values(contactsByFirstLetter).forEach(section => {
         content.innerHTML += section;
     });
@@ -77,16 +83,24 @@ function renderContacts() {
 
 function addContactScreen() {
     const content = document.getElementById("contactsContent");
-    content.innerHTML = `<div class="addContactContainerHeader">
-                            <h1 class="addContactH1">Add contact</h1>
-                            <p class="addContactText">Tasks are better with a team!</p>
+    content.innerHTML = /*html*/ `
+                            <div class="addContactContainerHeader">
+                                <div class="addContactCloseXContainer" onclick="contactsInit()">
+                                    <img src="../assets/img/contact/addContactCloseX.svg" alt="">
+                                </div>
+
+                            <div class="addContactBlockHeader">
+                                <p class="addContactH1">Add contact</p>
+                                <p class="addContactText">Tasks are better with a team!</p>
+                                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+                            </div>
+
+                            <div>
+                                <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
+                            </div>
                         </div>
 
-                        <div>
-                        <img src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
-                        </div>
-
-                        <form onsubmit="addContact()">
+                        <form onsubmit="createContact()">
                             <div class="addContactContainerFooter">
                                 <input class="addContactInputName" type="text" required placeholder="Name">
                                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
@@ -103,6 +117,13 @@ function hideHeaderAndFooter() {
     const menuTemplate = document.querySelector(".menuTemplate");
         mobileHeader.style.display = "none";
         menuTemplate.style.display = "none";
+}
+
+function showHeaderAndFooter() {
+    const mobileHeader = document.getElementById("headerTemplate");  // Verstecke mobileHeader und menuTemplate
+    const menuTemplate = document.getElementById("menuTemplate");
+        mobileHeader.style.display = "block";
+        menuTemplate.style.display = "block";
 }
 
 function createContact() {
@@ -158,145 +179,6 @@ async function saveContactsData(data) {
     } catch (error) {
         console.error('Fehler beim Speichern der Kontakte:', error);        
     }
-}
-
-async function contactsInit() {        
-    try {
-        console.log("Vor dem Kontakt Laden");
-        contactsData = await fetchContactsData();
-        console.log("Nach dem Kontakt Laden");               
-        renderContacts();
-        renderAddContactButton();
-    } catch (error) {
-        console.error("Fehler beim Initialisieren der Kontakte:", error);
-    }    
-    showHeaderAndFooter();
-}
-
-function renderAddContactButton() {
-    const content = document.getElementById("contactsContent");
-    const addContactButtonContainer = document.createElement("div");
-    addContactButtonContainer.classList.add("addContactButtonContainer");    
-    addContactButtonContainer.innerHTML = '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">';  // onclick-Funktion direkt im HTML-Code
-    content.appendChild(addContactButtonContainer);
-}
-
-function handleAddContactClick() {  // Diese Funktion wird direkt im HTML-Code aufgerufen
-    addContactScreen();
-}
-
-async function fetchContactsData() {
-    try {
-        const response = await fetch("../assets/templates/contacs/allContacts.json");
-        let data = await response.json();        
-        data = data.map((contact, index) => ({ ...contact, id: index + 1 }));  // Fügt eine eindeutige ID zu jedem Kontakt hinzu
-        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
-    } catch (error) {
-        console.error("Fehler beim Laden der Kontakte:", error);
-        throw error;
-    }
-}
-
-function renderContacts() {
-    const content = document.getElementById("contactsContent");
-    content.innerHTML = "";
-    const contactsByFirstLetter = {};
-    contactsData.forEach(oneContact => {  // Hier werden die Kontakte Jeweils erstellt und den Buchstaben zugeordnet
-        const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
-        if (!contactsByFirstLetter[firstLetter]) {
-            contactsByFirstLetter[firstLetter] = /*html*/`
-                <div class="letterAndContactsContainer">
-                    <div class="letter-column">
-                        <h2 class="contact-first-letter">${firstLetter}</h2>
-                    </div>
-                </div>
-            `;
-        }
-        const oneContactContainer = /*html*/`
-            <div class="justifyContentCenter" onclick="editContactScreen(${oneContact.id})">
-                <div>
-                    <img src="${oneContact.contactImg}" class="contactImg">
-                </div>
-                <div class="contact-info-container">
-                    <h2>${oneContact.contactName}</h2>
-                    <a>${oneContact.contactMailAdress}</a>
-                </div>
-            </div>
-        `;
-        contactsByFirstLetter[firstLetter] += oneContactContainer;
-    });
-    Object.values(contactsByFirstLetter).forEach(section => {
-        content.innerHTML += section;
-    });
-}
-
-function addContactScreen() {
-    const content = document.getElementById("contactsContent");
-    content.innerHTML = /*html*/`                        
-                        <div class="addContactContainerHeader">
-                            <div class="addContactCloseXContainer" onclick="contactsInit()">
-                                <img src="../assets/img/contact/addContactCloseX.svg" alt="">
-                            </div>
-                            <div class="addContactBlockHeader">
-                                <p class="addContactH1">Add contact</p>
-                                <p class="addContactText">Tasks are better with a team!</p>
-                                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
-                            </div>
-                        </div> 
-                        <div class="addContactBlankUserImg">
-                            <img src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
-                        </div>
-                        <form onsubmit="createContact()">
-                            <div class="addContactContainerFooter">
-                                <input class="addContactInputName" type="text" required placeholder="Name"> 
-                                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
-                                <input class="addContactInputPhone" type="text" required placeholder="Phone">
-                                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
-                            </div>
-                        </form>
-                        `;
-    hideHeaderAndFooter();
-}
-
-function hideHeaderAndFooter() {    
-    const mobileHeader = document.getElementById("headerTemplate");  // Verstecke mobileHeader und menuTemplate
-    const menuTemplate = document.getElementById("menuTemplate");
-        mobileHeader.style.display = "none";
-        menuTemplate.style.display = "none";
-}
-
-function showHeaderAndFooter() {
-    const mobileHeader = document.getElementById("headerTemplate");  // Verstecke mobileHeader und menuTemplate
-    const menuTemplate = document.getElementById("menuTemplate");
-        mobileHeader.style.display = "block";
-        menuTemplate.style.display = "block";
-}
-
-function createContact() {
-    const nameInput = document.querySelector('.addContactInputName');
-    const mailInput = document.querySelector('.addContactInputMailAddresss');
-    const phoneInput = document.querySelector('.addContactInputPhone');    
-    const newName = nameInput.value.trim();  // Daten aus den Input-Feldern lesen
-    const newMail = mailInput.value.trim();
-    const newPhone = phoneInput.value.trim();    
-    if (newName === '' || newMail === '' || newPhone === '') {  // Überprüfen, ob alle Felder ausgefüllt sind
-        alert('Bitte füllen Sie alle Felder aus.');
-        return;
-    }   
-    const newContact = {   // Neuen Kontakt erstellen
-        contactName: newName,
-        contactMailAdress: newMail,
-        contactPhone: newPhone,        
-    };    
-    contactsData.push(newContact);  // Daten zum JSON-Array hinzufügen    
-    saveContactsData(newContact);  // JSON-Array speichern (z.B. auf dem Server)    
-    renderContacts();  // Zurück zur Kontaktliste wechseln
-}
-
-async function saveContactsData(data) {
-    let contact = new Contact(data.contactName, data.contactMailAdress, data.contactPhone)
-    contacts.push(contact);
-    saveContacts();
 }
 
 function editContactScreen(contactId) {
@@ -359,4 +241,58 @@ function updateContact(contactId) {
 
 // function saveContact(selectedContactID) {
     // Muss noch defeniert werden
-//}v
+//}
+
+function openContactScreen(contactId) {    
+    const content = document.getElementById("content");    
+    //content.style.height = "fit-content";    
+    const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID
+    content.innerHTML = /*html*/`
+        <div class="openContactContainerHeader">
+            <div class="openContactCloseXContainer" onclick="contactsInit()">
+                <img src="../assets/img/contact/arrow-left-line.svg" alt="">
+            </div>
+            <div class="addContactBlockHeader">
+                <p class="openContactH1">Contacts</p>
+                <p class="openContactText">Better with a team!</p>                               
+                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+            </div>
+            <div class="openContactContentContainer">
+                <input class="addContactInputName" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
+                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
+                <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
+            </div>
+        </div>
+    `;
+    showHeaderAndFooter();   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
