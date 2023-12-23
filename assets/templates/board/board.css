@@ -363,7 +363,11 @@ progress[value]::-webkit-progress-bar {
 }
 
 
+/*************** DRAG AND DROP ***************/
 
+.dragOver {
+    border: 3px solid red;
+}
 
 
 

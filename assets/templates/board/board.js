@@ -600,6 +600,35 @@ function dropHandler(event, status) {
     moveTask(draggedTask, status);
 }
 
+
+function dragenterHandler(event) {
+/*
+    console.log('dragenter');
+    event.preventDefault();
+    let enterElem= event.target;
+    console.log(enterElem);
+    let isCardContainer= enterElem.classList.contains('card-container');
+    console.log(isCardContainer);
+    if (isCardContainer) markDragover(enterElem);
+*/
+}
+
+function dragleaveHandler(event) {
+/*
+    console.log('dragleave');
+    let leaveElem= event.target;
+    demarkDragover(leaveElem);
+*/
+}
+
+function markDragover(elem){
+    elem.classList.add('dragOver');
+}
+
+function demarkDragover(elem){
+    elem.classList.remove('dragOver');
+}
+
 function moveTask(task, status) {
     task.status= status;
     renderBoard();
