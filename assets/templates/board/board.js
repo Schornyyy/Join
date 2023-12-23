@@ -27,6 +27,7 @@ function boardInit() {
     subtasksDatasource = subtasksForTesting;
     contactsDatasource = contactsForTesting;
     renderBoard();
+    boardInitDragAndDrop();
 }
 
 //////////////// RENDER
@@ -41,12 +42,15 @@ function renderBoard() {
 function renderTasks(containerID, status) {
     let cardContainer = document.getElementById(containerID);
     let tasksStatus = getTasksFromStatus(tasksDatasource, status);
-    if (tasksStatus.length > 0) {
-        cardContainer.innerHTML = tasksToHML(tasksStatus);
-    }
+    cardContainer.innerHTML = tasksToHML(tasksStatus);
+    if (tasksStatus.length == 0) cardContainer.innerHTML += cardContainerEmptyToHTML();
 }
 
 //////////////// GETTER
+
+function getTaskById(taskID) {
+    return tasksDatasource.find(task => task.id==taskID);
+}
 
 function getTasksFromStatus(tasksArray, status) {
     return tasksArray.filter((task) => task.status == status);
@@ -117,7 +121,11 @@ function getPrioImgURL(task) {
 
 function singleTaskToHTML(task) {
     return `
-        <div class="task-card" onclick="showDialogDetail(${task.id})">
+        <div class="task-card dragItem" 
+                onclick="showDialogDetail(${task.id})"
+                draggable="true"
+                ondragstart="dragstartHandler(event, ${task.id})"
+                id="taskCard${task.id}">
             ${categoryToHTML(task)}
             <h3>${task.title}</h3>
             <p class="task-description">${task.description}</p>
@@ -175,6 +183,15 @@ function singleMemberToHTML(member, index) {
         <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
             ${getFirstLetterOfName(member)}
         </div>
+    `;
+}
+
+function cardContainerEmptyToHTML() {
+    return `
+        <div class="card-container-empty">
+            <p>No tasks</p>
+        </div>
+
     `;
 }
 
@@ -580,6 +597,69 @@ function dragstartHandler(event) {
 
 
 
+////////////////////////////////////////////////
+//////////////// DRAG AND DROP /////////////////
+////////////////////////////////////////////////
+
+function boardInitDragAndDrop() {
+    // addDragstartHandler('dragItem');
+}
+
+function dragstartHandler(event, taskID) {
+    event.dataTransfer.setData('taskID', taskID);
+}
+
+
+function dragoverHandler(event) {
+    event.preventDefault();
+}
+
+function dropHandler(event, status) {
+    let draggedTaskID= event.dataTransfer.getData('taskID');
+    let draggedTask= getTaskById(draggedTaskID);
+    moveTask(draggedTask, status);
+}
+
+
+function dragenterHandler(event) {
+/*
+    console.log('dragenter');
+    event.preventDefault();
+    let enterElem= event.target;
+    console.log(enterElem);
+    let isCardContainer= enterElem.classList.contains('card-container');
+    console.log(isCardContainer);
+    if (isCardContainer) markDragover(enterElem);
+*/
+}
+
+function dragleaveHandler(event) {
+/*
+    console.log('dragleave');
+    let leaveElem= event.target;
+    demarkDragover(leaveElem);
+*/
+}
+
+function markDragover(elem){
+    elem.classList.add('dragOver');
+}
+
+function demarkDragover(elem){
+    elem.classList.remove('dragOver');
+}
+
+function moveTask(task, status) {
+    task.status= status;
+    renderBoard();
+    // saveTasks
+}
+
+
+
+
+
+
 
 
 
@@ -595,6 +675,4 @@ function testen() {
     console.log(InputValueString(datum));
 
 }
-
-
 

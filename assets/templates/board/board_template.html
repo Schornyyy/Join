@@ -28,11 +28,13 @@
         <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
 
 
-        <div class="card-container" id="cardContainerTodo">
-
-            <div class="card-container-empty">
-                <p>No tasks To do</p>
-            </div>
+        <div class="card-container" 
+            ondragover="dragoverHandler(event)"
+            ondrop="dropHandler(event, 'todo')"
+            ondragenter="dragenterHandler(event)"
+            ondragleave="dragleaveHandler(event)"
+            id="cardContainerTodo">
+       
         </div>
 
     </section>
@@ -44,9 +46,12 @@
     <section class="task-section">
         <h2 class="section-headline">In progress</h2>
         <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
-
-
-        <div class="card-container" id="cardContainerInprogress">
+        <div class="card-container" 
+            ondragover="dragoverHandler(event)"
+            ondrop="dropHandler(event, 'in progress')"
+            ondragenter="dragenterHandler(event)"
+            ondragleave="dragleaveHandler(event)"
+            id="cardContainerInprogress">
 
             <div class="card-container-empty reini-d-none">
                 <p>No tasks in progress</p>
@@ -61,9 +66,12 @@
     <section class="task-section">
         <h2 class="section-headline">Await feedback</h2>
         <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
-
-
-        <div class="card-container" id="cardContainerAwaitfeedback">
+        <div class="card-container" 
+            ondragover="dragoverHandler(event)"
+            ondrop="dropHandler(event, 'await feedback')"
+            ondragenter="dragenterHandler(event)"
+            ondragleave="dragleaveHandler(event)"
+            id="cardContainerAwaitfeedback">
 
             <div class="card-container-empty reini-d-none">
                 <p>No tasks awaiting feedback</p>
@@ -82,7 +90,12 @@
         <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
 
 
-        <div class="card-container" id="cardContainerDone">
+        <div class="card-container" 
+            ondragover="dragoverHandler(event)"
+            ondrop="dropHandler(event, 'done')"
+            ondragenter="dragenterHandler(event)"
+            ondragleave="dragleaveHandler(event)"
+            id="cardContainerDone">
 
             <div class="card-container-empty reini-d-none">
                 <p>No tasks done</p>
