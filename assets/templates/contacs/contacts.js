@@ -1,8 +1,8 @@
 let contactsData; // Kontakt Daten global gespeichert nach dem fetchen
 
 async function contactsInit() {
-  try {    
-    contactsData = await fetchContactsData();    
+  try {
+    contactsData = await fetchContactsData();
     contactsContentBackgroundColorWhite();
     showHeaderAndFooter();
     renderContacts();
@@ -22,8 +22,7 @@ function renderAddContactButton() {
 }
 
 function handleAddContactClick() {
-  // Diese Funktion wird direkt im HTML-Code aufgerufen
-  addContactScreen();
+  addContactScreen(); // Diese Funktion wird direkt im HTML-Code aufgerufen
 }
 
 async function fetchContactsData() {
@@ -209,8 +208,7 @@ function editContactScreen(contactId) {
                 <div>
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="saveContact(${selectedContact.id})">
-                </div>
-                
+                </div>                
             </div>
         </form>
     `;
@@ -292,11 +290,11 @@ function openContactScreen(contactId) {
 }
 
 function contactsContentBackgroundColorWhiteGray() {
-    const content = document.getElementById("contactsContent");    
-    content.style.backgroundColor = "var(--white-grey)";
+  const content = document.getElementById("contactsContent");
+  content.style.backgroundColor = "var(--white-grey)";
 }
 
 function contactsContentBackgroundColorWhite() {
-    const content = document.getElementById("contactsContent");    
-    content.style.backgroundColor = "white";
+  const content = document.getElementById("contactsContent");
+  content.style.backgroundColor = "white";
 }
