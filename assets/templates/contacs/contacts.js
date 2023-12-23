@@ -1,18 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-  contactsInit();
-});
-
-window.addEventListener("load", function () {
-  contactsInit();
-});
-
 let contactsData; // Kontakt Daten global gespeichert nach dem fetchen
 
 async function contactsInit() {
-  try {
-    console.log("Vor dem Kontakt Laden");
-    contactsData = await fetchContactsData();
-    console.log("Nach dem Kontakt Laden");
+  try {    
+    contactsData = await fetchContactsData();    
     contactsContentBackgroundColorWhite();
     showHeaderAndFooter();
     renderContacts();
