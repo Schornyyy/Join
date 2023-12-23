@@ -43,7 +43,7 @@ function renderTasks(containerID, status) {
     let cardContainer = document.getElementById(containerID);
     let tasksStatus = getTasksFromStatus(tasksDatasource, status);
     cardContainer.innerHTML = tasksToHML(tasksStatus);
-    // if (tasksStatus.length > 0)
+    if (tasksStatus.length == 0) cardContainer.innerHTML += cardContainerEmptyToHTML();
 }
 
 //////////////// GETTER
@@ -183,6 +183,15 @@ function singleMemberToHTML(member, index) {
         <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
             ${getFirstLetterOfName(member)}
         </div>
+    `;
+}
+
+function cardContainerEmptyToHTML() {
+    return `
+        <div class="card-container-empty">
+            <p>No tasks</p>
+        </div>
+
     `;
 }
 
@@ -576,46 +585,25 @@ function boardInitDragAndDrop() {
     // addDragstartHandler('dragItem');
 }
 
-/*
-function addDragstartHandler(className) {
-    let dragElements= document.querySelectorAll('.' + className);
-    for (let elem of dragElements) {
-        elem.addEventListener('dragstart', dragstartHandler);
-    }
-}
-*/
-
 function dragstartHandler(event, taskID) {
-    console.log('dragstart');
-    // event.dataTransfer.dropEffect= "none";
-    // event.dataTransfer.setData('dragElemID', event.target.ID);
     event.dataTransfer.setData('taskID', taskID);
 }
 
 
 function dragoverHandler(event) {
-    // console.log('dragover');
     event.preventDefault();
 }
 
 function dropHandler(event, status) {
-    // event.stopPropagation();
-    console.log('drop');
-    // console.log(Object.getPrototypeOf(event.target));
-    // console.log(event.target.tagName);
-    // console.log(event.dataTransfer);
-    // console.log(event.dataTransfer.getData('dragElemID'));
-
     let draggedTaskID= event.dataTransfer.getData('taskID');
     let draggedTask= getTaskById(draggedTaskID);
     moveTask(draggedTask, status);
-//    console.log('draggedTaskID: ' + draggedTaskID);
-//    console.log('status: ' + status);
 }
 
 function moveTask(task, status) {
     task.status= status;
     renderBoard();
+    // saveTasks
 }
 
 
