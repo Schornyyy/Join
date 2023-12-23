@@ -27,6 +27,7 @@ function boardInit() {
     subtasksDatasource = subtasksForTesting;
     contactsDatasource = contactsForTesting;
     renderBoard();
+    boardInitDragAndDrop();
 }
 
 //////////////// RENDER
@@ -41,12 +42,15 @@ function renderBoard() {
 function renderTasks(containerID, status) {
     let cardContainer = document.getElementById(containerID);
     let tasksStatus = getTasksFromStatus(tasksDatasource, status);
-    if (tasksStatus.length > 0) {
-        cardContainer.innerHTML = tasksToHML(tasksStatus);
-    }
+    cardContainer.innerHTML = tasksToHML(tasksStatus);
+    // if (tasksStatus.length > 0)
 }
 
 //////////////// GETTER
+
+function getTaskById(taskID) {
+    return tasksDatasource.find(task => task.id==taskID);
+}
 
 function getTasksFromStatus(tasksArray, status) {
     return tasksArray.filter((task) => task.status == status);
@@ -117,7 +121,11 @@ function getPrioImgURL(task) {
 
 function singleTaskToHTML(task) {
     return `
-        <div class="task-card" onclick="showDialogDetail(${task.id})">
+        <div class="task-card dragItem" 
+                onclick="showDialogDetail(${task.id})"
+                draggable="true"
+                ondragstart="dragstartHandler(event, ${task.id})"
+                id="taskCard${task.id}">
             ${categoryToHTML(task)}
             <h3>${task.title}</h3>
             <p class="task-description">${task.description}</p>
@@ -560,6 +568,61 @@ function editSaveTask(taskID) {
 
 
 
+////////////////////////////////////////////////
+//////////////// DRAG AND DROP /////////////////
+////////////////////////////////////////////////
+
+function boardInitDragAndDrop() {
+    // addDragstartHandler('dragItem');
+}
+
+/*
+function addDragstartHandler(className) {
+    let dragElements= document.querySelectorAll('.' + className);
+    for (let elem of dragElements) {
+        elem.addEventListener('dragstart', dragstartHandler);
+    }
+}
+*/
+
+function dragstartHandler(event, taskID) {
+    console.log('dragstart');
+    // event.dataTransfer.dropEffect= "none";
+    // event.dataTransfer.setData('dragElemID', event.target.ID);
+    event.dataTransfer.setData('taskID', taskID);
+}
+
+
+function dragoverHandler(event) {
+    // console.log('dragover');
+    event.preventDefault();
+}
+
+function dropHandler(event, status) {
+    // event.stopPropagation();
+    console.log('drop');
+    // console.log(Object.getPrototypeOf(event.target));
+    // console.log(event.target.tagName);
+    // console.log(event.dataTransfer);
+    // console.log(event.dataTransfer.getData('dragElemID'));
+
+    let draggedTaskID= event.dataTransfer.getData('taskID');
+    let draggedTask= getTaskById(draggedTaskID);
+    moveTask(draggedTask, status);
+//    console.log('draggedTaskID: ' + draggedTaskID);
+//    console.log('status: ' + status);
+}
+
+function moveTask(task, status) {
+    task.status= status;
+    renderBoard();
+}
+
+
+
+
+
+
 
 
 
@@ -575,6 +638,4 @@ function testen() {
     console.log(InputValueString(datum));
 
 }
-
-
 
