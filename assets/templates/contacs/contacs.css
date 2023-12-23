@@ -5,6 +5,8 @@
     background-color: white;
     overflow-y: scroll;    
     position: relative;
+    margin-top: 0.5em;    
+    height: inherit;
   }
 
   .addContactCloseXContainer {
@@ -191,15 +193,17 @@
 
 .openContactContainerHeader {
   display: flex;
-  flex-direction: column;  
+  /* flex-direction: column; */ 
   background-color: var(--white-grey);
-  height: 85vh;
-  margin-top: 2em;
+  height: 20vh;
+  padding-top: 2em;
+  margin-left: 1em;
 }
 
 .openContactH1 {
   color: black;
   font-size: 3rem;
+  font-weight: bold;
 }
 
 .openContactText {
@@ -209,11 +213,85 @@
 .openContactContentContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
+  background-color: var(--white-grey);  
 }
 
 .openContactCloseXContainer {
-  position: fixed;
-  top: 6em;
-  right: 1em;
+  display: flex;
+  justify-content: right;  
+}
+
+.openContactContainerFooter {
+  display: flex;
+  justify-content: center;  
+  flex-direction: column;  
+  background-color: white;
+  gap: 2em;
+  background-color: var(--white-grey);
+}
+
+.JustifyContentRight {
+  display: flex;
+  justify-content: right;
+}
+
+.marginLeft {
+  margin-left: 6em;
+}
+
+.openContactBlockHeader {
+  display: flex;
+}
+
+.arrorLeftContainer {
+  margin-left: 6em;
+}
+
+.openContactUserImageAndNameContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
+}
+
+.openContactH2 {
+  font-size: 1.5em;
+  margin-left: 0.5em;
+}
+
+.openContactUserImg {
+  height: 80px;
+  width: 80px;
+}
+
+.openContactInformation {
+  font-size: 1em;
+  font-weight: bold;
+  margin-left: 1em;
+}
+
+.openContactEmail {
+  font-weight: 900;
+  margin-left: 1em;
+}
+
+.openContactEmailLink {
+  color: #007CEE;
+  margin-left: 1em;
+}
+
+.openContactPhoneText {
+  font-weight: 900;
+  margin-left: 1em;
+}
+
+.openContactOptionButtonContainer {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-right: 1.8em;
+  margin-top: 16em;
+}
+
+.openContactPhoneNumber {
+  margin-left: 1em;
 }

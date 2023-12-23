@@ -1,67 +1,74 @@
 document.addEventListener("DOMContentLoaded", function () {
-    contactsInit();
+  contactsInit();
 });
 
 window.addEventListener("load", function () {
-    contactsInit();
+  contactsInit();
 });
 
+let contactsData; // Kontakt Daten global gespeichert nach dem fetchen
+
 async function contactsInit() {
-    try {
-        console.log("Vor dem Kontakt Laden");
-        contactsData = await fetchContactsData();
-        console.log("Nach dem Kontakt Laden");
-        showHeaderAndFooter();        
-        renderContacts();
-        renderAddContactButton();
-    } catch (error) {
-        console.error("Fehler beim Initialisieren der Kontakte:", error);
-    }
+  try {
+    console.log("Vor dem Kontakt Laden");
+    contactsData = await fetchContactsData();
+    console.log("Nach dem Kontakt Laden");
+    contactsContentBackgroundColorWhite();
+    showHeaderAndFooter();
+    renderContacts();
+    renderAddContactButton();
+  } catch (error) {
+    console.error("Fehler beim Initialisieren der Kontakte:", error);
+  }
 }
 
 function renderAddContactButton() {
-    const content = document.getElementById("contactsContent");
-    const addContactButtonContainer = document.createElement("div");
-    addContactButtonContainer.classList.add("addContactButtonContainer");    
-    addContactButtonContainer.innerHTML = '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">';  // onclick-Funktion direkt im HTML-Code
-    content.appendChild(addContactButtonContainer);
+  const content = document.getElementById("contactsContent");
+  const addContactButtonContainer = document.createElement("div");
+  addContactButtonContainer.classList.add("addContactButtonContainer");
+  addContactButtonContainer.innerHTML =
+    '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">'; // onclick-Funktion direkt im HTML-Code
+  content.appendChild(addContactButtonContainer);
 }
 
-function handleAddContactClick() {  // Diese Funktion wird direkt im HTML-Code aufgerufen
-    addContactScreen();
+function handleAddContactClick() {
+  // Diese Funktion wird direkt im HTML-Code aufgerufen
+  addContactScreen();
 }
 
 async function fetchContactsData() {
-    try {
-        const response = await fetch("../assets/templates/contacs/allContacts.json");
-        let data = await response.json();       
-        data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Füge eine eindeutige ID zu jedem Kontakt hinzu
-        return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
-    } catch (error) {
-        console.error("Fehler beim Laden der Kontakte:", error);
-        throw error;
-    }
+  try {
+    const response = await fetch(
+      "../assets/templates/contacs/allContacts.json"
+    );
+    let data = await response.json();
+    data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Füge eine eindeutige ID zu jedem Kontakt hinzu
+    return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
+  } catch (error) {
+    console.error("Fehler beim Laden der Kontakte:", error);
+    throw error;
+  }
 }
 
 function renderContacts() {
-    const content = document.getElementById("contactsContent");
-    content.innerHTML = "";
-    const contactsByFirstLetter = {};
+  const content = document.getElementById("contactsContent");
+  content.innerHTML = "";
+  const contactsByFirstLetter = {};
 
-    contactsData.forEach(oneContact => {
-        const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
+  contactsData.forEach((oneContact) => {
+    const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
 
-        if (!contactsByFirstLetter[firstLetter]) {
-            contactsByFirstLetter[firstLetter] = /*html*/`
+    if (!contactsByFirstLetter[firstLetter]) {
+      contactsByFirstLetter[firstLetter] = /*html*/ `
                 <div class="letterAndContactsContainer">
                     <div class="letter-column">
                         <h2 class="contact-first-letter">${firstLetter}</h2>
                     </div>
                 </div>
             `;
-        }
+    }
 
-        const oneContactContainer = /*html*/`
+    const oneContactContainer = /*html*/ `
             <div class="justifyContentCenter" onclick="openContactScreen(${oneContact.id})">
                 <div>
                     <img src="${oneContact.contactImg}" class="contactImg">
@@ -73,17 +80,17 @@ function renderContacts() {
             </div>
         `;
 
-        contactsByFirstLetter[firstLetter] += oneContactContainer;
-    });
+    contactsByFirstLetter[firstLetter] += oneContactContainer;
+  });
 
-    Object.values(contactsByFirstLetter).forEach(section => {
-        content.innerHTML += section;
-    });
+  Object.values(contactsByFirstLetter).forEach((section) => {
+    content.innerHTML += section;
+  });
 }
 
 function addContactScreen() {
-    const content = document.getElementById("contactsContent");
-    content.innerHTML = /*html*/ `
+  const content = document.getElementById("contactsContent");
+  content.innerHTML = /*html*/ `
                             <div class="addContactContainerHeader">
                                 <div class="addContactCloseXContainer" onclick="contactsInit()">
                                     <img src="../assets/img/contact/addContactCloseX.svg" alt="">
@@ -109,82 +116,89 @@ function addContactScreen() {
                             <div>
                         </form>
                         `;
-    hideHeaderAndFooter();
+  hideHeaderAndFooter();
 }
 
-function hideHeaderAndFooter() {    
-    const mobileHeader = document.querySelector(".mobileHeader");  // Verstecke mobileHeader und menuTemplate
-    const menuTemplate = document.querySelector(".menuTemplate");
-        mobileHeader.style.display = "none";
-        menuTemplate.style.display = "none";
+function hideHeaderAndFooter() {
+  const mobileHeader = document.querySelector(".mobileHeader"); // Verstecke mobileHeader und menuTemplate
+  const menuTemplate = document.querySelector(".menuTemplate");
+  mobileHeader.style.display = "none";
+  menuTemplate.style.display = "none";
 }
 
 function showHeaderAndFooter() {
-    const mobileHeader = document.getElementById("headerTemplate");  // Verstecke mobileHeader und menuTemplate
-    const menuTemplate = document.getElementById("menuTemplate");
-        mobileHeader.style.display = "block";
-        menuTemplate.style.display = "block";
+  const mobileHeader = document.getElementById("headerTemplate"); // Verstecke mobileHeader und menuTemplate
+  const menuTemplate = document.getElementById("menuTemplate");
+  mobileHeader.style.display = "block";
+  menuTemplate.style.display = "block";
 }
 
 function createContact() {
-    const nameInput = document.querySelector('.addContactInputName');
-    const mailInput = document.querySelector('.addContactInputMailAddresss');
-    const phoneInput = document.querySelector('.addContactInputPhone');
+  const nameInput = document.querySelector(".addContactInputName");
+  const mailInput = document.querySelector(".addContactInputMailAddresss");
+  const phoneInput = document.querySelector(".addContactInputPhone");
 
-    // Daten aus den Input-Feldern lesen
-    const newName = nameInput.value.trim();
-    const newMail = mailInput.value.trim();
-    const newPhone = phoneInput.value.trim();
+  // Daten aus den Input-Feldern lesen
+  const newName = nameInput.value.trim();
+  const newMail = mailInput.value.trim();
+  const newPhone = phoneInput.value.trim();
 
-    // Überprüfen, ob alle Felder ausgefüllt sind
-    if (newName === '' || newMail === '' || newPhone === '') {
-        alert('Bitte füllen Sie alle Felder aus.');
-        return;
-    }
+  // Überprüfen, ob alle Felder ausgefüllt sind
+  if (newName === "" || newMail === "" || newPhone === "") {
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }
 
-    // Neuen Kontakt erstellen
-    const newContact = {
-        contactName: newName,
-        contactMailAdress: newMail,
-        contactPhone: newPhone,        
-    };
+  // Neuen Kontakt erstellen
+  const newContact = {
+    contactName: newName,
+    contactMailAdress: newMail,
+    contactPhone: newPhone,
+  };
 
-    // Daten zum JSON-Array hinzufügen
-    contactsData.push(newContact);
+  // Daten zum JSON-Array hinzufügen
+  contactsData.push(newContact);
 
-    // JSON-Array speichern (z.B. auf dem Server)
-    saveContactsData(contactsData);
+  // JSON-Array speichern (z.B. auf dem Server)
+  saveContactsData(contactsData);
 
-    // Zurück zur Kontaktliste wechseln
-    renderContacts();
+  // Zurück zur Kontaktliste wechseln
+  renderContacts();
 }
 
 async function saveContactsData(data) {
-    try {
-        const authToken = STORAGE_TOKEN; // Authentifizierungstoken einfügen
-        const response = await fetch('../assets/templates/contacs/allContacts.json', {
-            method: 'Post', // Änderet die Methode auf PUT oder POST, je nach Serverkonfiguration
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authToken}`, // Füget den Authentifizierungstoken zum Header hinzu
-            },
-            body: JSON.stringify(data),
-        });
+  try {
+    const authToken = STORAGE_TOKEN; // Authentifizierungstoken einfügen
+    const response = await fetch(
+      "../assets/templates/contacs/allContacts.json",
+      {
+        method: "Post", // Änderet die Methode auf PUT oder POST, je nach Serverkonfiguration
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`, // Füget den Authentifizierungstoken zum Header hinzu
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-        if (!response.ok) {
-            throw new Error('Fehler beim Speichern der Kontakte. Status: ' + response.status);
-        }
-
-        console.log('Kontakte erfolgreich gespeichert.');
-    } catch (error) {
-        console.error('Fehler beim Speichern der Kontakte:', error);        
+    if (!response.ok) {
+      throw new Error(
+        "Fehler beim Speichern der Kontakte. Status: " + response.status
+      );
     }
+
+    console.log("Kontakte erfolgreich gespeichert.");
+  } catch (error) {
+    console.error("Fehler beim Speichern der Kontakte:", error);
+  }
 }
 
 function editContactScreen(contactId) {
-    const content = document.getElementById("contactsContent");    
-    const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID
-    content.innerHTML = /*html*/`
+  const content = document.getElementById("contactsContent");
+  const selectedContact = contactsData.find(
+    (contact) => contact.id === contactId
+  ); // Findet den ausgewählten Kontakt anhand der ID
+  content.innerHTML = /*html*/ `
         <div class="addContactContainerHeader">
                             <div class="addContactCloseXContainer" onclick="contactsInit()">
                                 <img src="../assets/img/contact/addContactCloseX.svg" alt="">
@@ -210,89 +224,89 @@ function editContactScreen(contactId) {
             </div>
         </form>
     `;
-    hideHeaderAndFooter();
+  hideHeaderAndFooter();
 }
 
 function updateContact(contactId) {
-    const nameInput = document.querySelector('.addContactInputName');
-    const mailInput = document.querySelector('.addContactInputMailAddresss');
-    const phoneInput = document.querySelector('.addContactInputPhone');    
-    const updatedName = nameInput.value.trim();  // Daten aus den Input-Feldern lesen
-    const updatedMail = mailInput.value.trim();
-    const updatedPhone = phoneInput.value.trim();    
-    if (updatedName === '' || updatedMail === '' || updatedPhone === '') {  // Überprüfen, ob alle Felder ausgefüllt sind
-        alert('Bitte füllen Sie alle Felder aus.');
-        return;
-    }    
-    const updatedContactIndex = contactsData.findIndex(contact => contact.id === contactId);  // Aktualisiere den Kontakt in der Datenquelle
-    contactsData[updatedContactIndex] = {
-        ...contactsData[updatedContactIndex],
-        contactName: updatedName,
-        contactMailAdress: updatedMail,
-        contactPhone: updatedPhone,
-    };    
-    saveContactsData(contactsData[updatedContactIndex]);  // JSON-Array speichern (z.B. auf dem Server)    
-    renderContacts();  // Zurück zur Kontaktliste wechseln
+  const nameInput = document.querySelector(".addContactInputName");
+  const mailInput = document.querySelector(".addContactInputMailAddresss");
+  const phoneInput = document.querySelector(".addContactInputPhone");
+  const updatedName = nameInput.value.trim(); // Daten aus den Input-Feldern lesen
+  const updatedMail = mailInput.value.trim();
+  const updatedPhone = phoneInput.value.trim();
+  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
+    // Überprüfen, ob alle Felder ausgefüllt sind
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }
+  const updatedContactIndex = contactsData.findIndex(
+    (contact) => contact.id === contactId
+  ); // Aktualisiere den Kontakt in der Datenquelle
+  contactsData[updatedContactIndex] = {
+    ...contactsData[updatedContactIndex],
+    contactName: updatedName,
+    contactMailAdress: updatedMail,
+    contactPhone: updatedPhone,
+  };
+  saveContactsData(contactsData[updatedContactIndex]); // JSON-Array speichern (z.B. auf dem Server)
+  renderContacts(); // Zurück zur Kontaktliste wechseln
 }
 
 // function deleteContact(selectedContactID) {
-    // Muss noch defeniert werden
+// Muss noch defeniert werden
 //}
 
 // function saveContact(selectedContactID) {
-    // Muss noch defeniert werden
+// Muss noch defeniert werden
 //}
 
-function openContactScreen(contactId) {    
-    const content = document.getElementById("content");    
-    //content.style.height = "fit-content";    
-    const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID
-    content.innerHTML = /*html*/`
-        <div class="openContactContainerHeader">
-            <div class="openContactCloseXContainer" onclick="contactsInit()">
-                <img src="../assets/img/contact/arrow-left-line.svg" alt="">
-            </div>
-            <div class="addContactBlockHeader">
+function openContactScreen(contactId) {
+  const content = document.getElementById("contactsContent");
+  const selectedContact = contactsData.find(
+    (contact) => contact.id === contactId
+  ); // Findet den ausgewählten Kontakt anhand der ID
+  content.innerHTML = /*html*/ `
+    <div class="openContactContainerHeader">                            
+        <div class="openContactBlockHeader">
+            <div>
                 <p class="openContactH1">Contacts</p>
-                <p class="openContactText">Better with a team!</p>                               
-                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+                <p class="openContactText">Better with a team!</p>                              
+                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">                                                                        
             </div>
-            <div class="openContactContentContainer">
-                <input class="addContactInputName" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
-                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
-                <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
-            </div>
+
+            <div class="arrorLeftContainer">
+                <div onclick="contactsInit()">
+                    <img src="../assets/img/contact/arrow-left-line.svg" alt="">
+                </div>
+            </div>                                                                
+        </div>                    
+    </div>
+
+    <div class="openContactContainerFooter">
+        <div class="openContactUserImageAndNameContainer">   
+            <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
+            <h2 class="openContactH2">${selectedContact.contactName}</h2>
         </div>
+            <p class="openContactInformation">Contact Information</p>
+            <p class="openContactEmail">Email</p>
+            <a class="openContactEmailLink" href="mailto:${selectedContact.contactMailAdress}">${selectedContact.contactMailAdress}</a>
+            <p class="openContactPhoneText">Phone</p>
+            <p class="openContactPhoneNumber">${selectedContact.contactPhone}</p>        
+    </div>
+    <div class="openContactOptionButtonContainer" onclick="contactsInit()">
+        <img src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+    </div>
     `;
-    showHeaderAndFooter();   
+  showHeaderAndFooter();
+  contactsContentBackgroundColorWhiteGray();
 }
 
+function contactsContentBackgroundColorWhiteGray() {
+    const content = document.getElementById("contactsContent");    
+    content.style.backgroundColor = "var(--white-grey)";
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function contactsContentBackgroundColorWhite() {
+    const content = document.getElementById("contactsContent");    
+    content.style.backgroundColor = "white";
+}
