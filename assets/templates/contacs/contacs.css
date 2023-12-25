@@ -120,6 +120,7 @@
     position: sticky;
     bottom: 32px;
     right: 32px;
+    cursor: pointer;
   }
 
   .addContactButtonImage {
@@ -175,14 +176,16 @@
     display: flex;
     flex-direction: column;
     flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
-    margin-left: 3em 
+    margin-left: 3em;
+    cursor: pointer;
   }
 
   .contactImg {
     height: 40px;
     width: 40px;
+    cursor: pointer;
   }
-}
+
 
 .justifyContentCenter {
   display: flex;
@@ -277,6 +280,8 @@
 .openContactEmailLink {
   color: #007CEE;
   margin-left: 1em;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .openContactPhoneText {
@@ -294,4 +299,5 @@
 
 .openContactPhoneNumber {
   margin-left: 1em;
+}
 }

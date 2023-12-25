@@ -1,12 +1,19 @@
 let contactsData; // Kontakt Daten global gespeichert nach dem fetchen
 
 async function contactsInit() {
-  try {
-    contactsData = await fetchContactsData();
-    contactsContentBackgroundColorWhite();
-    showHeaderAndFooter();
+  try {    
+    const storedContacts = localStorage.getItem('contactsData');  // Versuche die Daten aus dem Local Storage abzurufen
+    if (storedContacts) {  // Wenn Daten im Local Storage vorhanden sind, verwende sie      
+      contactsData = JSON.parse(storedContacts);
+    } else {      
+      contactsData = await fetchContactsData();  // Wenn keine Daten im Local Storage vorhanden sind, lade sie      
+      localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Speichere die Daten global im Local Storage
+    }
+
+    contactsContentBackgroundColorWhite();    
     renderContacts();
     renderAddContactButton();
+    showHeaderAndFooter();
   } catch (error) {
     console.error("Fehler beim Initialisieren der Kontakte:", error);
   }
@@ -125,57 +132,31 @@ function showHeaderAndFooter() {
 function createContact() {
   const nameInput = document.querySelector(".addContactInputName");
   const mailInput = document.querySelector(".addContactInputMailAddresss");
-  const phoneInput = document.querySelector(".addContactInputPhone");
-
-  // Daten aus den Input-Feldern lesen
-  const newName = nameInput.value.trim();
+  const phoneInput = document.querySelector(".addContactInputPhone");  
+  const newName = nameInput.value.trim();  // Daten aus den Input-Feldern lesen
   const newMail = mailInput.value.trim();
-  const newPhone = phoneInput.value.trim();
-
-  // Überprüfen, ob alle Felder ausgefüllt sind
-  if (newName === "" || newMail === "" || newPhone === "") {
+  const newPhone = phoneInput.value.trim();  
+  if (newName === "" || newMail === "" || newPhone === "") {  // Überprüfen, ob alle Felder ausgefüllt sind
     alert("Bitte füllen Sie alle Felder aus.");
     return;
-  }
-
-  // Neuen Kontakt erstellen
-  const newContact = {
+  }  
+  const defaultImage = "../assets/img/contact/defaultContactImage.svg";  // Standardbildpfad, falls kein Bild angegeben wurde  
+  const newContact = {  // Neuen Kontakt erstellen
     contactName: newName,
     contactMailAdress: newMail,
     contactPhone: newPhone,
-  };
-
-  // Daten zum JSON-Array hinzufügen
-  contactsData.push(newContact);
-
-  // JSON-Array speichern (z.B. auf dem Server)
-  saveContactsData(contactsData);
-
-  // Zurück zur Kontaktliste wechseln
-  renderContacts();
+    contactImg: defaultImage, // Setze das Bild-URL-Attribut auf den Standardpfad
+  };  
+  contactsData.push(newContact);  // Daten zum JSON-Array hinzufügen  
+  saveContactsData(contactsData);  // JSON-Array speichern (lokal im Browser)  
+  renderContacts();  // Zurück zur Kontaktliste wechseln
 }
 
-async function saveContactsData(data) {
-  try {
-    const authToken = STORAGE_TOKEN; // Authentifizierungstoken einfügen
-    const response = await fetch(
-      "../assets/templates/contacs/allContacts.json",
-      {
-        method: "Post", // Änderet die Methode auf PUT oder POST, je nach Serverkonfiguration
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`, // Füget den Authentifizierungstoken zum Header hinzu
-        },
-        body: JSON.stringify(data),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(
-        "Fehler beim Speichern der Kontakte. Status: " + response.status
-      );
-    }
-
+function saveContactsData(data) {
+  try {    
+    localStorage.setItem('contactsData', JSON.stringify(data));  // Lokal speichern
+    // Auf dem Server speichern (falls notwendig)
+    // Hier könntest du den ursprünglichen Fetch-Code einfügen, wenn die Daten auf dem Server gespeichert werden sollen.
     console.log("Kontakte erfolgreich gespeichert.");
   } catch (error) {
     console.error("Fehler beim Speichern der Kontakte:", error);
