@@ -195,8 +195,7 @@
 }
 
 .openContactContainerHeader {
-  display: flex;
-  /* flex-direction: column; */ 
+  display: flex;  
   background-color: var(--white-grey);
   height: 20vh;
   padding-top: 2em;
@@ -300,4 +299,72 @@
 .openContactPhoneNumber {
   margin-left: 1em;
 }
+
+
+
+
+
+
+
+
+.dropdown-container {
+  position: fixed;
+  display: none; /* Standardmäßig unsichtbar machen */  
+}
+
+.dropdown-container.visible {
+  display: block; /* Sichtbar machen, wenn die 'visible'-Klasse hinzugefügt wird */
+}
+
+.editContactsDropDownIcon {
+  height: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#contactOptionsDropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-right: 1.5em;
+  margin-top: 15em;
+}
+
+.dropdown-menu {
+  display: none;  
+  position: absolute;
+  right: 1em;
+  bottom: 5em;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.dropdown-option {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-option:hover {
+  cursor: pointer;
+  background-color: var(--light-blue);
+}
+
+
+
 }

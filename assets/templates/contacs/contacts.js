@@ -221,19 +221,22 @@ function updateContact(contactId) {
   renderContacts(); // Zurück zur Kontaktliste wechseln
 }
 
-// function deleteContact(selectedContactID) {
+function deleteContact(selectedContactID) {
 // Muss noch defeniert werden
-//}
+}
 
-// function saveContact(selectedContactID) {
+ function saveContact(selectedContactID) {
 // Muss noch defeniert werden
-//}
+}
 
 function openContactScreen(contactId) {
   const content = document.getElementById("contactsContent");
-  const selectedContact = contactsData.find(
-    (contact) => contact.id === contactId
-  ); // Findet den ausgewählten Kontakt anhand der ID
+  const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID
+
+  if (!selectedContact) {
+    console.error("Selected contact not found in contactsData.");
+    return;
+  }
   content.innerHTML = /*html*/ `
     <div class="openContactContainerHeader">                            
         <div class="openContactBlockHeader">
@@ -262,9 +265,21 @@ function openContactScreen(contactId) {
             <p class="openContactPhoneText">Phone</p>
             <p class="openContactPhoneNumber">${selectedContact.contactPhone}</p>        
     </div>
-    <div class="openContactOptionButtonContainer" onclick="contactsInit()">
-        <img src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+
+    <div class="dropdown-container" id="contactOptionsDropdownContainer">
+  <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
+    <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+  </div>
+  <div class="dropdown-menu" id="contactOptionsDropdown">
+    <div class="dropdown-option" data-value="edit" onclick="handleDropdownOptionClick('edit')">
+      <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
     </div>
+    <div class="dropdown-option" data-value="delete" onclick="handleDropdownOptionClick('delete')">
+      <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
+    </div>
+  </div>
+</div>
+
     `;
   showHeaderAndFooter();
   contactsContentBackgroundColorWhiteGray();
@@ -279,3 +294,85 @@ function contactsContentBackgroundColorWhite() {
   const content = document.getElementById("contactsContent");
   content.style.backgroundColor = "white";
 }
+
+
+
+
+
+
+
+function handleContactOptionSelection(selectedContactId) {
+  const dropdown = document.getElementById("contactOptionsDropdown");
+  const selectedOption = dropdown.value;
+
+  const selectedContact = contactsData.find(contact => contact.id === selectedContactId);
+
+  if (!selectedContact) {
+    console.error("Selected contact not found in contactsData.");
+    return;
+  }
+
+  if (selectedOption === "edit") {
+    editContactScreen(selectedContact);
+  } else if (selectedOption === "delete") {
+    deleteContact(selectedContact);
+  }
+}
+
+function toggleDropdownMenu() {
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
+}
+
+
+function toggleClass(element, className) {
+  if (element.classList) {
+    // Wenn die classList-Unterstützung vorhanden ist (moderne Browser)
+    element.classList.toggle(className);
+  } else {
+    // Für ältere Browser
+    const classes = element.className.split(' ');
+    const existingIndex = classes.indexOf(className);
+
+    if (existingIndex >= 0) {
+      // Wenn die Klasse vorhanden ist, entferne sie
+      classes.splice(existingIndex, 1);
+    } else {
+      // Wenn die Klasse nicht vorhanden ist, füge sie hinzu
+      classes.push(className);
+    }
+
+    element.className = classes.join(' ');
+  }
+}
+
+
+function handleImageSelection() {
+  const imageSelector = document.getElementById("imageSelector");
+  const selectedAction = imageSelector.value;
+
+  // Hier können Sie die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren
+  if (selectedAction === "edit") {
+    // Führen Sie die Aktion für Edit durch
+    console.log("Edit Contact selected");
+  } else if (selectedAction === "delete") {
+    // Führen Sie die Aktion für Delete durch
+    console.log("Delete Contact selected");
+  }
+}
+
+function handleDropdownOptionClick(action) {
+  // Hier können Sie die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren
+  if (action === "edit") {
+    // Führen Sie die Aktion für Edit durch
+    console.log("Edit Contact selected");
+  } else if (action === "delete") {
+    // Führen Sie die Aktion für Delete durch
+    console.log("Delete Contact selected");
+  }
+
+  // Schließen Sie das Dropdown-Menü nach der Auswahl
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  dropdownMenu.style.display = "none";
+}
+
