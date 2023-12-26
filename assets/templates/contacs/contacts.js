@@ -9,7 +9,6 @@ async function contactsInit() {
       contactsData = await fetchContactsData();  // Wenn keine Daten im Local Storage vorhanden sind, lade sie      
       localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Speichere die Daten global im Local Storage
     }
-
     contactsContentBackgroundColorWhite();    
     renderContacts();
     renderAddContactButton();
@@ -34,11 +33,9 @@ function handleAddContactClick() {
 
 async function fetchContactsData() {
   try {
-    const response = await fetch(
-      "../assets/templates/contacs/allContacts.json"
-    );
+    const response = await fetch("../assets/templates/contacs/allContacts.json");
     let data = await response.json();
-    data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Füge eine eindeutige ID zu jedem Kontakt hinzu
+    data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Füget eine eindeutige ID zu jedem Kontakt hinzu
     return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
   } catch (error) {
     console.error("Fehler beim Laden der Kontakte:", error);
@@ -295,84 +292,18 @@ function contactsContentBackgroundColorWhite() {
   content.style.backgroundColor = "white";
 }
 
-
-
-
-
-
-
-function handleContactOptionSelection(selectedContactId) {
-  const dropdown = document.getElementById("contactOptionsDropdown");
-  const selectedOption = dropdown.value;
-
-  const selectedContact = contactsData.find(contact => contact.id === selectedContactId);
-
-  if (!selectedContact) {
-    console.error("Selected contact not found in contactsData.");
-    return;
-  }
-
-  if (selectedOption === "edit") {
-    editContactScreen(selectedContact);
-  } else if (selectedOption === "delete") {
-    deleteContact(selectedContact);
-  }
-}
-
 function toggleDropdownMenu() {
   const dropdownMenu = document.getElementById("contactOptionsDropdown");
   dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
 }
 
-
-function toggleClass(element, className) {
-  if (element.classList) {
-    // Wenn die classList-Unterstützung vorhanden ist (moderne Browser)
-    element.classList.toggle(className);
-  } else {
-    // Für ältere Browser
-    const classes = element.className.split(' ');
-    const existingIndex = classes.indexOf(className);
-
-    if (existingIndex >= 0) {
-      // Wenn die Klasse vorhanden ist, entferne sie
-      classes.splice(existingIndex, 1);
-    } else {
-      // Wenn die Klasse nicht vorhanden ist, füge sie hinzu
-      classes.push(className);
-    }
-
-    element.className = classes.join(' ');
-  }
-}
-
-
-function handleImageSelection() {
-  const imageSelector = document.getElementById("imageSelector");
-  const selectedAction = imageSelector.value;
-
-  // Hier können Sie die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren
-  if (selectedAction === "edit") {
-    // Führen Sie die Aktion für Edit durch
-    console.log("Edit Contact selected");
-  } else if (selectedAction === "delete") {
-    // Führen Sie die Aktion für Delete durch
+function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren  
+  if (action === "edit") {  // Edit Contact    
+    console.log("Edit Contact selected");  
+  } else if (action === "delete") {  // Delete    
     console.log("Delete Contact selected");
-  }
-}
-
-function handleDropdownOptionClick(action) {
-  // Hier können Sie die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren
-  if (action === "edit") {
-    // Führen Sie die Aktion für Edit durch
-    console.log("Edit Contact selected");
-  } else if (action === "delete") {
-    // Führen Sie die Aktion für Delete durch
-    console.log("Delete Contact selected");
-  }
-
-  // Schließen Sie das Dropdown-Menü nach der Auswahl
-  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  }  
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
   dropdownMenu.style.display = "none";
 }
 
