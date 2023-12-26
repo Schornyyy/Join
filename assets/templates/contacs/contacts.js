@@ -3,12 +3,21 @@ let nextContactId; // ID-Zähler für die nächste Kontakt-ID
 
 async function contactsInit() {
   try {
-    contactsData = await fetchContactsData();
+    // Versuche, die Kontaktdaten aus dem lokalen Speicher zu lesen
+    const storedContactsData = localStorage.getItem('contactsData');
+    
+    // Wenn Daten im lokalen Speicher vorhanden sind, verwende sie
+    if (storedContactsData) {
+      contactsData = JSON.parse(storedContactsData);
+    } else {
+      // Andernfalls lade die Daten vom Server
+      contactsData = await fetchContactsData();
+      localStorage.setItem('contactsData', JSON.stringify(contactsData));
+    }
 
     // Initialisiere den ID-Zähler basierend auf der vorhandenen Anzahl von Kontakten
     nextContactId = contactsData.length;
 
-    localStorage.setItem('contactsData', JSON.stringify(contactsData));
     contactsContentBackgroundColorWhite();
     renderContacts();
     renderAddContactButton();
