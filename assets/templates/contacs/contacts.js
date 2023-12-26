@@ -268,7 +268,7 @@ function openContactScreen(contactId) {
     <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
   </div>
   <div class="dropdown-menu" id="contactOptionsDropdown">
-    <div class="dropdown-option" data-value="edit" onclick="handleDropdownOptionClick('edit')">
+    <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">
       <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
     </div>
     <div class="dropdown-option" data-value="delete" onclick="handleDropdownOptionClick('delete')">
