@@ -15,53 +15,53 @@
         <h1>Log in</h1>
         <div class="underlineFrame"></div>
 
-        <div
-          class="logForm"
-        >
-          <div class="emailDevision">
-            <input
-              class="logInpMail"
-              required
-              minlength="2"
-              type="email"
-              placeholder="Email"
-              id="login-input-email"
-              autocomplete="username"
-            />
-            <img class="inpIconStyle" src="../../img/login/mail.svg" />
-          </div>
+        <div class="emailDevision">
+          <input
+            class="logInpMail"
+            required
+            minlength="2"
+            type="email"
+            placeholder="Email"
+            id="login-input-email"
+            autocomplete="username"
+          />
+          <img class="inpIconStyle" src="../../img/login/mail.svg" />
+        </div>
 
-          <div class="passwortDevision">
-            <input
-              class="logInpPass"
-              required
-              minlength="2"
-              type="password"
-              placeholder="Password"
-              id="login-input-password"
-              autocomplete="current-password"
-            />
-            <img class="inpIconStyle" src="../../img/login/lock.svg" />
-          </div>
+        <div class="passwortDevision">
+          <input
+            class="logInpPass"
+            required
+            minlength="2"
+            type="password"
+            placeholder="Password"
+            id="login-input-password"
+            autocomplete="current-password"
+          />
+          <img
+            style="padding-right: 3px"
+            class="inpIconStyle"
+            src="../../img/login/lock.svg"
+          />
+        </div>
 
-          <div class="forgotPassword">Forgot my password</div>
+        <div class="forgotPassword">Forgot my password</div>
 
-          <div class="rememberBox">
-            <input
-              type="checkbox"
-              name="checkRemember"
-              value="Remember me"
-              id="rememberMe"
-              onclick="handleRememberme(this)"
-            />
-            <label class="rememberLabel" for="rememberMe">Remember me</label>
-          </div>
+        <div class="rememberBox">
+          <input
+            type="checkbox"
+            name="checkRemember"
+            value="Remember me"
+            id="rememberMe"
+            onclick="handleRememberme(this)"
+          />
+          <label class="rememberLabel" for="rememberMe">Remember me</label>
+        </div>
 
-          <div class="loginBtn">
-            <p id="login-error"></p>
-            <button onclick="login()">Log in</button>
-            <button>Guest Log in</button>
-          </div>
+        <div class="loginBtnBox">
+          <p id="login-error"></p>
+          <button class="confirmLogInBtn" onclick="login()">Log in</button>
+          <button class="guestLogInBtn">Guest Log in</button>
         </div>
       </div>
     </div>
