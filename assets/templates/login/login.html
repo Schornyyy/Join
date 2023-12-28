@@ -24,6 +24,7 @@
             placeholder="Email"
             id="login-input-email"
             autocomplete="username"
+            onfocus="changeBorderColor()"
           />
           <img class="inpIconStyle" src="../../img/login/mail.svg" />
         </div>
@@ -45,7 +46,7 @@
           />
         </div>
 
-        <div class="forgotPassword">Forgot my password</div>
+        <div class="forgotPassword" style="display: none;">Forgot my password</div>
 
         <div class="rememberBox">
           <input

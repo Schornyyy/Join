@@ -77,3 +77,9 @@ function userEmailExists() {
 function findUserByEmail(email) {
     return users.find(a => a.email===email);
 }
+
+function changeBorderColor() {
+    var container = document.querySelector('.emailDevision');
+    container.classList.add('active');
+  }
+  
