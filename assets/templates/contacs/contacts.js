@@ -160,12 +160,12 @@ function createContact() {
   renderContacts();
 }
 
-function saveContactsData(data) {
+function saveContactsData(data) {  // Hier werden die Kontakte Lokal gespeichert!
   try {    
     localStorage.setItem('contactsData', JSON.stringify(data));  // Lokal speichern
     // Auf dem Server speichern (falls notwendig)
     // Hier könntest du den ursprünglichen Fetch-Code einfügen, wenn die Daten auf dem Server gespeichert werden sollen.
-    console.log("Kontakte erfolgreich gespeichert.");
+    console.log("Kontakt erfolgreich gespeichert.");
   } catch (error) {
     console.error("Fehler beim Speichern der Kontakte:", error);
   }
@@ -196,7 +196,7 @@ function editContactScreen(contactId) {
                 <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div>
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
-                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="saveContact(${selectedContact.id})">
+                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContact(${selectedContact.id})">
                 </div>                
             </div>
         </form>

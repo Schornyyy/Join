@@ -1,4 +1,5 @@
 @media only screen and (max-width: 750px) and (min-width: 350px) {
+  /* contacts screen style */
   .contactsContent {
     display: flex;
     flex-direction: column;
@@ -8,6 +9,8 @@
     margin-top: 0.5em;    
     height: inherit;
   }
+
+  /* Add contact screen style */
 
   .addContactCloseXContainer {
       position: fixed;
@@ -194,6 +197,8 @@
   margin-bottom: 1em;
 }
 
+/* Open contact screen style */
+
 .openContactContainerHeader {
   display: flex;  
   background-color: var(--white-grey);
@@ -300,12 +305,7 @@
   margin-left: 1em;
 }
 
-
-
-
-
-
-
+/* Drop down menu style */
 
 .dropdown-container {
   position: fixed;
@@ -319,16 +319,6 @@
 .editContactsDropDownIcon {
   height: 25px;
 }
-
-
-
-
-
-
-
-
-
-
 
 #contactOptionsDropdownContainer {
   position: relative;
@@ -352,7 +342,6 @@
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
 }
 
 .dropdown-option {
@@ -365,6 +354,10 @@
   background-color: var(--light-blue);
 }
 
-
-
 }
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
