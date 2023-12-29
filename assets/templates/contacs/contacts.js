@@ -2,22 +2,15 @@ let contactsData; // Kontakt Daten global gespeichert nach dem fetchen
 let nextContactId; // ID-Zähler für die nächste Kontakt-ID
 
 async function contactsInit() {
-  try {
-    // Versuche, die Kontaktdaten aus dem lokalen Speicher zu lesen
-    const storedContactsData = localStorage.getItem('contactsData');
-    
-    // Wenn Daten im lokalen Speicher vorhanden sind, verwende sie
-    if (storedContactsData) {
+  try {    
+    const storedContactsData = localStorage.getItem('contactsData');  // Versuche, die Kontaktdaten aus dem lokalen Speicher zu lesen
+    if (storedContactsData) {  // Wenn Daten im lokalen Speicher vorhanden sind, verwende sie
       contactsData = JSON.parse(storedContactsData);
-    } else {
-      // Andernfalls lade die Daten vom Server
-      contactsData = await fetchContactsData();
+    } else {      
+      contactsData = await fetchContactsData();  // Andernfalls lade die Daten vom Server
       localStorage.setItem('contactsData', JSON.stringify(contactsData));
-    }
-
-    // Initialisiere den ID-Zähler basierend auf der vorhandenen Anzahl von Kontakten
-    nextContactId = contactsData.length;
-
+    }    
+    nextContactId = contactsData.length;  // Initialisiere den ID-Zähler basierend auf der vorhandenen Anzahl von Kontakten
     contactsContentBackgroundColorWhite();
     renderContacts();
     renderAddContactButton();
@@ -129,7 +122,7 @@ function hideHeaderAndFooter() {
 }
 
 function showHeaderAndFooter() {
-  const mobileHeader = document.getElementById("headerTemplate"); // Verstecke mobileHeader und menuTemplate
+  const mobileHeader = document.getElementById("headerTemplate"); // Zeige mobileHeader und menuTemplate
   const menuTemplate = document.getElementById("menuTemplate");
   mobileHeader.style.display = "block";
   menuTemplate.style.display = "block";
@@ -211,9 +204,8 @@ function updateContact(contactId) {
   const updatedName = nameInput.value.trim(); // Daten aus den Input-Feldern lesen
   const updatedMail = mailInput.value.trim();
   const updatedPhone = phoneInput.value.trim();
-  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
-    // Überprüfen, ob alle Felder ausgefüllt sind
-    alert("Bitte füllen Sie alle Felder aus.");
+  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {    
+    alert("Bitte füllen Sie alle Felder aus.");  // Überprüfen, ob alle Felder ausgefüllt sind
     return;
   }
   const updatedContactIndex = contactsData.findIndex(
@@ -254,27 +246,14 @@ function deleteContact(contactId) {
   renderContacts();
 }
 
- function saveContact(selectedContactID) {
-// Muss noch defeniert werden
-}
-
 function openContactScreen(contactId) {
-  const content = document.getElementById("contactsContent");
-
-  // Findet den ausgewählten Kontakt anhand der ID im Kontakt-Datenarray.
-  const selectedContact = contactsData.find(contact => contact.id === contactId);
-
-  // Überprüft, ob der ausgewählte Kontakt gefunden wurde.
-  if (!selectedContact) {
+  const content = document.getElementById("contactsContent");  
+  const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID im Kontakt-Datenarray.  
+  if (!selectedContact) {  // Überprüft, ob der ausgewählte Kontakt gefunden wurde.
     console.error("Selected contact not found in contactsData.");
     return;
-  }
-
-  // Aktualisiert den globalen Wert für den ausgewählten Kontakt.
-  selectetContactID = selectedContact;
-
-  // Rendert die Detailansicht des ausgewählten Kontakts.
-  content.innerHTML = /*html*/ `
+  }  
+  content.innerHTML = /*html*/ `  <!-- Rendert die Detailansicht des ausgewählten Kontakts. -->
     <div class="openContactContainerHeader">                            
         <div class="openContactBlockHeader">
             <div>
@@ -302,30 +281,24 @@ function openContactScreen(contactId) {
         <p class="openContactPhoneText">Phone</p>
         <p class="openContactPhoneNumber">${selectedContact.contactPhone}</p>        
     </div>
-
-    <!-- Dropdown-Menü für Kontaktoptionen -->
-    <div class="dropdown-container" id="contactOptionsDropdownContainer">
+    
+    <div class="dropdown-container" id="contactOptionsDropdownContainer">  <!-- Dropdown-Menü für Kontaktoptionen -->
         <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
             <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
         </div>
-        <div class="dropdown-menu" id="contactOptionsDropdown">
-            <!-- Option zum Bearbeiten des Kontakts -->
-            <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">
+        <div class="dropdown-menu" id="contactOptionsDropdown">            
+            <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">  <!-- Option zum Bearbeiten des Kontakts -->
                 <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
-            </div>
-            <!-- Option zum Löschen des Kontakts -->
-            <div class="dropdown-option" data-value="delete" onclick="deleteContact(${selectedContact.id})">
+            </div>            
+            <div class="dropdown-option" data-value="delete" onclick="deleteContact(${selectedContact.id})">  <!-- Option zum Löschen des Kontakts -->
                 <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
             </div>
         </div>
     </div>
   `;
-  console.log(selectedContact.id);
-  // Zeigt Header und Footer an.
-  showHeaderAndFooter();
-
-  // Ändert die Hintergrundfarbe des Kontaktbereichs.
-  contactsContentBackgroundColorWhiteGray();
+  console.log(selectedContact.id);  
+  showHeaderAndFooter();  // Zeigt Header und Footer an.  
+  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.
 }
 
 function contactsContentBackgroundColorWhiteGray() {
