@@ -359,5 +359,53 @@
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
 
+@media only screen and (min-width: 751px) {
+  .container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "eins eins zwei";
+    grid-template-columns: 200px;
+    height: 100vh;
+  }
 
+  .contactsContent {
+    grid-area: eins;
+    position: sticky;
+    background-color: white;
+    overflow-y: scroll;    
+    position: relative;
+    margin-top: 0.5em;    
+    height: inherit;
+  }
 
+  .letterAndContactsContainer {
+    display: flex;    
+    align-items: center;
+    margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
+    border-bottom: 2px solid #d1d1d1;
+    padding-bottom: 10px; /* Füget zusätzlichen Raum unterhalb des Strichs hinzu */
+  }
+
+  .justifyContentCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+
+  .contact-info-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
+    margin-left: 3em;
+    cursor: pointer;
+  }
+
+  .contactImg {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+}
