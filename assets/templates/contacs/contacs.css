@@ -116,7 +116,7 @@
     color: white;
   }
 
-  .addContactButtonContainer {
+  .addContactButtonContainerMobile {
     display: flex;
     justify-content: right;
     align-items: center;
@@ -124,6 +124,11 @@
     bottom: 32px;
     right: 32px;
     cursor: pointer;
+    margin-top: 2em;
+  }
+
+  .addContactButtonContainerDesktop {
+    display: none;
   }
 
   .addContactButtonImage {
@@ -361,23 +366,16 @@
 
 @media only screen and (min-width: 751px) {
   .container {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "eins eins zwei";
-    grid-template-columns: 200px;
+    display: flex;    
     height: 100vh;
   }
 
-  .contactsContent {
-    grid-area: eins;
-    position: sticky;
+  .contactsContent { 
     background-color: white;
     overflow-y: scroll;    
-    position: relative;
-    margin-top: 0.5em;    
+    position: relative;      
     height: inherit;
+    max-width: 40%;
   }
 
   .letterAndContactsContainer {
@@ -407,5 +405,24 @@
     height: 40px;
     width: 40px;
     cursor: pointer;
+  }
+
+  .addContactButtonContainerMobile {
+    display: none;
+  }
+
+  .addContactButtonContainerDesktop {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: sticky;
+    bottom: 32px;
+    right: 32px;
+    cursor: pointer;
+    margin-top: 2em;
+  }
+
+  .addContactImage {
+    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
   }
 }

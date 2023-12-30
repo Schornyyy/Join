@@ -12,9 +12,10 @@ async function contactsInit() {
     }    
     nextContactId = contactsData.length;  // Initialisiere den ID-Zähler basierend auf der vorhandenen Anzahl von Kontakten
     contactsContentBackgroundColorWhite();
+    showHeaderAndFooter(); 
     renderContacts();
-    renderAddContactButton();
-    showHeaderAndFooter();
+    renderAddContactButton();  // Add contact button mobile
+    
   } catch (error) {
     console.error("Fehler beim Initialisieren der Kontakte:", error);
   }
@@ -23,10 +24,19 @@ async function contactsInit() {
 function renderAddContactButton() {
   const content = document.getElementById("contactsContent");
   const addContactButtonContainer = document.createElement("div");
-  addContactButtonContainer.classList.add("addContactButtonContainer");
+  addContactButtonContainer.classList.add("addContactButtonContainerMobile");  // Für die mobile Ansicht
   addContactButtonContainer.innerHTML =
     '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">'; // onclick-Funktion direkt im HTML-Code
-  content.appendChild(addContactButtonContainer);
+  content.appendChild(addContactButtonContainer);  
+}
+
+function renderAddContactButtonDesktop() {
+  const contentDesktop = document.getElementById("contactsContent");
+  const addContactButtonContainerDesktop = document.createElement("div");
+  addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
+  addContactButtonContainerDesktop.innerHTML =
+  '<img src="../assets/img/contact/addContactButtonDesktop.svg" class="addContactImage" onclick="handleAddContactClick()">'; // onclick-Funktion direkt im HTML-Code
+  contentDesktop.appendChild(addContactButtonContainerDesktop);  
 }
 
 function handleAddContactClick() {
@@ -37,7 +47,7 @@ async function fetchContactsData() {
   try {
     const response = await fetch("../assets/templates/contacs/allContacts.json");
     let data = await response.json();
-    data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Füget eine eindeutige ID zu jedem Kontakt hinzu
+    data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Fügt eine eindeutige ID zu jedem Kontakt hinzu
     return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
   } catch (error) {
     console.error("Fehler beim Laden der Kontakte:", error);
@@ -45,9 +55,10 @@ async function fetchContactsData() {
   }
 }
 
-function renderContacts() {
+function renderContacts() {  
   const content = document.getElementById("contactsContent");
   content.innerHTML = "";
+  renderAddContactButtonDesktop();  // Add contact button desktop
   const contactsByFirstLetter = {};
 
   contactsData.forEach((oneContact) => {
@@ -80,7 +91,7 @@ function renderContacts() {
 
   Object.values(contactsByFirstLetter).forEach((section) => {
     content.innerHTML += section;
-  });
+  });  
 }
 
 function addContactScreen() {
@@ -122,10 +133,10 @@ function hideHeaderAndFooter() {
 }
 
 function showHeaderAndFooter() {
-  const mobileHeader = document.getElementById("headerTemplate"); // Zeige mobileHeader und menuTemplate
-  const menuTemplate = document.getElementById("menuTemplate");
-  mobileHeader.style.display = "block";
-  menuTemplate.style.display = "block";
+  const mobileHeader = document.querySelector(".mobileHeader"); // Zeige mobileHeader und menuTemplate
+  const menuTemplate = document.querySelector(".menuTemplate");
+  mobileHeader.style.display = "flex";
+  menuTemplate.style.display = "flex";
 }
 
 function createContact() {
