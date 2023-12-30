@@ -1,0 +1,11 @@
+.container {
+  border: 2px solid var(--lighter-grey); /* Standard-Border-Stil */
+}
+
+.container.active {
+  border-color: var(--light-blue); /* Neuer Border-Farbe im Fokus */
+}
+
+.container.error {
+  border-color: var(--wrong-input); /* Neue Border-Farbe für Fehler */
+}

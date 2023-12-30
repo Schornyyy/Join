@@ -78,8 +78,18 @@ function findUserByEmail(email) {
     return users.find(a => a.email===email);
 }
 
+/**
+ * Die Input felder im focus sollen Border-color ein eigene Farbe haben.
+ */
 function changeBorderColor() {
     var container = document.querySelector('.emailDevision');
     container.classList.add('active');
   }
   
+  /**
+   * Den Focus/ die Farbe wieder entfernen.
+   */
+  function resetBorderColor() {
+    var container = document.querySelector('.emailDevision');
+    container.classList.remove('active');
+  }

@@ -1,4 +1,5 @@
 @import url("./fonts.css");
+@import url("./assets/worker/inputFocus/inputFocus.css");
 @import url("./assets/templates/register/register.css");
 @import url("./assets/templates/login/login.css");
 @import url("./assets/templates/contacs/contacs.css");
@@ -19,6 +20,7 @@
   --mint-green: #1fd7c1;
   --white-grey: #f6f7f8;
   --white-text: #FFF;
+  --wrong-input: #FF001F;
 }
 
 * {

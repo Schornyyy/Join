@@ -46,7 +46,7 @@
 }
 
 .emailDevision.active {
-  border-color: blue;
+  border-color: var(--light-blue);
 }
 
 .passwortDevision {
