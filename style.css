@@ -19,8 +19,9 @@
   --pink: #fc71ff;
   --mint-green: #1fd7c1;
   --white-grey: #f6f7f8;
-  --white-text: #FFF;
-  --wrong-input: #FF001F;
+  --white-text: #fff;
+  --wrong-input: #ff001f;
+  --font-gray: #a8a8a8;
 }
 
 * {

@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../../style.css" />
-    <script src="../../../script.js"></script>
-    <script src="../../models/user.class.js"></script>
-    <script src="./login.js"></script>
-    <title>Join - Login</title>
-  </head>
-  <body onload="loadData();">
-    <div class="firstLogin">
-      <div class="loginLayout boxShadow">
-        <h1>Log in</h1>
-        <div class="underlineFrame"></div>
 
-        <div class="emailDevision">
-          <input
-            class="logInpMail"
-            required
-            minlength="2"
-            type="email"
-            placeholder="Email"
-            id="login-input-email"
-            autocomplete="username"
-            onfocus="changeBorderColor()"
-            onblur="resetBorderColor()"
-          />
-          <img class="inpIconStyle" src="../../img/login/mail.svg" />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../../style.css" />
+  <script src="../../../script.js"></script>
+  <script src="../../models/user.class.js"></script>
+  <script src="../../worker/inputFocus/inputFocus.js"></script>
+  <script src="./login.js"></script>
+  <title>Join - Login</title>
+</head>
 
-        <div class="passwortDevision">
-          <input
-            class="logInpPass"
-            required
-            minlength="2"
-            type="password"
-            placeholder="Password"
-            id="login-input-password"
-            autocomplete="current-password"
-          />
-          <img
-            style="padding-right: 3px"
-            class="inpIconStyle"
-            src="../../img/login/lock.svg"
-          />
-        </div>
+<body onload="loadData();">
+  <div class="join-logo-animation">
+    <!-- <img src="../../img/login/firstLogo.svg" alt=""> -->
+    <img src="../../img/login/secondLogo.svg" alt="">
+  </div>
 
-        <div class="forgotPassword" style="display: none;">Forgot my password</div>
+  <div class="firstLogin">
+    <div class="loginLayout boxShadow">
+      <h1>Log in</h1>
+      <div class="underlineFrame"></div>
 
-        <div class="rememberBox">
-          <input
-            type="checkbox"
-            name="checkRemember"
-            value="Remember me"
-            id="rememberMe"
-            onclick="handleRememberme(this)"
-          />
-          <label class="rememberLabel" for="rememberMe">Remember me</label>
-        </div>
+      <div class="emailDevision" id="emailDevision">
+        <input class="logInpMail" required minlength="2" type="email" placeholder="Email" id="login-input-email"
+          autocomplete="username" onfocus="changeBorderColor('emailDevision')"
+          onblur="resetBorderColor('emailDevision')" />
+        <img class="inpIconStyle" src="../../img/login/mail.svg" />
+      </div>
 
-        <div class="loginBtnBox">
-          <p id="login-error"></p>
-          <button class="confirmLogInBtn" onclick="login()">Log in</button>
-          <button class="guestLogInBtn">Guest Log in</button>
-        </div>
+      <div class="passwortDevision" id="passwortDevision">
+        <input class="logInpPass" required minlength="2" type="password" placeholder="Password"
+          id="login-input-password" autocomplete="current-password" onfocus="changeBorderColor('passwortDevision')"
+          onblur="resetBorderColor('passwortDevision')" />
+        <img style="padding-right: 3px" class="inpIconStyle" src="../../img/login/lock.svg" />
+      </div>
+
+      <div class="forgotPassword" style="display: none;">Forgot my password</div>
+
+      <div class="rememberBox">
+        <input type="checkbox" name="checkRemember" value="Remember me" id="rememberMe"
+          onclick="handleRememberme(this)" />
+        <label class="rememberLabel" for="rememberMe">Remember me</label>
+      </div>
+
+      <div class="loginBtnBox">
+        <p id="login-error"></p>
+        <button class="confirmLogInBtn" onclick="login()">Log in</button>
+        <button class="guestLogInBtn">Guest Log in</button>
       </div>
     </div>
-  </body>
+
+
+    <div class="logInExtraBox">
+      <div class="mobileNotUser" id="mobileNotUser">
+        <p>Not a Join user?</p>
+        <button class="mobileNotUserBtn" id="mobileNotUserBtn">Sign up</button>
+      </div>
+
+      <div class="mobilePoliceLegal" id="mobilePoliceLegal">
+        <P>Privacy Police</P>
+        <p>Legal notice</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+
 </html>
