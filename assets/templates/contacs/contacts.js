@@ -15,7 +15,7 @@ async function contactsInit() {
     showHeaderAndFooter(); 
     renderContacts();
     renderAddContactButton();  // Add contact button mobile
-    
+    addDropdownMenuClickListener();   
   } catch (error) {
     console.error("Fehler beim Initialisieren der Kontakte:", error);
   }
@@ -205,7 +205,7 @@ function editContactScreen(contactId) {
             </div>
         </form>
     `;
-  hideHeaderAndFooter();
+  hideHeaderAndFooter();  
 }
 
 function updateContact(contactId) {
@@ -309,7 +309,53 @@ function openContactScreen(contactId) {
   `;
   console.log(selectedContact.id);  
   showHeaderAndFooter();  // Zeigt Header und Footer an.  
-  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.
+  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.  
+}
+
+function addDropdownMenuClickListener() {
+  const dropdownTrigger = document.getElementById("menuContactOptionsButton");
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  if (!dropdownTrigger || !dropdownMenu) {
+    console.error("Dropdown trigger or menu not found");
+    return;
+  }
+  const handleDocumentClick = function (event) {
+    if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = "none";
+      document.removeEventListener("click", handleDocumentClick);
+    }
+  };
+  dropdownTrigger.addEventListener("click", function (event) {
+    const isDropdownVisible = (dropdownMenu.style.display === "block");    
+    if (!isDropdownVisible) {  // Schließe alle anderen geöffneten Dropdowns, wenn das aktuelle geöffnet wird
+      closeAllDropdowns();
+    }
+    dropdownMenu.style.display = isDropdownVisible ? "none" : "block";
+    if (!isDropdownVisible) {
+      document.addEventListener("click", handleDocumentClick);
+    }
+    event.stopPropagation();
+  });
+}
+
+function closeAllDropdowns() {
+  const allDropdowns = document.querySelectorAll(".dropdown-menu");
+  allDropdowns.forEach((dropdown) => {
+    dropdown.style.display = "none";
+  });
+  document.removeEventListener("click", handleDocumentClick);
+}
+
+function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
+  return function (event) {
+    const dropdownMenu = document.getElementById("contactOptionsDropdown");
+    if (!dropdownContainer.contains(event.target) &&
+      !addContactButtonContainerMobile.contains(event.target) &&
+      !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = "none";
+      document.removeEventListener("click", handleDocumentClick);
+    }
+  };
 }
 
 function contactsContentBackgroundColorWhiteGray() {
@@ -336,4 +382,7 @@ function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgew�
   const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
   dropdownMenu.style.display = "none";
 }
+
+
+
 
