@@ -448,7 +448,8 @@ function openContactScreenDesktop(contactId) {
         </h1>
         <img src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
         <p class="contactsContentRightSideHeadLinePElement">Better with a team</p>
-      </div>
+    </div>
+
     <div class="contactsContentRightSideUserImgAndNameContainer">
       <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
       <div>
@@ -457,8 +458,27 @@ function openContactScreenDesktop(contactId) {
             <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="">
             <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
           </div>
-      </div>
-      
+      </div> 
+    </div>
+
+    <div class="contactsContentRightSideContactInformationDesktop">
+      <p class="contactsContentRightSideContactInformationDesktopPText">Contact Information</p>
+    </div>
+
+    <div class="contactsContentRightSideContactEmailH2Desktop">
+      <h2 class="contactsContentRightSideContactEmailH2">Email</h2>
+    </div>
+
+    <div class="openContactEmailLinkDesktopContainer">
+      <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.contactMailAdress}">${selectedContact.contactMailAdress}</a>
+    </div>
+
+    <div class="contactsContentRightSideContactPhoneH2Desktop">
+      <h2 class="contactsContentRightSideContactPhoneH2">Phone</h2>
+    </div>
+
+    <div class="openContactPhoneNumberDesktopContainer">
+      <p class="openContactPhoneNumberDesktopPElement">${selectedContact.contactPhone}</p>
     </div>
   `;  
   lastClickedContactId = contactId;  // Speichere den zuletzt angeklickten Kontakt

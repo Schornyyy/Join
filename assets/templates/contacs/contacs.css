@@ -437,7 +437,7 @@
   .contactsContentRightSide {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     background-color: var(--white-grey);
   }
 
@@ -496,5 +496,58 @@
     width: 81px;
     cursor: pointer;
     margin-left: 30px;
+  }
+
+  .contactsContentRightSideContactInformationDesktop {
+    margin-top: 59px;
+    margin-left: 2em;
+  }
+
+  .contactsContentRightSideContactInformationDesktopPText {
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .contactsContentRightSideContactEmailH2Desktop {
+    margin-top: 59px;
+    margin-left: 2em;
+  }
+
+  .openContactEmailLinkDesktopContainer {
+    margin-top: 20px;
+  }
+
+  .openContactEmailLinkDesktop {
+    cursor: pointer;
+    text-decoration: none;
+    color: #007CEE;
+    margin-left: 2em;
+  }
+
+  .openContactPhoneNumberDesktopContainer {
+    margin-top: 20px;
+    margin-left: 2em;
+  }
+
+  .openContactPhoneNumberDesktopPElement {
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .contactsContentRightSideContactPhoneH2Desktop {
+    margin-top: 20px;
+    margin-left: 2em;
+  }
+
+  .contactsContentRightSideContactEmailH2 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .contactsContentRightSideContactPhoneH2 {
+    font-size: 16px;
+    font-weight: 700;
   }
 }
