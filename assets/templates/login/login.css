@@ -17,42 +17,19 @@
   border-radius: 1.8rem;
 }
 
-/* Join-Logo Animation */
-.firstLogin {
-  position: relative;
-  z-index: 1;
+.headerLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
-
-/* Stil für das animierte Element */
-
-
-
-/* Dein vorhandener CSS-Stil für das animierte Element */
-.join-logo-animation {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2); /* Anfangszustand: größer und zentriert */
-  z-index: 999;
-  opacity: 1; /* Startzustand: sichtbar */
-  animation: joinLogo 2s ease-in-out forwards;
-}
-
-@keyframes joinLogo {
-  0% {
-    transform: translate(-50%, -50%) scale(2); /* Startzustand: größer und zentriert */
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh); /* Endposition: oben links und kleiner */
-  }
-}
-/* Join-Logo Animation ende*/
 
 .loginLayout h1 {
   font-size: 2.5rem;
 }
 
-.underlineFrame {
+.underlineFrameMobileLogIn {
   width: 5rem;
   height: 0.15rem;
   background-color: #29abe2;
@@ -76,6 +53,7 @@
   width: 100%;
   height: 1.25rem;
   font-size: 1rem;
+  background-color: transparent;
 }
 
 .logInpMail:focus {
@@ -104,6 +82,7 @@
   width: 100%;
   height: 1.25rem;
   font-size: 1rem;
+  background-color: transparent;
 }
 
 .logInpPass:focus {
@@ -185,6 +164,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .mobileNotUserBtn {
@@ -209,3 +189,30 @@
   font-size: small;
   color: var(--font-gray);
 }
+
+/* Join-Logo Animation */
+.firstLogin {
+  position: relative;
+  /* z-index: 1; */
+}
+
+.join-logo-animation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  z-index: 999;
+  opacity: 1;
+  animation: joinLogo 2s ease-in-out forwards;
+}
+
+@keyframes joinLogo {
+  0% {
+    transform: translate(-50%, -50%) scale(2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
+  }
+}
+
+/* Join-Logo Animation ende*/

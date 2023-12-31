@@ -20,19 +20,22 @@
 
   <div class="firstLogin">
     <div class="loginLayout boxShadow">
-      <h1>Log in</h1>
-      <div class="underlineFrame"></div>
 
-      <div class="emailDevision" id="emailDevision">
+      <div class="headerLogin">
+        <h1>Log in</h1>
+        <div class="underlineFrameMobileLogIn"></div>
+      </div>
+
+      <div class="emailDevision cursor" id="emailDevision">
         <input class="logInpMail" required minlength="2" type="email" placeholder="Email" id="login-input-email"
           autocomplete="username" onfocus="changeBorderColor('emailDevision')"
           onblur="resetBorderColor('emailDevision')" />
         <img class="inpIconStyle" src="../../img/login/mail.svg" />
       </div>
 
-      <div class="passwortDevision" id="passwortDevision">
-        <input class="logInpPass" required minlength="2" type="password" placeholder="Password"
-          id="login-input-password" autocomplete="current-password" onfocus="changeBorderColor('passwortDevision')"
+      <div class="passwortDevision cursor" id="passwortDevision">
+        <input class="logInpPass" id="login-input-password" required minlength="2" type="password"
+          placeholder="Password" autocomplete="current-password" onfocus="changeBorderColor('passwortDevision')"
           onblur="resetBorderColor('passwortDevision')" />
         <img style="padding-right: 3px" class="inpIconStyle" src="../../img/login/lock.svg" />
       </div>
@@ -51,7 +54,6 @@
         <button class="guestLogInBtn">Guest Log in</button>
       </div>
     </div>
-
 
     <div class="logInExtraBox">
       <div class="mobileNotUser" id="mobileNotUser">

@@ -1,101 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="../../models/user.class.js"></script>
-    <script src="../../../script.js"></script>
-    <script src="./register.js"></script>
-    <link rel="stylesheet" href="../../../style.css" />
-    <title>Join - Register</title>
-  </head>
-  <body onload="loadData();">
-    <div class="secondRegister">
-      <div class="registerLayout boxShadow">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../../models/user.class.js"></script>
+  <script src="../../../script.js"></script>
+  <script src="../../worker/inputFocus/inputFocus.js"></script>
+  <script src="./register.js"></script>
+  <link rel="stylesheet" href="../../../style.css" />
+  <title>Join - Register</title>
+</head>
+
+<body onload="loadData();">
+  <div class="join-logo-animation">
+    <!-- <img src="../../img/login/firstLogo.svg" alt=""> -->
+    <img src="../../img/login/secondLogo.svg" alt="">
+  </div>
+
+  <div class="firstRegister">
+    <div class="registerLayout boxShadow">
+
+      <!-- TODO -->
+      <div class="headerRegisterBox">
+        <img src="../../../assets/img/register/arrow-left-line.svg" />
+
         <div class="headerRegister">
-          <img src="../../../assets/img/register/arrow-left-line.svg" />
-          <div class="textUnderline">
-            <h1>Sign up</h1>
-            <div class="underlineFrame"></div>
-          </div>
-        </div>
-
-        <div
-          class="regForm"
-          style="
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            width: 200px;
-          "
-        >
-          <div class="nameRegist">
-            <input
-              class="nameRegist borderNone outline cursor"
-              required
-              minlength="2"
-              type="text"
-              placeholder="Name"
-              autocomplete="username"
-              id="register-name"
-            />
-            <img src="../../../assets/img/register/person.svg" />
-          </div>
-
-          <div class="emailDevision">
-            <input
-              class="registerInpMail borderNone"
-              required
-              minlength="2"
-              type="email"
-              placeholder="Email"
-              autocomplete="email"
-              id="register-email"
-            />
-            <img src="../../../assets/img/login/mail.svg" />
-          </div>
-
-          <div class="passwortDevision">
-            <input
-              class="RegisterInpPass borderNone"
-              required
-              minlength="2"
-              type="password"
-              placeholder="Password"
-              autocomplete="current-password"
-              id="register-password"
-            />
-            <img src="../../../assets/img/login/lock.svg" />
-          </div>
-
-          <div class="ConfirmPasswortDevision">
-            <input
-              class="ConfirmPasswort borderNone"
-              required
-              minlength="2"
-              type="password"
-              placeholder="Confirm Password"
-              autocomplete="current-password"
-              id="register-password-confirm"
-            />
-            <img src="../../../assets/img/login/lock.svg" />
-          </div>
-
-          <div class="forgotPassword">Forgot my password</div>
-
-          <div class="acceptPolicyBox">
-            <input type="checkbox" name="acceptPolicy" value="acceptPolicy" />
-            <label class="acceptPolicy" for="acceptPolicy"
-              >I accept the Privacy policy</label
-            >
-          </div>
-
-          <div class="registerBtn">
-            <p id="registerError" style="color: red"></p>
-            <button onclick="registerUser()">Sign up</button>
-          </div>
+          <h1>Sign up</h1>
+          <div class="underlineFrameMobileRegister"></div>
         </div>
       </div>
+
+      <div class="nameRegistDevision cursor" id="nameRegistDevision">
+        <input class="nameRegist" id="register-name" required minlength="2" type="text" placeholder="Name"
+          autocomplete="username" onfocus="changeBorderColor('nameRegistDevision')"
+          onblur="resetBorderColor('nameRegistDevision')" />
+        <img style="padding-right: 3px" class="inpIconStyle" src="../../../assets/img/register/person.svg" />
+      </div>
+
+      <div class="emailDevision cursor" id="emailDevision">
+        <input class="registerInpMail" id="register-email" required minlength="2" type="email" placeholder="Email"
+          autocomplete="email" onfocus="changeBorderColor('emailDevision')"
+          onblur="resetBorderColor('emailDevision')" />
+        <img class="inpIconStyle" src="../../../assets/img/login/mail.svg" />
+      </div>
+
+      <div class="passwortDevision cursor" id="passwortDevision">
+        <input class="registerInpPass" id="register-password" required minlength="2" type="password"
+          placeholder="Password" autocomplete="current-password" onfocus="changeBorderColor('passwortDevision')"
+          onblur="resetBorderColor('passwortDevision')" />
+        <img style="padding-right: 3px" class="inpIconStyle" src="../../../assets/img/login/lock.svg" />
+      </div>
+
+      <div class="confirmPasswortDevision cursor" id="confirmPasswortDevision">
+        <input class="confirmPasswort" id="register-password-confirm" required minlength="2" type="password"
+          placeholder="Confirm Password" autocomplete="current-password"
+          onfocus="changeBorderColor('confirmPasswortDevision')" onblur="resetBorderColor('confirmPasswortDevision')" />
+        <img style="padding-right: 3px" class="inpIconStyle" src="../../../assets/img/login/lock.svg" />
+      </div>
+
+      <div class="acceptPolicyBox">
+        <input type="checkbox" name="acceptPolicy" value="acceptPolicy" />
+        <label class="acceptPolicy" for="acceptPolicy">I accept the Privacy policy</label>
+      </div>
+
+      <div class="registerBtnBox">
+        <p id="registerError" style="color: red"></p>
+        <button class="RegisterBtn" onclick="registerUser()">Sign up</button>
+      </div>
     </div>
-  </body>
+
+    <div class="mobilePoliceLegalSignUp">
+      <P>Privacy Police</P>
+      <p>Legal notice</p>
+    </div>
+  </div>
+
+</body>
+
 </html>
