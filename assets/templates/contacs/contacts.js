@@ -1,21 +1,27 @@
 let contactsData; // Kontakt Daten global gespeichert nach dem fetchen
 let nextContactId; // ID-Zähler für die nächste Kontakt-ID
+let lastClickedContactId;
 
 async function contactsInit() {
   try {    
     const storedContactsData = localStorage.getItem('contactsData');  // Versuche, die Kontaktdaten aus dem lokalen Speicher zu lesen
-    if (storedContactsData) {  // Wenn Daten im lokalen Speicher vorhanden sind, verwende sie
-      contactsData = JSON.parse(storedContactsData);
+    if (storedContactsData) {     
+      contactsData = JSON.parse(storedContactsData);  // Wenn Daten im lokalen Speicher vorhanden sind, verwende sie
     } else {      
       contactsData = await fetchContactsData();  // Andernfalls lade die Daten vom Server
       localStorage.setItem('contactsData', JSON.stringify(contactsData));
     }    
-    nextContactId = contactsData.length;  // Initialisiere den ID-Zähler basierend auf der vorhandenen Anzahl von Kontakten
+    nextContactId = contactsData.length;  // Initialisiere den ID-Zähler basierend auf der vorhandenen Anzahl von Kontakten    
+    const isMobile = window.innerWidth < 768;  // Entscheide, ob die mobile oder Desktop-Ansicht geladen werden soll // Adjust the breakpoint as needed    
+    if (isMobile) {  // Ruft die Funktion basierend auf die Bildschirmbreite auf      
+      renderContacts();  // Mobile Ansicht
+    } else {      
+      renderContactsDesktop();  // Desktop Ansicht
+    }    
     contactsContentBackgroundColorWhite();
-    showHeaderAndFooter(); 
-    renderContacts();
-    renderAddContactButton();  // Add contact button mobile
-    addDropdownMenuClickListener();   
+    showHeaderAndFooter();
+    renderAddContactButton();
+    addDropdownMenuClickListener();
   } catch (error) {
     console.error("Fehler beim Initialisieren der Kontakte:", error);
   }
@@ -384,5 +390,79 @@ function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgew�
 }
 
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// JavaScript Logik für die Desktop Ansicht
+
+function renderContactsDesktop() {
+  const content = document.getElementById("contactsContent");  
+  renderAddContactButtonDesktop();  // Add contact button desktop
+  const contactsByFirstLetter = {};
+
+  contactsData.forEach((oneContact) => {
+    const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
+
+    if (!contactsByFirstLetter[firstLetter]) {
+      contactsByFirstLetter[firstLetter] = /*html*/ `
+                <div class="letterAndContactsContainer">
+                    <div class="letter-column">
+                        <h2 class="contact-first-letter">${firstLetter}</h2>
+                    </div>
+                </div>
+            `;
+    }
+
+    const oneContactContainer = /*html*/ `
+            <div class="justifyContentCenter" onclick="openContactScreenDesktop(${oneContact.id})">
+                <div>
+                    <img src="${oneContact.contactImg}" class="contactImg">
+                </div>
+                <div class="contact-info-container">
+                    <h2>${oneContact.contactName}</h2>
+                    <a>${oneContact.contactMailAdress}</a>
+                </div>
+            </div>
+        `;
+
+    contactsByFirstLetter[firstLetter] += oneContactContainer;
+  });
+
+  Object.values(contactsByFirstLetter).forEach((section) => {
+    content.innerHTML += section;
+  });
+}
+
+function openContactScreenDesktop(contactId) {  
+  if (lastClickedContactId === contactId) {  // Wenn der aktuelle Kontakt bereits geöffnet ist, tue nichts
+    return;
+  }
+  const content = document.getElementById("contactsContentRightSideID");
+  const selectedContact = contactsData.find(contact => contact.id === contactId);
+  if (!selectedContact) {
+    console.error("Selected contact not found in contactsData.");
+    return;
+  }
+  content.innerHTML = /*html*/ `
+    <div class="contactsContentRightSideHeadLine">
+        <h1 class="contactsContentRightSideH1">
+          Contacts
+        </h1>
+        <img src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
+        <p class="contactsContentRightSideHeadLinePElement">Better with a team</p>
+      </div>
+    <div class="contactsContentRightSideUserImgAndNameContainer">
+      <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
+      <div>
+        <h2 class="contactsContentRightSideUserNameH2">${selectedContact.contactName}</h2>
+          <div class="contactsContentRightSideEditAndDeleteButtonContainer">
+            <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="">
+            <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
+          </div>
+      </div>
+      
+    </div>
+  `;  
+  lastClickedContactId = contactId;  // Speichere den zuletzt angeklickten Kontakt
+  showHeaderAndFooter();
+}
 
 

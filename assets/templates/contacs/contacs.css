@@ -370,6 +370,14 @@
     height: 100vh;
   }
 
+  .contactsDesktop {
+    display: flex;    
+  }
+
+  .mobileHeader {
+    background-color: white;
+  }
+
   .contactsContent { 
     background-color: white;
     overflow-y: scroll;    
@@ -424,5 +432,69 @@
 
   .addContactImage {
     pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
+  }
+
+  .contactsContentRightSide {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    background-color: var(--white-grey);
+  }
+
+  .contactsContentRightSideHeadLine {
+    display: flex;
+    align-items: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin-left: 2em;
+    margin-top: 5em;
+  }
+
+  .contactsContentRightSideH1 {
+    font-size: 61px;
+    font-weight: 700;
+    color: black;
+  }
+
+  .contactsContentRightSideHeadLinePElement {
+    font-size: 27px;
+    font-weight: 400;
+    color: black;
+  }
+
+  .contactsContentRightSideUserImgAndNameContainer {
+    display: flex;
+    align-items: flex-start;
+    align-items: center;
+    gap: 5em;
+    margin-left: 2em;
+    margin-top: 5em;
+  }
+
+  .openContactUserImg {
+    height: 120px;
+    width: 120px;
+  }
+
+  .contactsContentRightSideUserNameH2 {
+    font-size: 47px;
+    font-weight: 500;
+  }
+
+  .contactsContentRightSideEditAndDeleteButtonContainer {
+    display: flex;
+  }
+
+  .contactsContentRightSideEditButton {
+    height: 24px;
+    width: 62px;
+    cursor: pointer;
+  }
+
+  .contactsContentRightSideDeleteButton {
+    height: 24px;
+    width: 81px;
+    cursor: pointer;
+    margin-left: 30px;
   }
 }
