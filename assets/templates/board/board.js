@@ -1,16 +1,19 @@
 /*
     -----TABLE OF CONTENTS-----
-    1. INIT
-    2. RENDER
-    3. GETTER
-    4. TO HTML
-    5. MISC
+    01. INIT
+    02. RENDER
+    03. GETTER
+    04. TO HTML
+    05. MISC
     ------DIALOG DETAIL------
-    6. SHOW HIDE DETAIL
-    7. RENDER DETAIL DIALOG
+    06. SHOW HIDE DETAIL
+    07. RENDER DETAIL DIALOG
     ------DIALOG EDIT------
-    8. SHOW HIDE EDIT
-    9. RENDER EDIT DIALOG
+    08. SHOW HIDE EDIT
+    09. RENDER EDIT DIALOG
+    ------DRAG AND DROP------
+    11. DRAG AND DROP
+    
 */
 
 
@@ -576,16 +579,6 @@ function editSaveTask(taskID) {
     // saveTasks();
     showDialogDetail(taskID);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 ////////////////////////////////////////////////
