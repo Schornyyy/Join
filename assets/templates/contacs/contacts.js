@@ -42,8 +42,8 @@ function renderAddContactButtonDesktop() {
   const contentDesktop = document.getElementById("contactsContent");
   const addContactButtonContainerDesktop = document.createElement("div");
   addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
-  addContactButtonContainerDesktop.innerHTML =
-  '<img src="../assets/img/contact/addContactButtonDesktop.svg" class="addContactImage" onclick="handleAddContactClick()">'; // onclick-Funktion direkt im HTML-Code
+  addContactButtonContainerDesktop.innerHTML  = /*html*/`
+  <button class="addContactButtonDesktop">Add new contact</button>`;
   contentDesktop.appendChild(addContactButtonContainerDesktop);  
 }
 

@@ -435,6 +435,11 @@
     width: 352px;
   }
 
+  .addContactImage:hover {
+    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
+    background-color: var(--light-blue);
+  }
+
   .contactsContentRightSide {
     display: flex;
     flex-direction: column;
@@ -550,5 +555,29 @@
   .contactsContentRightSideContactPhoneH2 {
     font-size: 16px;
     font-weight: 700;
+  }
+
+  .addContactButtonDesktop {
+    width: 352px;
+    height: 56px;
+    background-color: var(--light-grey);
+    border: 0;    
+    border-radius: 10px;
+    color: white;
+    padding: 12px 0 12px 0;
+    font-size: 21px;
+    font-weight: 700;
+    gap: 16;
+    background-image: url("../../img/contact/addNewContactDesktopButtonImg.svg");
+    background-repeat: no-repeat;
+    background-position: right 40px center; /* Hier wird das Bild um 10px von rechts verschoben */
+    background-size: contain;
+    flex-shrink: 0;
+    text-align: center;
+    background-size: 10%;
+  }
+
+  .addContactButtonDesktop:hover {
+    background-color: var(--light-blue);
   }
 }
