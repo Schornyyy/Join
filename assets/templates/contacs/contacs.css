@@ -627,7 +627,8 @@
 }
 
 .addContactDesktopRightSideContainer {
-  min-width: 60%;
+  display: flex;
+  width: 800px;
   background-color: white;
 }
 
@@ -659,6 +660,33 @@
   width: 90px;
   margin-top: 16px;
 }
+
+.addContactBlankUserImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addContactBlankUserImg {
+  height: 120px;
+  width: 120px;
+}
+
+.addContactCloseXContainer {
+  display: flex;
+  justify-content: right;
+  margin-top: 25px;
+  margin-right: 25px;
+}
+
+.addContactDesktopRightSideContent {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}
+
+
+
 
 
 }

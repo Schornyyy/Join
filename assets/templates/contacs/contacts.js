@@ -519,7 +519,14 @@ function showOverlay() {
         </div>
       </div>
       <div class="addContactDesktopRightSideContainer">
-        <p>Hallo</p>
+        <div class="addContactBlankUserImgContainer">
+          <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
+        </div>
+        <div class="addContactDesktopRightSideContent">
+          <div class="addContactCloseXContainer" onclick="hideOverlay()">
+            <img src="../../assets/img/contact/addContactCloseXDesktop.svg" alt="">
+          </div>
+        </div>
       </div>
     </div>
   `;  
@@ -531,5 +538,7 @@ function showOverlay() {
 
 function hideOverlay() {
   const overlayContainer = document.querySelector(".overlay-container");
-  document.body.removeChild(overlayContainer);
+  if (overlayContainer) {
+    overlayContainer.parentNode.removeChild(overlayContainer);
+  }
 }
