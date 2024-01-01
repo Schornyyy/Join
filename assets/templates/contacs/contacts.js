@@ -29,6 +29,15 @@ async function contactsInit() {
   }
 }
 
+function renderAddContactButton() {
+  const content = document.getElementById("contactsContent");
+  const addContactButtonContainer = document.createElement("div");
+  addContactButtonContainer.classList.add("addContactButtonContainerMobile");  // Für die mobile Ansicht
+  addContactButtonContainer.innerHTML =
+    '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">'; // onclick-Funktion direkt im HTML-Code
+  content.appendChild(addContactButtonContainer);  
+}
+
 function renderAddContactButtonDesktop() {
   const contentDesktop = document.getElementById("contactsContent");
   const addContactButtonContainerDesktop = document.createElement("div");
@@ -501,27 +510,17 @@ function showOverlay() {
   // Füge das Overlay-Inhaltselement hinzu (in dieser Beispielkarte können Sie Ihren eigenen HTML-Code für das Formular einfügen)
   overlayContent.innerHTML = /*html*/ `
     <div class="overlay-card">
-      <div class="addContactContainerHeader">
-        <div class="addContactCloseXContainer" onclick="hideOverlay()">
-          <img src="../assets/img/contact/addContactCloseX.svg" alt="">
-        </div>
-        <div class="addContactBlockHeader">
-          <p class="addContactH1">Add contact</p>
-          <p class="addContactText">Tasks are better with a team!</p>
-          <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
-        </div>
-        <div>
-          <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
+      <div class="addContactDesktopLeftSideContainer">
+        <div class="flexDirectionColumn">
+          <img class="joinLogoGreyBackgroundImg" src="../../assets/img/contact/joinLogoGreyBackground.png" alt="">
+          <h1 class="addContactDesktopLeftSideContainerH1">Add contact</h1>
+          <p class="addContactDesktopLeftSideContainerPElement">Tasks are better with a team!</p>
+          <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
         </div>
       </div>
-      <form onsubmit="createContact()">
-        <div class="addContactContainerFooter">
-          <input class="addContactInputName" type="text" required placeholder="Name">
-          <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
-          <input class="addContactInputPhone" type="text" required placeholder="Phone">
-          <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
-        </div>
-      </form>
+      <div class="addContactDesktopRightSideContainer">
+        <p>Hallo</p>
+      </div>
     </div>
   `;  
   overlayContainer.addEventListener("click", function () {  // Füge einen Event-Listener hinzu, um das Overlay zu schließen
