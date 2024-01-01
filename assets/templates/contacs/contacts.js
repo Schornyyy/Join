@@ -15,8 +15,10 @@ async function contactsInit() {
     const isMobile = window.innerWidth < 768;  // Entscheide, ob die mobile oder Desktop-Ansicht geladen werden soll // Adjust the breakpoint as needed    
     if (isMobile) {  // Ruft die Funktion basierend auf die Bildschirmbreite auf      
       renderContacts();  // Mobile Ansicht
+      hidecontactsContentRightSideDesktop();
     } else {      
       renderContactsDesktop();  // Desktop Ansicht
+      showcontactsContentRightSideDesktop();
     }    
     contactsContentBackgroundColorWhite();
     showHeaderAndFooter();
@@ -81,7 +83,7 @@ function renderContacts() {
     }
 
     const oneContactContainer = /*html*/ `
-            <div class="justifyContentCenter" onclick="openContactScreen(${oneContact.id})">
+            <div class="oneContactContainer" onclick="openContactScreen(${oneContact.id})">
                 <div>
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
@@ -315,7 +317,7 @@ function openContactScreen(contactId) {
   `;
   console.log(selectedContact.id);  
   showHeaderAndFooter();  // Zeigt Header und Footer an.  
-  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.  
+  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.   
 }
 
 function addDropdownMenuClickListener() {
@@ -412,7 +414,7 @@ function renderContactsDesktop() {
     }
 
     const oneContactContainer = /*html*/ `
-            <div class="justifyContentCenter" onclick="openContactScreenDesktop(${oneContact.id})">
+            <div class="oneContactContainer" onclick="openContactScreenDesktop(${oneContact.id})">
                 <div>
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
@@ -483,6 +485,15 @@ function openContactScreenDesktop(contactId) {
   `;  
   lastClickedContactId = contactId;  // Speichere den zuletzt angeklickten Kontakt
   showHeaderAndFooter();
+  showcontactsContentRightSideDesktop();
 }
 
+function showcontactsContentRightSideDesktop() {
+  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
+  showcontactsContentRightSide.style.display = "flex";
+}
 
+function hidecontactsContentRightSideDesktop() {
+  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
+  showcontactsContentRightSide.style.display = "none";
+}
