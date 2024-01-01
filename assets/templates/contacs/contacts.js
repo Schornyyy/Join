@@ -29,22 +29,15 @@ async function contactsInit() {
   }
 }
 
-function renderAddContactButton() {
-  const content = document.getElementById("contactsContent");
-  const addContactButtonContainer = document.createElement("div");
-  addContactButtonContainer.classList.add("addContactButtonContainerMobile");  // Für die mobile Ansicht
-  addContactButtonContainer.innerHTML =
-    '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">'; // onclick-Funktion direkt im HTML-Code
-  content.appendChild(addContactButtonContainer);  
-}
-
 function renderAddContactButtonDesktop() {
   const contentDesktop = document.getElementById("contactsContent");
   const addContactButtonContainerDesktop = document.createElement("div");
   addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
-  addContactButtonContainerDesktop.innerHTML  = /*html*/`
-  <button class="addContactButtonDesktop">Add new contact</button>`;
+  addContactButtonContainerDesktop.innerHTML = /*html*/`
+    <button class="addContactButtonDesktop" onclick="showOverlay()">Add new contact</button>`;
   contentDesktop.appendChild(addContactButtonContainerDesktop);  
+  addContactButtonContainerDesktop.addEventListener("click", function () {  // Füge einen Event-Listener hinzu, um das Overlay zu zeigen    
+  });
 }
 
 function handleAddContactClick() {
@@ -496,4 +489,48 @@ function showcontactsContentRightSideDesktop() {
 function hidecontactsContentRightSideDesktop() {
   const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
   showcontactsContentRightSide.style.display = "none";
+}
+
+function showOverlay() {  
+  const overlayContainer = document.createElement("div");  // Erstelle das Overlay-Container-Element
+  overlayContainer.classList.add("overlay-container");
+  document.body.appendChild(overlayContainer);  
+  const overlayContent = document.createElement("div");  // Erstelle das Overlay-Inhaltselement
+  overlayContent.classList.add("overlay-content");
+  overlayContainer.appendChild(overlayContent);
+  // Füge das Overlay-Inhaltselement hinzu (in dieser Beispielkarte können Sie Ihren eigenen HTML-Code für das Formular einfügen)
+  overlayContent.innerHTML = /*html*/ `
+    <div class="overlay-card">
+      <div class="addContactContainerHeader">
+        <div class="addContactCloseXContainer" onclick="hideOverlay()">
+          <img src="../assets/img/contact/addContactCloseX.svg" alt="">
+        </div>
+        <div class="addContactBlockHeader">
+          <p class="addContactH1">Add contact</p>
+          <p class="addContactText">Tasks are better with a team!</p>
+          <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+        </div>
+        <div>
+          <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
+        </div>
+      </div>
+      <form onsubmit="createContact()">
+        <div class="addContactContainerFooter">
+          <input class="addContactInputName" type="text" required placeholder="Name">
+          <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
+          <input class="addContactInputPhone" type="text" required placeholder="Phone">
+          <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
+        </div>
+      </form>
+    </div>
+  `;  
+  overlayContainer.addEventListener("click", function () {  // Füge einen Event-Listener hinzu, um das Overlay zu schließen
+    hideOverlay();
+  });  
+  overlayContainer.style.animation = "slide-in 0.5s ease-out";  // Animiere das Overlay von rechts in die Mitte des Bildschirms
+}
+
+function hideOverlay() {
+  const overlayContainer = document.querySelector(".overlay-container");
+  document.body.removeChild(overlayContainer);
 }
