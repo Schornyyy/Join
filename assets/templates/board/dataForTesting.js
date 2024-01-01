@@ -3,7 +3,7 @@ let tasksForTesting= [
         id: 0,
         title: 'eins',
         description: 'erste Aufgabe zum testen von Board',
-        prio: 'urgent', //string oder number?
+        prio: 'prio-urgent', //string oder number?
         dueDate: 1704031200000,
         category: 'testing Board', //Farbe für Kategorien muss wo gespeichert werden
         assignedTo: ['hermann@li.df', 'tom@slayer.com', 'friedrich@schiller.de', 'modulfee@da.de'], //eigene Klasse für Kontake bzw. User?
@@ -14,7 +14,7 @@ let tasksForTesting= [
         id: 1,
         title: 'zwo',
         description: 'zweite Aufgabe kommt in Spalte await feedback',
-        prio: 'medium',
+        prio: 'prio-medium',
         dueDate: 1704031200000,
         category: 'another category', //
         assignedTo: ['hermann@li.df', 'modulfee@da.de'],
@@ -25,7 +25,7 @@ let tasksForTesting= [
         id: 2,
         title: 'drei',
         description: 'lorem ipsum',
-        prio: 'medium',
+        prio: 'prio-medium',
         dueDate: 1704031200000,
         category: 'third category',
         assignedTo: ['hermann@li.df'],
@@ -36,7 +36,7 @@ let tasksForTesting= [
         id: 3,
         title: 'vier',
         description: 'eine zweite Aufgabe für die Spalte in progress',
-        prio: 'low',
+        prio: 'prio-low',
         dueDate: 1704031200000,
         category: 'irgendwas',
         assignedTo: ['hermann@li.df', 'tom@slayer.com'],
@@ -47,48 +47,73 @@ let tasksForTesting= [
         id: 4,
         title: 'fünf',
         description: 'Ich habe sogar Unteraufgaben ;)',
-        prio: 'low',
+        prio: 'prio-low',
         dueDate: 1704031200000,
         category: 'irgendwas',
         assignedTo: ['hermann@li.df'],
-        subtasks: [0, 1],
+        // subtasks: [0, 1],
+        subtasks: [
+            {
+                title: 'erste Unteraufgabe',
+                finished: false
+            },
+            {
+                title: 'zweite Unteraufgabe',
+                finished: true
+            },
+        ],
         status: 'done'
     },
     {
         id: 5,
         title: 'sechs',
         description: 'Die Spalte ToDo braucht auch eine Aufgabe.',
-        prio: 'low',
+        prio: 'prio-low',
         dueDate: 1704031200000,
         category: 'farbe',
         assignedTo: ['hermann@li.df'],
         subtasks: [],
-        status: 'todo'
+        status: 'Open'
     },
     {
         id: 6,
         title: 'sieben',
         description: 'Zum Testen von der Progressbar mit drei Subtasks',
-        prio: 'urgent',
+        prio: 'prio-urgent',
         dueDate: 1704031200000,
         category: 'TuEs!',
         assignedTo: ['hermann@li.df'],
-        subtasks: [2,3,4],
-        status: 'todo'
+        // subtasks: [2,3,4],
+        subtasks: [
+            {
+                title: 'TuEs eins',
+                finished: false
+            },
+            {
+                title: 'TuEs zwo',
+                finished: true
+            },
+            {
+                title: 'TuEs drei',
+                finished: true
+            }
+        ],
+        status: 'Open'
     },
     {
         id: 7,
         title: 'acht',
         description: 'Da steht sehr viel :O Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-        prio: 'medium',
+        prio: 'prio-medium',
         dueDate: 1704031200000,
         category: 'TuEs!',
         assignedTo: ['friedrich@schiller.de'],
         subtasks: [],
-        status: 'todo'
+        status: 'Open'
     },
 ];
 
+/*
 let subtasksForTesting= [
     {
         id: 0,
@@ -116,6 +141,7 @@ let subtasksForTesting= [
         finished: true
     }
 ];
+*/
 
 let contactsForTesting= [
     {

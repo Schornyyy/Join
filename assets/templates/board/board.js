@@ -23,8 +23,8 @@ let contactsDatasource;
 //////////////// INIT
 
 function boardInit() {
-    tasksDatasource = tasksForTesting;
-    subtasksDatasource = subtasksForTesting;
+    tasksDatasource = tasks;
+    // subtasksDatasource = subtasksForTesting;
     contactsDatasource = contactsForTesting;
     renderBoard();
     boardInitDragAndDrop();
@@ -33,7 +33,8 @@ function boardInit() {
 //////////////// RENDER
 
 function renderBoard() {
-    renderTasks('cardContainerTodo', 'todo');
+    // renderTasks('cardContainerTodo', 'todo');
+    renderTasks('cardContainerTodo', 'Open');
     renderTasks('cardContainerInprogress', 'in progress');
     renderTasks('cardContainerAwaitfeedback', 'await feedback');
     renderTasks('cardContainerDone', 'done');
@@ -69,9 +70,12 @@ function getAmountOfSubtasks(task) {
 }
 
 function getAmountOfFinishedSubtasks(task) {
-    return getFinishedSubtasks(task).length;
+    let amount= 0;
+    amount+= getFinishedSubtasks(task).length;
+    return amount;
 }
 
+/*
 function getFinishedSubtasks(task) {
     output = [];
     let subtaskTemp;
@@ -83,17 +87,32 @@ function getFinishedSubtasks(task) {
     });
     return output;
 }
+*/
+
+function getFinishedSubtasks(task) {
+    let finishedSubtasks= task.subtasks.find(subtask => subtask.finished);
+    if (finishedSubtasks)
+        return [finishedSubtasks];
+    else
+        return [];
+}
 
 function getSubtaskById(idParam) {
     return subtasksDatasource.find(subtask => subtask.id == idParam);
 }
 
+/*
 function getSubtasks(task) {
-    let output = '';
+    let output = [];
     for (let subtaskID of task.subtasks) {
         output.push(subtasksDatasource.find(subtask => subtask.id == subtaskID));
     }
     return output;
+}
+*/
+
+function getSubtasks(task) {
+    return task.subtasks;
 }
 
 function getMembers(task) {
@@ -110,9 +129,9 @@ function getFirstLetterOfName(member) {
 
 function getPrioImgURL(task) {
     switch (task.prio) {
-        case 'urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
-        case 'medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
-        case 'low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
+        case 'prio-urgent': return `${urlPrefix}/img/board/prio-urgent-icon.svg`;
+        case 'prio-medium': return `${urlPrefix}/img/board/prio-medium-icon.svg`;
+        case 'prio-low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
         default: return '';
     }
 }
@@ -324,14 +343,6 @@ function detailSubtasksToHTML(task) {
     let output = '';
     for (let subtaskTemp of subtasksTemp) {
         output += detailSingleSubtaskToHTML(subtaskTemp);
-    }
-    return output;
-}
-
-function getSubtasks(task) {
-    let output = [];
-    for (let subtaskID of task.subtasks) {
-        output.push(subtasksDatasource.find(subt => subt.id == subtaskID));
     }
     return output;
 }
