@@ -168,7 +168,17 @@ span.plus-button-text {
 .card-container {
     grid-column: 1 / 3;
     align-self: start;
+    height: 100%;
 }
+
+.dragging {
+    opacity: 0.3;
+}
+
+.dragover {
+    border: 2px solid var(--reini-dark-blue);
+}
+
 
 .card-container-empty {
     background-color: var(--reini-lighter-grey);

@@ -14,7 +14,6 @@
 */
 
 
-
 let urlPrefix = './assets';
 let tasksDatasource;
 let subtasksDatasource;
@@ -586,25 +585,6 @@ function editSaveTask(taskID) {
 
 
 
-///////////////////////////////////////////////
-//////////////// DRAG AND DROP ////////////////
-///////////////////////////////////////////////
-
-function initDragAndDrop() {
-
-}
-
-function addDragstartHandler() {
-
-}
-
-function dragstartHandler(event) {
-
-}
-
-
-
-
 
 
 
@@ -618,46 +598,41 @@ function boardInitDragAndDrop() {
 
 function dragstartHandler(event, taskID) {
     event.dataTransfer.setData('taskID', taskID);
+    event.target.classList.add('dragging');
 }
 
 
 function dragoverHandler(event) {
     event.preventDefault();
+    markDragover(event.currentTarget);
 }
 
 function dropHandler(event, status) {
     let draggedTaskID= event.dataTransfer.getData('taskID');
     let draggedTask= getTaskById(draggedTaskID);
     moveTask(draggedTask, status);
+    demarkDragoverAll();
+    saveTasks();
 }
 
-
-function dragenterHandler(event) {
-/*
-    console.log('dragenter');
-    event.preventDefault();
-    let enterElem= event.target;
-    console.log(enterElem);
-    let isCardContainer= enterElem.classList.contains('card-container');
-    console.log(isCardContainer);
-    if (isCardContainer) markDragover(enterElem);
-*/
-}
 
 function dragleaveHandler(event) {
-/*
-    console.log('dragleave');
-    let leaveElem= event.target;
-    demarkDragover(leaveElem);
-*/
+    event.currentTarget.classList.remove('dragover');
+}
+
+function demarkDragoverAll(){
+    let cardContainers= document.querySelectorAll('.card-container');
+    for (let cardContainerI of cardContainers) {
+        demarkDragover(cardContainerI);
+    }
 }
 
 function markDragover(elem){
-    elem.classList.add('dragOver');
+    elem.classList.add('dragover');
 }
 
 function demarkDragover(elem){
-    elem.classList.remove('dragOver');
+    elem.classList.remove('dragover');
 }
 
 function moveTask(task, status) {
