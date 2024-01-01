@@ -4,15 +4,15 @@
     02. RENDER
     03. GETTER
     04. TO HTML
-    05. MISC
+    05. DRAG AND DROP
+    06. FILTER
+    07. MISC
     ------DIALOG DETAIL------
-    06. SHOW HIDE DETAIL
-    07. RENDER DETAIL DIALOG
+    08. SHOW HIDE DETAIL
+    09. RENDER DETAIL DIALOG
     ------DIALOG EDIT------
-    08. SHOW HIDE EDIT
-    09. RENDER EDIT DIALOG
-    ------DRAG AND DROP------
-    11. DRAG AND DROP
+    10. SHOW HIDE EDIT
+    11. RENDER EDIT DIALOG
     
 */
 
@@ -30,6 +30,7 @@ function boardInit() {
     contactsDatasource = contactsForTesting;
     renderBoard();
     boardInitDragAndDrop();
+    addKeyupListener();
 }
 
 //////////////// RENDER
@@ -216,7 +217,88 @@ function cardContainerEmptyToHTML() {
     `;
 }
 
-//////////////// MISC
+////////////////////////////////////////////////
+//////////////// DRAG AND DROP /////////////////
+////////////////////////////////////////////////
+
+function boardInitDragAndDrop() {
+    // addDragstartHandler('dragItem');
+}
+
+function dragstartHandler(event, taskID) {
+    event.dataTransfer.setData('taskID', taskID);
+    event.target.classList.add('dragging');
+}
+
+
+function dragoverHandler(event) {
+    event.preventDefault();
+    markDragover(event.currentTarget);
+}
+
+function dropHandler(event, status) {
+    let draggedTaskID= event.dataTransfer.getData('taskID');
+    let draggedTask= getTaskById(draggedTaskID);
+    moveTask(draggedTask, status);
+    demarkDragoverAll();
+}
+
+
+function dragleaveHandler(event) {
+    event.currentTarget.classList.remove('dragover');
+}
+
+function demarkDragoverAll(){
+    let cardContainers= document.querySelectorAll('.card-container');
+    for (let cardContainerI of cardContainers) {
+        demarkDragover(cardContainerI);
+    }
+}
+
+function markDragover(elem){
+    elem.classList.add('dragover');
+}
+
+function demarkDragover(elem){
+    elem.classList.remove('dragover');
+}
+
+function moveTask(task, status) {
+    task.status= status;
+    renderBoard();
+    saveTasks();
+}
+
+////////////////////////////////////////////////
+//////////////////// FILTER ////////////////////
+////////////////////////////////////////////////
+
+function addKeyupListener() {
+    let inputFilterphrase= document.getElementById('inputFilterphrase');
+    inputFilterphrase.addEventListener('keyup', () => {
+        filterTasks(inputFilterphrase.value);
+    });
+}
+
+function filterTasks(phrase) {
+    console.log(`filterTasks(${phrase})`);
+    // debugger;
+    let tasksTemp= tasks.filter(task =>
+        task.title.toLowerCase().includes(phrase.toLowerCase())
+    );
+    tasksDatasource= tasksTemp;
+    renderBoard();
+}
+
+function clearFilter() {
+    tasksDatasource= tasks;
+    renderBoard();
+}
+
+
+//////////////////////////////////////////////
+//////////////////// MISC ////////////////////
+//////////////////////////////////////////////
 
 function isColorLight(hexcode) {
     let r = parseInt(hexcode.slice(1, 3), 16);
@@ -581,59 +663,6 @@ function editSaveTask(taskID) {
 }
 
 
-////////////////////////////////////////////////
-//////////////// DRAG AND DROP /////////////////
-////////////////////////////////////////////////
-
-function boardInitDragAndDrop() {
-    // addDragstartHandler('dragItem');
-}
-
-function dragstartHandler(event, taskID) {
-    event.dataTransfer.setData('taskID', taskID);
-    event.target.classList.add('dragging');
-}
-
-
-function dragoverHandler(event) {
-    event.preventDefault();
-    markDragover(event.currentTarget);
-}
-
-function dropHandler(event, status) {
-    let draggedTaskID= event.dataTransfer.getData('taskID');
-    let draggedTask= getTaskById(draggedTaskID);
-    moveTask(draggedTask, status);
-    demarkDragoverAll();
-    saveTasks();
-}
-
-
-function dragleaveHandler(event) {
-    event.currentTarget.classList.remove('dragover');
-}
-
-function demarkDragoverAll(){
-    let cardContainers= document.querySelectorAll('.card-container');
-    for (let cardContainerI of cardContainers) {
-        demarkDragover(cardContainerI);
-    }
-}
-
-function markDragover(elem){
-    elem.classList.add('dragover');
-}
-
-function demarkDragover(elem){
-    elem.classList.remove('dragover');
-}
-
-function moveTask(task, status) {
-    task.status= status;
-    renderBoard();
-    // saveTasks
-}
-
 
 
 
@@ -649,9 +678,8 @@ function moveTask(task, status) {
 
 
 function testen() {
-    let datum = new Date(1984, 5, 13);
-    console.log(datum);
-    console.log(InputValueString(datum));
-
+    let tasksTemp= tasks.filter(task => task.title.includes('testen'));
+    tasksDatasource= tasksTemp;
+    renderBoard();
 }
 
