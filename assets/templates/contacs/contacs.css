@@ -242,6 +242,12 @@
     background-color: var(--white-grey);
   }
 
+  .oneContactContainerH2Desktop {
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
   .JustifyContentRight {
     display: flex;
     justify-content: right;
@@ -359,6 +365,12 @@
     background-color: var(--light-blue);
   }
 
+  .oneContactContainerAElement {
+    color: #007CEE;  
+    text-decoration: none;
+    cursor: pointer;
+  }
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
@@ -399,6 +411,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 1em;
+    border-radius: 10px;
   }
 
   .contact-info-container {
@@ -407,6 +420,7 @@
     flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
     margin-left: 3em;
     cursor: pointer;
+    padding: 15px 24px 15px 24px;    
   }
 
   .contactImg {
@@ -748,6 +762,16 @@
   margin-left: 24px;
 }
 
+.oneContactContainerH2Desktop {
+  color: black;
+  font-size: 20px;
+  font-weight: 400;
+}
 
+.oneContactContainerAElement {
+  color: #007CEE;  
+  text-decoration: none;
+  cursor: pointer;
+}
 
 }

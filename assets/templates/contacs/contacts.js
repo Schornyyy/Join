@@ -90,8 +90,8 @@ function renderContacts() {
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
                 <div class="contact-info-container">
-                    <h2>${oneContact.contactName}</h2>
-                    <a>${oneContact.contactMailAdress}</a>
+                    <h2 class="oneContactContainerH2Desktop">${oneContact.contactName}</h2>
+                    <a class="oneContactContainerAElement">${oneContact.contactMailAdress}</a>
                 </div>
             </div>
         `;
@@ -398,7 +398,8 @@ function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgew�
 // JavaScript Logik für die Desktop Ansicht
 
 function renderContactsDesktop() {
-  const content = document.getElementById("contactsContent");  
+  const content = document.getElementById("contactsContent");
+
   renderAddContactButtonDesktop();  // Add contact button desktop
   const contactsByFirstLetter = {};
 
@@ -416,13 +417,13 @@ function renderContactsDesktop() {
     }
 
     const oneContactContainer = /*html*/ `
-            <div class="oneContactContainer" onclick="openContactScreenDesktop(${oneContact.id})">
+            <div class="oneContactContainer" id="contact-${oneContact.id}" onclick="openContactScreenDesktop(${oneContact.id})" data-contact-id="${oneContact.id}">
                 <div>
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
                 <div class="contact-info-container">
-                    <h2>${oneContact.contactName}</h2>
-                    <a>${oneContact.contactMailAdress}</a>
+                    <h2 class="oneContactContainerH2Desktop">${oneContact.contactName}</h2>
+                    <a class="oneContactContainerAElement">${oneContact.contactMailAdress}</a>
                 </div>
             </div>
         `;
@@ -435,16 +436,45 @@ function renderContactsDesktop() {
   });
 }
 
-function openContactScreenDesktop(contactId) {  
-  if (lastClickedContactId === contactId) {  // Wenn der aktuelle Kontakt bereits geöffnet ist, tue nichts
-    return;
-  }
+function openContactScreenDesktop(contactId) {
+  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"
   const content = document.getElementById("contactsContentRightSideID");
+
+  // Holen Sie den ausgewählten Kontakt anhand der ID
   const selectedContact = contactsData.find(contact => contact.id === contactId);
-  if (!selectedContact) {
-    console.error("Selected contact not found in contactsData.");
-    return;
+
+  // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)
+  if (lastClickedContactId) {
+    // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID
+    const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`);
+
+    // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
+    if (lastClickedContactContainer) {
+      lastClickedContactContainer.style.backgroundColor = "transparent";
+
+      // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
+      const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");
+      if (lastClickedContactH2) {
+        lastClickedContactH2.style.color = "black"; // Oder setzen Sie die gewünschte Farbe
+      }
+    }
   }
+
+  // Änderung der Hintergrundfarbe des aktuellen Kontakts
+  const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
+  if (currentContactContainer) {
+    currentContactContainer.style.backgroundColor = "#2A3647"; // Ersetzen Sie "#2A3647" durch die gewünschte Farbe
+
+    // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
+    const currentContactH2 = currentContactContainer.querySelector("h2");
+    if (currentContactH2) {
+      currentContactH2.style.color = "white"; // Oder setzen Sie die gewünschte Farbe
+    }
+  }
+
+  // Aktualisieren des zuletzt geklickten Kontakts
+  lastClickedContactId = contactId;
+
   content.innerHTML = /*html*/ `
     <div class="contactsContentRightSideHeadLine">
         <h1 class="contactsContentRightSideH1">
@@ -485,7 +515,6 @@ function openContactScreenDesktop(contactId) {
       <p class="openContactPhoneNumberDesktopPElement">${selectedContact.contactPhone}</p>
     </div>
   `;  
-  lastClickedContactId = contactId;  // Speichere den zuletzt angeklickten Kontakt
   showHeaderAndFooter();
   showcontactsContentRightSideDesktop();
 }
@@ -557,3 +586,10 @@ function hideOverlay() {
     overlayContainer.parentNode.removeChild(overlayContainer);
   }
 }
+
+
+
+
+
+
+
