@@ -128,7 +128,7 @@
   }
 
   .addContactButtonContainerDesktop {
-    display: none;
+    display: none;    
   }
 
   .addContactButtonImage {
@@ -428,6 +428,7 @@
     right: 32px;
     cursor: pointer;
     margin-top: 2em;
+    margin-right: 60px;
   }
 
   .addContactImage {
@@ -594,7 +595,7 @@
 }
 
 .overlay-content {
-  width: 50%;
+  width: 1250px;
   background: white;
   overflow: hidden;
   border-radius: 20px 0 0 20px;
@@ -665,6 +666,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 70px;
+  margin-bottom: 150px;
 }
 
 .addContactBlankUserImg {
@@ -677,6 +680,7 @@
   justify-content: right;
   margin-top: 25px;
   margin-right: 25px;
+  cursor: pointer;
 }
 
 .addContactDesktopRightSideContent {
@@ -685,7 +689,64 @@
   flex: auto;
 }
 
+.addContactContainerFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+  background-color: white;
+  gap: 20px;
+}
 
+.addContactInputName {
+  border: 1px solid #D1D1D1;
+  border-radius: 5px;
+  background-image: url("../../img/contact/addContactUserNameImg.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  width: 422px;
+  height: 50px;
+  position: relative;
+}
+
+.addContactInputMailAddresss {
+  border: 1px solid #D1D1D1;
+  border-radius: 5px;
+  background-image: url("../../img/contact/addContactmailIcon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  width: 422px;
+  height: 50px;
+  position: relative;
+}
+
+.addContactInputPhone {
+  border: 1px solid #D1D1D1;
+  border-radius: 5px;
+  background-image: url("../../img/contact/addContactPhoneIcon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  width: 422px;
+  height: 50px;
+  position: relative;
+}
+
+.addContactCancelButtonDesktop {
+  height: 56px;
+  width: 126px;
+  cursor: pointer;
+}
+
+.createContactButtonImg {
+  height: 57px;
+  width: 214px;
+  cursor: pointer;
+  margin-left: 24px;
+}
 
 
 

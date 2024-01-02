@@ -518,14 +518,29 @@ function showOverlay() {
           <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
         </div>
       </div>
+
       <div class="addContactDesktopRightSideContainer">
         <div class="addContactBlankUserImgContainer">
           <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
         </div>
+
         <div class="addContactDesktopRightSideContent">
           <div class="addContactCloseXContainer" onclick="hideOverlay()">
             <img src="../../assets/img/contact/addContactCloseXDesktop.svg" alt="">
           </div>
+
+          <form onsubmit="createContact()">
+            <div class="addContactContainerFooter">
+              <input class="addContactInputName" type="text" required placeholder="Name">
+              <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
+              <input class="addContactInputPhone" type="text" required placeholder="Phone">
+              <div class="addContactButtonContainerDesktop">
+                <img class="addContactCancelButtonDesktop" src="../assets/img/contact/addContactCancelButtonDesktop.svg" alt="" onclick="hideOverlay()">
+                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
+              </div>
+            </div>
+          </form>
+
         </div>
       </div>
     </div>
