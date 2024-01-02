@@ -1,8 +1,8 @@
-let contactsData; // Kontakt Daten global gespeichert nach dem fetchen
+let contactsData = []; // Kontakt Daten global gespeichert nach dem fetchen
 let nextContactId; // ID-Zähler für die nächste Kontakt-ID
 let lastClickedContactId;
 
-async function contactsInit() {
+async function contactsInit() {  
   try {    
     const storedContactsData = localStorage.getItem('contactsData');  // Versuche, die Kontaktdaten aus dem lokalen Speicher zu lesen
     if (storedContactsData) {     
@@ -43,7 +43,7 @@ function renderAddContactButtonDesktop() {
   const addContactButtonContainerDesktop = document.createElement("div");
   addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
   addContactButtonContainerDesktop.innerHTML = /*html*/`
-    <button class="addContactButtonDesktop" onclick="showOverlay()">Add new contact</button>`;
+    <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
   contentDesktop.appendChild(addContactButtonContainerDesktop);  
   addContactButtonContainerDesktop.addEventListener("click", function () {  // Füge einen Event-Listener hinzu, um das Overlay zu zeigen    
   });
@@ -202,7 +202,7 @@ function editContactScreen(contactId) {
                             </div>
                         </div>
                         <div class="addContactBlankUserImg">
-                            <img src="../assets/img/contact/antonMayer.svg" alt="">
+                          <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
                         </div>
         <form onsubmit="updateContact(${selectedContact.id})">
             <div class="addContactContainerFooter">
@@ -226,15 +226,33 @@ function updateContact(contactId) {
   const updatedName = nameInput.value.trim(); // Daten aus den Input-Feldern lesen
   const updatedMail = mailInput.value.trim();
   const updatedPhone = phoneInput.value.trim();
-  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {    
+  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
     alert("Bitte füllen Sie alle Felder aus.");  // Überprüfen, ob alle Felder ausgefüllt sind
     return;
   }
   const updatedContactIndex = contactsData.findIndex(
     (contact) => contact.id === contactId
-  ); // Aktualisiere den Kontakt in der Datenquelle
-  contactsData[updatedContactIndex] = {
-    ...contactsData[updatedContactIndex],
+  );
+  const existingContact = contactsData.find(
+    (contact) =>
+      contact.contactName === updatedName &&
+      contact.contactMailAdress === updatedMail
+  );
+  if (existingContact && existingContact.id !== contactId) {
+    alert("Ein Kontakt mit diesen Informationen existiert bereits.");
+    return;
+  }
+  const oldContact = contactsData[updatedContactIndex];
+  if (
+    oldContact.contactName === updatedName &&
+    oldContact.contactMailAdress === updatedMail &&
+    oldContact.contactPhone === updatedPhone
+  ) {
+    alert("Es gab keine Änderungen am Kontakt.");
+    return;
+  }  
+  contactsData[updatedContactIndex] = {  // Aktualisiere den Kontakt in der Datenquelle
+    ...oldContact,
     contactName: updatedName,
     contactMailAdress: updatedMail,
     contactPhone: updatedPhone,
@@ -400,13 +418,10 @@ function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgew�
 
 function renderContactsDesktop() {
   const content = document.getElementById("contactsContent");
-
   renderAddContactButtonDesktop();  // Add contact button desktop
   const contactsByFirstLetter = {};
-
   contactsData.forEach((oneContact) => {
     const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
-
     if (!contactsByFirstLetter[firstLetter]) {
       contactsByFirstLetter[firstLetter] = /*html*/ `
                 <div class="letterAndContactsContainer">
@@ -416,7 +431,6 @@ function renderContactsDesktop() {
                 </div>
             `;
     }
-
     const oneContactContainer = /*html*/ `
             <div class="oneContactContainer" id="contact-${oneContact.id}" onclick="openContactScreenDesktop(${oneContact.id})" data-contact-id="${oneContact.id}">
                 <div>
@@ -428,54 +442,35 @@ function renderContactsDesktop() {
                 </div>
             </div>
         `;
-
     contactsByFirstLetter[firstLetter] += oneContactContainer;
   });
-
   Object.values(contactsByFirstLetter).forEach((section) => {
     content.innerHTML += section;
   });
 }
 
-function openContactScreenDesktop(contactId) {
-  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"
-  const content = document.getElementById("contactsContentRightSideID");
-
-  // Holen Sie den ausgewählten Kontakt anhand der ID
-  const selectedContact = contactsData.find(contact => contact.id === contactId);
-
-  // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)
-  if (lastClickedContactId) {
-    // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID
-    const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`);
-
-    // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
-    if (lastClickedContactContainer) {
-      lastClickedContactContainer.style.backgroundColor = "transparent";
-
-      // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
-      const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");
+function openContactScreenDesktop(contactId) {  
+  const content = document.getElementById("contactsContentRightSideID");  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"  
+  const selectedContact = contactsData.find(contact => contact.id === contactId);  // Holen Sie den ausgewählten Kontakt anhand der ID  
+  if (lastClickedContactId) {  // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)    
+    const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`);  // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID    
+    if (lastClickedContactContainer) {  // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
+      lastClickedContactContainer.style.backgroundColor = "transparent";      
+      const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
       if (lastClickedContactH2) {
         lastClickedContactH2.style.color = "black"; // Oder setzen Sie die gewünschte Farbe
       }
     }
-  }
-
-  // Änderung der Hintergrundfarbe des aktuellen Kontakts
-  const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
+  }  
+  const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);  // Änderung der Hintergrundfarbe des aktuellen Kontakts
   if (currentContactContainer) {
-    currentContactContainer.style.backgroundColor = "#2A3647"; // Ersetzen Sie "#2A3647" durch die gewünschte Farbe
-
-    // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
-    const currentContactH2 = currentContactContainer.querySelector("h2");
+    currentContactContainer.style.backgroundColor = "#2A3647"; // Ersetzen Sie "#2A3647" durch die gewünschte Farbe    
+    const currentContactH2 = currentContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
     if (currentContactH2) {
       currentContactH2.style.color = "white"; // Oder setzen Sie die gewünschte Farbe
     }
-  }
-
-  // Aktualisieren des zuletzt geklickten Kontakts
-  lastClickedContactId = contactId;
-
+  }  
+  lastClickedContactId = contactId;  // Aktualisieren des zuletzt geklickten Kontakts
   content.innerHTML = /*html*/ `
     <div class="contactsContentRightSideHeadLine">
         <h1 class="contactsContentRightSideH1">
@@ -484,34 +479,28 @@ function openContactScreenDesktop(contactId) {
         <img src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
         <p class="contactsContentRightSideHeadLinePElement">Better with a team</p>
     </div>
-
     <div class="contactsContentRightSideUserImgAndNameContainer">
       <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
       <div>
         <h2 class="contactsContentRightSideUserNameH2">${selectedContact.contactName}</h2>
           <div class="contactsContentRightSideEditAndDeleteButtonContainer">
-            <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="">
+            <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="" onclick="editContactDestop(lastClickedContactId)">
             <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
           </div>
       </div> 
     </div>
-
     <div class="contactsContentRightSideContactInformationDesktop">
       <p class="contactsContentRightSideContactInformationDesktopPText">Contact Information</p>
     </div>
-
     <div class="contactsContentRightSideContactEmailH2Desktop">
       <h2 class="contactsContentRightSideContactEmailH2">Email</h2>
     </div>
-
     <div class="openContactEmailLinkDesktopContainer">
       <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.contactMailAdress}">${selectedContact.contactMailAdress}</a>
     </div>
-
     <div class="contactsContentRightSideContactPhoneH2Desktop">
       <h2 class="contactsContentRightSideContactPhoneH2">Phone</h2>
     </div>
-
     <div class="openContactPhoneNumberDesktopContainer">
       <p class="openContactPhoneNumberDesktopPElement">${selectedContact.contactPhone}</p>
     </div>
@@ -530,14 +519,14 @@ function hidecontactsContentRightSideDesktop() {
   showcontactsContentRightSide.style.display = "none";
 }
 
-function showOverlay() {
+function addContactShowOverlayDesktop() {
   const overlayContainer = document.createElement("div");
   overlayContainer.classList.add("overlay-container");
   document.body.appendChild(overlayContainer);
   const overlayContent = document.createElement("div");
   overlayContent.classList.add("overlay-content");
   overlayContainer.appendChild(overlayContent);
-  // Füge das Overlay-Inhaltselement hinzu (in dieser Beispielkarte können Sie Ihren eigenen HTML-Code für das Formular einfügen)
+  // Füge das Overlay-Inhaltselement hinzu
   overlayContent.innerHTML = /*html*/ `
     <div class="overlay-card">
       <div class="addContactDesktopLeftSideContainer">
@@ -548,17 +537,14 @@ function showOverlay() {
           <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
         </div>
       </div>
-
       <div class="addContactDesktopRightSideContainer">
         <div class="addContactBlankUserImgContainer">
           <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
         </div>
-
         <div class="addContactDesktopRightSideContent">
           <div class="addContactCloseXContainer" onclick="hideOverlay()">
             <img src="../../assets/img/contact/addContactCloseXDesktop.svg" alt="">
           </div>
-
           <form onsubmit="createContact()">
             <div class="addContactContainerFooter">
               <input class="addContactInputName" type="text" required placeholder="Name">
@@ -585,9 +571,62 @@ function hideOverlay() {
   }
 }
 
+function editContactDestop(contactId) {
+  const content = document.getElementById("contactsContent");
+  const selectedContact = contactsData.find(
+    (contact) => contact.id === contactId
+  ); // Findet den ausgewählten Kontakt anhand der ID
+  const overlayContainer = document.createElement("div");
+  overlayContainer.classList.add("overlay-container");
+  document.body.appendChild(overlayContainer);
+  const overlayContent = document.createElement("div");
+  overlayContent.classList.add("overlay-content");
+  overlayContainer.appendChild(overlayContent);  
+  overlayContent.innerHTML = /*html*/ `
+    <div class="overlay-card">
+      <div class="addContactDesktopLeftSideContainer">
+        <div class="flexDirectionColumn">
+          <img class="joinLogoGreyBackgroundImg" src="../../assets/img/contact/joinLogoGreyBackground.png" alt="">
+          <h1 class="addContactDesktopLeftSideContainerH1">Edit contact</h1>          
+          <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
+        </div>
+      </div>
+      <div class="addContactDesktopRightSideContainer">
+        <div class="addContactBlankUserImgContainer">
+          <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">          
+        </div>
+        <div class="addContactDesktopRightSideContent">
+          <div class="addContactCloseXContainer" onclick="hideOverlay()">
+            <img src="../../assets/img/contact/addContactCloseXDesktop.svg" alt="">
+          </div>
+          <form onsubmit="updateContact(${selectedContact.id})">
+            <div class="addContactContainerFooter">
+                <input class="addContactInputName" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
+                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
+                <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
+                <div class="createContactButtonImgContainer">
+                    <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
+                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContact(${selectedContact.id})">
+                </div>                
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  `;
+  overlayContainer.style.animation = "slide-in 0.5s ease-out";  
+}
 
-
-
+async function deleteContactDataById() {  // Funktion deleteContactDataById ist für einen LokalStorage clear da falls ein Kontakt doppelt gespeichert wurde
+  try {
+    localStorage.clear();  // Lösche alle Daten im localStorage
+    contactsData = await fetchContactsData();  // Lade die Daten vom Server
+    localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Speichere die neu geladenen Daten im localStorage
+    console.log("Kontakt-Daten wurden erfolgreich gelöscht und neu geladen.");
+  } catch (error) {
+    console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
+  }
+}
 
 
 

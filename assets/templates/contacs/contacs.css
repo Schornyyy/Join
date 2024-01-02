@@ -58,6 +58,8 @@
     width: 20em;
     height: 2em;
     position: relative;
+    font-size: 20px;
+    font-weight: 400;
   }
 
   .addContactInputMailAddresss {
@@ -70,6 +72,8 @@
     width: 20em;
     height: 2em;
     position: relative;
+    font-size: 20px;
+    font-weight: 400;
   }
 
   .addContactInputPhone {
@@ -82,6 +86,8 @@
     width: 20em;
     height: 2em;
     position: relative;
+    font-size: 20px;
+    font-weight: 400;
   }
 
   .addContactBlueStroked {
@@ -723,6 +729,8 @@
   width: 422px;
   height: 50px;
   position: relative;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .addContactInputMailAddresss {
@@ -735,6 +743,8 @@
   width: 422px;
   height: 50px;
   position: relative;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .addContactInputPhone {
@@ -747,6 +757,8 @@
   width: 422px;
   height: 50px;
   position: relative;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .addContactCancelButtonDesktop {
@@ -772,6 +784,11 @@
   color: #007CEE;  
   text-decoration: none;
   cursor: pointer;
+}
+
+.createContactButtonImgContainer {
+  display: flex;
+  justify-content: left;
 }
 
 }
