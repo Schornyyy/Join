@@ -132,7 +132,7 @@ function addContactScreen() {
                             <div>
                         </form>
                         `;
-  hideHeaderAndFooter();
+  hideHeaderAndFooter();    
 }
 
 function hideHeaderAndFooter() {
@@ -172,6 +172,7 @@ function createContact() {
   contactsData.push(newContact);
   saveContactsData(contactsData);
   renderContacts();
+  hideOverlay();
 }
 
 function saveContactsData(data) {  // Hier werden die Kontakte Lokal gespeichert!
@@ -529,11 +530,11 @@ function hidecontactsContentRightSideDesktop() {
   showcontactsContentRightSide.style.display = "none";
 }
 
-function showOverlay() {  
-  const overlayContainer = document.createElement("div");  // Erstelle das Overlay-Container-Element
+function showOverlay() {
+  const overlayContainer = document.createElement("div");
   overlayContainer.classList.add("overlay-container");
-  document.body.appendChild(overlayContainer);  
-  const overlayContent = document.createElement("div");  // Erstelle das Overlay-Inhaltselement
+  document.body.appendChild(overlayContainer);
+  const overlayContent = document.createElement("div");
   overlayContent.classList.add("overlay-content");
   overlayContainer.appendChild(overlayContent);
   // Füge das Overlay-Inhaltselement hinzu (in dieser Beispielkarte können Sie Ihren eigenen HTML-Code für das Formular einfügen)
@@ -573,11 +574,8 @@ function showOverlay() {
         </div>
       </div>
     </div>
-  `;  
-  overlayContainer.addEventListener("click", function () {  // Füge einen Event-Listener hinzu, um das Overlay zu schließen
-    hideOverlay();
-  });  
-  overlayContainer.style.animation = "slide-in 0.5s ease-out";  // Animiere das Overlay von rechts in die Mitte des Bildschirms
+  `;
+  overlayContainer.style.animation = "slide-in 0.5s ease-out";
 }
 
 function hideOverlay() {
