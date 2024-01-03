@@ -367,13 +367,31 @@
   }
 
   .dropdown-menu {
-    display: none;  
     position: absolute;
-    right: 1em;
-    bottom: 5em;
+    right: -300px; /* Startposition außerhalb des Bildschirms */
+    top: 5em;
     border-radius: 15px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: slide-in-menu 0.3s ease forwards; /* Animation hinzufügen und "forwards" verwenden */
+  }
+
+  @keyframes slide-in-menu {
+    from {
+      right: -300px;
+      display: block; /* Sichtbar machen ab dem Startpunkt der Animation */
+    }
+    to {
+      right: 1em;
+    }
+  }
+
+  .dropdown-container .dropdown-menu {
+    display: none; /* Standardmäßig unsichtbar machen */
+  }
+
+  .dropdown-container.visible .dropdown-menu {
+    display: block; /* Sichtbar machen, wenn die 'visible'-Klasse vorhanden ist */
   }
 
   .dropdown-option {
