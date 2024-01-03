@@ -407,6 +407,12 @@
     color: var(--light-blue);
   }
 
+  .dropdown-triggerContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 1em;
+  }
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/

@@ -323,8 +323,10 @@ function openContactScreen(contactId) {
     </div>
     
     <div class="dropdown-container" id="contactOptionsDropdownContainer">  <!-- Dropdown-Menü für Kontaktoptionen -->
-        <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
-            <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+        <div class="dropdown-triggerContainer">
+          <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
+              <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+          </div>
         </div>
         <div class="dropdown-menu" id="contactOptionsDropdown">            
             <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">  <!-- Option zum Bearbeiten des Kontakts -->
