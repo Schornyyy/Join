@@ -62,6 +62,11 @@
     font-weight: 400;
   }
 
+  .addContactInputName:focus {
+    outline: none;
+    border-color: var(--light-blue);
+  }
+
   .addContactInputMailAddresss {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
@@ -76,6 +81,11 @@
     font-weight: 400;
   }
 
+  .addContactInputMailAddresss:focus {
+    outline: none;
+    border-color: var(--light-blue);
+  }
+
   .addContactInputPhone {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
@@ -88,6 +98,11 @@
     position: relative;
     font-size: 20px;
     font-weight: 400;
+  }
+
+  .addContactInputPhone:focus {
+    outline: none;
+    border-color: var(--light-blue);
   }
 
   .addContactBlueStroked {
@@ -733,6 +748,11 @@
   font-weight: 400;
 }
 
+.addContactInputName:focus {
+  outline: none;
+  border-color: var(--light-blue);
+}
+
 .addContactInputMailAddresss {
   border: 1px solid #D1D1D1;
   border-radius: 5px;
@@ -747,6 +767,11 @@
   font-weight: 400;
 }
 
+.addContactInputMailAddresss:focus {
+  outline: none;
+  border-color: var(--light-blue);
+}
+
 .addContactInputPhone {
   border: 1px solid #D1D1D1;
   border-radius: 5px;
@@ -759,6 +784,11 @@
   position: relative;
   font-size: 20px;
   font-weight: 400;
+}
+
+.addContactInputPhone:focus {
+  outline: none;
+  border-color: var(--light-blue);
 }
 
 .addContactCancelButtonDesktop {
@@ -789,9 +819,11 @@
 .createContactButtonImgContainer {
   display: flex;
   justify-content: left;
+  margin-right: 12em;
 }
 
 .editContactDesktopDeleteButton {
+  cursor: pointer;
   border: 1px solid;
   border-radius: 8%;
   padding: 15px 24px 15px 24px;
@@ -810,5 +842,25 @@
   border: 2px solid;
 }
 
+.saveContactButtonImg {
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 8%;
+  padding: 15px 24px 15px 24px;
+  color: white;
+  background-color: var(--light-grey);
+  font-size: 21px;
+  font-weight: 700;
+  border-color: var(--light-grey);
+  margin-left: 20px;
+}
+
+.saveContactButtonImg:hover {
+  border: 1px solid;
+  border-color: var(--light-grey); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);  
+  background-color: var(--light-blue);
+  border: 0;  
+}
 
 }

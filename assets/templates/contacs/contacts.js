@@ -604,8 +604,8 @@ function editContactDestop(contactId) {
                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
                 <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div class="createContactButtonImgContainer">
-                    <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>                    
-                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContact(${selectedContact.id})">
+                    <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
+                    <button class="saveContactButtonImg" onclick="updateContact(${selectedContact.id})">Save</button>
                 </div>                
             </div>
         </form>
