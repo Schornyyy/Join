@@ -108,9 +108,9 @@ function addContactScreen() {
   const content = document.getElementById("contactsContent");
   content.innerHTML = /*html*/ `
                             <div class="addContactContainerHeader">
-                                <div class="addContactCloseXContainer" onclick="contactsInit()">
-                                    <img src="../assets/img/contact/addContactCloseX.svg" alt="">
-                                </div>
+                              <div class="addContactCloseXContainer">
+                                <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
+                              </div>
 
                             <div class="addContactBlockHeader">
                                 <p class="addContactH1">Add contact</p>
@@ -193,8 +193,8 @@ function editContactScreen(contactId) {
   ); // Findet den ausgewählten Kontakt anhand der ID
   content.innerHTML = /*html*/ `
         <div class="addContactContainerHeader">
-                            <div class="addContactCloseXContainer" onclick="contactsInit()">
-                                <img src="../assets/img/contact/addContactCloseX.svg" alt="">
+                            <div class="addContactCloseXContainer">
+                              <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
                             </div>
                             <div class="addContactBlockHeader">
                                 <p class="addContactH1">Edit contact</p>                                
@@ -542,8 +542,8 @@ function addContactShowOverlayDesktop() {
           <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
         </div>
         <div class="addContactDesktopRightSideContent">
-          <div class="addContactCloseXContainer" onclick="hideOverlay()">
-            <img src="../../assets/img/contact/addContactCloseXDesktop.svg" alt="">
+          <div class="addContactCloseXContainer">
+            <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
           </div>
           <form onsubmit="createContact()">
             <div class="addContactContainerFooter">
@@ -595,8 +595,8 @@ function editContactDestop(contactId) {
           <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">          
         </div>
         <div class="addContactDesktopRightSideContent">
-          <div class="addContactCloseXContainer" onclick="hideOverlay()">
-            <img src="../../assets/img/contact/addContactCloseXDesktop.svg" alt="">
+          <div class="addContactCloseXContainer">
+            <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
           </div>
           <form onsubmit="updateContact(${selectedContact.id})">
             <div class="addContactContainerFooter">
