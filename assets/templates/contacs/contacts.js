@@ -22,8 +22,7 @@ async function contactsInit() {
     }    
     contactsContentBackgroundColorWhite();
     showHeaderAndFooter();
-    renderAddContactButton();
-    addDropdownMenuClickListener();
+    renderAddContactButton();    
   } catch (error) {
     console.error("Fehler beim Initialisieren der Kontakte:", error);
   }
@@ -339,7 +338,8 @@ function openContactScreen(contactId) {
   `;
   console.log(selectedContact.id);  
   showHeaderAndFooter();  // Zeigt Header und Footer an.  
-  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.   
+  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.
+  addDropdownMenuClickListener();   
 }
 
 function addDropdownMenuClickListener() {
