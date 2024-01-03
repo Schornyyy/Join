@@ -171,8 +171,8 @@ function createContact() {
   };
   contactsData.push(newContact);
   saveContactsData(contactsData);
-  renderContacts();
   hideOverlay();
+  contactsInit();  
 }
 
 function saveContactsData(data) {  // Hier werden die Kontakte Lokal gespeichert!
@@ -223,42 +223,41 @@ function updateContact(contactId) {
   const nameInput = document.querySelector(".addContactInputName");
   const mailInput = document.querySelector(".addContactInputMailAddresss");
   const phoneInput = document.querySelector(".addContactInputPhone");
-  const updatedName = nameInput.value.trim(); // Daten aus den Input-Feldern lesen
+  const updatedName = nameInput.value.trim();
   const updatedMail = mailInput.value.trim();
   const updatedPhone = phoneInput.value.trim();
   if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
-    alert("Bitte füllen Sie alle Felder aus.");  // Überprüfen, ob alle Felder ausgefüllt sind
+    alert("Bitte füllen Sie alle Felder aus.");
     return;
   }
-  const updatedContactIndex = contactsData.findIndex(
-    (contact) => contact.id === contactId
-  );
   const existingContact = contactsData.find(
     (contact) =>
       contact.contactName === updatedName &&
-      contact.contactMailAdress === updatedMail
+      contact.contactMailAdress === updatedMail &&
+      contact.id !== contactId
   );
-  if (existingContact && existingContact.id !== contactId) {
+  if (existingContact) {
     alert("Ein Kontakt mit diesen Informationen existiert bereits.");
     return;
   }
-  const oldContact = contactsData[updatedContactIndex];
-  if (
-    oldContact.contactName === updatedName &&
-    oldContact.contactMailAdress === updatedMail &&
-    oldContact.contactPhone === updatedPhone
-  ) {
-    alert("Es gab keine Änderungen am Kontakt.");
-    return;
-  }  
-  contactsData[updatedContactIndex] = {  // Aktualisiere den Kontakt in der Datenquelle
-    ...oldContact,
-    contactName: updatedName,
-    contactMailAdress: updatedMail,
-    contactPhone: updatedPhone,
-  };
-  saveContactsData(contactsData[updatedContactIndex]); // JSON-Array speichern (z.B. auf dem Server)
-  renderContacts(); // Zurück zur Kontaktliste wechseln
+  const oldContact = contactsData.find(
+    (contact) => contact.id === contactId
+  );  
+  const hasNameChanged = oldContact.contactName !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
+  const hasMailChanged = oldContact.contactMailAdress !== updatedMail;
+  const hasPhoneChanged = oldContact.contactPhone !== updatedPhone;
+  const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
+    contact.id === contactId
+      ? {
+          ...contact,
+          contactName: hasNameChanged ? updatedName : contact.contactName,
+          contactMailAdress: hasMailChanged ? updatedMail : contact.contactMailAdress,
+          contactPhone: hasPhoneChanged ? updatedPhone : contact.contactPhone,
+        }
+      : contact
+  );
+  saveContactsData(updatedContactsData); // JSON-Array speichern
+  contactsInit(); // Zurück zur Kontaktliste wechseln
 }
 
 function deleteContact(contactId) {
@@ -283,7 +282,9 @@ function deleteContact(contactId) {
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts:", error);
   }
-  renderContacts();
+  const content = document.getElementById("contactsContentRightSideContactDataContainerID");
+  content.innerHTML = "";
+  contactsInit();  
 }
 
 function openContactScreen(contactId) {
@@ -418,6 +419,7 @@ function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgew�
 
 function renderContactsDesktop() {
   const content = document.getElementById("contactsContent");
+  content.innerHTML = "";  
   renderAddContactButtonDesktop();  // Add contact button desktop
   const contactsByFirstLetter = {};
   contactsData.forEach((oneContact) => {
@@ -479,34 +481,37 @@ function openContactScreenDesktop(contactId) {
         <img src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
         <p class="contactsContentRightSideHeadLinePElement">Better with a team</p>
     </div>
-    <div class="contactsContentRightSideUserImgAndNameContainer">
-      <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
-      <div>
-        <h2 class="contactsContentRightSideUserNameH2">${selectedContact.contactName}</h2>
-          <div class="contactsContentRightSideEditAndDeleteButtonContainer">
-            <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="" onclick="editContactDestop(lastClickedContactId)">
-            <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
-          </div>
-      </div> 
-    </div>
-    <div class="contactsContentRightSideContactInformationDesktop">
-      <p class="contactsContentRightSideContactInformationDesktopPText">Contact Information</p>
-    </div>
-    <div class="contactsContentRightSideContactEmailH2Desktop">
-      <h2 class="contactsContentRightSideContactEmailH2">Email</h2>
-    </div>
-    <div class="openContactEmailLinkDesktopContainer">
-      <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.contactMailAdress}">${selectedContact.contactMailAdress}</a>
-    </div>
-    <div class="contactsContentRightSideContactPhoneH2Desktop">
-      <h2 class="contactsContentRightSideContactPhoneH2">Phone</h2>
-    </div>
-    <div class="openContactPhoneNumberDesktopContainer">
-      <p class="openContactPhoneNumberDesktopPElement">${selectedContact.contactPhone}</p>
+
+    <div id="contactsContentRightSideContactDataContainerID">
+      <div class="contactsContentRightSideUserImgAndNameContainer">
+        <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
+        <div>
+          <h2 class="contactsContentRightSideUserNameH2">${selectedContact.contactName}</h2>
+            <div class="contactsContentRightSideEditAndDeleteButtonContainer">
+              <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="" onclick="editContactDestop(lastClickedContactId)">
+              <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
+            </div>
+        </div> 
+      </div>
+      <div class="contactsContentRightSideContactInformationDesktop">
+        <p class="contactsContentRightSideContactInformationDesktopPText">Contact Information</p>
+      </div>
+      <div class="contactsContentRightSideContactEmailH2Desktop">
+        <h2 class="contactsContentRightSideContactEmailH2">Email</h2>
+      </div>
+      <div class="openContactEmailLinkDesktopContainer">
+        <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.contactMailAdress}">${selectedContact.contactMailAdress}</a>
+      </div>
+      <div class="contactsContentRightSideContactPhoneH2Desktop">
+        <h2 class="contactsContentRightSideContactPhoneH2">Phone</h2>
+      </div>
+      <div class="openContactPhoneNumberDesktopContainer">
+        <p class="openContactPhoneNumberDesktopPElement">${selectedContact.contactPhone}</p>
+      </div>
     </div>
   `;  
   showHeaderAndFooter();
-  showcontactsContentRightSideDesktop();
+  showcontactsContentRightSideDesktop();  
 }
 
 function showcontactsContentRightSideDesktop() {
