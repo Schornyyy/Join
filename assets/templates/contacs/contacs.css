@@ -791,4 +791,24 @@
   justify-content: left;
 }
 
+.editContactDesktopDeleteButton {
+  border: 1px solid;
+  border-radius: 8%;
+  padding: 15px 24px 15px 24px;
+  color: var(--light-grey);
+  background-color: white;
+  font-size: 21px;
+  font-weight: 400;
+  border-color: var(--light-grey);
+}
+
+.editContactDesktopDeleteButton:hover {
+  border-color: var(--light-blue);
+  color: var(--light-blue);
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 2px solid;
+}
+
+
 }

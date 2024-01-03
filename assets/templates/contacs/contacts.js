@@ -571,8 +571,7 @@ function hideOverlay() {
   }
 }
 
-function editContactDestop(contactId) {
-  const content = document.getElementById("contactsContent");
+function editContactDestop(contactId) {  
   const selectedContact = contactsData.find(
     (contact) => contact.id === contactId
   ); // Findet den ausgewählten Kontakt anhand der ID
@@ -605,7 +604,7 @@ function editContactDestop(contactId) {
                 <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
                 <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div class="createContactButtonImgContainer">
-                    <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
+                    <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>                    
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContact(${selectedContact.id})">
                 </div>                
             </div>
