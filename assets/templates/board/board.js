@@ -281,8 +281,6 @@ function addKeyupListener() {
 }
 
 function filterTasks(phrase) {
-    console.log(`filterTasks(${phrase})`);
-    // debugger;
     let tasksTemp= tasks.filter(task =>
         task.title.toLowerCase().includes(phrase.toLowerCase())
     );
