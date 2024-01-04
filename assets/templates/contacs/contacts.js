@@ -149,9 +149,9 @@ function showHeaderAndFooter() {
 }
 
 function createContact() {
-  const nameInput = document.querySelector(".addContactInputName");
-  const mailInput = document.querySelector(".addContactInputMailAddresss");
-  const phoneInput = document.querySelector(".addContactInputPhone");
+  const nameInput = document.querySelector(".addContactInputNameDesktop");
+  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
   const newName = nameInput.value.trim();
   const newMail = mailInput.value.trim();
   const newPhone = phoneInput.value.trim();
