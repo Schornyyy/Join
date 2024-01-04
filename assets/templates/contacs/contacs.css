@@ -847,7 +847,7 @@
   cursor: pointer;
   border: 1px solid;
   border-radius: 8%;
-  padding: 16px;  
+  padding: 15px 40px 15px 24px;
   color: white;
   background-color: var(--light-grey);
   font-size: 21px;
@@ -856,7 +856,7 @@
   margin-left: 20px;
   background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");  
   background-repeat: no-repeat;
-  background-position-x: right;
+  background-position-x: 185px;
   background-position-y: center;
 }
 
@@ -947,7 +947,7 @@
   cursor: pointer;
   border: 1px solid;
   border-radius: 8%;
-  padding: 15px 24px 15px 24px;
+  padding: 15px 40px 15px 24px;
   color: white;
   background-color: var(--light-grey);
   font-size: 21px;
@@ -956,7 +956,7 @@
   margin-left: 20px;
   background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");  
   background-repeat: no-repeat;
-  background-position-x: right;
+  background-position-x: 85px;
   background-position-y: center;
 }
 
