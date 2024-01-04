@@ -178,9 +178,9 @@ function createContactMobile() {
 function createContact() {
   const isMobile = window.innerWidth < 768 ? true : false;
   
-  const nameInput = isMobile ? null : document.querySelector(".addContactInputNameDesktop");
-  const mailInput = isMobile ? null : document.querySelector(".addContactInputMailAddresssDesktop");
-  const phoneInput = isMobile ? null : document.querySelector(".addContactInputPhoneDesktop");
+  const nameInput = isMobile ? document.querySelector(".addContactInputNameMobile") : document.querySelector(".addContactInputNameDesktop");
+  const mailInput = isMobile ? document.querySelector(".addContactInputMailAddresssMobile") : document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = isMobile ? document.querySelector(".addContactInputPhoneMobile") : document.querySelector(".addContactInputPhoneDesktop");
   const newName = nameInput.value.trim();
   const newMail = mailInput.value.trim();
   const newPhone = phoneInput.value.trim();
