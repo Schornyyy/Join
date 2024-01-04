@@ -514,6 +514,8 @@ function openContactScreenDesktop(contactId) {
   `;  
   showHeaderAndFooter();
   showcontactsContentRightSideDesktop();  
+  const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");  // Select the container to slide in  
+  contactContainer.style.animation = "slide-in 0.5s ease-out";  // Apply the animation to the selected container
 }
 
 function showcontactsContentRightSideDesktop() {
