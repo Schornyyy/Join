@@ -56,9 +56,10 @@ async function fetchContactsData() {
   try {
     const response = await fetch("../assets/templates/contacs/allContacts.json");
     let data = await response.json();
-    data = currentUser ? [...data, currentUser.contacts] : data;
+    data = currentUser ? [...data, ...currentUser.contacts] : data;
+    console.log(data);
     data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Fügt eine eindeutige ID zu jedem Kontakt hinzu
-    return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
+    return data.sort((a, b) => a.name.localeCompare(b.name));
   } catch (error) {
     console.error("Fehler beim Laden der Kontakte:", error);
     throw error;
@@ -72,7 +73,7 @@ function renderContacts() {
   const contactsByFirstLetter = {};
 
   contactsData.forEach((oneContact) => {
-    const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
+    const firstLetter = oneContact.name.charAt(0).toUpperCase();
 
     if (!contactsByFirstLetter[firstLetter]) {
       contactsByFirstLetter[firstLetter] = /*html*/ `
@@ -87,11 +88,11 @@ function renderContacts() {
     const oneContactContainer = /*html*/ `
             <div class="oneContactContainer" onclick="openContactScreen(${oneContact.id})">
                 <div>
-                    <img src="${oneContact.contactImg}" class="contactImg">
+                    <img src="${oneContact.contactImg != undefined ? oneContact.contactImg : 'assets/img/contact/addContactBlankUserImg.svg'}" class="contactImg">
                 </div>
                 <div class="contact-info-container">
-                    <h2 class="oneContactContainerH2Desktop">${oneContact.contactName}</h2>
-                    <a class="oneContactContainerAElement">${oneContact.contactMailAdress}</a>
+                    <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
+                    <a class="oneContactContainerAElement">${oneContact.email}</a>
                 </div>
             </div>
         `;
@@ -164,10 +165,11 @@ function createContactMobile() {
   let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
   const newContact = {
     id: nextContactId,
-    contactName: newName,
-    contactMailAdress: newMail,
-    contactPhone: newPhone,
+    name: newName,
+    email: newMail,
+    phone: newPhone,
     contactImg: defaultImage,
+    from: currentUser.name,
   };
   contactsData.push(newContact);
   saveContactsData(contactsData);
@@ -192,9 +194,9 @@ function createContact() {
   let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
   const newContact = {
     id: nextContactId,
-    contactName: newName,
-    contactMailAdress: newMail,
-    contactPhone: newPhone,
+    name: newName,
+    email: newMail,
+    phone: newPhone,
     contactImg: defaultImage,
   };
   contacts.push(new Contact(newName, newMail, newPhone, null, currentUser.name));
@@ -236,9 +238,9 @@ function editContactScreen(contactId) {
                         </div>
         <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
             <div class="addContactContainerFooter">
-                <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
-                <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
-                <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
+                <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.name}"> 
+                <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.email}">
+                <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.phone}">
                 <div>
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">
@@ -262,8 +264,8 @@ function updateContactMobile(contactId) {
   }
   const existingContact = contactsData.find(
     (contact) =>
-      contact.contactName === updatedName &&
-      contact.contactMailAdress === updatedMail &&
+      contact.name === updatedName &&
+      contact.email === updatedMail &&
       contact.id !== contactId
   );
   if (existingContact) {
@@ -273,16 +275,16 @@ function updateContactMobile(contactId) {
   const oldContact = contactsData.find(
     (contact) => contact.id === contactId
   );  
-  const hasNameChanged = oldContact.contactName !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
-  const hasMailChanged = oldContact.contactMailAdress !== updatedMail;
-  const hasPhoneChanged = oldContact.contactPhone !== updatedPhone;
+  const hasNameChanged = oldContact.name !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
+  const hasMailChanged = oldContact.email !== updatedMail;
+  const hasPhoneChanged = oldContact.phone !== updatedPhone;
   const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
     contact.id === contactId
       ? {
           ...contact,
-          contactName: hasNameChanged ? updatedName : contact.contactName,
-          contactMailAdress: hasMailChanged ? updatedMail : contact.contactMailAdress,
-          contactPhone: hasPhoneChanged ? updatedPhone : contact.contactPhone,
+          name: hasNameChanged ? updatedName : contact.name,
+          email: hasMailChanged ? updatedMail : contact.email,
+          phone: hasPhoneChanged ? updatedPhone : contact.phone,
         }
       : contact
   );
@@ -303,8 +305,8 @@ function updateContactDesktop(contactId) {
   }
   const existingContact = contactsData.find(
     (contact) =>
-      contact.contactName === updatedName &&
-      contact.contactMailAdress === updatedMail &&
+      contact.name === updatedName &&
+      contact.email === updatedMail &&
       contact.id !== contactId
   );
   if (existingContact) {
@@ -314,16 +316,16 @@ function updateContactDesktop(contactId) {
   const oldContact = contactsData.find(
     (contact) => contact.id === contactId
   );  
-  const hasNameChanged = oldContact.contactName !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
-  const hasMailChanged = oldContact.contactMailAdress !== updatedMail;
-  const hasPhoneChanged = oldContact.contactPhone !== updatedPhone;
+  const hasNameChanged = oldContact.name !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
+  const hasMailChanged = oldContact.email !== updatedMail;
+  const hasPhoneChanged = oldContact.phone !== updatedPhone;
   const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
     contact.id === contactId
       ? {
           ...contact,
-          contactName: hasNameChanged ? updatedName : contact.contactName,
-          contactMailAdress: hasMailChanged ? updatedMail : contact.contactMailAdress,
-          contactPhone: hasPhoneChanged ? updatedPhone : contact.contactPhone,
+          name: hasNameChanged ? updatedName : contact.name,
+          email: hasMailChanged ? updatedMail : contact.email,
+          phone: hasPhoneChanged ? updatedPhone : contact.phone,
         }
       : contact
   );
@@ -349,7 +351,7 @@ function deleteContact(contactId) {
     }
     const deletedContact = contactsData.splice(contactIndex, 1)[0];
     saveContactsData(contactsData);
-    console.log(`Kontakt "${deletedContact.contactName}" wurde erfolgreich gelöscht.`);
+    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts:", error);
   }
@@ -376,7 +378,7 @@ function deleteContactMobile(contactId) {
     }
     const deletedContact = contactsData.splice(contactIndex, 1)[0];
     saveContactsData(contactsData);
-    console.log(`Kontakt "${deletedContact.contactName}" wurde erfolgreich gelöscht.`);
+    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts:", error);
   }
@@ -410,13 +412,13 @@ function openContactScreen(contactId) {
     <div class="openContactContainerFooter">
         <div class="openContactUserImageAndNameContainer">   
             <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
-            <h2 class="openContactH2">${selectedContact.contactName}</h2>
+            <h2 class="openContactH2">${selectedContact.name}</h2>
         </div>
         <p class="openContactInformation">Contact Information</p>
         <p class="openContactEmail">Email</p>
-        <a class="openContactEmailLink" href="mailto:${selectedContact.contactMailAdress}">${selectedContact.contactMailAdress}</a>
-        <p class="openContactPhoneText">Phone</p>
-        <p class="openContactPhoneNumber">${selectedContact.contactPhone}</p>        
+        <a class="openContactEmailLink" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
+        <p class="openphoneText">Phone</p>
+        <p class="openphoneNumber">${selectedContact.phone}</p>        
     </div>
     
     <div class="dropdown-container" id="contactOptionsDropdownContainer">  <!-- Dropdown-Menü für Kontaktoptionen -->
@@ -522,7 +524,7 @@ function renderContactsDesktop() {
   renderAddContactButtonDesktop();  // Add contact button desktop
   const contactsByFirstLetter = {};
   contactsData.forEach((oneContact) => {
-    const firstLetter = oneContact.contactName.charAt(0).toUpperCase();
+    const firstLetter = oneContact.name.charAt(0).toUpperCase();
     if (!contactsByFirstLetter[firstLetter]) {
       contactsByFirstLetter[firstLetter] = /*html*/ `
                 <div class="letterAndContactsContainer">
@@ -538,8 +540,8 @@ function renderContactsDesktop() {
                     <img src="${oneContact.contactImg}" class="contactImg">
                 </div>
                 <div class="contact-info-container">
-                    <h2 class="oneContactContainerH2Desktop">${oneContact.contactName}</h2>
-                    <a class="oneContactContainerAElement">${oneContact.contactMailAdress}</a>
+                    <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
+                    <a class="oneContactContainerAElement">${oneContact.email}</a>
                 </div>
             </div>
         `;
@@ -585,7 +587,7 @@ function openContactScreenDesktop(contactId) {
       <div class="contactsContentRightSideUserImgAndNameContainer">
         <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
         <div>
-          <h2 class="contactsContentRightSideUserNameH2">${selectedContact.contactName}</h2>
+          <h2 class="contactsContentRightSideUserNameH2">${selectedContact.name}</h2>
             <div class="contactsContentRightSideEditAndDeleteButtonContainer">
               <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="" onclick="editContactDestop(lastClickedContactId)">
               <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
@@ -599,13 +601,13 @@ function openContactScreenDesktop(contactId) {
         <h2 class="contactsContentRightSideContactEmailH2">Email</h2>
       </div>
       <div class="openContactEmailLinkDesktopContainer">
-        <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.contactMailAdress}">${selectedContact.contactMailAdress}</a>
+        <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
       </div>
-      <div class="contactsContentRightSideContactPhoneH2Desktop">
-        <h2 class="contactsContentRightSideContactPhoneH2">Phone</h2>
+      <div class="contactsContentRightSidephoneH2Desktop">
+        <h2 class="contactsContentRightSidephoneH2">Phone</h2>
       </div>
-      <div class="openContactPhoneNumberDesktopContainer">
-        <p class="openContactPhoneNumberDesktopPElement">${selectedContact.contactPhone}</p>
+      <div class="openphoneNumberDesktopContainer">
+        <p class="openphoneNumberDesktopPElement">${selectedContact.phone}</p>
       </div>
     </div>
   `;  
@@ -707,9 +709,9 @@ function editContactDestop(contactId) {
           </div>
           <form id="editContactDestopID" onsubmit=" updateContactDesktop(${selectedContact.id})">
             <div class="addContactContainerFooter">
-                <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
-                <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
-                <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
+                <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.name}"> 
+                <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.email}">
+                <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.phone}">
                 <div class="createContactButtonImgContainer">
                     <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
                     <button class="saveContactButtonDesktop" onclick=" updateContactDesktop(${selectedContact.id})">Save</button>
