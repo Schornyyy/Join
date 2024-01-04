@@ -53,7 +53,7 @@ function renderTasks(containerID, status) {
 //////////////// GETTER
 
 function getTaskById(taskID) {
-    return tasksDatasource.find(task => task.id==taskID);
+    return tasksDatasource.find(task => task.id == taskID);
 }
 
 function getTasksFromStatus(tasksArray, status) {
@@ -73,8 +73,8 @@ function getAmountOfSubtasks(task) {
 }
 
 function getAmountOfFinishedSubtasks(task) {
-    let amount= 0;
-    amount+= getFinishedSubtasks(task).length;
+    let amount = 0;
+    amount += getFinishedSubtasks(task).length;
     return amount;
 }
 
@@ -93,7 +93,7 @@ function getFinishedSubtasks(task) {
 */
 
 function getFinishedSubtasks(task) {
-    let finishedSubtasks= task.subtasks.find(subtask => subtask.finished);
+    let finishedSubtasks = task.subtasks.find(subtask => subtask.finished);
     if (finishedSubtasks)
         return [finishedSubtasks];
     else
@@ -127,9 +127,19 @@ function getMembers(task) {
 }
 
 function getFirstLetterOfName(member) {
-    console.log('getFirstLetterOfName');
-    console.log(member);
     return member.name.slice(0, 1);
+}
+
+function getFirstLettersOfName(name) {
+    let words = name.split(' ');
+    switch (words.length) {
+        case 1:
+            return words[0].slice(0, 2);
+        case 2:
+            return words[0][0] + words[1][0];
+        default:
+            return words[0][0] + words[1][0];
+    }
 }
 
 function getPrioImgURL(task) {
@@ -200,13 +210,12 @@ function membersToHTML(task) {
 }
 
 function singleMemberToHTML(member, index) {
-    console.log(member);
     let textcolor;
     let iconRightStep = 10;
     if (!isColorLight(member.colorCode)) textcolor = 'white';
     return `
         <div class="member-icon" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
-            ${getFirstLetterOfName(member)}
+             ${getFirstLettersOfName(member.name)}
         </div>
     `;
 }
@@ -240,8 +249,8 @@ function dragoverHandler(event) {
 }
 
 function dropHandler(event, status) {
-    let draggedTaskID= event.dataTransfer.getData('taskID');
-    let draggedTask= getTaskById(draggedTaskID);
+    let draggedTaskID = event.dataTransfer.getData('taskID');
+    let draggedTask = getTaskById(draggedTaskID);
     moveTask(draggedTask, status);
     demarkDragoverAll();
 }
@@ -251,23 +260,23 @@ function dragleaveHandler(event) {
     event.currentTarget.classList.remove('dragover');
 }
 
-function demarkDragoverAll(){
-    let cardContainers= document.querySelectorAll('.card-container');
+function demarkDragoverAll() {
+    let cardContainers = document.querySelectorAll('.card-container');
     for (let cardContainerI of cardContainers) {
         demarkDragover(cardContainerI);
     }
 }
 
-function markDragover(elem){
+function markDragover(elem) {
     elem.classList.add('dragover');
 }
 
-function demarkDragover(elem){
+function demarkDragover(elem) {
     elem.classList.remove('dragover');
 }
 
 function moveTask(task, status) {
-    task.status= status;
+    task.status = status;
     renderBoard();
     saveTasks();
 }
@@ -277,22 +286,22 @@ function moveTask(task, status) {
 ////////////////////////////////////////////////
 
 function addKeyupListener() {
-    let inputFilterphrase= document.getElementById('inputFilterphrase');
+    let inputFilterphrase = document.getElementById('inputFilterphrase');
     inputFilterphrase.addEventListener('keyup', () => {
         filterTasks(inputFilterphrase.value);
     });
 }
 
 function filterTasks(phrase) {
-    let tasksTemp= tasks.filter(task =>
+    let tasksTemp = tasks.filter(task =>
         task.title.toLowerCase().includes(phrase.toLowerCase())
     );
-    tasksDatasource= tasksTemp;
+    tasksDatasource = tasksTemp;
     renderBoard();
 }
 
 function clearFilter() {
-    tasksDatasource= tasks;
+    tasksDatasource = tasks;
     renderBoard();
 }
 
@@ -301,12 +310,30 @@ function clearFilter() {
 //////////////////// MISC ////////////////////
 //////////////////////////////////////////////
 
+function getRandomColorHex() {
+    let colorHex = '#';
+    let colorVal;
+    for (let i = 0; i < 3; i++) {
+        colorVal = Math.floor(Math.random() * 255).toString(16);
+        if (colorVal.length == 1)
+            colorVal = '0' + colorVal;
+        colorHex += colorVal;
+    }
+    return colorHex;
+}
+
+
 function isColorLight(hexcode) {
-    let r = parseInt(hexcode.slice(1, 3), 16);
-    let g = parseInt(hexcode.slice(3, 5), 16);
-    let b = parseInt(hexcode.slice(5), 16);
-    var a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-    return (a < 0.5);
+    if (hexcode) {
+        let r = parseInt(hexcode.slice(1, 3), 16);
+        let g = parseInt(hexcode.slice(3, 5), 16);
+        let b = parseInt(hexcode.slice(5), 16);
+        var a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return (a < 0.5);
+    } else {
+        console.log('isColorLight(): Achtung kein hexcode. Gebe einfach true zurück!' );
+        return true;
+    }
 }
 
 function timeToInputValueString(time) {
@@ -359,7 +386,7 @@ function showDialogDetail(taskID) {
     detailDialog.classList.remove('reini-d-none');
     editDialog.classList.add('reini-d-none');
 
-    let task = tasksDatasource.find(taskElem => taskElem.id==taskID);
+    let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
     detailDialog.innerHTML = detailDialogToHTML(task);
 }
 
@@ -494,7 +521,7 @@ function editDialogFillInputs(task) {
 
 function editSetPrioButton(prio) {
     editResetPrioButtons();
-    prioNew= prio;
+    prioNew = prio;
     switch (prio) {
         case 'low':
             let prioButtonLow = document.getElementById('prioButtonLow');
@@ -648,15 +675,15 @@ function editSingleMemberToHTML(member) {
 
 function editSaveTask(taskID) {
     //TODO: Prio, Contacts, Subtasks
-    let task= tasksDatasource.find(taskElem => taskElem.id==taskID);
-    let inputTaskTitle= document.getElementById('inputTaskTitle');
-    let inputTaskDescription= document.getElementById('inputTaskDescription');
-    let inputTaskDuedate= document.getElementById('inputTaskDuedate');
+    let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    let inputTaskTitle = document.getElementById('inputTaskTitle');
+    let inputTaskDescription = document.getElementById('inputTaskDescription');
+    let inputTaskDuedate = document.getElementById('inputTaskDuedate');
 
-    task.title= inputTaskTitle.value;
-    task.description= inputTaskDescription.value;
-    task.dueDate= new Date(inputTaskDuedate.value).getTime();
-    task.prio= prioNew;
+    task.title = inputTaskTitle.value;
+    task.description = inputTaskDescription.value;
+    task.dueDate = new Date(inputTaskDuedate.value).getTime();
+    task.prio = prioNew;
 
     renderBoard();
     // saveTasks();
@@ -679,8 +706,8 @@ function editSaveTask(taskID) {
 
 
 function testen() {
-    let tasksTemp= tasks.filter(task => task.title.includes('testen'));
-    tasksDatasource= tasksTemp;
+    let tasksTemp = tasks.filter(task => task.title.includes('testen'));
+    tasksDatasource = tasksTemp;
     renderBoard();
 }
 

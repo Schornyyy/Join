@@ -88,7 +88,8 @@ function renderContacts() {
     const oneContactContainer = /*html*/ `
             <div class="oneContactContainer" onclick="openContactScreen(${oneContact.id})">
                 <div>
-                    <img src="${oneContact.contactImg != undefined ? oneContact.contactImg : 'assets/img/contact/addContactBlankUserImg.svg'}" class="contactImg">
+                    <!-- <img src="${oneContact.contactImg != undefined ? oneContact.contactImg : 'assets/img/contact/addContactBlankUserImg.svg'}" class="contactImg"> -->
+                    ${singleMemberToHTML(oneContact, 0)}
                 </div>
                 <div class="contact-info-container">
                     <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
@@ -170,6 +171,7 @@ function createContactMobile() {
     phone: newPhone,
     contactImg: defaultImage,
     from: currentUser.name,
+    colorCode: getRandomColorHex()
   };
   contactsData.push(newContact);
   saveContactsData(contactsData);
@@ -178,6 +180,7 @@ function createContactMobile() {
 }
 
 function createContact() {
+  console.log('createContact');
   const isMobile = window.innerWidth < 768 ? true : false;
   
   const nameInput = isMobile ? document.querySelector(".addContactInputNameMobile") : document.querySelector(".addContactInputNameDesktop");
@@ -198,7 +201,9 @@ function createContact() {
     email: newMail,
     phone: newPhone,
     contactImg: defaultImage,
+    colorCode: getRandomColorHex()
   };
+  console.log('newContact' + newContact);
   contacts.push(new Contact(newName, newMail, newPhone, null, currentUser.name));
   contactsData.push(newContact);
   saveContactsData(contactsData);
@@ -535,13 +540,11 @@ function renderContactsDesktop() {
             `;
     }
 
-    console.log(oneContact);
-
     const oneContactContainer = /*html*/ `
             <div class="oneContactContainer" id="contact-${oneContact.id}" onclick="openContactScreenDesktop(${oneContact.id})" data-contact-id="${oneContact.id}">
                 <div>
                     <!-- <img src="${oneContact.contactImg}" class="contactImg"> -->
-                    ${singleMemberToHTML(oneContact, 0)} TuEs!!
+                    ${singleMemberToHTML(oneContact, 0)}
                 </div>
                 <div class="contact-info-container">
                     <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
