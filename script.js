@@ -48,7 +48,7 @@ async function loadData() {
     await loadTasks();
     await loadUsers();
     if(localStorage.getItem("userData") != null) {
-        if(window.location.href.match("/index.html")) {
+        if(window.location.href.match("/")) {
             await loadDataToUser();
         }
     } else if(!window.location.href.match("/assets/templates/login/login.html") 
@@ -66,6 +66,7 @@ async function loadContacts() {
     contacts = []
    } else {
     contacts = JSON.parse(contactsResp.data.value);
+    console.log(contacts);
    }
 }
 
@@ -79,7 +80,6 @@ async function loadUsers() {
     } else {
         users = JSON.parse(usersResp.data.value);
     }
-    console.log(users);
  }
 
 /**
@@ -139,4 +139,5 @@ async function loadDataToUser() {
     })
 
     currentUser = u;
+    console.log(u);
 }

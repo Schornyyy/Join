@@ -56,6 +56,7 @@ async function fetchContactsData() {
   try {
     const response = await fetch("../assets/templates/contacs/allContacts.json");
     let data = await response.json();
+    data = currentUser ? [...data, currentUser.contacts] : data;
     data = data.map((contact, index) => ({ ...contact, id: index + 1 })); // Fügt eine eindeutige ID zu jedem Kontakt hinzu
     return data.sort((a, b) => a.contactName.localeCompare(b.contactName));
   } catch (error) {
@@ -175,9 +176,11 @@ function createContactMobile() {
 }
 
 function createContact() {
-  const nameInput = document.querySelector(".addContactInputNameDesktop");
-  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
-  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
+  const isMobile = window.innerWidth < 768 ? true : false;
+  
+  const nameInput = isMobile ? null : document.querySelector(".addContactInputNameDesktop");
+  const mailInput = isMobile ? null : document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = isMobile ? null : document.querySelector(".addContactInputPhoneDesktop");
   const newName = nameInput.value.trim();
   const newMail = mailInput.value.trim();
   const newPhone = phoneInput.value.trim();
@@ -194,8 +197,10 @@ function createContact() {
     contactPhone: newPhone,
     contactImg: defaultImage,
   };
+  contacts.push(new Contact(newName, newMail, newPhone, null, currentUser.name));
   contactsData.push(newContact);
   saveContactsData(contactsData);
+  saveContacts();
   hideOverlay();
   contactsInit();  
 }
