@@ -122,7 +122,7 @@ function addContactScreen() {
                             </div>
                         </div>
 
-                        <form onsubmit="createContactMobile()">
+                        <form id="addContactFormMobileID" onsubmit="createContactMobile()">
                             <div class="addContactContainerFooter">
                                 <input class="addContactInputNameMobile" type="text" required placeholder="Name">
                                 <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
@@ -229,7 +229,7 @@ function editContactScreen(contactId) {
                         <div class="addContactBlankUserImg">
                           <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
                         </div>
-        <form onsubmit="updateContactMobile(${selectedContact.id})">
+        <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
             <div class="addContactContainerFooter">
                 <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
                 <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
@@ -646,7 +646,7 @@ function addContactShowOverlayDesktop() {
           <div class="addContactCloseXContainer">
             <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
           </div>
-          <form onsubmit="createContact()">
+          <form id="addContactShowOverlayDesktopID" onsubmit="createContact()">
             <div class="addContactContainerFooter">
               <input class="addContactInputNameDesktop" type="text" required placeholder="Name">
               <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail">
@@ -700,7 +700,7 @@ function editContactDestop(contactId) {
           <div class="addContactCloseXContainer">
             <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
           </div>
-          <form onsubmit=" updateContactDesktop(${selectedContact.id})">
+          <form id="editContactDestopID" onsubmit=" updateContactDesktop(${selectedContact.id})">
             <div class="addContactContainerFooter">
                 <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
                 <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
