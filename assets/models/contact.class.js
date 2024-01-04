@@ -5,12 +5,14 @@ class Contact {
     colorCode;
     email; 
     phone;
+    from;
 
-    constructor(name, email, phone, colorCode) {
+    constructor(name, email, phone, colorCode, from) {
         this.name = name;
         this.colorCode = colorCode;
         this.email = email;
         this.phone = phone;
+        this.from = from;
     }
 
     createNameImage(appendTo) {

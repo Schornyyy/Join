@@ -15,8 +15,8 @@ class User {
         this.tasks = [];
     }
 
-    addContact() {
-        //Warte auf Martin
+    addContact(contact) {
+        this.contacts.push(contact);
     }
 
     removeContact(index) {

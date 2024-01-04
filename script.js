@@ -132,5 +132,11 @@ async function loadDataToUser() {
         }
     })
 
+    contacts.forEach((contact) => {
+        if(contact.from == u.name) {
+            u.addContact(contact)
+        }
+    })
+
     currentUser = u;
 }
