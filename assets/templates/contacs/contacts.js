@@ -534,10 +534,14 @@ function renderContactsDesktop() {
                 </div>
             `;
     }
+
+    console.log(oneContact);
+
     const oneContactContainer = /*html*/ `
             <div class="oneContactContainer" id="contact-${oneContact.id}" onclick="openContactScreenDesktop(${oneContact.id})" data-contact-id="${oneContact.id}">
                 <div>
-                    <img src="${oneContact.contactImg}" class="contactImg">
+                    <!-- <img src="${oneContact.contactImg}" class="contactImg"> -->
+                    ${singleMemberToHTML(oneContact, 0)} TuEs!!
                 </div>
                 <div class="contact-info-container">
                     <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>

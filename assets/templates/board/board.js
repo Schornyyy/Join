@@ -127,6 +127,8 @@ function getMembers(task) {
 }
 
 function getFirstLetterOfName(member) {
+    console.log('getFirstLetterOfName');
+    console.log(member);
     return member.name.slice(0, 1);
 }
 
@@ -198,6 +200,7 @@ function membersToHTML(task) {
 }
 
 function singleMemberToHTML(member, index) {
+    console.log(member);
     let textcolor;
     let iconRightStep = 10;
     if (!isColorLight(member.colorCode)) textcolor = 'white';
