@@ -943,9 +943,30 @@
   transform: scale(0.95);
 }
 
+.saveContactButtonDesktop {
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 8%;
+  padding: 15px 24px 15px 24px;
+  color: white;
+  background-color: var(--light-grey);
+  font-size: 21px;
+  font-weight: 700;
+  border-color: var(--light-grey);
+  margin-left: 20px;
+  background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");  
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+}
 
-
-
+.saveContactButtonDesktop:hover {
+  border: 1px solid;
+  border-color: var(--light-grey); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);  
+  background-color: var(--light-blue);
+  border: 0;  
+}
 
 
 }

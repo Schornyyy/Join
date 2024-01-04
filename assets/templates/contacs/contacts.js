@@ -613,7 +613,7 @@ function editContactDestop(contactId) {
                 <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div class="createContactButtonImgContainer">
                     <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
-                    <button class="saveContactButtonImg" onclick="updateContact(${selectedContact.id})">Save</button>
+                    <button class="saveContactButtonDesktop" onclick="updateContact(${selectedContact.id})">Save</button>
                 </div>                
             </div>
         </form>
