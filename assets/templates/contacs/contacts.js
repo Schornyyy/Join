@@ -122,12 +122,12 @@ function addContactScreen() {
                             </div>
                         </div>
 
-                        <form onsubmit="createContact()">
+                        <form onsubmit="createContactMobile()">
                             <div class="addContactContainerFooter">
                                 <input class="addContactInputNameMobile" type="text" required placeholder="Name">
                                 <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
                                 <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
-                                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
+                                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">
                             <div>
                         </form>
                         `;
@@ -146,6 +146,32 @@ function showHeaderAndFooter() {
   const menuTemplate = document.querySelector(".menuTemplate");
   mobileHeader.style.display = "flex";
   menuTemplate.style.display = "flex";
+}
+
+function createContactMobile() {
+  const nameInput = document.querySelector(".addContactInputNameMobile");
+  const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
+  const phoneInput = document.querySelector(".addContactInputPhoneMobile");
+  const newName = nameInput.value.trim();
+  const newMail = mailInput.value.trim();
+  const newPhone = phoneInput.value.trim();
+  if (newName === "" || newMail === "" || newPhone === "") {
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }
+  const defaultImage = "../assets/img/contact/defaultContactImage.svg";
+  let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
+  const newContact = {
+    id: nextContactId,
+    contactName: newName,
+    contactMailAdress: newMail,
+    contactPhone: newPhone,
+    contactImg: defaultImage,
+  };
+  contactsData.push(newContact);
+  saveContactsData(contactsData);
+  hideOverlay();
+  contactsInit();  
 }
 
 function createContact() {
@@ -286,6 +312,31 @@ function deleteContact(contactId) {
   contactsInit();  
 }
 
+function deleteContactMobile(contactId) {
+  if (!contactId) {
+    console.error("Invalid contact ID");
+    return;
+  }
+  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
+  if (!confirmDelete) {
+    return;
+  }
+  try {
+    const contactIndex = contactsData.findIndex((contact) => contact.id === contactId);
+
+    if (contactIndex === -1) {
+      console.error("Selected contact not found in contactsData.");
+      return;
+    }
+    const deletedContact = contactsData.splice(contactIndex, 1)[0];
+    saveContactsData(contactsData);
+    console.log(`Kontakt "${deletedContact.contactName}" wurde erfolgreich gelöscht.`);
+  } catch (error) {
+    console.error("Fehler beim Löschen des Kontakts:", error);
+  }
+  contactsInit();  
+}
+
 function openContactScreen(contactId) {
   const content = document.getElementById("contactsContent");  
   const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID im Kontakt-Datenarray.  
@@ -332,7 +383,7 @@ function openContactScreen(contactId) {
             <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">  <!-- Option zum Bearbeiten des Kontakts -->
                 <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
             </div>            
-            <div class="dropdown-option" data-value="delete" onclick="deleteContact(${selectedContact.id})">  <!-- Option zum Löschen des Kontakts -->
+            <div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">  <!-- Option zum Löschen des Kontakts -->
                 <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
             </div>
         </div>
