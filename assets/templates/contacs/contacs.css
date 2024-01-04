@@ -48,59 +48,59 @@
     gap: 20px;
   }
 
-  .addContactInputName {
+  .addContactInputNameMobile {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactUserNameImg.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
-    width: 20em;
-    height: 2em;
+    width: 364px;
+    height: 41px;
     position: relative;
     font-size: 20px;
     font-weight: 400;
   }
 
-  .addContactInputName:focus {
+  .addContactInputNameMobile:focus {
     outline: none;
     border-color: var(--light-blue);
   }
 
-  .addContactInputMailAddresss {
+  .addContactInputMailAddresssMobile {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactmailIcon.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
-    width: 20em;
-    height: 2em;
+    width: 364px;
+    height: 41px;
     position: relative;
     font-size: 20px;
     font-weight: 400;
   }
 
-  .addContactInputMailAddresss:focus {
+  .addContactInputMailAddresssMobile:focus {
     outline: none;
     border-color: var(--light-blue);
   }
 
-  .addContactInputPhone {
+  .addContactInputPhoneMobile {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactPhoneIcon.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
-    width: 20em;
-    height: 2em;
+    width: 364px;
+    height: 41px;
     position: relative;
     font-size: 20px;
     font-weight: 400;
   }
 
-  .addContactInputPhone:focus {
+  .addContactInputPhoneMobile:focus {
     outline: none;
     border-color: var(--light-blue);
   }
@@ -773,7 +773,7 @@
   gap: 20px;
 }
 
-.addContactInputName {
+.addContactInputNameDesktop {
   border: 1px solid #D1D1D1;
   border-radius: 5px;
   background-image: url("../../img/contact/addContactUserNameImg.svg");
@@ -787,12 +787,12 @@
   font-weight: 400;
 }
 
-.addContactInputName:focus {
+.addContactInputNameDesktop:focus {
   outline: none;
   border-color: var(--light-blue);
 }
 
-.addContactInputMailAddresss {
+.addContactInputMailAddresssDesktop {
   border: 1px solid #D1D1D1;
   border-radius: 5px;
   background-image: url("../../img/contact/addContactmailIcon.svg");
@@ -806,12 +806,12 @@
   font-weight: 400;
 }
 
-.addContactInputMailAddresss:focus {
+.addContactInputMailAddresssDesktop:focus {
   outline: none;
   border-color: var(--light-blue);
 }
 
-.addContactInputPhone {
+.addContactInputPhoneDesktop {
   border: 1px solid #D1D1D1;
   border-radius: 5px;
   background-image: url("../../img/contact/addContactPhoneIcon.svg");
@@ -825,7 +825,7 @@
   font-weight: 400;
 }
 
-.addContactInputPhone:focus {
+.addContactInputPhoneDesktop:focus {
   outline: none;
   border-color: var(--light-blue);
 }
@@ -841,6 +841,31 @@
   width: 214px;
   cursor: pointer;
   margin-left: 24px;
+}
+
+.createContactButton {
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 8%;
+  padding: 16px;  
+  color: white;
+  background-color: var(--light-grey);
+  font-size: 21px;
+  font-weight: 700;
+  border-color: var(--light-grey);
+  margin-left: 20px;
+  background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");  
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+}
+
+.createContactButton:hover {
+  border: 1px solid;
+  border-color: var(--light-grey); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);  
+  background-color: var(--light-blue);
+  border: 0;
 }
 
 .oneContactContainerH2Desktop {

@@ -124,9 +124,9 @@ function addContactScreen() {
 
                         <form onsubmit="createContact()">
                             <div class="addContactContainerFooter">
-                                <input class="addContactInputName" type="text" required placeholder="Name">
-                                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
-                                <input class="addContactInputPhone" type="text" required placeholder="Phone">
+                                <input class="addContactInputNameMobile" type="text" required placeholder="Name">
+                                <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
+                                <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
                                 <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
                             <div>
                         </form>
@@ -205,9 +205,9 @@ function editContactScreen(contactId) {
                         </div>
         <form onsubmit="updateContact(${selectedContact.id})">
             <div class="addContactContainerFooter">
-                <input class="addContactInputName" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
-                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
-                <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
+                <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
+                <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
+                <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div>
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContact(${selectedContact.id})">
@@ -554,12 +554,12 @@ function addContactShowOverlayDesktop() {
           </div>
           <form onsubmit="createContact()">
             <div class="addContactContainerFooter">
-              <input class="addContactInputName" type="text" required placeholder="Name">
-              <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail">
-              <input class="addContactInputPhone" type="text" required placeholder="Phone">
-              <div class="addContactButtonContainerDesktop">
-                <img class="addContactCancelButtonDesktop" src="../assets/img/contact/addContactCancelButtonDesktop.svg" alt="" onclick="hideOverlay()">
-                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContact()">
+              <input class="addContactInputNameDesktop" type="text" required placeholder="Name">
+              <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail">
+              <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone">
+              <div class="addContactButtonContainerDesktop">                
+                <button class="editContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
+                <button class="createContactButton" onclick="createContact()">Create contact</button>
               </div>
             </div>
           </form>
@@ -567,7 +567,8 @@ function addContactShowOverlayDesktop() {
         </div>
       </div>
     </div>
-  `;
+  `; 
+  
   overlayContainer.style.animation = "slide-in 0.5s ease-out";
 }
 
@@ -607,9 +608,9 @@ function editContactDestop(contactId) {
           </div>
           <form onsubmit="updateContact(${selectedContact.id})">
             <div class="addContactContainerFooter">
-                <input class="addContactInputName" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
-                <input class="addContactInputMailAddresss" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
-                <input class="addContactInputPhone" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
+                <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
+                <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
+                <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div class="createContactButtonImgContainer">
                     <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
                     <button class="saveContactButtonImg" onclick="updateContact(${selectedContact.id})">Save</button>
