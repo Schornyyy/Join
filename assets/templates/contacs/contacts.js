@@ -229,14 +229,14 @@ function editContactScreen(contactId) {
                         <div class="addContactBlankUserImg">
                           <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
                         </div>
-        <form onsubmit="updateContact(${selectedContact.id})">
+        <form onsubmit="updateContactMobile(${selectedContact.id})">
             <div class="addContactContainerFooter">
                 <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
                 <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
                 <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div>
                     <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
-                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContact(${selectedContact.id})">
+                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">
                 </div>                
             </div>
         </form>
@@ -244,10 +244,51 @@ function editContactScreen(contactId) {
   hideHeaderAndFooter();  
 }
 
-function updateContact(contactId) {
-  const nameInput = document.querySelector(".addContactInputName");
-  const mailInput = document.querySelector(".addContactInputMailAddresss");
-  const phoneInput = document.querySelector(".addContactInputPhone");
+function updateContactMobile(contactId) {
+  const nameInput = document.querySelector(".addContactInputNameMobile");
+  const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
+  const phoneInput = document.querySelector(".addContactInputPhoneMobile");
+  const updatedName = nameInput.value.trim();
+  const updatedMail = mailInput.value.trim();
+  const updatedPhone = phoneInput.value.trim();
+  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }
+  const existingContact = contactsData.find(
+    (contact) =>
+      contact.contactName === updatedName &&
+      contact.contactMailAdress === updatedMail &&
+      contact.id !== contactId
+  );
+  if (existingContact) {
+    alert("Ein Kontakt mit diesen Informationen existiert bereits.");
+    return;
+  }
+  const oldContact = contactsData.find(
+    (contact) => contact.id === contactId
+  );  
+  const hasNameChanged = oldContact.contactName !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
+  const hasMailChanged = oldContact.contactMailAdress !== updatedMail;
+  const hasPhoneChanged = oldContact.contactPhone !== updatedPhone;
+  const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
+    contact.id === contactId
+      ? {
+          ...contact,
+          contactName: hasNameChanged ? updatedName : contact.contactName,
+          contactMailAdress: hasMailChanged ? updatedMail : contact.contactMailAdress,
+          contactPhone: hasPhoneChanged ? updatedPhone : contact.contactPhone,
+        }
+      : contact
+  );
+  saveContactsData(updatedContactsData); // JSON-Array speichern
+  contactsInit(); // Zurück zur Kontaktliste wechseln
+}
+
+function updateContactDesktop(contactId) {
+  const nameInput = document.querySelector(".addContactInputNameDesktop");
+  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
   const updatedName = nameInput.value.trim();
   const updatedMail = mailInput.value.trim();
   const updatedPhone = phoneInput.value.trim();
@@ -659,14 +700,14 @@ function editContactDestop(contactId) {
           <div class="addContactCloseXContainer">
             <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
           </div>
-          <form onsubmit="updateContact(${selectedContact.id})">
+          <form onsubmit=" updateContactDesktop(${selectedContact.id})">
             <div class="addContactContainerFooter">
                 <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.contactName}"> 
                 <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.contactMailAdress}">
                 <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.contactPhone}">
                 <div class="createContactButtonImgContainer">
                     <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
-                    <button class="saveContactButtonDesktop" onclick="updateContact(${selectedContact.id})">Save</button>
+                    <button class="saveContactButtonDesktop" onclick=" updateContactDesktop(${selectedContact.id})">Save</button>
                 </div>                
             </div>
         </form>
