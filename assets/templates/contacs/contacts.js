@@ -195,7 +195,8 @@ function createContact() {
   }
   const defaultImage = "../assets/img/contact/defaultContactImage.svg";
   let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
-  let rndmColor = getRandomColorHex()
+  let rndmColor = getRandomColorHex();
+  console.log(rndmColor);
   const newContact = {
     id: nextContactId,
     name: newName,
@@ -205,9 +206,11 @@ function createContact() {
     colorCode: rndmColor
   };
   console.log('newContact' + newContact);
-  contacts.push(new Contact(newName, newMail, newPhone, rndmColor, currentUser.name));
+  let user = new Contact(newName, newMail, newPhone, rndmColor, currentUser.name)
+  contacts.push(user);
   contactsData.push(newContact);
   saveContactsData(contactsData);
+  currentUser.addContact(user)
   saveContacts();
   hideOverlay();
   contactsInit();  

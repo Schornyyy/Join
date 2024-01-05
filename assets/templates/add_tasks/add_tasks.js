@@ -2,11 +2,13 @@ let selectedPrio;
 let selectedCategory;
 let selectedContacts = [];
 let subtasks = [];
+let assigendContacts = [];
 
 async function includeAddTaskFormTempalte() {
   let taskForm = document.getElementById("taskForm");
   let resp = await includeTemplate('./assets/templates/tasks_form.html')
   taskForm.innerHTML = resp;
+  renderHTMLAssignedTo();
 }
 
 
@@ -183,8 +185,9 @@ async function initEventListener() {
     let category = selectedCategory;
     let subs = subtasks;
 
-    let task = new Task(taskTitle, dueDate, category, tasks.length+1, "Open"); //+1 ???
+    let task = new Task(taskTitle, dueDate, category, tasks.length+1, "Open", currentUser.name); //+1 ???
     task.setPrio(prio);
+    task.assignedTo = assigendContacts;
     taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc); //??
     subs.length > 0 ? task.subtasks = subs : subs  =[];
     tasks.push(task);
@@ -212,12 +215,15 @@ try {
   selectedContacts = [];
   selectedPrio = null;
   subtasks = []
+  assigendContacts = [];
   document.getElementById("form-desc").value = "";
   document.getElementById("form-title").value = "";
   document.getElementById("form-date").value = "";
   document.getElementById("categorys-dropdow").innerHTML = "Select task category";
 
   renderSubtaskHTML();
+  renderAssignes();
+  renderHTMLAssignedTo();
 } catch (error) {
   
 }
@@ -261,7 +267,6 @@ function setSubTaskInputToDefault() {
  */
 function addSubtaskToList() {
   let ele = document.getElementById("subtasks-to-dropdown");
-    console.log("test");
     subtasks.push(new Subtask(ele.value, subtasks.length+1));
     setSubTaskInputToDefault()
     ele.value = "";
@@ -323,4 +328,74 @@ function changeSubtaskTitle(title, subtaskIndex) {
 function deleteSubtask(subtaskIndex) {
   subtasks.splice(subtaskIndex, 1)
   renderSubtaskHTML();
+}
+
+function renderHTMLAssignedTo() {
+  let assignedList = document.getElementById("assigned-to-dropdown-menu");
+  assignedList.innerHTML = "";
+  
+  let contactsHTML = currentUser.contacts.map((contact, index) => {
+    return renderHTMLListElementOfAssigned(contact, index);
+  }).join(""); 
+
+  assignedList.innerHTML = `
+    <ul id="addtasks-contacts-list">
+      ${contactsHTML}
+    </ul>
+  `;
+}
+
+function getInitialsByContact(contactName) {
+  let initials = "";
+  let splits = contactName.split(" ");
+  splits.forEach((split) => {
+    initials += split[0].toUpperCase();
+  });
+  return initials;
+}
+
+function renderHTMLListElementOfAssigned(contact, index) {
+  let initials = getInitialsByContact(contact.name);
+
+
+  return /*html*/`
+    <li class="assigned-to-task" onclick='addToAssigned(${JSON.stringify(contact)}, ${index})'>
+        <div class="assignedTo-name-container">
+          <p class="assignedTo-initials-container" style='background-color: ${contact.colorCode}'>${initials}</p>
+          ${contact.name}
+        </div>
+        <input type="checkbox" name="check" id='contact${index}' class="assignedTo-checkbox">
+      
+  </li>
+  `;
+}
+
+
+async function addToAssigned(contact, index) {
+  let isInList = await assigendContacts.find((e) => e.name == contact.name) ? true : false;
+  let parentTableRow = document.getElementById("contact" + index).parentElement;
+  let checkBox = document.getElementById("contact" + index);
+  if(isInList) {
+    let indexOfContact = await assigendContacts.findIndex((e) => e.name == contact.name)
+    assigendContacts.splice(indexOfContact, 1)
+    parentTableRow.classList.remove("addedToAssigned")
+    checkBox.removeAttribute("checked");
+  } else {
+    assigendContacts.push(contact)
+    parentTableRow.classList.add("addedToAssigned");
+    checkBox.setAttribute("checked", true);
+  }
+  renderAssignes()
+}
+
+function renderAssignes() {
+  let container = document.getElementById("assigned-to-assigens");
+  container.innerHTML = "";
+  assigendContacts.forEach((contact, index) => {
+    container.innerHTML += /*html*/`
+      <div class="assigned" style='background-color: ${contact.colorCode}'>
+        ${getInitialsByContact(contact.name)}
+      </div>
+    `
+  })
 }

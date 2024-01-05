@@ -22,6 +22,7 @@ async function includeHTML() {
  *
  * @param {String} contentView - <Board|Add Tasks|Contacts|Summary>
  */
+
 async function includeContentHTML(contentView) {
   let content = document.getElementById("content");
   content.innerHTML = "";

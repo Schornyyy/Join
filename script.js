@@ -66,6 +66,7 @@ async function loadContacts() {
     contacts = []
    } else {
     contacts = JSON.parse(contactsResp.data.value);
+    console.log(contacts);
    }
 }
 
