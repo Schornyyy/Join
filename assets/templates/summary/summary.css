@@ -90,6 +90,7 @@
     /* min-width: 18rem;
     max-width: 25rem; */
     gap: 1rem;
+    border: solid 2px blue;
   }
 
   .reactangle {
