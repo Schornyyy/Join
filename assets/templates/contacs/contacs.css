@@ -617,9 +617,9 @@
     font-weight: 400;
   }
 
-  .contactsContentRightSideContactPhoneH2Desktop {
+  .contactsContentRightSideContactPhoneH2DesktopContainer {
     margin-top: 20px;
-    margin-left: 2em;
+    margin-left: 2em;    
   }
 
   .contactsContentRightSideContactEmailH2 {
@@ -630,6 +630,16 @@
   .contactsContentRightSideContactPhoneH2 {
     font-size: 16px;
     font-weight: 700;
+  }
+
+  .openphoneNumberDesktopContainer {
+    margin-top: 20px;
+    margin-left: 2em;
+  }
+
+  .openphoneNumberDesktopPElement {
+    font-size: 16;
+    font-weight: 400;
   }
 
   .addContactButtonDesktop {

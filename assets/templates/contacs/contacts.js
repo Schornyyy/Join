@@ -614,8 +614,8 @@ function openContactScreenDesktop(contactId) {
       <div class="openContactEmailLinkDesktopContainer">
         <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
       </div>
-      <div class="contactsContentRightSidephoneH2Desktop">
-        <h2 class="contactsContentRightSidephoneH2">Phone</h2>
+      <div class="contactsContentRightSideContactPhoneH2DesktopContainer">
+        <h2 class="contactsContentRightSideContactPhoneH2Desktop">Phone</h2>
       </div>
       <div class="openphoneNumberDesktopContainer">
         <p class="openphoneNumberDesktopPElement">${selectedContact.phone}</p>
