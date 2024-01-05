@@ -570,6 +570,11 @@
     height: 24px;
     width: 62px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .contactsContentRightSideEditButton:hover {
+    filter: saturate(400%) brightness(550%);
   }
 
   .contactsContentRightSideDeleteButton {
@@ -577,6 +582,11 @@
     width: 81px;
     cursor: pointer;
     margin-left: 30px;
+    transition: background-color 0.3s ease;
+  }
+
+  .contactsContentRightSideDeleteButton:hover {
+    filter: saturate(400%) brightness(550%);
   }
 
   .contactsContentRightSideContactInformationDesktop {
