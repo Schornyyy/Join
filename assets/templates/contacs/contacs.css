@@ -614,6 +614,7 @@
     text-decoration: none;
     color: #007CEE;
     margin-left: 2em;
+    cursor: pointer;
   }
 
   .openContactPhoneNumberDesktopContainer {
@@ -670,6 +671,7 @@
     flex-shrink: 0;
     text-align: center;
     background-size: 10%;
+    cursor: pointer;
   }
 
   .addContactButtonDesktop:hover {

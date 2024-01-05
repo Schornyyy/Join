@@ -426,8 +426,8 @@ function openContactScreen(contactId) {
         <p class="openContactInformation">Contact Information</p>
         <p class="openContactEmail">Email</p>
         <a class="openContactEmailLink" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
-        <p class="openphoneText">Phone</p>
-        <p class="openphoneNumber">${selectedContact.phone}</p>        
+        <p class="openContactPhoneText">Phone</p>
+        <p class="openContactPhoneNumber">${selectedContact.phone}</p>        
     </div>
     
     <div class="dropdown-container" id="contactOptionsDropdownContainer">  <!-- Dropdown-Menü für Kontaktoptionen -->
