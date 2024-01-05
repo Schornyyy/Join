@@ -28,30 +28,6 @@ async function contactsInit() {
   }
 }
 
-function renderAddContactButton() {
-  const content = document.getElementById("contactsContent");
-  const addContactButtonContainer = document.createElement("div");
-  addContactButtonContainer.classList.add("addContactButtonContainerMobile");  // Für die mobile Ansicht
-  addContactButtonContainer.innerHTML =
-    '<img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">'; // onclick-Funktion direkt im HTML-Code
-  content.appendChild(addContactButtonContainer);  
-}
-
-function renderAddContactButtonDesktop() {
-  const contentDesktop = document.getElementById("contactsContent");
-  const addContactButtonContainerDesktop = document.createElement("div");
-  addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
-  addContactButtonContainerDesktop.innerHTML = /*html*/`
-    <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
-  contentDesktop.appendChild(addContactButtonContainerDesktop);  
-  addContactButtonContainerDesktop.addEventListener("click", function () {  // Füge einen Event-Listener hinzu, um das Overlay zu zeigen    
-  });
-}
-
-function handleAddContactClick() {
-  addContactScreen(); // Diese Funktion wird direkt im HTML-Code aufgerufen
-}
-
 async function fetchContactsData() {
   try {
     const response = await fetch("../assets/templates/contacs/allContacts.json");
@@ -64,6 +40,64 @@ async function fetchContactsData() {
     console.error("Fehler beim Laden der Kontakte:", error);
     throw error;
   }
+}
+
+function showcontactsContentRightSideDesktop() {
+  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
+  showcontactsContentRightSide.style.display = "flex";
+}
+
+function hidecontactsContentRightSideDesktop() {
+  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
+  showcontactsContentRightSide.style.display = "none";
+}
+
+function contactsContentBackgroundColorWhiteGray() {
+  const content = document.getElementById("contactsContent");
+  content.style.backgroundColor = "var(--white-grey)";
+}
+
+function contactsContentBackgroundColorWhite() {
+  const content = document.getElementById("contactsContent");
+  content.style.backgroundColor = "white";
+}
+
+function hideHeaderAndFooter() {
+  const mobileHeader = document.querySelector(".mobileHeader"); // Verstecke mobileHeader und menuTemplate
+  const menuTemplate = document.querySelector(".menuTemplate");
+  mobileHeader.style.display = "none";
+  menuTemplate.style.display = "none";
+}
+
+function showHeaderAndFooter() {
+  const mobileHeader = document.querySelector(".mobileHeader"); // Zeigt mobileHeader und menuTemplate
+  const menuTemplate = document.querySelector(".menuTemplate");
+  mobileHeader.style.display = "flex";
+  menuTemplate.style.display = "flex";
+}
+
+function renderAddContactButton() {
+  const content = document.getElementById("contactsContent");
+  const addContactButtonContainer = document.createElement("div");
+  addContactButtonContainer.classList.add("addContactButtonContainerMobile");  // Für die mobile Ansicht
+  addContactButtonContainer.innerHTML =/*html*/ `
+    <img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">`; // onclick-Funktion direkt im HTML-Code
+  content.appendChild(addContactButtonContainer);  
+}
+
+function renderAddContactButtonDesktop() {
+  const contentDesktop = document.getElementById("contactsContent");
+  const addContactButtonContainerDesktop = document.createElement("div");
+  addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
+  addContactButtonContainerDesktop.innerHTML = /*html*/ `
+    <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
+  contentDesktop.appendChild(addContactButtonContainerDesktop);  
+  addContactButtonContainerDesktop.addEventListener("click", function () {  // Fügt einen Event-Listener hinzu, um das Overlay zu zeigen    
+  });
+}
+
+function handleAddContactClick() {
+  addContactScreen(); // Diese Funktion wird direkt im HTML-Code aufgerufen
 }
 
 function renderContacts() {  
@@ -86,7 +120,7 @@ function renderContacts() {
     }
 
     const oneContactContainer = /*html*/ `
-            <div class="oneContactContainer" onclick="openContactScreen(${oneContact.id})">
+            <div class="oneContactContainer" onclick="openContactScreenMobile(${oneContact.id})">
                 <div>
                     <!-- <img src="${oneContact.contactImg != undefined ? oneContact.contactImg : 'assets/img/contact/addContactBlankUserImg.svg'}" class="contactImg"> -->
                     ${singleMemberToHTML(oneContact, 0)}
@@ -137,20 +171,6 @@ function addContactScreen() {
   hideHeaderAndFooter();    
 }
 
-function hideHeaderAndFooter() {
-  const mobileHeader = document.querySelector(".mobileHeader"); // Verstecke mobileHeader und menuTemplate
-  const menuTemplate = document.querySelector(".menuTemplate");
-  mobileHeader.style.display = "none";
-  menuTemplate.style.display = "none";
-}
-
-function showHeaderAndFooter() {
-  const mobileHeader = document.querySelector(".mobileHeader"); // Zeige mobileHeader und menuTemplate
-  const menuTemplate = document.querySelector(".menuTemplate");
-  mobileHeader.style.display = "flex";
-  menuTemplate.style.display = "flex";
-}
-
 function createContactMobile() {
   const nameInput = document.querySelector(".addContactInputNameMobile");
   const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
@@ -181,8 +201,7 @@ function createContactMobile() {
 
 function createContact() {
   console.log('createContact');
-  const isMobile = window.innerWidth < 768 ? true : false;
-  
+  const isMobile = window.innerWidth < 768 ? true : false;  
   const nameInput = isMobile ? document.querySelector(".addContactInputNameMobile") : document.querySelector(".addContactInputNameDesktop");
   const mailInput = isMobile ? document.querySelector(".addContactInputMailAddresssMobile") : document.querySelector(".addContactInputMailAddresssDesktop");
   const phoneInput = isMobile ? document.querySelector(".addContactInputPhoneMobile") : document.querySelector(".addContactInputPhoneDesktop");
@@ -210,17 +229,14 @@ function createContact() {
   contacts.push(user);
   contactsData.push(newContact);
   saveContactsData(contactsData);
-  currentUser.addContact(user)
-  saveContacts();
+  currentUser.addContact(user)  
   hideOverlay();
   contactsInit();  
 }
 
 function saveContactsData(data) {  // Hier werden die Kontakte Lokal gespeichert!
-  try {    
-    localStorage.setItem('contactsData', JSON.stringify(data));  // Lokal speichern
-    // Auf dem Server speichern (falls notwendig)
-    // Hier könntest du den ursprünglichen Fetch-Code einfügen, wenn die Daten auf dem Server gespeichert werden sollen.
+  try {   
+    localStorage.setItem('contactsData', JSON.stringify(data));  // Lokal speichern    
     console.log("Kontakt erfolgreich gespeichert.");
   } catch (error) {
     console.error("Fehler beim Speichern der Kontakte:", error);
@@ -301,74 +317,6 @@ function updateContactMobile(contactId) {
   contactsInit(); // Zurück zur Kontaktliste wechseln
 }
 
-function updateContactDesktop(contactId) {
-  const nameInput = document.querySelector(".addContactInputNameDesktop");
-  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
-  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
-  const updatedName = nameInput.value.trim();
-  const updatedMail = mailInput.value.trim();
-  const updatedPhone = phoneInput.value.trim();
-  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
-    alert("Bitte füllen Sie alle Felder aus.");
-    return;
-  }
-  const existingContact = contactsData.find(
-    (contact) =>
-      contact.name === updatedName &&
-      contact.email === updatedMail &&
-      contact.id !== contactId
-  );
-  if (existingContact) {
-    alert("Ein Kontakt mit diesen Informationen existiert bereits.");
-    return;
-  }
-  const oldContact = contactsData.find(
-    (contact) => contact.id === contactId
-  );  
-  const hasNameChanged = oldContact.name !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
-  const hasMailChanged = oldContact.email !== updatedMail;
-  const hasPhoneChanged = oldContact.phone !== updatedPhone;
-  const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
-    contact.id === contactId
-      ? {
-          ...contact,
-          name: hasNameChanged ? updatedName : contact.name,
-          email: hasMailChanged ? updatedMail : contact.email,
-          phone: hasPhoneChanged ? updatedPhone : contact.phone,
-        }
-      : contact
-  );
-  saveContactsData(updatedContactsData); // JSON-Array speichern
-  contactsInit(); // Zurück zur Kontaktliste wechseln
-}
-
-function deleteContact(contactId) {
-  if (!contactId) {
-    console.error("Invalid contact ID");
-    return;
-  }
-  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
-  if (!confirmDelete) {
-    return;
-  }
-  try {
-    const contactIndex = contactsData.findIndex((contact) => contact.id === contactId);
-
-    if (contactIndex === -1) {
-      console.error("Selected contact not found in contactsData.");
-      return;
-    }
-    const deletedContact = contactsData.splice(contactIndex, 1)[0];
-    saveContactsData(contactsData);
-    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
-  } catch (error) {
-    console.error("Fehler beim Löschen des Kontakts:", error);
-  }
-  const content = document.getElementById("contactsContentRightSideContactDataContainerID");
-  content.innerHTML = "";
-  contactsInit();  
-}
-
 function deleteContactMobile(contactId) {
   if (!contactId) {
     console.error("Invalid contact ID");
@@ -380,7 +328,6 @@ function deleteContactMobile(contactId) {
   }
   try {
     const contactIndex = contactsData.findIndex((contact) => contact.id === contactId);
-
     if (contactIndex === -1) {
       console.error("Selected contact not found in contactsData.");
       return;
@@ -394,7 +341,7 @@ function deleteContactMobile(contactId) {
   contactsInit();  
 }
 
-function openContactScreen(contactId) {
+function openContactScreenMobile(contactId) {
   const content = document.getElementById("contactsContent");  
   const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID im Kontakt-Datenarray.  
   if (!selectedContact) {  // Überprüft, ob der ausgewählte Kontakt gefunden wurde.
@@ -452,76 +399,21 @@ function openContactScreen(contactId) {
   addDropdownMenuClickListener();   
 }
 
-function addDropdownMenuClickListener() {
-  const dropdownTrigger = document.getElementById("menuContactOptionsButton");
-  const dropdownMenu = document.getElementById("contactOptionsDropdown");
-  if (!dropdownTrigger || !dropdownMenu) {
-    console.error("Dropdown trigger or menu not found");
-    return;
-  }
-  const handleDocumentClick = function (event) {
-    if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-      dropdownMenu.style.display = "none";
-      document.removeEventListener("click", handleDocumentClick);
-    }
-  };
-  dropdownTrigger.addEventListener("click", function (event) {
-    const isDropdownVisible = (dropdownMenu.style.display === "block");    
-    if (!isDropdownVisible) {  // Schließe alle anderen geöffneten Dropdowns, wenn das aktuelle geöffnet wird
-      closeAllDropdowns();
-    }
-    dropdownMenu.style.display = isDropdownVisible ? "none" : "block";
-    if (!isDropdownVisible) {
-      document.addEventListener("click", handleDocumentClick);
-    }
-    event.stopPropagation();
-  });
-}
 
-function closeAllDropdowns() {
-  const allDropdowns = document.querySelectorAll(".dropdown-menu");
-  allDropdowns.forEach((dropdown) => {
-    dropdown.style.display = "none";
-  });
-  document.removeEventListener("click", handleDocumentClick);
-}
 
-function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
-  return function (event) {
-    const dropdownMenu = document.getElementById("contactOptionsDropdown");
-    if (!dropdownContainer.contains(event.target) &&
-      !addContactButtonContainerMobile.contains(event.target) &&
-      !dropdownMenu.contains(event.target)) {
-      dropdownMenu.style.display = "none";
-      document.removeEventListener("click", handleDocumentClick);
-    }
-  };
-}
 
-function contactsContentBackgroundColorWhiteGray() {
-  const content = document.getElementById("contactsContent");
-  content.style.backgroundColor = "var(--white-grey)";
-}
 
-function contactsContentBackgroundColorWhite() {
-  const content = document.getElementById("contactsContent");
-  content.style.backgroundColor = "white";
-}
 
-function toggleDropdownMenu() {
-  const dropdownMenu = document.getElementById("contactOptionsDropdown");
-  dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
-}
 
-function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren  
-  if (action === "edit") {  // Edit Contact    
-    console.log("Edit Contact selected");  
-  } else if (action === "delete") {  // Delete    
-    console.log("Delete Contact selected");
-  }  
-  const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
-  dropdownMenu.style.display = "none";
-}
+
+
+
+
+
+
+
+
+
 
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -628,16 +520,6 @@ function openContactScreenDesktop(contactId) {
   contactContainer.style.animation = "slide-in 0.5s ease-out";  // Apply the animation to the selected container
 }
 
-function showcontactsContentRightSideDesktop() {
-  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
-  showcontactsContentRightSide.style.display = "flex";
-}
-
-function hidecontactsContentRightSideDesktop() {
-  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
-  showcontactsContentRightSide.style.display = "none";
-}
-
 function addContactShowOverlayDesktop() {
   const overlayContainer = document.createElement("div");
   overlayContainer.classList.add("overlay-container");
@@ -736,6 +618,142 @@ function editContactDestop(contactId) {
   overlayContainer.style.animation = "slide-in 0.5s ease-out";  
 }
 
+function updateContactDesktop(contactId) {
+  const nameInput = document.querySelector(".addContactInputNameDesktop");
+  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
+  const updatedName = nameInput.value.trim();
+  const updatedMail = mailInput.value.trim();
+  const updatedPhone = phoneInput.value.trim();
+  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }
+  const existingContact = contactsData.find(
+    (contact) =>
+      contact.name === updatedName &&
+      contact.email === updatedMail &&
+      contact.id !== contactId
+  );
+  if (existingContact) {
+    alert("Ein Kontakt mit diesen Informationen existiert bereits.");
+    return;
+  }
+  const oldContact = contactsData.find(
+    (contact) => contact.id === contactId
+  );  
+  const hasNameChanged = oldContact.name !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
+  const hasMailChanged = oldContact.email !== updatedMail;
+  const hasPhoneChanged = oldContact.phone !== updatedPhone;
+  const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
+    contact.id === contactId
+      ? {
+          ...contact,
+          name: hasNameChanged ? updatedName : contact.name,
+          email: hasMailChanged ? updatedMail : contact.email,
+          phone: hasPhoneChanged ? updatedPhone : contact.phone,
+        }
+      : contact
+  );
+  saveContactsData(updatedContactsData); // JSON-Array speichern
+  contactsInit(); // Zurück zur Kontaktliste wechseln
+}
+
+function deleteContact(contactId) {
+  if (!contactId) {
+    console.error("Invalid contact ID");
+    return;
+  }
+  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
+  if (!confirmDelete) {
+    return;
+  }
+  try {
+    const contactIndex = contactsData.findIndex((contact) => contact.id === contactId);
+
+    if (contactIndex === -1) {
+      console.error("Selected contact not found in contactsData.");
+      return;
+    }
+    const deletedContact = contactsData.splice(contactIndex, 1)[0];
+    saveContactsData(contactsData);
+    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+  } catch (error) {
+    console.error("Fehler beim Löschen des Kontakts:", error);
+  }
+  const content = document.getElementById("contactsContentRightSideContactDataContainerID");
+  content.innerHTML = "";
+  contactsInit();  
+}
+
+// Drop down Menü
+function addDropdownMenuClickListener() {
+  const dropdownTrigger = document.getElementById("menuContactOptionsButton");
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  if (!dropdownTrigger || !dropdownMenu) {
+    console.error("Dropdown trigger or menu not found");
+    return;
+  }
+  const handleDocumentClick = function (event) {
+    if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = "none";
+      document.removeEventListener("click", handleDocumentClick);
+    }
+  };
+  dropdownTrigger.addEventListener("click", function (event) {
+    const isDropdownVisible = (dropdownMenu.style.display === "block");    
+    if (!isDropdownVisible) {  // Schließe alle anderen geöffneten Dropdowns, wenn das aktuelle geöffnet wird
+      closeAllDropdowns();
+    }
+    dropdownMenu.style.display = isDropdownVisible ? "none" : "block";
+    if (!isDropdownVisible) {
+      document.addEventListener("click", handleDocumentClick);
+    }
+    event.stopPropagation();
+  });
+}
+
+function closeAllDropdowns() {
+  const allDropdowns = document.querySelectorAll(".dropdown-menu");
+  allDropdowns.forEach((dropdown) => {
+    dropdown.style.display = "none";
+  });
+  document.removeEventListener("click", handleDocumentClick);
+}
+
+function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
+  return function (event) {
+    const dropdownMenu = document.getElementById("contactOptionsDropdown");
+    if (!dropdownContainer.contains(event.target) &&
+      !addContactButtonContainerMobile.contains(event.target) &&
+      !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = "none";
+      document.removeEventListener("click", handleDocumentClick);
+    }
+  };
+}
+
+function toggleDropdownMenu() {
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
+}
+
+function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren  
+  if (action === "edit") {  // Edit Contact    
+    console.log("Edit Contact selected");  
+  } else if (action === "delete") {  // Delete    
+    console.log("Delete Contact selected");
+  }  
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
+  dropdownMenu.style.display = "none";
+}
+
+
+
+
+
+
+// Developer tool (Nur für die entwickler, nicht für das Projekt ansich notwendig)
 async function deleteContactDataById() {  // Funktion deleteContactDataById ist für einen LokalStorage clear da falls ein Kontakt doppelt gespeichert wurde
   try {
     localStorage.clear();  // Lösche alle Daten im localStorage
