@@ -43,10 +43,10 @@ html {
   display: grid;
   grid-template-columns: repeat(100px);
   grid-template-rows: 100px;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-x: hidden;
+  overflow-y: scroll; */
 }
 
 .content {
@@ -123,6 +123,7 @@ html {
 
   .menuTemplate {
     width: 100%;
+    height: 6rem;
     display: flex;
     flex-direction: row;
     margin: 0;
@@ -159,8 +160,9 @@ html {
 }
 
 /*  Desktop Responsive */
-@media only screen and (min-width: 751px) {
+@media only screen and (max-width: 1920px) and (min-width: 751px) {
   .container {
+    overflow: hidden;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
@@ -190,7 +192,9 @@ html {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    height: 5rem;
     padding: 20px 40px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
   }
 
   .userSymbolContainer {
