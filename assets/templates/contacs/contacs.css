@@ -885,6 +885,8 @@
     background-repeat: no-repeat;
     background-position-x: 185px;
     background-position-y: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
   }
 
   .createContactButton:hover {
@@ -923,6 +925,8 @@
     font-size: 21px;
     font-weight: 400;
     border-color: var(--light-grey);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
   }
 
   .editContactDesktopDeleteButton:hover {
