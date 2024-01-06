@@ -10,24 +10,26 @@
     right: 0;
     top: 0;
     bottom: 0;
-    padding: 1rem;
+    padding: 0;
     margin: 0;
   }
 
   .summaryToDos {
     margin-top: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
   }
 
   .summaryRowContent {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
     min-width: 18rem;
-    max-width: 25rem;
+    width: 70%;
   }
 
   .cursorPointer {
@@ -42,26 +44,23 @@
     margin-top: 0.5rem;
   }
 
-  .prioVerticalLine {
-    width: 1px;
-    height: 3.5rem;
-    border: 1px solid #d1d1d1;
-    border-radius: 0.5rem;
+  .summaryHeader {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    padding-left: 1rem;
+    margin-top: 2rem;
+    background-color: var(--white-grey);
   }
 
-  .summaryHeader {
+  .summaryHeaderHelper {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
-    height: 10vh;
-    left: 0;
-    right: 0;
-    top: 0;
-    background-color: #f6f7f8; /* TODO Original */
-    /* padding: 1rem; */
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    /* min-width: 17rem; */
+    width: 100%;
   }
 
   .summaryHeader h1 {
@@ -87,10 +86,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* min-width: 18rem;
-    max-width: 25rem; */
+    min-width: 17rem;
+    width: 100%;
     gap: 1rem;
-    border: solid 2px blue;
   }
 
   .reactangle {
@@ -99,6 +97,7 @@
     justify-content: center;
     padding: 0.5rem;
     min-width: 8rem;
+    width: 100%;
     height: 5rem;
     gap: 1rem;
   }
@@ -112,32 +111,53 @@
   }
 
   .reactangle img {
-    height: 2.1rem;
+    height: 1.7rem;
   }
   /* ROW #1 END */
   /* ROW #2 START */
   .row2Helper {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    min-width: calc(15rem - 1rem);
+    justify-content: space-around;
+    min-width: 17rem;
+    width: 100%;
   }
 
-  .row2 {
+  .row2summary {
     display: flex;
-    /* min-width: 18rem;
-    max-width: 25rem; */
+    flex-direction: row;
+    /* align-items: center;
+    justify-content: center; */
+    /* min-width: 5rem; */
+    width: 25%;
     height: 5.25rem;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
   }
 
-  .row2 img {
-    height: 2.1rem;
+  .row2summary img {
+    height: 1.7rem;
   }
 
   .urgentySpecial {
     height: 4rem !important;
+  }
+
+  .prioVerticalLine {
+    width: 1px;
+    height: 3.5rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 0.5rem;
+  }
+
+  .urgentDater {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-right: 1rem;
   }
 
   /* ROW #2 END */
@@ -147,8 +167,8 @@
     gap: 1.1rem;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* min-width: 18rem;
-    max-width: 25rem; */
+    min-width: 10rem;
+    width: 100%;
   }
 
   .squareButton {
@@ -156,13 +176,14 @@
     align-items: center;
     justify-content: center;
     padding: 1.2rem;
-    width: 5rem;
+    min-width: 5rem;
+    width: 29%;
     height: 5rem;
   }
 
   .squareButton img {
     width: 100%;
-    height: 5rem;
+    height: 100%;
   }
   /* ROW #3 END */
 
