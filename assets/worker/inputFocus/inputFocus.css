@@ -1,11 +1,14 @@
-.container {
-  border: 2px solid var(--lighter-grey); /* Standard-Border-Stil */
+/* Standard-Border-Stil */
+.FocusContainer {
+  /* border: 2px solid var(--lighter-grey);  */
 }
 
-.container.active {
-  border-color: var(--light-blue); /* Neuer Border-Farbe im Fokus */
+/* Neuer Border-Farbe im Fokus */
+.FocusContainer.active {
+  border-color: var(--light-blue); 
 }
 
-.container.error {
-  border-color: var(--wrong-input); /* Neue Border-Farbe für Fehler */
+/* Neue Border-Farbe für Fehler */
+.FocusContainer.error {
+  border-color: var(--wrong-input); 
 }

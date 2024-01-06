@@ -2,16 +2,16 @@
  * Die Input felder im focus sollen Border-color ein eigene Farbe haben.
  */
 function changeBorderColor(containerId) {
-  let container = document.getElementById(containerId);
-  container.classList.add('active');
+  let FocusContainer = document.getElementById(containerId);
+  FocusContainer.classList.add('active');
 }
 
   /**
    * Den Focus/ die Farbe wieder entfernen.
    */
 function resetBorderColor(containerId) {
-  let container = document.getElementById(containerId);
-  container.classList.remove('active');
+  let FocusContainer = document.getElementById(containerId);
+  FocusContainer.classList.remove('active');
 }
 
 /**
@@ -19,8 +19,8 @@ function resetBorderColor(containerId) {
  * @param {*} containerId 
  */
 function showError(containerId) {
-  let container = document.getElementById(containerId);
-  container.classList.add('error');
+  let FocusContainer = document.getElementById(containerId);
+  FocusContainers.classList.add('error');
 }
 
 // ??? funktion unnötig ???

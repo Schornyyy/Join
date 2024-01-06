@@ -518,9 +518,10 @@ label[for="form-date"] {
     width: 100%;
   }
 
-  .content {
+  /* Beinfluss den background von summary.css */
+  /* .content {
     background-color: var(--lighter-grey);
-  }
+  } */
 
   .add-tasks-board-content {
     height: fit-content;
