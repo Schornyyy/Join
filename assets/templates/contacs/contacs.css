@@ -4,18 +4,18 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    overflow-y: scroll;    
+    overflow-y: scroll;
     position: relative;
-    margin-top: 0.5em;    
+    margin-top: 0.5em;
     height: inherit;
   }
 
   /* Add contact screen style */
 
   .addContactCloseXContainer {
-      position: fixed;
-      top: 1em;
-      right: 2em;
+    position: fixed;
+    top: 1em;
+    right: 2em;
   }
 
   .addContactContainerHeader {
@@ -49,7 +49,7 @@
   }
 
   .addContactInputNameMobile {
-    border: 1px solid #D1D1D1;
+    border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactUserNameImg.svg");
     background-size: contain;
@@ -68,7 +68,7 @@
   }
 
   .addContactInputMailAddresssMobile {
-    border: 1px solid #D1D1D1;
+    border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactmailIcon.svg");
     background-size: contain;
@@ -87,7 +87,7 @@
   }
 
   .addContactInputPhoneMobile {
-    border: 1px solid #D1D1D1;
+    border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactPhoneIcon.svg");
     background-size: contain;
@@ -118,10 +118,10 @@
   #addContactUserNameImgID {
     position: absolute;
     right: 8px;
-  } 
+  }
 
   .addContactImage {
-    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */    
+    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
   }
 
   .createContactButtonImg {
@@ -149,7 +149,7 @@
   }
 
   .addContactButtonContainerDesktop {
-    display: none;    
+    display: none;
   }
 
   .addContactButtonImage {
@@ -157,7 +157,7 @@
   }
 
   .letterAndContactsContainer {
-    display: flex;    
+    display: flex;
     align-items: center;
     margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
     border-bottom: 2px solid #d1d1d1;
@@ -215,7 +215,6 @@
     cursor: pointer;
   }
 
-
   .oneContactContainer {
     display: flex;
     justify-content: center;
@@ -223,10 +222,10 @@
     margin-bottom: 1em;
   }
 
-/* Open contact screen style */
+  /* Open contact screen style */
 
   .openContactContainerHeader {
-    display: flex;  
+    display: flex;
     background-color: var(--white-grey);
     height: 20vh;
     padding-top: 2em;
@@ -246,18 +245,18 @@
   .openContactContentContainer {
     display: flex;
     flex-direction: column;
-    background-color: var(--white-grey);  
+    background-color: var(--white-grey);
   }
 
   .openContactCloseXContainer {
     display: flex;
-    justify-content: right;  
+    justify-content: right;
   }
 
   .openContactContainerFooter {
     display: flex;
-    justify-content: center;  
-    flex-direction: column;  
+    justify-content: center;
+    flex-direction: column;
     background-color: white;
     gap: 2em;
     background-color: var(--white-grey);
@@ -314,7 +313,7 @@
   }
 
   .openContactEmailLink {
-    color: #007CEE;
+    color: #007cee;
     margin-left: 1em;
     text-decoration: none;
     cursor: pointer;
@@ -337,11 +336,11 @@
     margin-left: 1em;
   }
 
-/* Drop down menu style */
+  /* Drop down menu style */
 
   .dropdown-container {
     position: fixed;
-    display: none; /* Standardmäßig unsichtbar machen */  
+    display: none; /* Standardmäßig unsichtbar machen */
   }
 
   .dropdown-container.visible {
@@ -405,7 +404,7 @@
   }
 
   .oneContactContainerAElement {
-    color: #007CEE;  
+    color: #007cee;
     text-decoration: none;
     cursor: pointer;
   }
@@ -415,13 +414,13 @@
     height: 32px;
     border-radius: 56px;
     border: 0;
-    color: white;  
+    color: white;
     font-weight: bold;
     font-size: 24px;
     background-color: var(--light-grey);
   }
-  
-  .addContactCloseXButtonMobile:active {  
+
+  .addContactCloseXButtonMobile:active {
     color: var(--light-blue);
   }
 
@@ -430,36 +429,37 @@
     flex-direction: row-reverse;
     margin-bottom: 1em;
   }
-
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
-
 @media only screen and (min-width: 751px) {
   .container {
-    display: flex;    
-    height: 100vh;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   .contactsDesktop {
-    display: flex;    
+    display: flex;
   }
 
   .mobileHeader {
     background-color: white;
   }
 
-  .contactsContent { 
+  .contactsContent {
     background-color: white;
-    overflow-y: scroll;    
-    position: relative;      
+    overflow-y: scroll;
+    position: relative;
     height: inherit;
     min-width: 30%;
   }
 
   .letterAndContactsContainer {
-    display: flex;    
+    display: flex;
     align-items: center;
     margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
     border-bottom: 2px solid #d1d1d1;
@@ -480,7 +480,7 @@
     flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
     margin-left: 3em;
     cursor: pointer;
-    padding: 15px 24px 15px 24px;    
+    padding: 15px 24px 15px 24px;
   }
 
   .contactImg {
@@ -612,7 +612,7 @@
   .openContactEmailLinkDesktop {
     cursor: pointer;
     text-decoration: none;
-    color: #007CEE;
+    color: #007cee;
     margin-left: 2em;
     cursor: pointer;
   }
@@ -630,7 +630,7 @@
 
   .contactsContentRightSideContactPhoneH2DesktopContainer {
     margin-top: 20px;
-    margin-left: 2em;    
+    margin-left: 2em;
   }
 
   .contactsContentRightSideContactEmailH2 {
@@ -657,7 +657,7 @@
     width: 352px;
     height: 56px;
     background-color: var(--light-grey);
-    border: 0;    
+    border: 0;
     border-radius: 10px;
     color: white;
     padding: 12px 0 12px 0;
@@ -679,316 +679,319 @@
   }
 
   .overlay-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5); /* Hintergrundfarbe des vorherigen Bildschirms mit Transparenz */
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-}
-
-.overlay-content {
-  width: 1250px;
-  background: white;
-  overflow: hidden;
-  border-radius: 20px 0 0 20px;
-}
-
-.overlay-card {
-  display: flex;
-  position: relative;
-  height: 100%;  
-}
-
-/* Animation für das Einblenden des Overlays */
-@keyframes slide-in {
-  from {
-    transform: translateX(100%);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); /* Hintergrundfarbe des vorherigen Bildschirms mit Transparenz */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  to {
-    transform: translateX(0);
+
+  .overlay-content {
+    width: 1250px;
+    background: white;
+    overflow: hidden;
+    border-radius: 20px 0 0 20px;
   }
-}
 
-.addContactDesktopLeftSideContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;  
-  min-width: 467px;
-  height: 594px;
-  background-color: var(--light-grey);
-  gap: 16px;
-}
+  .overlay-card {
+    display: flex;
+    position: relative;
+    height: 100%;
+  }
 
-.addContactDesktopRightSideContainer {
-  display: flex;
-  width: 800px;
-  background-color: white;
-}
+  /* Animation für das Einblenden des Overlays */
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 
-.joinLogoGreyBackgroundImg {
-  width: 56px;
-  height: 67px;
-}
+  .addContactDesktopLeftSideContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 467px;
+    height: 594px;
+    background-color: var(--light-grey);
+    gap: 16px;
+  }
 
-.addContactDesktopLeftSideContainerH1 {
-  font-size: 61px;
-  font-weight: 700;
-  color: white;
-  margin-top: 16px;
-}
+  .addContactDesktopRightSideContainer {
+    display: flex;
+    width: 800px;
+    background-color: white;
+  }
 
-.addContactDesktopLeftSideContainerPElement {
-  color: white;
-  margin-top: 16px;
-  font-size: 27px;
-  font-weight: 400;
-}
+  .joinLogoGreyBackgroundImg {
+    width: 56px;
+    height: 67px;
+  }
 
-.flexDirectionColumn {
-  display: flex;
-  flex-direction: column;
-}
+  .addContactDesktopLeftSideContainerH1 {
+    font-size: 61px;
+    font-weight: 700;
+    color: white;
+    margin-top: 16px;
+  }
 
-.addContactBlueStroked {
-  width: 90px;
-  margin-top: 16px;
-}
+  .addContactDesktopLeftSideContainerPElement {
+    color: white;
+    margin-top: 16px;
+    font-size: 27px;
+    font-weight: 400;
+  }
 
-.addContactBlankUserImgContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 70px;
-  margin-bottom: 150px;
-}
+  .flexDirectionColumn {
+    display: flex;
+    flex-direction: column;
+  }
 
-.addContactBlankUserImg {
-  height: 120px;
-  width: 120px;
-}
+  .addContactBlueStroked {
+    width: 90px;
+    margin-top: 16px;
+  }
 
-.addContactCloseXContainer {
-  display: flex;
-  justify-content: right;
-  margin-top: 25px;
-  margin-right: 25px;
-  cursor: pointer;
-}
+  .addContactBlankUserImgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 70px;
+    margin-bottom: 150px;
+  }
 
-.addContactDesktopRightSideContent {
-  display: flex;
-  flex-direction: column;
-  flex: auto;
-}
+  .addContactBlankUserImg {
+    height: 120px;
+    width: 120px;
+  }
 
-.addContactContainerFooter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 50vh;
-  background-color: white;
-  gap: 20px;
-}
+  .addContactCloseXContainer {
+    display: flex;
+    justify-content: right;
+    margin-top: 25px;
+    margin-right: 25px;
+    cursor: pointer;
+  }
 
-.addContactInputNameDesktop {
-  border: 1px solid #D1D1D1;
-  border-radius: 5px;
-  background-image: url("../../img/contact/addContactUserNameImg.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-x: right;
-  width: 422px;
-  height: 50px;
-  position: relative;
-  font-size: 20px;
-  font-weight: 400;
-}
+  .addContactDesktopRightSideContent {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+  }
 
-.addContactInputNameDesktop:focus {
-  outline: none;
-  border-color: var(--light-blue);
-}
+  .addContactContainerFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    background-color: white;
+    gap: 20px;
+  }
 
-.addContactInputMailAddresssDesktop {
-  border: 1px solid #D1D1D1;
-  border-radius: 5px;
-  background-image: url("../../img/contact/addContactmailIcon.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-x: right;
-  width: 422px;
-  height: 50px;
-  position: relative;
-  font-size: 20px;
-  font-weight: 400;
-}
+  .addContactInputNameDesktop {
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background-image: url("../../img/contact/addContactUserNameImg.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 422px;
+    height: 50px;
+    position: relative;
+    font-size: 20px;
+    font-weight: 400;
+  }
 
-.addContactInputMailAddresssDesktop:focus {
-  outline: none;
-  border-color: var(--light-blue);
-}
+  .addContactInputNameDesktop:focus {
+    outline: none;
+    border-color: var(--light-blue);
+  }
 
-.addContactInputPhoneDesktop {
-  border: 1px solid #D1D1D1;
-  border-radius: 5px;
-  background-image: url("../../img/contact/addContactPhoneIcon.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-x: right;
-  width: 422px;
-  height: 50px;
-  position: relative;
-  font-size: 20px;
-  font-weight: 400;
-}
+  .addContactInputMailAddresssDesktop {
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background-image: url("../../img/contact/addContactmailIcon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 422px;
+    height: 50px;
+    position: relative;
+    font-size: 20px;
+    font-weight: 400;
+  }
 
-.addContactInputPhoneDesktop:focus {
-  outline: none;
-  border-color: var(--light-blue);
-}
+  .addContactInputMailAddresssDesktop:focus {
+    outline: none;
+    border-color: var(--light-blue);
+  }
 
-.addContactCancelButtonDesktop {
-  height: 56px;
-  width: 126px;
-  cursor: pointer;
-}
+  .addContactInputPhoneDesktop {
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background-image: url("../../img/contact/addContactPhoneIcon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    width: 422px;
+    height: 50px;
+    position: relative;
+    font-size: 20px;
+    font-weight: 400;
+  }
 
-.createContactButtonImg {
-  height: 57px;
-  width: 214px;
-  cursor: pointer;
-  margin-left: 24px;
-}
+  .addContactInputPhoneDesktop:focus {
+    outline: none;
+    border-color: var(--light-blue);
+  }
 
-.createContactButton {
-  cursor: pointer;
-  border: 1px solid;
-  border-radius: 8%;
-  padding: 15px 40px 15px 24px;
-  color: white;
-  background-color: var(--light-grey);
-  font-size: 21px;
-  font-weight: 700;
-  border-color: var(--light-grey);
-  margin-left: 20px;
-  background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");  
-  background-repeat: no-repeat;
-  background-position-x: 185px;
-  background-position-y: center;
-}
+  .addContactCancelButtonDesktop {
+    height: 56px;
+    width: 126px;
+    cursor: pointer;
+  }
 
-.createContactButton:hover {
-  border: 1px solid;
-  border-color: var(--light-grey); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);  
-  background-color: var(--light-blue);
-  border: 0;
-}
+  .createContactButtonImg {
+    height: 57px;
+    width: 214px;
+    cursor: pointer;
+    margin-left: 24px;
+  }
 
-.oneContactContainerH2Desktop {
-  color: black;
-  font-size: 20px;
-  font-weight: 400;
-}
+  .createContactButton {
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 8%;
+    padding: 15px 40px 15px 24px;
+    color: white;
+    background-color: var(--light-grey);
+    font-size: 21px;
+    font-weight: 700;
+    border-color: var(--light-grey);
+    margin-left: 20px;
+    background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");
+    background-repeat: no-repeat;
+    background-position-x: 185px;
+    background-position-y: center;
+  }
 
-.oneContactContainerAElement {
-  color: #007CEE;  
-  text-decoration: none;
-  cursor: pointer;
-}
+  .createContactButton:hover {
+    border: 1px solid;
+    border-color: var(--light-grey);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: var(--light-blue);
+    border: 0;
+  }
 
-.createContactButtonImgContainer {
-  display: flex;
-  justify-content: left;
-  margin-right: 12em;
-}
+  .oneContactContainerH2Desktop {
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+  }
 
-.editContactDesktopDeleteButton {
-  cursor: pointer;
-  border: 1px solid;
-  border-radius: 8%;
-  padding: 15px 24px 15px 24px;
-  color: var(--light-grey);
-  background-color: white;
-  font-size: 21px;
-  font-weight: 400;
-  border-color: var(--light-grey);
-}
+  .oneContactContainerAElement {
+    color: #007cee;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-.editContactDesktopDeleteButton:hover {
-  border-color: var(--light-blue);
-  color: var(--light-blue);
-  transform: scale(0.95);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  border: 2px solid;
-}
+  .createContactButtonImgContainer {
+    display: flex;
+    justify-content: left;
+    margin-right: 12em;
+  }
 
-.saveContactButtonImg {
-  cursor: pointer;
-  border: 1px solid;
-  border-radius: 8%;
-  padding: 15px 24px 15px 24px;
-  color: white;
-  background-color: var(--light-grey);
-  font-size: 21px;
-  font-weight: 700;
-  border-color: var(--light-grey);
-  margin-left: 20px;
-}
+  .editContactDesktopDeleteButton {
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 8%;
+    padding: 15px 24px 15px 24px;
+    color: var(--light-grey);
+    background-color: white;
+    font-size: 21px;
+    font-weight: 400;
+    border-color: var(--light-grey);
+  }
 
-.saveContactButtonImg:hover {
-  border: 1px solid;
-  border-color: var(--light-grey); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);  
-  background-color: var(--light-blue);
-  border: 0;  
-}
+  .editContactDesktopDeleteButton:hover {
+    border-color: var(--light-blue);
+    color: var(--light-blue);
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 2px solid;
+  }
 
-.addContactCloseXButton {
-  width: 32px;
-  height: 32px;
-  border-radius: 56px;
-  border: 0;
-  color: var(--light-grey);
-  background-color: white;
-  font-weight: bold;
-  font-size: 24px;
-}
+  .saveContactButtonImg {
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 8%;
+    padding: 15px 24px 15px 24px;
+    color: white;
+    background-color: var(--light-grey);
+    font-size: 21px;
+    font-weight: 700;
+    border-color: var(--light-grey);
+    margin-left: 20px;
+  }
 
-.addContactCloseXButton:hover {
-  background-color: #D9D9D9;
-  transform: scale(0.95);
-}
+  .saveContactButtonImg:hover {
+    border: 1px solid;
+    border-color: var(--light-grey);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: var(--light-blue);
+    border: 0;
+  }
 
-.saveContactButtonDesktop {
-  cursor: pointer;
-  border: 1px solid;
-  border-radius: 8%;
-  padding: 15px 40px 15px 24px;
-  color: white;
-  background-color: var(--light-grey);
-  font-size: 21px;
-  font-weight: 700;
-  border-color: var(--light-grey);
-  margin-left: 20px;
-  background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");  
-  background-repeat: no-repeat;
-  background-position-x: 85px;
-  background-position-y: center;
-}
+  .addContactCloseXButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 56px;
+    border: 0;
+    color: var(--light-grey);
+    background-color: white;
+    font-weight: bold;
+    font-size: 24px;
+  }
 
-.saveContactButtonDesktop:hover {
-  border: 1px solid;
-  border-color: var(--light-grey); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);  
-  background-color: var(--light-blue);
-  border: 0;  
-}
+  .addContactCloseXButton:hover {
+    background-color: #d9d9d9;
+    transform: scale(0.95);
+  }
 
+  .saveContactButtonDesktop {
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 8%;
+    padding: 15px 40px 15px 24px;
+    color: white;
+    background-color: var(--light-grey);
+    font-size: 21px;
+    font-weight: 700;
+    border-color: var(--light-grey);
+    margin-left: 20px;
+    background-image: url("../../img/contact/createContactButtonCheckDesktop.svg");
+    background-repeat: no-repeat;
+    background-position-x: 85px;
+    background-position-y: center;
+  }
 
+  .saveContactButtonDesktop:hover {
+    border: 1px solid;
+    border-color: var(--light-grey);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: var(--light-blue);
+    border: 0;
+  }
 }
