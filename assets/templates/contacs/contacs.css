@@ -989,6 +989,8 @@
     background-repeat: no-repeat;
     background-position-x: 85px;
     background-position-y: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
   }
 
   .saveContactButtonDesktop:hover {
