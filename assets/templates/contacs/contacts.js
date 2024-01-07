@@ -416,27 +416,46 @@ function saveAndInit(updatedContactsData) {
 }
 
 function deleteContactMobile(contactId) {
-  if (!contactId) {
-    console.error("Invalid contact ID");
-    return;
-  }
+  if (!validateContactId(contactId)) return;
   const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
-  if (!confirmDelete) {
-    return;
-  }
+  if (!confirmDelete) return;
   try {
-    const contactIndex = contactsData.findIndex((contact) => contact.id === contactId);
+    const contactIndex = findContactIndex(contactId);
     if (contactIndex === -1) {
       console.error("Selected contact not found in contactsData.");
       return;
     }
-    const deletedContact = contactsData.splice(contactIndex, 1)[0];
-    saveContactsData(contactsData);
-    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+    const deletedContact = removeContact(contactIndex);
+    saveAndLogDeletedContact(deletedContact);
   } catch (error) {
-    console.error("Fehler beim Löschen des Kontakts:", error);
+    handleDeleteError(error);
   }
-  contactsInit();  
+  contactsInit();
+}
+
+function validateContactId(contactId) {
+  if (!contactId) {
+    console.error("Invalid contact ID");
+    return false;
+  }
+  return true;
+}
+
+function findContactIndex(contactId) {
+  return contactsData.findIndex((contact) => contact.id === contactId);
+}
+
+function removeContact(contactIndex) {
+  return contactsData.splice(contactIndex, 1)[0];
+}
+
+function saveAndLogDeletedContact(deletedContact) {
+  saveContactsData(contactsData);
+  console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+}
+
+function handleDeleteError(error) {
+  console.error("Fehler beim Löschen des Kontakts:", error);
 }
 
 function openContactScreenMobile(contactId) {
