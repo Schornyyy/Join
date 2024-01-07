@@ -5,46 +5,62 @@ function showcontactsContentRightSideDesktop() {
     showcontactsContentRightSide.style.display = "flex";
   }
   
-  function hidecontactsContentRightSideDesktop() {
-    const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
-    showcontactsContentRightSide.style.display = "none";
-  } 
+function hidecontactsContentRightSideDesktop() {
+  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
+  showcontactsContentRightSide.style.display = "none";
+} 
 
 function renderContactsDesktop() {
-    const content = document.getElementById("contactsContent");
-    content.innerHTML = "";  
-    renderAddContactButtonDesktop();  // Add contact button desktop
+  const content = document.getElementById("contactsContent");
+  content.innerHTML = "";
+  renderAddContactButtonDesktop();  // Add contact button desktop
+  const contactsByFirstLetter = groupContactsByFirstLetter();
+  renderContactsByFirstLetter(content, contactsByFirstLetter);
+}
+
+function groupContactsByFirstLetter() {
     const contactsByFirstLetter = {};
     contactsData.forEach((oneContact) => {
-      const firstLetter = oneContact.name.charAt(0).toUpperCase();
-      if (!contactsByFirstLetter[firstLetter]) {
-        contactsByFirstLetter[firstLetter] = /*html*/ `
-                  <div class="letterAndContactsContainer">
-                      <div class="letter-column">
-                          <h2 class="contact-first-letter">${firstLetter}</h2>
-                      </div>
-                  </div>
-              `;
-      }
-  
-      const oneContactContainer = /*html*/ `
-              <div class="oneContactContainer" id="contact-${oneContact.id}" onclick="openContactScreenDesktop(${oneContact.id})" data-contact-id="${oneContact.id}">
-                  <div>
-                      <!-- <img src="${oneContact.contactImg}" class="contactImg"> -->
-                      ${singleMemberToHTML(oneContact, 0)}
-                  </div>
-                  <div class="contact-info-container">
-                      <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
-                      <a class="oneContactContainerAElement">${oneContact.email}</a>
-                  </div>
-              </div>
-          `;
-      contactsByFirstLetter[firstLetter] += oneContactContainer;
+        const firstLetter = oneContact.name.charAt(0).toUpperCase();
+        if (!contactsByFirstLetter[firstLetter]) {
+            contactsByFirstLetter[firstLetter] = createLetterContainer(firstLetter);
+        }
+        const oneContactContainer = createContactContainer(oneContact);
+        contactsByFirstLetter[firstLetter] += oneContactContainer;
     });
+    return contactsByFirstLetter;
+}
+
+function createLetterContainer(firstLetter) {
+    return /*html*/ `
+        <div class="letterAndContactsContainer">
+            <div class="letter-column">
+                <h2 class="contact-first-letter">${firstLetter}</h2>
+            </div>
+        </div>
+    `;
+}
+
+function createContactContainer(oneContact) {
+    return /*html*/ `
+        <div class="oneContactContainer" id="contact-${oneContact.id}" onclick="openContactScreenDesktop(${oneContact.id})" data-contact-id="${oneContact.id}">
+            <div>
+                <!-- <img src="${oneContact.contactImg}" class="contactImg"> -->
+                ${singleMemberToHTML(oneContact, 0)}
+            </div>
+            <div class="contact-info-container">
+                <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
+                <a class="oneContactContainerAElement">${oneContact.email}</a>
+            </div>
+        </div>
+    `;
+}
+
+function renderContactsByFirstLetter(content, contactsByFirstLetter) {
     Object.values(contactsByFirstLetter).forEach((section) => {
-      content.innerHTML += section;
+        content.innerHTML += section;
     });
-  }
+}
 
   function renderAddContactButtonDesktop() {
     const contentDesktop = document.getElementById("contactsContent");
