@@ -347,6 +347,8 @@
     position: fixed;
     display: none; /* Standardmäßig unsichtbar machen */
     overflow-x: hidden;
+    bottom: 4rem;
+    right: 0.5rem;
   }
 
   .dropdown-container.visible {
