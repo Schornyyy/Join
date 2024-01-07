@@ -4,28 +4,40 @@ let lastClickedContactId;
 
 async function contactsInit() {  
   try {    
-    const storedContactsData = localStorage.getItem('contactsData');  // Versuche, die Kontaktdaten aus dem lokalen Speicher zu lesen
-    if (storedContactsData) {     
-      contactsData = JSON.parse(storedContactsData);  // Wenn Daten im lokalen Speicher vorhanden sind, verwende sie
-    } else {      
-      contactsData = await fetchContactsData();  // Andernfalls lade die Daten vom Server
-      localStorage.setItem('contactsData', JSON.stringify(contactsData));
-    }    
-    nextContactId = contactsData.length;  // Initialisiere den ID-Zähler basierend auf der vorhandenen Anzahl von Kontakten    
-    const isMobile = window.innerWidth < 768;  // Entscheide, ob die mobile oder Desktop-Ansicht geladen werden soll // Adjust the breakpoint as needed    
-    if (isMobile) {  // Ruft die Funktion basierend auf die Bildschirmbreite auf      
-      renderContacts();  // Mobile Ansicht
-      hidecontactsContentRightSideDesktop();
-    } else {      
-      renderContactsDesktop();  // Desktop Ansicht
-      showcontactsContentRightSideDesktop();
-    }    
-    contactsContentBackgroundColorWhite();
+    await initializeContactsData();
+    initializeContactId();
+    initializeView();
     showHeaderAndFooter();
     renderAddContactButton();    
   } catch (error) {
     console.error("Fehler beim Initialisieren der Kontakte:", error);
   }
+}
+
+async function initializeContactsData() {
+  const storedContactsData = localStorage.getItem('contactsData');
+  if (storedContactsData) {     
+    contactsData = JSON.parse(storedContactsData);
+  } else {      
+    contactsData = await fetchContactsData();
+    localStorage.setItem('contactsData', JSON.stringify(contactsData));
+  }
+}
+
+function initializeContactId() {
+  nextContactId = contactsData.length;
+}
+
+function initializeView() {
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {      
+    renderContacts();  
+    hidecontactsContentRightSideDesktop();
+  } else {      
+    renderContactsDesktop();  
+    showcontactsContentRightSideDesktop();
+  }
+  contactsContentBackgroundColorWhite();
 }
 
 async function fetchContactsData() {
