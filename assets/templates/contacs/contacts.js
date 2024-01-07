@@ -236,38 +236,62 @@ function finalizeContactCreation() {
 }
 
 function createContact() {
-  console.log('createContact');
   const isMobile = window.innerWidth < 768 ? true : false;  
-  const nameInput = isMobile ? document.querySelector(".addContactInputNameMobile") : document.querySelector(".addContactInputNameDesktop");
-  const mailInput = isMobile ? document.querySelector(".addContactInputMailAddresssMobile") : document.querySelector(".addContactInputMailAddresssDesktop");
-  const phoneInput = isMobile ? document.querySelector(".addContactInputPhoneMobile") : document.querySelector(".addContactInputPhoneDesktop");
+  const nameInput = getInputField(isMobile, ".addContactInputNameMobile", ".addContactInputNameDesktop");
+  const mailInput = getInputField(isMobile, ".addContactInputMailAddresssMobile", ".addContactInputMailAddresssDesktop");
+  const phoneInput = getInputField(isMobile, ".addContactInputPhoneMobile", ".addContactInputPhoneDesktop");
   const newName = nameInput.value.trim();
   const newMail = mailInput.value.trim();
   const newPhone = phoneInput.value.trim();
-  if (newName === "" || newMail === "" || newPhone === "") {
-    alert("Bitte füllen Sie alle Felder aus.");
-    return;
+
+  if (validateInputs(newName, newMail, newPhone)) {
+    const newContact = createNewContact(newName, newMail, newPhone);
+    updateContactsData(newContact);
+    updateCurrentUser(newName, newMail, newPhone, newContact.colorCode);
+    finalizeContactCreation();
   }
+}
+
+function getInputField(isMobile, mobileSelector, desktopSelector) {
+  return isMobile ? document.querySelector(mobileSelector) : document.querySelector(desktopSelector);
+}
+
+function validateInputs(name, mail, phone) {
+  if (name === "" || mail === "" || phone === "") {
+    alert("Bitte füllen Sie alle Felder aus.");
+    return false;
+  }
+  return true;
+}
+
+function createNewContact(name, mail, phone) {
   const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-  let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
-  let rndmColor = getRandomColorHex();
-  console.log(rndmColor);
-  const newContact = {
+  const nextContactId = contactsData.length + 1;
+  const rndmColor = getRandomColorHex();
+  return {
     id: nextContactId,
-    name: newName,
-    email: newMail,
-    phone: newPhone,
+    name: name,
+    email: mail,
+    phone: phone,
     contactImg: defaultImage,
     colorCode: rndmColor
   };
-  console.log('newContact' + newContact);
-  let user = new Contact(newName, newMail, newPhone, rndmColor, currentUser.name)
-  contacts.push(user);
+}
+
+function updateContactsData(newContact) {
   contactsData.push(newContact);
   saveContactsData(contactsData);
-  currentUser.addContact(user)  
+}
+
+function updateCurrentUser(name, mail, phone, colorCode) {
+  const user = new Contact(name, mail, phone, colorCode, currentUser.name);
+  contacts.push(user);
+  currentUser.addContact(user);
+}
+
+function finalizeContactCreation() {
   hideOverlay();
-  contactsInit();  
+  contactsInit();
 }
 
 function saveContactsData(data) {  // Hier werden die Kontakte Lokal gespeichert!
