@@ -58,30 +58,39 @@ function handleAddContactClick() {
   addContactScreen(); // Diese Funktion wird direkt im HTML-Code aufgerufen
 }
 
-function createContact() {
-  const nameInput = document.querySelector(".addContactInputNameDesktop");
-  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
-  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
-  const newName = nameInput.value.trim();
-  const newMail = mailInput.value.trim();
-  const newPhone = phoneInput.value.trim();
+function createContact() { // Create contact für Mobile Ansicht
+  const { newName, newMail, newPhone } = constForCreateContact();
   if (newName === "" || newMail === "" || newPhone === "") {
     alert("Bitte füllen Sie alle Felder aus.");
     return;
   }
   const defaultImage = "../assets/img/contact/defaultContactImage.svg";
   let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
-  const newContact = {
+  const newContact = constNewContactForCreateContact(nextContactId, newName, newMail, newPhone, defaultImage);
+  contactsData.push(newContact);
+  saveContactsData(contactsData);
+  hideOverlay();
+  contactsInit();  
+}
+
+function constNewContactForCreateContact(nextContactId, newName, newMail, newPhone, defaultImage) {
+  return {
     id: nextContactId,
     contactName: newName,
     contactMailAdress: newMail,
     contactPhone: newPhone,
     contactImg: defaultImage,
   };
-  contactsData.push(newContact);
-  saveContactsData(contactsData);
-  hideOverlay();
-  contactsInit();  
+}
+
+function constForCreateContact() {
+  const nameInput = document.querySelector(".addContactInputNameDesktop");
+  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
+  const newName = nameInput.value.trim();
+  const newMail = mailInput.value.trim();
+  const newPhone = phoneInput.value.trim();
+  return { newName, newMail, newPhone };
 }
 
 function saveContactsData(data) {  // Hier werden die Kontakte Lokal gespeichert!
