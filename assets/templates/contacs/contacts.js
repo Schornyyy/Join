@@ -243,7 +243,6 @@ function createContact() {
   const newName = nameInput.value.trim();
   const newMail = mailInput.value.trim();
   const newPhone = phoneInput.value.trim();
-
   if (validateInputs(newName, newMail, newPhone)) {
     const newContact = createNewContact(newName, newMail, newPhone);
     updateContactsData(newContact);
@@ -305,35 +304,41 @@ function saveContactsData(data) {  // Hier werden die Kontakte Lokal gespeichert
 
 function editContactScreen(contactId) {
   const content = document.getElementById("contactsContent");
-  const selectedContact = contactsData.find(
-    (contact) => contact.id === contactId
-  ); // Findet den ausgewählten Kontakt anhand der ID
-  content.innerHTML = /*html*/ `
-        <div class="addContactContainerHeader">
-                            <div class="addContactCloseXContainer">
-                              <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
-                            </div>
-                            <div class="addContactBlockHeader">
-                                <p class="addContactH1">Edit contact</p>                                
-                                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="addContactBlankUserImg">
-                          <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
-                        </div>
-        <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
-            <div class="addContactContainerFooter">
-                <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.name}"> 
-                <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.email}">
-                <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.phone}">
-                <div>
-                    <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
-                    <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">
-                </div>                
-            </div>
-        </form>
-    `;
-  hideHeaderAndFooter();  
+  const selectedContact = getSelectedContact(contactId);
+  content.innerHTML = createEditContactHTML(selectedContact);
+  hideHeaderAndFooter();
+}
+
+function getSelectedContact(contactId) {
+  return contactsData.find(contact => contact.id === contactId);
+}
+
+function createEditContactHTML(selectedContact) {
+  return /*html*/ `
+    <div class="addContactContainerHeader">
+      <div class="addContactCloseXContainer">
+        <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
+      </div>
+      <div class="addContactBlockHeader">
+        <p class="addContactH1">Edit contact</p>
+        <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+      </div>
+    </div>
+    <div class="addContactBlankUserImg">
+      <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
+    </div>
+    <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
+      <div class="addContactContainerFooter">
+        <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.name}">
+        <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.email}">
+        <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.phone}">
+        <div>
+          <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
+          <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">
+        </div>
+      </div>
+    </form>
+  `;
 }
 
 function updateContactMobile(contactId) {
