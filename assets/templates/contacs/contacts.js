@@ -459,13 +459,28 @@ function handleDeleteError(error) {
 }
 
 function openContactScreenMobile(contactId) {
-  const content = document.getElementById("contactsContent");  
-  const selectedContact = contactsData.find(contact => contact.id === contactId);  // Findet den ausgewählten Kontakt anhand der ID im Kontakt-Datenarray.  
-  if (!selectedContact) {  // Überprüft, ob der ausgewählte Kontakt gefunden wurde.
-    console.error("Selected contact not found in contactsData.");
+  const content = document.getElementById("contactsContent");
+  const selectedContact = findSelectedContact(contactId);
+  
+  if (!selectedContact) {
+    handleContactNotFound();
     return;
-  }  
-  content.innerHTML = /*html*/ `  <!-- Rendert die Detailansicht des ausgewählten Kontakts. -->
+  }
+
+  content.innerHTML = createContactScreenHTML(selectedContact);
+  setupContactScreen(selectedContact.id);
+}
+
+function findSelectedContact(contactId) {
+  return contactsData.find(contact => contact.id === contactId);
+}
+
+function handleContactNotFound() {
+  console.error("Selected contact not found in contactsData.");
+}
+
+function createContactScreenHTML(selectedContact) {
+  return /*html*/ `
     <div class="openContactContainerHeader">                            
         <div class="openContactBlockHeader">
             <div>
@@ -473,7 +488,6 @@ function openContactScreenMobile(contactId) {
                 <p class="openContactText">Better with a team!</p>                              
                 <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">                                                                        
             </div>
-
             <div class="arrorLeftContainer">
                 <div onclick="contactsInit()">
                     <img src="../assets/img/contact/arrow-left-line.svg" alt="">
@@ -493,25 +507,28 @@ function openContactScreenMobile(contactId) {
         <p class="openContactPhoneText">Phone</p>
         <p class="openContactPhoneNumber">${selectedContact.phone}</p>        
     </div>
-    
-    <div class="dropdown-container" id="contactOptionsDropdownContainer">  <!-- Dropdown-Menü für Kontaktoptionen -->
+
+    <div class="dropdown-container" id="contactOptionsDropdownContainer">
         <div class="dropdown-triggerContainer">
           <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
               <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
           </div>
         </div>
         <div class="dropdown-menu" id="contactOptionsDropdown">            
-            <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">  <!-- Option zum Bearbeiten des Kontakts -->
+            <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">
                 <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
             </div>            
-            <div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">  <!-- Option zum Löschen des Kontakts -->
+            <div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">
                 <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
             </div>
         </div>
     </div>
   `;
-  console.log(selectedContact.id);  
-  showHeaderAndFooter();  // Zeigt Header und Footer an.  
-  contactsContentBackgroundColorWhiteGray();  // Ändert die Hintergrundfarbe des Kontaktbereichs.
-  addDropdownMenuClickListener();   
+}
+
+function setupContactScreen(contactId) {
+  console.log(contactId);
+  showHeaderAndFooter();
+  contactsContentBackgroundColorWhiteGray();
+  addDropdownMenuClickListener();
 }
