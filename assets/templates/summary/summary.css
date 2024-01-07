@@ -1,18 +1,34 @@
+.reactangle:hover p {
+  color: white;
+}
+
+.squareButton:hover p {
+  color: white;
+}
+
+.row2Helper:hover p {
+  color: white;
+}
+
+.summaryToDoSum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+
+.summaryToDoSum p {
+  font-size: 0.8rem;
+}
+
+.sammarySumNumber {
+  font-size: 2rem !important;
+  font-weight: 600;
+}
 @media only screen and (max-width: 750px) and (min-width: 250px) {
   .greetingBoxShow {
     display: none;
   }
-
-/* 
-  .summaryContent {
-    display: flex;
-    flex-direction: column;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    padding: 0;
-    margin: 0;
-  } */
 
   .summaryToDos {
     margin-top: 2rem;
@@ -92,19 +108,44 @@
     width: 100%;
     height: 5rem;
     gap: 1rem;
+
+    transition: transform 0.5s ease;
+  }
+
+  .reactangle:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .todoSpecial {
-    height: 4rem !important;
+    height: 2.5rem;
   }
 
   .doneSpecial {
-    height: 4rem !important;
+    height: 2.5rem;
   }
 
   .reactangle img {
-    height: 1.7rem;
+    height: 2.6rem;
   }
+
+  /* .summaryToDoSum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+  }
+
+  .summaryToDoSum p {
+    font-size: 0.8rem;
+  }
+
+  .sammarySumNumber {
+    font-size: 2rem !important;
+    font-weight: 600;
+  } */
+
   /* ROW #1 END */
   /* ROW #2 START */
   .row2Helper {
@@ -114,6 +155,14 @@
     justify-content: space-around;
     min-width: 17rem;
     width: 100%;
+
+    transition: transform 0.5s ease;
+  }
+
+  .row2Helper:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .row2summary {
@@ -123,10 +172,11 @@
     height: 5.25rem;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
   }
 
   .row2summary img {
-    height: 1.7rem;
+    height: 2.5rem;
   }
 
   .urgentySpecial {
@@ -148,6 +198,16 @@
     gap: 1rem;
     padding-right: 1rem;
   }
+
+  .summaryDeadDater {
+    font-size: 1rem !important;
+    font-weight: 600;
+  }
+
+  .summaryDeadUpcoming {
+    font-size: 0.8rem !important;
+    font-weight: 300;
+  }
   /* ROW #2 END */
   /* ROW #3 START */
   .row3 {
@@ -167,12 +227,31 @@
     min-width: 5rem;
     width: 29%;
     height: 5rem;
+
+    transition: transform 0.5s ease;
+  }
+
+  .squareButton:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .squareButton img {
     width: 100%;
     height: 100%;
   }
+
+  /* .summaryToDoSum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+  }
+
+  .summaryToDoSum.p {
+    font-size: 0.8rem;
+  } */
   /* ROW #3 END */
 
   .borderRadius {
@@ -192,7 +271,7 @@
   /* .content {
 overflow: hidden;
   } */
-  
+
   .greetingBoxShow {
     display: block;
   }
@@ -295,18 +374,37 @@ overflow: hidden;
     width: 100%;
     height: 5rem;
     gap: 1rem;
+
+    transition: transform 0.5s ease;
+  }
+
+  .reactangle:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .todoSpecial {
-    height: 4rem !important;
+    height: 2.5rem;
   }
 
   .doneSpecial {
-    height: 4rem !important;
+    height: 2.5rem;
   }
 
   .reactangle img {
-    height: 1.7rem;
+    height: 2.6rem;
+  }
+
+  /* .summaryToDoSum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+  } */
+
+  .summaryToDoSum.p {
+    font-size: 0.6rem;
   }
   /* ROW #1 END */
   /* ROW #2 START */
@@ -317,6 +415,14 @@ overflow: hidden;
     justify-content: space-around;
     min-width: 17rem;
     width: 100%;
+
+    transition: transform 0.5s ease;
+  }
+
+  .row2Helper:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .row2summary {
@@ -329,7 +435,7 @@ overflow: hidden;
   }
 
   .row2summary img {
-    height: 1.7rem;
+    height: 2.5rem;
   }
 
   .urgentySpecial {
@@ -351,6 +457,16 @@ overflow: hidden;
     gap: 4rem;
     padding-right: 1rem;
   }
+
+  .summaryDeadDater {
+    font-size: 1.2rem !important;
+    font-weight: 600;
+  }
+
+  .summaryDeadUpcoming {
+    font-size: 0.8rem !important;
+    font-weight: 300;
+  }
   /* ROW #2 END */
   /* ROW #3 START */
   .row3 {
@@ -370,6 +486,14 @@ overflow: hidden;
     min-width: 5rem;
     width: 29%;
     height: 5rem;
+
+    transition: transform 0.5s ease;
+  }
+
+  .squareButton:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .squareButton img {
@@ -391,12 +515,11 @@ overflow: hidden;
   }
 }
 
-
 @media only screen and (max-width: 1920px) and (min-width: 901px) {
   /* .content {
 overflow: hidden;
   } */
-  
+
   .greetingBoxShow {
     display: block;
   }
@@ -499,19 +622,38 @@ overflow: hidden;
     width: 100%;
     height: 5rem;
     gap: 1rem;
+
+    transition: transform 0.5s ease;
+  }
+
+  .reactangle:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .todoSpecial {
-    height: 4rem !important;
+    height: 2.5rem;
   }
 
   .doneSpecial {
-    height: 4rem !important;
+    height: 2.5rem;
   }
 
   .reactangle img {
-    height: 1.7rem;
+    height: 2.6rem;
   }
+
+  .summaryToDoSum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+  }
+
+  /* .summaryToDoSum.p {
+    font-size: 0.8rem;
+  } */
   /* ROW #1 END */
   /* ROW #2 START */
   .row2Helper {
@@ -521,6 +663,14 @@ overflow: hidden;
     justify-content: space-around;
     min-width: 17rem;
     width: 100%;
+
+    transition: transform 0.5s ease;
+  }
+
+  .row2Helper:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .row2summary {
@@ -533,7 +683,7 @@ overflow: hidden;
   }
 
   .row2summary img {
-    height: 1.7rem;
+    height: 2.5rem;
   }
 
   .urgentySpecial {
@@ -555,6 +705,16 @@ overflow: hidden;
     gap: 8rem;
     padding-right: 1rem;
   }
+
+  .summaryDeadDater {
+    font-size: 1.2rem !important;
+    font-weight: 600;
+  }
+
+  .summaryDeadUpcoming {
+    font-size: 0.8rem !important;
+    font-weight: 300;
+  }
   /* ROW #2 END */
   /* ROW #3 START */
   .row3 {
@@ -574,6 +734,14 @@ overflow: hidden;
     min-width: 5rem;
     width: 29%;
     height: 5rem;
+
+    transition: transform 0.5s ease;
+  }
+
+  .squareButton:hover {
+    background-color: var(--light-grey);
+
+    transform: scale(1.05);
   }
 
   .squareButton img {
