@@ -8,7 +8,7 @@ function showcontactsContentRightSideDesktop() {
   function hidecontactsContentRightSideDesktop() {
     const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
     showcontactsContentRightSide.style.display = "none";
-  }
+  } 
 
 function renderContactsDesktop() {
     const content = document.getElementById("contactsContent");
@@ -43,6 +43,17 @@ function renderContactsDesktop() {
     });
     Object.values(contactsByFirstLetter).forEach((section) => {
       content.innerHTML += section;
+    });
+  }
+
+  function renderAddContactButtonDesktop() {
+    const contentDesktop = document.getElementById("contactsContent");
+    const addContactButtonContainerDesktop = document.createElement("div");
+    addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
+    addContactButtonContainerDesktop.innerHTML = /*html*/ `
+      <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
+    contentDesktop.appendChild(addContactButtonContainerDesktop);  
+    addContactButtonContainerDesktop.addEventListener("click", function () {  // Fügt einen Event-Listener hinzu, um das Overlay zu zeigen    
     });
   }
   
@@ -337,21 +348,4 @@ function renderContactsDesktop() {
     }  
     const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
     dropdownMenu.style.display = "none";
-  }
-  
-  
-  
-  
-  
-  
-  // Developer tool (Nur für die entwickler, nicht für das Projekt ansich notwendig)
-  async function deleteContactDataById() {  // Funktion deleteContactDataById ist für einen LokalStorage clear da falls ein Kontakt doppelt gespeichert wurde
-    try {
-      localStorage.clear();  // Lösche alle Daten im localStorage
-      contactsData = await fetchContactsData();  // Lade die Daten vom Server
-      localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Speichere die neu geladenen Daten im localStorage
-      console.log("Kontakt-Daten wurden erfolgreich gelöscht und neu geladen.");
-    } catch (error) {
-      console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
-    }
   }
