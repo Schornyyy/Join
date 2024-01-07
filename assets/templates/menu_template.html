@@ -1,22 +1,45 @@
 <div class="menuTemplate">
+  <div class="desktopFooterLogo">
+    <img src="./assets/img/footer/desktopFooterLogo.svg" alt="" />
+  </div>
+
+<div class="desktopFooterMenu">
   <div class="menu-item" onclick="includeContentHTML('Summary')">
-    <img src="./assets/img/summary_icon.svg" alt="Summary Icon" />
-    <p>Summary</p>
+    <div class="footerHoverBox">
+      <img src="./assets/img/summary_icon.svg" alt="Summary Icon" />
+      <p class="mobileMenuFont">Summary</p>
+    </div>
   </div>
   <div class="menu-item" onclick="includeContentHTML('Board')">
-    <img src="assets/img/menü/Vector.svg" alt="Summary Icon" />
-    <p>Board</p>
+    <div class="footerHoverBox">
+      <img src="assets/img/menü/Vector.svg" alt="Summary Icon" />
+      <p class="mobileMenuFont">Board</p>
+    </div>
   </div>
   <div
     class="menu-item"
     onclick="includeContentHTML('Add Tasks');
     includeContentHTML('./assets/templates/tasks_form.html')"
   >
-    <img src="./assets/img/add_tasks_icon.svg" alt="Summary Icon" />
-    <p>Add Tasks</p>
+    <div class="footerHoverBox">
+      <img src="./assets/img/add_tasks_icon.svg" alt="Summary Icon" />
+      <p class="mobileMenuFont">Add Tasks</p>
+    </div>
   </div>
   <div class="menu-item" onclick="includeContentHTML('Contacts');">
-    <img src="./assets/img/contacts_icon.svg" alt="Summary Icon" />
-    <p>Contacts</p>
+    <div class="footerHoverBox">
+      <img src="./assets/img/contacts_icon.svg" alt="Summary Icon" />
+      <p class="mobileMenuFont">Contacts</p>
+    </div>
   </div>
+</div>
+
+<div class="desktopFooterPolicy">
+  <div class="desktopFooterPolicy">
+    <p>Privacy Policy</p>
+  </div>
+  <div class="desktopLegalBox">
+    <p>Legal Notice</p>
+  </div>
+</div>
 </div>
