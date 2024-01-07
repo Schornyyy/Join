@@ -1,6 +1,6 @@
 // JavaScript Logik für die Desktop Ansicht
 
-function showcontactsContentRightSideDesktop() {
+function showContactsContentRightSideDesktop() {
     const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
     showcontactsContentRightSide.style.display = "flex";
   }
@@ -62,78 +62,77 @@ function renderContactsByFirstLetter(content, contactsByFirstLetter) {
     });
 }
 
-  function renderAddContactButtonDesktop() {
-    const contentDesktop = document.getElementById("contactsContent");
-    const addContactButtonContainerDesktop = document.createElement("div");
-    addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
-    addContactButtonContainerDesktop.innerHTML = /*html*/ `
-      <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
-    contentDesktop.appendChild(addContactButtonContainerDesktop);  
-    addContactButtonContainerDesktop.addEventListener("click", function () {  // Fügt einen Event-Listener hinzu, um das Overlay zu zeigen    
-    });
-  }
+function renderAddContactButtonDesktop() {
+  const contentDesktop = document.getElementById("contactsContent");
+  const addContactButtonContainerDesktop = document.createElement("div");
+  addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
+  addContactButtonContainerDesktop.innerHTML = /*html*/ `
+    <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
+  contentDesktop.appendChild(addContactButtonContainerDesktop);  
+  addContactButtonContainerDesktop.addEventListener("click", function () {  // Fügt einen Event-Listener hinzu, um das Overlay zu zeigen    
+  });
+}
   
-  function openContactScreenDesktop(contactId) {  
-    const content = document.getElementById("contactsContentRightSideID");  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"  
-    const selectedContact = contactsData.find(contact => contact.id === contactId);  // Holen Sie den ausgewählten Kontakt anhand der ID  
-    if (lastClickedContactId) {  // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)    
-      const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`);  // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID    
-      if (lastClickedContactContainer) {  // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
-        lastClickedContactContainer.style.backgroundColor = "transparent";      
-        const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
-        if (lastClickedContactH2) {
-          lastClickedContactH2.style.color = "black"; // Oder setzen Sie die gewünschte Farbe
-        }
+function openContactScreenDesktop(contactId) {  
+  const content = document.getElementById("contactsContentRightSideID");  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"  
+  const selectedContact = contactsData.find(contact => contact.id === contactId);  // Holen Sie den ausgewählten Kontakt anhand der ID  
+  if (lastClickedContactId) {  // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)    
+    const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`);  // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID    
+    if (lastClickedContactContainer) {  // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
+      lastClickedContactContainer.style.backgroundColor = "transparent";      
+      const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
+      if (lastClickedContactH2) {
+        lastClickedContactH2.style.color = "black"; // Oder setzen Sie die gewünschte Farbe
       }
-    }  
-    const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);  // Änderung der Hintergrundfarbe des aktuellen Kontakts
-    if (currentContactContainer) {
-      currentContactContainer.style.backgroundColor = "#2A3647"; // Ersetzen Sie "#2A3647" durch die gewünschte Farbe    
-      const currentContactH2 = currentContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
-      if (currentContactH2) {
-        currentContactH2.style.color = "white"; // Oder setzen Sie die gewünschte Farbe
-      }
-    }  
-    lastClickedContactId = contactId;  // Aktualisieren des zuletzt geklickten Kontakts
-    content.innerHTML = /*html*/ `
-      <div class="contactsContentRightSideHeadLine">
-          <h1 class="contactsContentRightSideH1">
-            Contacts
-          </h1>
-          <img src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
-          <p class="contactsContentRightSideHeadLinePElement">Better with a team</p>
+    }
+  }  
+  const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);  // Änderung der Hintergrundfarbe des aktuellen Kontakts
+  if (currentContactContainer) {
+    currentContactContainer.style.backgroundColor = "#2A3647"; // Ersetzen Sie "#2A3647" durch die gewünschte Farbe    
+    const currentContactH2 = currentContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
+    if (currentContactH2) {
+      currentContactH2.style.color = "white"; // Oder setzen Sie die gewünschte Farbe
+    }
+  }  
+  lastClickedContactId = contactId;  // Aktualisieren des zuletzt geklickten Kontakts
+  content.innerHTML = /*html*/ `
+    <div class="contactsContentRightSideHeadLine">
+        <h1 class="contactsContentRightSideH1">
+          Contacts
+        </h1>
+        <img src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
+        <p class="contactsContentRightSideHeadLinePElement">Better with a team</p>
+    </div>  
+    <div id="contactsContentRightSideContactDataContainerID">
+      <div class="contactsContentRightSideUserImgAndNameContainer">
+        <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
+        <div>
+          <h2 class="contactsContentRightSideUserNameH2">${selectedContact.name}</h2>
+            <div class="contactsContentRightSideEditAndDeleteButtonContainer">
+              <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="" onclick="editContactDestop(lastClickedContactId)">
+              <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
+            </div>
+        </div> 
       </div>
-  
-      <div id="contactsContentRightSideContactDataContainerID">
-        <div class="contactsContentRightSideUserImgAndNameContainer">
-          <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
-          <div>
-            <h2 class="contactsContentRightSideUserNameH2">${selectedContact.name}</h2>
-              <div class="contactsContentRightSideEditAndDeleteButtonContainer">
-                <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="" onclick="editContactDestop(lastClickedContactId)">
-                <img class="contactsContentRightSideDeleteButton" src="../../assets/img/contact/DeleteContactButtonDesktop.svg" alt="" onclick="deleteContact(lastClickedContactId)">
-              </div>
-          </div> 
-        </div>
-        <div class="contactsContentRightSideContactInformationDesktop">
-          <p class="contactsContentRightSideContactInformationDesktopPText">Contact Information</p>
-        </div>
-        <div class="contactsContentRightSideContactEmailH2Desktop">
-          <h2 class="contactsContentRightSideContactEmailH2">Email</h2>
-        </div>
-        <div class="openContactEmailLinkDesktopContainer">
-          <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
-        </div>
-        <div class="contactsContentRightSideContactPhoneH2DesktopContainer">
-          <h2 class="contactsContentRightSideContactPhoneH2Desktop">Phone</h2>
-        </div>
-        <div class="openphoneNumberDesktopContainer">
-          <p class="openphoneNumberDesktopPElement">${selectedContact.phone}</p>
-        </div>
+      <div class="contactsContentRightSideContactInformationDesktop">
+        <p class="contactsContentRightSideContactInformationDesktopPText">Contact Information</p>
       </div>
-    `;  
+      <div class="contactsContentRightSideContactEmailH2Desktop">
+        <h2 class="contactsContentRightSideContactEmailH2">Email</h2>
+      </div>
+      <div class="openContactEmailLinkDesktopContainer">
+        <a class="openContactEmailLinkDesktop" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
+      </div>
+      <div class="contactsContentRightSideContactPhoneH2DesktopContainer">
+        <h2 class="contactsContentRightSideContactPhoneH2Desktop">Phone</h2>
+      </div>
+      <div class="openphoneNumberDesktopContainer">
+        <p class="openphoneNumberDesktopPElement">${selectedContact.phone}</p>
+      </div>
+    </div>
+   `;  
     showHeaderAndFooter();
-    showcontactsContentRightSideDesktop();  
+    showContactsContentRightSideDesktop();  
     const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");  // Select the container to slide in  
     contactContainer.style.animation = "slide-in 0.5s ease-out";  // Apply the animation to the selected container
   }
