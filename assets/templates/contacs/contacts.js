@@ -342,44 +342,77 @@ function createEditContactHTML(selectedContact) {
 }
 
 function updateContactMobile(contactId) {
+  const updatedInputs = getUpdatedInputs();
+  
+  if (validateInputs(updatedInputs)) {
+    const existingContact = findExistingContact(updatedInputs, contactId);
+
+    if (!existingContact) {
+      const oldContact = findOldContact(contactId);
+      const hasChanged = checkForChanges(oldContact, updatedInputs);
+      const updatedContactsData = updateContactsData(contactId, updatedInputs, hasChanged);
+      saveAndInit(updatedContactsData);
+    }
+  }
+}
+
+function getUpdatedInputs() {
   const nameInput = document.querySelector(".addContactInputNameMobile");
   const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
   const phoneInput = document.querySelector(".addContactInputPhoneMobile");
-  const updatedName = nameInput.value.trim();
-  const updatedMail = mailInput.value.trim();
-  const updatedPhone = phoneInput.value.trim();
-  if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
+
+  return {
+    updatedName: nameInput.value.trim(),
+    updatedMail: mailInput.value.trim(),
+    updatedPhone: phoneInput.value.trim()
+  };
+}
+
+function validateInputs(updatedInputs) {
+  if (Object.values(updatedInputs).some(value => value === "")) {
     alert("Bitte füllen Sie alle Felder aus.");
-    return;
+    return false;
   }
-  const existingContact = contactsData.find(
+  return true;
+}
+
+function findExistingContact(updatedInputs, contactId) {
+  return contactsData.find(
     (contact) =>
-      contact.name === updatedName &&
-      contact.email === updatedMail &&
+      contact.name === updatedInputs.updatedName &&
+      contact.email === updatedInputs.updatedMail &&
       contact.id !== contactId
   );
-  if (existingContact) {
-    alert("Ein Kontakt mit diesen Informationen existiert bereits.");
-    return;
-  }
-  const oldContact = contactsData.find(
-    (contact) => contact.id === contactId
-  );  
-  const hasNameChanged = oldContact.name !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
-  const hasMailChanged = oldContact.email !== updatedMail;
-  const hasPhoneChanged = oldContact.phone !== updatedPhone;
-  const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
+}
+
+function findOldContact(contactId) {
+  return contactsData.find((contact) => contact.id === contactId);
+}
+
+function checkForChanges(oldContact, updatedInputs) {
+  return {
+    hasNameChanged: oldContact.name !== updatedInputs.updatedName,
+    hasMailChanged: oldContact.email !== updatedInputs.updatedMail,
+    hasPhoneChanged: oldContact.phone !== updatedInputs.updatedPhone
+  };
+}
+
+function updateContactsData(contactId, updatedInputs, hasChanged) {
+  return contactsData.map((contact) =>
     contact.id === contactId
       ? {
           ...contact,
-          name: hasNameChanged ? updatedName : contact.name,
-          email: hasMailChanged ? updatedMail : contact.email,
-          phone: hasPhoneChanged ? updatedPhone : contact.phone,
+          name: hasChanged.hasNameChanged ? updatedInputs.updatedName : contact.name,
+          email: hasChanged.hasMailChanged ? updatedInputs.updatedMail : contact.email,
+          phone: hasChanged.hasPhoneChanged ? updatedInputs.updatedPhone : contact.phone
         }
       : contact
   );
-  saveContactsData(updatedContactsData); // JSON-Array speichern
-  contactsInit(); // Zurück zur Kontaktliste wechseln
+}
+
+function saveAndInit(updatedContactsData) {
+  saveContactsData(updatedContactsData);
+  contactsInit();
 }
 
 function deleteContactMobile(contactId) {
