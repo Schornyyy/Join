@@ -10,43 +10,6 @@
 
   <div class="summaryToDos" id="summaryToDos">
     <div class="summaryRowContent">
-      <!-- row #1 -->
-      <!-- <div class="row1">
-        <div
-          class="reactangle borderRadius backgroundColor boxShadow cursorPointer"
-          onmouseover="changeImage(this)"
-          onmouseout="changeImageBack(this)"
-        >
-          <img
-            src="assets/img/summary/summaryGrayEdit.svg"
-            alt=""
-            class="todoSpecial summaryAnimateProgramm"
-          />
-
-          <img
-            class="todoSpecial"
-            src="assets/img/summary/Frame62_todo.svg"
-            alt=""
-          />
-        </div>
-        <div
-          class="reactangle borderRadius backgroundColor boxShadow cursorPointer"
-          onmouseover="changeImage(this)"
-          onmouseout="changeImageBack(this)"
-        >
-          <img
-            class="doneSpecial summaryAnimateProgramm"
-            src="assets/img/summary/summaryCheckGray.svg"
-            alt=""
-          />
-          <img
-            class="doneSpecial"
-            src="assets/img/summary/Group6_done.svg"
-            alt=""
-          />
-        </div>
-      </div> -->
-
       <div class="row1">
         <div
           class="reactangle borderRadius backgroundColor boxShadow cursorPointer"
@@ -59,7 +22,7 @@
             class="todoSpecial summaryAnimateProgramm editImage"
           />
           <div class="summaryToDoSum">
-            <p class="sammarySumNumber">1</p>
+            <p class="sammarySumNumber" data-todos></p>
             <p>To-do</p>
           </div>
         </div>
@@ -74,7 +37,7 @@
             alt=""
           />
           <div class="summaryToDoSum">
-            <p class="sammarySumNumber">1</p>
+            <p class="sammarySumNumber" id="summery-done-todos"></p>
             <p>Done</p>
           </div>
         </div>
@@ -88,7 +51,7 @@
           <img src="assets/img/summary/Frame59_urgent.svg" alt="" />
 
           <div class="summaryToDoSum">
-            <p class="sammarySumNumber">1</p>
+            <p class="sammarySumNumber" id="summery-upcoming-tasks"></p>
             <p>Urgent</p>
           </div>
         </div>
@@ -96,7 +59,9 @@
         <div class="urgentDater">
           <div class="prioVerticalLine"></div>
           <div class="summaryDeadlineBox">
-            <p class="summaryDeadDater">Oktober 16, 2022</p>
+            <p class="summaryDeadDater" id="summery-urgent-date">
+              Oktober 16, 2022
+            </p>
             <p class="summaryDeadUpcoming">Upcoming Deadline</p>
           </div>
         </div>
@@ -108,7 +73,7 @@
           class="squareButton borderRadius backgroundColor boxShadow cursorPointer"
         >
           <div class="summaryToDoSum">
-            <p class="sammarySumNumber">5</p>
+            <p class="sammarySumNumber" data-todos></p>
             <p>Tasks in</p>
             <p>Board</p>
           </div>
@@ -117,7 +82,7 @@
           class="squareButton borderRadius backgroundColor boxShadow cursorPointer"
         >
           <div class="summaryToDoSum">
-            <p class="sammarySumNumber">2</p>
+            <p class="sammarySumNumber" id="summery-process-tasks">2</p>
             <p>Tasks in</p>
             <p>Prozess</p>
           </div>
@@ -126,7 +91,7 @@
           class="squareButton borderRadius backgroundColor boxShadow cursorPointer"
         >
           <div class="summaryToDoSum">
-            <p class="sammarySumNumber">2</p>
+            <p class="sammarySumNumber" id="summery-awaiting-task">2</p>
             <p>Awaiting</p>
             <p>feedback</p>
           </div>
@@ -136,7 +101,7 @@
 
     <div class="greetingBox greetingBoxShow">
       <h1>Good morging,</h1>
-      <p>Placeholder</p>
+      <p id="summery-greet">Placeholder</p>
     </div>
   </div>
 </div>

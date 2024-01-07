@@ -76,3 +76,18 @@ function userEmailExists() {
 function findUserByEmail(email) {
   return users.find((a) => a.email === email);
 }
+
+function loginAsGuest() {
+  let loginEmailInput = document.getElementById("login-input-email");
+  let loginPasswordInout = document.getElementById("login-input-password");
+  let loginBtn = document.getElementById("login-btn");
+  loginEmailInput.value = "lukas@schornstein.de";
+  loginPasswordInout.value = "test";
+
+  loginBtn.click();
+}
+
+
+function redirectToRegister() {
+  window.location.href = "./assets/templates/register/register.html"
+}

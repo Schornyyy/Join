@@ -1,6 +1,7 @@
 async function init() {
   await includeHTML();
   await loadData();
+  initSummeryData();
 }
 
 async function includeHTML() {
@@ -57,6 +58,7 @@ async function includeContentHTML(contentView) {
         "./assets/templates/summary/summary_template.html"
       );
       content.innerHTML = includedContent;
+      initSummeryData();
       break;
     default:
       break;

@@ -190,6 +190,7 @@ async function initEventListener() {
     task.assignedTo = assigendContacts;
     taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc); //??
     subs.length > 0 ? task.subtasks = subs : subs  =[];
+    currentUser.tasks.push(task);
     tasks.push(task);
     let stat = saveTasks().then((res) => {
       document.getElementById("task-form-error").style = "color:green"
