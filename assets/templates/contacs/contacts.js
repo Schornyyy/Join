@@ -105,41 +105,51 @@ function handleAddContactClick() {
 function renderContacts() {  
   const content = document.getElementById("contactsContent");
   content.innerHTML = "";
-  renderAddContactButtonDesktop();  // Add contact button desktop
+  renderAddContactButtonDesktop();
   const contactsByFirstLetter = {};
-
   contactsData.forEach((oneContact) => {
     const firstLetter = oneContact.name.charAt(0).toUpperCase();
-
-    if (!contactsByFirstLetter[firstLetter]) {
-      contactsByFirstLetter[firstLetter] = /*html*/ `
-                <div class="letterAndContactsContainer">
-                    <div class="letter-column">
-                        <h2 class="contact-first-letter">${firstLetter}</h2>
-                    </div>
-                </div>
-            `;
-    }
-
-    const oneContactContainer = /*html*/ `
-            <div class="oneContactContainer" onclick="openContactScreenMobile(${oneContact.id})">
-                <div>
-                    <!-- <img src="${oneContact.contactImg != undefined ? oneContact.contactImg : 'assets/img/contact/addContactBlankUserImg.svg'}" class="contactImg"> -->
-                    ${singleMemberToHTML(oneContact, 0)}
-                </div>
-                <div class="contact-info-container">
-                    <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
-                    <a class="oneContactContainerAElement">${oneContact.email}</a>
-                </div>
-            </div>
-        `;
-
-    contactsByFirstLetter[firstLetter] += oneContactContainer;
+    updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact);
   });
+  renderContactsByFirstLetter(content, contactsByFirstLetter);
+}
 
+function updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact) {
+  if (!contactsByFirstLetter[firstLetter]) {
+    contactsByFirstLetter[firstLetter] = createLetterAndContactsContainer(firstLetter);
+  }
+  const oneContactContainer = createOneContactContainer(oneContact);
+  contactsByFirstLetter[firstLetter] += oneContactContainer;
+}
+
+function createLetterAndContactsContainer(firstLetter) {
+  return /*html*/ `
+    <div class="letterAndContactsContainer">
+      <div class="letter-column">
+        <h2 class="contact-first-letter">${firstLetter}</h2>
+      </div>
+    </div>
+  `;
+}
+
+function createOneContactContainer(oneContact) {
+  return /*html*/ `
+    <div class="oneContactContainer" onclick="openContactScreenMobile(${oneContact.id})">
+      <div>
+        ${singleMemberToHTML(oneContact, 0)}
+      </div>
+      <div class="contact-info-container">
+        <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
+        <a class="oneContactContainerAElement">${oneContact.email}</a>
+      </div>
+    </div>
+  `;
+}
+
+function renderContactsByFirstLetter(content, contactsByFirstLetter) {
   Object.values(contactsByFirstLetter).forEach((section) => {
     content.innerHTML += section;
-  });  
+  });
 }
 
 function addContactScreen() {
