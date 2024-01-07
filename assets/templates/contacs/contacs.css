@@ -1,5 +1,9 @@
 @media only screen and (max-width: 750px) and (min-width: 350px) {
   /* contacts screen style */
+  .container {
+    overflow: scroll;
+  }
+
   .contactsContent {
     display: flex;
     flex-direction: column;
