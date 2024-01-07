@@ -76,25 +76,41 @@ function renderAddContactButtonDesktop() {
 function openContactScreenDesktop(contactId) {  
   const content = document.getElementById("contactsContentRightSideID");  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"  
   const selectedContact = contactsData.find(contact => contact.id === contactId);  // Holen Sie den ausgewählten Kontakt anhand der ID  
-  if (lastClickedContactId) {  // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)    
-    const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`);  // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID    
-    if (lastClickedContactContainer) {  // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
-      lastClickedContactContainer.style.backgroundColor = "transparent";      
-      const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
-      if (lastClickedContactH2) {
-        lastClickedContactH2.style.color = "black"; // Oder setzen Sie die gewünschte Farbe
-      }
-    }
-  }  
-  const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);  // Änderung der Hintergrundfarbe des aktuellen Kontakts
+  openContactsScreenDesktopChangeColorBlack();  
+  openContactScreenDesktopChangeColorWhite(contactId);  
+  lastClickedContactId = contactId;  // Aktualisieren des zuletzt geklickten Kontakts
+  openContactScreenDesktopHTML(content, selectedContact);  
+  showHeaderAndFooter();
+  showContactsContentRightSideDesktop();  
+  const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");  // Select the container to slide in  
+  contactContainer.style.animation = "slide-in 0.5s ease-out";  // Apply the animation to the selected container
+}
+  
+function openContactScreenDesktopChangeColorWhite(contactId) {
+  const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`); // Änderung der Hintergrundfarbe des aktuellen Kontakts
   if (currentContactContainer) {
     currentContactContainer.style.backgroundColor = "#2A3647"; // Ersetzen Sie "#2A3647" durch die gewünschte Farbe    
-    const currentContactH2 = currentContactContainer.querySelector("h2");  // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
+    const currentContactH2 = currentContactContainer.querySelector("h2"); // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
     if (currentContactH2) {
-      currentContactH2.style.color = "white"; // Oder setzen Sie die gewünschte Farbe
+      currentContactH2.style.color = "white";
     }
-  }  
-  lastClickedContactId = contactId;  // Aktualisieren des zuletzt geklickten Kontakts
+  }
+}
+
+function openContactsScreenDesktopChangeColorBlack() {
+  if (lastClickedContactId) { // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)    
+    const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`); // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID    
+    if (lastClickedContactContainer) { // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
+      lastClickedContactContainer.style.backgroundColor = "transparent";
+      const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2"); // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
+      if (lastClickedContactH2) {
+        lastClickedContactH2.style.color = "black";
+      }
+    }
+  }
+}
+
+function openContactScreenDesktopHTML(content, selectedContact) {
   content.innerHTML = /*html*/ `
     <div class="contactsContentRightSideHeadLine">
         <h1 class="contactsContentRightSideH1">
@@ -130,13 +146,9 @@ function openContactScreenDesktop(contactId) {
         <p class="openphoneNumberDesktopPElement">${selectedContact.phone}</p>
       </div>
     </div>
-   `;  
-    showHeaderAndFooter();
-    showContactsContentRightSideDesktop();  
-    const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");  // Select the container to slide in  
-    contactContainer.style.animation = "slide-in 0.5s ease-out";  // Apply the animation to the selected container
-  }
-  
+   `;
+}
+
   function addContactShowOverlayDesktop() {
     const overlayContainer = document.createElement("div");
     overlayContainer.classList.add("overlay-container");
