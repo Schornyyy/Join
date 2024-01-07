@@ -1,6 +1,6 @@
 // JavaScript Logik für die Desktop Ansicht
 
-function showcontactsContentRightSideDesktop() {
+function showContactsContentRightSideDesktop() {
     const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
     showcontactsContentRightSide.style.display = "flex";
   }
@@ -132,7 +132,7 @@ function openContactScreenDesktop(contactId) {
     </div>
    `;  
     showHeaderAndFooter();
-    showcontactsContentRightSideDesktop();  
+    showContactsContentRightSideDesktop();  
     const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");  // Select the container to slide in  
     contactContainer.style.animation = "slide-in 0.5s ease-out";  // Apply the animation to the selected container
   }
