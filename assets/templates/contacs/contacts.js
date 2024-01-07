@@ -154,33 +154,38 @@ function renderContactsByFirstLetter(content, contactsByFirstLetter) {
 
 function addContactScreen() {
   const content = document.getElementById("contactsContent");
-  content.innerHTML = /*html*/ `
-                            <div class="addContactContainerHeader">
-                              <div class="addContactCloseXContainer">
-                                <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
-                              </div>
-
-                            <div class="addContactBlockHeader">
-                                <p class="addContactH1">Add contact</p>
-                                <p class="addContactText">Tasks are better with a team!</p>
-                                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
-                            </div>
-
-                            <div>
-                                <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
-                            </div>
-                        </div>
-
-                        <form id="addContactFormMobileID" onsubmit="createContactMobile()">
-                            <div class="addContactContainerFooter">
-                                <input class="addContactInputNameMobile" type="text" required placeholder="Name">
-                                <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
-                                <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
-                                <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">
-                            <div>
-                        </form>
-                        `;
+  content.innerHTML = createAddContactScreenHTML();
   hideHeaderAndFooter();    
+}
+
+function createAddContactScreenHTML() {
+  return /*html*/ addContactFormMobileHTML();
+}
+
+function addContactFormMobileHTML() {
+  return /*html*/ `
+    <div class="addContactContainerHeader">
+      <div class="addContactCloseXContainer">
+        <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
+      </div>
+      <div class="addContactBlockHeader">
+        <p class="addContactH1">Add contact</p>
+        <p class="addContactText">Tasks are better with a team!</p>
+        <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+      </div>
+      <div>
+        <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
+      </div>
+    </div>
+    <form id="addContactFormMobileID" onsubmit="createContactMobile()">
+      <div class="addContactContainerFooter">
+        <input class="addContactInputNameMobile" type="text" required placeholder="Name">
+        <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
+        <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
+        <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">
+      </div>
+    </form>
+  `;
 }
 
 function createContactMobile() {
