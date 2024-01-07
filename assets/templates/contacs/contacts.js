@@ -195,25 +195,44 @@ function createContactMobile() {
   const newName = nameInput.value.trim();
   const newMail = mailInput.value.trim();
   const newPhone = phoneInput.value.trim();
-  if (newName === "" || newMail === "" || newPhone === "") {
-    alert("Bitte füllen Sie alle Felder aus.");
-    return;
+
+  if (validateInputs(newName, newMail, newPhone)) {
+    const newContact = createNewContact(newName, newMail, newPhone);
+    updateContactsData(newContact);
+    finalizeContactCreation();
   }
+}
+
+function validateInputs(name, mail, phone) {
+  if (name === "" || mail === "" || phone === "") {
+    alert("Bitte füllen Sie alle Felder aus.");
+    return false;
+  }
+  return true;
+}
+
+function createNewContact(name, mail, phone) {
   const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-  let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
-  const newContact = {
+  let nextContactId = contactsData.length + 1;
+  return {
     id: nextContactId,
-    name: newName,
-    email: newMail,
-    phone: newPhone,
+    name: name,
+    email: mail,
+    phone: phone,
     contactImg: defaultImage,
     from: currentUser.name,
     colorCode: getRandomColorHex()
   };
+}
+
+function updateContactsData(newContact) {
   contactsData.push(newContact);
   saveContactsData(contactsData);
+}
+
+function finalizeContactCreation() {
   hideOverlay();
-  contactsInit();  
+  contactsInit();
 }
 
 function createContact() {
