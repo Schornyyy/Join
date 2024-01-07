@@ -35,7 +35,7 @@ function initializeView() {
     hidecontactsContentRightSideDesktop();
   } else {      
     renderContactsDesktop();  
-    showcontactsContentRightSideDesktop();
+    showContactsContentRightSideDesktop();
   }
   contactsContentBackgroundColorWhite();
 }
