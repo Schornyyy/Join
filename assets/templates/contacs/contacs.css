@@ -526,8 +526,7 @@
     min-width: 70%;
     background-color: var(--white-grey);
     position: sticky;
-    top: 0;
-    z-index: 100;
+    top: 0;    
     max-height: calc(100vh - 100px); /* Hier die maximale Höhe festlegen (100vh abzüglich Header-Höhe) */
     overflow-y: scroll; /* Hier den vertikalen Scrollbalken anzeigen, wenn die Inhalte die Höhe überschreiten */
   }
