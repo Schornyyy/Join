@@ -633,6 +633,10 @@
     cursor: pointer;
   }
 
+  .openContactEmailLinkDesktop:hover {
+    color: var(--light-blue);
+  }
+
   .openContactPhoneNumberDesktopContainer {
     margin-top: 20px;
     margin-left: 2em;
