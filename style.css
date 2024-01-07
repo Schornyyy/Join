@@ -156,7 +156,7 @@ body::-webkit-scrollbar {
     width: 100%;
     height: 5rem;
 
-    margin: 0;
+    /* margin: 0; */
   }
 
   .menu-item {
@@ -247,7 +247,12 @@ body::-webkit-scrollbar {
 
     grid-area: eins;
     position: sticky;
-    height: 100vh;
+    height: 100dvh;
+  }
+
+  .desktopFooterMenu {
+    /* border: dotted 2px yellow; */
+    width: 100%;
   }
 
   .menu-item {
@@ -257,7 +262,7 @@ body::-webkit-scrollbar {
     justify-content: center;
 
     width: 100%;
-
+    height: 3rem;
     margin-bottom: 15px;
   }
 
@@ -266,9 +271,9 @@ body::-webkit-scrollbar {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 0.2rem;
+    border-radius: 0.3rem;
     width: 100%;
-    height: 140%;
+    height: 130%;
     gap: 0.5rem;
   }
 
@@ -281,12 +286,12 @@ body::-webkit-scrollbar {
     color: var(--white-grey);
   }
 
-.desktopFooterPolicy {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 6rem;
-}
+  .desktopFooterPolicy {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 8rem;
+  }
 
   .desktopFooterPolicy p {
     color: var(--lighter-grey);
