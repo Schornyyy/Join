@@ -1,5 +1,6 @@
 @import url("./fonts.css");
 @import url("./assets/worker/inputFocus/inputFocus.css");
+@import url("./assets/templates/menu_template.html");
 @import url("./assets/templates/register/register.css");
 @import url("./assets/templates/login/login.css");
 @import url("./assets/templates/contacs/contacs.css");
@@ -41,8 +42,8 @@ html {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(100px);
-  grid-template-rows: 100px;
+  /* grid-template-columns: repeat(100px);
+  grid-template-rows: 100px; */
   height: 100vh;
   width: 100%;
   /* overflow-x: hidden;
@@ -52,14 +53,17 @@ html {
 .content {
   width: 100%;
   /* height: 100vh; */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /* height: 100%; */
   /* overflow-y: scroll; */
 }
 
 .menuTemplate {
   background-color: var(--light-grey);
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /*  Mobile Responsive */
@@ -209,8 +213,8 @@ html {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
   }
 
   .menu-item {
