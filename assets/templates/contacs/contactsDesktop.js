@@ -121,8 +121,10 @@ function openContactScreenDesktopHTML(content, selectedContact) {
     </div>  
     <div id="contactsContentRightSideContactDataContainerID">
       <div class="contactsContentRightSideUserImgAndNameContainer">
-        <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
-        <div>
+        <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->
+        
+        ${singleMemberToHTMLOpenContactDesktop(selectedContact, 0)}
+      <div>
           <h2 class="contactsContentRightSideUserNameH2">${selectedContact.name}</h2>
             <div class="contactsContentRightSideEditAndDeleteButtonContainer">
               <img class="contactsContentRightSideEditButton" src="../../assets/img/contact/editContactsButtonDesktop.svg" alt="" onclick="editContactDestop(lastClickedContactId)">
@@ -376,3 +378,14 @@ function openContactScreenDesktopHTML(content, selectedContact) {
     const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
     dropdownMenu.style.display = "none";
   }
+
+  function singleMemberToHTMLOpenContactDesktop(member, index) {
+    let textcolor;
+    let iconRightStep = 10;
+    if (!isColorLight(member.colorCode)) textcolor = 'white';
+    return `
+        <div class="openContactUserImg" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
+             ${getFirstLettersOfName(member.name)}
+        </div>
+    `;
+}
