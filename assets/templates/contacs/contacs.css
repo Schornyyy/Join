@@ -301,9 +301,9 @@
     margin-left: 0.5em;
   }
 
-  .openContactUserImg {
-    height: 80px;
-    width: 80px;
+  .openContactUserImg {    
+    height: 32px;
+    width: 32px;    
   }
 
   .openContactInformation {
@@ -570,7 +570,13 @@
 
   .openContactUserImg {
     height: 120px;
-    width: 120px;
+    width: 120px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 2px solid white;
+    position: relative;
   }
 
   .contactsContentRightSideUserNameH2 {
@@ -933,7 +939,7 @@
   .editContactDesktopDeleteButton {
     cursor: pointer;
     border: 1px solid;
-    border-radius: 8%;
+    border-radius: 8%;    
     padding: 15px 24px 15px 24px;
     color: var(--light-grey);
     background-color: white;
