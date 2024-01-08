@@ -65,6 +65,7 @@ body::-webkit-scrollbar {
   /* overflow-x: hidden; */
   /* height: 100%; */
   /* overflow-y: scroll; */
+  margin-top: 10px;
 }
 
 .menuTemplate {
@@ -93,12 +94,12 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: space-between;
     background-color: var(--background-color);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     height: 5rem;
     grid-row-start: 1;
     grid-row-end: 4;
     grid-column-start: 1;
     grid-column-end: 4;
+    position: relative;
   }
 
   .boxShadow {
@@ -228,7 +229,7 @@ body::-webkit-scrollbar {
       "eins zwei zwei"
       "eins drei drei";
     grid-template-columns: 200px;
-    grid-template-rows: 100px;
+    grid-template-rows: 5rem;
     height: 100vh;
   }
 
