@@ -20,7 +20,7 @@ function renderContactsDesktop() {
 
 function groupContactsByFirstLetter() {
     const contactsByFirstLetter = {};
-    contactsData.forEach((oneContact) => {
+    currentUser.contacts.forEach((oneContact) => {
         const firstLetter = oneContact.name.charAt(0).toUpperCase();
         if (!contactsByFirstLetter[firstLetter]) {
             contactsByFirstLetter[firstLetter] = createLetterContainer(firstLetter);
@@ -75,7 +75,7 @@ function renderAddContactButtonDesktop() {
   
 function openContactScreenDesktop(contactId) {  
   const content = document.getElementById("contactsContentRightSideID");  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"  
-  const selectedContact = contactsData.find(contact => contact.id === contactId);  // Holen Sie den ausgewählten Kontakt anhand der ID  
+  const selectedContact = currentUser.contacts.find(contact => contact.id === contactId);  // Holen Sie den ausgewählten Kontakt anhand der ID  
   openContactsScreenDesktopChangeColorBlack();  
   openContactScreenDesktopChangeColorWhite(contactId);  
   lastClickedContactId = contactId;  // Aktualisieren des zuletzt geklickten Kontakts
@@ -205,7 +205,7 @@ function openContactScreenDesktopHTML(content, selectedContact) {
   }
   
   function editContactDestop(contactId) {  
-    const selectedContact = contactsData.find(
+    const selectedContact = currentUser.contacts.find(
       (contact) => contact.id === contactId
     ); // Findet den ausgewählten Kontakt anhand der ID
     const overlayContainer = document.createElement("div");
@@ -225,23 +225,23 @@ function openContactScreenDesktopHTML(content, selectedContact) {
         </div>
         <div class="addContactDesktopRightSideContainer">
           <div class="addContactBlankUserImgContainer">
-            <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">          
+            <img class="openContactUserImg" src="" alt="">          
           </div>
           <div class="addContactDesktopRightSideContent">
             <div class="addContactCloseXContainer">
               <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
             </div>
-            <form id="editContactDestopID" onsubmit=" updateContactDesktop(${selectedContact.id})">
+            <div id="editContactDestopID">
               <div class="addContactContainerFooter">
                   <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.name}"> 
                   <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.email}">
                   <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.phone}">
                   <div class="createContactButtonImgContainer">
                       <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
-                      <button class="saveContactButtonDesktop" onclick=" updateContactDesktop(${selectedContact.id})">Save</button>
+                      <button class="saveContactButtonDesktop" onclick="updateContactDesktop(${selectedContact.id})">Save</button>
                   </div>                
               </div>
-          </form>
+          </div>
           </div>
         </div>
       </div>
@@ -249,7 +249,7 @@ function openContactScreenDesktopHTML(content, selectedContact) {
     overlayContainer.style.animation = "slide-in 0.5s ease-out";  
   }
   
-  function updateContactDesktop(contactId) {
+  function updateContactDesktop(contactId, e) {
     const nameInput = document.querySelector(".addContactInputNameDesktop");
     const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
     const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
@@ -260,7 +260,7 @@ function openContactScreenDesktopHTML(content, selectedContact) {
       alert("Bitte füllen Sie alle Felder aus.");
       return;
     }
-    const existingContact = contactsData.find(
+    const existingContact = currentUser.contacts.find(
       (contact) =>
         contact.name === updatedName &&
         contact.email === updatedMail &&
@@ -270,13 +270,13 @@ function openContactScreenDesktopHTML(content, selectedContact) {
       alert("Ein Kontakt mit diesen Informationen existiert bereits.");
       return;
     }
-    const oldContact = contactsData.find(
+    const oldContact = currentUser.contacts.find(
       (contact) => contact.id === contactId
     );  
     const hasNameChanged = oldContact.name !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
     const hasMailChanged = oldContact.email !== updatedMail;
     const hasPhoneChanged = oldContact.phone !== updatedPhone;
-    const updatedContactsData = contactsData.map((contact) =>  // Aktualisiere den Kontakt im Array
+    const updatedContactsData = currentUser.contacts.map((contact) =>  // Aktualisiere den Kontakt im Array
       contact.id === contactId
         ? {
             ...contact,
@@ -286,7 +286,8 @@ function openContactScreenDesktopHTML(content, selectedContact) {
           }
         : contact
     );
-    saveContactsData(updatedContactsData); // JSON-Array speichern
+    editContactObject(oldContact.id, updatedContactsData)
+    currentUser.save();
     contactsInit(); // Zurück zur Kontaktliste wechseln
   }
   
@@ -300,14 +301,16 @@ function openContactScreenDesktopHTML(content, selectedContact) {
       return;
     }
     try {
-      const contactIndex = contactsData.findIndex((contact) => contact.id === contactId);
+      const contactIndex = currentUser.contacts.findIndex((contact) => contact.id === contactId);
+      console.log("Contact Index: " + contactIndex);
   
       if (contactIndex === -1) {
         console.error("Selected contact not found in contactsData.");
         return;
       }
-      const deletedContact = contactsData.splice(contactIndex, 1)[0];
-      saveContactsData(contactsData);
+      const deletedContact = currentUser.contacts.splice(contactIndex, 1)[0];
+      currentUser.contacts.splice(contactIndex, 1);
+      currentUser.save();
       console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
     } catch (error) {
       console.error("Fehler beim Löschen des Kontakts:", error);

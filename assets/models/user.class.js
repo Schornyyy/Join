@@ -15,10 +15,6 @@ class User {
         this.tasks = [];
     }
 
-    addContact(contact) {
-        this.contacts.push(contact);
-    }
-
     removeContact(index) {
         this.contacts.splice(index, 1)
     }
@@ -29,5 +25,10 @@ class User {
 
     removeTask(index) {
         this.tasks.splice(index, 1)
+    }
+
+    async save() {
+        let s = await setItem('users', this);
+        console.log(s, this);
     }
 }

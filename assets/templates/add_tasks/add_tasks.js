@@ -185,14 +185,14 @@ async function initEventListener() {
     let category = selectedCategory;
     let subs = subtasks;
 
-    let task = new Task(taskTitle, dueDate, category, tasks.length+1, "Open", currentUser.name); //+1 ???
+    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name); //+1 ???
     task.setPrio(prio);
     task.assignedTo = assigendContacts;
     taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc); //??
     subs.length > 0 ? task.subtasks = subs : subs  =[];
     currentUser.tasks.push(task);
-    tasks.push(task);
-    let stat = saveTasks().then((res) => {
+    currentUser.save();
+    let stat = currentUser.save().then((res) => {
       document.getElementById("task-form-error").style = "color:green"
       document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"
       clearTask();
