@@ -303,74 +303,71 @@ function contactsContentBackgroundColorWhiteGray() {
   function openContactScreenMobile(contactId) {
     const content = document.getElementById("contactsContent");
     const selectedContact = findSelectedContact(contactId);
-    
     if (!selectedContact) {
-      handleContactNotFound();
-      return;
-    }
-  
+        handleContactNotFound();
+        return;    }
+
     content.innerHTML = createContactScreenHTML(selectedContact);
     setupContactScreen(selectedContact.id);
-  }
+}
   
-  function findSelectedContact(contactId) {
-    return contactsData.find(contact => contact.id === contactId);
-  }
+function findSelectedContact(contactId) {
+  return currentUser.contacts.find(contact => contact.id === contactId);
+}
   
-  function handleContactNotFound() {
-    console.error("Selected contact not found in contactsData.");
-  }
+function handleContactNotFound() {
+  console.error("Selected contact not found in currentUser.contacts.");
+}
   
-  function createContactScreenHTML(selectedContact) {
-    return /*html*/ `
-      <div class="openContactContainerHeader">                            
-          <div class="openContactBlockHeader">
-              <div>
-                  <p class="openContactH1">Contacts</p>
-                  <p class="openContactText">Better with a team!</p>                              
-                  <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">                                                                        
-              </div>
-              <div class="arrorLeftContainer">
-                  <div onclick="contactsInit()">
-                      <img src="../assets/img/contact/arrow-left-line.svg" alt="">
-                  </div>
-              </div>                                                                
-          </div>                    
-      </div>
-  
-      <div class="openContactContainerFooter">
-          <div class="openContactUserImageAndNameContainer">   
-              <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
-              <h2 class="openContactH2">${selectedContact.name}</h2>
-          </div>
-          <p class="openContactInformation">Contact Information</p>
-          <p class="openContactEmail">Email</p>
-          <a class="openContactEmailLink" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
-          <p class="openContactPhoneText">Phone</p>
-          <p class="openContactPhoneNumber">${selectedContact.phone}</p>        
-      </div>
-  
-      <div class="dropdown-container" id="contactOptionsDropdownContainer">
-          <div class="dropdown-triggerContainer">
-            <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
-                <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+function createContactScreenHTML(selectedContact) {
+  return /*html*/ `
+    <div class="openContactContainerHeader">                            
+        <div class="openContactBlockHeader">
+            <div>
+                <p class="openContactH1">Contacts</p>
+                <p class="openContactText">Better with a team!</p>                              
+                <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">                                                                        
             </div>
+            <div class="arrorLeftContainer">
+                <div onclick="contactsInit()">
+                    <img src="../assets/img/contact/arrow-left-line.svg" alt="">
+                </div>
+            </div>                                                                
+        </div>                    
+    </div>  
+    <div class="openContactContainerFooter">
+        <div class="openContactUserImageAndNameContainer">   
+            <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->
+            ${singleMemberToHTML(selectedContact, 0)}
+            <h2 class="openContactH2">${selectedContact.name}</h2>
+        </div>
+        <p class="openContactInformation">Contact Information</p>
+        <p class="openContactEmail">Email</p>
+        <a class="openContactEmailLink" href="mailto:${selectedContact.email}">${selectedContact.email}</a>
+        <p class="openContactPhoneText">Phone</p>
+        <p class="openContactPhoneNumber">${selectedContact.phone}</p>        
+    </div>  
+    <div class="dropdown-container" id="contactOptionsDropdownContainer">
+        <div class="dropdown-triggerContainer">
+          <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
+              <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
           </div>
-          <div class="dropdown-menu" id="contactOptionsDropdown">            
-              <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">
-                  <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
-              </div>            
-              <div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">
-                  <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
-              </div>
-          </div>
-      </div>
-    `;
-  }
+        </div>
+        <div class="dropdown-menu" id="contactOptionsDropdown">            
+            <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">
+                <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
+            </div>            
+            <div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">
+                <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
+            </div>
+        </div>
+    </div>
+  `;
+}
   
-  function setupContactScreen(contactId) {
-    console.log(contactId);
-    showHeaderAndFooter();
-    contactsContentBackgroundColorWhiteGray();
-    addDropdownMenuClickListener();
-  }
+function setupContactScreen(contactId) {
+  console.log(contactId);
+  showHeaderAndFooter();
+  contactsContentBackgroundColorWhiteGray();
+  addDropdownMenuClickListener();
+}
