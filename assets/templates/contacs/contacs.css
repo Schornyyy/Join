@@ -445,6 +445,7 @@
 @media only screen and (min-width: 751px) {
   .content {
     overflow-y: scroll;
+    overflow-x: hidden;
   }
   
   .container {
@@ -455,6 +456,8 @@
 
   .contactsDesktop {
     display: flex;
+    position: relative;
+    z-index: 2; /* Höhere Z-Index für den Header */
   }
 
   .mobileHeader {
@@ -462,11 +465,12 @@
   }
 
   .contactsContent {
-    background-color: white;    
-    overflow-x: hidden; /* Übergeordneter Container darf horizontal nicht scrollen */
+    background-color: white;
+    overflow-x: hidden;
     position: relative;
-    height: inherit; /* Oder die Höhe nach Bedarf festlegen */
+    height: inherit;
     min-width: 30%;
+    z-index: 1; /* Niedrigere Z-Index für den contactsContent */
   }
 
   .letterAndContactsContainer {
@@ -534,8 +538,10 @@
     min-width: 70%;
     background-color: var(--white-grey);
     position: sticky;
-    top: 0;
-    max-height: calc(100vh - 100px); /* Hier die maximale Höhe festlegen (100vh abzüglich Header-Höhe) */    
+    top: 10px;
+    max-height: calc(100vh - 100px); /* Hier die maximale Höhe festlegen (100vh abzüglich Header-Höhe) */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    margin-left: 5px; /* Stelle sicher, dass genügend Platz auf der linken Seite vorhanden ist */
   }
 
   .contactsContentRightSideHeadLine {
