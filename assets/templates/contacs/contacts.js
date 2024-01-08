@@ -19,7 +19,7 @@ async function initializeContactsData() {
   if (storedContactsData) {     
     contactsData = JSON.parse(storedContactsData);
   } else {      
-    contactsData = await fetchContactsData();
+    contactsData = [await fetchContactsData()];
     localStorage.setItem('contactsData', JSON.stringify(contactsData));
   }
 }
@@ -58,19 +58,35 @@ function handleAddContactClick() {
   addContactScreen(); // Diese Funktion wird direkt im HTML-Code aufgerufen
 }
 
-function createContact() { // Create contact für Mobile Ansicht
+function createContact() {
   const { newName, newMail, newPhone } = constForCreateContact();
+  
   if (newName === "" || newMail === "" || newPhone === "") {
     alert("Bitte füllen Sie alle Felder aus.");
     return;
   }
+  
   const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-  let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
+  const nextContactId = getNextContactId(); // Holen Sie sich die nächste verfügbare ID
   const newContact = constNewContactForCreateContact(nextContactId, newName, newMail, newPhone, defaultImage);
+  
   contactsData.push(newContact);
   saveContactsData(contactsData);
   hideOverlay();
   contactsInit();  
+}
+
+function getNextContactId() {
+  // Falls `contactsData` nicht vorhanden ist oder leer ist, starte mit ID 1.
+  if (!contactsData || contactsData.length === 0) {
+    return 1;
+  }
+  
+  // Durchsuche die vorhandenen Kontakte und finde die höchste ID.
+  const maxId = Math.max(...contactsData.map(contact => contact.id));
+  
+  // Die nächste verfügbare ID ist die höchste ID + 1.
+  return maxId + 1;
 }
 
 function constNewContactForCreateContact(nextContactId, newName, newMail, newPhone, defaultImage) {
