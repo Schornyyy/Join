@@ -469,7 +469,9 @@
     overflow-x: hidden;
     position: relative;
     height: inherit;
-    min-width: 30%;    
+    min-width: 30%;
+    height: 100vh; /* Full viewport height */
+    overflow-y: scroll; /* Enable vertical scrolling if necessary */   
   }
 
   .letterAndContactsContainer {
