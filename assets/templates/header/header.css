@@ -1,0 +1,53 @@
+@media only screen and (max-width: 750px) and (min-width: 250px) {
+  .theProgramm {
+    display: none;
+  }
+
+  .userSymbolContainerHelp {
+    display: none;
+  }
+
+  .userLogoImg {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 751px) {
+  .userLogoImg {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+  }
+
+  /* .userLogoImg:hover {
+  
+  } */
+
+  .theProgramm {
+    margin-left: 4rem;
+  }
+
+  .theProgrammFont {
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+
+  .userSymbolContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-left: 16px;
+  }
+
+  .userSymbolContainerHelp {
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+
+  .userSymbolContainerHelp:hover {
+    transform: scale(1.2);
+  }
+}

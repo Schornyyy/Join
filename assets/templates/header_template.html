@@ -1,4 +1,3 @@
-<!--Header Template</!-->
 <div class="mobileHeader">
   <div class="logoImgContainer">
     <img class="logoImg" src="./assets/img/join_logo1.svg" alt="logo" />
@@ -9,7 +8,6 @@
   </div>
 
   <div id="signUpContainerID" class="signUpContainer" style="display: none">
-    <!--Sign Up Container for not regestrated user</!-->
     <p class="signUpParagraph">Not a Join user?</p>
     <button id="sign_up_ButtonID" class="sign_up_Button">Sign up</button>
   </div>
@@ -21,7 +19,15 @@
       alt=""
     />
 
-    <!--User Symbol Container for regestrated user</!-->
-    <img class="userLogoImg" src="assets/img/group-13.svg" alt="" />
+    <div
+      onmouseover="changeHeaderImage(this)"
+      onmouseout="changeHeaderImageBack(this)"
+    >
+      <img
+        class="userLogoImg summaryAnimateProgramm editHeaderImage"
+        src="assets/img/header/headerCurrentGuestImage.svg"
+        alt=""
+      />
+    </div>
   </div>
 </div>
