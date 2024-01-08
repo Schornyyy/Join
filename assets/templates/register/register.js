@@ -18,11 +18,19 @@ async function registerUser() {
     window.location.href = "/assets/templates/login/login.html";
 }
 
+function checkedPrivacy() {
+    let checkedEle = document.getElementById("privacy-check");
+    let checked = checkedEle.hasAttribute("checked") ? true : false;
+    let setAttr = checked ? checkedEle.removeAttribute("checked") : checkedEle.setAttribute("checked", "");
+    return checked;
+}
+
 async function validateForm() {
     let c = true;
     let email = document.getElementById("register-email")
     let emailTaken = await emailAlreadyTaken(email);
     let errorMsg = document.getElementById("registerError");
+    let checked = checkedPrivacy();
 
     if( email == null || email.value == "") {
         errorMsg.innerHTML = "U must enter a Email Adress!";
@@ -36,6 +44,11 @@ async function validateForm() {
 
     if(document.getElementById("register-name") == null || document.getElementById("register-name").value == "") {
         errorMsg.innerHTML = "U must enter a Username!"
+        c = false;
+    }
+
+    if(!checked) {
+        errorMsg.innerHTML = "U must accept the privacy police";
         c = false;
     }
 
