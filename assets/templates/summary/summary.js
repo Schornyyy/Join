@@ -48,16 +48,6 @@ function getTodoStatusSize(eleId, status) {
   doneTodosEle.innerHTML = arr.length;
 }
 
-// function eventListern() {
-//   let events = document.querySelectorAll("[onclick]");
-//   events.forEach((ele) => {
-//     ele.addEventListener(onclick, (e) => {
-//       let func = ele.getAttribute("onclick");
-//       func();
-//     })
-//   })
-// }
-
 function getUrgentTask() {
   let summerUrgentDateEle = document.getElementById("summery-urgent-date");
   let tasks = currentUser.tasks;

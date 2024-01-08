@@ -1,0 +1,115 @@
+@media only screen and (max-width: 750px) and (min-width: 250px) {
+  .theProgramm {
+    display: none;
+  }
+
+  .userSymbolContainerHelp {
+    display: none;
+  }
+
+  .logoImgContainer {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .logoImg {
+    width: 3.5rem;
+    height: 3rem;
+  }
+
+  .userLogoImg {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+  }
+
+  .userSymbolContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    /* display: none; Is ON for Design! */
+  }
+
+  .userSymbolContainerHelp {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+
+  .signUpContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none; /*Is ON for Design!*/
+  }
+
+  .signUpButton {
+    background-color: var(--light-grey);
+    color: white;
+    border-radius: 8px;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    width: 70px;
+    height: 35px;
+  }
+
+  .signUpParagraph {
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 751px) {
+  .userLogoImg {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+  }
+
+  /* .userLogoImg:hover {
+  
+  } */
+
+  .logoImgContainer {
+    display: none;
+  }
+
+  .theProgramm {
+    margin-left: 4rem;
+  }
+
+  .theProgrammFont {
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+
+  .userSymbolContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-left: 16px;
+  }
+
+  .userSymbolContainerHelp {
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+
+  .userSymbolContainerHelp:hover {
+    transform: scale(1.2);
+  }
+
+  .mobileHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    padding: 20px 40px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+}

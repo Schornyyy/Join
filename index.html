@@ -20,6 +20,7 @@
     <script src="./assets/templates/add_tasks/add_tasks.js"></script>
     <script src="./assets/templates/board/board.js"></script>
     <script src="./assets/templates/summary/summary.js"></script>
+    <script src="./assets/templates/header/header.js"></script>
     
     <script src="./assets/templates/board/dataForTesting.js"></script>
     
@@ -49,24 +50,19 @@
   <body onload="init(); loadData();">
     <div class="container" id="container">
       <div
-        w3-include-html="./assets/templates/header_template.html"
+        w3-include-html="./assets/templates/header/header_template.html"
         id="headerTemplate"
         class="headerTemplate"
       ></div>
       <div
-        w3-include-html="assets/templates/summary/summary_template.html"
+        w3-include-html="./assets/templates/summary/summary_template.html"
         id="content"
         class="content"
       ></div>
       <div
-        w3-include-html="./assets/templates/menu_template.html"
+        w3-include-html="./assets/templates/footer/menu_template.html"
         id="menuTemplate"
       ></div>
-      <!-- <div
-        w3-include-html="./assets/templates/menu_template.html"
-        id="menuTemplate"
-        class="menuTemplate"
-      ></div> -->
     </div>
   </body>
 </html>
