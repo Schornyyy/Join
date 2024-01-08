@@ -15,13 +15,14 @@
           class="reactangle borderRadius backgroundColor boxShadow cursorPointer"
           onmouseover="changeImage(this)"
           onmouseout="changeImageBack(this)"
+          onclick="includeContentHTML('board')"
         >
           <img
             src="assets/img/summary/summaryGrayEdit.svg"
             alt=""
             class="todoSpecial summaryAnimateProgramm editImage"
           />
-          <div class="summaryToDoSum">
+          <div class="summaryToDoSum" onclick="includeContentHTML('board')">
             <p class="sammarySumNumber" data-todos></p>
             <p>To-do</p>
           </div>
@@ -30,13 +31,14 @@
           class="reactangle borderRadius backgroundColor boxShadow cursorPointer"
           onmouseover="changeImage(this)"
           onmouseout="changeImageBack(this)"
+          onclick="includeContentHTML('board')"
         >
           <img
             src="assets/img/summary/summaryCheckGray.svg"
             class="doneSpecial summaryAnimateProgramm checkImage"
             alt=""
           />
-          <div class="summaryToDoSum">
+          <div class="summaryToDoSum" onclick="includeContentHTML('board')">
             <p class="sammarySumNumber" id="summery-done-todos"></p>
             <p>Done</p>
           </div>
@@ -50,13 +52,13 @@
         <div class="row2summary">
           <img src="assets/img/summary/Frame59_urgent.svg" alt="" />
 
-          <div class="summaryToDoSum">
+          <div class="summaryToDoSum" onclick="includeContentHTML('board')">
             <p class="sammarySumNumber" id="summery-upcoming-tasks"></p>
             <p>Urgent</p>
           </div>
         </div>
 
-        <div class="urgentDater">
+        <div class="urgentDater" onclick="includeContentHTML('board')">
           <div class="prioVerticalLine"></div>
           <div class="summaryDeadlineBox">
             <p class="summaryDeadDater" id="summery-urgent-date">
@@ -72,7 +74,7 @@
         <div
           class="squareButton borderRadius backgroundColor boxShadow cursorPointer"
         >
-          <div class="summaryToDoSum">
+          <div class="summaryToDoSum" onclick="includeContentHTML('board')">
             <p class="sammarySumNumber" data-todos></p>
             <p>Tasks in</p>
             <p>Board</p>
@@ -81,7 +83,7 @@
         <div
           class="squareButton borderRadius backgroundColor boxShadow cursorPointer"
         >
-          <div class="summaryToDoSum">
+          <div class="summaryToDoSum" onclick="includeContentHTML('board')">
             <p class="sammarySumNumber" id="summery-process-tasks">2</p>
             <p>Tasks in</p>
             <p>Prozess</p>
@@ -90,7 +92,7 @@
         <div
           class="squareButton borderRadius backgroundColor boxShadow cursorPointer"
         >
-          <div class="summaryToDoSum">
+          <div class="summaryToDoSum" onclick="includeContentHTML('board')">
             <p class="sammarySumNumber" id="summery-awaiting-task">2</p>
             <p>Awaiting</p>
             <p>feedback</p>

@@ -20,7 +20,7 @@ async function registerUser() {
 
 function checkedPrivacy() {
     let checkedEle = document.getElementById("privacy-check");
-    let checked = checkedEle.hasAttribute("checked") ? true : false;
+    let checked = checkedEle.hasAttribute("checked");
     let setAttr = checked ? checkedEle.removeAttribute("checked") : checkedEle.setAttribute("checked", "");
     return checked;
 }
