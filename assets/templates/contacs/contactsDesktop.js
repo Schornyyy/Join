@@ -226,71 +226,68 @@ function hideOverlay() {
   }
 }
   
-  function editContactDestop(contactId) {  
-    const selectedContact = currentUser.contacts.find(
-      (contact) => contact.id === contactId
-    ); // Findet den ausgewählten Kontakt anhand der ID
-    const overlayContainer = document.createElement("div");
-    overlayContainer.classList.add("overlay-container");
-    document.body.appendChild(overlayContainer);
-    const overlayContent = document.createElement("div");
-    overlayContent.classList.add("overlay-content");
-    overlayContainer.appendChild(overlayContent);  
-    overlayContent.innerHTML = /*html*/ `
-      <div class="overlay-card">
-        <div class="addContactDesktopLeftSideContainer">
-          <div class="flexDirectionColumn">
-            <img class="joinLogoGreyBackgroundImg" src="../../assets/img/contact/joinLogoGreyBackground.png" alt="">
-            <h1 class="addContactDesktopLeftSideContainerH1">Edit contact</h1>          
-            <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
-          </div>
-        </div>
-        <div class="addContactDesktopRightSideContainer">
-          <div class="addContactBlankUserImgContainer">
-            <img class="openContactUserImg" src="" alt="">          
-          </div>
-          <div class="addContactDesktopRightSideContent">
-            <div class="addContactCloseXContainer">
-              <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
-            </div>
-            <div id="editContactDestopID">
-              <div class="addContactContainerFooter">
-                  <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.name}"> 
-                  <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.email}">
-                  <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.phone}">
-                  <div class="createContactButtonImgContainer">
-                      <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
-                      <button class="saveContactButtonDesktop" onclick="updateContactDesktop(${selectedContact.id})">Save</button>
-                  </div>                
-              </div>
-          </div>
-          </div>
+function editContactDestop(contactId) {  
+  const selectedContact = currentUser.contacts.find(
+    (contact) => contact.id === contactId
+  ); // Findet den ausgewählten Kontakt anhand der ID
+  const overlayContainer = document.createElement("div");
+  overlayContainer.classList.add("overlay-container");
+  document.body.appendChild(overlayContainer);
+  const overlayContent = document.createElement("div");
+  overlayContent.classList.add("overlay-content");
+  overlayContainer.appendChild(overlayContent);  
+  overlayContent.innerHTML = /*html*/ `
+    <div class="overlay-card">
+      <div class="addContactDesktopLeftSideContainer">
+        <div class="flexDirectionColumn">
+          <img class="joinLogoGreyBackgroundImg" src="../../assets/img/contact/joinLogoGreyBackground.png" alt="">
+          <h1 class="addContactDesktopLeftSideContainerH1">Edit contact</h1>          
+          <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
         </div>
       </div>
-    `;
-    overlayContainer.style.animation = "slide-in 0.5s ease-out";  
-  }
+      <div class="addContactDesktopRightSideContainer">
+        <div class="addContactBlankUserImgContainer">
+          <img class="openContactUserImg" src="" alt="">          
+        </div>
+        <div class="addContactDesktopRightSideContent">
+          <div class="addContactCloseXContainer">
+            <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
+          </div>
+          <div id="editContactDestopID">
+            <div class="addContactContainerFooter">
+                <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.name}"> 
+                <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.email}">
+                <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.phone}">
+                <div class="createContactButtonImgContainer">
+                    <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
+                    <button class="saveContactButtonDesktop" onclick="updateContactDesktop(${selectedContact.id})">Save</button>
+                </div>                
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  `;
+  overlayContainer.style.animation = "slide-in 0.5s ease-out";  
+}
   
-  function updateContactDesktop(contactId) {
-    const updatedInputs = getUpdatedInputsDesktop();
-    
-    if (validateInputs(updatedInputs)) {
-        const existingContact = findExistingContactDesktop(updatedInputs, contactId);
-
-        if (!existingContact) {
-            const oldContact = findOldContactDesktop(contactId);
-            const hasChanged = checkForChangesDesktop(oldContact, updatedInputs);
-            const updatedContactsData = updateContactsDataDesktop(contactId, updatedInputs, hasChanged);
-            saveAndInitDesktop(updatedContactsData);
-        }
-    }
+function updateContactDesktop(contactId) {
+  const updatedInputs = getUpdatedInputsDesktop();    
+  if (validateInputs(updatedInputs)) {
+      const existingContact = findExistingContactDesktop(updatedInputs, contactId);
+      if (!existingContact) {
+          const oldContact = findOldContactDesktop(contactId);
+          const hasChanged = checkForChangesDesktop(oldContact, updatedInputs);
+          const updatedContactsData = updateContactsDataDesktop(contactId, updatedInputs, hasChanged);
+          saveAndInitDesktop(updatedContactsData);
+      }
+  }
 }
 
 function getUpdatedInputsDesktop() {
   const nameInput = document.querySelector(".addContactInputNameDesktop");
   const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
   const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
-
   return {
       updatedName: nameInput.value.trim(),
       updatedMail: mailInput.value.trim(),
@@ -339,104 +336,103 @@ function saveAndInitDesktop(updatedContactsData) {
   hideOverlay();
 }
   
-  function deleteContact(contactId) {
-    if (!contactId) {
-      console.error("Invalid contact ID");
-      return;
-    }
-    const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
-    if (!confirmDelete) {
-      return;
-    }
-    try {
-      const contactIndex = currentUser.contacts.findIndex((contact) => contact.id === contactId);
-      console.log("Contact Index: " + contactIndex);
-  
-      if (contactIndex === -1) {
-        console.error("Selected contact not found in contactsData.");
-        return;
-      }
-      const deletedContact = currentUser.contacts.splice(contactIndex, 1)[0];
-      currentUser.contacts.splice(contactIndex, 1);
-      currentUser.save();
-      console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
-    } catch (error) {
-      console.error("Fehler beim Löschen des Kontakts:", error);
-    }
-    const content = document.getElementById("contactsContentRightSideContactDataContainerID");
-    content.innerHTML = "";
-    contactsInit();  
+function deleteContact(contactId) {
+  if (!contactId) {
+    console.error("Invalid contact ID");
+    return;
   }
+  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
+  if (!confirmDelete) {
+    return;
+  }
+  try {
+    const contactIndex = currentUser.contacts.findIndex((contact) => contact.id === contactId);
+    console.log("Contact Index: " + contactIndex);  
+    if (contactIndex === -1) {
+      console.error("Selected contact not found in contactsData.");
+      return;
+    }
+    const deletedContact = currentUser.contacts.splice(contactIndex, 1)[0];
+    currentUser.contacts.splice(contactIndex, 1);
+    currentUser.save();
+    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+  } catch (error) {
+    console.error("Fehler beim Löschen des Kontakts:", error);
+  }
+  const content = document.getElementById("contactsContentRightSideContactDataContainerID");
+  content.innerHTML = "";
+  contactsInit();  
+}
   
-  // Drop down Menü
-  function addDropdownMenuClickListener() {
-    const dropdownTrigger = document.getElementById("menuContactOptionsButton");
+// Drop down Menü
+function addDropdownMenuClickListener() {
+  const dropdownTrigger = document.getElementById("menuContactOptionsButton");
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  if (!dropdownTrigger || !dropdownMenu) {
+    console.error("Dropdown trigger or menu not found");
+    return;
+  }
+  const handleDocumentClick = function (event) {
+    if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = "none";
+      document.removeEventListener("click", handleDocumentClick);
+    }
+  };
+  dropdownTrigger.addEventListener("click", function (event) {
+    const isDropdownVisible = (dropdownMenu.style.display === "block");    
+    if (!isDropdownVisible) {  // Schließe alle anderen geöffneten Dropdowns, wenn das aktuelle geöffnet wird
+      closeAllDropdowns();
+    }
+    dropdownMenu.style.display = isDropdownVisible ? "none" : "block";
+    if (!isDropdownVisible) {
+      document.addEventListener("click", handleDocumentClick);
+    }
+    event.stopPropagation();
+  });
+}
+  
+function closeAllDropdowns() {
+  const allDropdowns = document.querySelectorAll(".dropdown-menu");
+  allDropdowns.forEach((dropdown) => {
+    dropdown.style.display = "none";
+  });
+  document.removeEventListener("click", handleDocumentClick);
+}
+  
+function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
+  return function (event) {
     const dropdownMenu = document.getElementById("contactOptionsDropdown");
-    if (!dropdownTrigger || !dropdownMenu) {
-      console.error("Dropdown trigger or menu not found");
-      return;
+    if (!dropdownContainer.contains(event.target) &&
+      !addContactButtonContainerMobile.contains(event.target) &&
+      !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = "none";
+      document.removeEventListener("click", handleDocumentClick);
     }
-    const handleDocumentClick = function (event) {
-      if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-        dropdownMenu.style.display = "none";
-        document.removeEventListener("click", handleDocumentClick);
-      }
-    };
-    dropdownTrigger.addEventListener("click", function (event) {
-      const isDropdownVisible = (dropdownMenu.style.display === "block");    
-      if (!isDropdownVisible) {  // Schließe alle anderen geöffneten Dropdowns, wenn das aktuelle geöffnet wird
-        closeAllDropdowns();
-      }
-      dropdownMenu.style.display = isDropdownVisible ? "none" : "block";
-      if (!isDropdownVisible) {
-        document.addEventListener("click", handleDocumentClick);
-      }
-      event.stopPropagation();
-    });
-  }
+  };
+}
   
-  function closeAllDropdowns() {
-    const allDropdowns = document.querySelectorAll(".dropdown-menu");
-    allDropdowns.forEach((dropdown) => {
-      dropdown.style.display = "none";
-    });
-    document.removeEventListener("click", handleDocumentClick);
-  }
+function toggleDropdownMenu() {
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");
+  dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
+}
   
-  function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
-    return function (event) {
-      const dropdownMenu = document.getElementById("contactOptionsDropdown");
-      if (!dropdownContainer.contains(event.target) &&
-        !addContactButtonContainerMobile.contains(event.target) &&
-        !dropdownMenu.contains(event.target)) {
-        dropdownMenu.style.display = "none";
-        document.removeEventListener("click", handleDocumentClick);
-      }
-    };
-  }
-  
-  function toggleDropdownMenu() {
-    const dropdownMenu = document.getElementById("contactOptionsDropdown");
-    dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
-  }
-  
-  function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren  
-    if (action === "edit") {  // Edit Contact    
-      console.log("Edit Contact selected");  
-    } else if (action === "delete") {  // Delete    
-      console.log("Delete Contact selected");
-    }  
-    const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
-    dropdownMenu.style.display = "none";
-  }
+function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren  
+  if (action === "edit") {  // Edit Contact    
+    console.log("Edit Contact selected");  
+  } else if (action === "delete") {  // Delete    
+    console.log("Delete Contact selected");
+  }  
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
+  dropdownMenu.style.display = "none";
+}
 
-  function singleMemberToHTMLOpenContactDesktop(member, index) {
-    let textcolor;
-    let iconRightStep = 10;
-    if (!isColorLight(member.colorCode)) textcolor = 'white';
-    return `
-        <div class="openContactUserImg" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
-             ${getFirstLettersOfName(member.name)}
-        </div>
-    `;
+function singleMemberToHTMLOpenContactDesktop(member, index) {
+  let textcolor;
+  let iconRightStep = 10;
+  if (!isColorLight(member.colorCode)) textcolor = 'white';
+  return `
+      <div class="openContactUserImg" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
+            ${getFirstLettersOfName(member.name)}
+      </div>
+  `;
 }
