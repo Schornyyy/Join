@@ -12,7 +12,8 @@
      overflow-y: scroll; 
     /* position: relative; */
     /* margin-top: 0.5em; */
-    height: inherit;
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Enable vertical scrolling if necessary */
   }
 
   /* Add contact screen style */
@@ -444,7 +445,7 @@
 /* Desktop view */
 @media only screen and (min-width: 751px) {
   .content {
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
   }
   
@@ -456,8 +457,7 @@
 
   .contactsDesktop {
     display: flex;
-    position: relative;
-    z-index: 2; /* Höhere Z-Index für den Header */
+    position: relative;   
   }
 
   .mobileHeader {
@@ -469,8 +469,7 @@
     overflow-x: hidden;
     position: relative;
     height: inherit;
-    min-width: 30%;
-    z-index: 1; /* Niedrigere Z-Index für den contactsContent */
+    min-width: 30%;    
   }
 
   .letterAndContactsContainer {
