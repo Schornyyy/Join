@@ -144,16 +144,20 @@ function contactsContentBackgroundColorWhiteGray() {
     return { newName, newMail, newPhone };
   }
 
-  function editContactScreen(contactId) {  // Für Mobile Ansicht
+  function editContactScreen(contactId) {
     const content = document.getElementById("contactsContent");
-    const selectedContact = getSelectedContact(contactId);
+    const selectedContact = findSelectedContact(contactId);
+    if (!selectedContact) {
+        handleContactNotFound();
+        return;
+    }
     content.innerHTML = createEditContactHTML(selectedContact);
     hideHeaderAndFooter();
-  }
+}
   
-  function getSelectedContact(contactId) {
-    return contactsData.find(contact => contact.id === contactId);
-  }
+function findSelectedContact(contactId) {
+  return currentUser.contacts.find(contact => contact.id === contactId);
+}
   
   function createEditContactHTML(selectedContact) {
     return /*html*/ `
@@ -185,77 +189,75 @@ function contactsContentBackgroundColorWhiteGray() {
   
   function updateContactMobile(contactId) {
     const updatedInputs = getUpdatedInputs();
-    
     if (validateInputs(updatedInputs)) {
-      const existingContact = findExistingContact(updatedInputs, contactId);
-  
-      if (!existingContact) {
-        const oldContact = findOldContact(contactId);
-        const hasChanged = checkForChanges(oldContact, updatedInputs);
-        const updatedContactsData = updateContactsData(contactId, updatedInputs, hasChanged);
-        saveAndInit(updatedContactsData);
-      }
+        const existingContact = findExistingContact(updatedInputs, contactId);
+        if (!existingContact) {
+            const oldContact = findOldContact(contactId);
+            const hasChanged = checkForChanges(oldContact, updatedInputs);
+            const updatedContactsData = updateContactsData(contactId, updatedInputs, hasChanged);
+            saveAndInit(updatedContactsData);
+        }
     }
-  }
+}
   
-  function getUpdatedInputs() {
-    const nameInput = document.querySelector(".addContactInputNameMobile");
-    const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
-    const phoneInput = document.querySelector(".addContactInputPhoneMobile");
-  
-    return {
+function getUpdatedInputs() {
+  const nameInput = document.querySelector(".addContactInputNameMobile");
+  const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
+  const phoneInput = document.querySelector(".addContactInputPhoneMobile");
+  return {
       updatedName: nameInput.value.trim(),
       updatedMail: mailInput.value.trim(),
       updatedPhone: phoneInput.value.trim()
-    };
-  }
+  };
+}
   
-  function validateInputs(updatedInputs) {
-    if (Object.values(updatedInputs).some(value => value === "")) {
+function validateInputs(updatedInputs) {
+  if (Object.values(updatedInputs).some(value => value === "")) {
       alert("Bitte füllen Sie alle Felder aus.");
       return false;
-    }
-    return true;
   }
+  return true;
+}
   
-  function findExistingContact(updatedInputs, contactId) {
-    return contactsData.find(
+function findExistingContact(updatedInputs, contactId) {
+  return currentUser.contacts.find(
       (contact) =>
-        contact.name === updatedInputs.updatedName &&
-        contact.email === updatedInputs.updatedMail &&
-        contact.id !== contactId
-    );
-  }
+          contact.name === updatedInputs.updatedName &&
+          contact.email === updatedInputs.updatedMail &&
+          contact.id !== contactId
+  );
+}
   
-  function findOldContact(contactId) {
-    return contactsData.find((contact) => contact.id === contactId);
-  }
+function findOldContact(contactId) {
+  return currentUser.contacts.find((contact) => contact.id === contactId);
+}
   
-  function checkForChanges(oldContact, updatedInputs) {
-    return {
+function checkForChanges(oldContact, updatedInputs) {
+  return {
       hasNameChanged: oldContact.name !== updatedInputs.updatedName,
       hasMailChanged: oldContact.email !== updatedInputs.updatedMail,
       hasPhoneChanged: oldContact.phone !== updatedInputs.updatedPhone
-    };
-  }
+  };
+}
   
-  function updateContactsData(contactId, updatedInputs, hasChanged) {
-    return contactsData.map((contact) =>
+function updateContactsData(contactId, updatedInputs, hasChanged) {
+  return currentUser.contacts.map((contact) =>
       contact.id === contactId
-        ? {
-            ...contact,
-            name: hasChanged.hasNameChanged ? updatedInputs.updatedName : contact.name,
-            email: hasChanged.hasMailChanged ? updatedInputs.updatedMail : contact.email,
-            phone: hasChanged.hasPhoneChanged ? updatedInputs.updatedPhone : contact.phone
+          ? {
+              ...contact,
+              name: hasChanged.hasNameChanged ? updatedInputs.updatedName : contact.name,
+              email: hasChanged.hasMailChanged ? updatedInputs.updatedMail : contact.email,
+              phone: hasChanged.hasPhoneChanged ? updatedInputs.updatedPhone : contact.phone
           }
-        : contact
-    );
-  }
+          : contact
+  );
+}
   
-  function saveAndInit(updatedContactsData) {
-    saveContactsData(updatedContactsData);
-    contactsInit();
-  }
+function saveAndInit(updatedContactsData) {
+  currentUser.contacts = updatedContactsData;
+  currentUser.save();
+  contactsInit();
+}
   
   function deleteContactMobile(contactId) {
     if (!validateContactId(contactId)) return;
