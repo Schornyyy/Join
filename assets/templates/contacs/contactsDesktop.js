@@ -182,9 +182,9 @@ function openContactScreenDesktopHTML(content, selectedContact) {
                 <input class="addContactInputNameDesktop" type="text" required placeholder="Name">
                 <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail">
                 <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone">
-                <div class="addContactButtonContainerDesktop">                
-                  <button class="editContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
-                  <button class="createContactButton" onclick="createContact()">Create contact</button>
+                <div class="addContactButtonContainerDesktop">
+                    <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
+                    <button class="createContactButton" onclick="createContact()">Create contact</button>
                 </div>
               </div>
             </form>

@@ -515,6 +515,7 @@
     cursor: pointer;
     margin-top: 2em;
     margin-right: 60px;
+    height: 27px;
   }
 
   .addContactImage {
@@ -947,7 +948,7 @@
     font-weight: 400;
     border-color: var(--light-grey);
     -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+    -moz-border-radius: 5px;    
   }
 
   .editContactDesktopDeleteButton:hover {
@@ -956,6 +957,30 @@
     transform: scale(0.95);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border: 2px solid;
+  }
+
+  .cancelContactDesktopDeleteButton {
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 8%;
+    box-shadow: 0 4px 8px rgb(255, 255, 255, );   
+    padding: 15px 24px 15px 24px;
+    color: var(--light-grey);
+    background-color: white;
+    font-size: 21px;
+    font-weight: 400;
+    border-color: var(--light-grey);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  }
+
+  .cancelContactDesktopDeleteButton:hover {
+    border: 1px solid;
+    border-color: var(--light-blue);
+    color: var(--light-blue);
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 1px solid;
   }
 
   .saveContactButtonImg {
