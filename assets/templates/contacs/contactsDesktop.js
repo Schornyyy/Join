@@ -151,58 +151,80 @@ function openContactScreenDesktopHTML(content, selectedContact) {
    `;
 }
 
-  function addContactShowOverlayDesktop() {
-    const overlayContainer = document.createElement("div");
-    overlayContainer.classList.add("overlay-container");
-    document.body.appendChild(overlayContainer);
-    const overlayContent = document.createElement("div");
-    overlayContent.classList.add("overlay-content");
-    overlayContainer.appendChild(overlayContent);
-    // Füge das Overlay-Inhaltselement hinzu
-    overlayContent.innerHTML = /*html*/ `
-      <div class="overlay-card">
-        <div class="addContactDesktopLeftSideContainer">
-          <div class="flexDirectionColumn">
-            <img class="joinLogoGreyBackgroundImg" src="../../assets/img/contact/joinLogoGreyBackground.png" alt="">
-            <h1 class="addContactDesktopLeftSideContainerH1">Add contact</h1>
-            <p class="addContactDesktopLeftSideContainerPElement">Tasks are better with a team!</p>
-            <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
-          </div>
+function addContactShowOverlayDesktop() {
+  const overlayContainer = document.createElement("div");
+  overlayContainer.classList.add("overlay-container");
+  document.body.appendChild(overlayContainer);
+  const overlayContent = document.createElement("div");
+  overlayContent.classList.add("overlay-content");
+  overlayContainer.appendChild(overlayContent);
+  // Füge das Overlay-Inhaltselement hinzu
+  overlayContent.innerHTML = /*html*/ `
+    <div class="overlay-card">
+      <div class="addContactDesktopLeftSideContainer">
+        <div class="flexDirectionColumn">
+          <img class="joinLogoGreyBackgroundImg" src="../../assets/img/contact/joinLogoGreyBackground.png" alt="">
+          <h1 class="addContactDesktopLeftSideContainerH1">Add contact</h1>
+          <p class="addContactDesktopLeftSideContainerPElement">Tasks are better with a team!</p>
+          <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
         </div>
-        <div class="addContactDesktopRightSideContainer">
-          <div class="addContactBlankUserImgContainer">
-            <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
+      </div>
+      <div class="addContactDesktopRightSideContainer">
+        <div class="addContactBlankUserImgContainer">
+          <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
+        </div>
+        <div class="addContactDesktopRightSideContent">
+          <div class="addContactCloseXContainer">
+           <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
           </div>
-          <div class="addContactDesktopRightSideContent">
-            <div class="addContactCloseXContainer">
-              <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
-            </div>
-            <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
-              <div class="addContactContainerFooter">
-                <input class="addContactInputNameDesktop" type="text" required placeholder="Name">
-                <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail">
-                <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone">
-                <div class="addContactButtonContainerDesktop">
-                    <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
-                    <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
+          <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
+            <div class="addContactContainerFooter">
+              <input class="addContactInputNameDesktop" type="text" required placeholder="Name">
+              <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail">
+              <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone">
+              <div class="addContactButtonContainerDesktop">
+                <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
+                  <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
                 </div>
               </div>
-            </form>
-  
+            </form>  
           </div>
         </div>
       </div>
-    `; 
-    
+    `;    
     overlayContainer.style.animation = "slide-in 0.5s ease-out";
   }
+
+function createContactDesktop() {
+  const { newName, newMail, newPhone } = constForCreateContactDesktop();    
+  if (newName === "" || newMail === "" || newPhone === "") {
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }    
+  const defaultImage = "../assets/img/contact/defaultContactImage.svg";
+  let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
+  currentUser.contacts.push(createdContact);
+  currentUser.save();
+  hideOverlay();
+  contactsInit();  
+}
   
-  function hideOverlay() {
-    const overlayContainer = document.querySelector(".overlay-container");
-    if (overlayContainer) {
-      overlayContainer.parentNode.removeChild(overlayContainer);
-    }
+function constForCreateContactDesktop() {
+  const nameInput = document.querySelector(".addContactInputNameDesktop");
+  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
+  const newName = nameInput.value.trim();
+  const newMail = mailInput.value.trim();
+  const newPhone = phoneInput.value.trim();
+  return { newName, newMail, newPhone };
+}
+  
+function hideOverlay() {
+  const overlayContainer = document.querySelector(".overlay-container");
+  if (overlayContainer) {
+    overlayContainer.parentNode.removeChild(overlayContainer);
   }
+}
   
   function editContactDestop(contactId) {  
     const selectedContact = currentUser.contacts.find(
@@ -249,47 +271,73 @@ function openContactScreenDesktopHTML(content, selectedContact) {
     overlayContainer.style.animation = "slide-in 0.5s ease-out";  
   }
   
-  function updateContactDesktop(contactId, e) {
-    const nameInput = document.querySelector(".addContactInputNameDesktop");
-    const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
-    const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
-    const updatedName = nameInput.value.trim();
-    const updatedMail = mailInput.value.trim();
-    const updatedPhone = phoneInput.value.trim();
-    if (updatedName === "" || updatedMail === "" || updatedPhone === "") {
-      alert("Bitte füllen Sie alle Felder aus.");
-      return;
+  function updateContactDesktop(contactId) {
+    const updatedInputs = getUpdatedInputsDesktop();
+    
+    if (validateInputs(updatedInputs)) {
+        const existingContact = findExistingContactDesktop(updatedInputs, contactId);
+
+        if (!existingContact) {
+            const oldContact = findOldContactDesktop(contactId);
+            const hasChanged = checkForChangesDesktop(oldContact, updatedInputs);
+            const updatedContactsData = updateContactsDataDesktop(contactId, updatedInputs, hasChanged);
+            saveAndInitDesktop(updatedContactsData);
+        }
     }
-    const existingContact = currentUser.contacts.find(
+}
+
+function getUpdatedInputsDesktop() {
+  const nameInput = document.querySelector(".addContactInputNameDesktop");
+  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
+  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
+
+  return {
+      updatedName: nameInput.value.trim(),
+      updatedMail: mailInput.value.trim(),
+      updatedPhone: phoneInput.value.trim()
+  };
+}
+
+function findExistingContactDesktop(updatedInputs, contactId) {
+  return currentUser.contacts.find(
       (contact) =>
-        contact.name === updatedName &&
-        contact.email === updatedMail &&
-        contact.id !== contactId
-    );
-    if (existingContact) {
-      alert("Ein Kontakt mit diesen Informationen existiert bereits.");
-      return;
-    }
-    const oldContact = currentUser.contacts.find(
-      (contact) => contact.id === contactId
-    );  
-    const hasNameChanged = oldContact.name !== updatedName;  // Überprüfe, ob es Änderungen am Kontakt gab
-    const hasMailChanged = oldContact.email !== updatedMail;
-    const hasPhoneChanged = oldContact.phone !== updatedPhone;
-    const updatedContactsData = currentUser.contacts.map((contact) =>  // Aktualisiere den Kontakt im Array
+          contact.name === updatedInputs.updatedName &&
+          contact.email === updatedInputs.updatedMail &&
+          contact.id !== contactId
+  );
+}
+
+function findOldContactDesktop(contactId) {
+  return currentUser.contacts.find((contact) => contact.id === contactId);
+}
+
+function checkForChangesDesktop(oldContact, updatedInputs) {
+  return {
+      hasNameChanged: oldContact.name !== updatedInputs.updatedName,
+      hasMailChanged: oldContact.email !== updatedInputs.updatedMail,
+      hasPhoneChanged: oldContact.phone !== updatedInputs.updatedPhone
+  };
+}
+
+function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {
+  return currentUser.contacts.map((contact) =>
       contact.id === contactId
-        ? {
-            ...contact,
-            name: hasNameChanged ? updatedName : contact.name,
-            email: hasMailChanged ? updatedMail : contact.email,
-            phone: hasPhoneChanged ? updatedPhone : contact.phone,
+          ? {
+              ...contact,
+              name: hasChanged.hasNameChanged ? updatedInputs.updatedName : contact.name,
+              email: hasChanged.hasMailChanged ? updatedInputs.updatedMail : contact.email,
+              phone: hasChanged.hasPhoneChanged ? updatedInputs.updatedPhone : contact.phone
           }
-        : contact
-    );
-    editContactObject(oldContact.id, updatedContactsData)
-    currentUser.save();
-    contactsInit(); // Zurück zur Kontaktliste wechseln
-  }
+          : contact
+  );
+}
+
+function saveAndInitDesktop(updatedContactsData) {
+  currentUser.contacts = updatedContactsData;
+  currentUser.save();
+  contactsInit();
+  hideOverlay();
+}
   
   function deleteContact(contactId) {
     if (!contactId) {

@@ -34,32 +34,6 @@ function handleAddContactClick() {
   addContactScreen(); // Diese Funktion wird direkt im HTML-Code aufgerufen
 }
 
-function createContactDesktop() {
-  const { newName, newMail, newPhone } = constForCreateContactDesktop();
-  
-  if (newName === "" || newMail === "" || newPhone === "") {
-    alert("Bitte füllen Sie alle Felder aus.");
-    return;
-  }
-  
-  const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-  let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
-  currentUser.contacts.push(createdContact);
-  currentUser.save();
-  hideOverlay();
-  contactsInit();  
-}
-
-function constForCreateContactDesktop() {
-  const nameInput = document.querySelector(".addContactInputNameDesktop");
-  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
-  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
-  const newName = nameInput.value.trim();
-  const newMail = mailInput.value.trim();
-  const newPhone = phoneInput.value.trim();
-  return { newName, newMail, newPhone };
-}
-
  // Developer tool (Nur für die entwickler, nicht für das Projekt ansich notwendig)
  async function deleteContactDataById() {  // Funktion deleteContactDataById ist für einen LokalStorage clear da falls ein Kontakt doppelt gespeichert wurde
   try {
