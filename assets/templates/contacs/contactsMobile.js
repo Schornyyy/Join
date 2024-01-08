@@ -28,7 +28,7 @@ function contactsContentBackgroundColorWhiteGray() {
     content.innerHTML = "";
     renderAddContactButtonDesktop();
     const contactsByFirstLetter = {};
-    contactsData.forEach((oneContact) => {
+    currentUser.contacts.forEach((oneContact) => {
       const firstLetter = oneContact.name.charAt(0).toUpperCase();
       updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact);
     });
@@ -119,29 +119,29 @@ function contactsContentBackgroundColorWhiteGray() {
   }
   
   function createContactMobile() {
+    const { newName, newMail, newPhone } = constForCreateContactMobile();
+    
+    if (newName === "" || newMail === "" || newPhone === "") {
+      alert("Bitte füllen Sie alle Felder aus.");
+      return;
+    }
+    
+    const defaultImage = "../assets/img/contact/defaultContactImage.svg";
+    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
+    currentUser.contacts.push(createdContact);
+    currentUser.save();
+    hideOverlay();
+    contactsInit();  
+  }
+  
+  function constForCreateContactMobile() {
     const nameInput = document.querySelector(".addContactInputNameMobile");
     const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
     const phoneInput = document.querySelector(".addContactInputPhoneMobile");
     const newName = nameInput.value.trim();
     const newMail = mailInput.value.trim();
     const newPhone = phoneInput.value.trim();
-    if (newName === "" || newMail === "" || newPhone === "") {
-      alert("Bitte füllen Sie alle Felder aus.");
-      return;
-    }
-    const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-    let nextContactId = contactsData.length + 1; // Hier wird die nächste ID festgelegt
-    const newContact = {
-      id: nextContactId,
-      contactName: newName,
-      contactMailAdress: newMail,
-      contactPhone: newPhone,
-      contactImg: defaultImage,
-    };
-    contactsData.push(newContact);
-    saveContactsData(contactsData);
-    hideOverlay();
-    contactsInit();  
+    return { newName, newMail, newPhone };
   }
 
   function editContactScreen(contactId) {  // Für Mobile Ansicht

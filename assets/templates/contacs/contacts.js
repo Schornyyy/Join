@@ -34,8 +34,8 @@ function handleAddContactClick() {
   addContactScreen(); // Diese Funktion wird direkt im HTML-Code aufgerufen
 }
 
-function createContact() {
-  const { newName, newMail, newPhone } = constForCreateContact();
+function createContactDesktop() {
+  const { newName, newMail, newPhone } = constForCreateContactDesktop();
   
   if (newName === "" || newMail === "" || newPhone === "") {
     alert("Bitte füllen Sie alle Felder aus.");
@@ -50,7 +50,7 @@ function createContact() {
   contactsInit();  
 }
 
-function constForCreateContact() {
+function constForCreateContactDesktop() {
   const nameInput = document.querySelector(".addContactInputNameDesktop");
   const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
   const phoneInput = document.querySelector(".addContactInputPhoneDesktop");

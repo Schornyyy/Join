@@ -177,14 +177,14 @@ function openContactScreenDesktopHTML(content, selectedContact) {
             <div class="addContactCloseXContainer">
               <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
             </div>
-            <form id="addContactShowOverlayDesktopID" onsubmit="createContact()">
+            <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
               <div class="addContactContainerFooter">
                 <input class="addContactInputNameDesktop" type="text" required placeholder="Name">
                 <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail">
                 <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone">
                 <div class="addContactButtonContainerDesktop">
                     <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
-                    <button class="createContactButton" onclick="createContact()">Create contact</button>
+                    <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
                 </div>
               </div>
             </form>
