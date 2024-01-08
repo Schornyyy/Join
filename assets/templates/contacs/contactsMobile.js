@@ -167,11 +167,12 @@ function findSelectedContact(contactId) {
         </div>
         <div class="addContactBlockHeader">
           <p class="addContactH1">Edit contact</p>
-          <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+          <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">          
         </div>
       </div>
       <div class="addContactBlankUserImg">
-        <img class="openContactUserImg" src="${selectedContact.contactImg}" alt="">
+        <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->
+        ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}
       </div>
       <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
         <div class="addContactContainerFooter">
@@ -372,4 +373,15 @@ function setupContactScreen(contactId) {
   showHeaderAndFooter();
   contactsContentBackgroundColorWhiteGray();
   addDropdownMenuClickListener();
+}
+
+function singleMemberToHTMLOpenContactMobile(member, index) {
+  let textcolor;
+  let iconRightStep = 10;
+  if (!isColorLight(member.colorCode)) textcolor = 'white';
+  return `
+      <div class="openContactUserImgMobile" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
+            ${getFirstLettersOfName(member.name)}
+      </div>
+  `;
 }

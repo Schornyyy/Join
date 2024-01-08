@@ -307,6 +307,17 @@
     width: 32px;    
   }
 
+  .openContactUserImgMobile {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 2px solid white;
+    position: relative;
+  }
+
   .openContactInformation {
     font-size: 1em;
     font-weight: bold;

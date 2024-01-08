@@ -247,7 +247,8 @@ function editContactDestop(contactId) {
       </div>
       <div class="addContactDesktopRightSideContainer">
         <div class="addContactBlankUserImgContainer">
-          <img class="openContactUserImg" src="" alt="">          
+          <!-- <img class="openContactUserImg" src="" alt=""> -->
+          ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}       
         </div>
         <div class="addContactDesktopRightSideContent">
           <div class="addContactCloseXContainer">
