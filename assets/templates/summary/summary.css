@@ -454,7 +454,7 @@ overflow: hidden;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 4rem;
+    gap: 1.5rem;
     padding-right: 1rem;
   }
 
@@ -702,7 +702,7 @@ overflow: hidden;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 8rem;
+    gap: 4rem;
     padding-right: 1rem;
   }
 
