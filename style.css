@@ -8,6 +8,7 @@
 @import url("./assets/templates/board/board.css");
 @import url("./assets/templates/summary/summary.css");
 @import url("./assets/templates/header/header.css");
+@import url("./assets/templates/footer/footer.css");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@400;500&display=swap");
 
 :root {
@@ -56,6 +57,7 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 
+/* TODO  LÄST SICH NICHT VERSCHIEBEN ????*/
 .menuTemplate {
   background-color: var(--light-grey);
   position: absolute;
@@ -66,14 +68,7 @@ body::-webkit-scrollbar {
 }
 
 @media only screen and (max-width: 750px) and (min-width: 250px) {
-  .desktopFooterLogo {
-    display: none;
-  }
-
-  .desktopFooterPolicy {
-    display: none;
-  }
-
+  /* TODO AUCH MARTIG BENUTZT DAS??? */
   .mobileHeader {
     display: flex;
     align-items: center;
@@ -85,99 +80,6 @@ body::-webkit-scrollbar {
     grid-column-start: 1;
     grid-column-end: 4;
     position: relative;
-  }
-
-  .boxShadow {
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-  }
-
-  .logoImgContainer {
-    width: 100%;
-    padding-left: 0.5rem;
-    padding-top: 0.5rem;
-  }
-
-  .logoImg {
-    width: 3.5rem;
-    height: 3rem;
-  }
-
-  .signUpContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none; /*Is ON for Design!*/
-  }
-
-  .signUpParagraph {
-    width: 120px;
-  }
-
-  .sign_up_Button {
-    background-color: var(--light-grey);
-    color: white;
-    border-radius: 8px;
-    border: 0;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    width: 70px;
-    height: 35px;
-  }
-
-  .userSymbolContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-right: 1rem;
-    /* display: none; Is ON for Design! */
-  }
-
-  .userSymbolContainerHelp {
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
-  }
-
-  .desktopFooterMenu {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 5rem;
-  }
-
-  .menu-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 4rem;
-    width: 4rem;
-  }
-
-  .footerHoverBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
-    width: 4.5rem;
-    height: 4.5rem;
-    cursor: pointer;
-  }
-
-  .footerHoverBox:hover {
-    background-color: var(--dark-blue);
-  }
-
-  .menu-item p {
-    color: var(--lighter-grey);
-    margin-top: 5px;
-  }
-
-  .mobileMenuFont {
-    font-size: 0.8rem;
   }
 }
 
@@ -203,21 +105,7 @@ body::-webkit-scrollbar {
     grid-area: zwei;
   }
 
-  .logoImgContainer {
-    display: none;
-  }
-
-  .mobileHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 5rem;
-    padding: 20px 40px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-  }
-
+  /* TODO */
   .menuTemplate {
     display: flex;
     flex-direction: column;
@@ -226,68 +114,5 @@ body::-webkit-scrollbar {
     grid-area: eins;
     position: sticky;
     height: 100dvh;
-  }
-
-  .desktopFooterMenu {
-    width: 100%;
-  }
-
-  .menu-item {
-    width: 100%;
-    height: 3rem;
-    margin-bottom: 15px;
-  }
-
-  .footerHoverBox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 2.5rem;
-    border-radius: 0.3rem;
-    width: 100%;
-    height: 100%;
-    gap: 0.5rem;
-    cursor: pointer;
-  }
-
-  .footerHoverBox:hover {
-    background-color: var(--dark-blue);
-  }
-
-  .footerHoverBox p {
-    color: var(--white-grey);
-  }
-
-  .desktopFooterPolicy {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 8rem;
-    transition: transform 0.5s ease;
-  }
-
-  .desktopFooterPolicy p {
-    color: var(--lighter-grey);
-    transition: transform 0.5s ease;
-  }
-
-  .mobileMenuFont {
-    font-size: 0.8rem;
-  }
-
-  .desktopFooterPolicyFont {
-    font-size: 0.8rem !important;
-  }
-
-  .desktopFooterPolicy p:hover {
-    color: var(--light-blue);
-    cursor: pointer;
-    transform: scaleX(1.2);
-    font-size: 1rem;
-  }
-
-  .desktopLegalBox {
-    transition: transform 0.5s ease;
   }
 }
