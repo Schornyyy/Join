@@ -259,48 +259,48 @@ function saveAndInit(updatedContactsData) {
   contactsInit();
 }
   
-  function deleteContactMobile(contactId) {
-    if (!validateContactId(contactId)) return;
-    const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
-    if (!confirmDelete) return;
-    try {
-      const contactIndex = findContactIndex(contactId);
+function deleteContactMobile(contactId) {
+  if (!validateContactId(contactId)) return;
+  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
+  if (!confirmDelete) return;  
+  try {
+      const contactIndex = findContactIndex(contactId);      
       if (contactIndex === -1) {
-        console.error("Selected contact not found in contactsData.");
-        return;
-      }
+          console.error("Selected contact not found in currentUser.contacts.");
+          return;
+      }      
       const deletedContact = removeContact(contactIndex);
       saveAndLogDeletedContact(deletedContact);
-    } catch (error) {
+  } catch (error) {
       handleDeleteError(error);
-    }
-    contactsInit();
-  }
+  }  
+  contactsInit();
+}
   
-  function validateContactId(contactId) {
-    if (!contactId) {
+function validateContactId(contactId) {
+  if (!contactId) {
       console.error("Invalid contact ID");
       return false;
-    }
-    return true;
   }
+  return true;
+}
   
-  function findContactIndex(contactId) {
-    return contactsData.findIndex((contact) => contact.id === contactId);
-  }
+function findContactIndex(contactId) {
+  return currentUser.contacts.findIndex((contact) => contact.id === contactId);
+}
   
-  function removeContact(contactIndex) {
-    return contactsData.splice(contactIndex, 1)[0];
-  }
+function removeContact(contactIndex) {
+  return currentUser.contacts.splice(contactIndex, 1)[0];
+}
   
-  function saveAndLogDeletedContact(deletedContact) {
-    saveContactsData(contactsData);
-    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
-  }
+function saveAndLogDeletedContact(deletedContact) {
+  currentUser.save();
+  console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+}
   
-  function handleDeleteError(error) {
-    console.error("Fehler beim Löschen des Kontakts:", error);
-  }
+function handleDeleteError(error) {
+  console.error("Fehler beim Löschen des Kontakts:", error);
+}
   
   function openContactScreenMobile(contactId) {
     const content = document.getElementById("contactsContent");
