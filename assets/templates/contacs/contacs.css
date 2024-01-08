@@ -462,8 +462,7 @@
   }
 
   .contactsContent {
-    background-color: white;
-    overflow-y: scroll!important; /* Hier den vertikalen Scrollbalken anzeigen */
+    background-color: white;    
     overflow-x: hidden; /* Übergeordneter Container darf horizontal nicht scrollen */
     position: relative;
     height: inherit; /* Oder die Höhe nach Bedarf festlegen */
@@ -535,9 +534,8 @@
     min-width: 70%;
     background-color: var(--white-grey);
     position: sticky;
-    top: 0;    
-    max-height: calc(100vh - 100px); /* Hier die maximale Höhe festlegen (100vh abzüglich Header-Höhe) */
-    overflow-y: scroll; /* Hier den vertikalen Scrollbalken anzeigen, wenn die Inhalte die Höhe überschreiten */
+    top: 0;
+    max-height: calc(100vh - 100px); /* Hier die maximale Höhe festlegen (100vh abzüglich Header-Höhe) */    
   }
 
   .contactsContentRightSideHeadLine {
