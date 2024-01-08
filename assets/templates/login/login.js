@@ -88,8 +88,5 @@ function loginAsGuest() {
 }
 
 function redirectToRegister() {
-
-  
   window.location.assign("./../register/register.html");
-
 }

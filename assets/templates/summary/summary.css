@@ -26,8 +26,25 @@
   font-weight: 600;
 }
 @media only screen and (max-width: 750px) and (min-width: 250px) {
+  .greetingGuestSummary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white-grey);
+  }
+
+  .greetingGuestSummaryParagraf {
+    font-size: 2rem;
+  }
+
   .greetingBoxShow {
     display: none;
+  }
+
+  .greetingUserSummaryName {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--light-blue);
   }
 
   .summaryToDos {
@@ -37,7 +54,6 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    /* border: solid 1px orange; */
   }
 
   .summaryRowContent {
@@ -47,7 +63,6 @@
     gap: 1rem;
     min-width: 18rem;
     width: 70%;
-    /* border: dotted 1px olive; */
   }
 
   .cursorPointer {
@@ -68,14 +83,12 @@
     align-items: center;
     margin-top: 2rem;
     background-color: var(--white-grey);
-    /* border: solid 1px green; */
   }
 
   .summaryHeaderHelper {
     display: flex;
     flex-direction: column;
     justify-content: ceter;
-    /* border: dotted 1px blue; */
   }
 
   .summaryHeader h1 {
@@ -108,13 +121,11 @@
     width: 100%;
     height: 5rem;
     gap: 1rem;
-
     transition: transform 0.5s ease;
   }
 
   .reactangle:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -129,23 +140,6 @@
   .reactangle img {
     height: 2.6rem;
   }
-
-  /* .summaryToDoSum {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-  }
-
-  .summaryToDoSum p {
-    font-size: 0.8rem;
-  }
-
-  .sammarySumNumber {
-    font-size: 2rem !important;
-    font-weight: 600;
-  } */
-
   /* ROW #1 END */
   /* ROW #2 START */
   .row2Helper {
@@ -155,13 +149,11 @@
     justify-content: space-around;
     min-width: 17rem;
     width: 100%;
-
     transition: transform 0.5s ease;
   }
 
   .row2Helper:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -227,13 +219,11 @@
     min-width: 5rem;
     width: 29%;
     height: 5rem;
-
     transition: transform 0.5s ease;
   }
 
   .squareButton:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -241,17 +231,6 @@
     width: 100%;
     height: 100%;
   }
-
-  /* .summaryToDoSum {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-  }
-
-  .summaryToDoSum.p {
-    font-size: 0.8rem;
-  } */
   /* ROW #3 END */
 
   .borderRadius {
@@ -268,10 +247,6 @@
 }
 
 @media only screen and (max-width: 900px) and (min-width: 751px) {
-  /* .content {
-overflow: hidden;
-  } */
-
   .greetingBoxShow {
     display: block;
   }
@@ -286,15 +261,11 @@ overflow: hidden;
     color: var(--light-blue);
   }
 
-  /* .summaryContent {
-    display: flex;
-    flex-direction: column;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    padding: 0;
-    margin: 0;
-  } */
+  .greetingUserSummaryName {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--light-blue);
+  }
 
   .summaryToDos {
     margin-top: 2rem;
@@ -303,7 +274,6 @@ overflow: hidden;
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    /* border: solid 1px orange; */
   }
 
   .summaryRowContent {
@@ -313,7 +283,6 @@ overflow: hidden;
     gap: 1rem;
     max-width: 120rem;
     width: 70%;
-    /* border: dotted 1px olive; */
   }
 
   .cursorPointer {
@@ -334,14 +303,12 @@ overflow: hidden;
     align-items: center;
     margin-top: 2rem;
     background-color: var(--white-grey);
-    /* border: solid 1px green; */
   }
 
   .summaryHeaderHelper {
     display: flex;
     flex-direction: column;
     justify-content: ceter;
-    /* border: dotted 1px blue; */
   }
 
   .summaryHeader h1 {
@@ -355,6 +322,7 @@ overflow: hidden;
     font-size: 2.5rem !important;
     font-family: Inter;
   }
+
   /* ROW #1 START */
   .row1 {
     display: flex;
@@ -374,13 +342,11 @@ overflow: hidden;
     width: 100%;
     height: 5rem;
     gap: 1rem;
-
     transition: transform 0.5s ease;
   }
 
   .reactangle:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -396,13 +362,6 @@ overflow: hidden;
     height: 2.6rem;
   }
 
-  /* .summaryToDoSum {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-  } */
-
   .summaryToDoSum.p {
     font-size: 0.6rem;
   }
@@ -415,13 +374,11 @@ overflow: hidden;
     justify-content: space-around;
     min-width: 17rem;
     width: 100%;
-
     transition: transform 0.5s ease;
   }
 
   .row2Helper:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -486,13 +443,11 @@ overflow: hidden;
     min-width: 5rem;
     width: 29%;
     height: 5rem;
-
     transition: transform 0.5s ease;
   }
 
   .squareButton:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -516,10 +471,6 @@ overflow: hidden;
 }
 
 @media only screen and (max-width: 1920px) and (min-width: 901px) {
-  /* .content {
-overflow: hidden;
-  } */
-
   .greetingBoxShow {
     display: block;
   }
@@ -534,15 +485,11 @@ overflow: hidden;
     color: var(--light-blue);
   }
 
-  /* .summaryContent {
-    display: flex;
-    flex-direction: column;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    padding: 0;
-    margin: 0;
-  } */
+  .greetingUserSummaryName {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--light-blue);
+  }
 
   .summaryToDos {
     margin-top: 2rem;
@@ -551,7 +498,6 @@ overflow: hidden;
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    /* border: solid 1px orange; */
   }
 
   .summaryRowContent {
@@ -561,7 +507,6 @@ overflow: hidden;
     gap: 1rem;
     max-width: 36rem;
     width: 70%;
-    /* border: dotted 1px olive; */
   }
 
   .cursorPointer {
@@ -582,14 +527,12 @@ overflow: hidden;
     align-items: center;
     margin-top: 2rem;
     background-color: var(--white-grey);
-    /* border: solid 1px green; */
   }
 
   .summaryHeaderHelper {
     display: flex;
     flex-direction: column;
     justify-content: ceter;
-    /* border: dotted 1px blue; */
   }
 
   .summaryHeader h1 {
@@ -603,6 +546,7 @@ overflow: hidden;
     font-size: 2.5rem !important;
     font-family: Inter;
   }
+
   /* ROW #1 START */
   .row1 {
     display: flex;
@@ -622,13 +566,11 @@ overflow: hidden;
     width: 100%;
     height: 5rem;
     gap: 1rem;
-
     transition: transform 0.5s ease;
   }
 
   .reactangle:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -650,10 +592,6 @@ overflow: hidden;
     align-items: center;
     justify-self: center;
   }
-
-  /* .summaryToDoSum.p {
-    font-size: 0.8rem;
-  } */
   /* ROW #1 END */
   /* ROW #2 START */
   .row2Helper {
@@ -663,13 +601,11 @@ overflow: hidden;
     justify-content: space-around;
     min-width: 17rem;
     width: 100%;
-
     transition: transform 0.5s ease;
   }
 
   .row2Helper:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
@@ -734,13 +670,11 @@ overflow: hidden;
     min-width: 5rem;
     width: 29%;
     height: 5rem;
-
     transition: transform 0.5s ease;
   }
 
   .squareButton:hover {
     background-color: var(--light-grey);
-
     transform: scale(1.05);
   }
 
