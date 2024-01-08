@@ -87,7 +87,6 @@ function loginAsGuest() {
   loginBtn.click();
 }
 
-
 function redirectToRegister() {
-  window.location.href = "./assets/templates/register/register.html"
+  window.location.assign("./../register/register.html");
 }
