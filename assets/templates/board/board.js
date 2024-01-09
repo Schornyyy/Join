@@ -529,19 +529,19 @@ function editSetPrioButton(prio) {
     editResetPrioButtons();
     prioNew = prio;
     switch (prio) {
-        case 'low':
+        case 'prio-low':
             let prioButtonLow = document.getElementById('prioButtonLow');
             let prioIconLow = document.getElementById('prioButtonIconLow');
             prioButtonLow.classList.add('input-prio-button-low-set');
             prioIconLow.src = './assets/img/board/prio-low-icon-white.svg';
             break;
-        case 'medium':
+        case 'prio-medium':
             let prioButtonMedium = document.getElementById('prioButtonMedium');
             let prioIconMedium = document.getElementById('prioButtonIconMedium');
             prioButtonMedium.classList.add('input-prio-button-medium-set');
             prioIconMedium.src = './assets/img/board/prio-medium-icon-white.svg';
             break;
-        case 'urgent':
+        case 'prio-urgent':
             let prioButtonUrgent = document.getElementById('prioButtonUrgent');
             let prioIconUrgent = document.getElementById('prioButtonIconUrgent');
             prioButtonUrgent.classList.add('input-prio-button-urgent-set');
@@ -587,15 +587,15 @@ function editDialogToHTML(task) {
             <div class="input-container">
                 <label for="">Priority</label>
                 <div class="input-prio-container">
-                    <div class="input-prio-button" id="prioButtonUrgent" onclick="editSetPrioButton('urgent')">
+                    <div class="input-prio-button" id="prioButtonUrgent" onclick="editSetPrioButton('prio-urgent')">
                         <span>Urgent</span>
                         <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon" id="prioButtonIconUrgent">
                     </div>
-                    <div class="input-prio-button" id="prioButtonMedium" onclick="editSetPrioButton('medium')">
+                    <div class="input-prio-button" id="prioButtonMedium" onclick="editSetPrioButton('prio-medium')">
                         <span>Medium</span>
                         <img class="prio-icon" src="./assets/img/board/prio-medium-icon.svg" alt="medium-icon" id="prioButtonIconMedium">
                     </div>
-                    <div class="input-prio-button" id="prioButtonLow" onclick="editSetPrioButton('low')">
+                    <div class="input-prio-button" id="prioButtonLow" onclick="editSetPrioButton('prio-low')">
                         <span>Low</span>
                         <img class="prio-icon" src="./assets/img/board/prio-low-icon.svg" alt="low-icon" id="prioButtonIconLow">
                     </div>
