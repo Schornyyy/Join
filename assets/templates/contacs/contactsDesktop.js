@@ -75,19 +75,15 @@ function renderAddContactButtonDesktop() {
   
 function openContactScreenDesktop(contactId) {  
   const content = document.getElementById("contactsContentRightSideID");
-  const selectedContact = currentUser.contacts.find(contact => contact.id === contactId);
-  
-  // Überprüfen Sie, ob der Kontakt tatsächlich geändert wurde
-  if (lastClickedContactId !== contactId) {
+  const selectedContact = currentUser.contacts.find(contact => contact.id === contactId); 
+  if (lastClickedContactId !== contactId) {  // Überprüfen Sie, ob der Kontakt tatsächlich geändert wurde
     openContactsScreenDesktopChangeColorWhite(lastClickedContactId); // Ändern Sie die Hintergrundfarbe des vorherigen Kontakts auf Weiß
     lastClickedContactId = contactId;
     openContactsScreenDesktopChangeColorBlack(contactId); // Ändern Sie die Hintergrundfarbe des aktuellen Kontakts auf Grau
   }
-
   openContactScreenDesktopHTML(content, selectedContact);
   showHeaderAndFooter();
-  showContactsContentRightSideDesktop();
-  
+  showContactsContentRightSideDesktop();  
   const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");
   contactContainer.style.animation = "slide-in 0.5s ease-out";
 }

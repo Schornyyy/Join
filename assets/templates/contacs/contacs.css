@@ -976,6 +976,17 @@
     border: 2px solid;
   }
 
+  .openContactUserImgMobile {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 2px solid white;
+    position: relative;
+  }
+
   .cancelContactDesktopDeleteButton {
     cursor: pointer;
     border: 1px solid;
