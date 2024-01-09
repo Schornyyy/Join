@@ -25,7 +25,7 @@ let contactsDatasource;
 //////////////// INIT
 
 function boardInit() {
-    tasksDatasource = tasks;
+    tasksDatasource = tasksForTesting;
     // subtasksDatasource = subtasksForTesting;
     contactsDatasource = contactsForTesting;
     renderBoard();
