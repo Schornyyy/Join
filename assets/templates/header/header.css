@@ -141,7 +141,6 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    /* padding-left: 0.4rem; */
   }
 
   .headerSubMenuHoverBox {
@@ -152,12 +151,13 @@
 
     width: 7.5rem;
     height: 2rem;
-    border: dotted 1px yellow;
+    /* border: dotted 1px yellow; */
     border-radius: 0.5rem;
+    padding-left: 0.4rem;
   }
 
   .headerSubMenuHoverBox:hover {
-    background-color: var(--light-grey);
+    background-color: var(--dark-blue);
   }
 
   .headerSubMenuHoverAnchor {
@@ -165,6 +165,7 @@
     text-decoration: none;
   }
   /* submenu end */
+
   .userLogoImg {
     width: 2.5rem;
     height: 2.5rem;
