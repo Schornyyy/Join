@@ -200,46 +200,62 @@
   /* z-index: 1; */
 }
 
-.join-logo-animation {
-  width: 100%;
-  height: 100%;
-  background-color: var(--white-text);
-  z-index: 21;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  animation: joinBackground 2s ease-in-out forwards;
-}
+@media screen and (max-width: 751px) {
+  #login-second-img {
+    display: none;
+  }
 
-.join-logo-animation img {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2);
-  z-index: 999;
-  opacity: 1;
-  animation: joinLogo 2s ease-in-out forwards;
-}
+  .join-logo-animation {
+    width: 100%;
+    height: 100%;
+    background-color: var(--white-text);
+    z-index: 21;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+    animation: joinBackground 2s ease-in-out forwards;
+  }
 
-@keyframes joinLogo {
-  0% {
+  .join-logo-animation img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%) scale(2);
+    z-index: 20;
+    opacity: 1;
+    animation: joinLogo 2s ease-in-out forwards;
   }
-  100% {
-    transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
+
+  @keyframes joinBackground {
+    0% {
+      background-color: var(--white-text);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes joinLogo {
+    0% {
+      transform: translate(-50%, -50%) scale(2);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
+    }
   }
 }
 
-/* Join-Logo Animation ende*/
-
-@media (max-with: 750px) {
+@media (max-width: 750px) {
   #login-second-img {
     display: block;
+    animation: JoinLoginSecondary 2s ease-in-out forwards;
   }
 
   #login-primary-img {
-    display: none;
+    display: block;
+    animation: JoinLoginPrimary 2s ease-in-out forwards;
   }
 
   .join-logo-animation {
@@ -261,7 +277,28 @@
     transform: translate(-50%, -50%) scale(2);
     z-index: 20;
     opacity: 1;
-    animation: joinLogo 2s ease-in-out forwards;
+  }
+
+  @keyframes JoinLoginSecondary {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(2);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
+    }
+  }
+
+  @keyframes JoinLoginPrimary {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(2);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
+    }
   }
 
   @keyframes joinBackground {
@@ -270,27 +307,6 @@
     }
     100% {
       background-color: transparent;
-    }
-  }
-
-  @keyframes joinLogo {
-    0% {
-      transform: translate(-50%, -50%) scale(2);
-      #login-primary-img {
-        opacity: 0;
-      }
-      #login-second-img {
-        opacity: 1;
-      }
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
-      #login-primary-img {
-        opacity: 1;
-      }
-      #login-second-img {
-        opacity: 0;
-      }
     }
   }
 }
