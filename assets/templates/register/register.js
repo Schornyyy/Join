@@ -84,4 +84,8 @@ async function emailAlreadyTaken(email) {
     return c;
 }
 
+function redirectToLoin() {
+    window.location.assign("./../login/login.html");
+}
+
 // local storage "Remember me"
