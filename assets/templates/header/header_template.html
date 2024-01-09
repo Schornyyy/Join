@@ -22,15 +22,18 @@
     <div
       onmouseover="changeHeaderImage(this)"
       onmouseout="changeHeaderImageBack(this)"
+      onclick="handleSubMenu()"
     >
       <img
+        id="header-profile-menu"
         class="userLogoImg summaryAnimateProgramm editHeaderImage"
         src="assets/img/header/headerCurrentGuestImage.svg"
         alt=""
+        out
       />
     </div>
 
-    <div class="headerSubMenu">
+    <div class="headerSubMenu" id="headerSubMenu">
       <div class="headerSubMenuBoxing">
         <div class="headerSubMenuHoverBox">
           <a
