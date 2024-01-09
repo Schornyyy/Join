@@ -2,6 +2,7 @@
   position: absolute;
   right: 1rem;
   top: 4rem;
+  z-index: 30;
 
   width: 8.5rem;
   height: 9rem;
