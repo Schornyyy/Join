@@ -74,37 +74,43 @@ function renderAddContactButtonDesktop() {
 }
   
 function openContactScreenDesktop(contactId) {  
-  const content = document.getElementById("contactsContentRightSideID");  // Holen Sie das Kontaktelement mit der ID "contactsContentRightSideID"  
-  const selectedContact = currentUser.contacts.find(contact => contact.id === contactId);  // Holen Sie den ausgewählten Kontakt anhand der ID  
-  openContactsScreenDesktopChangeColorBlack();  
-  openContactScreenDesktopChangeColorWhite(contactId);  
-  lastClickedContactId = contactId;  // Aktualisieren des zuletzt geklickten Kontakts
-  openContactScreenDesktopHTML(content, selectedContact);  
+  const content = document.getElementById("contactsContentRightSideID");
+  const selectedContact = currentUser.contacts.find(contact => contact.id === contactId);
+  
+  // Überprüfen Sie, ob der Kontakt tatsächlich geändert wurde
+  if (lastClickedContactId !== contactId) {
+    openContactsScreenDesktopChangeColorWhite(lastClickedContactId); // Ändern Sie die Hintergrundfarbe des vorherigen Kontakts auf Weiß
+    lastClickedContactId = contactId;
+    openContactsScreenDesktopChangeColorBlack(contactId); // Ändern Sie die Hintergrundfarbe des aktuellen Kontakts auf Grau
+  }
+
+  openContactScreenDesktopHTML(content, selectedContact);
   showHeaderAndFooter();
-  showContactsContentRightSideDesktop();  
-  const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");  // Select the container to slide in  
-  contactContainer.style.animation = "slide-in 0.5s ease-out";  // Apply the animation to the selected container
+  showContactsContentRightSideDesktop();
+  
+  const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");
+  contactContainer.style.animation = "slide-in 0.5s ease-out";
 }
   
-function openContactScreenDesktopChangeColorWhite(contactId) {
-  const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`); // Änderung der Hintergrundfarbe des aktuellen Kontakts
-  if (currentContactContainer) {
-    currentContactContainer.style.backgroundColor = "#2A3647"; // Ersetzen Sie "#2A3647" durch die gewünschte Farbe    
-    const currentContactH2 = currentContactContainer.querySelector("h2"); // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
-    if (currentContactH2) {
-      currentContactH2.style.color = "white";
+function openContactsScreenDesktopChangeColorWhite(contactId) {
+  const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
+  if (lastClickedContactContainer) {
+    lastClickedContactContainer.style.backgroundColor = "white";
+    const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");
+    if (lastClickedContactH2) {
+      lastClickedContactH2.style.color = "black";
     }
   }
 }
 
-function openContactsScreenDesktopChangeColorBlack() {
-  if (lastClickedContactId) { // Änderung der Hintergrundfarbe des zuletzt geklickten Kontakts (wenn vorhanden)    
-    const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${lastClickedContactId}"]`); // Holen Sie das zugehörige Kontaktelement anhand der Kontakt-ID    
-    if (lastClickedContactContainer) { // Überprüfen, ob das Element gefunden wurde, bevor Sie die Hintergrundfarbe ändern
-      lastClickedContactContainer.style.backgroundColor = "transparent";
-      const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2"); // Ändern Sie die Schriftfarbe des H2-Elements innerhalb des Containers
-      if (lastClickedContactH2) {
-        lastClickedContactH2.style.color = "black";
+function openContactsScreenDesktopChangeColorBlack(contactId) {
+  if (contactId) { // Überprüfen Sie, ob eine Kontakt-ID vorhanden ist
+    const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
+    if (currentContactContainer) {
+      currentContactContainer.style.backgroundColor = "#2A3647"; // Ändern Sie "#2A3647" durch die gewünschte Farbe    
+      const currentContactH2 = currentContactContainer.querySelector("h2");
+      if (currentContactH2) {
+        currentContactH2.style.color = "white";
       }
     }
   }
@@ -195,18 +201,18 @@ function addContactShowOverlayDesktop() {
     overlayContainer.style.animation = "slide-in 0.5s ease-out";
   }
 
-function createContactDesktop() {
-  const { newName, newMail, newPhone } = constForCreateContactDesktop();    
-  if (newName === "" || newMail === "" || newPhone === "") {
-    alert("Bitte füllen Sie alle Felder aus.");
-    return;
-  }    
-  const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-  let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
-  currentUser.contacts.push(createdContact);
-  currentUser.save();
-  hideOverlay();
-  contactsInit();  
+  function createContactDesktop() {
+    const { newName, newMail, newPhone } = constForCreateContactDesktop();    
+    if (newName === "" || newMail === "" || newPhone === "") {
+      alert("Bitte füllen Sie alle Felder aus.");
+      return;
+    }    
+    const defaultImage = "../assets/img/contact/defaultContactImage.svg";
+    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
+    currentUser.contacts.push(createdContact);
+    currentUser.save();
+    hideOverlay();
+    contactsInit();
 }
   
 function constForCreateContactDesktop() {
@@ -217,6 +223,16 @@ function constForCreateContactDesktop() {
   const newMail = mailInput.value.trim();
   const newPhone = phoneInput.value.trim();
   return { newName, newMail, newPhone };
+}
+
+// Neue Funktion hinzugefügt, um eine zufällige Kontakt-ID zu generieren
+function generateContactId() {
+  // Hier können Sie Ihre eigene Logik zur Generierung einer eindeutigen Kontakt-ID implementieren
+  // Zum Beispiel können Sie eine Kombination aus Zeitstempel und zufälliger Nummer verwenden
+  const timestamp = new Date().getTime();
+  const randomNum = Math.floor(Math.random() * 10000);
+  const contactId = `contact_${timestamp}_${randomNum}`;
+  return contactId;
 }
   
 function hideOverlay() {
@@ -338,32 +354,52 @@ function saveAndInitDesktop(updatedContactsData) {
 }
   
 function deleteContact(contactId) {
-  if (!contactId) {
-    console.error("Invalid contact ID");
-    return;
-  }
-  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
-  if (!confirmDelete) {
-    return;
-  }
+  if (!validateContactId(contactId)) return;
+  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
+  if (!confirmDelete) return;  
   try {
-    const contactIndex = currentUser.contacts.findIndex((contact) => contact.id === contactId);
-    console.log("Contact Index: " + contactIndex);  
-    if (contactIndex === -1) {
-      console.error("Selected contact not found in contactsData.");
-      return;
-    }
-    const deletedContact = currentUser.contacts.splice(contactIndex, 1)[0];
-    currentUser.contacts.splice(contactIndex, 1);
-    currentUser.save();
-    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+      const contactIndex = findContactIndex(contactId);      
+      if (contactIndex === -1) {
+          console.error("Selected contact not found in currentUser.contacts.");
+          return;
+      }      
+      const deletedContact = removeContact(contactIndex);
+      saveAndLogDeletedContact(deletedContact);
   } catch (error) {
-    console.error("Fehler beim Löschen des Kontakts:", error);
-  }
-  const content = document.getElementById("contactsContentRightSideContactDataContainerID");
-  content.innerHTML = "";
-  contactsInit();  
+      handleDeleteError(error);
+  }  
+  contactsInit();
 }
+
+function validateContactId(contactId) {
+  if (!contactId) {
+      console.error("Invalid contact ID");
+      return false;
+  }
+  return true;
+}
+  
+function findContactIndex(contactId) {
+  return currentUser.contacts.findIndex((contact) => contact.id === contactId);
+}
+  
+function removeContact(contactIndex) {
+  return currentUser.contacts.splice(contactIndex, 1)[0];
+}
+  
+function saveAndLogDeletedContact(deletedContact) {
+  currentUser.save();
+  console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+}
+  
+function handleDeleteError(error) {
+  console.error("Fehler beim Löschen des Kontakts:", error);
+}
+
+
+
+
+
   
 // Drop down Menü
 function addDropdownMenuClickListener() {
