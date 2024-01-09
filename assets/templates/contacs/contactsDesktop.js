@@ -1,37 +1,36 @@
 // JavaScript Logic for Desktop view
-
-function showContactsContentRightSideDesktop() {
+function showContactsContentRightSideDesktop() {  // Show contacts content right side only for desktop view
     const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
     showcontactsContentRightSide.style.display = "flex";
   }
   
-function hidecontactsContentRightSideDesktop() {
+function hidecontactsContentRightSideDesktop() {  // Hide contacts content right side only for mobile view
   const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
   showcontactsContentRightSide.style.display = "none";
 } 
-
-function renderContactsDesktop() {
+// ---------------------------------------------------------------------------------------------------------------
+function renderContactsDesktop() {  // Render function for contacts desktop view
   const content = document.getElementById("contactsContent");
   content.innerHTML = "";
   renderAddContactButtonDesktop();  // Add contact button desktop
-  const contactsByFirstLetter = groupContactsByFirstLetter();
-  renderContactsByFirstLetter(content, contactsByFirstLetter);
+  const contactsByFirstLetter = groupContactsByFirstLetter();  // Sorted the contacts by first letter
+  renderContactsByFirstLetter(content, contactsByFirstLetter);  // Render function for sorted contacts by first letter
 }
 
-function groupContactsByFirstLetter() {
+function groupContactsByFirstLetter() { // Create letter div container for sorted contacts by first letter
     const contactsByFirstLetter = {};
-    currentUser.contacts.forEach((oneContact) => {
+    currentUser.contacts.forEach((oneContact) => {  // For each contact sorted by first letter
         const firstLetter = oneContact.name.charAt(0).toUpperCase();
         if (!contactsByFirstLetter[firstLetter]) {
-            contactsByFirstLetter[firstLetter] = createLetterContainer(firstLetter);
+            contactsByFirstLetter[firstLetter] = createLetterContainer(firstLetter);  // Create div container for each contact with first letter sorted
         }
-        const oneContactContainer = createContactContainer(oneContact);
-        contactsByFirstLetter[firstLetter] += oneContactContainer;
+        const oneContactContainer = createContactContainer(oneContact);  // Create div container for each contact
+        contactsByFirstLetter[firstLetter] += oneContactContainer;  // Add the contact to the right first letter section
     });
     return contactsByFirstLetter;
 }
 
-function createLetterContainer(firstLetter) {
+function createLetterContainer(firstLetter) {  // Generate HTML for the letters
     return /*html*/ `
         <div class="letterAndContactsContainer">
             <div class="letter-column">
@@ -41,12 +40,11 @@ function createLetterContainer(firstLetter) {
     `;
 }
 
-function createContactContainer(oneContact) {
+function createContactContainer(oneContact) {  // Generate HTML for each contact
     return /*html*/ `
         <div class="oneContactContainer" id="contact-${oneContact.id}" onclick="openContactScreenDesktop(${oneContact.id})" data-contact-id="${oneContact.id}">
-            <div>
-                <!-- <img src="${oneContact.contactImg}" class="contactImg"> -->
-                ${singleMemberToHTML(oneContact, 0)}
+            <div>                
+                ${singleMemberToHTML(oneContact, 0)}  <!-- Create the user image with color code -->
             </div>
             <div class="contact-info-container">
                 <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
@@ -56,33 +54,34 @@ function createContactContainer(oneContact) {
     `;
 }
 
-function renderContactsByFirstLetter(content, contactsByFirstLetter) {
+function renderContactsByFirstLetter(content, contactsByFirstLetter) {  // Add each contact to the section
     Object.values(contactsByFirstLetter).forEach((section) => {
         content.innerHTML += section;
     });
 }
+// -----------------------------------------------------------------------------------------------
 
-function renderAddContactButtonDesktop() {
+function renderAddContactButtonDesktop() {  // Create add contact button for desktop view
   const contentDesktop = document.getElementById("contactsContent");
   const addContactButtonContainerDesktop = document.createElement("div");
-  addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Für die desktop Ansicht
+  addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Only for desktop view
   addContactButtonContainerDesktop.innerHTML = /*html*/ `
     <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
   contentDesktop.appendChild(addContactButtonContainerDesktop);  
-  addContactButtonContainerDesktop.addEventListener("click", function () {  // Fügt einen Event-Listener hinzu, um das Overlay zu zeigen    
+  addContactButtonContainerDesktop.addEventListener("click", function () {  // Add renderAddContactButtonDesktop to Event-Listener to show Overlay on desktop view    
   });
 }
   
-function openContactScreenDesktop(contactId) {  
+function openContactScreenDesktop(contactId) {  // Show clicked contact details for desktop view
   const content = document.getElementById("contactsContentRightSideID");
   const selectedContact = currentUser.contacts.find(contact => contact.id === contactId); 
-  if (lastClickedContactId !== contactId) {  // Überprüfen Sie, ob der Kontakt tatsächlich geändert wurde
-    openContactsScreenDesktopChangeColorWhite(lastClickedContactId); // Ändern Sie die Hintergrundfarbe des vorherigen Kontakts auf Weiß
+  if (lastClickedContactId !== contactId) {  // Check if contact changed
+    openContactsScreenDesktopChangeColorWhite(lastClickedContactId); // Change background color to white if contact is not klicked
     lastClickedContactId = contactId;
-    openContactsScreenDesktopChangeColorBlack(contactId); // Ändern Sie die Hintergrundfarbe des aktuellen Kontakts auf Grau
+    openContactsScreenDesktopChangeColorBlack(contactId); // Change background color to grey/black if contact is klicked
   }
-  openContactScreenDesktopHTML(content, selectedContact);
-  showHeaderAndFooter();
+  openContactScreenDesktopHTML(content, selectedContact);  // Generate HTML for clicked contact on dekstop view
+  showHeaderAndFooter();  // Show header and footer
   showContactsContentRightSideDesktop();  
   const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");
   contactContainer.style.animation = "slide-in 0.5s ease-out";
