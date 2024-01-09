@@ -126,7 +126,7 @@ function addContactFormMobileHTML() {
     `;
 }
 
-function createContactMobile() {
+async function createContactMobile() {
   const { newName, newMail, newPhone } = constForCreateContactMobile();
 
   if (newName === "" || newMail === "" || newPhone === "") {
@@ -136,6 +136,7 @@ function createContactMobile() {
 
   const defaultImage = "../assets/img/contact/defaultContactImage.svg";
   let createdContact = new Contact(
+    console.log(createdContact);
     newName,
     newMail,
     newPhone,
@@ -143,7 +144,7 @@ function createContactMobile() {
     currentUser.name
   );
   currentUser.contacts.push(createdContact);
-  currentUser.save();
+  await currentUser.save();
   hideOverlay();
   contactsInit();
 }
