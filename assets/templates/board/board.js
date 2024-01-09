@@ -264,7 +264,6 @@ function dragleaveHandler(event) {
 }
 
 function demarkDragoverAll() {
-    console.log("dmarkDragoverAll");
     let cardContainers = document.querySelectorAll('.card-container');
     for (let cardContainerI of cardContainers) {
         demarkDragover(cardContainerI);
