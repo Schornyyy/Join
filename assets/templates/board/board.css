@@ -271,6 +271,7 @@ progress[value]::-webkit-progress-bar {
 }
 
 .member-icon {
+    font-size: 0.8em;
     height: 32px;
     width: 32px;
     display: flex;

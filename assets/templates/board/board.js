@@ -19,6 +19,7 @@
 
 let urlPrefix = './assets';
 let tasksDatasource;
+let tasksDatasourceFiltered;
 let subtasksDatasource;
 let contactsDatasource;
 
@@ -26,6 +27,7 @@ let contactsDatasource;
 
 function boardInit() {
     tasksDatasource = tasksForTesting;
+    tasksDatasourceFiltered = tasksDatasource;
     // subtasksDatasource = subtasksForTesting;
     contactsDatasource = contactsForTesting;
     renderBoard();
@@ -45,7 +47,8 @@ function renderBoard() {
 
 function renderTasks(containerID, status) {
     let cardContainer = document.getElementById(containerID);
-    let tasksStatus = getTasksFromStatus(tasksDatasource, status);
+    // let tasksStatus = getTasksFromStatus(tasksDatasource, status);
+    let tasksStatus = getTasksFromStatus(tasksDatasourceFiltered, status);
     cardContainer.innerHTML = tasksToHML(tasksStatus);
     if (tasksStatus.length == 0) cardContainer.innerHTML += cardContainerEmptyToHTML();
 }
@@ -261,6 +264,7 @@ function dragleaveHandler(event) {
 }
 
 function demarkDragoverAll() {
+    console.log("dmarkDragoverAll");
     let cardContainers = document.querySelectorAll('.card-container');
     for (let cardContainerI of cardContainers) {
         demarkDragover(cardContainerI);
@@ -278,7 +282,7 @@ function demarkDragover(elem) {
 function moveTask(task, status) {
     task.status = status;
     renderBoard();
-    saveTasks();
+    // saveTasks();
 }
 
 ////////////////////////////////////////////////
@@ -293,18 +297,11 @@ function addKeyupListener() {
 }
 
 function filterTasks(phrase) {
-    let tasksTemp = tasks.filter(task =>
+    tasksDatasourceFiltered= tasksDatasource.filter(task =>
         task.title.toLowerCase().includes(phrase.toLowerCase())
     );
-    tasksDatasource = tasksTemp;
     renderBoard();
 }
-
-function clearFilter() {
-    tasksDatasource = tasks;
-    renderBoard();
-}
-
 
 //////////////////////////////////////////////
 //////////////////// MISC ////////////////////
@@ -331,7 +328,7 @@ function isColorLight(hexcode) {
         var a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
         return (a < 0.5);
     } else {
-        console.log('isColorLight(): Achtung kein hexcode. Gebe einfach true zurück!' );
+        console.log('isColorLight(): Achtung kein hexcode. Gebe einfach true zurück!');
         return true;
     }
 }
