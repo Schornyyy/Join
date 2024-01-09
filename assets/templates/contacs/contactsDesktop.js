@@ -197,7 +197,7 @@ function addContactShowOverlayDesktop() {
     overlayContainer.style.animation = "slide-in 0.5s ease-out";
   }
 
-  function createContactDesktop() {
+  async function createContactDesktop() {
     const { newName, newMail, newPhone } = constForCreateContactDesktop();    
     if (newName === "" || newMail === "" || newPhone === "") {
       alert("Bitte füllen Sie alle Felder aus.");
@@ -206,7 +206,7 @@ function addContactShowOverlayDesktop() {
     const defaultImage = "../assets/img/contact/defaultContactImage.svg";
     let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
     currentUser.contacts.push(createdContact);
-    currentUser.save();
+    await currentUser.save();
     hideOverlay();
     contactsInit();
 }
