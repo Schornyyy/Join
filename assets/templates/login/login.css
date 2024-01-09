@@ -46,6 +46,7 @@
   border: solid 1px #d1d1d1;
   border-radius: 0.5rem;
   padding: 0.4rem 1rem 0.4rem 1rem;
+  margin-top: 2rem;
   height: 2.5rem;
   width: 18rem;
   gap: 0.75rem;
@@ -199,39 +200,14 @@
   /* z-index: 1; */
 }
 
-#login-second-img {
-  display: none;
-}
-
 .join-logo-animation {
-  width: 100%;
-  height: 100%;
-  background-color: var(--white-text);
-  z-index: 21;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  animation: joinBackground 2s ease-in-out forwards;
-}
-
-.join-logo-animation img {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(2);
-  z-index: 20;
+  z-index: 999;
   opacity: 1;
   animation: joinLogo 2s ease-in-out forwards;
-}
-
-@keyframes joinBackground {
-  0% {
-    background-color: var(--white-text);
-  }
-  100% {
-    background-color: transparent;
-  }
 }
 
 @keyframes joinLogo {
@@ -244,65 +220,3 @@
 }
 
 /* Join-Logo Animation ende*/
-
-@media (max-with: 750px) {
-  #login-second-img {
-    display: block;
-  }
-
-  #login-primary-img {
-    display: none;
-  }
-
-  .join-logo-animation {
-    width: 100%;
-    height: 100%;
-    background-color: var(--light-grey);
-    z-index: 21;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    animation: joinBackground 2s ease-in-out forwards;
-  }
-
-  .join-logo-animation img {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(2);
-    z-index: 20;
-    opacity: 1;
-    animation: joinLogo 2s ease-in-out forwards;
-  }
-
-  @keyframes joinBackground {
-    0% {
-      background-color: var(--light-grey);
-    }
-    100% {
-      background-color: transparent;
-    }
-  }
-
-  @keyframes joinLogo {
-    0% {
-      transform: translate(-50%, -50%) scale(2);
-      #login-primary-img {
-        opacity: 0;
-      }
-      #login-second-img {
-        opacity: 1;
-      }
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
-      #login-primary-img {
-        opacity: 1;
-      }
-      #login-second-img {
-        opacity: 0;
-      }
-    }
-  }
-}
