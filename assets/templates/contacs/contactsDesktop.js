@@ -469,3 +469,14 @@ function singleMemberToHTMLOpenContactDesktop(member, index) {
       </div>
   `;
 }
+
+function deleteFirstContact() {
+  if (currentUser.contacts.length > 0) {
+      const deletedContact = currentUser.contacts.shift(); // Entfernt den ersten Kontakt aus dem Array
+      saveAndLogDeletedContact(deletedContact);
+  } else {
+      console.error("No contacts available to delete.");
+  }
+
+  contactsInit();
+}
