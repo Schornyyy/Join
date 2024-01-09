@@ -96,9 +96,9 @@ function getFinishedSubtasks(task) {
 */
 
 function getFinishedSubtasks(task) {
-    let finishedSubtasks = task.subtasks.find(subtask => subtask.finished);
+    let finishedSubtasks = task.subtasks.filter(subtask => subtask.finished);
     if (finishedSubtasks)
-        return [finishedSubtasks];
+        return finishedSubtasks;
     else
         return [];
 }
@@ -383,7 +383,7 @@ function showDialogDetail(taskID) {
     detailDialog.classList.remove('reini-d-none');
     editDialog.classList.add('reini-d-none');
 
-    let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    let task = tasksDatasourceFiltered.find(taskElem => taskElem.id == taskID);
     detailDialog.innerHTML = detailDialogToHTML(task);
 }
 
@@ -450,16 +450,18 @@ function detailSingleMemberToHTML(member) {
 function detailSubtasksToHTML(task) {
     let subtasksTemp = getSubtasks(task);
     let output = '';
+    let i= 0;
     for (let subtaskTemp of subtasksTemp) {
-        output += detailSingleSubtaskToHTML(subtaskTemp);
+        output += detailSingleSubtaskToHTML(subtaskTemp, task, i);
+        i++;
     }
     return output;
 }
 
-function detailSingleSubtaskToHTML(subtask) {
+function detailSingleSubtaskToHTML(subtask, task, indexOfSubtask) {
     return `
-        <div class="detail-subtask">
-            <img src="${getSubtaskCheckboxIconURL(subtask)}" alt="checkbox">
+        <div class="detail-subtask" onclick="toggleSubtask(${task.id}, ${indexOfSubtask})">
+            <img src="${getSubtaskCheckboxIconURL(subtask)}" alt="checkbox" id="checkbox${indexOfSubtask}">
             <p>${subtask.title}</p>
         </div>
     `;
@@ -469,8 +471,15 @@ function getSubtaskCheckboxIconURL(subtask) {
     return subtask.finished ? './assets/img/board/checkbox-checked-icon.svg' : './assets/img/board/checkbox-icon.svg'
 }
 
+function toggleSubtask(taskID, subtaskIndex) {
+    let task= tasksDatasource.find(task => task.id==taskID);
+    let subtask= task.subtasks[subtaskIndex];
 
-
+    subtask.finished= !subtask.finished;
+    // currentUser.save();
+    showDialogDetail(taskID);
+    renderBoard();
+}
 
 
 
@@ -703,8 +712,8 @@ function editSaveTask(taskID) {
 
 
 function testen() {
-    let tasksTemp = tasks.filter(task => task.title.includes('testen'));
-    tasksDatasource = tasksTemp;
-    renderBoard();
+    let taskTesten= tasksDatasource[4];
+    console.log(getAmountOfSubtasks(taskTesten));
+    console.log(getAmountOfFinishedSubtasks(taskTesten));
 }
 
