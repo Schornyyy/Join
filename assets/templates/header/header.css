@@ -1,4 +1,17 @@
 @media only screen and (max-width: 750px) and (min-width: 250px) {
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    height: 5rem;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    position: relative;
+  }
+
   /* submenu start */
   .headerSubMenu {
     position: absolute;
@@ -19,10 +32,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    /* padding-left: 0.4rem; */
   }
 
-  .headerSubMenuBoxing {
+  .headerSubMenuHoverBox {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -30,18 +42,20 @@
 
     width: 7.5rem;
     height: 2rem;
-    border: dotted 1px yellow;
+    /* border: dotted 1px yellow; */
     border-radius: 0.5rem;
+    padding-left: 0.4rem;
   }
 
-  .headerSubMenuBoxing:hover {
-    background-color: var(--light-grey);
+  .headerSubMenuHoverBox:hover {
+    background-color: var(--dark-blue);
   }
 
-  .headerSubMenuBoxing a {
+  .headerSubMenuHoverAnchor {
     color: var(--font-popUp);
     text-decoration: none;
   }
+
   /* submenu end */
 
   .theProgramm {
@@ -130,7 +144,7 @@
     /* padding-left: 0.4rem; */
   }
 
-  .headerSubMenuBoxing {
+  .headerSubMenuHoverBox {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -142,11 +156,11 @@
     border-radius: 0.5rem;
   }
 
-  .headerSubMenuBoxing:hover {
+  .headerSubMenuHoverBox:hover {
     background-color: var(--light-grey);
   }
 
-  .headerSubMenuBoxing a {
+  .headerSubMenuHoverAnchor {
     color: var(--font-popUp);
     text-decoration: none;
   }
