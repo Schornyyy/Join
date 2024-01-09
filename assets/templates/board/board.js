@@ -20,7 +20,6 @@
 let urlPrefix = './assets';
 let tasksDatasource;
 let tasksDatasourceFiltered;
-let subtasksDatasource;
 let contactsDatasource;
 
 //////////////// INIT
@@ -28,7 +27,6 @@ let contactsDatasource;
 function boardInit() {
     tasksDatasource = tasksForTesting;
     tasksDatasourceFiltered = tasksDatasource;
-    // subtasksDatasource = subtasksForTesting;
     contactsDatasource = contactsForTesting;
     renderBoard();
     boardInitDragAndDrop();
@@ -102,20 +100,6 @@ function getFinishedSubtasks(task) {
     else
         return [];
 }
-
-function getSubtaskById(idParam) {
-    return subtasksDatasource.find(subtask => subtask.id == idParam);
-}
-
-/*
-function getSubtasks(task) {
-    let output = [];
-    for (let subtaskID of task.subtasks) {
-        output.push(subtasksDatasource.find(subtask => subtask.id == subtaskID));
-    }
-    return output;
-}
-*/
 
 function getSubtasks(task) {
     return task.subtasks;
@@ -510,6 +494,41 @@ function showDialogEdit(taskID) {
     let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
     editDialog.innerHTML = editDialogToHTML(task);
     editDialogFillInputs(task);
+    addFocusHandler();
+    addDropdownClickHandler();
+}
+
+function addFocusHandler() {
+    let inputSelectMembersElement= document.getElementById('inputSelectMembers');
+    inputSelectMembersElement.addEventListener('focusin', expandDropdown);
+}
+
+function addDropdownClickHandler() {
+    let dialogElem= document.getElementById('editDialog');
+    let inputContainerMembersElement= document.getElementById('inputContainerMembers');
+    dialogElem.addEventListener('click', event => {
+        if (inputContainerMembersElement.contains(event.target)) {
+            console.log('es wurde innerhalb geklickt');
+        } else {
+            collapseDropdown();
+        }
+    });
+}
+
+function expandDropdown() {
+    let dropdownContactsElement= document.getElementById('dropdownContacts');
+    let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
+
+    dropdownContactsElement.classList.remove('reini-d-none');
+    editTaskMembersContainerElement.classList.add('reini-d-none');
+}
+
+function collapseDropdown() {
+    let dropdownContactsElement= document.getElementById('dropdownContacts');
+    let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
+
+    dropdownContactsElement.classList.add('reini-d-none');
+    editTaskMembersContainerElement.classList.remove('reini-d-none');
 }
 
 //////////////// RENDER EDIT DIALOG
@@ -601,13 +620,16 @@ function editDialogToHTML(task) {
                     </div>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="input-container" id="inputContainerMembers">
                 <label for="">Assigned to</label>
-                <select class="edit-select-members" name="select-members" id="selectMembers">
-                    <option value="" disabled selected">Select contancts to assign</option>
-                    ${editSelectMembersToHTML(task)}
-                </select>
-                <div id="editTaskMembersContainer">
+                <div class="input-wrapper edit-input-wrapper">
+                    <input class="input-select-members" type="text" placeholder="Add new subtask" id="inputSelectMembers">
+                    <img src="./assets/img/board/dropdown-down-icon.svg" alt="dropdown-down">
+                </div>                
+                <div class="dropdown-menu reini-d-none" id="dropdownContacts">
+                    ${editDropdownMembersToHTML(task)}
+                </div>
+                <div class="edit-taskmembers-container" id="editTaskMembersContainer">
                     ${editMembersToHTML(task)}
                 </div>
             </div>
@@ -632,11 +654,17 @@ function editDialogToHTML(task) {
     `;
 }
 
-function editSelectMembersToHTML(task) {
+function editDropdownMembersToHTML(task) {
     let output = '';
     for (let contact of contactsDatasource) {
         output += `
-            <option value="${contact.email}">${contact.name}</option>
+            <div class="members-dropdown-item">
+                <div class="member-item-name-container">
+                    <div class="member-icon">HL</div>
+                    <span>Hermann Li</span>
+                </div>
+                <img src="./assets/img/board/checkbox-icon.svg" alt="checkbox">
+            </div>
         `;
     };
     return output;
@@ -674,10 +702,29 @@ function editSingleMemberToHTML(member) {
     if (!isColorLight(member.colorCode)) textcolor = 'white';
     return `
         <div class="member-icon" style="background-color:${member.colorCode};color:${textcolor};">
-            ${getFirstLetterOfName(member)}
+            ${getFirstLettersOfName(member.name)}
         </div>
     `;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function editSaveTask(taskID) {
     //TODO: Prio, Contacts, Subtasks
@@ -693,6 +740,7 @@ function editSaveTask(taskID) {
 
     renderBoard();
     // saveTasks();
+    // currentUser.save();
     showDialogDetail(taskID);
 }
 

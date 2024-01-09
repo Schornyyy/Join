@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testen-dropdown</title>
+    <link rel="stylesheet" href="./board.css">
+    <script src="./testen-dropdown.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+
+    <div class="dialog-container" id="dialogContainer">
+        <div class="dialog detail-dialog" id="detailDialog">
+            <div class="input-container">
+                <label for="">Assigned to</label>
+
+                <div class="input-wrapper edit-input-wrapper">
+                    <input class="input-select-members" type="text" placeholder="Add new subtask" id="inputSelectMembers">
+                    <img src="../../img/board/dropdown-down-icon.svg" alt="dropdown-down">
+                </div>
+                
+                <div class="dropdown-menu reini-d-none" id="dropdownContacts">
+                    <div class="members-dropdown-item">
+                        <div class="member-item-name-container">
+                            <div class="member-icon">HL</div>
+                            <span>Hermann Li</span>
+                        </div>
+                        <img src="../../img/board/checkbox-icon.svg" alt="checkbox">
+                    </div>
+                </div>
+
+
+                <div class="edit-taskmembers-container" id="editTaskMembersContainer">
+                    <div class="member-icon" style="background-color:#230C33;color:white;">
+                        H
+                    </div>
+                    <div class="member-icon" style="background-color:#BBA0B2;color:undefined;">
+                        D
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

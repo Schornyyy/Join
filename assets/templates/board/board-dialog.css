@@ -214,12 +214,12 @@
     border: 2px solid var(--reini-light-grey);
 }
 
-#editTaskMembersContainer {
+.edit-taskmembers-container {
     display: flex;
     gap: 6px;
 }
 
-#editTaskMembersContainer .member-icon {
+.edit-taskmembers-container .member-icon {
     font-size: 20px;
     height: 40px;
     width: 40px;
@@ -265,3 +265,27 @@
 .edit-OKbutton img {
     width: 0.8em;
 }
+
+
+/***********************************/
+/*************** TEMP **************/
+/***********************************/
+
+
+.dropdown-menu {
+    background-color: lightcoral;
+}
+
+.members-dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.member-item-name-container {
+    display: flex;
+    align-items: center;
+}
+
+
+
