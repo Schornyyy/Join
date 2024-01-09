@@ -266,6 +266,9 @@
 }
 
 @media only screen and (max-width: 900px) and (min-width: 751px) {
+  .greetingUserSummary {
+    display: none;
+  }
   .greetingBoxShow {
     display: block;
   }
@@ -490,6 +493,9 @@
 }
 
 @media only screen and (max-width: 1920px) and (min-width: 901px) {
+  .greetingUserSummary {
+    display: none;
+  }
   .greetingBoxShow {
     display: block;
   }
