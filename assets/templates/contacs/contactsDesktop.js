@@ -123,8 +123,7 @@ function openContactScreenDesktopHTML(content, selectedContact) {
     </div>  
     <div id="contactsContentRightSideContactDataContainerID">
       <div class="contactsContentRightSideUserImgAndNameContainer">
-        <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->
-        
+        <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->        
         ${singleMemberToHTMLOpenContactDesktop(selectedContact, 0)}
       <div>
           <h2 class="contactsContentRightSideUserNameH2">${selectedContact.name}</h2>
@@ -220,16 +219,6 @@ function constForCreateContactDesktop() {
   const newPhone = phoneInput.value.trim();
   return { newName, newMail, newPhone };
 }
-
-// Neue Funktion hinzugefügt, um eine zufällige Kontakt-ID zu generieren
-function generateContactId() {
-  // Hier können Sie Ihre eigene Logik zur Generierung einer eindeutigen Kontakt-ID implementieren
-  // Zum Beispiel können Sie eine Kombination aus Zeitstempel und zufälliger Nummer verwenden
-  const timestamp = new Date().getTime();
-  const randomNum = Math.floor(Math.random() * 10000);
-  const contactId = `contact_${timestamp}_${randomNum}`;
-  return contactId;
-}
   
 function hideOverlay() {
   const overlayContainer = document.querySelector(".overlay-container");
@@ -258,8 +247,7 @@ function editContactDestop(contactId) {
         </div>
       </div>
       <div class="addContactDesktopRightSideContainer">
-        <div class="addContactBlankUserImgContainer">
-          <!-- <img class="openContactUserImg" src="" alt=""> -->
+        <div class="addContactBlankUserImgContainer">          
           ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}       
         </div>
         <div class="addContactDesktopRightSideContent">
@@ -349,48 +337,7 @@ function saveAndInitDesktop(updatedContactsData) {
   hideOverlay();
 }
   
-function deleteContact(contactId) {
-  if (!validateContactId(contactId)) return;
-  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
-  if (!confirmDelete) return;  
-  try {
-      const contactIndex = findContactIndex(contactId);      
-      if (contactIndex === -1) {
-          console.error("Selected contact not found in currentUser.contacts.");
-          return;
-      }      
-      const deletedContact = removeContact(contactIndex);
-      saveAndLogDeletedContact(deletedContact);
-  } catch (error) {
-      handleDeleteError(error);
-  }  
-  contactsInit();
-}
 
-function validateContactId(contactId) {
-  if (!contactId) {
-      console.error("Invalid contact ID");
-      return false;
-  }
-  return true;
-}
-  
-function findContactIndex(contactId) {
-  return currentUser.contacts.findIndex((contact) => contact.id === contactId);
-}
-  
-function removeContact(contactIndex) {
-  return currentUser.contacts.splice(contactIndex, 1)[0];
-}
-  
-function saveAndLogDeletedContact(deletedContact) {
-  currentUser.save();
-  console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
-}
-  
-function handleDeleteError(error) {
-  console.error("Fehler beim Löschen des Kontakts:", error);
-}
 
 
 

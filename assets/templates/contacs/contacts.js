@@ -34,12 +34,57 @@ function handleAddContactClick() {
   addContactScreen(); // This function is called in HTML-Code and shows the "add contact screen" to add a new contact person
 }
 
-// Developer tool (only for developer, not needed for the project himself)
-async function deleteContactDataById() {  // Funktion deleteContactDataById ist für einen LokalStorage clear da falls ein Kontakt doppelt gespeichert wurde
+//---------------------------------------------------------------------------------------
+function deleteContact(contactId) {  // Delete contact function
+  if (!validateContactId(contactId)) return;  // Validate contact ID for no double contact ID´s
+  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
+  if (!confirmDelete) return;  
   try {
-    localStorage.clear();  // Lösche alle Daten im localStorage
-    contactsData = await fetchContactsData();  // Lade die Daten vom Server
-    localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Speichere die neu geladenen Daten im localStorage
+      const contactIndex = findContactIndex(contactId);  // Find contact ID
+      if (contactIndex === -1) {
+          console.error("Selected contact not found in currentUser.contacts.");
+          return;
+      }      
+      const deletedContact = removeContact(contactIndex);  // Remove contact
+      saveAndLogDeletedContact(deletedContact);  // Save deleted contact
+  } catch (error) {
+      handleDeleteError(error);  // Handle deleted contact error
+  }  
+  contactsInit();  // contacts init 
+}
+
+function validateContactId(contactId) {  // validate contact ID if exist
+  if (!contactId) {
+      console.error("Invalid contact ID");  // catch error
+      return false;
+  }
+  return true;
+}
+  
+function findContactIndex(contactId) {  // Find contact ID
+  return currentUser.contacts.findIndex((contact) => contact.id === contactId);
+}
+  
+function removeContact(contactIndex) {  // Remove contact
+  return currentUser.contacts.splice(contactIndex, 1)[0];
+}
+  
+function saveAndLogDeletedContact(deletedContact) {  // Save deleted contact
+  currentUser.save();
+  console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+}
+  
+function handleDeleteError(error) {  // Catch error
+  console.error("Fehler beim Löschen des Kontakts:", error);
+}
+// -------------------------------------------------------------------------------
+
+// Developer tool (only for developer, not needed for the project himself)
+async function deleteContactDataById() {  // Function deleteContactDataById is for clear lokalStorage if one Kontact need to delete manuel without contact ID
+  try {
+    localStorage.clear();  // Clear all Data in localStorage
+    contactsData = await fetchContactsData();  // Fetch data from server
+    localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Save new data in localStorage
     console.log("Kontakt-Daten wurden erfolgreich gelöscht und neu geladen.");
   } catch (error) {
     console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
