@@ -1,4 +1,4 @@
-// JavaScript Logik für die Desktop Ansicht
+// JavaScript Logic for Desktop view
 
 function showContactsContentRightSideDesktop() {
     const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
