@@ -336,14 +336,7 @@ function saveAndInitDesktop(updatedContactsData) {
   contactsInit();
   hideOverlay();
 }
-  
 
-
-
-
-
-
-  
 // Drop down Menü
 function addDropdownMenuClickListener() {
   const dropdownTrigger = document.getElementById("menuContactOptionsButton");
@@ -404,26 +397,4 @@ function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgew�
   }  
   const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
   dropdownMenu.style.display = "none";
-}
-
-function singleMemberToHTMLOpenContactDesktop(member, index) {
-  let textcolor;
-  let iconRightStep = 10;
-  if (!isColorLight(member.colorCode)) textcolor = 'white';
-  return `
-      <div class="openContactUserImg" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
-            ${getFirstLettersOfName(member.name)}
-      </div>
-  `;
-}
-
-function deleteFirstContact() {
-  if (currentUser.contacts.length > 0) {
-      const deletedContact = currentUser.contacts.shift(); // Entfernt den ersten Kontakt aus dem Array
-      saveAndLogDeletedContact(deletedContact);
-  } else {
-      console.error("No contacts available to delete.");
-  }
-
-  contactsInit();
 }

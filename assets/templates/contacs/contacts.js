@@ -79,6 +79,30 @@ function handleDeleteError(error) {  // Catch error
 }
 // -------------------------------------------------------------------------------
 
+function singleMemberToHTMLOpenContactDesktop(member, index) {  // Show the color from user image background
+  let textcolor;
+  let iconRightStep = 10;
+  if (!isColorLight(member.colorCode)) textcolor = 'white';
+  return `
+      <div class="openContactUserImg" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
+            ${getFirstLettersOfName(member.name)}
+      </div>
+  `;
+}
+// -----------------------------------------------------------------------------------
+
+// Developer tool (only for developer, not needed for the project himself)
+function deleteFirstContact() {
+  if (currentUser.contacts.length > 0) {
+      const deletedContact = currentUser.contacts.shift(); // Delete the first contact at currentUser.contacts array
+      saveAndLogDeletedContact(deletedContact);  // Save data after deleting contact
+  } else {
+      console.error("No contacts available to delete.");  // Show console error 
+  }
+  contactsInit();  // Call function contactsInit 
+}
+// ----------------------------------------------------------------------------------------
+
 // Developer tool (only for developer, not needed for the project himself)
 async function deleteContactDataById() {  // Function deleteContactDataById is for clear lokalStorage if one Kontact need to delete manuel without contact ID
   try {
@@ -86,7 +110,7 @@ async function deleteContactDataById() {  // Function deleteContactDataById is f
     contactsData = await fetchContactsData();  // Fetch data from server
     localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Save new data in localStorage
     console.log("Kontakt-Daten wurden erfolgreich gelöscht und neu geladen.");
-  } catch (error) {
+  } catch (error) {  // catch error
     console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
   }
 }
