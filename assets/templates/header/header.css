@@ -108,7 +108,7 @@
 
 @media only screen and (max-width: 1920px) and (min-width: 751px) {
   /* submenu start */
-  /* .headerSubMenu {
+  .headerSubMenu {
     position: absolute;
     right: 1rem;
     top: 4rem;
@@ -124,31 +124,32 @@
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    padding-left: 1rem;
+    /* padding-left: 0.4rem; */
   }
 
   .headerSubMenuBoxing {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     cursor: pointer;
+
+    width: 7.5rem;
+    height: 2rem;
+    border: dotted 1px yellow;
+    border-radius: 0.5rem;
   }
 
   .headerSubMenuBoxing:hover {
-    color: var(--light-grey);
-  }
-  .headerSubMenuBoxing a:visited {
-    color: none;
+    background-color: var(--light-grey);
   }
 
   .headerSubMenuBoxing a {
     color: var(--font-popUp);
     text-decoration: none;
   }
-
-  .headerSubMenuBoxing a:active {
-    color: var(--font-popUp);
-  } */
   /* submenu end */
   .userLogoImg {
     width: 2.5rem;
