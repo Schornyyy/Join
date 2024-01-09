@@ -119,19 +119,17 @@ function contactsContentBackgroundColorWhiteGray() {
   }
   
   function createContactMobile() {
-    const { newName, newMail, newPhone } = constForCreateContactMobile();
-    
+    const { newName, newMail, newPhone } = constForCreateContactMobile();    
     if (newName === "" || newMail === "" || newPhone === "") {
       alert("Bitte füllen Sie alle Felder aus.");
       return;
-    }
-    
+    }    
     const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
+    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);
     currentUser.contacts.push(createdContact);
     currentUser.save();
     hideOverlay();
-    contactsInit();  
+    contactsInit();
   }
   
   function constForCreateContactMobile() {
