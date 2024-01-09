@@ -208,7 +208,10 @@ function addContactShowOverlayDesktop() {
     currentUser.contacts.push(createdContact);
     currentUser.save();
     hideOverlay();
-    contactsInit();
+    setTimeout(function() {
+      contactsInit(); // Hier kommt der Code, der nach einer Sekunde ausgeführt werden soll
+  }, 1000);
+    
 }
   
 function constForCreateContactDesktop() {
