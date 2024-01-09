@@ -1,7 +1,7 @@
 .headerSubMenu {
   position: absolute;
-  right: 2rem;
-  top: 8rem;
+  right: 1rem;
+  top: 4rem;
 
   width: 8.5rem;
   height: 9rem;
@@ -17,16 +17,14 @@
   justify-content: center;
   gap: 0.8rem;
   padding-left: 1rem;
-
-
 }
 
 .headerSubMenuBoxing {
   cursor: pointer;
 }
 
-.hederSubMenu p {
-  color: var(--font-popUp);
+.headerSubMenuBoxing p {
+  color: var(--font-popUp) !important;
 }
 
 @media only screen and (max-width: 750px) and (min-width: 250px) {

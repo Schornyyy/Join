@@ -41,6 +41,25 @@
     display: none;
   }
 
+  .greetingUserSummary {
+    display: none;
+    flex-direction: column;
+    background-color: var(--white-grey);
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    height: calc(100% - 10rem);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 5rem;
+  }
+
+  .greetingUserSummary.showScreen {
+    display: flex;
+  }
+
   .greetingUserSummaryName {
     font-size: 1.5rem;
     font-weight: 800;

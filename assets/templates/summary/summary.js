@@ -1,6 +1,12 @@
 "use strict";
 
+let showedLoginGreeting = false;
+
 async function initSummeryData() {
+  if(!showedLoginGreeting) {
+    showGreetScreen();
+    showedLoginGreeting = true;
+  } 
   getTodosSize();
   getTodoStatusSize("summery-done-todos", "Done");
   getTodoStatusSize("summery-process-tasks", "Process");
@@ -93,9 +99,13 @@ async function greetUser() {
   });
 }
 
-// async function greetUser() {
-//   let greetingEle = document.getElementById("summery-greet");
-//   let userName = await currentUser.name;
-//   greetingEle.innerHTML = "";
-//   greetingEle.innerHTML = userName;
-// }
+
+function showGreetScreen() {
+  let screen = document.getElementById("summary-greet-user-screen");
+  screen.classList.add("showScreen");
+
+  setTimeout(() => {
+    screen.classList.remove("showScreen");
+  }, 2500);
+
+}

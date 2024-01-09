@@ -15,3 +15,8 @@ function changeHeaderImageBack(element) {
     img.src = "assets/img/header/headerCurrentGuestImage.svg";
   }
 }
+
+function loagout() {
+  window.location.assign("./assets/templates/login/login.html");
+  localStorage.clear();
+}
