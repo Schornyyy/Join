@@ -27,7 +27,7 @@ function handleSubMenu() {
   let headerSubMenu = document.getElementById("headerSubMenu");
   let show = headerSubMenu.hasAttribute("show");
   let hide = show ? headerSubMenu.removeAttribute("show") : headerSubMenu.setAttribute("show", "true");
-  let showMenu = show ? headerSubMenu.style.display = "flex" : headerSubMenu.style.display = "none";
+  let showMenu = show ? headerSubMenu.style.display = "none" : headerSubMenu.style.display = "flex";
   let slideOnMobeil = !mobile ? headerSubMenu.classList.add("slideInMenu") : headerSubMenu.classList.remove("slideInMenu");
   let clickedEld = document.getElementById("header-profile-menu");  
 

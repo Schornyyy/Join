@@ -298,6 +298,7 @@ button:focus {
 }
 
 .add-tasks-board-footer {
+  margin-bottom: 3rem;
   display: flex;
   padding: 15px;
   flex-direction: row;
@@ -353,6 +354,10 @@ button:focus {
 
 #hiden-divieder {
   display: none;
+}
+
+#tasks-form-submit:hover {
+  background-color: var(--light-blue);
 }
 
 /* Grid Placement */
