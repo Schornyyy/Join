@@ -204,14 +204,11 @@ function addContactShowOverlayDesktop() {
       return;
     }    
     const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name);
+    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);
     currentUser.contacts.push(createdContact);
     currentUser.save();
     hideOverlay();
-    setTimeout(function() {
-      contactsInit(); // Hier kommt der Code, der nach einer Sekunde ausgeführt werden soll
-  }, 1000);
-    
+    contactsInit(); 
 }
   
 function constForCreateContactDesktop() {

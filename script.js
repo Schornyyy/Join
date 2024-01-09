@@ -73,7 +73,6 @@ async function loadDataToUser() {
     let user = await users.find(a => a.email == userEmail);
     let u = new User(user.name, user.email, user.password);
     u.contacts = user.contacts;
-    u.contacts = u.contacts.map((contact, index) => ({ ...contact, id: index}));
     u.contacts = u.contacts.sort((a, b) => a.name.localeCompare(b.name));
     currentUser = u;
     console.log("User: ", u);
