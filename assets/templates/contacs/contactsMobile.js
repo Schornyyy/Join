@@ -23,6 +23,11 @@ function contactsContentBackgroundColorWhiteGray() {
     menuTemplate.style.display = "flex";
   }
 
+  function hidecontactsContentRightSideDesktop() {  // Hide contacts content right side only for mobile view
+    const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
+    showcontactsContentRightSide.style.display = "none";
+  }
+
   function renderContacts() {  // Für die mobile Ansicht
     const content = document.getElementById("contactsContent");
     content.innerHTML = "";
