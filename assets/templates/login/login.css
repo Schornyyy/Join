@@ -212,6 +212,7 @@
   left: 0;
   right: 0;
   top: 0;
+  pointer-events: none;
   animation: joinBackground 2s ease-in-out forwards;
 }
 
@@ -245,7 +246,7 @@
 
 /* Join-Logo Animation ende*/
 
-@media (max-with: 750px) {
+@media screen and (max-with: 750px) {
   #login-second-img {
     display: block;
   }
@@ -264,6 +265,7 @@
     right: 0;
     top: 0;
     animation: joinBackground 2s ease-in-out forwards;
+    pointer-events: unset;
   }
 
   .join-logo-animation img {
