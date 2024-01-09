@@ -1,13 +1,8 @@
 // JavaScript Logic for Desktop view
 function showContactsContentRightSideDesktop() {  // Show contacts content right side only for desktop view
-    const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
-    showcontactsContentRightSide.style.display = "flex";
-  }
-  
-function hidecontactsContentRightSideDesktop() {  // Hide contacts content right side only for mobile view
   const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
-  showcontactsContentRightSide.style.display = "none";
-} 
+  showcontactsContentRightSide.style.display = "flex";
+}
 // ---------------------------------------------------------------------------------------------------------------
 function renderContactsDesktop() {  // Render function for contacts desktop view
   const content = document.getElementById("contactsContent");
@@ -60,7 +55,6 @@ function renderContactsByFirstLetter(content, contactsByFirstLetter) {  // Add e
     });
 }
 // -----------------------------------------------------------------------------------------------
-
 function renderAddContactButtonDesktop() {  // Create add contact button for desktop view
   const contentDesktop = document.getElementById("contactsContent");
   const addContactButtonContainerDesktop = document.createElement("div");
@@ -71,7 +65,7 @@ function renderAddContactButtonDesktop() {  // Create add contact button for des
   addContactButtonContainerDesktop.addEventListener("click", function () {  // Add renderAddContactButtonDesktop to Event-Listener to show Overlay on desktop view    
   });
 }
-  
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function openContactScreenDesktop(contactId) {  // Show clicked contact details for desktop view
   const content = document.getElementById("contactsContentRightSideID");
   const selectedContact = currentUser.contacts.find(contact => contact.id === contactId); 
@@ -81,37 +75,37 @@ function openContactScreenDesktop(contactId) {  // Show clicked contact details 
     openContactsScreenDesktopChangeColorBlack(contactId); // Change background color to grey/black if contact is klicked
   }
   openContactScreenDesktopHTML(content, selectedContact);  // Generate HTML for clicked contact on dekstop view
-  showHeaderAndFooter();  // Show header and footer
-  showContactsContentRightSideDesktop();  
+  showHeaderAndFooter();  // Show header and footer on desktop view
+  showContactsContentRightSideDesktop();  // Show contacts content right side desktop on desktop view
   const contactContainer = document.getElementById("contactsContentRightSideContactDataContainerID");
-  contactContainer.style.animation = "slide-in 0.5s ease-out";
+  contactContainer.style.animation = "slide-in 0.5s ease-out";  // Slide in animation from right side to the middle on desktop view
 }
   
-function openContactsScreenDesktopChangeColorWhite(contactId) {
+function openContactsScreenDesktopChangeColorWhite(contactId) {  // If contact is not clicked set background-color to white and set text color to black
   const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
   if (lastClickedContactContainer) {
-    lastClickedContactContainer.style.backgroundColor = "white";
+    lastClickedContactContainer.style.backgroundColor = "white";  // Set background-color to white
     const lastClickedContactH2 = lastClickedContactContainer.querySelector("h2");
     if (lastClickedContactH2) {
-      lastClickedContactH2.style.color = "black";
+      lastClickedContactH2.style.color = "black";  // Set text color to black
     }
   }
 }
 
-function openContactsScreenDesktopChangeColorBlack(contactId) {
-  if (contactId) { // Überprüfen Sie, ob eine Kontakt-ID vorhanden ist
+function openContactsScreenDesktopChangeColorBlack(contactId) {  // If contact is clicked set background-color to grey/black and set text color to white
+  if (contactId) { // Check if contactId exist
     const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
     if (currentContactContainer) {
-      currentContactContainer.style.backgroundColor = "#2A3647"; // Ändern Sie "#2A3647" durch die gewünschte Farbe    
+      currentContactContainer.style.backgroundColor = "#2A3647"; // Set background-color to grey/black
       const currentContactH2 = currentContactContainer.querySelector("h2");
       if (currentContactH2) {
-        currentContactH2.style.color = "white";
+        currentContactH2.style.color = "white";  // Set text color to white
       }
     }
   }
 }
 
-function openContactScreenDesktopHTML(content, selectedContact) {
+function openContactScreenDesktopHTML(content, selectedContact) {  // Generate HTML for clicked contact details
   content.innerHTML = /*html*/ `
     <div class="contactsContentRightSideHeadLine">
         <h1 class="contactsContentRightSideH1">
@@ -122,8 +116,7 @@ function openContactScreenDesktopHTML(content, selectedContact) {
     </div>  
     <div id="contactsContentRightSideContactDataContainerID">
       <div class="contactsContentRightSideUserImgAndNameContainer">
-        <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->        
-        ${singleMemberToHTMLOpenContactDesktop(selectedContact, 0)}
+        ${singleMemberToHTMLOpenContactDesktop(selectedContact, 0)}  <!-- Create user image with random background-color -->
       <div>
           <h2 class="contactsContentRightSideUserNameH2">${selectedContact.name}</h2>
             <div class="contactsContentRightSideEditAndDeleteButtonContainer">
@@ -150,15 +143,19 @@ function openContactScreenDesktopHTML(content, selectedContact) {
     </div>
    `;
 }
-
-function addContactShowOverlayDesktop() {
+// -----------------------------------------------------------------------------------------------------------------------
+function addContactShowOverlayDesktop() {  // Show overlay for add contact at desktop view
   const overlayContainer = document.createElement("div");
   overlayContainer.classList.add("overlay-container");
   document.body.appendChild(overlayContainer);
   const overlayContent = document.createElement("div");
   overlayContent.classList.add("overlay-content");
-  overlayContainer.appendChild(overlayContent);
-  // Füge das Overlay-Inhaltselement hinzu
+  overlayContainer.appendChild(overlayContent);  // Add overlay-element  
+  generateHTMLAddContactShowOverlayDesktop(overlayContent);    
+    overlayContainer.style.animation = "slide-in 0.5s ease-out";  // Slide in animation for add contact show overlay desktop
+  }
+
+function generateHTMLAddContactShowOverlayDesktop(overlayContent) {  // Generate HTML for add contact show overlay desktop
   overlayContent.innerHTML = /*html*/ `
     <div class="overlay-card">
       <div class="addContactDesktopLeftSideContainer">
@@ -191,51 +188,56 @@ function addContactShowOverlayDesktop() {
           </div>
         </div>
       </div>
-    `;    
-    overlayContainer.style.animation = "slide-in 0.5s ease-out";
-  }
-
-  function createContactDesktop() {
-    const { newName, newMail, newPhone } = constForCreateContactDesktop();    
-    if (newName === "" || newMail === "" || newPhone === "") {
+    `;
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------
+  function createContactDesktop() {  // Create function for new contact person
+    const { newName, newMail, newPhone } = constForCreateContactDesktop();  // Const for create contact desktop  
+    if (newName === "" || newMail === "" || newPhone === "") {  // Check if all inputs are not empty
       alert("Bitte füllen Sie alle Felder aus.");
       return;
     }    
-    const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);
-    currentUser.contacts.push(createdContact);
-    currentUser.save();
-    hideOverlay();
-    contactsInit(); 
+    const defaultImage = "../assets/img/contact/defaultContactImage.svg"; // Const for blanc user image (grey user image icon)
+    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);  // Create new contact with parameters
+    currentUser.contacts.push(createdContact);  // create new contact
+    currentUser.save();  // Save new contact for currentUser
+    hideOverlay();  // If contact added ... hide the overlay screen
+    contactsInit();  // Back to contacts start to show the new contact
 }
-  
-function constForCreateContactDesktop() {
-  const nameInput = document.querySelector(".addContactInputNameDesktop");
-  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
-  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
-  const newName = nameInput.value.trim();
-  const newMail = mailInput.value.trim();
-  const newPhone = phoneInput.value.trim();
+
+function constForCreateContactDesktop() {  // Const for create contact desktop view
+  const nameInput = document.querySelector(".addContactInputNameDesktop");  // Get contact name input data on desktop view
+  const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");  // Get contact mail address input data on desktop view
+  const phoneInput = document.querySelector(".addContactInputPhoneDesktop");  // Get contact phone number input data on desktop view
+  const newName = nameInput.value.trim();  // Remove free spaces
+  const newMail = mailInput.value.trim();  // Remove free spaces
+  const newPhone = phoneInput.value.trim();  // Remove free spaces
   return { newName, newMail, newPhone };
 }
   
-function hideOverlay() {
+function hideOverlay() {  // Function to hide the overlay screen on desktop view
   const overlayContainer = document.querySelector(".overlay-container");
   if (overlayContainer) {
     overlayContainer.parentNode.removeChild(overlayContainer);
   }
 }
-  
-function editContactDestop(contactId) {  
+//----------------------------------------------------------------------------------------------------------------------------------------
+
+function editContactDestop(contactId) {  // Edit contact desktop Screen for desktop view
   const selectedContact = currentUser.contacts.find(
     (contact) => contact.id === contactId
-  ); // Findet den ausgewählten Kontakt anhand der ID
-  const overlayContainer = document.createElement("div");
-  overlayContainer.classList.add("overlay-container");
-  document.body.appendChild(overlayContainer);
-  const overlayContent = document.createElement("div");
-  overlayContent.classList.add("overlay-content");
-  overlayContainer.appendChild(overlayContent);  
+  ); // Find clicked contact ID
+  const overlayContainer = document.createElement("div");  // Create div container overlay
+  overlayContainer.classList.add("overlay-container");  // Add div container class overlay-container
+  document.body.appendChild(overlayContainer);  // Append the overlay container to the body
+  const overlayContent = document.createElement("div");  // Create div container for overlay content
+  overlayContent.classList.add("overlay-content");  // Add div container class overlay-content
+  overlayContainer.appendChild(overlayContent);  // Append the overlay-content container to the overlayContainer
+  generateHTMLEditContactDesktop(overlayContent, selectedContact);
+  overlayContainer.style.animation = "slide-in 0.5s ease-out";  // Slide in animation for overlayContainer
+}
+  
+function generateHTMLEditContactDesktop(overlayContent, selectedContact) {  // Generate HTML for editContactDestop
   overlayContent.innerHTML = /*html*/ `
     <div class="overlay-card">
       <div class="addContactDesktopLeftSideContainer">
@@ -247,11 +249,11 @@ function editContactDestop(contactId) {
       </div>
       <div class="addContactDesktopRightSideContainer">
         <div class="addContactBlankUserImgContainer">          
-          ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}       
+          ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}  <!-- Create user image with random background-color -->     
         </div>
         <div class="addContactDesktopRightSideContent">
           <div class="addContactCloseXContainer">
-            <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
+            <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>  <!-- Create X button to close the overlay -->
           </div>
           <div id="editContactDestopID">
             <div class="addContactContainerFooter">
@@ -259,8 +261,8 @@ function editContactDestop(contactId) {
                 <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.email}">
                 <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.phone}">
                 <div class="createContactButtonImgContainer">
-                    <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
-                    <button class="saveContactButtonDesktop" onclick="updateContactDesktop(${selectedContact.id})">Save</button>
+                    <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>  <!-- Create delete button for edit contact desktop-->   
+                    <button class="saveContactButtonDesktop" onclick="updateContactDesktop(${selectedContact.id})">Save</button>  <!-- Create save button for edit contact desktop-->
                 </div>                
             </div>
         </div>
@@ -268,23 +270,22 @@ function editContactDestop(contactId) {
       </div>
     </div>
   `;
-  overlayContainer.style.animation = "slide-in 0.5s ease-out";  
 }
-  
-function updateContactDesktop(contactId) {
-  const updatedInputs = getUpdatedInputsDesktop();    
-  if (validateInputs(updatedInputs)) {
-      const existingContact = findExistingContactDesktop(updatedInputs, contactId);
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
+function updateContactDesktop(contactId) {  // Update function if already exist contact was edit
+  const updatedInputs = getUpdatedInputsDesktop();  // Get updated input data for desktop view 
+  if (validateInputs(updatedInputs)) {  // Check if contact data changed
+      const existingContact = findExistingContactDesktop(updatedInputs, contactId);  // Get the contact to edit
       if (!existingContact) {
-          const oldContact = findOldContactDesktop(contactId);
-          const hasChanged = checkForChangesDesktop(oldContact, updatedInputs);
-          const updatedContactsData = updateContactsDataDesktop(contactId, updatedInputs, hasChanged);
-          saveAndInitDesktop(updatedContactsData);
+          const oldContact = findOldContactDesktop(contactId);  // Find the contact by ID
+          const hasChanged = checkForChangesDesktop(oldContact, updatedInputs);  // Check if contact data changed
+          const updatedContactsData = updateContactsDataDesktop(contactId, updatedInputs, hasChanged);  // Overwrite the old contact data with the new contact data
+          saveAndInitDesktop(updatedContactsData);  // Save the edit contact
       }
   }
 }
 
-function getUpdatedInputsDesktop() {
+function getUpdatedInputsDesktop() {  // Get updated input data for desktop view
   const nameInput = document.querySelector(".addContactInputNameDesktop");
   const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
   const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
@@ -295,7 +296,7 @@ function getUpdatedInputsDesktop() {
   };
 }
 
-function findExistingContactDesktop(updatedInputs, contactId) {
+function findExistingContactDesktop(updatedInputs, contactId) {  // Get the contact to edit
   return currentUser.contacts.find(
       (contact) =>
           contact.name === updatedInputs.updatedName &&
@@ -304,11 +305,11 @@ function findExistingContactDesktop(updatedInputs, contactId) {
   );
 }
 
-function findOldContactDesktop(contactId) {
+function findOldContactDesktop(contactId) {  // Find the contact by ID
   return currentUser.contacts.find((contact) => contact.id === contactId);
 }
 
-function checkForChangesDesktop(oldContact, updatedInputs) {
+function checkForChangesDesktop(oldContact, updatedInputs) {  // Check if contact data changed
   return {
       hasNameChanged: oldContact.name !== updatedInputs.updatedName,
       hasMailChanged: oldContact.email !== updatedInputs.updatedMail,
@@ -316,7 +317,7 @@ function checkForChangesDesktop(oldContact, updatedInputs) {
   };
 }
 
-function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {
+function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {  // Overwrite the old contact data with the new contact data
   return currentUser.contacts.map((contact) =>
       contact.id === contactId
           ? {
@@ -329,41 +330,40 @@ function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {
   );
 }
 
-function saveAndInitDesktop(updatedContactsData) {
+function saveAndInitDesktop(updatedContactsData) {  // Save the edit contact at the current user
   currentUser.contacts = updatedContactsData;
   currentUser.save();
-  contactsInit();
-  hideOverlay();
+  contactsInit();  // After contact saved back to contacts to show the new contact
+  hideOverlay();  // Hide overlay for edit contact
 }
-
-// Drop down Menü
-function addDropdownMenuClickListener() {
+//-------------------------------------------------------------------------------------------------------------------------------------------
+function addDropdownMenuClickListener() {  // Drop down menu click event listener
   const dropdownTrigger = document.getElementById("menuContactOptionsButton");
   const dropdownMenu = document.getElementById("contactOptionsDropdown");
-  if (!dropdownTrigger || !dropdownMenu) {
+  if (!dropdownTrigger || !dropdownMenu) {  // Check if drop down menu exist
     console.error("Dropdown trigger or menu not found");
     return;
   }
-  const handleDocumentClick = function (event) {
+  const handleDocumentClick = function (event) {  // Check if drop down menu clicked if not close it
     if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
       dropdownMenu.style.display = "none";
       document.removeEventListener("click", handleDocumentClick);
     }
   };
-  dropdownTrigger.addEventListener("click", function (event) {
+  dropdownTrigger.addEventListener("click", function (event) {  // Check if drop down menu clicked than show drop down menu options
     const isDropdownVisible = (dropdownMenu.style.display === "block");    
-    if (!isDropdownVisible) {  // Schließe alle anderen geöffneten Dropdowns, wenn das aktuelle geöffnet wird
-      closeAllDropdowns();
+    if (!isDropdownVisible) {  // If drop down menu visible
+      closeAllDropdowns();  // Close all other drop down menus
     }
-    dropdownMenu.style.display = isDropdownVisible ? "none" : "block";
+    dropdownMenu.style.display = isDropdownVisible ? "none" : "block";  // If drop down menu visible than add to event listener
     if (!isDropdownVisible) {
       document.addEventListener("click", handleDocumentClick);
     }
-    event.stopPropagation();
+    event.stopPropagation();  // Stopp all other click events from parent element
   });
 }
   
-function closeAllDropdowns() {
+function closeAllDropdowns() {  // Close all other drop down menus
   const allDropdowns = document.querySelectorAll(".dropdown-menu");
   allDropdowns.forEach((dropdown) => {
     dropdown.style.display = "none";
@@ -371,29 +371,29 @@ function closeAllDropdowns() {
   document.removeEventListener("click", handleDocumentClick);
 }
   
-function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
+function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {  // Handle click on drop down mneu option
   return function (event) {
     const dropdownMenu = document.getElementById("contactOptionsDropdown");
     if (!dropdownContainer.contains(event.target) &&
       !addContactButtonContainerMobile.contains(event.target) &&
       !dropdownMenu.contains(event.target)) {
       dropdownMenu.style.display = "none";
-      document.removeEventListener("click", handleDocumentClick);
+      document.removeEventListener("click", handleDocumentClick);  // Remove the eventlistener because one option is clicked
     }
   };
 }
   
-function toggleDropdownMenu() {
+function toggleDropdownMenu() {  // Controll if the drop down menu are close or open
   const dropdownMenu = document.getElementById("contactOptionsDropdown");
   dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
 }
   
-function handleDropdownOptionClick(action) {  // Hier die Logik für die ausgewählte Aktion (Edit oder Delete) implementieren  
-  if (action === "edit") {  // Edit Contact    
+function handleDropdownOptionClick(action) {  // Handle drop down menu option clicked 
+  if (action === "edit") {  // If edit contact clicked
     console.log("Edit Contact selected");  
-  } else if (action === "delete") {  // Delete    
+  } else if (action === "delete") {  // If delete contact clicked    
     console.log("Delete Contact selected");
   }  
-  const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Schließt das Dropdown-Menü nach der Auswahl
+  const dropdownMenu = document.getElementById("contactOptionsDropdown");  // Close the dropdown menu after clicked one option
   dropdownMenu.style.display = "none";
 }
