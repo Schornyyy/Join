@@ -2,8 +2,8 @@
 <!------------------ HEADLINE SECTION ------------------>
 <section class="headline-section">
     <h1 class="headline-board">Board</h1>
-    <button class="headline-plus-button">
-        <span class="plus-button-text" onclick="includeContentHTML('Add Tasks')">Add task</span>
+    <button class="headline-plus-button" onclick="includeContentHTML('Add Tasks')">
+        <span class="plus-button-text">Add task</span>
         <img class="headline-plus-icon" src="./assets/img/board/plus-icon-dark.svg" alt="plus dark">
     </button>
     <div class="input-wrapper input-wrapper-board">
@@ -20,7 +20,7 @@
     <!------------------ TODO SECTION ------------------>
     <section class="task-section">
         <h2 class="section-headline">To do</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
 
 
         <div class="card-container" 
@@ -39,7 +39,7 @@
     <!------------------ IN PROGRESS SECTION ------------------>
     <section class="task-section">
         <h2 class="section-headline">In progress</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
         <div class="card-container" 
             ondragover="dragoverHandler(event)"
             ondrop="dropHandler(event, 'in progress')"
@@ -58,7 +58,7 @@
     <!------------------ AWAIT FEEDBACK SECTION ------------------>
     <section class="task-section">
         <h2 class="section-headline">Await feedback</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
         <div class="card-container" 
             ondragover="dragoverHandler(event)"
             ondrop="dropHandler(event, 'await feedback')"
@@ -79,7 +79,7 @@
     <!------------------ DONE SECTION ------------------>
     <section class="task-section">
         <h2 class="section-headline">Done</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus">
+        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
 
 
         <div class="card-container" 

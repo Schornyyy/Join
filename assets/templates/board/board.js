@@ -282,6 +282,7 @@ function moveTask(task, status) {
     task.status = status;
     renderBoard();
     // saveTasks();
+    // currentUser.save();
 }
 
 ////////////////////////////////////////////////
