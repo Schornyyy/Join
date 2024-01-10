@@ -322,6 +322,12 @@ function timeToInputValueString(time) {
 function hideDialog() {
     let dialogContainer = document.getElementById('dialogContainer');
     dialogContainer.classList.add('reini-d-none');
+    renderBoard();
+}
+
+function removeEventListener(elem) {
+    let elemClone= elem.cloneNode(true);
+    elem.parentNode.replaceChild(elemClone, elem);
 }
 
 
@@ -484,23 +490,30 @@ function showDialogEdit(taskID) {
     let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
     editDialog.innerHTML = editDialogToHTML(task);
     editDialogFillInputs(task);
-    addFocusHandler();
-    addDropdownClickHandler();
+    addDropdownClickHandler(taskID);
+    addDropdownItemClickHandler(taskID);
 }
 
-function addFocusHandler() {
-    let inputSelectMembersElement= document.getElementById('inputSelectMembers');
-    inputSelectMembersElement.addEventListener('focusin', expandDropdown);
-}
-
-function addDropdownClickHandler() {
+function addDropdownClickHandler(taskID) {
     let dialogElem= document.getElementById('editDialog');
-    let inputContainerMembersElement= document.getElementById('inputContainerMembers');
+    let inputContainerMembersElem= document.getElementById('inputContainerMembers');
     dialogElem.addEventListener('click', event => {
-        if (!inputContainerMembersElement.contains(event.target)) {
-            collapseDropdown();
+        if (inputContainerMembersElem.contains(event.target)) {
+            expandDropdown();
+        } else {
+            collapseDropdown(taskID);
         }
     });
+}
+
+function addDropdownItemClickHandler(taskID) {
+    let dropdownItemElems= document.querySelectorAll('.members-dropdown-item');
+    for (let dropdownItemElemI of dropdownItemElems) {
+        let contactIndex= dropdownItemElemI.dataset.contactindex;
+        dropdownItemElemI.addEventListener('click', event => {
+            toggleMemberDropdownItem(dropdownItemElemI.id, taskID, contactIndex);
+        });
+    }
 }
 
 function expandDropdown() {
@@ -511,12 +524,14 @@ function expandDropdown() {
     editTaskMembersContainerElement.classList.add('reini-d-none');
 }
 
-function collapseDropdown() {
+function collapseDropdown(taskID) {
     let dropdownContactsElement= document.getElementById('dropdownContacts');
     let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
 
     dropdownContactsElement.classList.add('reini-d-none');
     editTaskMembersContainerElement.classList.remove('reini-d-none');
+    // showDialogEdit(taskID);
+    updateTaskMembersContainer(getTaskById(taskID));
 }
 
 //////////////// RENDER EDIT DIALOG
@@ -611,7 +626,7 @@ function editDialogToHTML(task) {
             <div class="input-container" id="inputContainerMembers">
                 <label for="">Assigned to</label>
                 <div class="input-wrapper edit-input-wrapper">
-                    <input class="input-select-members" type="text" placeholder="Add new subtask" id="inputSelectMembers">
+                    <input class="input-select-members" type="text" placeholder="Select Contacts to assign" id="inputSelectMembers">
                     <img src="./assets/img/board/dropdown-down-icon.svg" alt="dropdown-down">
                 </div>                
                 <div class="dropdown-menu reini-d-none" id="dropdownContacts">
@@ -653,7 +668,7 @@ function editDropdownMembersToHTML(task) {
             imgURL= './assets/img/board/checkbox-checked-icon-white.svg';
         }
         output += `
-            <div class="${classString}" id="membersDropdownItem${i}" onclick="toggleMemberDropdownItem('membersDropdownItem${i}', ${task.id}, ${i})">
+            <div class="${classString}" id="membersDropdownItem${i}" data-contactindex="${i}">
                 <div class="member-item-name-container">
                     ${singleMemberToHTML(contact, 0)}
                     <span>${contact.name}</span>
@@ -693,6 +708,11 @@ function editMembersToHTML(task) {
     return output;
 }
 
+function updateTaskMembersContainer(task) {
+    let editTaskMembersContainer= document.getElementById('editTaskMembersContainer');
+    editTaskMembersContainer.innerHTML= editMembersToHTML(task);
+}
+
 function editSingleMemberToHTML(member) {
     let textcolor;
     if (!isColorLight(member.colorCode)) textcolor = 'white';
@@ -704,7 +724,6 @@ function editSingleMemberToHTML(member) {
 }
 
 function toggleMemberDropdownItem(menuItemID, taskID, contactIndex) {
-    console.log('toggle');
     let itemElem= document.getElementById(menuItemID);
     let task= getTaskById(taskID);
     let contact= contactsDatasource[contactIndex];
@@ -721,7 +740,6 @@ function selectMemberDropdownItem(menuItemElem, task, contact) {
 }
 
 function deselectMemberDropdownItem(menuItemElem, task, memberIndex) {
-    console.log('deselect');
     let imgElem= document.querySelector(`#${menuItemElem.id} .member-item-checkbox-icon`);
 
     menuItemElem.classList.remove('members-dropdown-item-selected');
