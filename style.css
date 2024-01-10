@@ -58,7 +58,6 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 
-/* TODO  LÄST SICH NICHT VERSCHIEBEN ????*/
 .menuTemplate {
   background-color: var(--light-grey);
   position: absolute;
@@ -66,9 +65,6 @@ body::-webkit-scrollbar {
   left: 0;
   right: 0;
   margin-top: auto;
-}
-
-@media only screen and (max-width: 750px) and (min-width: 250px) {
 }
 
 @media only screen and (max-width: 1920px) and (min-width: 751px) {
@@ -93,7 +89,6 @@ body::-webkit-scrollbar {
     grid-area: zwei;
   }
 
-  /* TODO */
   .menuTemplate {
     display: flex;
     flex-direction: column;

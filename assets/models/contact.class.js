@@ -1,35 +1,32 @@
-
 class Contact {
+  name;
+  colorCode;
+  email;
+  phone;
+  from;
+  id;
 
-    name;
-    colorCode;
-    email; 
-    phone;
-    from;
-    id;
+  constructor(name, email, phone, colorCode, from, id) {
+    this.name = name;
+    this.colorCode = colorCode;
+    this.email = email;
+    this.phone = phone;
+    this.from = from;
+    this.id = id;
+  }
 
-    constructor(name, email, phone, colorCode, from, id) {
-        this.name = name;
-        this.colorCode = colorCode;
-        this.email = email;
-        this.phone = phone;
-        this.from = from;
-        this.id = id;
-    }
+  createNameImage(appendTo) {
+    let div = document.createElement("div").classList.add("profile-container");
+    let firstLetter = this.name.split(" ")[0][0];
+    let lastLetter = this.name.split(" ")[1][0];
 
-    createNameImage(appendTo) {
-        let div = document.createElement("div").classList.add("profile-container");
-        let firstLetter = this.name.split(" ")[0][0];
-        let lastLetter = this.name.split(" ")[1][0];
+    let span = document.createElement("span");
+    span.innerHTML = `${firstLetter} ${lastLetter}`;
 
-        let span = document.createElement("span");
-        span.innerHTML = `${firstLetter} ${lastLetter}`
+    div.appendChild(span);
 
-        div.appendChild(span)
-
-        appendTo.appendChild(div);
-    }
-
+    appendTo.appendChild(div);
+  }
 }
 
 // let firstletter= [];

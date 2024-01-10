@@ -1,34 +1,34 @@
 class User {
-    name;
-    email;
-    password;
-    colorCode;
-    contacts;
-    tasks;
+  name;
+  email;
+  password;
+  colorCode;
+  contacts;
+  tasks;
 
-    constructor(name, email, password, colorCode) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.colorCode = colorCode;
-        this.contacts = [];
-        this.tasks = [];
-    }
+  constructor(name, email, password, colorCode) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.colorCode = colorCode;
+    this.contacts = [];
+    this.tasks = [];
+  }
 
-    removeContact(index) {
-        this.contacts.splice(index, 1)
-    }
+  removeContact(index) {
+    this.contacts.splice(index, 1);
+  }
 
-    addTask(task) {
-        this.tasks.push(task)
-    }
+  addTask(task) {
+    this.tasks.push(task);
+  }
 
-    removeTask(index) {
-        this.tasks.splice(index, 1)
-    }
+  removeTask(index) {
+    this.tasks.splice(index, 1);
+  }
 
-    async save() {
-        let s = await setItem('users', this);
-        console.log(s, this);
-    }
+  async save() {
+    let s = await setItem("users", this);
+    console.log(s, this);
+  }
 }

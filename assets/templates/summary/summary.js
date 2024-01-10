@@ -3,10 +3,10 @@
 let showedLoginGreeting = false;
 
 async function initSummeryData() {
-  if(!showedLoginGreeting) {
+  if (!showedLoginGreeting) {
     showGreetScreen();
     showedLoginGreeting = true;
-  } 
+  }
   getTodosSize();
   getTodoStatusSize("summery-done-todos", "Done");
   getTodoStatusSize("summery-process-tasks", "Process");
@@ -99,7 +99,6 @@ async function greetUser() {
   });
 }
 
-
 function showGreetScreen() {
   let screen = document.getElementById("summary-greet-user-screen");
   screen.classList.add("showScreen");
@@ -107,5 +106,4 @@ function showGreetScreen() {
   setTimeout(() => {
     screen.classList.remove("showScreen");
   }, 2500);
-
 }

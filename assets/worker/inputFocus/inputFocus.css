@@ -1,14 +1,7 @@
-/* Standard-Border-Stil */
-.FocusContainer {
-  /* border: 2px solid var(--lighter-grey);  */
-}
-
-/* Neuer Border-Farbe im Fokus */
 .FocusContainer.active {
-  border-color: var(--light-blue); 
+  border-color: var(--light-blue);
 }
 
-/* Neue Border-Farbe für Fehler */
 .FocusContainer.error {
-  border-color: var(--wrong-input); 
+  border-color: var(--wrong-input);
 }

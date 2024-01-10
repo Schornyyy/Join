@@ -12,21 +12,17 @@
     position: relative;
   }
 
-  /* submenu start */
   .headerSubMenu {
     position: absolute;
     right: 1rem;
     top: 4rem;
     z-index: 30;
-
     width: 8.5rem;
     height: 9rem;
-
     background-color: var(--light-grey);
     border-bottom-left-radius: 1.1rem;
     border-bottom-right-radius: 1.1rem;
     border-top-left-radius: 1.1rem;
-
     display: none;
     flex-direction: column;
     align-items: center;
@@ -39,10 +35,8 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
-
     width: 7.5rem;
     height: 2rem;
-    /* border: dotted 1px yellow; */
     border-radius: 0.5rem;
     padding-left: 0.4rem;
   }
@@ -55,8 +49,6 @@
     color: var(--font-popUp);
     text-decoration: none;
   }
-
-  /* submenu end */
 
   .theProgramm {
     display: none;
@@ -89,7 +81,6 @@
     justify-content: center;
     gap: 0.5rem;
     margin-right: 1rem;
-    /* display: none; Is ON for Design! */
   }
 
   .userSymbolContainerHelp {
@@ -102,7 +93,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none; /*Is ON for Design!*/
+    display: none;
   }
 
   .signUpButton {
@@ -121,21 +112,17 @@
 }
 
 @media only screen and (max-width: 1920px) and (min-width: 751px) {
-  /* submenu start */
   .headerSubMenu {
     position: absolute;
     right: 1rem;
     top: 4rem;
     z-index: 30;
-
     width: 8.5rem;
     height: 9rem;
-
     background-color: var(--light-grey);
     border-bottom-left-radius: 1.1rem;
     border-bottom-right-radius: 1.1rem;
     border-top-left-radius: 1.1rem;
-
     display: none;
     flex-direction: column;
     align-items: center;
@@ -148,10 +135,8 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
-
     width: 7.5rem;
     height: 2rem;
-    /* border: dotted 1px yellow; */
     border-radius: 0.5rem;
     padding-left: 0.4rem;
   }
@@ -164,7 +149,6 @@
     color: var(--font-popUp);
     text-decoration: none;
   }
-  /* submenu end */
 
   .userLogoImg {
     width: 2.5rem;

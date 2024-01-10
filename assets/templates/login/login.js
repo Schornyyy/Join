@@ -5,9 +5,6 @@ let data = {
   rememberMe: rememberMe,
 };
 
-/**
- * Logged den User ein.
- */
 function login() {
   let userExists = userEmailExists();
   let userEmail = document.getElementById("login-input-email").value;
@@ -28,10 +25,6 @@ function login() {
   window.location.href = "/index.html";
 }
 
-/**
- * Handled die RememberMe Function
- * @param {Checkbox} element
- */
 function handleRememberme(element) {
   let ele = element;
 
@@ -42,19 +35,10 @@ function handleRememberme(element) {
   rememberMe = !rememberMe;
 }
 
-/**
- * Checkt ob das Password übereinstimmt.
- * @param {String} password
- * @returns true | false
- */
 function userPasswordMatch(password) {
   return user.password.match(password);
 }
 
-/**
- * Schaut ob ein User mit dieser email existiert.
- * @returns true | false
- */
 function userEmailExists() {
   let errorMsg = document.getElementById("login-error");
   errorMsg.style = "color: red";
@@ -68,11 +52,6 @@ function userEmailExists() {
   return c;
 }
 
-/**
- *
- * @param {String} email
- * @returns gibt den User als
- */
 function findUserByEmail(email) {
   return users.find((a) => a.email === email);
 }
