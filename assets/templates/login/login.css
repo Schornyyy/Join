@@ -1,253 +1,204 @@
-.LogInBoxShadow {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-}
-
-.firstLogin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.loginLayout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #fff;
-  width: 20rem;
-  height: 32rem;
-  border-radius: 1.8rem;
-}
-
-.headerLogin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.loginLayout h1 {
-  font-size: 2.5rem;
-}
-
-.underlineFrameMobileLogIn {
-  width: 5rem;
-  height: 0.15rem;
-  background-color: #29abe2;
-}
-
-.emailDevision {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: solid 1px #d1d1d1;
-  border-radius: 0.5rem;
-  padding: 0.4rem 1rem 0.4rem 1rem;
-  margin-top: 2rem;
-  height: 2.5rem;
-  width: 18rem;
-  gap: 0.75rem;
-}
-
-.logInpMail {
-  border: none;
-  width: 100%;
-  height: 1.25rem;
-  font-size: 1rem;
-  background-color: transparent;
-}
-
-.logInpMail:focus {
-  outline: none;
-}
-
-.emailDevision.active {
-  border-color: var(--light-blue);
-}
-
-.passwortDevision {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: solid 1px #d1d1d1;
-  border-radius: 0.5rem;
-  padding: 0.4rem 1rem 0.4rem 1rem;
-  margin-top: 1rem;
-  height: 2.5rem;
-  width: 18rem;
-  gap: 0.75rem;
-}
-
-.logInpPass {
-  border: none;
-  width: 100%;
-  height: 1.25rem;
-  font-size: 1rem;
-  background-color: transparent;
-}
-
-.logInpPass:focus {
-  outline: none;
-}
-
-.passwortDevision.active {
-  border-color: var(--light-blue);
-}
-
-.inpIconStyle {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.forgotPassword {
-  margin-top: 1rem;
-}
-
-.rememberBox {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  display: flex;
-  padding-right: 9rem;
-}
-
-.rememberLabel {
-  font-size: 0.8rem !important;
-  font-weight: 400;
-}
-
-.loginBtnBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.confirmLogInBtn {
-  font-weight: bold;
-  border: #2a3647 1px solid;
-  border-radius: 0.5rem;
-  width: 9rem;
-  height: 2.5rem;
-  background-color: var(--light-grey);
-  color: var(--white-text);
-}
-
-.confirmLogInBtn:hover {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: var(--light-blue);
-  background-color: var(--light-blue);
-}
-
-.guestLogInBtn {
-  font-weight: bold;
-  border: #2a3647 1px solid;
-  background-color: #ffffff;
-  color: var(--light-grey);
-  border-radius: 0.5rem;
-  width: 9rem;
-  height: 2.5rem;
-}
-
-.guestLogInBtn:hover {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--light-blue);
-  color: var(--light-blue);
-}
-
-.logInExtraBox {
-  margin-bottom: 1rem;
-  position: absolute;
-  bottom: 0;
-}
-
-.mobileNotUser {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.mobileNotUserBtn {
-  font-weight: bold;
-  border: #2a3647 1px solid;
-  border-radius: 0.5rem;
-  width: 5.5rem;
-  height: 2.5rem;
-  background-color: var(--light-grey);
-  color: var(--white-text);
-}
-
-.mobilePoliceLegal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3rem;
-  gap: 2rem;
-}
-
-.mobilePoliceLegal p {
-  font-size: small;
-  color: var(--font-gray);
-}
-
-/* Join-Logo Animation */
-.firstLogin {
-  position: relative;
-  /* z-index: 1; */
-}
-
-@media screen and (min-width: 751px) {
-  #login-second-img {
-    display: none;
+@media only screen and (max-width: 750px) and (min-width: 250px) {
+  .LogInBoxShadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
   }
 
-  .join-logo-animation {
+  .firstLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .loginLayout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 20rem;
+    height: 32rem;
+    border-radius: 1.8rem;
+  }
+
+  .headerLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .loginLayout h1 {
+    font-size: 2.5rem;
+  }
+
+  .underlineFrameMobileLogIn {
+    width: 5rem;
+    height: 0.15rem;
+    background-color: #29abe2;
+  }
+
+  .emailDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 2rem;
+    height: 2.5rem;
+    width: 18rem;
+    gap: 0.75rem;
+  }
+
+  .logInpMail {
+    border: none;
     width: 100%;
-    height: 100%;
-    background-color: var(--white-text);
-    z-index: 21;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .logInpMail:focus {
+    outline: none;
+  }
+
+  .emailDevision.active {
+    border-color: var(--light-blue);
+  }
+
+  .passwortDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 1rem;
+    height: 2.5rem;
+    width: 18rem;
+    gap: 0.75rem;
+  }
+
+  .logInpPass {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .logInpPass:focus {
+    outline: none;
+  }
+
+  .passwortDevision.active {
+    border-color: var(--light-blue);
+  }
+
+  .inpIconStyle {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .forgotPassword {
+    margin-top: 1rem;
+  }
+
+  .rememberBox {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    padding-right: 9rem;
+  }
+
+  .rememberLabel {
+    font-size: 0.8rem !important;
+    font-weight: 400;
+  }
+
+  .justBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+
+  .confirmLogInBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    border-radius: 0.5rem;
+    width: 9rem;
+    height: 2.5rem;
+    background-color: var(--light-grey);
+    color: var(--white-text);
+  }
+
+  .confirmLogInBtn:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: var(--light-blue);
+    background-color: var(--light-blue);
+  }
+
+  .guestLogInBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    background-color: #ffffff;
+    color: var(--light-grey);
+    border-radius: 0.5rem;
+    width: 9rem;
+    height: 2.5rem;
+  }
+
+  .guestLogInBtn:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--light-blue);
+    color: var(--light-blue);
+  }
+
+  .logInExtraBox {
+    margin-bottom: 1rem;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    pointer-events: none;
-    animation: joinBackground 2s ease-in-out forwards;
+    bottom: 0;
   }
 
-  .join-logo-animation img {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(2);
-    z-index: 20;
-    opacity: 1;
-    animation: joinLogo 2s ease-in-out forwards;
+  .mobileNotUser {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 
-  @keyframes joinBackground {
-    0% {
-      background-color: var(--white-text);
-    }
-    100% {
-      background-color: transparent;
-    }
+  .mobileNotUserBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    border-radius: 0.5rem;
+    width: 5.5rem;
+    height: 2.5rem;
+    background-color: var(--light-grey);
+    color: var(--white-text);
   }
 
-  @keyframes joinLogo {
-    0% {
-      transform: translate(-50%, -50%) scale(2);
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
-    }
+  .mobilePoliceLegal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 2rem;
+  }
+
+  .mobilePoliceLegal p {
+    font-size: small;
+    color: var(--font-gray);
   }
 }
 
 @media (max-width: 750px) {
+  /* JUST JOIN ANIMATION */
   #login-second-img {
     display: block;
     animation: JoinLoginSecondary 2s ease-in-out forwards;
@@ -308,6 +259,262 @@
     }
     100% {
       background-color: transparent;
+    }
+  }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 751px) {
+  .LogInBoxShadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .firstLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .loginLayout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 39rem;
+    height: 32rem;
+    border-radius: 1.8rem;
+  }
+
+  .headerLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .loginLayout h1 {
+    font-size: 2.5rem;
+  }
+
+  .underlineFrameMobileLogIn {
+    width: 5rem;
+    height: 0.15rem;
+    background-color: #29abe2;
+  }
+
+  .emailDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 2rem;
+    height: 2.5rem;
+    width: 26rem;
+    gap: 0.75rem;
+  }
+
+  .logInpMail {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .logInpMail:focus {
+    outline: none;
+  }
+
+  .emailDevision.active {
+    border-color: var(--light-blue);
+  }
+
+  .passwortDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 1rem;
+    height: 2.5rem;
+    width: 26rem;
+    gap: 0.75rem;
+  }
+
+  .logInpPass {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .logInpPass:focus {
+    outline: none;
+  }
+
+  .passwortDevision.active {
+    border-color: var(--light-blue);
+  }
+
+  .inpIconStyle {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .forgotPassword {
+    margin-top: 1rem;
+  }
+
+  .rememberBox {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    padding-right: 13rem;
+  }
+
+  .rememberLabel {
+    font-size: 0.8rem !important;
+    font-weight: 400;
+  }
+
+  .loginBtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .justBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+
+
+
+  .confirmLogInBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    border-radius: 0.5rem;
+    width: 9rem;
+    height: 2.5rem;
+    background-color: var(--light-grey);
+    color: var(--white-text);
+  }
+
+  .confirmLogInBtn:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: var(--light-blue);
+    background-color: var(--light-blue);
+  }
+
+  .guestLogInBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    background-color: #ffffff;
+    color: var(--light-grey);
+    border-radius: 0.5rem;
+    width: 9rem;
+    height: 2.5rem;
+  }
+
+  .guestLogInBtn:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--light-blue);
+    color: var(--light-blue);
+  }
+
+  .logInExtraBox {
+    margin-bottom: 1rem;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .mobileNotUser {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .mobileNotUserBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    border-radius: 0.5rem;
+    width: 5.5rem;
+    height: 2.5rem;
+    background-color: var(--light-grey);
+    color: var(--white-text);
+  }
+
+  .mobilePoliceLegal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 2rem;
+  }
+
+  .mobilePoliceLegal p {
+    font-size: small;
+    color: var(--font-gray);
+  }
+
+  /* JOIN ANIMATION START */
+
+  #login-second-img {
+    display: none;
+  }
+
+  .join-logo-animation {
+    width: 100%;
+    height: 100%;
+    background-color: var(--white-text);
+    z-index: 21;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+    animation: joinBackground 2s ease-in-out forwards;
+  }
+
+  .join-logo-animation img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2);
+    z-index: 20;
+    opacity: 1;
+    animation: joinLogo 2s ease-in-out forwards;
+  }
+
+  @keyframes joinBackground {
+    0% {
+      background-color: var(--white-text);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes joinLogo {
+    0% {
+      transform: translate(-50%, -50%) scale(2);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
     }
   }
 }

@@ -10,13 +10,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 10rem;
+  width: 20rem;
   height: 4rem;
-
+  border-radius: 1.05rem;
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--light-grey);
+}
+
+.signedUpSuccessfullyPara {
+  color: var(--white-text);
 }
 
 .firstRegister {
@@ -241,4 +246,17 @@
 .mobilePoliceLegalSignUp p {
   font-size: small;
   color: var(--font-gray);
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 751px) {
+  .registerLayout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 37rem;
+    height: 39rem;
+    border-radius: 1.8rem;
+  }
 }
