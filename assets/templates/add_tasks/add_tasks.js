@@ -192,11 +192,11 @@ async function initEventListener() {
     subs.length > 0 ? task.subtasks = subs : subs  =[];
     currentUser.tasks.push(task);
     currentUser.save();
-    let stat = currentUser.save().then((res) => {
-      document.getElementById("task-form-error").style = "color:green"
-      document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"
-      clearTask();
-    });
+    document.getElementById("task-form-error").style = "color:green"
+    document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"
+    console.log(task);
+    clearTask();
+    
   })
 
   document.getElementById("subtask-submit-subtask").addEventListener("click", (e) => {

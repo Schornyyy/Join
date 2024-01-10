@@ -64,20 +64,20 @@ async function loadDataToUser() {
   let userData = JSON.parse(localStorage.getItem("userData"));
   let userEmail = userData.email;
   let user = await users.find((a) => a.email == userEmail);
-  setItem("users", [])
-  // let u = new User(user.name, user.email, user.password);
-  // u.contacts = user.contacts;
-  // u.contacts = u.contacts.sort((a, b) => a.name.localeCompare(b.name));
-  // currentUser = u;
-  // console.log("User: ", u);
+  let u = new User("", "", "", "");
+  u.loadFromJSON(user);
+  u.contacts = user.contacts;
+  u.contacts = u.contacts.sort((a, b) => a.name.localeCompare(b.name));
+  currentUser = u;
+  console.log("User: ", u);
 }
 
-function editContactObject(contactIndex, obj) {
-  let contact = currentUser.contacts[contactIndex];
-  // let vals = Object.values(obj)
-  // let keys = Object.keys(obj);
-  // for (let index = 0; index < vals.length; index++) {
-  //     contact[keys[index]] = vals[index];
-  // }
-  console.log("Edited Contact: ", currentUser.contacts);
+function editUser(contactIndex, obj) {
+  let contact = users[contactIndex];
+  let vals = Object.values(obj)
+  let keys = Object.keys(obj);
+  for (let index = 0; index < vals.length; index++) {
+      contact[keys[index]] = vals[index];
+  }
+  console.log("Edited Contact: ", users);
 }

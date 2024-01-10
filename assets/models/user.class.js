@@ -15,6 +15,15 @@ class User {
     this.tasks = [];
   }
 
+  loadFromJSON(obj) {
+    this.name = obj.name,
+    this.email = obj.email,
+    this.password = obj.password,
+    this.colorCode = obj.colorCode,
+    this.contacts = obj.contacts,
+    this.tasks = obj.tasks
+  }
+
   removeContact(index) {
     this.contacts.splice(index, 1);
   }
@@ -28,7 +37,21 @@ class User {
   }
 
   async save() {
-    let s = await setItem("users", users);
-    console.log(s, users);
+    let u = currentUser;
+    let cu = users.findIndex((a) => a.email == u.email);
+    console.log(cu);
+    editUser(cu, u.toJSON());
+    await setItem("users", users);
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      colorCode: this.colorCode,
+      contacts: this.contacts,
+      tasks: this.tasks
+    }
   }
 }
