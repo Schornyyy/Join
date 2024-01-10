@@ -215,6 +215,10 @@
     gap: 0;
 }
 
+#dropdownIcon {
+    height: 0.5em;
+}
+
 .dropdown-menu {
     border: 2px solid var(--reini-light-grey);
     border-top: none;

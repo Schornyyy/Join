@@ -605,7 +605,7 @@ function editDialogToHTML(task) {
                 <label for="">Assigned to</label>
                 <div class="input-wrapper edit-input-wrapper">
                     <input class="input-select-members" type="text" placeholder="Select Contacts to assign" id="inputSelectMembers">
-                    <img src="./assets/img/board/dropdown-down-icon.svg" alt="dropdown-down">
+                    <img src="./assets/img/board/dropdown-down-icon.svg" alt="dropdown-down" id="dropdownIcon">
                 </div>                
                 <div class="dropdown-menu reini-d-none" id="dropdownContacts">
                     ${editDropdownMembersToHTML()}
@@ -703,6 +703,7 @@ function expandDropdown() {
     let dropdownContactsElement= document.getElementById('dropdownContacts');
     let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
 
+    dropdownIcon.src= './assets/img/board/dropdown-up-icon.svg';
     dropdownContactsElement.classList.remove('reini-d-none');
     editTaskMembersContainerElement.classList.add('reini-d-none');
 }
@@ -710,7 +711,9 @@ function expandDropdown() {
 function collapseDropdown() {
     let dropdownContactsElement= document.getElementById('dropdownContacts');
     let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
+    let dropdownIcon= document.getElementById('dropdownIcon');
 
+    dropdownIcon.src= './assets/img/board/dropdown-down-icon.svg';
     dropdownContactsElement.classList.add('reini-d-none');
     editTaskMembersContainerElement.classList.remove('reini-d-none');
     reloadTaskMembersContainer();
