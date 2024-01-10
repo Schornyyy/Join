@@ -82,32 +82,28 @@
     color: var(--white-grey);
   }
 
-  .desktopFooterPolicy {
+  .desktopFooterPolicyBox {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-top: 8rem;
-    transition: transform 0.5s ease;
   }
 
-  .desktopFooterPolicy p {
+  .desktopFooterPolicyBox a {
     color: var(--lighter-grey);
     transition: transform 0.5s ease;
+    text-decoration: none;
   }
 
-  .desktopFooterPolicyFont {
-    font-size: 0.8rem !important;
-  }
-
-  .desktopFooterPolicy p:hover {
+  .desktopFooterPolicyBox a:hover {
     color: var(--light-blue);
     cursor: pointer;
     transform: scaleX(1.2);
     font-size: 1rem;
   }
 
-  .desktopLegalBox {
-    transition: transform 0.5s ease;
+  .desktopFooterPolicyFont {
+    font-size: 0.8rem !important;
   }
 
   .mobileMenuFont {
