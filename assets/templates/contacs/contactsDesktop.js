@@ -68,8 +68,8 @@ function renderAddContactButtonDesktop() {  // Create add contact button for des
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function openContactScreenDesktop(contactId) {  // Show clicked contact details for desktop view
   const content = document.getElementById("contactsContentRightSideID");
-  const selectedContact = currentUser.contacts.find(contact => contact.id === contactId); 
-  if (lastClickedContactId !== contactId) {  // Check if contact changed
+  const selectedContact = currentUser.contacts.find(contact => contact.id === contactId);  // Find the clicked contactID
+  if (lastClickedContactId !== contactId) {  // Check if contactId is not the same as lastClickedContactId for background-color change on click on contact
     openContactsScreenDesktopChangeColorWhite(lastClickedContactId); // Change background color to white if contact is not klicked
     lastClickedContactId = contactId;
     openContactsScreenDesktopChangeColorBlack(contactId); // Change background color to grey/black if contact is klicked
@@ -290,9 +290,9 @@ function getUpdatedInputsDesktop() {  // Get updated input data for desktop view
   const mailInput = document.querySelector(".addContactInputMailAddresssDesktop");
   const phoneInput = document.querySelector(".addContactInputPhoneDesktop");
   return {
-      updatedName: nameInput.value.trim(),
-      updatedMail: mailInput.value.trim(),
-      updatedPhone: phoneInput.value.trim()
+      updatedName: nameInput.value.trim(),  // Remove free spaces
+      updatedMail: mailInput.value.trim(),  // Remove free spaces
+      updatedPhone: phoneInput.value.trim()  // Remove free spaces
   };
 }
 
@@ -321,12 +321,12 @@ function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {  // O
   return currentUser.contacts.map((contact) =>
       contact.id === contactId
           ? {
-              ...contact,
-              name: hasChanged.hasNameChanged ? updatedInputs.updatedName : contact.name,
-              email: hasChanged.hasMailChanged ? updatedInputs.updatedMail : contact.email,
-              phone: hasChanged.hasPhoneChanged ? updatedInputs.updatedPhone : contact.phone
-          }
-          : contact
+            ...contact,
+            name: hasChanged.hasNameChanged ? updatedInputs.updatedName : contact.name,
+            email: hasChanged.hasMailChanged ? updatedInputs.updatedMail : contact.email,
+            phone: hasChanged.hasPhoneChanged ? updatedInputs.updatedPhone : contact.phone
+            }
+      : contact
   );
 }
 

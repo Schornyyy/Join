@@ -146,75 +146,78 @@ function constForCreateContactMobile() {  // Const for create contact desktop vi
   return { newName, newMail, newPhone };
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-function editContactScreen(contactId) {
+function editContactScreen(contactId) {  // Edit contact screen on mobile view
   const content = document.getElementById("contactsContent");
-  const selectedContact = findSelectedContact(contactId);
+  const selectedContact = findSelectedContact(contactId);  // Find clicked contact ID
   if (!selectedContact) {
-      handleContactNotFound();
+      handleContactNotFound();  // Function if no contact was found
       return;
   }
-  content.innerHTML = createEditContactHTML(selectedContact);
-  hideHeaderAndFooter();
+  content.innerHTML = createEditContactHTML(selectedContact);  // Function call createEditContactHTML to Generate edit contact HTML on mobile view
+  hideHeaderAndFooter();  // Hide header and footer on mobile view
 }
   
-function findSelectedContact(contactId) {
+function findSelectedContact(contactId) {  // Find clicked contact ID
   return currentUser.contacts.find(contact => contact.id === contactId);
 }
   
-  function createEditContactHTML(selectedContact) {
-    return /*html*/ `
-      <div class="addContactContainerHeader">
-        <div class="addContactCloseXContainer">
-          <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
-        </div>
-        <div class="addContactBlockHeader">
-          <p class="addContactH1">Edit contact</p>
-          <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">          
+function createEditContactHTML(selectedContact) {  // Function createEditContactHTML to Generate edit contact HTML on mobile view
+  return /*html*/ `
+    <div class="addContactContainerHeader">
+      <div class="addContactCloseXContainer">
+        <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>  <!-- Create x close button on mobile view -->
+      </div>
+      <div class="addContactBlockHeader">
+        <p class="addContactH1">Edit contact</p>
+        <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">          
+      </div>
+    </div>
+    <div class="addContactBlankUserImg">        
+      ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}  <!-- Create user image with random background-color -->
+    </div>
+    <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">  <!-- Form for edit contact mobile view -->
+      <div class="addContactContainerFooter">
+        <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.name}">
+        <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.email}">
+        <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.phone}">
+        <div>
+          <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">  <!-- Create delete contact button on mobile view -->
+          <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">  <!-- Create edit contact button on mobile view -->
         </div>
       </div>
-      <div class="addContactBlankUserImg">
-        <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->
-        ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}
-      </div>
-      <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
-        <div class="addContactContainerFooter">
-          <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.name}">
-          <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.email}">
-          <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.phone}">
-          <div>
-            <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
-            <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">
-          </div>
-        </div>
-      </form>
-    `;
-  }
-  
-  function updateContactMobile(contactId) {
-    const updatedInputs = getUpdatedInputs();
-    if (validateInputs(updatedInputs)) {
-        const existingContact = findExistingContact(updatedInputs, contactId);
-        if (!existingContact) {
-            const oldContact = findOldContact(contactId);
-            const hasChanged = checkForChanges(oldContact, updatedInputs);
-            const updatedContactsData = updateContactsData(contactId, updatedInputs, hasChanged);
-            saveAndInit(updatedContactsData);
-        }
-    }
+    </form>
+  `;
 }
-  
-function getUpdatedInputs() {
+
+function handleContactNotFound() {  // Catch console error if contact not found
+  console.error("Selected contact not found in currentUser.contacts.");
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------  
+function updateContactMobile(contactId) {  // Update function if already exist contact was edit on mobile view
+  const updatedInputs = getUpdatedInputs();  // Get updated input data for mobile view 
+  if (validateInputs(updatedInputs)) {  // Check if contact data changed
+    const existingContact = findExistingContact(updatedInputs, contactId);  // Get the contact to edit
+    if (!existingContact) {
+        const oldContact = findOldContact(contactId);  // Find the contact by ID
+        const hasChanged = checkForChanges(oldContact, updatedInputs);  // Check if contact data changed
+        const updatedContactsData = updateContactsData(contactId, updatedInputs, hasChanged);  // Overwrite the old contact data with the new contact data
+        saveAndInit(updatedContactsData);  // Save the edit contact
+    }
+  }
+}
+
+function getUpdatedInputs() {  // Get updated input data for mobile view
   const nameInput = document.querySelector(".addContactInputNameMobile");
   const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
   const phoneInput = document.querySelector(".addContactInputPhoneMobile");
   return {
-      updatedName: nameInput.value.trim(),
-      updatedMail: mailInput.value.trim(),
-      updatedPhone: phoneInput.value.trim()
+    updatedName: nameInput.value.trim(),  // Remove free spaces
+    updatedMail: mailInput.value.trim(),  // Remove free spaces
+    updatedPhone: phoneInput.value.trim()  // Remove free spaces
   };
 }
   
-function validateInputs(updatedInputs) {
+function validateInputs(updatedInputs) {  // Check if all inputs are not empty
   if (Object.values(updatedInputs).some(value => value === "")) {
       alert("Bitte füllen Sie alle Felder aus.");
       return false;
@@ -222,7 +225,7 @@ function validateInputs(updatedInputs) {
   return true;
 }
   
-function findExistingContact(updatedInputs, contactId) {
+function findExistingContact(updatedInputs, contactId) {  // Get the contact to edit
   return currentUser.contacts.find(
       (contact) =>
           contact.name === updatedInputs.updatedName &&
@@ -231,11 +234,11 @@ function findExistingContact(updatedInputs, contactId) {
   );
 }
   
-function findOldContact(contactId) {
+function findOldContact(contactId) {  // Find the contact by ID
   return currentUser.contacts.find((contact) => contact.id === contactId);
 }
   
-function checkForChanges(oldContact, updatedInputs) {
+function checkForChanges(oldContact, updatedInputs) {  // Check if contact data changed
   return {
       hasNameChanged: oldContact.name !== updatedInputs.updatedName,
       hasMailChanged: oldContact.email !== updatedInputs.updatedMail,
@@ -243,7 +246,7 @@ function checkForChanges(oldContact, updatedInputs) {
   };
 }
   
-function updateContactsData(contactId, updatedInputs, hasChanged) {
+function updateContactsData(contactId, updatedInputs, hasChanged) {  // Overwrite the old contact data with the new contact data
   return currentUser.contacts.map((contact) =>
       contact.id === contactId
           ? {
@@ -256,75 +259,78 @@ function updateContactsData(contactId, updatedInputs, hasChanged) {
   );
 }
   
-function saveAndInit(updatedContactsData) {
+function saveAndInit(updatedContactsData) {  // Save the edit contact at the current user
   currentUser.contacts = updatedContactsData;
-  currentUser.save();
-  contactsInit();
+  currentUser.save();  // After contact saved back to contacts to show the new contact
+  contactsInit();  // Hide overlay for edit contact
 }
-  
-function deleteContactMobile(contactId) {
-  if (!validateContactId(contactId)) return;
+// ---------------------------------------------------------------------------------------------------------------------------------------------------  
+function deleteContactMobile(contactId) {  // Delete contact function on mobile view
+  if (!validateContactId(contactId)) return;  // Validate contact ID for no double contact ID´s
   const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
   if (!confirmDelete) return;  
   try {
-      const contactIndex = findContactIndex(contactId);      
+      const contactIndex = findContactIndex(contactId);  // Find contact ID     
       if (contactIndex === -1) {
           console.error("Selected contact not found in currentUser.contacts.");
           return;
       }      
-      const deletedContact = removeContact(contactIndex);
-      saveAndLogDeletedContact(deletedContact);
+      const deletedContact = removeContact(contactIndex);  // Remove contact
+      saveAndLogDeletedContact(deletedContact);  // Save deleted contact
   } catch (error) {
-      handleDeleteError(error);
+      handleDeleteError(error);  // Handle deleted contact error
   }  
-  contactsInit();
+  contactsInit();  // contacts init to show changes
 }
   
-function validateContactId(contactId) {
+function validateContactId(contactId) {  // validate contact ID if exist
   if (!contactId) {
-      console.error("Invalid contact ID");
+      console.error("Invalid contact ID");  // catch error
       return false;
   }
   return true;
 }
   
-function findContactIndex(contactId) {
+function findContactIndex(contactId) {  // Find contact ID
   return currentUser.contacts.findIndex((contact) => contact.id === contactId);
 }
   
-function removeContact(contactIndex) {
+function removeContact(contactIndex) {  // Remove contact
   return currentUser.contacts.splice(contactIndex, 1)[0];
 }
   
-function saveAndLogDeletedContact(deletedContact) {
+function saveAndLogDeletedContact(deletedContact) {  // Save deleted contact
   currentUser.save();
   console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
 }
   
-function handleDeleteError(error) {
+function handleDeleteError(error) {  // Catch error
   console.error("Fehler beim Löschen des Kontakts:", error);
 }
-  
-  function openContactScreenMobile(contactId) {
-    const content = document.getElementById("contactsContent");
-    const selectedContact = findSelectedContact(contactId);
-    if (!selectedContact) {
-        handleContactNotFound();
-        return;    }
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------  
+function openContactScreenMobile(contactId) {  // Show clicked contact details for mobile view
+  const content = document.getElementById("contactsContent");
+  const selectedContact = findSelectedContact(contactId);  // Find the clicked contactID
+  if (!selectedContact) {
+      handleContactNotFound();  // Catch console error if contact not found
+      return;
+  }
+  content.innerHTML = createContactScreenHTML(selectedContact);  // Generate HTML for function createContactScreenHTML on mobile view
+  setupContactScreen(selectedContact.id);
+}
 
-    content.innerHTML = createContactScreenHTML(selectedContact);
-    setupContactScreen(selectedContact.id);
+function setupContactScreen(contactId) {  // Setup function to finish open contact screen mobile on mobile view
+  console.log(contactId);
+  showHeaderAndFooter();  // Show header and footer
+  contactsContentBackgroundColorWhiteGray();  // Change background-color for open contact screen mobile on mobile view
+  addDropdownMenuClickListener();  // Add the drop down menu to the eventlistener
 }
   
-function findSelectedContact(contactId) {
+function findSelectedContact(contactId) {  // Find the clicked contactID
   return currentUser.contacts.find(contact => contact.id === contactId);
 }
   
-function handleContactNotFound() {
-  console.error("Selected contact not found in currentUser.contacts.");
-}
-  
-function createContactScreenHTML(selectedContact) {
+function createContactScreenHTML(selectedContact) {  // Generate HTML for function createContactScreenHTML on mobile view
   return /*html*/ `
     <div class="openContactContainerHeader">                            
         <div class="openContactBlockHeader">
@@ -335,15 +341,14 @@ function createContactScreenHTML(selectedContact) {
             </div>
             <div class="arrorLeftContainer">
                 <div onclick="contactsInit()">
-                    <img src="../assets/img/contact/arrow-left-line.svg" alt="">
+                    <img src="../assets/img/contact/arrow-left-line.svg" alt="">  <!-- Create X close button -->
                 </div>
             </div>                                                                
         </div>                    
     </div>  
     <div class="openContactContainerFooter">
-        <div class="openContactUserImageAndNameContainer">   
-            <!-- <img class="openContactUserImg" src="${selectedContact.contactImg}" alt=""> -->
-            ${singleMemberToHTML(selectedContact, 0)}
+        <div class="openContactUserImageAndNameContainer"> 
+            ${singleMemberToHTML(selectedContact, 0)}  <!-- Create user image with random background-color -->
             <h2 class="openContactH2">${selectedContact.name}</h2>
         </div>
         <p class="openContactInformation">Contact Information</p>
@@ -352,32 +357,26 @@ function createContactScreenHTML(selectedContact) {
         <p class="openContactPhoneText">Phone</p>
         <p class="openContactPhoneNumber">${selectedContact.phone}</p>        
     </div>  
-    <div class="dropdown-container" id="contactOptionsDropdownContainer">
+    <div class="dropdown-container" id="contactOptionsDropdownContainer">  <!-- Drop down menu -->
         <div class="dropdown-triggerContainer">
-          <div class="dropdown-trigger" onclick="toggleDropdownMenu()">
-              <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+          <div class="dropdown-trigger" onclick="toggleDropdownMenu()">  <!-- Toggle drop down menu -->
+              <img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">  <!-- Create button to open the drop down menu -->
           </div>
         </div>
-        <div class="dropdown-menu" id="contactOptionsDropdown">            
-            <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">
-                <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
+        <div class="dropdown-menu" id="contactOptionsDropdown">  <!-- Drop down menu options -->
+            <div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">  <!-- Drop down menu option edit contact screen on mobile view -->
+                <img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">  <!-- Drop down menu option edit image on mobile view -->
             </div>            
-            <div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">
-                <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
+            <div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">  <!-- Drop down menu option delete contact screen on mobile view -->
+                <img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">  <!-- Drop down menu option delete image on mobile view -->
             </div>
         </div>
     </div>
   `;
-}
-  
-function setupContactScreen(contactId) {
-  console.log(contactId);
-  showHeaderAndFooter();
-  contactsContentBackgroundColorWhiteGray();
-  addDropdownMenuClickListener();
-}
+} 
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function singleMemberToHTMLOpenContactMobile(member, index) {
+function singleMemberToHTMLOpenContactMobile(member, index) {  // Function to generate user image with random background-color on mobile view
   let textcolor;
   let iconRightStep = 10;
   if (!isColorLight(member.colorCode)) textcolor = 'white';

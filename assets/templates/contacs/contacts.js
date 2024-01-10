@@ -35,7 +35,7 @@ function handleAddContactClick() {
 }
 
 //---------------------------------------------------------------------------------------
-function deleteContact(contactId) {  // Delete contact function
+function deleteContact(contactId) {  // Delete contact function on desktop view
   if (!validateContactId(contactId)) return;  // Validate contact ID for no double contact ID´s
   const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
   if (!confirmDelete) return;  
@@ -50,7 +50,7 @@ function deleteContact(contactId) {  // Delete contact function
   } catch (error) {
       handleDeleteError(error);  // Handle deleted contact error
   }  
-  contactsInit();  // contacts init 
+  contactsInit();  // contacts init to show changes
 }
 
 function validateContactId(contactId) {  // validate contact ID if exist
