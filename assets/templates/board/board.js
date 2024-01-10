@@ -508,8 +508,6 @@ function addDropdownClickHandler(taskID) {
 }
 
 function setContactsSelected(task) {
-    console.log('setContactsSelected');
-    console.log(task.assignedTo);
     contactsSelected= structuredClone(task.assignedTo);
 }
 
@@ -647,10 +645,9 @@ function editDropdownMembersToHTML() {
         if (isMember(contact.email)) {
             classString+= 'members-dropdown-item-selected';
             imgURL= './assets/img/board/checkbox-checked-icon-white.svg';
-            clickfunction= `removeSelectedContact('${contact.email}')`;
         }
         output += `
-            <div class="${classString}" onclick="${clickfunction}">
+            <div class="${classString}" data-contactemail="${contact.email}" onclick="dropdownItemClickHandler(event)" id="membersDropdownItem${i}">
                 <div class="member-item-name-container">
                     ${singleMemberToHTML(contact, 0)}
                     <span>${contact.name}</span>
@@ -663,27 +660,44 @@ function editDropdownMembersToHTML() {
     return output;
 }
 
-function reloadMembersDropdown() {
-    let dropdownContactsElem= document.getElementById('dropdownContacts');
-    dropdownContactsElem.innerHTML= editDropdownMembersToHTML();
+function dropdownItemClickHandler(event) {
+    let email= event.currentTarget.dataset.contactemail;
+    let itemElem= event.currentTarget;
+    if (isMember(email)) {
+        demarkItemElementSelected(itemElem.id);
+        removeSelectedContact(itemElem.dataset.contactemail);
+    } else {
+        markItemElementSelected(itemElem.id);
+        addSelectedContact(itemElem.dataset.contactemail);
+    }
+}
+
+function markItemElementSelected(elementID) {
+    let element= document.getElementById(elementID);
+    console.log(element);
+    let imgElement= document.querySelector(`#${elementID} .member-item-checkbox-icon`);
+    element.classList.add('members-dropdown-item-selected');
+    imgElement.src= './assets/img/board/checkbox-checked-icon-white.svg';
+}
+
+function demarkItemElementSelected(elementID) {
+    let element= document.getElementById(elementID);
+    let imgElement= document.querySelector(`#${elementID} .member-item-checkbox-icon`);
+    element.classList.remove('members-dropdown-item-selected');
+    imgElement.src= './assets/img/board/checkbox-icon.svg';
 }
 
 function isMember(email) {
-
     return contactsSelected.includes(email);
 }
 
 function removeSelectedContact(email) {
-    console.log('removeSelectedContact, ' + email);
     let index= contactsSelected.indexOf(email);
     contactsSelected.splice(index, 1);
-    reloadMembersDropdown();
 }
 
 function addSelectedContact(email) {
-    console.log('addSelectedContact, ' + email);
     contactsSelected.push(email);
-    reloadMembersDropdown();
 }
 
 function expandDropdown() {
@@ -700,6 +714,12 @@ function collapseDropdown() {
 
     dropdownContactsElement.classList.add('reini-d-none');
     editTaskMembersContainerElement.classList.remove('reini-d-none');
+    reloadTaskMembersContainer();
+}
+
+function reloadTaskMembersContainer() {
+    let elem= document.getElementById('editTaskMembersContainer');
+    elem.innerHTML= editMembersToHTML(contactsSelected);
 }
 
 
@@ -725,11 +745,10 @@ function editSubtasksToHTML(task) {
     return output;
 }
 
-function editMembersToHTML(task) {
-    let members = getMembers(task);
+function editMembersToHTML(memberMails) {
     let output = '';
-
-    for (let member of members) {
+    for (let i=0; i < memberMails.length; i++) {
+        let member= getContactByEmail(memberMails[i]);
         output += editSingleMemberToHTML(member);
     }
     return output;
