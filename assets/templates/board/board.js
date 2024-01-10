@@ -94,7 +94,7 @@ function getSubtasks(task) {
 function getMembers(task) {
     let output = [];
     for (let eMail of task.assignedTo) {
-        output.push(contactsForTesting.find(contact => contact.email == eMail));
+        output.push(contactsDatasource.find(contact => contact.email == eMail));
     }
     return output;
 }
@@ -477,6 +477,7 @@ function toggleSubtask(taskID, subtaskIndex) {
 ///////////////////////////////////////////////
 
 let prioNew;
+let contactsSelected;
 
 //////////////// SHOW HIDE EDIT
 
@@ -488,10 +489,10 @@ function showDialogEdit(taskID) {
     editDialog.classList.remove('reini-d-none');
 
     let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    setContactsSelected(task);
     editDialog.innerHTML = editDialogToHTML(task);
     editDialogFillInputs(task);
     addDropdownClickHandler(taskID);
-    addDropdownItemClickHandler(taskID);
 }
 
 function addDropdownClickHandler(taskID) {
@@ -506,33 +507,12 @@ function addDropdownClickHandler(taskID) {
     });
 }
 
-function addDropdownItemClickHandler(taskID) {
-    let dropdownItemElems= document.querySelectorAll('.members-dropdown-item');
-    for (let dropdownItemElemI of dropdownItemElems) {
-        let contactIndex= dropdownItemElemI.dataset.contactindex;
-        dropdownItemElemI.addEventListener('click', event => {
-            toggleMemberDropdownItem(dropdownItemElemI.id, taskID, contactIndex);
-        });
-    }
+function setContactsSelected(task) {
+    console.log('setContactsSelected');
+    console.log(task.assignedTo);
+    contactsSelected= structuredClone(task.assignedTo);
 }
 
-function expandDropdown() {
-    let dropdownContactsElement= document.getElementById('dropdownContacts');
-    let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
-
-    dropdownContactsElement.classList.remove('reini-d-none');
-    editTaskMembersContainerElement.classList.add('reini-d-none');
-}
-
-function collapseDropdown(taskID) {
-    let dropdownContactsElement= document.getElementById('dropdownContacts');
-    let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
-
-    dropdownContactsElement.classList.add('reini-d-none');
-    editTaskMembersContainerElement.classList.remove('reini-d-none');
-    // showDialogEdit(taskID);
-    updateTaskMembersContainer(getTaskById(taskID));
-}
 
 //////////////// RENDER EDIT DIALOG
 
@@ -630,7 +610,7 @@ function editDialogToHTML(task) {
                     <img src="./assets/img/board/dropdown-down-icon.svg" alt="dropdown-down">
                 </div>                
                 <div class="dropdown-menu reini-d-none" id="dropdownContacts">
-                    ${editDropdownMembersToHTML(task)}
+                    ${editDropdownMembersToHTML()}
                 </div>
                 <div class="edit-taskmembers-container" id="editTaskMembersContainer">
                     ${editMembersToHTML(task)}
@@ -657,18 +637,20 @@ function editDialogToHTML(task) {
     `;
 }
 
-function editDropdownMembersToHTML(task) {
+function editDropdownMembersToHTML() {
     let output = '';
     let i= 0;
     for (let contact of contactsDatasource) {
         let classString= 'members-dropdown-item ';
-        let imgURL= './assets/img/board/checkbox-icon.svg'
-        if (isMember(task, contact)) {
+        let imgURL= './assets/img/board/checkbox-icon.svg';
+        let clickfunction= `addSelectedContact('${contact.email}')`;
+        if (isMember(contact.email)) {
             classString+= 'members-dropdown-item-selected';
             imgURL= './assets/img/board/checkbox-checked-icon-white.svg';
+            clickfunction= `removeSelectedContact('${contact.email}')`;
         }
         output += `
-            <div class="${classString}" id="membersDropdownItem${i}" data-contactindex="${i}">
+            <div class="${classString}" onclick="${clickfunction}">
                 <div class="member-item-name-container">
                     ${singleMemberToHTML(contact, 0)}
                     <span>${contact.name}</span>
@@ -680,6 +662,51 @@ function editDropdownMembersToHTML(task) {
     };
     return output;
 }
+
+function reloadMembersDropdown() {
+    let dropdownContactsElem= document.getElementById('dropdownContacts');
+    dropdownContactsElem.innerHTML= editDropdownMembersToHTML();
+}
+
+function isMember(email) {
+
+    return contactsSelected.includes(email);
+}
+
+function removeSelectedContact(email) {
+    console.log('removeSelectedContact, ' + email);
+    let index= contactsSelected.indexOf(email);
+    contactsSelected.splice(index, 1);
+    reloadMembersDropdown();
+}
+
+function addSelectedContact(email) {
+    console.log('addSelectedContact, ' + email);
+    contactsSelected.push(email);
+    reloadMembersDropdown();
+}
+
+function expandDropdown() {
+    let dropdownContactsElement= document.getElementById('dropdownContacts');
+    let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
+
+    dropdownContactsElement.classList.remove('reini-d-none');
+    editTaskMembersContainerElement.classList.add('reini-d-none');
+}
+
+function collapseDropdown() {
+    let dropdownContactsElement= document.getElementById('dropdownContacts');
+    let editTaskMembersContainerElement= document.getElementById('editTaskMembersContainer');
+
+    dropdownContactsElement.classList.add('reini-d-none');
+    editTaskMembersContainerElement.classList.remove('reini-d-none');
+}
+
+
+
+
+
+
 
 function editSubtasksToHTML(task) {
     let output = '';
@@ -708,11 +735,6 @@ function editMembersToHTML(task) {
     return output;
 }
 
-function updateTaskMembersContainer(task) {
-    let editTaskMembersContainer= document.getElementById('editTaskMembersContainer');
-    editTaskMembersContainer.innerHTML= editMembersToHTML(task);
-}
-
 function editSingleMemberToHTML(member) {
     let textcolor;
     if (!isColorLight(member.colorCode)) textcolor = 'white';
@@ -723,40 +745,15 @@ function editSingleMemberToHTML(member) {
     `;
 }
 
-function toggleMemberDropdownItem(menuItemID, taskID, contactIndex) {
-    let itemElem= document.getElementById(menuItemID);
-    let task= getTaskById(taskID);
-    let contact= contactsDatasource[contactIndex];
-    let memberIndex= task.assignedTo.indexOf(contact);
-    isMember(task, contact) ? deselectMemberDropdownItem(itemElem, task, memberIndex) : selectMemberDropdownItem(itemElem, task, contact);
-}
 
-function selectMemberDropdownItem(menuItemElem, task, contact) {
-    let imgElem= document.querySelector(`#${menuItemElem.id} .member-item-checkbox-icon`);
 
-    menuItemElem.classList.add('members-dropdown-item-selected');
-    imgElem.src= './assets/img/board/checkbox-checked-icon-white.svg';
-    task.assignedTo.push(contact.email);
-}
-
-function deselectMemberDropdownItem(menuItemElem, task, memberIndex) {
-    let imgElem= document.querySelector(`#${menuItemElem.id} .member-item-checkbox-icon`);
-
-    menuItemElem.classList.remove('members-dropdown-item-selected');
-    imgElem.src= './assets/img/board/checkbox-icon.svg';
-    task.assignedTo.splice(memberIndex, 1);
-}
-
-function isMember(task, contact) {
-    let contactEmail= contact.email;
-    return task.assignedTo.includes(contactEmail);
-}
 
 
 
 function editSaveTask(taskID) {
-    //TODO: Prio, Contacts, Subtasks
+    //TODO: Members, Subtasks
     let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
+    let taskIndex= tasksDatasource.indexOf(task);
     let inputTaskTitle = document.getElementById('inputTaskTitle');
     let inputTaskDescription = document.getElementById('inputTaskDescription');
     let inputTaskDuedate = document.getElementById('inputTaskDuedate');
@@ -766,8 +763,8 @@ function editSaveTask(taskID) {
     task.dueDate = new Date(inputTaskDuedate.value).getTime();
     task.prio = prioNew;
 
-    renderBoard();
-    // saveTasks();
+
+    // renderBoard();
     // currentUser.save();
     showDialogDetail(taskID);
 }
