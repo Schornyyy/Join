@@ -74,7 +74,7 @@
         </div>
 
         <div class="loginBtnBox">
-          <p id="login-error"></p>
+          <p id="login-error" style="color: red;"></p>
           <div class="justBtn">
             <button class="confirmLogInBtn" onclick="login()" id="login-btn">
               Log in
@@ -86,18 +86,19 @@
         </div>
       </div>
 
-      <div class="logInExtraBox">
-        <div class="mobileNotUser" id="mobileNotUser">
-          <p>Not a Join user?</p>
-          <button
-            class="mobileNotUserBtn"
-            id="mobileNotUserBtn"
-            onclick="redirectToRegister()"
-          >
-            Sign up
-          </button>
-        </div>
 
+      <div class="mobileNotUser" id="mobileNotUser">
+        <p>Not a Join user?</p>
+        <button
+          class="mobileNotUserBtn"
+          id="mobileNotUserBtn"
+          onclick="redirectToRegister()"
+        >
+          Sign up
+        </button>
+      </div>
+
+      <div class="logInExtraBox">
         <div class="mobilePoliceLegal" id="mobilePoliceLegal">
           <a
             class="mobilePoliceLegalAnchor"
