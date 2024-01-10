@@ -49,7 +49,7 @@ function createContactContainer(oneContact) {  // Generate HTML for each contact
     `;
 }
 
-function renderContactsByFirstLetter(content, contactsByFirstLetter) {  // Add each contact to the section
+function renderContactsByFirstLetter(content, contactsByFirstLetter) {  // Add each contact to the section on desktop view
     Object.values(contactsByFirstLetter).forEach((section) => {
         content.innerHTML += section;
     });
