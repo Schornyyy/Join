@@ -13,29 +13,25 @@
 
   <body onload="loadData();">
     <div class="join-logo-animation">
-      <!-- <img src="../../img/login/firstLogo.svg" alt=""> -->
       <img src="../../img/login/secondLogo.svg" alt="" />
     </div>
-
     <div class="signedUpSuccessfully">
       <p class="signedUpSuccessfullyPara">You Signed Up successfully</p>
     </div>
-
     <div class="firstRegister">
       <div class="registerLayout RegisterBoxShadow">
-        <!-- TODO -->
         <div class="headerRegisterBox">
           <img
+            class="backToLoginMobile"
             src="../../../assets/img/register/arrow-left-line.svg"
             onclick="redirectToLoin()"
           />
-
           <div class="headerRegister">
             <h1>Sign up</h1>
             <div class="underlineFrameMobileRegister"></div>
           </div>
+          <div class="blancoHelper"></div>
         </div>
-
         <div class="nameRegistDevision cursor" id="nameRegistDevision">
           <input
             class="nameRegist"
@@ -49,12 +45,10 @@
             onblur="resetBorderColor('nameRegistDevision')"
           />
           <img
-            style="padding-right: 3px"
             class="inpIconStyle"
             src="../../../assets/img/register/person.svg"
           />
         </div>
-
         <div class="emailDevision cursor" id="emailDevision">
           <input
             class="registerInpMail"
@@ -69,7 +63,6 @@
           />
           <img class="inpIconStyle" src="../../../assets/img/login/mail.svg" />
         </div>
-
         <div class="passwortDevision cursor" id="passwortDevision">
           <input
             class="registerInpPass"
@@ -88,7 +81,6 @@
             src="../../../assets/img/login/lock.svg"
           />
         </div>
-
         <div
           class="confirmPasswortDevision cursor"
           id="confirmPasswortDevision"
@@ -110,7 +102,6 @@
             src="../../../assets/img/login/lock.svg"
           />
         </div>
-
         <div class="acceptPolicyBox" onclick="checkedPrivacy()">
           <input
             type="checkbox"
@@ -122,14 +113,12 @@
             >I accept the Privacy policy</label
           >
         </div>
-
         <div class="registerBtnBox">
           <p id="registerError" style="color: red"></p>
           <button class="RegisterBtn" onclick="registerUser()">Sign up</button>
         </div>
       </div>
-
-      <div class="mobilePoliceLegalSignUp">
+      <div class="mobilePoliceLegalSignUp mobilePoliceLegal">
         <a
           href="./../../../assets/templates/privacy_policy/privacy_policy_internal.html"
           target="_blank"

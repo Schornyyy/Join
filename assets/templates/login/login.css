@@ -191,14 +191,22 @@
     gap: 2rem;
   }
 
-  .mobilePoliceLegal p {
-    font-size: small;
+  .mobilePoliceLegal a {
     color: var(--font-gray);
+    transition: transform 0.5s ease;
+    font-size: 0.8rem !important;
+    text-decoration: none;
+  }
+
+  .mobilePoliceLegal a:hover {
+    cursor: pointer;
+    color: var(--light-blue);
+    transform: scaleX(1.2);
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 750px) {
-  /* JUST JOIN ANIMATION */
   #login-second-img {
     display: block;
     animation: JoinLoginSecondary 2s ease-in-out forwards;
@@ -260,6 +268,20 @@
     100% {
       background-color: transparent;
     }
+  }
+
+  .mobilePoliceLegal a {
+    color: var(--font-gray);
+    transition: transform 0.5s ease;
+    font-size: 0.8rem !important;
+    text-decoration: none;
+  }
+
+  .mobilePoliceLegal a:hover {
+    cursor: pointer;
+    color: var(--light-blue);
+    transform: scaleX(1.2);
+    font-size: 1rem;
   }
 }
 
@@ -400,8 +422,6 @@
     margin-top: 1.5rem;
   }
 
-
-
   .confirmLogInBtn {
     font-weight: bold;
     border: #2a3647 1px solid;
@@ -471,8 +491,6 @@
     color: var(--font-gray);
   }
 
-  /* JOIN ANIMATION START */
-
   #login-second-img {
     display: none;
   }
@@ -516,5 +534,19 @@
     100% {
       transform: translate(-50%, -50%) scale(1) translate(-35vw, -42vh);
     }
+  }
+
+  .mobilePoliceLegal a {
+    color: var(--font-gray);
+    transition: transform 0.5s ease;
+    font-size: 0.8rem !important;
+    text-decoration: none;
+  }
+
+  .mobilePoliceLegal a:hover {
+    cursor: pointer;
+    color: var(--light-blue);
+    transform: scaleX(1.2);
+    font-size: 1rem;
   }
 }

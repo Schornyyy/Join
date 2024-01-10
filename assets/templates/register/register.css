@@ -1,251 +1,225 @@
-.cursor {
-  cursor: pointer;
-}
+@media only screen and (max-width: 750px) and (min-width: 250px) {
+  .RegisterBoxShadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
 
-.RegisterBoxShadow {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-}
+  .signedUpSuccessfully {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 4rem;
+    border-radius: 1.05rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--light-grey);
+  }
 
-.signedUpSuccessfully {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20rem;
-  height: 4rem;
-  border-radius: 1.05rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--light-grey);
-}
+  .signedUpSuccessfullyPara {
+    color: var(--white-text);
+  }
 
-.signedUpSuccessfullyPara {
-  color: var(--white-text);
-}
+  .firstRegister {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 
-.firstRegister {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+  .registerLayout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 20rem;
+    height: 37rem;
+    border-radius: 1.8rem;
+  }
 
-.registerLayout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #fff;
-  width: 20rem;
-  height: 37rem;
-  border-radius: 1.8rem;
-}
+  .headerRegisterBox {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 
-.headerRegisterBox {
-  display: flex;
-  align-items: center;
-}
+  .blancoHelper {
+    width: 2rem;
+  }
 
-.headerRegister {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
+  .headerRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 
-.underlineFrameMobileRegister {
-  width: 5rem;
-  height: 0.15rem;
-  background-color: #29abe2;
-}
+  .underlineFrameMobileRegister {
+    width: 5rem;
+    height: 0.15rem;
+    background-color: #29abe2;
+  }
 
-.registerLayout h1 {
-  font-size: 2.5rem;
-}
+  .registerLayout h1 {
+    font-size: 2.5rem;
+  }
 
-.regForm {
-  margin-top: 1rem;
-}
+  .nameRegistDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 1rem;
+    height: 2.5rem;
+    width: 18rem;
+    gap: 0.75rem;
+  }
 
-.nameRegistDevision {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: solid 1px #d1d1d1;
-  border-radius: 0.5rem;
-  padding: 0.4rem 1rem 0.4rem 1rem;
-  margin-top: 1rem;
-  height: 2.5rem;
-  width: 18rem;
-  gap: 0.75rem;
-}
+  .nameRegist {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
 
-.nameRegist {
-  border: none;
-  width: 100%;
-  height: 1.25rem;
-  font-size: 1rem;
-  background-color: transparent;
-}
+  .nameRegist:focus {
+    outline: none;
+  }
 
-.nameRegist:focus {
-  outline: none;
-}
+  .nameRegistDevision.active {
+    border-color: var(--light-blue);
+  }
 
-.nameRegistDevision.active {
-  border-color: var(--light-blue);
-}
+  .emailDevision {
+    margin-top: 1rem !important;
+  }
 
-.emailDevision {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: solid 1px #d1d1d1;
-  border-radius: 0.5rem;
-  padding: 0.4rem 1rem 0.4rem 1rem;
-  margin-top: 1rem;
-  height: 2.5rem;
-  width: 18rem;
-  gap: 0.75rem;
-}
+  .registerInpMail {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
 
-.registerInpMail {
-  border: none;
-  width: 100%;
-  height: 1.25rem;
-  font-size: 1rem;
-  background-color: transparent;
-}
+  .registerInpMail:focus {
+    outline: none;
+  }
 
-.registerInpMail:focus {
-  outline: none;
-}
+  .passwortDevision {
+    margin-top: 1rem;
+  }
 
-.emailDevision.active {
-  border-color: var(--light-blue);
-}
+  .registerInpPass {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
 
-.passwortDevision {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: solid 1px #d1d1d1;
-  border-radius: 0.5rem;
-  padding: 0.4rem 1rem 0.4rem 1rem;
-  margin-top: 1rem;
-  height: 2.5rem;
-  width: 18rem;
-  gap: 0.75rem;
-}
+  .registerInpPass:focus {
+    outline: none;
+  }
 
-.registerInpPass {
-  border: none;
-  width: 100%;
-  height: 1.25rem;
-  font-size: 1rem;
-  background-color: transparent;
-}
+  .confirmPasswortDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 1rem;
+    height: 2.5rem;
+    width: 18rem;
+    gap: 0.75rem;
+  }
 
-.registerInpPass:focus {
-  outline: none;
-}
+  .confirmPasswort {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
 
-.passwortDevision.active {
-  border-color: var(--light-blue);
-}
+  .confirmPasswort:focus {
+    outline: none;
+  }
 
-.confirmPasswortDevision {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: solid 1px #d1d1d1;
-  border-radius: 0.5rem;
-  padding: 0.4rem 1rem 0.4rem 1rem;
-  margin-top: 1rem;
-  height: 2.5rem;
-  width: 18rem;
-  gap: 0.75rem;
-}
+  .confirmPasswortDevision.active {
+    border-color: var(--light-blue);
+  }
 
-.confirmPasswort {
-  border: none;
-  width: 100%;
-  height: 1.25rem;
-  font-size: 1rem;
-  background-color: transparent;
-}
+  .inpIconStyle {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 
-.confirmPasswort:focus {
-  outline: none;
-}
+  .forgotPassword {
+    margin-top: 1rem;
+  }
 
-.confirmPasswortDevision.active {
-  border-color: var(--light-blue);
-}
+  .acceptPolicyBox {
+    margin-top: 3rem;
+  }
 
-.inpIconStyle {
-  width: 1.25rem;
-  height: 1.25rem;
-}
+  .acceptPolicy {
+    font-size: 0.8rem !important;
+  }
 
-.forgotPassword {
-  margin-top: 1rem;
-}
+  .rememberBox {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    padding-right: 4rem;
+    gap: 0.5rem;
+  }
 
-.acceptPolicyBox {
-  margin-top: 3rem;
-}
+  .registerBtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
 
-.acceptPolicy {
-  font-size: 0.8rem !important;
-}
+  .RegisterBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    border-radius: 0.5rem;
+    width: 9rem;
+    height: 2.5rem;
+    background-color: var(--light-grey);
+    color: var(--white-text);
+    margin-top: 1rem;
+  }
 
-.rememberBox {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: row;
-  padding-right: 4rem;
-  gap: 0.5rem;
-}
+  .RegisterBtn:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: var(--light-blue);
+    background-color: var(--light-blue);
+  }
 
-.registerBtnBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-}
+  .mobilePoliceLegalSignUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    gap: 2rem;
+    padding-bottom: 1rem;
+  }
 
-.RegisterBtn {
-  font-weight: bold;
-  border: #2a3647 1px solid;
-  border-radius: 0.5rem;
-  width: 9rem;
-  height: 2.5rem;
-  background-color: var(--light-grey);
-  color: var(--white-text);
-}
-
-.RegisterBtn:hover {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: var(--light-blue);
-  background-color: var(--light-blue);
-}
-
-.mobilePoliceLegalSignUp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  gap: 2rem;
-  padding-bottom: 1rem;
-}
-
-.mobilePoliceLegalSignUp p {
-  font-size: small;
-  color: var(--font-gray);
+  .mobilePoliceLegalSignUp p {
+    font-size: small;
+    color: var(--font-gray);
+  }
 }
 
 @media only screen and (max-width: 1920px) and (min-width: 751px) {
@@ -258,5 +232,212 @@
     width: 37rem;
     height: 39rem;
     border-radius: 1.8rem;
+  }
+
+  .RegisterBoxShadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .signedUpSuccessfully {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 4rem;
+    border-radius: 1.05rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--light-grey);
+  }
+
+  .signedUpSuccessfullyPara {
+    color: var(--white-text);
+  }
+
+  .firstRegister {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .headerRegisterBox {
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+  }
+
+  .blancoHelper {
+    width: 2rem;
+  }
+
+  .headerRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .underlineFrameMobileRegister {
+    width: 5rem;
+    height: 0.15rem;
+    background-color: #29abe2;
+  }
+
+  .registerLayout h1 {
+    font-size: 2.5rem;
+  }
+
+  .nameRegistDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 1rem;
+    height: 2.5rem;
+    width: 26rem;
+    gap: 0.75rem;
+  }
+
+  .nameRegist {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .nameRegist:focus {
+    outline: none;
+  }
+
+  .nameRegistDevision.active {
+    border-color: var(--light-blue);
+  }
+
+  .emailDevision {
+    margin-top: 1rem !important;
+  }
+
+  .registerInpMail {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .registerInpMail:focus {
+    outline: none;
+  }
+
+  .registerInpPass {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .registerInpPass:focus {
+    outline: none;
+  }
+
+  .confirmPasswortDevision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px #d1d1d1;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 1rem;
+    height: 2.5rem;
+    width: 26rem;
+    gap: 0.75rem;
+  }
+
+  .confirmPasswort {
+    border: none;
+    width: 100%;
+    height: 1.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .confirmPasswort:focus {
+    outline: none;
+  }
+
+  .confirmPasswortDevision.active {
+    border-color: var(--light-blue);
+  }
+
+  .inpIconStyle {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .forgotPassword {
+    margin-top: 1rem;
+  }
+
+  .acceptPolicyBox {
+    margin-top: 3rem;
+  }
+
+  .acceptPolicy {
+    font-size: 0.8rem !important;
+  }
+
+  .rememberBox {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    padding-right: 4rem;
+    gap: 0.5rem;
+  }
+
+  .registerBtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .RegisterBtn {
+    font-weight: bold;
+    border: #2a3647 1px solid;
+    border-radius: 0.5rem;
+    width: 9rem;
+    height: 2.5rem;
+    background-color: var(--light-grey);
+    color: var(--white-text);
+    margin-top: 1rem;
+  }
+
+  .RegisterBtn:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: var(--light-blue);
+    background-color: var(--light-blue);
+  }
+
+  .mobilePoliceLegalSignUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    gap: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .mobilePoliceLegalSignUp p {
+    font-size: small;
+    color: var(--font-gray);
   }
 }
