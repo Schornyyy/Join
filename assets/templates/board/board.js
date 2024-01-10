@@ -658,8 +658,8 @@ function editDropdownMembersToHTML(task) {
         output += `
             <div class="members-dropdown-item">
                 <div class="member-item-name-container">
-                    <div class="member-icon">HL</div>
-                    <span>Hermann Li</span>
+                    ${singleMemberToHTML(contact, 0)}
+                    <span>${contact.name}</span>
                 </div>
                 <img src="./assets/img/board/checkbox-icon.svg" alt="checkbox">
             </div>
