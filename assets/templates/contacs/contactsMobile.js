@@ -1,161 +1,160 @@
-// JavaScript Logik für die Mobile Ansicht
-function contactsContentBackgroundColorWhiteGray() {
-    const content = document.getElementById("contactsContent");
-    content.style.backgroundColor = "var(--white-grey)";
-  }
+// JavaScript Logic for mobile view
+function contactsContentBackgroundColorWhiteGray() {  // Change background color to white grey for contacts content on mobile view
+  const content = document.getElementById("contactsContent");
+  content.style.backgroundColor = "var(--white-grey)";
+}
   
-  function contactsContentBackgroundColorWhite() {
-    const content = document.getElementById("contactsContent");
-    content.style.backgroundColor = "white";
-  }
+function contactsContentBackgroundColorWhite() {  // Change background color to white for contacts content on mobile view
+  const content = document.getElementById("contactsContent");
+  content.style.backgroundColor = "white";
+}
   
-  function hideHeaderAndFooter() {
-    const mobileHeader = document.querySelector(".mobileHeader"); // Verstecke mobileHeader und menuTemplate
-    const menuTemplate = document.querySelector(".menuTemplate");
-    mobileHeader.style.display = "none";
-    menuTemplate.style.display = "none";
-  }
+function hideHeaderAndFooter() {  // Hide header and footer for edit contact and create contact screen on mobile view
+  const mobileHeader = document.querySelector(".mobileHeader"); 
+  const menuTemplate = document.querySelector(".menuTemplate");
+  mobileHeader.style.display = "none";
+  menuTemplate.style.display = "none";
+}
   
-  function showHeaderAndFooter() {
-    const mobileHeader = document.querySelector(".mobileHeader"); // Zeigt mobileHeader und menuTemplate
-    const menuTemplate = document.querySelector(".menuTemplate");
-    mobileHeader.style.display = "flex";
-    menuTemplate.style.display = "flex";
-  }
+function showHeaderAndFooter() {  // Show header and footer screen on mobile view
+  const mobileHeader = document.querySelector(".mobileHeader");
+  const menuTemplate = document.querySelector(".menuTemplate");
+  mobileHeader.style.display = "flex";
+  menuTemplate.style.display = "flex";
+}
 
-  function hidecontactsContentRightSideDesktop() {  // Hide contacts content right side only for mobile view
-    const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
-    showcontactsContentRightSide.style.display = "none";
-  }
+function hidecontactsContentRightSideDesktop() {  // Hide contacts content right side only for mobile view
+  const showcontactsContentRightSide = document.getElementById("contactsContentRightSideID");
+  showcontactsContentRightSide.style.display = "none";
+}
+//-------------------------------------------------------------------------------------------------------------------------
+function renderContacts() {  // Render contacts for mobile view
+  const content = document.getElementById("contactsContent");
+  content.innerHTML = "";  
+  const contactsByFirstLetter = {};
+  currentUser.contacts.forEach((oneContact) => {  // // For each contact sorted by first letter
+  const firstLetter = oneContact.name.charAt(0).toUpperCase();
+  updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact);  // Sort the contacts by first letter
+  });
+  renderContactsByFirstLetter(content, contactsByFirstLetter);  // Render the contacts by first letter
+}
 
-  function renderContacts() {  // Für die mobile Ansicht
-    const content = document.getElementById("contactsContent");
-    content.innerHTML = "";
-    renderAddContactButtonDesktop();
-    const contactsByFirstLetter = {};
-    currentUser.contacts.forEach((oneContact) => {
-      const firstLetter = oneContact.name.charAt(0).toUpperCase();
-      updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact);
-    });
-    renderContactsByFirstLetter(content, contactsByFirstLetter);
-  }
-
-  function renderAddContactButton() {
-    const content = document.getElementById("contactsContent");
-    const addContactButtonContainer = document.createElement("div");
-    addContactButtonContainer.classList.add("addContactButtonContainerMobile");  // Für die mobile Ansicht
-    addContactButtonContainer.innerHTML =/*html*/ `
-      <img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">`; // onclick-Funktion direkt im HTML-Code
-    content.appendChild(addContactButtonContainer);  
-  }
+function renderAddContactButton() {  // Create add contact button for mobile view
+  const content = document.getElementById("contactsContent");
+  const addContactButtonContainer = document.createElement("div");  // Create div container for add contact button
+  addContactButtonContainer.classList.add("addContactButtonContainerMobile");  // Add div container class addContactButtonContainerMobile for mobile view
+  addContactButtonContainer.innerHTML =/*html*/ `
+    <img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">`; // onclick-Funktion direct in HTML-Code
+  content.appendChild(addContactButtonContainer);  // Append the addContactButtonContainer to the content
+}
   
-  function updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact) {
-    if (!contactsByFirstLetter[firstLetter]) {
-      contactsByFirstLetter[firstLetter] = createLetterAndContactsContainer(firstLetter);
-    }
-    const oneContactContainer = createOneContactContainer(oneContact);
-    contactsByFirstLetter[firstLetter] += oneContactContainer;
+function updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact) {  // Sort the contacts by first letter
+  if (!contactsByFirstLetter[firstLetter]) {
+    contactsByFirstLetter[firstLetter] = createLetterAndContactsContainer(firstLetter);  // Create div container for letters
   }
+  const oneContactContainer = createOneContactContainer(oneContact);  // Create new contact container for each contact
+  contactsByFirstLetter[firstLetter] += oneContactContainer;
+}
   
-  function createLetterAndContactsContainer(firstLetter) {
-    return /*html*/ `
-      <div class="letterAndContactsContainer">
-        <div class="letter-column">
-          <h2 class="contact-first-letter">${firstLetter}</h2>
-        </div>
+function createLetterAndContactsContainer(firstLetter) {  // Create div container for letters in HTML
+  return /*html*/ `
+    <div class="letterAndContactsContainer">
+      <div class="letter-column">
+        <h2 class="contact-first-letter">${firstLetter}</h2>
       </div>
-    `;
-  }
+    </div>
+  `;
+}
   
-  function createOneContactContainer(oneContact) {
-    return /*html*/ `
-      <div class="oneContactContainer" onclick="openContactScreenMobile(${oneContact.id})">
-        <div>
-          ${singleMemberToHTML(oneContact, 0)}
-        </div>
-        <div class="contact-info-container">
-          <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
-          <a class="oneContactContainerAElement">${oneContact.email}</a>
-        </div>
+function createOneContactContainer(oneContact) {  // Create div container for each contact in HTML
+  return /*html*/ `
+    <div class="oneContactContainer" onclick="openContactScreenMobile(${oneContact.id})">
+      <div>
+        ${singleMemberToHTML(oneContact, 0)}  <!-- Create user image random background-color -->
       </div>
-    `;
-  }
-  
-  function renderContactsByFirstLetter(content, contactsByFirstLetter) {
-    Object.values(contactsByFirstLetter).forEach((section) => {
-      content.innerHTML += section;
-    });
-  }
-
-  function addContactScreen() {
-    const content = document.getElementById("contactsContent");
-    content.innerHTML = createAddContactScreenHTML();
-    hideHeaderAndFooter();    
-  }
-  
-  function createAddContactScreenHTML() {
-    return /*html*/ addContactFormMobileHTML();
-  }
-  
-  function addContactFormMobileHTML() {
-    return /*html*/ `
-      <div class="addContactContainerHeader">
-        <div class="addContactCloseXContainer">
-          <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
-        </div>
-        <div class="addContactBlockHeader">
-          <p class="addContactH1">Add contact</p>
-          <p class="addContactText">Tasks are better with a team!</p>
-          <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
-        </div>
-        <div>
-          <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
-        </div>
+      <div class="contact-info-container">
+        <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
+        <a class="oneContactContainerAElement">${oneContact.email}</a>
       </div>
-      <form id="addContactFormMobileID" onsubmit="createContactMobile()">
-        <div class="addContactContainerFooter">
-          <input class="addContactInputNameMobile" type="text" required placeholder="Name">
-          <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
-          <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
-          <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">
-        </div>
-      </form>
-    `;
-  }
+    </div>
+  `;
+}
   
-  function createContactMobile() {
-    const { newName, newMail, newPhone } = constForCreateContactMobile();    
-    if (newName === "" || newMail === "" || newPhone === "") {
-      alert("Bitte füllen Sie alle Felder aus.");
+function renderContactsByFirstLetter(content, contactsByFirstLetter) {  // Add each contact to the section on mobile view
+  Object.values(contactsByFirstLetter).forEach((section) => {
+    content.innerHTML += section;
+  });
+}
+//---------------------------------------------------------------------------------------------------------------------------
+function addContactScreen() {  // Add contact screen on mobile view
+  const content = document.getElementById("contactsContent");
+  content.innerHTML = createAddContactScreenHTML();
+  hideHeaderAndFooter();  // Hide header and footer
+}
+  
+function createAddContactScreenHTML() {  // Function to call function addContactFormMobileHTML
+  return /*html*/ addContactFormMobileHTML();
+}
+  
+function addContactFormMobileHTML() {  // Generate HTML for add contact mobile on mobile view
+  return /*html*/ `
+    <div class="addContactContainerHeader">
+      <div class="addContactCloseXContainer">
+        <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>  <!-- Create X close button on mobile view -->
+      </div>
+      <div class="addContactBlockHeader">
+        <p class="addContactH1">Add contact</p>
+        <p class="addContactText">Tasks are better with a team!</p>
+        <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+      </div>
+      <div>
+        <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
+      </div>
+    </div>
+    <form id="addContactFormMobileID" onsubmit="createContactMobile()">  <!-- Form for add contact on mobile view -->
+      <div class="addContactContainerFooter">
+        <input class="addContactInputNameMobile" type="text" required placeholder="Name">
+        <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
+        <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
+        <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">  <!-- Create button vor create contact mobile on mobile view -->
+      </div>
+    </form>
+  `;
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+function createContactMobile() {  // Function to create a new contact person
+  const { newName, newMail, newPhone } = constForCreateContactMobile();  // Const to create contact mobile on mobile view
+  if (newName === "" || newMail === "" || newPhone === "") {  // Check if all inputs are not empty
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }    
+  const defaultImage = "../assets/img/contact/defaultContactImage.svg";  // Const for blanc user image (grey user image icon)
+  let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);  // Create new contact with parameters
+  currentUser.contacts.push(createdContact);  // create new contact
+  currentUser.save();  // Save new contact for currentUser
+  hideOverlay();  // If contact added ... hide the overlay screen
+  contactsInit();  // Back to contacts start to show the new contact
+}
+  
+function constForCreateContactMobile() {  // Const for create contact desktop view
+  const nameInput = document.querySelector(".addContactInputNameMobile");  // Get contact name input data on mobile view
+  const mailInput = document.querySelector(".addContactInputMailAddresssMobile");  // Get contact mail address input data on mobile view
+  const phoneInput = document.querySelector(".addContactInputPhoneMobile");  // Get contact phone number input data on desktop view
+  const newName = nameInput.value.trim();  // Remove free spaces
+  const newMail = mailInput.value.trim();  // Remove free spaces
+  const newPhone = phoneInput.value.trim();  // Remove free spaces
+  return { newName, newMail, newPhone };
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
+function editContactScreen(contactId) {
+  const content = document.getElementById("contactsContent");
+  const selectedContact = findSelectedContact(contactId);
+  if (!selectedContact) {
+      handleContactNotFound();
       return;
-    }    
-    const defaultImage = "../assets/img/contact/defaultContactImage.svg";
-    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);
-    currentUser.contacts.push(createdContact);
-    currentUser.save();
-    hideOverlay();
-    contactsInit();
   }
-  
-  function constForCreateContactMobile() {
-    const nameInput = document.querySelector(".addContactInputNameMobile");
-    const mailInput = document.querySelector(".addContactInputMailAddresssMobile");
-    const phoneInput = document.querySelector(".addContactInputPhoneMobile");
-    const newName = nameInput.value.trim();
-    const newMail = mailInput.value.trim();
-    const newPhone = phoneInput.value.trim();
-    return { newName, newMail, newPhone };
-  }
-
-  function editContactScreen(contactId) {
-    const content = document.getElementById("contactsContent");
-    const selectedContact = findSelectedContact(contactId);
-    if (!selectedContact) {
-        handleContactNotFound();
-        return;
-    }
-    content.innerHTML = createEditContactHTML(selectedContact);
-    hideHeaderAndFooter();
+  content.innerHTML = createEditContactHTML(selectedContact);
+  hideHeaderAndFooter();
 }
   
 function findSelectedContact(contactId) {
