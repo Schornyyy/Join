@@ -1,67 +1,66 @@
-let user;
-let rememberMe = false;
-let data = {
-  email: "",
-  rememberMe: rememberMe,
-};
+async function login() {
+  let loginInput = document.getElementById("login-input-email");
+  let loginPasswordInput = document.getElementById("login-input-password");
+  let validated = validateLoginForm();
 
-function login() {
-  let userExists = userEmailExists();
-  let userEmail = document.getElementById("login-input-email").value;
-  let password = document.getElementById("login-input-password").value;
-  let errorMsg = document.getElementById("login-error");
-  errorMsg.style = "color: red";
-
-  if (!userExists) return;
-  user = findUserByEmail(userEmail);
-
-  let matchPassword = userPasswordMatch(password);
-  if (!matchPassword) {
-    errorMsg.innerHTML = "Wrong password";
+  if(!validated) return;
+  let user = await findUserByEmail(loginInput.value);
+  if(user == null) {
+    console.log("No user Found!");
     return;
   }
-  data.email = userEmail;
-  localStorage.setItem("userData", JSON.stringify(data));
-  window.location.href = "/index.html";
+  currentUser = user;
+  if(document.getElementById("rememberMe").hasAttribute("checked")) {
+    localStorage.setItem("userData", JSON.stringify({...user, remberMe: true}));
+  } else {
+    localStorage.setItem("userData", JSON.stringify({...user, remberMe: false}));
+  }
+  window.location.assign("./../../../index.html");
+
 }
 
-function handleRememberme(element) {
-  let ele = element;
-
-  rememberMe
-    ? ele.setAttribute("checked", false)
-    : ele.setAttribute("checked", true);
-
-  rememberMe = !rememberMe;
+async function findUserByEmail(email) {
+  let u = {};
+  users.map((user) => {
+    if(user['email'] != null && user['email'] == email) {
+      u =  user;
+    }
+  })
+  return u;
 }
 
-function userPasswordMatch(password) {
-  return user.password.match(password);
-}
-
-function userEmailExists() {
+function validateLoginForm() {
+  let loginInput = document.getElementById("login-input-email");
+  let loginPasswordInput = document.getElementById("login-input-password");
   let errorMsg = document.getElementById("login-error");
-  errorMsg.style = "color: red";
-  let userEmail = document.getElementById("login-input-email").value;
   let c = true;
 
-  if (!findUserByEmail(userEmail)) {
-    errorMsg.innerHTML = "No User with Email: " + userEmail;
+  if(loginInput.value == "") {
+    errorMsg.innerHTML = "U must enter a Email!";
     c = false;
   }
+
+  if(loginPasswordInput.value == "") {
+    errorMsg.innerHTML = "U must enter a Password";
+    c = false;
+  }
+
   return c;
 }
 
-function findUserByEmail(email) {
-  return users.find((a) => a.email === email);
+function handleRememberme() {
+  let e = document.getElementById("rememberMe");
+  let checked = e.hasAttribute("checked") ? true : false;
+  let handelChecked = checked ? e.removeAttribute("checked") : e.setAttribute("checked", "");
 }
+
 
 function loginAsGuest() {
   let loginEmailInput = document.getElementById("login-input-email");
   let loginPasswordInout = document.getElementById("login-input-password");
   let loginBtn = document.getElementById("login-btn");
-  loginEmailInput.value = "lukas@schornstein.de";
-  loginPasswordInout.value = "test";
+  loginEmailInput.value = "Guest@test.de";
+  loginPasswordInout.value = "guest";
 
   loginBtn.click();
 }

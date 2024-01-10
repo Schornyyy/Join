@@ -30,6 +30,11 @@ async function getItem(key) {
 async function loadData() {
   await loadUsers();
   if (localStorage.getItem("userData") != null) {
+    let data = JSON.parse(localStorage.getItem("userData"));
+    if(!data.remberMe) {
+      localStorage.clear();
+      window.location.href = "/assets/templates/login/login.html";
+    }
     await loadDataToUser();
   } else if (
     !window.location.href.match("/assets/templates/login/login.html") &&
@@ -47,7 +52,7 @@ async function loadUsers() {
   if (usersResp == "404") {
     users = [];
   } else {
-    users.push(JSON.parse(usersResp.data.value));
+    users = JSON.parse(usersResp.data.value);
   }
   console.log("loaded User: ", users);
 }
@@ -59,11 +64,12 @@ async function loadDataToUser() {
   let userData = JSON.parse(localStorage.getItem("userData"));
   let userEmail = userData.email;
   let user = await users.find((a) => a.email == userEmail);
-  let u = new User(user.name, user.email, user.password);
-  u.contacts = user.contacts;
-  u.contacts = u.contacts.sort((a, b) => a.name.localeCompare(b.name));
-  currentUser = u;
-  console.log("User: ", u);
+  setItem("users", [])
+  // let u = new User(user.name, user.email, user.password);
+  // u.contacts = user.contacts;
+  // u.contacts = u.contacts.sort((a, b) => a.name.localeCompare(b.name));
+  // currentUser = u;
+  // console.log("User: ", u);
 }
 
 function editContactObject(contactIndex, obj) {

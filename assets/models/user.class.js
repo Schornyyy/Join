@@ -28,7 +28,7 @@ class User {
   }
 
   async save() {
-    let s = await setItem("users", this);
-    console.log(s, this);
+    let s = await setItem("users", users);
+    console.log(s, users);
   }
 }

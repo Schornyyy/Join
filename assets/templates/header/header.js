@@ -12,7 +12,7 @@ function changeHeaderImageBack(element) {
   }
 }
 
-function loagout() {
+function logout() {
   window.location.assign("./assets/templates/login/login.html");
   localStorage.clear();
 }
@@ -34,9 +34,13 @@ function handleSubMenu() {
     ? headerSubMenu.classList.add("slideInMenu")
     : headerSubMenu.classList.remove("slideInMenu");
   let clickedEld = document.getElementById("header-profile-menu");
+  let logoutBtn =  document.getElementById("header-logout")
+  logoutBtn.addEventListener("click", (e) => {
+    logout();
+  })
 
   window.addEventListener("click", (e) => {
-    if (e.target != clickedEld) {
+    if (e.target != clickedEld || e.target == logoutBtn) {
       show = false;
       let hide = show
         ? headerSubMenu.removeAttribute("show")

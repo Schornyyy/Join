@@ -6,9 +6,10 @@ async function registerUser() {
 
   if (!validated) return;
 
-  let user = new User(username.value, email.value, password.value);
+  let user = new User(username.value, email.value, password.value, null);
   users.push(user);
-  saveUsers();
+  currentUser = user;
+  await currentUser.save();
   window.location.href = "/assets/templates/login/login.html";
 }
 
