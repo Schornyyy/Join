@@ -507,9 +507,7 @@ function addDropdownClickHandler() {
     let dialogElem= document.getElementById('editDialog');
     let inputContainerMembersElement= document.getElementById('inputContainerMembers');
     dialogElem.addEventListener('click', event => {
-        if (inputContainerMembersElement.contains(event.target)) {
-            console.log('es wurde innerhalb geklickt');
-        } else {
+        if (!inputContainerMembersElement.contains(event.target)) {
             collapseDropdown();
         }
     });
