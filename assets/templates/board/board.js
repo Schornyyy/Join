@@ -25,9 +25,9 @@ let contactsDatasource;
 //////////////// INIT
 
 function boardInit() {
-    tasksDatasource = tasksForTesting;
+    tasksDatasource = currentUser.tasks;
     tasksDatasourceFiltered = tasksDatasource;
-    contactsDatasource = contactsForTesting;
+    contactsDatasource = currentUser.contacts;
     renderBoard();
     boardInitDragAndDrop();
     addKeyupListener();
