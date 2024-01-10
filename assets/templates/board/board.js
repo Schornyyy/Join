@@ -79,20 +79,6 @@ function getAmountOfFinishedSubtasks(task) {
     return amount;
 }
 
-/*
-function getFinishedSubtasks(task) {
-    output = [];
-    let subtaskTemp;
-    task.subtasks.forEach(subtaskID => {
-        subtaskTemp = getSubtaskById(subtaskID);
-        if (subtaskTemp.finished) {
-            output.push(subtaskTemp);
-        }
-    });
-    return output;
-}
-*/
-
 function getFinishedSubtasks(task) {
     let finishedSubtasks = task.subtasks.filter(subtask => subtask.finished);
     if (finishedSubtasks)
@@ -136,6 +122,10 @@ function getPrioImgURL(task) {
         case 'prio-low': return `${urlPrefix}/img/board/prio-low-icon.svg`;
         default: return '';
     }
+}
+
+function getContactByEmail(email) {
+    return contactsDatasource.find(contactI => contactI.email==email);
 }
 
 //////////////// TO HTML
@@ -654,16 +644,24 @@ function editDialogToHTML(task) {
 
 function editDropdownMembersToHTML(task) {
     let output = '';
+    let i= 0;
     for (let contact of contactsDatasource) {
+        let classString= 'members-dropdown-item ';
+        let imgURL= './assets/img/board/checkbox-icon.svg'
+        if (isMember(task, contact)) {
+            classString+= 'members-dropdown-item-selected';
+            imgURL= './assets/img/board/checkbox-checked-icon-white.svg';
+        }
         output += `
-            <div class="members-dropdown-item">
+            <div class="${classString}" id="membersDropdownItem${i}" onclick="toggleMemberDropdownItem('membersDropdownItem${i}', ${task.id}, ${i})">
                 <div class="member-item-name-container">
                     ${singleMemberToHTML(contact, 0)}
                     <span>${contact.name}</span>
                 </div>
-                <img src="./assets/img/board/checkbox-icon.svg" alt="checkbox">
+                <img class="member-item-checkbox-icon" src="${imgURL}" alt="checkbox">
             </div>
         `;
+        i++;
     };
     return output;
 }
@@ -705,22 +703,36 @@ function editSingleMemberToHTML(member) {
     `;
 }
 
+function toggleMemberDropdownItem(menuItemID, taskID, contactIndex) {
+    console.log('toggle');
+    let itemElem= document.getElementById(menuItemID);
+    let task= getTaskById(taskID);
+    let contact= contactsDatasource[contactIndex];
+    let memberIndex= task.assignedTo.indexOf(contact);
+    isMember(task, contact) ? deselectMemberDropdownItem(itemElem, task, memberIndex) : selectMemberDropdownItem(itemElem, task, contact);
+}
 
+function selectMemberDropdownItem(menuItemElem, task, contact) {
+    let imgElem= document.querySelector(`#${menuItemElem.id} .member-item-checkbox-icon`);
 
+    menuItemElem.classList.add('members-dropdown-item-selected');
+    imgElem.src= './assets/img/board/checkbox-checked-icon-white.svg';
+    task.assignedTo.push(contact.email);
+}
 
+function deselectMemberDropdownItem(menuItemElem, task, memberIndex) {
+    console.log('deselect');
+    let imgElem= document.querySelector(`#${menuItemElem.id} .member-item-checkbox-icon`);
 
+    menuItemElem.classList.remove('members-dropdown-item-selected');
+    imgElem.src= './assets/img/board/checkbox-icon.svg';
+    task.assignedTo.splice(memberIndex, 1);
+}
 
-
-
-
-
-
-
-
-
-
-
-
+function isMember(task, contact) {
+    let contactEmail= contact.email;
+    return task.assignedTo.includes(contactEmail);
+}
 
 
 

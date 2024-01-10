@@ -203,20 +203,53 @@
     cursor: pointer;
 }
 
-.edit-select-members {
-    font-size: 20px;
-    padding: 8px 16px;
-    border-radius: 10px;
-    border: 2px solid var(--reini-light-grey);
-}
-
 .edit-input-wrapper {
     border: 2px solid var(--reini-light-grey);
 }
 
+
+
+
+
 #inputContainerMembers {
     gap: 0;
 }
+
+.dropdown-menu {
+    background-color: lightcoral;
+}
+
+.members-dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.members-dropdown-item:hover {
+    cursor: pointer;
+}
+
+.member-item-name-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.member-item-checkbox-icon {
+    height: 1.5em;
+}
+
+.members-dropdown-item-selected {
+    background-color: var(--reini-dark-blue);
+    color: white;
+}
+
+
+
+
+
+
 
 #inputContainerMembers label {
     margin-bottom: 12px;
@@ -280,23 +313,6 @@
 /*************** TEMP **************/
 /***********************************/
 
-
-.dropdown-menu {
-    background-color: lightcoral;
-}
-
-.members-dropdown-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em;
-}
-
-.member-item-name-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-}
 
 
 
