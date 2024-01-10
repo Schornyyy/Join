@@ -674,7 +674,6 @@ function dropdownItemClickHandler(event) {
 
 function markItemElementSelected(elementID) {
     let element= document.getElementById(elementID);
-    console.log(element);
     let imgElement= document.querySelector(`#${elementID} .member-item-checkbox-icon`);
     element.classList.add('members-dropdown-item-selected');
     imgElement.src= './assets/img/board/checkbox-checked-icon-white.svg';
@@ -770,9 +769,8 @@ function editSingleMemberToHTML(member) {
 
 
 function editSaveTask(taskID) {
-    //TODO: Members, Subtasks
+    //TODO: Subtasks
     let task = tasksDatasource.find(taskElem => taskElem.id == taskID);
-    let taskIndex= tasksDatasource.indexOf(task);
     let inputTaskTitle = document.getElementById('inputTaskTitle');
     let inputTaskDescription = document.getElementById('inputTaskDescription');
     let inputTaskDuedate = document.getElementById('inputTaskDuedate');
@@ -781,7 +779,10 @@ function editSaveTask(taskID) {
     task.description = inputTaskDescription.value;
     task.dueDate = new Date(inputTaskDuedate.value).getTime();
     task.prio = prioNew;
-
+    task.assignedTo= [];
+    for (let i=0; i < contactsSelected.length; i++) {
+        task.assignedTo.push(contactsSelected[i]);
+    }
 
     // renderBoard();
     // currentUser.save();
