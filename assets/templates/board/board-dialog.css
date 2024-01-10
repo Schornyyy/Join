@@ -216,7 +216,9 @@
 }
 
 .dropdown-menu {
-    background-color: lightcoral;
+    border: 2px solid var(--reini-light-grey);
+    border-top: none;
+    border-radius: 10px;
 }
 
 .members-dropdown-item {
