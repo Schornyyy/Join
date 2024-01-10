@@ -203,23 +203,71 @@
     cursor: pointer;
 }
 
-.edit-select-members {
-    font-size: 20px;
-    padding: 8px 16px;
-    border-radius: 10px;
-    border: 2px solid var(--reini-light-grey);
-}
-
 .edit-input-wrapper {
     border: 2px solid var(--reini-light-grey);
 }
 
-#editTaskMembersContainer {
+
+
+
+
+#inputContainerMembers {
+    gap: 0;
+}
+
+#dropdownIcon {
+    height: 0.5em;
+}
+
+.dropdown-menu {
+    border: 2px solid var(--reini-light-grey);
+    border-top: none;
+    border-radius: 10px;
+}
+
+.members-dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.members-dropdown-item:hover {
+    cursor: pointer;
+}
+
+.member-item-name-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.member-item-checkbox-icon {
+    height: 1.5em;
+}
+
+.members-dropdown-item-selected {
+    background-color: var(--reini-dark-blue);
+    color: white;
+}
+
+
+
+
+
+
+
+#inputContainerMembers label {
+    margin-bottom: 12px;
+}
+
+.edit-taskmembers-container {
+    margin-top: 12px;
     display: flex;
     gap: 6px;
 }
 
-#editTaskMembersContainer .member-icon {
+.edit-taskmembers-container .member-icon {
     font-size: 20px;
     height: 40px;
     width: 40px;
@@ -265,3 +313,12 @@
 .edit-OKbutton img {
     width: 0.8em;
 }
+
+
+/***********************************/
+/*************** TEMP **************/
+/***********************************/
+
+
+
+
