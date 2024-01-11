@@ -11,9 +11,9 @@ async function login() {
   }
   currentUser = user;
   if(document.getElementById("rememberMe").hasAttribute("checked")) {
-    localStorage.setItem("userData", JSON.stringify({...user, remberMe: true}));
+    localStorage.setItem("userData", JSON.stringify({...user, remberMe: true, loginCount: 0}));
   } else {
-    localStorage.setItem("userData", JSON.stringify({...user, remberMe: false}));
+    localStorage.setItem("userData", JSON.stringify({...user, remberMe: false, loginCount: 0}));
   }
   window.location.assign("./../../../index.html");
 
