@@ -60,7 +60,9 @@ function renderAddContactButtonDesktop() {  // Create add contact button for des
   const addContactButtonContainerDesktop = document.createElement("div");
   addContactButtonContainerDesktop.classList.add("addContactButtonContainerDesktop");  // Only for desktop view
   addContactButtonContainerDesktop.innerHTML = /*html*/ `
-    <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact</button>`;
+    <button class="addContactButtonDesktop" onclick="addContactShowOverlayDesktop()">Add new contact
+      <span><img class="addContactButtonDesktopImg" src="../assets/img/contact/addNewContactDesktopButtonImg.svg" alt=""></span></button>    
+    `;    
   contentDesktop.appendChild(addContactButtonContainerDesktop);  
   addContactButtonContainerDesktop.addEventListener("click", function () {  // Add renderAddContactButtonDesktop to Event-Listener to show Overlay on desktop view    
   });

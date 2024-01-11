@@ -479,8 +479,7 @@
   .contactsContent {
     background-color: white;
     overflow-x: hidden;
-    position: relative;
-    height: inherit;
+    position: relative;    
     min-width: 30%;
     height: 100vh; /* Full viewport height */
     overflow-y: scroll; /* Enable vertical scrolling if necessary */   
@@ -531,6 +530,7 @@
     cursor: pointer;
     margin-top: 2em;
     margin-right: 60px;
+    margin-left: 60px;
     margin-bottom: 2rem;
     height: 27px;
   }
@@ -699,6 +699,9 @@
   }
 
   .addContactButtonDesktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 352px;
     height: 56px;
     background-color: var(--light-grey);
@@ -709,10 +712,10 @@
     font-size: 21px;
     font-weight: 700;
     gap: 16;
-    background-image: url("../../img/contact/addNewContactDesktopButtonImg.svg");
-    background-repeat: no-repeat;
-    background-position: right 40px center; /* Hier wird das Bild um 10px von rechts verschoben */
-    background-size: contain;
+    /* background-image: url("../../img/contact/addNewContactDesktopButtonImg.svg"); */
+    /* background-repeat: no-repeat; */
+    /* background-position: right 40px center; /* Hier wird das Bild um 10px von rechts verschoben */
+    /* background-size: contain; */
     flex-shrink: 0;
     text-align: center;
     background-size: 10%;
@@ -721,6 +724,12 @@
 
   .addContactButtonDesktop:hover {
     background-color: var(--light-blue);
+  }
+
+  .addContactButtonDesktopImg {    
+    width: 32px;
+    height: 32px;
+    margin-left: 1rem;
   }
 
   .overlay-container {
@@ -1074,5 +1083,117 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     background-color: var(--light-blue);
     border: 0;
+  }
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1440px) and (min-width: 350px) {
+  .addContactButtonContainerDesktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    bottom: 32px;
+    right: 32px;
+    cursor: pointer;
+    margin-top: 2em;
+    margin-right: 60px;
+    margin-left: 60px;
+    margin-bottom: 2rem;
+    height: 27px;
+  }
+
+  .addContactButtonDesktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 352px;
+    height: 56px;
+    background-color: var(--light-grey);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    padding: 12px 0 12px 0;
+    font-size: 16px;
+    font-weight: 700;    
+    overflow-wrap: break-word; /* Diese Eigenschaft sorgt dafür, dass lange Wörter umgebrochen werden */    
+    flex-shrink: 2;
+    text-align: center;
+    background-size: 10%;
+    cursor: pointer;
+  }
+
+  .addContactButtonDesktopImg {    
+    width: 24px;
+    height: 24px;
+    margin-left: 1rem;
+  }
+
+
+}
+
+
+@media only screen and (max-width: 1440px) and (min-width: 751px) {
+  .addContactButtonDesktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 352px;
+    height: 64px;
+    background-color: var(--light-grey);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    padding: 12px 0 12px 0;
+    font-size: 16px;
+    font-weight: 700;    
+    overflow-wrap: break-word; /* Diese Eigenschaft sorgt dafür, dass lange Wörter umgebrochen werden */    
+    flex-shrink: 2;
+    text-align: center;
+    background-size: 10%;
+    cursor: pointer;
+  }
+
+  .addContactButtonDesktopImg {    
+    width: 24px;
+    height: 24px;    
+  }
+
+
+
+
+}
+
+
+
+
+@media only screen and (max-width: 900px) and (min-width: 751px) {
+  .addContactButtonDesktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 352px;
+    height: 90px;
+    background-color: var(--light-grey);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    padding: 12px 0 12px 0;
+    font-size: 16px;
+    font-weight: 700;    
+    overflow-wrap: break-word; /* Diese Eigenschaft sorgt dafür, dass lange Wörter umgebrochen werden */    
+    flex-shrink: 2;
+    text-align: center;
+    background-size: 10%;
+    cursor: pointer;
+  }
+
+  .addContactButtonDesktopImg {    
+    width: 24px;
+    height: 24px;    
   }
 }
