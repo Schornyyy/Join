@@ -1172,28 +1172,73 @@
 
 
 @media only screen and (max-width: 900px) and (min-width: 751px) {
-  .addContactButtonDesktop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .addContactButtonDesktop {    
     width: 352px;
-    height: 90px;
-    background-color: var(--light-grey);
-    border: 0;
-    border-radius: 10px;
-    color: white;
-    padding: 12px 0 12px 0;
+    height: 90px;    
     font-size: 16px;
-    font-weight: 700;    
-    overflow-wrap: break-word; /* Diese Eigenschaft sorgt dafür, dass lange Wörter umgebrochen werden */    
-    flex-shrink: 2;
-    text-align: center;
-    background-size: 10%;
-    cursor: pointer;
   }
 
   .addContactButtonDesktopImg {    
     width: 24px;
     height: 24px;    
   }
+
+  .contactsContentRightSideH1 {
+    font-size: 40px;       
+  }
+
+  .contactsContentRightSideHeadLinePElement {
+    font-size: 16px;       
+  }
+
+  .openContactUserImg {
+    height: 100px;
+    width: 100px;  
+}
+
+  .contactsContentRightSideUserNameH2 {
+    font-size: 40px;    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
