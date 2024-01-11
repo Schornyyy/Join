@@ -8,9 +8,9 @@ async function initSummeryData() {
     showedLoginGreeting = true;
   }
   getTodosSize();
-  getTodoStatusSize("summery-done-todos", "Done");
-  getTodoStatusSize("summery-process-tasks", "Process");
-  getTodoStatusSize("summery-awaiting-task", "Feedback");
+  getTodoStatusSize("summery-done-todos", "done");
+  getTodoStatusSize("summery-process-tasks", "in progress");
+  getTodoStatusSize("summery-awaiting-task", "await feedback");
   getUrgentTask();
   await greetUser();
 }
