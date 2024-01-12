@@ -1163,13 +1163,25 @@
     height: 24px;    
   }
 
+  .oneContactContainerH2Desktop {    
+    font-size: 12px;
+    font-weight: 400;
+  }
 
-
-
+  .oneContactContainerAElement {
+    color: #007cee;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 8px;
+  }
 }
 
 
-
+@media only screen and (max-width: 1200px) and (min-width: 751px) {
+  .contact-info-container {
+    margin-left: 0;
+}
+}
 
 @media only screen and (max-width: 900px) and (min-width: 751px) {
   .addContactButtonDesktop {    
