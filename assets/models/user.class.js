@@ -15,6 +15,11 @@ class User {
     this.tasks = [];
   }
 
+  /**
+   * Lädt einer User aus einem JSON Object.
+   * 
+   * @param {JSON Object} obj   
+   */
   loadFromJSON(obj) {
     this.name = obj.name,
     this.email = obj.email,
@@ -24,18 +29,6 @@ class User {
     this.tasks = obj.tasks
   }
 
-  removeContact(index) {
-    this.contacts.splice(index, 1);
-  }
-
-  addTask(task) {
-    this.tasks.push(task);
-  }
-
-  removeTask(index) {
-    this.tasks.splice(index, 1);
-  }
-
   async save() {
     let u = currentUser;
     let cu = users.findIndex((a) => a.email == u.email);
@@ -43,7 +36,7 @@ class User {
     editUser(cu, u.toJSON());
     await setItem("users", users);
   }
-
+  
   toJSON() {
     return {
       name: this.name,

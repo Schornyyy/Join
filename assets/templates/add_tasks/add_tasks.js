@@ -83,19 +83,6 @@ function selectCategory(category) {
   document.getElementById("category-dropdown-menu").classList.remove('show');
 }
 
-/**
- * Zeigt oder verbergt das Dropdown von den Subtasks.
- */
-function handleSubtaskDropDown() {
-    let dropdown_menu = document.getElementById('subtasks-search-list');
-    let dropdown = dropdown_menu.classList.contains("show") ? false : true;
-
-    dropdown
-    ? dropdown_menu.classList.add("show")
-    : dropdown_menu.classList.remove("show");
-
-    dropdown = !dropdown;
-}
 
 /**
  * Ändert den Sytle des ausgewählten Subtasks.
@@ -122,6 +109,13 @@ function changeSubtaskInput(subtaskInput) {
   changeSubtaskImages(id, subtaskInput);
 }
 
+
+/**
+ * Setzt die Images auf die richtige Rheienfolge.
+ * 
+ * @param {ElementID} id 
+ * @param {HTMLElement} subtaskInput 
+ */
 function changeSubtaskImages(id, subtaskInput) {
   let img1 = document.getElementById(`subtask-img-${id}`);
   let img2 = document.getElementById(`subtask-img2-${id}`);
@@ -331,6 +325,10 @@ function deleteSubtask(subtaskIndex) {
   renderSubtaskHTML();
 }
 
+
+/**
+ * Rendert die ausgewählten Kontakte unter der AssignedTo Liste im AddTasks.
+ */
 function renderHTMLAssignedTo() {
   let assignedList = document.getElementById("assigned-to-dropdown-menu");
   assignedList.innerHTML = "";
@@ -346,6 +344,11 @@ function renderHTMLAssignedTo() {
   `;
 }
 
+/**
+ * Gibt die Ersten Buchstaben jedes Wortes zurück.
+ * @param {String} contactName 
+ * @returns 
+ */
 function getInitialsByContact(contactName) {
   let initials = "";
   let splits = contactName.split(" ");
@@ -355,6 +358,13 @@ function getInitialsByContact(contactName) {
   return initials;
 }
 
+/**
+ * Rendert die ausgewählten Kontakte als Liste unter dem Dropdown.
+ * 
+ * @param {ContactObject} contact 
+ * @param {IndexID} index 
+ * @returns 
+ */
 function renderHTMLListElementOfAssigned(contact, index) {
   let initials = getInitialsByContact(contact.name);
 
@@ -371,7 +381,12 @@ function renderHTMLListElementOfAssigned(contact, index) {
   `;
 }
 
-
+/**
+ * Ändert das Design der Contacte beim Auswählen.
+ * 
+ * @param {ContactObejct} contact 
+ * @param {IndecID} index 
+ */
 async function addToAssigned(contact, index) {
   let isInList = await assigendContacts.find((e) => e.name == contact.name) ? true : false;
   let parentTableRow = document.getElementById("contact" + index).parentElement;
@@ -389,6 +404,9 @@ async function addToAssigned(contact, index) {
   renderAssignes()
 }
 
+/**
+ * Rendert die Liste im Dropdown für AssignedTo.
+ */
 function renderAssignes() {
   let container = document.getElementById("assigned-to-assigens");
   container.innerHTML = "";
