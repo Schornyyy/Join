@@ -35,6 +35,7 @@ function handleSubMenu() {
     : headerSubMenu.classList.remove("slideInMenu");
   let clickedEld = document.getElementById("header-profile-menu");
   let logoutBtn =  document.getElementById("header-logout")
+  let todosSummery = document.querySelectorAll(".summaryToDoSum");
   logoutBtn.addEventListener("click", (e) => {
     logout();
   })

@@ -19,10 +19,9 @@ p {
 }
 
 .tasks-form {
-  display: grid;
+  display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 15px;
   grid-template-columns: repeat(1fr);
   grid-gap: 10px;
 }
@@ -82,7 +81,7 @@ button:focus {
 .prio {
   display: flex;
   flex-direction: row !important;
-  padding: 10px 15px;
+  padding: 5px 10px;
   background-color: white;
   border-radius: 5px;
   justify-content: center;
@@ -366,30 +365,35 @@ label[for="form-title"] {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
+  padding: 0px 15px;
 }
 
 label[for="form-desc"] {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
+  padding: 0px 15px;
 }
 
 .prios-container {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 3;
+  padding: 0px 15px;
 }
 
 label[for="form-date"] {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 4;
+  padding: 0px 15px;
 }
 
 .category-container {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 5;
+  padding: 0px 15px;
 }
 
 .assigned-to-container {
@@ -397,12 +401,14 @@ label[for="form-date"] {
   grid-column-end: 2;
   grid-row-start: 6;
   position: relative;
+  padding: 0px 15px;
 }
 
 .subtasks-to-container {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 7;
+  padding: 0px 15px;
 }
 
 .add-tasks-footer-btns {
@@ -501,6 +507,14 @@ label[for="form-date"] {
 }
 
 @media only screen and (min-width: 760px) {
+  .tasks-form {
+    display: grid;
+    flex-direction: column;
+    width: 100%;
+    grid-template-columns: repeat(1fr);
+    grid-gap: 10px;
+  }
+
   .add-tasks-board-footer {
     padding: 79px 96px;
   }

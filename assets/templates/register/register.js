@@ -6,11 +6,19 @@ async function registerUser() {
 
   if (!validated) return;
 
-  let user = new User(username.value, email.value, password.value, null);
-  users.push(user);
-  currentUser = user;
-  await currentUser.save();
-  window.location.href = "/assets/templates/login/login.html";
+  let signedUpSuccessfully = document.getElementById("signedUpSuccessfully");
+  signedUpSuccessfully.classList.add("signedUpAnimationDesktop");
+
+
+
+  setTimeout(() => {
+    let user = new User(username.value, email.value, password.value, null);
+    users.push(user);
+    currentUser = user;
+    currentUser.save();
+    window.location.href = "/assets/templates/login/login.html";
+    signedUpSuccessfully.classList.remove("signedUpAnimationDesktop");
+  }, 1000*1.5)
 }
 
 function checkedPrivacy() {
@@ -19,7 +27,6 @@ function checkedPrivacy() {
   let setAttr = checked
     ? checkedEle.removeAttribute("checked")
     : checkedEle.setAttribute("checked", "");
-  return checked;
 }
 
 async function validateForm() {
@@ -27,29 +34,25 @@ async function validateForm() {
   let email = document.getElementById("register-email");
   let emailTaken = await emailAlreadyTaken(email);
   let errorMsg = document.getElementById("registerError");
-  let checked = checkedPrivacy();
+  let checked = document.getElementById("privacy-check").hasAttribute("checked");
+  let registerName = document.getElementById("register-name");
+
+  if(registerName == null || registerName.value == "") {
+    errorMsg.innerHTML = "U must enter a Username!";
+    c = false;
+    return c;
+  }
 
   if (email == null || email.value == "") {
     errorMsg.innerHTML = "U must enter a Email Adress!";
     c = false;
+    return c;
   }
 
   if (emailTaken) {
     errorMsg.innerHTML = "A Account with this Email already exists";
     c = false;
-  }
-
-  if (
-    document.getElementById("register-name") == null ||
-    document.getElementById("register-name").value == ""
-  ) {
-    errorMsg.innerHTML = "U must enter a Username!";
-    c = false;
-  }
-
-  if (!checked) {
-    errorMsg.innerHTML = "U must accept the privacy police";
-    c = false;
+    return c;
   }
 
   let password = document.getElementById("register-password");
@@ -63,11 +66,19 @@ async function validateForm() {
   ) {
     errorMsg.innerHTML = "U must enter a Password!";
     c = false;
+    return c;
   }
 
   if (password == null || !password.value.match(password_confirm.value)) {
     errorMsg.innerHTML = "Passwords dosnt match!";
     c = false;
+    return c;
+  }
+
+  if (!checked) {
+    errorMsg.innerHTML = "U must accept the privacy police";
+    c = false;
+    return c;
   }
 
   return c;
