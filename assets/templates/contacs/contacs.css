@@ -1,4 +1,4 @@
-@media only screen and (max-width: 750px) and (min-width: 350px) {
+@media only screen and (max-width: 769px) and (min-width: 320px) {
   /* Mobile view */
   /* contacts screen style */
   .container {
@@ -453,7 +453,7 @@
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 /* Desktop view */
-@media only screen and (min-width: 751px) {
+@media only screen and (min-width: 770px) {
   .content {
     overflow-y: hidden;
     overflow-x: hidden;
