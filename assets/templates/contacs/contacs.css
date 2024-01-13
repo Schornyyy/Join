@@ -9,9 +9,7 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-     overflow-y: scroll; 
-    /* position: relative; */
-    /* margin-top: 0.5em; */
+     overflow-y: scroll;    
     height: 100vh; /* Full viewport height */
     overflow-y: auto; /* Enable vertical scrolling if necessary */
   }
@@ -127,7 +125,7 @@
   }
 
   .addContactImage {
-    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
+    pointer-events: visible !important; /* Important for the onclick function */
   }
 
   .createContactButtonImg {
@@ -166,9 +164,9 @@
   .letterAndContactsContainer {
     display: flex;
     align-items: center;
-    margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
+    margin: 10px;
     border-bottom: 2px solid #d1d1d1;
-    padding-bottom: 10px; /* Füget zusätzlichen Raum unterhalb des Strichs hinzu */
+    padding-bottom: 10px;
   }
 
   .oneContactContainer {
@@ -179,18 +177,18 @@
   .letter-column {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Zentriet die Buchstaben horizontal */
-    margin-right: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
+    align-items: center;
+    margin-right: 10px;
   }
 
   .contact-first-letter {
-    margin: 0; /* Entfernt den Standardabstand von h2 */
+    margin: 0; /* Delete margin of h2 */
   }
 
   .contacts-info-column {
     display: flex;
     flex-direction: column;
-    margin-left: 10px; /* Fügt etwas Abstand zwischen den Buchstaben und den Kontakten hinzu */
+    margin-left: 10px;
   }
 
   .contact-card {
@@ -205,13 +203,13 @@
 
   .contact-card-Img-Container {
     display: flex;
-    align-items: center; /* Zentriere das Bild vertikal im Container */
+    align-items: center;
   }
 
   .contact-info-container {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
+    flex: 1; /* The container for the namen and the e-mail-Address take the remaining free space */
     margin-left: 3em;
     cursor: pointer;
   }
@@ -358,14 +356,14 @@
 
   .dropdown-container {
     position: fixed;
-    display: none; /* Standardmäßig unsichtbar machen */
+    display: none; /* standard dont show drop down container */
     overflow-x: hidden;
     bottom: 4rem;
     right: 0.5rem;
   }
 
   .dropdown-container.visible {
-    display: block; /* Sichtbar machen, wenn die 'visible'-Klasse hinzugefügt wird */
+    display: block; /* To show the drop down container */
   }
 
   .editContactsDropDownIcon {
@@ -388,19 +386,19 @@
 
   .dropdown-menu {
     position: absolute;
-    right: -300px; /* Startposition außerhalb des Bildschirms */
+    right: -300px; /* Start position outside from viewport */
     top: 5em;
     border-radius: 15px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: slide-in-menu 0.3s ease forwards; /* Animation hinzufügen und "forwards" verwenden */
+    animation: slide-in-menu 0.3s ease forwards; /* Animation for "forwards" */
     overflow-x: hidden;
   }
 
   @keyframes slide-in-menu {
     from {
       right: -300px;
-      display: block; /* Sichtbar machen ab dem Startpunkt der Animation */
+      display: block; /* Show at start of the Animation */
     }
     to {
       right: 1em;
@@ -408,11 +406,11 @@
   }
 
   .dropdown-container .dropdown-menu {
-    display: none; /* Standardmäßig unsichtbar machen */
+    display: none; /* standard dont show drop down container */
   }
 
   .dropdown-container.visible .dropdown-menu {
-    display: block; /* Sichtbar machen, wenn die 'visible'-Klasse vorhanden ist */
+    display: block; /* To show the drop down container */
   }
 
   .dropdown-option {
@@ -488,9 +486,9 @@
   .letterAndContactsContainer {
     display: flex;
     align-items: center;
-    margin: 10px; /* Fügt etwas Abstand zwischen den Abschnitten hinzu */
+    margin: 10px;
     border-bottom: 2px solid #d1d1d1;
-    padding-bottom: 10px; /* Füget zusätzlichen Raum unterhalb des Strichs hinzu */
+    padding-bottom: 10px;
   }
 
   .oneContactContainer {
@@ -504,7 +502,7 @@
   .contact-info-container {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Der Container für den Namen und die E-Mail-Adresse nimmt den verbleibenden Platz ein */
+    flex: 1; /* The container for the namen and the e-mail-Address take the remaining free space */
     margin-left: 3em;
     cursor: pointer;
     padding: 15px 24px 15px 24px;
@@ -536,12 +534,12 @@
   }
 
   .addContactImage {
-    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
+    pointer-events: visible !important; /* Important for the onclick funktion */
     width: 352px;
   }
 
   .addContactImage:hover {
-    pointer-events: visible !important; /* Wichtig um die onklick Funktion ausführen zu können */
+    pointer-events: visible !important; /* Important for the onclick funktion */
     background-color: var(--light-blue);
   }
 
@@ -552,9 +550,9 @@
     background-color: var(--white-grey);
     position: sticky;
     top: 10px;
-    max-height: calc(100vh - 100px); /* Hier die maximale Höhe festlegen (100vh abzüglich Header-Höhe) */
+    max-height: calc(100vh - 100px); /* Calculate the maximum height (100vh minus header-height) */
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    margin-left: 5px; /* Stelle sicher, dass genügend Platz auf der linken Seite vorhanden ist */
+    margin-left: 5px;
   }
 
   .contactsContentRightSideHeadLine {
@@ -711,11 +709,7 @@
     padding: 12px 0 12px 0;
     font-size: 21px;
     font-weight: 700;
-    gap: 16;
-    /* background-image: url("../../img/contact/addNewContactDesktopButtonImg.svg"); */
-    /* background-repeat: no-repeat; */
-    /* background-position: right 40px center; /* Hier wird das Bild um 10px von rechts verschoben */
-    /* background-size: contain; */
+    gap: 16px;    
     flex-shrink: 0;
     text-align: center;
     background-size: 10%;
@@ -738,7 +732,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5); /* Hintergrundfarbe des vorherigen Bildschirms mit Transparenz */
+    background: rgba(0, 0, 0, 0.5); /* Change background-color in background with opacity */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -757,7 +751,7 @@
     height: 100%;
   }
 
-  /* Animation für das Einblenden des Overlays */
+  /* Animation for the Overlay */
   @keyframes slide-in {
     from {
       transform: translateX(100%);
@@ -767,6 +761,7 @@
     }
   }
 
+  /* Add contact */
   .addContactDesktopLeftSideContainer {
     display: flex;
     justify-content: center;
@@ -1086,11 +1081,6 @@
   }
 }
 
-
-
-
-
-
 @media only screen and (max-width: 1440px) and (min-width: 350px) {
   .addContactButtonContainerDesktop {
     display: flex;
@@ -1120,7 +1110,7 @@
     padding: 12px 0 12px 0;
     font-size: 16px;
     font-weight: 700;    
-    overflow-wrap: break-word; /* Diese Eigenschaft sorgt dafür, dass lange Wörter umgebrochen werden */    
+    overflow-wrap: break-word;
     flex-shrink: 2;
     text-align: center;
     background-size: 10%;
@@ -1129,13 +1119,9 @@
 
   .addContactButtonDesktopImg {    
     width: 24px;
-    height: 24px;
-    margin-left: 1rem;
+    height: 24px;    
   }
-
-
 }
-
 
 @media only screen and (max-width: 1440px) and (min-width: 751px) {
   .addContactButtonDesktop {
@@ -1151,7 +1137,7 @@
     padding: 12px 0 12px 0;
     font-size: 16px;
     font-weight: 700;    
-    overflow-wrap: break-word; /* Diese Eigenschaft sorgt dafür, dass lange Wörter umgebrochen werden */    
+    overflow-wrap: break-word;
     flex-shrink: 2;
     text-align: center;
     background-size: 10%;
@@ -1175,7 +1161,6 @@
     font-size: 8px;
   }
 }
-
 
 @media only screen and (max-width: 1200px) and (min-width: 751px) {
   .contact-info-container {
