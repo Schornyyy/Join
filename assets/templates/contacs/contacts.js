@@ -21,26 +21,13 @@ function initializeView() {  // Check if mobile or desktop view for css media qu
   const isMobile = window.innerWidth < 768;
   if (isMobile) {      
     renderContacts();  // Render contacts for mobile view
-    hidecontactsContentRightSideDesktop();  // Hide contact right side container in mobile view
+    hidecontactsContentRightSideDesktop();  // Hide contact right side container in mobile view    
   } else {      
     renderContactsDesktop();  // Render contacts for desktop view
-    showContactsContentRightSideDesktop();
+    showContactsContentRightSideDesktop();    
   }
   contactsContentBackgroundColorWhite();  
-  window.addEventListener('resize', handleWindowResize);  // Add event listener for window resize
-}
-
-//---------------------------------------------------------------------------------------
-function handleWindowResize() {  // Function to handle window resize
-  const isMobile = window.innerWidth < 768;
-  if (isMobile) {
-    renderContacts();  // Render contacts for mobile view
-    hidecontactsContentRightSideDesktop();  // Hide contact right side container in mobile view
-  } else {
-    renderContactsDesktop();  // Render contacts for desktop view
-    showContactsContentRightSideDesktop();
-  }
-  contactsContentBackgroundColorWhite();
+  window.addEventListener('resize', contactsInit);  // Add event listener for window resize
 }
 
 // --------------------------------------------------------------------------------------

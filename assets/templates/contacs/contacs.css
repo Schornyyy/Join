@@ -722,8 +722,7 @@
 
   .addContactButtonDesktopImg {    
     width: 32px;
-    height: 32px;
-    margin-left: 1rem;
+    height: 32px;    
   }
 
   .overlay-container {
@@ -1099,7 +1098,7 @@
 
   .addContactButtonDesktop {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 352px;
     height: 56px;
@@ -1126,7 +1125,7 @@
 @media only screen and (max-width: 1440px) and (min-width: 751px) {
   .addContactButtonDesktop {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 352px;
     height: 64px;
@@ -1171,8 +1170,8 @@
 @media only screen and (max-width: 900px) and (min-width: 751px) {
   .addContactButtonDesktop {    
     width: 352px;
-    height: 90px;    
-    font-size: 16px;
+    height: 56px;    
+    font-size: 12px;
   }
 
   .addContactButtonDesktopImg {    
