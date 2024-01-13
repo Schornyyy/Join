@@ -26,10 +26,24 @@ function initializeView() {  // Check if mobile or desktop view for css media qu
     renderContactsDesktop();  // Render contacts for desktop view
     showContactsContentRightSideDesktop();
   }
-  contactsContentBackgroundColorWhite();
+  contactsContentBackgroundColorWhite();  
+  window.addEventListener('resize', handleWindowResize);  // Add event listener for window resize
 }
 
 //---------------------------------------------------------------------------------------
+function handleWindowResize() {  // Function to handle window resize
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    renderContacts();  // Render contacts for mobile view
+    hidecontactsContentRightSideDesktop();  // Hide contact right side container in mobile view
+  } else {
+    renderContactsDesktop();  // Render contacts for desktop view
+    showContactsContentRightSideDesktop();
+  }
+  contactsContentBackgroundColorWhite();
+}
+
+// --------------------------------------------------------------------------------------
 function handleAddContactClick() {
   addContactScreen(); // This function is called in HTML-Code and shows the "add contact screen" to add a new contact person
 }
