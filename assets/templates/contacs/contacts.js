@@ -18,10 +18,11 @@ function initializeContactId() {  // Get contact ID´s
 }
 
 function initializeView() {  // Check if mobile or desktop view for css media querry
-  const isMobile = window.innerWidth < 770;
+  const isMobile = window.innerWidth < 920;
   if (isMobile) {      
     renderContacts();  // Render contacts for mobile view
-    hidecontactsContentRightSideDesktop();  // Hide contact right side container in mobile view    
+    hidecontactsContentRightSideDesktop();  // Hide contact right side container in mobile view
+    hideOverlay();   
   } else {      
     renderContactsDesktop();  // Render contacts for desktop view
     showContactsContentRightSideDesktop();    
