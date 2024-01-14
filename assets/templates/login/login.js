@@ -1,6 +1,7 @@
 async function login() {
   let loginInput = document.getElementById("login-input-email");
   let loginPasswordInput = document.getElementById("login-input-password");
+  let errorMsg = document.getElementById("login-error");
   let validated = validateLoginForm();
 
   if (!validated) return;
@@ -10,6 +11,12 @@ async function login() {
     // TOOOOOO      DOOOOOOO -------------------------------------------------------
     return;
   }
+
+  if(!user.password.match(loginPasswordInput.value)) {
+    errorMsg.innerHTML = "The password is incorrect!";
+    return;
+  }
+
   currentUser = user;
   if (document.getElementById("rememberMe").hasAttribute("checked")) {
     localStorage.setItem(
