@@ -315,12 +315,12 @@ button:focus {
 .add-tasks-board-footer button {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
-  padding: 15px;
+  padding: 12px;
   background-color: var(--light-grey);
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   border-radius: 10px;
   border: none;
@@ -353,6 +353,10 @@ button:focus {
 
 #hiden-divieder {
   display: none;
+}
+
+#tasks-form-submit {
+  height: 3rem;
 }
 
 #tasks-form-submit:hover {
