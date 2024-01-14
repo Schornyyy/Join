@@ -121,6 +121,7 @@
   .summaryHeadline1 {
     font-size: 2.5rem !important;
     font-family: Inter;
+    filter: drop-shadow(2px 2px 2px gray);
   }
 
   .row1 {
@@ -347,6 +348,7 @@
   .summaryHeadline1 {
     font-size: 2.5rem !important;
     font-family: Inter;
+    filter: drop-shadow(2px 2px 2px gray);
   }
 
   .row1 {
@@ -576,6 +578,7 @@
   .summaryHeadline1 {
     font-size: 2.5rem !important;
     font-family: Inter;
+    filter: drop-shadow(2px 2px 2px gray);
   }
 
   .row1 {
