@@ -1,10 +1,14 @@
-@media only screen and (min-device-width: 251px) and (max-device-width: 1024px) and (orientation: portrait) {
+@media only screen and (min-device-width: 251px) and (max-device-width: 1441px) and (orientation: portrait) {
   /* For portrait layouts only */
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+@media only screen and (min-device-width: 481px) and (max-device-width: 1680px) and (orientation: landscape) {
   /* For landscape layouts only */
 }
+
+
+
+
 
 @media only screen and (max-width: 480px) and (min-width: 250px) {
   .privacyPolicyContent {
