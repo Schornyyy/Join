@@ -273,6 +273,7 @@
   }
   .greetingBoxShow {
     display: block;
+    margin-top: 7rem;
   }
 
   .greetingBoxShow h1 {
@@ -501,6 +502,7 @@
   }
   .greetingBoxShow {
     display: block;
+    margin-top: 7rem;
   }
 
   .greetingBoxShow h1 {
