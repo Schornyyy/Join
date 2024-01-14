@@ -7,7 +7,7 @@ async function initSummeryData() {
     showGreetScreen();
     showedLoginGreeting = true;
   }
-  getTodosSize();
+  getTodosCounting();
   getTodoStatusSize("summery-done-todos", "done");
   getTodoStatusSize("summery-process-tasks", "in progress");
   getTodoStatusSize("summery-awaiting-task", "await feedback");
@@ -15,29 +15,16 @@ async function initSummeryData() {
   await greetUser();
 }
 
-/**
- * Symmary content animate images.
- * @param {Image to animate whit hover} element
- */
-function changeImage(element) {
-  const img = element.querySelector(".summaryAnimateProgramm");
-  if (img.classList.contains("editImage")) {
-    img.src = "assets/img/summary/summaryWhiteEdit.svg";
-  } else if (img.classList.contains("checkImage")) {
-    img.src = "assets/img/summary/summaryCheckWhite.svg";
-  }
+function showGreetScreen() {
+  let screen = document.getElementById("summary-greet-user-screen");
+  screen.classList.add("showScreen");
+
+  setTimeout(() => {
+    screen.classList.remove("showScreen");
+  }, 2500);
 }
 
-function changeImageBack(element) {
-  const img = element.querySelector(".summaryAnimateProgramm");
-  if (img.classList.contains("editImage")) {
-    img.src = "assets/img/summary/summaryGrayEdit.svg";
-  } else if (img.classList.contains("checkImage")) {
-    img.src = "assets/img/summary/summaryCheckGray.svg";
-  }
-}
-
-function getTodosSize() {
+function getTodosCounting() {
   let summeryTodoSize = document.querySelectorAll("[data-todos]");
   summeryTodoSize.forEach((ele) => {
     ele.innerHTML = "";
@@ -99,11 +86,24 @@ async function greetUser() {
   });
 }
 
-function showGreetScreen() {
-  let screen = document.getElementById("summary-greet-user-screen");
-  screen.classList.add("showScreen");
+/**
+ * Symmary content animate images.
+ * @param {Image to animate whit hover} element
+ */
+function changeImage(element) {
+  const img = element.querySelector(".summaryAnimateProgramm");
+  if (img.classList.contains("editImage")) {
+    img.src = "assets/img/summary/summaryWhiteEdit.svg";
+  } else if (img.classList.contains("checkImage")) {
+    img.src = "assets/img/summary/summaryCheckWhite.svg";
+  }
+}
 
-  setTimeout(() => {
-    screen.classList.remove("showScreen");
-  }, 2500);
+function changeImageBack(element) {
+  const img = element.querySelector(".summaryAnimateProgramm");
+  if (img.classList.contains("editImage")) {
+    img.src = "assets/img/summary/summaryGrayEdit.svg";
+  } else if (img.classList.contains("checkImage")) {
+    img.src = "assets/img/summary/summaryCheckGray.svg";
+  }
 }

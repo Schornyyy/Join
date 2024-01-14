@@ -10,5 +10,10 @@ function resetBorderColor(containerId) {
 
 function showError(containerId) {
   let FocusContainer = document.getElementById(containerId);
-  FocusContainers.classList.add("error");
+  FocusContainer.classList.add("error");
+}
+
+function removeError(inputId) {
+  let inputElement = document.getElementById(inputId);
+  inputElement.classList.remove("error");
 }

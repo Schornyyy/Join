@@ -35,6 +35,8 @@
             autocomplete="username"
             onfocus="changeBorderColor('emailDevision')"
             onblur="resetBorderColor('emailDevision')"
+            oninput="showError('login-input-email')"
+            onkeydown="removeError('login-input-email')"
           />
           <img class="inpIconStyle" src="../../img/login/mail.svg" />
         </div>
@@ -74,7 +76,7 @@
         </div>
 
         <div class="loginBtnBox">
-          <p id="login-error" style="color: red;"></p>
+          <p id="login-error" style="color: red"></p>
           <div class="justBtn">
             <button class="confirmLogInBtn" onclick="login()" id="login-btn">
               Log in
@@ -85,7 +87,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="mobileNotUser" id="mobileNotUser">
         <p>Not a Join user?</p>
