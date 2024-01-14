@@ -35,8 +35,7 @@
             autocomplete="username"
             onfocus="changeBorderColor('emailDevision')"
             onblur="resetBorderColor('emailDevision')"
-            oninput="showError('login-input-email')"
-            onkeydown="removeError('login-input-email')"
+            data-login
           />
           <img class="inpIconStyle" src="../../img/login/mail.svg" />
         </div>
@@ -52,6 +51,7 @@
             autocomplete="current-password"
             onfocus="changeBorderColor('passwortDevision')"
             onblur="resetBorderColor('passwortDevision')"
+            data-login
           />
           <img
             style="padding-right: 3px"

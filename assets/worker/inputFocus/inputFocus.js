@@ -8,12 +8,18 @@ function resetBorderColor(containerId) {
   FocusContainer.classList.remove("active");
 }
 
-function showError(containerId) {
-  let FocusContainer = document.getElementById(containerId);
-  FocusContainer.classList.add("error");
-}
+function showErrorBorder(inputData) {
+  //Inputdata = "[data-<Deine Sache>]"
+  let dataElements = document.querySelectorAll(inputData);
 
-function removeError(inputId) {
-  let inputElement = document.getElementById(inputId);
-  inputElement.classList.remove("error");
+  dataElements.forEach(ele => {
+    if(ele == null || ele.value == "") {
+      ele.parentElement.classList.add("error");
+    } else if(ele.value != "") {
+      if(ele.parentElement.classList.contains("error")) {
+        ele.parentElement.classList.remove("error");
+      }
+    }
+  })
+
 }

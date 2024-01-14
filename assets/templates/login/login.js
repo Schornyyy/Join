@@ -11,7 +11,7 @@ async function login() {
     // TOOOOOO      DOOOOOOO -------------------------------------------------------
     return;
   }
-
+  console.log(user);
   if(!user.password.match(loginPasswordInput.value)) {
     errorMsg.innerHTML = "The password is incorrect!";
     return;
@@ -60,6 +60,8 @@ function validateLoginForm() {
     c = false;
   }
 
+  showErrorBorder("[data-login]")
+
   return c;
 }
 
@@ -76,7 +78,7 @@ function loginAsGuest() {
   let loginPasswordInout = document.getElementById("login-input-password");
   let loginBtn = document.getElementById("login-btn");
   loginEmailInput.value = "Guest@test.de";
-  loginPasswordInout.value = "guest";
+  loginPasswordInout.value = "test";
 
   loginBtn.click();
 }

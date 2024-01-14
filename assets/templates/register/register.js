@@ -36,6 +36,7 @@ async function validateForm() {
   let errorMsg = document.getElementById("registerError");
   let checked = document.getElementById("privacy-check").hasAttribute("checked");
   let registerName = document.getElementById("register-name");
+  showErrorBorder("[data-register]")
 
   if(registerName == null || registerName.value == "") {
     errorMsg.innerHTML = "U must enter a Username!";
