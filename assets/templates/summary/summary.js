@@ -5,7 +5,14 @@ async function initSummeryData() {
   if (!showedLoginGreeting) {
     showGreetScreen();
     showedLoginGreeting = true;
+    initSummeryDataRest();
+  } else {
+    initSummeryDataRest();
   }
+  document.getElementById("summaryToDos").style.display = "flex";
+}
+
+async function initSummeryDataRest() {
   await greetUser();
   getTodosCounting();
   getTodoStatusCounting("summery-done-todos", "done");
