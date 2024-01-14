@@ -29,7 +29,6 @@ async function includeContentHTML(contentView) {
   content.innerHTML = "";
 
   switch (contentView) {
-    
     case "Board":
       var includedContent = await includeTemplate(
         "./assets/templates/board/board_template.html"
@@ -53,6 +52,27 @@ async function includeContentHTML(contentView) {
       );
       content.innerHTML = includedContent;
       contactsInit();
+      break;
+
+    case "Privacy Policy":
+      var includedContent = await includeTemplate(
+        "./assets/templates/privacy_policy/privacy_policy_internal.html"
+      );
+      content.innerHTML = includedContent;
+      break;
+
+    case "Legal notice":
+      var includedContent = await includeTemplate(
+        "./assets/templates/legal_notice/legal_notice_internal.html"
+      );
+      content.innerHTML = includedContent;
+      break;
+
+    case "Help":
+      var includedContent = await includeTemplate(
+        "./assets/templates/help/help.html"
+      );
+      content.innerHTML = includedContent;
       break;
 
     case "Summary":

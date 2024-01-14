@@ -7,6 +7,7 @@ async function login() {
   let user = await findUserByEmail(loginInput.value);
   if (user == null) {
     console.log("No user Found!");
+    // TOOOOOO      DOOOOOOO -------------------------------------------------------
     return;
   }
   currentUser = user;
