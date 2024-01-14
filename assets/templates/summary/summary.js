@@ -7,12 +7,12 @@ async function initSummeryData() {
     showGreetScreen();
     showedLoginGreeting = true;
   }
-  getTodosCounting();
-  getTodoStatusSize("summery-done-todos", "done");
-  getTodoStatusSize("summery-process-tasks", "in progress");
-  getTodoStatusSize("summery-awaiting-task", "await feedback");
-  getUrgentTask();
   await greetUser();
+  getTodosCounting();
+  getTodoStatusCounting("summery-done-todos", "done");
+  getTodoStatusCounting("summery-process-tasks", "in progress");
+  getTodoStatusCounting("summery-awaiting-task", "await feedback");
+  getUrgentTask();
 }
 
 function showGreetScreen() {
@@ -24,6 +24,15 @@ function showGreetScreen() {
   }, 2500);
 }
 
+async function greetUser() {
+  let greetingEles = document.getElementsByClassName("summery-greetX");
+  let userName = await currentUser.name;
+  greetingEles.innerHTML = "";
+  Array.from(greetingEles).forEach((ele) => {
+    ele.innerHTML = userName;
+  });
+}
+
 function getTodosCounting() {
   let summeryTodoSize = document.querySelectorAll("[data-todos]");
   summeryTodoSize.forEach((ele) => {
@@ -32,13 +41,27 @@ function getTodosCounting() {
   });
 }
 
-function getTodoStatusSize(eleId, status) {
+/**
+ * Function for the status, from the three to choose from.
+ * @param {IDs of each reactangle} eleId 
+ * @param {The status when setting the tasks} status 
+ */
+function getTodoStatusCounting(eleId, status) {
   let doneTodosEle = document.getElementById(eleId);
   doneTodosEle.innerHTML = "";
   let arr = currentUser.tasks;
   arr = arr.filter((a) => a.status.match(status));
   doneTodosEle.innerHTML = arr.length;
 }
+
+
+
+
+
+
+
+
+
 
 function getUrgentTask() {
   let summerUrgentDateEle = document.getElementById("summery-urgent-date");
@@ -75,15 +98,6 @@ function getTasksonDate(date) {
     }
   });
   upcomingTasksEle.innerHTML = tasksForDay.length;
-}
-
-async function greetUser() {
-  let greetingEles = document.getElementsByClassName("summery-greetX");
-  let userName = await currentUser.name;
-  greetingEles.innerHTML = "";
-  Array.from(greetingEles).forEach((ele) => {
-    ele.innerHTML = userName;
-  });
 }
 
 /**
