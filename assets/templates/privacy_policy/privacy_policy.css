@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
 }
-
-
 
 @media only screen and (min-device-width: 251px) and (max-device-width: 1441px) and (orientation: portrait) {
   /* For portrait layouts only */
@@ -16,12 +16,7 @@
   /* For landscape layouts only */
 }
 
-
-
-
-
 @media only screen and (max-width: 480px) and (min-width: 250px) {
-
 }
 
 @media only screen and (max-width: 768px) and (min-width: 481px) {
