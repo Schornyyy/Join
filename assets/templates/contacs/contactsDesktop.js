@@ -178,9 +178,9 @@ function generateHTMLAddContactShowOverlayDesktop(overlayContent) {  // Generate
           </div>
           <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
             <div class="addContactContainerFooter">
-              <input class="addContactInputNameDesktop" type="text" required placeholder="Name">
-              <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail">
-              <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone">
+              <input class="addContactInputNameDesktop" type="text" required placeholder="Name" data-contacts>
+              <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" data-contacts>
+              <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" data-contacts>
               <div class="addContactButtonContainerDesktop">
                 <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
                   <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
@@ -196,6 +196,7 @@ function generateHTMLAddContactShowOverlayDesktop(overlayContent) {  // Generate
   function createContactDesktop() {  // Create function for new contact person
     const { newName, newMail, newPhone } = constForCreateContactDesktop();  // Const for create contact desktop  
     if (newName === "" || newMail === "" || newPhone === "") {  // Check if all inputs are not empty
+      showErrorBorder("[data-contacts]", false)
       alert("Bitte füllen Sie alle Felder aus.");
       return;
     }    

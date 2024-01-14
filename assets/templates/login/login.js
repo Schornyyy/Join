@@ -60,7 +60,7 @@ function validateLoginForm() {
     c = false;
   }
 
-  showErrorBorder("[data-login]")
+  showErrorBorder("[data-login]", true)
 
   return c;
 }
