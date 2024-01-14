@@ -8,7 +8,11 @@
 @import url("./assets/templates/board/board.css");
 @import url("./assets/templates/summary/summary.css");
 @import url("./assets/templates/header/header.css");
+@import url("./assets/templates/legal_notice/legal_notice.css");
+@import url("./assets/templates/privacy_policy/privacy_policy.css");
+@import url("./assets/templates/help/help.css");
 @import url("./assets/templates/footer/footer.css");
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@400;500&display=swap");
 
 :root {
