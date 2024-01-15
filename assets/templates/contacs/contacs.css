@@ -287,7 +287,9 @@
   }
 
   .arrorLeftContainer {
-    margin-left: 6em;
+    position: absolute;
+    top: 105h;
+    right: 5vw;
   }
 
   .openContactUserImageAndNameContainer {
