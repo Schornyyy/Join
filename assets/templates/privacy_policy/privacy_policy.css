@@ -9,14 +9,22 @@
 .privacyPolicyContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   height: 100vh;
   width: 100%;
   overflow: scroll;
-  padding: 2rem;
+  padding: 4rem;
 
   p {
     text-align: justify;
+  }
+
+  h2 {
+    margin-top: 2rem;
+  }
+
+  h3 {
+    margin-top: 1rem;
   }
 }
 
