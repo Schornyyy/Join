@@ -10,8 +10,7 @@
     flex-direction: column;
     background-color: white;
     overflow-y: scroll;
-    height: 100vh; /* Full viewport height */
-    /* overflow-y: auto; /* Enable vertical scrolling if necessary */
+    height: 100vh; /* Full viewport height */    
   }
 
   /* Add contact screen style */
@@ -149,7 +148,7 @@
     bottom: 80px;
     right: 32px;
     cursor: pointer;
-    margin-top: 40em;
+    /* margin-top: 40em; */
     margin-right: 1em;
   }
 
@@ -1239,13 +1238,16 @@
   .contactsContentRightSideUserNameH2 {
     font-size: 40px;    
   }
-
-
 }
 
 @media only screen and (max-width: 750px) {
   .container {
-    height: auto!important;
-    overflow-y: hidden!important;
+    height: 100dvh!important;
+    overflow-y: scroll!important;
+  }
+
+  .contactsContent {
+    height: 100%;
+    overflow-y: hidden;
   }
 }
