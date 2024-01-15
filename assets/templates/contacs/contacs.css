@@ -1242,3 +1242,10 @@
 
 
 }
+
+@media only screen and (max-width: 750px) {
+  .container {
+    height: auto!important;
+    overflow-y: hidden!important;
+  }
+}
