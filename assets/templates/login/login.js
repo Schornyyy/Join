@@ -12,7 +12,7 @@ async function login() {
     return;
   }
   console.log(user);
-  if(!user.password.match(loginPasswordInput.value)) {
+  if (!user.password.match(loginPasswordInput.value)) {
     errorMsg.innerHTML = "The password is incorrect!";
     return;
   }
@@ -60,7 +60,7 @@ function validateLoginForm() {
     c = false;
   }
 
-  showErrorBorder("[data-login]", true)
+  showErrorBorder("[data-login]", true);
 
   return c;
 }

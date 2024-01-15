@@ -1,0 +1,56 @@
+@media only screen and (min-device-width: 251px) and (max-device-width: 1441px) and (orientation: portrait) {
+  /* For portrait layouts only */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1680px) and (orientation: landscape) {
+  /* For landscape layouts only */
+}
+
+.helpContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
+  padding: 2rem;
+
+  p {
+    text-align: justify;
+  }
+}
+
+.helpArrawBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cursorPonter {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 480px) and (min-width: 250px) {
+}
+
+@media only screen and (max-width: 768px) and (min-width: 481px) {
+}
+
+/* switch to mobile */
+@media only screen and (max-width: 960px) and (min-width: 769px) {
+}
+
+/* switch desktop */
+@media only screen and (max-width: 1024px) and (min-width: 961px) {
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 1025px) {
+}
+
+@media only screen and (max-width: 1440px) and (min-width: 1921px) {
+}
+
+@media only screen and (max-width: 1680px) and (min-width: 1441px) {
+}
