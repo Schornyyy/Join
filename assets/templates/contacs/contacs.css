@@ -149,7 +149,7 @@
     bottom: 80px;
     right: 32px;
     cursor: pointer;
-    margin-top: 2em;
+    margin-top: 40em;
     margin-right: 1em;
   }
 
@@ -1134,7 +1134,7 @@
     border-radius: 10px;
     color: white;
     padding: 12px 0 12px 0;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 700;    
     overflow-wrap: break-word;
     flex-shrink: 2;
