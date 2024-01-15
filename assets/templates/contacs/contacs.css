@@ -2,16 +2,16 @@
   /* Mobile view */
   /* contacts screen style */
   .container {
-    overflow: scroll;
+    overflow: hidden;
   }
 
   .contactsContent {
     display: flex;
     flex-direction: column;
     background-color: white;
-    overflow-y: scroll;    
+    overflow-y: scroll;
     height: 100vh; /* Full viewport height */
-    overflow-y: auto; /* Enable vertical scrolling if necessary */
+    /* overflow-y: auto; /* Enable vertical scrolling if necessary */
   }
 
   /* Add contact screen style */
@@ -317,6 +317,9 @@
     border-radius: 100px;
     border: 2px solid white;
     position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;    
   }
 
   .openContactInformation {
@@ -481,7 +484,7 @@
     overflow-x: hidden;
     position: relative;    
     min-width: 30%;
-    height: 100vh; /* Full viewport height */
+    height: 91vh; /* Full viewport height */
     overflow-y: scroll; /* Enable vertical scrolling if necessary */   
   }
 
@@ -1231,51 +1234,11 @@
   .openContactUserImg {
     height: 100px;
     width: 100px;  
-}
+  }
 
   .contactsContentRightSideUserNameH2 {
     font-size: 40px;    
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
