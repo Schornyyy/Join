@@ -385,7 +385,7 @@
     justify-content: right;
     align-items: center;
     margin-right: 1.5em;
-    margin-top: 15em;
+    margin-top: 16em;
   }
 
   .dropdown-menu {
@@ -450,8 +450,7 @@
 
   .dropdown-triggerContainer {
     display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 1em;
+    flex-direction: row-reverse;   
   }
 }
 
