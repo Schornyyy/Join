@@ -466,7 +466,7 @@
     overflow-y: hidden;
     overflow-x: hidden;
   }
-  --------------
+  
   .container {
     display: flex;
     width: 100%;
@@ -819,7 +819,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 70px;
+    /* margin-left: 70px; */
     margin-bottom: 150px;
   }
 
@@ -1168,6 +1168,13 @@
     cursor: pointer;
     font-size: 12px;
   }
+
+  .addContactBlankUserImgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-bottom: 150px;
+  }
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 961px) {
@@ -1190,9 +1197,21 @@
   }  
 }
 
+@media only screen and (max-width: 1200px) {
+  .addContactBlankUserImgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-bottom: 150px;
+  }
+}
+
 @media only screen and (max-width: 1000px) {
-  .addContactBlankUserImgContainer {    
-    margin-left: 0;
+  .addContactBlankUserImgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-bottom: 150px;
   }
 }
 
