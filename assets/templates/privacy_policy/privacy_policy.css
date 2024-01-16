@@ -41,10 +41,28 @@
 }
 
 @media only screen and (max-width: 480px) and (min-width: 250px) {
+  .privacyPolicyContent {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 100vh;
+    width: 100%;
+    overflow: scroll;
+    padding: 4rem;
+  }
 }
 
 @media only screen and (max-width: 750px) and (min-width: 481px) {
   /* @media only screen and (max-width: 768px) and (min-width: 481px) { */
+  .privacyPolicyContent {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 100vh;
+    width: 100%;
+    overflow: scroll;
+    padding: 4rem;
+  }
 }
 
 /* switch to mobile */

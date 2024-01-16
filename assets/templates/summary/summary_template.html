@@ -18,7 +18,7 @@
           class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
           onmouseover="changeImage(this)"
           onmouseout="changeImageBack(this)"
-          onclick="includeContentHTML('Board')"
+          onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
         >
           <img
             src="assets/img/summary/summaryGrayEdit.svg"
@@ -35,7 +35,7 @@
           class="reactangle borderRadius backgroundColor reactangelBoxShadow cursorPointer"
           onmouseover="changeImage(this)"
           onmouseout="changeImageBack(this)"
-          onclick="includeContentHTML('Board')"
+          onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
         >
           <img
             src="assets/img/summary/summaryCheckGray.svg"
@@ -55,13 +55,19 @@
         <div class="row2summary">
           <img src="assets/img/summary/Frame59_urgent.svg" alt="" />
 
-          <div class="summaryToDoSum" onclick="includeContentHTML('Board')">
+          <div
+            class="summaryToDoSum"
+            onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
+          >
             <p class="sammarySumNumber" id="summery-upcoming-tasks"></p>
             <p>Urgent</p>
           </div>
         </div>
 
-        <div class="urgentDater" onclick="includeContentHTML('Board')">
+        <div
+          class="urgentDater"
+          onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
+        >
           <div class="prioVerticalLine"></div>
           <div class="summaryDeadlineBox">
             <p class="summaryDeadDater" id="summery-urgent-date">
@@ -76,7 +82,10 @@
         <div
           class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
         >
-          <div class="summaryToDoSum" onclick="includeContentHTML('Board')">
+          <div
+            class="summaryToDoSum"
+            onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
+          >
             <p class="sammarySumNumber" data-todos></p>
             <p>Tasks in</p>
             <p>Board</p>
@@ -86,7 +95,10 @@
         <div
           class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
         >
-          <div class="summaryToDoSum" onclick="includeContentHTML('Board')">
+          <div
+            class="summaryToDoSum"
+            onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
+          >
             <p class="sammarySumNumber" id="summery-process-tasks">2</p>
             <p>Tasks in</p>
             <p>Prozess</p>
@@ -96,7 +108,10 @@
         <div
           class="squareButton borderRadius backgroundColor reactangelBoxShadow cursorPointer"
         >
-          <div class="summaryToDoSum" onclick="includeContentHTML('Board')">
+          <div
+            class="summaryToDoSum"
+            onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
+          >
             <p class="sammarySumNumber" id="summery-awaiting-task">2</p>
             <p>Awaiting</p>
             <p>feedback</p>
