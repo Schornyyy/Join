@@ -177,9 +177,7 @@ function progressToHTML(task) {
 }
 
 function membersToHTML(task) {
-    console.log(task); //////////////////////////////DEBUG
     let members = getMembers(task);
-    console.log(members); //////////////////////////////DEBUG
     let output = '';
     let i = 0;
 
@@ -191,7 +189,6 @@ function membersToHTML(task) {
 }
 
 function singleMemberToHTML(member, index) {
-    console.log(member); //////////////////////////////DEBUG
     let textcolor;
     let iconRightStep = 10;
     if (!isColorLight(member.colorCode)) textcolor = 'white';
@@ -261,7 +258,7 @@ function moveTask(task, status) {
     task.status = status;
     renderBoard();
     // saveTasks();
-    // currentUser.save();
+    currentUser.save();
 }
 
 ////////////////////////////////////////////////
@@ -468,7 +465,7 @@ function toggleSubtask(taskID, subtaskIndex) {
     let subtask= task.subtasks[subtaskIndex];
 
     subtask.finished= !subtask.finished;
-    // currentUser.save();
+    currentUser.save();
     showDialogDetail(taskID);
     renderBoard();
 }
@@ -848,7 +845,7 @@ function editSaveTask(taskID) {
     }
 
     // renderBoard();
-    // currentUser.save();
+    currentUser.save();
     showDialogDetail(taskID);
 }
 
