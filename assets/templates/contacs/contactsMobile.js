@@ -317,6 +317,7 @@ function openContactScreenMobile(contactId) {  // Show clicked contact details f
   }
   content.innerHTML = createContactScreenHTML(selectedContact);  // Generate HTML for function createContactScreenHTML on mobile view
   setupContactScreen(selectedContact.id);
+  triggerSlideInAnimation();
 }
 
 function setupContactScreen(contactId) {  // Setup function to finish open contact screen mobile on mobile view
@@ -373,7 +374,17 @@ function createContactScreenHTML(selectedContact) {  // Generate HTML for functi
         </div>
     </div>
   `;
-} 
+}
+
+function triggerSlideInAnimation() {  // Slide in animation call for class: contactsContent for openContactScreenMobile function
+  const content = document.getElementById("contactsContent");
+  setTimeout(() => {
+      content.classList.add("slideInContactsContentMobile");
+  }, 10);
+  setTimeout(() => {
+      content.classList.remove("slideInContactsContentMobile");
+  }, 2000);
+}
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function singleMemberToHTMLOpenContactMobile(member, index) {  // Function to generate user image with random background-color on mobile view
