@@ -51,7 +51,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
   }
 
   .addContactContainerFooter {
@@ -1261,5 +1261,12 @@
   .contactsContent {
     height: 100%;
     overflow-y: hidden;
+  }
+
+  .addContactBlankUserImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
