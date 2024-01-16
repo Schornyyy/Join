@@ -4,6 +4,7 @@ let users = [];
 let currentUser;
 
 async function setItem(key, value) {
+  //"users" -> array(User, User, User)
   const payload = { key, value, token: STORAGE_TOKEN };
   return fetch(STORAGE_URL, {
     method: "POST",

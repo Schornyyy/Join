@@ -9,8 +9,6 @@ async function registerUser() {
   let signedUpSuccessfully = document.getElementById("signedUpSuccessfully");
   signedUpSuccessfully.classList.add("signedUpAnimationDesktop");
 
-
-
   setTimeout(() => {
     let user = new User(username.value, email.value, password.value, null);
     users.push(user);

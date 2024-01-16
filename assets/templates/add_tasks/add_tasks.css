@@ -176,6 +176,7 @@ button:focus {
   justify-content: center;
   align-items: center;
   background-color: white;
+  z-index: 20;
   padding: 10px;
   gap: 15px;
   border-radius: 0px 0px 5px 5px;
@@ -447,11 +448,11 @@ label[for="form-date"] {
 
 .assigned-to-task {
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 5px;
   margin-top: 5px;
 }
 
@@ -604,5 +605,10 @@ label[for="form-date"] {
 
   button {
     cursor: pointer;
+  }
+
+  .assigned-to-task {
+    padding: 16px;
+    width: 100%;
   }
 }

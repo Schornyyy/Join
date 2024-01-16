@@ -13,15 +13,14 @@ async function includeAddTaskFormTempalte() {
 
 
 /**
- * Die Funktion dient dem Vergleich des geklicket und der Setzung der jeweiliegen Farbe.
- * @param {3 Mögliche stufen} prioElement - Kann sein <prio-urgent | prio-medium | prio-low>
+ * This function sets the Color of the current Prio.
+ * @param {3 Mögliche stufen} prioElement - States <prio-urgent | prio-medium | prio-low>
  */
 function clickedPrio(prioElement) {
   selectedPrio = prioElement;
-  let prios = document.querySelectorAll("[data-prio]"); // Als Gruppierte Datas (NodeListOf<Element>) -> als ein Array.
+  let prios = document.querySelectorAll("[data-prio]");
   prios.forEach((p) => {
-    // Die Prios weiter in der Arraw function als ein Paramter, mit dem Wert: Element.
-    let parentEle = p.parentElement; // p = prios[0] | p.parentElement = nächst höhere Element in HTML
+    let parentEle = p.parentElement; 
     let prioAttribute = p.getAttribute("for");
     if (prioAttribute === selectedPrio) {
       switch (selectedPrio) {
@@ -48,10 +47,10 @@ function clickedPrio(prioElement) {
 }
 
 /**
- * handelt die Dropdowns als Menü.
+ * handle the Dropdown.
  * 
- * @param {dropdownMenuID} dropdownMenu - Das Element das als Dropdown Container fungiert
- * @param {arrowImage} arrowImage - Das Image für die Navigation
+ * @param {dropdownMenuID} dropdownMenu - The HTML Element which is used as Dropdown
+ * @param {arrowImage} arrowImage - The Image of the Dropdown 
  */
 function handelDropDown(dropdownMenu, arrowImage) {
   let dropdown_menu = document.getElementById(dropdownMenu);
@@ -71,7 +70,7 @@ function handelDropDown(dropdownMenu, arrowImage) {
 }
 
 /**
- * Setzt die aktuelle Kategorie.
+ * Sets the curretn Category.
  * @param {String} category  
  */
 function selectCategory(category) {
@@ -85,7 +84,7 @@ function selectCategory(category) {
 
 
 /**
- * Ändert den Sytle des ausgewählten Subtasks.
+ * Changes the style of the clicked Subtasks.
  * @param {HTMLElement} subtaskInput 
  */
 function changeSubtaskInput(subtaskInput) {
@@ -111,7 +110,7 @@ function changeSubtaskInput(subtaskInput) {
 
 
 /**
- * Setzt die Images auf die richtige Rheienfolge.
+ * Sets the images of the Subtasks Input.
  * 
  * @param {ElementID} id 
  * @param {HTMLElement} subtaskInput 
@@ -166,23 +165,23 @@ function validateForm() {
 }
 
 /**
- * Fügt EventListener Hinzu.
+ * Adds EventListener
  */
 async function initEventListener() {
   document.getElementById("tasks-form-submit").addEventListener("click", (e) => {
     let validatet = validateForm();
     if(!validatet) return;
-    let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value; //????
-    let taskDesc = document.getElementById("form-desc").value == "" ? "" : document.getElementById("form-desc").value; //????
+    let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value; 
+    let taskDesc = document.getElementById("form-desc").value == "" ? "" : document.getElementById("form-desc").value; 
     let prio = selectedPrio;
     let dueDate = document.getElementById("form-date").value;
     let category = selectedCategory;
     let subs = subtasks;
 
-    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name); //+1 ???
+    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name); 
     task.setPrio(prio);
     task.assignedTo = assigendContacts;
-    taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc); //??
+    taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc);
     subs.length > 0 ? task.subtasks = subs : subs  =[];
     currentUser.tasks.push(task);
     currentUser.save();
@@ -200,7 +199,7 @@ async function initEventListener() {
 }
 
 /**
- * Setzt alles auf anfang. 
+ * Cleared the Task Forms.
  */
 function clearTask() {
 try {
@@ -225,7 +224,7 @@ try {
 }
 
 /**
- * Ändert das aussehen und das verhalten des Subtask-list element.
+ * Changes the Style and the functions of the Subtasks Element.
  * @param {HTMLElement} ele 
  */
 function changeSubTaskValue(ele) {
@@ -248,7 +247,7 @@ function changeSubTaskValue(ele) {
 }
 
 /**
- * Resetet das Subtask-list Item auf die Standart werte
+ * Reset the Subtask-Input Element to default.
  */
 function setSubTaskInputToDefault() {
   document.getElementById("subtasks-to-dropdown").removeAttribute("data-check")
@@ -258,7 +257,7 @@ function setSubTaskInputToDefault() {
 }
 
 /**
- * Fügt das Subtask der Liste hinzu und rendert alle Elemente neu.
+ * Add the Subtasks to the Current List and re-rendered.
  */
 function addSubtaskToList() {
   let ele = document.getElementById("subtasks-to-dropdown");
@@ -269,7 +268,7 @@ function addSubtaskToList() {
 }
 
 /**
- * rendert alle Subtask Elemente.
+ * Render all Subtasks as HTML.
  */
 function renderSubtaskHTML() {
   let list = document.getElementById("subtask-list");
@@ -307,7 +306,7 @@ function renderSubtaskHTML() {
 }
 
 /**
- * Ändert den Title von dem Subtask mit dem Index.
+ * Change the Title of the current Subtask
  * @param {String} title 
  * @param {Number} subtaskIndex 
  */
@@ -317,7 +316,7 @@ function changeSubtaskTitle(title, subtaskIndex) {
 }
 
 /**
- * Löscht das Subtasks aus der Liste mit dem Index.
+ * Delete the Subtasks with the ID.
  * @param {Number} subtaskIndex 
  */
 function deleteSubtask(subtaskIndex) {
@@ -327,7 +326,7 @@ function deleteSubtask(subtaskIndex) {
 
 
 /**
- * Rendert die ausgewählten Kontakte unter der AssignedTo Liste im AddTasks.
+ * Rendered all Assigned to Contacts as HTML.
  */
 function renderHTMLAssignedTo() {
   let assignedList = document.getElementById("assigned-to-dropdown-menu");
@@ -345,7 +344,7 @@ function renderHTMLAssignedTo() {
 }
 
 /**
- * Gibt die Ersten Buchstaben jedes Wortes zurück.
+ * Get the Initials of the String. Max. 2.
  * @param {String} contactName 
  * @returns 
  */
@@ -353,13 +352,15 @@ function getInitialsByContact(contactName) {
   let initials = "";
   let splits = contactName.split(" ");
   splits.forEach((split) => {
-    initials += split[0].toUpperCase();
+    if(initials.length <= 1) {
+      initials += split[0].toUpperCase();
+    }
   });
   return initials;
 }
 
 /**
- * Rendert die ausgewählten Kontakte als Liste unter dem Dropdown.
+ * Rendered all checked Contacts as List.
  * 
  * @param {ContactObject} contact 
  * @param {IndexID} index 
@@ -382,7 +383,7 @@ function renderHTMLListElementOfAssigned(contact, index) {
 }
 
 /**
- * Ändert das Design der Contacte beim Auswählen.
+ * Change the Design of clicked Contacts.
  * 
  * @param {ContactObejct} contact 
  * @param {IndecID} index 
@@ -405,7 +406,7 @@ async function addToAssigned(contact, index) {
 }
 
 /**
- * Rendert die Liste im Dropdown für AssignedTo.
+ * Render the List of Assigneds.
  */
 function renderAssignes() {
   let container = document.getElementById("assigned-to-assigens");
