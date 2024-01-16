@@ -1,76 +1,64 @@
-@media only screen and (min-device-width: 251px) and (max-device-width: 1441px) and (orientation: portrait) {
-  /* For portrait layouts only */
+/* @media only screen and (min-device-width: 251px) and (max-device-width: 1441px) and (orientation: portrait) {
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1680px) and (orientation: landscape) {
-  /* For landscape layouts only */
+} */
+
+html {
+  scroll-behavior: smooth;
 }
 
-.privacyPolicyContent {
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  height: 100vh;
-  width: 100%;
-  overflow: scroll;
-  padding: 4rem;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f6f7f8;
 
-  p {
-    text-align: justify;
-  }
-
-  h2 {
-    margin-top: 2rem;
-  }
-
-  h3 {
-    margin-top: 1rem;
+  a {
+    text-decoration: none;
+    color: #29abe2;
+    text-shadow: 0.5px 0px rgb(129, 200, 160);
+    cursor: pointer;
   }
 }
 
-.privacyPolicyBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.cursorPonter {
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 480px) and (min-width: 250px) {
+@media only screen and (min-width: 250px) {
+  /* @media only screen and (max-width: 480px) and (min-width: 250px) { */
   .privacyPolicyContent {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     height: 100vh;
-    width: 100%;
+    padding: 3rem;
     overflow: scroll;
-    padding: 4rem;
-  }
-}
 
-@media only screen and (max-width: 750px) and (min-width: 481px) {
-  /* @media only screen and (max-width: 768px) and (min-width: 481px) { */
-  .privacyPolicyContent {
+    p {
+      text-align: justify;
+    }
+
+    h2 {
+      margin-top: 2rem;
+    }
+
+    h3 {
+      margin-top: 1rem;
+    }
+  }
+
+  .privacyPolicyBox {
     display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    height: 100vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    overflow: scroll;
-    padding: 4rem;
   }
 }
 
-/* switch to mobile */
+/* @media only screen and (max-width: 750px) and (min-width: 481px) {
+}
+
 @media only screen and (max-width: 960px) and (min-width: 751px) {
-  /* @media only screen and (max-width: 960px) and (min-width: 769px) { */
 }
 
-/* switch desktop */
 @media only screen and (max-width: 1024px) and (min-width: 961px) {
 }
 
@@ -81,4 +69,4 @@
 }
 
 @media only screen and (max-width: 1680px) and (min-width: 1441px) {
-}
+} */

@@ -3,35 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="legal_notice_external.css">
     <title>Legal Notice</title>
   </head>
   <body>
     <div class="legalNoticeContent">
       <div class="legalNoticeBox">
         <h1>Imprint</h1>
+        <img class="cursorPonter" onclick="includeContentHTML('Summary')" />
       </div>
 
       <div>
         <h2>Information according to § 5 TMG</h2>
         <table>
           <tr>
-            [Konstantin Aksenov, Lukas Schornstein, Martin Hoffmann, Reinhard
-            the Rock]
+            Konstantin Aksenov, Lukas Schornstein, Martin Hoffmann, Reinhard the
+            Rock
           </tr>
           <tr>
-            [South-America]
-          </tr>
-          <tr>
-            [Terra-X]
+            South-America /Germany
           </tr>
         </table>
       </div>
 
       <div>
         <h2>Contact</h2>
-        <p>Phone: 015737571755</p>
-        <p>Email: [Gruppe-814@dev2k.net]</p>
-        <p>Source: https://www.e-recht24.de</p>
+        <p>Phone: <a href="015737571755">015737571755</a></p>
+        <p>Email: Gruppe-814@dev2k.net</p>
+        <p>
+          Source:
+          <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
+        </p>
       </div>
 
       <div>
@@ -108,12 +110,30 @@
           legal fees) arising out of or relating to your use of Join and/or your
           breach of this Legal Notice.
           <br />
-          For any questions or notices, please contact us at
-          sebastianwolff429@gmail.com .
+          For any questions or notices, please contact us at:
+          <br />
+          <a href="info@join.dev2k.net">info@join.dev2k.net</a>
           <br />
           Date: January 10, 2024
         </p>
       </div>
     </div>
+
+    <script>
+      function saveScrollPosition() {
+        localStorage.setItem("scrollPosition", window.scrollY);
+      }
+
+      function scrollToSavedPosition() {
+        var scrollPosition = localStorage.getItem("scrollPosition");
+        if (scrollPosition !== null) {
+          window.scrollTo(0, parseInt(scrollPosition));
+        }
+      }
+
+      window.addEventListener("beforeunload", saveScrollPosition);
+
+      window.addEventListener("load", scrollToSavedPosition);
+    </script>
   </body>
 </html>
