@@ -20,6 +20,12 @@
     flex-direction: column;
     gap: 24px;
     border-radius: 20px;
+    max-height: 95%;
+    overflow-y: scroll;
+}
+
+.dialog::-webkit-scrollbar {
+    display: none;
 }
 
 .prio-icon {

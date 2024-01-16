@@ -635,6 +635,8 @@ function editDialogToHTML(task) {
     `;
 }
 
+//////////////// MEMBERS DOPDOWN
+
 function editDropdownMembersToHTML() {
     let output = '';
     let i= 0;
@@ -719,33 +721,8 @@ function collapseDropdown() {
     reloadTaskMembersContainer();
 }
 
-function reloadTaskMembersContainer() {
-    let elem= document.getElementById('editTaskMembersContainer');
-    elem.innerHTML= editMembersToHTML(contactsSelected);
-}
 
-
-
-
-
-
-
-function editSubtasksToHTML(task) {
-    let output = '';
-    for (let subtask of getSubtasks(task)) {
-        output += `
-            <li>
-
-                <span>&bull; ${subtask.title}</span>
-                <div class="edit-subtask-icon-container">
-                    <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon">
-                    <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon">
-                </div>
-            </li>
-        `;
-    }
-    return output;
-}
+//////////////// MEMBER CONTAINER
 
 function editMembersToHTML(memberMails) {
     let output = '';
@@ -766,9 +743,33 @@ function editSingleMemberToHTML(member) {
     `;
 }
 
+function reloadTaskMembersContainer() {
+    let elem= document.getElementById('editTaskMembersContainer');
+    elem.innerHTML= editMembersToHTML(contactsSelected);
+}
 
 
+//////////////// SUBTASKS
 
+function editSubtasksToHTML(task) {
+    let output = '';
+    for (let subtask of getSubtasks(task)) {
+        output += `
+            <li>
+
+                <span>&bull; ${subtask.title}</span>
+                <div class="edit-subtask-icon-container">
+                    <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon">
+                    <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon">
+                </div>
+            </li>
+        `;
+    }
+    return output;
+}
+
+
+//////////////// SAVE TASK
 
 
 function editSaveTask(taskID) {
