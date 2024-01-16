@@ -1,110 +1,112 @@
 
-<!------------------ HEADLINE SECTION ------------------>
-<section class="headline-section">
-    <h1 class="headline-board">Board</h1>
-    <button class="headline-plus-button" onclick="includeContentHTML('Add Tasks')">
-        <span class="plus-button-text">Add task</span>
-        <img class="headline-plus-icon" src="./assets/img/board/plus-icon-dark.svg" alt="plus dark">
-    </button>
-    <div class="input-wrapper input-wrapper-board">
-        <input type="text" placeholder="Find Task" id="inputFilterphrase">
-        <div class="input-devider"></div>
-        <img src="./assets/img/board/magnifier-icon-thin.svg" alt="magnifier">
-    </div>
-</section>
-
-
-
-
-<div class="sections-container">
-    <!------------------ TODO SECTION ------------------>
-    <section class="task-section">
-        <h2 class="section-headline">To do</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
-
-
-        <div class="card-container" 
-            ondragover="dragoverHandler(event)"
-            ondrop="dropHandler(event, 'Open')"
-            ondragleave="dragleaveHandler(event)"
-            id="cardContainerTodo">
-       
+<div class="main-container">
+    <!------------------ HEADLINE SECTION ------------------>
+    <section class="headline-section">
+        <h1 class="headline-board">Board</h1>
+        <button class="headline-plus-button" onclick="includeContentHTML('Add Tasks')">
+            <span class="plus-button-text">Add task</span>
+            <img class="headline-plus-icon" src="./assets/img/board/plus-icon-dark.svg" alt="plus dark">
+        </button>
+        <div class="input-wrapper input-wrapper-board">
+            <input type="text" placeholder="Find Task" id="inputFilterphrase">
+            <div class="input-devider"></div>
+            <img src="./assets/img/board/magnifier-icon-thin.svg" alt="magnifier">
         </div>
-
     </section>
-
-
-
-
-    <!------------------ IN PROGRESS SECTION ------------------>
-    <section class="task-section">
-        <h2 class="section-headline">In progress</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
-        <div class="card-container" 
-            ondragover="dragoverHandler(event)"
-            ondrop="dropHandler(event, 'in progress')"
-            ondragleave="dragleaveHandler(event)"
-            id="cardContainerInprogress">
-
-            <div class="card-container-empty reini-d-none">
-                <p>No tasks in progress</p>
-            </div>
-        </div>
-
-    </section>
-
-
-
-    <!------------------ AWAIT FEEDBACK SECTION ------------------>
-    <section class="task-section">
-        <h2 class="section-headline">Await feedback</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
-        <div class="card-container" 
-            ondragover="dragoverHandler(event)"
-            ondrop="dropHandler(event, 'await feedback')"
-            ondragleave="dragleaveHandler(event)"
-            id="cardContainerAwaitfeedback">
-
-            <div class="card-container-empty reini-d-none">
-                <p>No tasks awaiting feedback</p>
-            </div>
-        </div>
-
-    </section>
-
-
-
-
-
-    <!------------------ DONE SECTION ------------------>
-    <section class="task-section">
-        <h2 class="section-headline">Done</h2>
-        <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
-
-
-        <div class="card-container" 
-            ondragover="dragoverHandler(event)"
-            ondrop="dropHandler(event, 'done')"
-            ondragleave="dragleaveHandler(event)"
-            id="cardContainerDone">
-
-            <div class="card-container-empty reini-d-none">
-                <p>No tasks done</p>
-            </div>
-        </div>
-
-    </section>
-</div>
-
-
-
-<!------------------ DIALOG ------------------>
-<div class="dialog-container reini-d-none" id="dialogContainer">
-
-    <!------------------ DIALOG DETAIL------------------>
-    <div class="dialog detail-dialog" id="detailDialog"></div>
-
-    <!------------------ DIALOG EDIT------------------>
-    <div class="dialog edit-dialog" id="editDialog"></div>
     
+    
+    
+    
+    <div class="sections-container">
+        <!------------------ TODO SECTION ------------------>
+        <section class="task-section">
+            <h2 class="section-headline">To do</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
+    
+    
+            <div class="card-container"
+                ondragover="dragoverHandler(event)"
+                ondrop="dropHandler(event, 'Open')"
+                ondragleave="dragleaveHandler(event)"
+                id="cardContainerTodo">
+    
+            </div>
+    
+        </section>
+    
+    
+    
+    
+        <!------------------ IN PROGRESS SECTION ------------------>
+        <section class="task-section">
+            <h2 class="section-headline">In progress</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
+            <div class="card-container"
+                ondragover="dragoverHandler(event)"
+                ondrop="dropHandler(event, 'in progress')"
+                ondragleave="dragleaveHandler(event)"
+                id="cardContainerInprogress">
+    
+                <div class="card-container-empty reini-d-none">
+                    <p>No tasks in progress</p>
+                </div>
+            </div>
+    
+        </section>
+    
+    
+    
+        <!------------------ AWAIT FEEDBACK SECTION ------------------>
+        <section class="task-section">
+            <h2 class="section-headline">Await feedback</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
+            <div class="card-container"
+                ondragover="dragoverHandler(event)"
+                ondrop="dropHandler(event, 'await feedback')"
+                ondragleave="dragleaveHandler(event)"
+                id="cardContainerAwaitfeedback">
+    
+                <div class="card-container-empty reini-d-none">
+                    <p>No tasks awaiting feedback</p>
+                </div>
+            </div>
+    
+        </section>
+    
+    
+    
+    
+    
+        <!------------------ DONE SECTION ------------------>
+        <section class="task-section">
+            <h2 class="section-headline">Done</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus" onclick="includeContentHTML('Add Tasks')">
+    
+    
+            <div class="card-container"
+                ondragover="dragoverHandler(event)"
+                ondrop="dropHandler(event, 'done')"
+                ondragleave="dragleaveHandler(event)"
+                id="cardContainerDone">
+    
+                <div class="card-container-empty reini-d-none">
+                    <p>No tasks done</p>
+                </div>
+            </div>
+    
+        </section>
+    </div>
+    
+    
+    
+    <!------------------ DIALOG ------------------>
+    <div class="dialog-container reini-d-none" id="dialogContainer">
+    
+        <!------------------ DIALOG DETAIL------------------>
+        <div class="dialog detail-dialog" id="detailDialog"></div>
+    
+        <!------------------ DIALOG EDIT------------------>
+        <div class="dialog edit-dialog" id="editDialog"></div>
+    
+    </div>
 </div>

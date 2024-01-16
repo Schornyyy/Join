@@ -94,7 +94,9 @@ function getSubtasks(task) {
 function getMembers(task) {
     let output = [];
     for (let eMail of task.assignedTo) {
-        output.push(contactsDatasource.find(contact => contact.email == eMail));
+        // output.push(contactsDatasource.find(contact => contact.email == eMail));
+        let contact= contactsDatasource.find(contact => contact.email == eMail); 
+        if (contact) output.push(contact);
     }
     return output;
 }
@@ -175,7 +177,9 @@ function progressToHTML(task) {
 }
 
 function membersToHTML(task) {
+    console.log(task); //////////////////////////////DEBUG
     let members = getMembers(task);
+    console.log(members); //////////////////////////////DEBUG
     let output = '';
     let i = 0;
 
@@ -187,6 +191,7 @@ function membersToHTML(task) {
 }
 
 function singleMemberToHTML(member, index) {
+    console.log(member); //////////////////////////////DEBUG
     let textcolor;
     let iconRightStep = 10;
     if (!isColorLight(member.colorCode)) textcolor = 'white';
@@ -367,6 +372,13 @@ function showDialogDetail(taskID) {
     detailDialog.innerHTML = detailDialogToHTML(task);
 }
 
+function deleteTask(taskID) {
+    task= getTaskById(taskID);
+    index= tasksDatasource.indexOf(task);
+    tasksDatasource.splice(index, 1);
+    hideDialog();
+}
+
 //////////////// RENDER DETAIL DIALOG
 
 function detailDialogToHTML(task) {
@@ -395,7 +407,7 @@ function detailDialogToHTML(task) {
             ${detailSubtasksToHTML(task)}
         </div>
         <div class="detail-footer">
-            <div class="detail-footer-button">
+            <div class="detail-footer-button" onclick="deleteTask(${task.id})">
                 <img src="./assets/img/board/delete-icon.svg" alt="trashcan">
                 <p>Delete</p>
             </div>

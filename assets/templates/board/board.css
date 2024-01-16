@@ -41,6 +41,14 @@ body {
   background-color: var(--reini-category-blue);
 }
 
+
+/*************** MAIN CONTAINER ***************/
+
+.main-container {
+  height: 100%;
+  overflow: scroll;
+}
+
 /*************** HEADLINE SECTION ***************/
 
 .headline-section {

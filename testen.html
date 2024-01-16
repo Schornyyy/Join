@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <script src="./includehtml.js"></script>
+  <script src="./assets/worker/inputFocus/inputFocus.js"></script>
+  <script src="./assets//models/task.class.js"></script>
+  <script src="./assets//models/subtasks.class.js"></script>
+  <script src="./assets/models/user.class.js"></script>
+  <script src="./assets/models/contact.class.js"></script>
+  <script src="./script.js"></script>
+  <script src="./assets/templates/login/login.js"></script>
+  <script src="./assets/templates/register/register.js"></script>
+  <script src="./assets/templates/contacs/contacts.js"></script>
+  <script src="./assets/templates/contacs/contactsDesktop.js"></script>
+  <script src="./assets/templates/contacs/contactsMobile.js"></script>
+  <script src="./assets/templates/add_tasks/add_tasks.js"></script>
+  <script src="./assets/templates/board/board.js"></script>
+  <script src="./assets/templates/summary/summary.js"></script>
+  <script src="./assets/templates/header/header.js"></script>
+  <script src="./assets/templates/footer/footer.js"></script>
+  <script src="./assets/worker/saveScrollPosition.js"></script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+
+  <title>testen</title>
+
+</head>
+
+<body onload="init(); loadData(); setTimeout(()=>includeContentHTML('Board'),350);">
+  <div class="container" id="container">
+    <div w3-include-html="./assets/templates/header/header_template.html" id="headerTemplate" class="headerTemplate">
+    </div>
+    <div w3-include-html="./assets/templates/summary/summary_template.html" id="content" class="content">
+
+
+
+      <div class="main-container">
+        <!------------------ HEADLINE SECTION ------------------>
+        <section class="headline-section">
+          <h1 class="headline-board">Board</h1>
+          <button class="headline-plus-button" onclick="includeContentHTML('Add Tasks')">
+            <span class="plus-button-text">Add task</span>
+            <img class="headline-plus-icon" src="./assets/img/board/plus-icon-dark.svg" alt="plus dark">
+          </button>
+          <div class="input-wrapper input-wrapper-board">
+            <input type="text" placeholder="Find Task" id="inputFilterphrase">
+            <div class="input-devider"></div>
+            <img src="./assets/img/board/magnifier-icon-thin.svg" alt="magnifier">
+          </div>
+        </section>
+
+
+
+
+        <div class="sections-container">
+          <!------------------ TODO SECTION ------------------>
+          <section class="task-section">
+            <h2 class="section-headline">To do</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus"
+              onclick="includeContentHTML('Add Tasks')">
+
+
+            <div class="card-container" ondragover="dragoverHandler(event)" ondrop="dropHandler(event, 'Open')"
+              ondragleave="dragleaveHandler(event)" id="cardContainerTodo">
+
+            </div>
+
+          </section>
+
+
+
+
+          <!------------------ IN PROGRESS SECTION ------------------>
+          <section class="task-section">
+            <h2 class="section-headline">In progress</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus"
+              onclick="includeContentHTML('Add Tasks')">
+            <div class="card-container" ondragover="dragoverHandler(event)" ondrop="dropHandler(event, 'in progress')"
+              ondragleave="dragleaveHandler(event)" id="cardContainerInprogress">
+
+              <div class="card-container-empty reini-d-none">
+                <p>No tasks in progress</p>
+              </div>
+            </div>
+
+          </section>
+
+
+
+          <!------------------ AWAIT FEEDBACK SECTION ------------------>
+          <section class="task-section">
+            <h2 class="section-headline">Await feedback</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus"
+              onclick="includeContentHTML('Add Tasks')">
+            <div class="card-container" ondragover="dragoverHandler(event)"
+              ondrop="dropHandler(event, 'await feedback')" ondragleave="dragleaveHandler(event)"
+              id="cardContainerAwaitfeedback">
+
+              <div class="card-container-empty reini-d-none">
+                <p>No tasks awaiting feedback</p>
+              </div>
+            </div>
+
+          </section>
+
+
+
+
+
+          <!------------------ DONE SECTION ------------------>
+          <section class="task-section">
+            <h2 class="section-headline">Done</h2>
+            <img class="plus-icon" src="./assets/img/board/plus-icon.svg" alt="plus"
+              onclick="includeContentHTML('Add Tasks')">
+
+
+            <div class="card-container" ondragover="dragoverHandler(event)" ondrop="dropHandler(event, 'done')"
+              ondragleave="dragleaveHandler(event)" id="cardContainerDone">
+
+              <div class="card-container-empty reini-d-none">
+                <p>No tasks done</p>
+              </div>
+            </div>
+
+          </section>
+        </div>
+
+
+
+        <!------------------ DIALOG ------------------>
+        <div class="dialog-container reini-d-none" id="dialogContainer">
+
+          <!------------------ DIALOG DETAIL------------------>
+          <div class="dialog detail-dialog" id="detailDialog"></div>
+
+          <!------------------ DIALOG EDIT------------------>
+          <div class="dialog edit-dialog" id="editDialog"></div>
+
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+    <div w3-include-html="./assets/templates/footer/menu_template.html" id="menuTemplate"></div>
+  </div>
+</body>
+
+</html>
