@@ -50,7 +50,8 @@
   .addContactBlankUserImg {
     position: absolute;
     top: 50%;
-    left: 50%;    
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .addContactContainerFooter {
@@ -1241,6 +1242,13 @@
 
   .contactsContentRightSideUserNameH2 {
     font-size: 40px;    
+  }
+
+  .addContactBlankUserImg {
+    position: absolute;
+    top: 58%;
+    left: 60%;
+    transform: translate(-50%, -50%);
   }
 }
 
