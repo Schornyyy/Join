@@ -617,10 +617,10 @@ function editDialogToHTML(task) {
             <div class="input-container">
                 <label for="">Subtask</label>
                 <div class="input-wrapper edit-input-wrapper">
-                    <input class="input-add-subtask" type="text" placeholder="Add new subtask">
-                    <img src="./assets/img/board/plus-icon.svg" alt="plus-icon">
+                    <input class="input-add-subtask" type="text" placeholder="Add new subtask" id="inputSubtask">
+                    <img src="./assets/img/board/plus-icon.svg" alt="plus-icon" id="addSubtaskIcon" onclick="addSubtask(${task.id})">
                 </div>
-                <div class="edit-subtaskList">
+                <div class="edit-subtaskList" id="subtasksContainer">
                     ${editSubtasksToHTML(task)}
                 </div>
             </div>
@@ -753,19 +753,66 @@ function reloadTaskMembersContainer() {
 
 function editSubtasksToHTML(task) {
     let output = '';
+    let i= 0;
     for (let subtask of getSubtasks(task)) {
         output += `
             <li>
-
-                <span>&bull; ${subtask.title}</span>
+                <div>
+                    <span>&bull; </span><span id="subtaskTitle${i}">${subtask.title}</span>
+                    <input type="text" class="input-subtask reini-d-none" id="inputSubtask${i}">
+                </div>
                 <div class="edit-subtask-icon-container">
-                    <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon">
-                    <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon">
+                    <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon" id="pencilIcon${i}" onclick="editSubtaskStart(${i})">
+                    <img src="./assets/img/board/delete-icon.svg" alt="trashcan-icon" id="trashcanIcon${i}" onclick="deleteSubtask(${task.id}, ${i})">
+                    <img class="reini-d-none edit-check-icon" src="./assets/img/board/check-icon-black.svg" alt="check-icon" id="checkIcon${i}" onclick="editSubtaskEnd(${task.id},${i})">
                 </div>
             </li>
         `;
+        i++;
     }
     return output;
+}
+
+function addSubtask(taskID) {
+    let task= getTaskById(taskID);
+    let inputSubtaskElem= document.getElementById('inputSubtask');
+    let title= inputSubtaskElem.value;
+    if (title) {
+        task.subtasks.push(new Subtask(title, 13));
+        reloadSubtasksContainer(task);
+    }
+}
+
+function deleteSubtask(taskID, index) {
+    let task= getTaskById(taskID);
+    task.subtasks.splice(index, 1);
+    reloadSubtasksContainer(task);
+}
+
+function editSubtaskStart(index) {
+    let titleElem= document.getElementById('subtaskTitle' + index);
+    let inputElem= document.getElementById('inputSubtask' + index);
+    let pencilIconElem= document.getElementById('pencilIcon' + index);
+    let trashIconElem= document.getElementById('trashcanIcon' + index);
+    let checkIconElem= document.getElementById('checkIcon' + index);
+
+    titleElem.classList.add('reini-d-none');
+    inputElem.value= titleElem.innerHTML;
+    inputElem.classList.remove('reini-d-none');
+    pencilIconElem.classList.add('reini-d-none');
+    checkIconElem.classList.remove('reini-d-none');
+}
+
+function editSubtaskEnd(taskID, index) {
+    let task= getTaskById(taskID);
+    let inputElem= document.getElementById('inputSubtask' + index);
+    task.subtasks[index].title= inputElem.value;
+    reloadSubtasksContainer(task);
+}
+
+function reloadSubtasksContainer(task) {
+    let elem= document.getElementById('subtasksContainer');
+    elem.innerHTML= editSubtasksToHTML(task);
 }
 
 
@@ -809,8 +856,7 @@ function editSaveTask(taskID) {
 
 
 function testen() {
-    let taskTesten= tasksDatasource[4];
-    console.log(getAmountOfSubtasks(taskTesten));
-    console.log(getAmountOfFinishedSubtasks(taskTesten));
+    let x= document.getElementById('checkIcon0');
+    console.log(x);
 }
 

@@ -279,6 +279,20 @@
     width: 40px;
 }
 
+#addSubtaskIcon {
+    cursor: pointer;
+}
+
+.edit-subtask-icon-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.edit-check-icon {
+    height: 1em;
+}
+
 .edit-subtaskList {
     padding: 0 30px;
 }
