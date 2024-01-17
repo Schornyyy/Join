@@ -32,6 +32,7 @@ function renderContacts() {  // Render contacts for mobile view
   const content = document.getElementById("contactsContent");
   content.innerHTML = "";  
   const contactsByFirstLetter = {};
+  currentUser.contacts.sort((a, b) => a.name.localeCompare(b.name));  // Sort the contact name at alphabet
   currentUser.contacts.forEach((oneContact) => {  // // For each contact sorted by first letter
   const firstLetter = oneContact.name.charAt(0).toUpperCase();
   updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneContact);  // Sort the contacts by first letter
