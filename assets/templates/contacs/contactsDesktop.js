@@ -179,34 +179,33 @@ function generateHTMLAddContactShowOverlayDesktop(overlayContent) {  // Generate
           </div>
           <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
             <div class="addContactContainerFooter">
-              <input class="addContactInputNameDesktop" type="text" required placeholder="Name" data-contacts>
-              <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" data-contacts>
-              <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" data-contacts>
+            <input class="addContactInputNameDesktop" type="text" required pattern="[A-Za-z]+" placeholder="Name" data-contacts>
+              <input class="addContactInputMailAddresssDesktop" type="email" required placeholder="E Mail" data-contacts>
+              <input class="addContactInputPhoneDesktop" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" data-contacts>
               <div class="addContactButtonContainerDesktop">
                 <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
                   <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
                 </div>
               </div>
-            </form>  
+          </form>  
           </div>
         </div>
       </div>
     `;
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------
-  function createContactDesktop() {  // Create function for new contact person
-    const { newName, newMail, newPhone } = constForCreateContactDesktop();  // Const for create contact desktop  
-    if (newName === "" || newMail === "" || newPhone === "") {  // Check if all inputs are not empty
-      showErrorBorder("[data-contacts]", false)
-      alert("Bitte füllen Sie alle Felder aus.");
-      return;
-    }    
-    const defaultImage = "../assets/img/contact/defaultContactImage.svg"; // Const for blanc user image (grey user image icon)
-    let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);  // Create new contact with parameters
-    currentUser.contacts.push(createdContact);  // create new contact
-    currentUser.save();  // Save new contact for currentUser
-    hideOverlay();  // If contact added ... hide the overlay screen
-    contactsInit();  // Back to contacts start to show the new contact
+async function createContactDesktop() {  // Create function for new contact person
+  const { newName, newMail, newPhone } = constForCreateContactDesktop();  // Const for create contact desktop  
+  if (newName === "" || newMail === "" || newPhone === "") {  // Check if all inputs are not empty
+    showErrorBorder("[data-contacts]", false)
+    alert("Bitte füllen Sie alle Felder aus.");
+    return;
+  }
+  let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);  // Create new contact with parameters
+  await currentUser.contacts.push(createdContact);  // create new contact
+  await currentUser.save();  // Save new contact for currentUser
+  hideOverlay();  // If contact added ... hide the overlay screen
+  contactsInit();  // Back to contacts start to show the new contact
 }
 
 function constForCreateContactDesktop() {  // Const for create contact desktop view

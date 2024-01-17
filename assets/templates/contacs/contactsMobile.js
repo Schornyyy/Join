@@ -123,16 +123,15 @@ function addContactFormMobileHTML() {  // Generate HTML for add contact mobile o
   `;
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-function createContactMobile() {  // Function to create a new contact person
+async function createContactMobile() {  // Function to create a new contact person
   const { newName, newMail, newPhone } = constForCreateContactMobile();  // Const to create contact mobile on mobile view
   if (newName === "" || newMail === "" || newPhone === "") {  // Check if all inputs are not empty
     alert("Bitte füllen Sie alle Felder aus.");
     return;
-  }    
-  const defaultImage = "../assets/img/contact/defaultContactImage.svg";  // Const for blanc user image (grey user image icon)
+  }
   let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);  // Create new contact with parameters
-  currentUser.contacts.push(createdContact);  // create new contact
-  currentUser.save();  // Save new contact for currentUser
+  await currentUser.contacts.push(createdContact);  // create new contact
+  await currentUser.save();  // Save new contact for currentUser
   hideOverlay();  // If contact added ... hide the overlay screen
   contactsInit();  // Back to contacts start to show the new contact
 }
@@ -178,9 +177,9 @@ function createEditContactHTML(selectedContact) {  // Function createEditContact
     </div>
     <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">  <!-- Form for edit contact mobile view -->
       <div class="addContactContainerFooter">
-        <input class="addContactInputNameMobile" type="text" required placeholder="Name" value="${selectedContact.name}">
-        <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail" value="${selectedContact.email}">
-        <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone" value="${selectedContact.phone}">
+        <input class="addContactInputNameMobile" type="text" required pattern="[A-Za-z]+" placeholder="Name" value="${selectedContact.name}">
+        <input class="addContactInputMailAddresssMobile" type="email" required placeholder="E Mail" value="${selectedContact.email}">
+        <input class="addContactInputPhoneMobile" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
         <div>
           <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">  <!-- Create delete contact button on mobile view -->
           <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">  <!-- Create edit contact button on mobile view -->
