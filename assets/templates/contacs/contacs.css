@@ -1289,3 +1289,16 @@
     transform: translate(-50%, -50%);
   }
 }
+
+@media only screen and (max-width: 1200px) {
+  .addContactInputNameMobile {
+    width: 230px;
+  }
+  .addContactInputMailAddresssMobile {
+    width: 230px;
+  }
+
+  .addContactInputPhoneMobile {
+    width: 230px;
+  }
+}
