@@ -1,24 +1,5 @@
-function changeHeaderImage(element) {
-  const img = element.querySelector(".summaryAnimateProgramm");
-  if (img.classList.contains("editHeaderImage")) {
-    img.src = "assets/img/header/headerCurrentGuestImageHover.svg";
-  }
-}
-
-function changeHeaderImageBack(element) {
-  const img = element.querySelector(".summaryAnimateProgramm");
-  if (img.classList.contains("editHeaderImage")) {
-    img.src = "assets/img/header/headerCurrentGuestImage.svg";
-  }
-}
-
-function logout() {
-  window.location.assign("./assets/templates/login/login.html");
-  localStorage.clear();
-}
-
 /**
- * to open submenu for logout
+ * To open submenu for logout.
  */
 function handleSubMenu() {
   let mobile = window.innerWidth < 751;
@@ -34,11 +15,11 @@ function handleSubMenu() {
     ? headerSubMenu.classList.add("slideInMenu")
     : headerSubMenu.classList.remove("slideInMenu");
   let clickedEld = document.getElementById("header-profile-menu");
-  let logoutBtn =  document.getElementById("header-logout")
+  let logoutBtn = document.getElementById("header-logout");
   let todosSummery = document.querySelectorAll(".summaryToDoSum");
   logoutBtn.addEventListener("click", (e) => {
     logout();
-  })
+  });
 
   window.addEventListener("click", (e) => {
     if (e.target != clickedEld || e.target == logoutBtn) {
@@ -54,4 +35,34 @@ function handleSubMenu() {
         : headerSubMenu.classList.remove("slideInMenu");
     }
   });
+}
+
+/**
+ * Remove logged in user from local storage.
+ */
+function logout() {
+  window.location.assign("./assets/templates/login/login.html");
+  localStorage.clear();
+}
+
+/**
+ * Animate the logged in user's profile picture.
+ * @param {svg picture} element
+ */
+function changeHeaderImage(element) {
+  const img = element.querySelector(".summaryAnimateProgramm");
+  if (img.classList.contains("editHeaderImage")) {
+    img.src = "assets/img/header/headerCurrentGuestImageHover.svg";
+  }
+}
+
+/**
+ * Animate the logged in user's profile picture.
+ * @param {svg picture} element
+ */
+function changeHeaderImageBack(element) {
+  const img = element.querySelector(".summaryAnimateProgramm");
+  if (img.classList.contains("editHeaderImage")) {
+    img.src = "assets/img/header/headerCurrentGuestImage.svg";
+  }
 }
