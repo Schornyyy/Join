@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: white;  /* I think we need the background-color white here for mobile /Martin/ */
+    background-color: var(--white-text);
     height: 5rem;
     grid-row-start: 1;
     grid-row-end: 4;
@@ -195,7 +195,7 @@
     height: 5rem;
     padding: 20px 40px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    background-color: white;  /* I think we need the background-color white here for mobile /Martin/ */
+    background-color: var(--white-text);
   }
 
   .slideInMenu {
