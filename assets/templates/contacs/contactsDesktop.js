@@ -213,6 +213,7 @@ async function createContactDesktop() {  // Create function for new contact pers
   await currentUser.contacts.push(createdContact);  // create new contact
   await currentUser.save();  // Save new contact for currentUser
   hideOverlay();  // If contact added ... hide the overlay screen
+  clearAddContactDesktopRightSideContainer();  // Clear addContactDesktopRightSideContainer
   contactsInit();  // Back to contacts start to show the new contact
 }
 
