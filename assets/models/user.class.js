@@ -16,19 +16,21 @@ class User {
   }
 
   /**
-   * Lädt einer User aus einem JSON Object.
-   * 
-   * @param {JSON Object} obj   
+   * Loads a user from a JSON object.
+   * @param {JSON Object} obj
    */
   loadFromJSON(obj) {
-    this.name = obj.name,
-    this.email = obj.email,
-    this.password = obj.password,
-    this.colorCode = obj.colorCode,
-    this.contacts = obj.contacts,
-    this.tasks = obj.tasks
+    (this.name = obj.name),
+      (this.email = obj.email),
+      (this.password = obj.password),
+      (this.colorCode = obj.colorCode),
+      (this.contacts = obj.contacts),
+      (this.tasks = obj.tasks);
   }
 
+  /**
+   * Save the current user to prepare it for the backend.
+   */
   async save() {
     let u = currentUser;
     let cu = users.findIndex((a) => a.email == u.email);
@@ -36,7 +38,11 @@ class User {
     editUser(cu, u.toJSON());
     await setItem("users", users);
   }
-  
+
+  /**
+   * Class User in to JSON formatter.
+   * @returns string
+   */
   toJSON() {
     return {
       name: this.name,
@@ -44,7 +50,7 @@ class User {
       password: this.password,
       colorCode: this.colorCode,
       contacts: this.contacts,
-      tasks: this.tasks
-    }
+      tasks: this.tasks,
+    };
   }
 }
