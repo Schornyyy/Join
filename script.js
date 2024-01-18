@@ -3,6 +3,12 @@ const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 let users = [];
 let currentUser;
 
+/**
+ * Push request to backend.
+ * @param {lokal storage key} key
+ * @param {string} value
+ * @returns
+ */
 async function setItem(key, value) {
   //"users" -> array(User, User, User)
   const payload = { key, value, token: STORAGE_TOKEN };
@@ -32,7 +38,7 @@ async function loadData() {
   await loadUsers();
   if (localStorage.getItem("userData") != null) {
     let data = JSON.parse(localStorage.getItem("userData"));
-    if(data.loginCount == 2 && !data.remberMe) {
+    if (data.loginCount == 2 && !data.remberMe) {
       localStorage.clear();
       window.location.href = "/assets/templates/login/login.html";
     }
@@ -75,12 +81,17 @@ async function loadDataToUser() {
   console.log("User: ", u);
 }
 
+/**
+ * Edit Users array. To then save if needed.
+ * @param {*} contactIndex
+ * @param {*} obj
+ */
 function editUser(contactIndex, obj) {
   let contact = users[contactIndex];
-  let vals = Object.values(obj)
+  let vals = Object.values(obj);
   let keys = Object.keys(obj);
   for (let index = 0; index < vals.length; index++) {
-      contact[keys[index]] = vals[index];
+    contact[keys[index]] = vals[index];
   }
   console.log("Edited Contact: ", users);
 }
