@@ -1,3 +1,7 @@
+/**
+ * Validate forms.
+ * @returns
+ */
 async function registerUser() {
   let username = document.getElementById("register-name");
   let email = document.getElementById("register-email");
@@ -9,6 +13,9 @@ async function registerUser() {
   let signedUpSuccessfully = document.getElementById("signedUpSuccessfully");
   signedUpSuccessfully.classList.add("signedUpAnimationDesktop");
 
+  /**
+   * If user registert, then switch to login.
+   */
   setTimeout(() => {
     let user = new User(username.value, email.value, password.value, null);
     users.push(user);
@@ -16,9 +23,12 @@ async function registerUser() {
     currentUser.save();
     window.location.href = "/assets/templates/login/login.html";
     signedUpSuccessfully.classList.remove("signedUpAnimationDesktop");
-  }, 1000*1.5)
+  }, 1000 * 1.5);
 }
 
+/**
+ * Check if privacy checked.
+ */
 function checkedPrivacy() {
   let checkedEle = document.getElementById("privacy-check");
   let checked = checkedEle.hasAttribute("checked");
@@ -27,16 +37,25 @@ function checkedPrivacy() {
     : checkedEle.setAttribute("checked", "");
 }
 
+/**
+ * Checking the name input.
+ * Checking the email input.
+ * Checking the password input.
+ * Checking the privacy-check input.
+ * @returns
+ */
 async function validateForm() {
   let c = true;
   let email = document.getElementById("register-email");
   let emailTaken = await emailAlreadyTaken(email);
   let errorMsg = document.getElementById("registerError");
-  let checked = document.getElementById("privacy-check").hasAttribute("checked");
+  let checked = document
+    .getElementById("privacy-check")
+    .hasAttribute("checked");
   let registerName = document.getElementById("register-name");
-  showErrorBorder("[data-register]", true)
+  showErrorBorder("[data-register]", true);
 
-  if(registerName == null || registerName.value == "") {
+  if (registerName == null || registerName.value == "") {
     errorMsg.innerHTML = "U must enter a Username!";
     c = false;
     return c;
@@ -83,6 +102,11 @@ async function validateForm() {
   return c;
 }
 
+/**
+ * Check validate the currently email.
+ * @param {currently email to login} email
+ * @returns
+ */
 async function emailAlreadyTaken(email) {
   let emails = await users.find((a) => a.email === email);
   let c = false;
@@ -94,6 +118,9 @@ async function emailAlreadyTaken(email) {
   return c;
 }
 
+/**
+ * Switch from the registration page back to the login page.
+ */
 function redirectToLoin() {
   window.location.assign("./../login/login.html");
 }
