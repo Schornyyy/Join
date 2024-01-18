@@ -344,6 +344,7 @@ function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {  // O
 function saveAndInitDesktop(updatedContactsData) {  // Save the edit contact at the current user
   currentUser.contacts = updatedContactsData;
   currentUser.save();
+  clearAddContactDesktopRightSideContainer();  // Clear addContactDesktopRightSideContainer
   contactsInit();  // After contact saved back to contacts to show the new contact
   hideOverlay();  // Hide overlay for edit contact
 }
