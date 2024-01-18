@@ -1,6 +1,8 @@
-
 let showedLoginGreeting = false;
 
+/**
+ * Show your greeting after login.
+ */
 async function initSummeryData() {
   if (!showedLoginGreeting) {
     showGreetScreen();
@@ -12,15 +14,9 @@ async function initSummeryData() {
   document.getElementById("summaryToDos").style.display = "flex";
 }
 
-async function initSummeryDataRest() {
-  await greetUser();
-  getTodosCounting();
-  getTodoStatusCounting("summery-done-todos", "done");
-  getTodoStatusCounting("summery-process-tasks", "in progress");
-  getTodoStatusCounting("summery-awaiting-task", "await feedback");
-  getUrgentTask();
-}
-
+/**
+ * Your greeting / you are welcome as guest.
+ */
 function showGreetScreen() {
   let screen = document.getElementById("summary-greet-user-screen");
   screen.classList.add("showScreen");
@@ -30,6 +26,9 @@ function showGreetScreen() {
   }, 2500);
 }
 
+/**
+ * Your greeting / you are welcome as member.
+ */
 async function greetUser() {
   let greetingEles = document.getElementsByClassName("summery-greetX");
   let userName = await currentUser.name;
@@ -39,6 +38,21 @@ async function greetUser() {
   });
 }
 
+/**
+ * Gets the current tasks.
+ */
+async function initSummeryDataRest() {
+  await greetUser();
+  getTodosCounting();
+  getTodoStatusCounting("summery-done-todos", "done");
+  getTodoStatusCounting("summery-process-tasks", "in progress");
+  getTodoStatusCounting("summery-awaiting-task", "await feedback");
+  getUrgentTask();
+}
+
+/**
+ * The current open tasks.
+ */
 function getTodosCounting() {
   let summeryTodoSize = document.querySelectorAll("[data-todos]");
   summeryTodoSize.forEach((ele) => {
@@ -48,9 +62,9 @@ function getTodosCounting() {
 }
 
 /**
- * Function for the status, from the three to choose from.
- * @param {IDs of each reactangle} eleId 
- * @param {The status when setting the tasks} status 
+ * Status function. From the three importances to choose from.
+ * @param {IDs of each reactangle} eleId
+ * @param {The status when setting the tasks} status
  */
 function getTodoStatusCounting(eleId, status) {
   let doneTodosEle = document.getElementById(eleId);
@@ -60,15 +74,9 @@ function getTodoStatusCounting(eleId, status) {
   doneTodosEle.innerHTML = arr.length;
 }
 
-
-
-
-
-
-
-
-
-
+/**
+ * Get the current urgent task and next nearest date.
+ */
 function getUrgentTask() {
   let summerUrgentDateEle = document.getElementById("summery-urgent-date");
   let tasks = currentUser.tasks;
@@ -91,6 +99,10 @@ function getUrgentTask() {
   getTasksonDate(firstDate);
 }
 
+/**
+ * Format the nearest date in en-US.
+ * @param {nearest date} date
+ */
 function getTasksonDate(date) {
   let upcomingTasksEle = document.getElementById("summery-upcoming-tasks");
   let arr = currentUser.tasks;
@@ -119,6 +131,10 @@ function changeImage(element) {
   }
 }
 
+/**
+ * Symmary content animate images.
+ * @param {Image to animate whit hover} element
+ */
 function changeImageBack(element) {
   const img = element.querySelector(".summaryAnimateProgramm");
   if (img.classList.contains("editImage")) {
