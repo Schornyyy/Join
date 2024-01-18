@@ -129,6 +129,14 @@ async function createContactMobile() {  // Function to create a new contact pers
     alert("Bitte füllen Sie alle Felder aus.");
     return;
   }
+  if (!/^\d+$/.test(newPhone)) {
+    alert("Bitte geben Sie eine gültige Telefonnummer (nur Ziffern) ein.");
+    return;
+  }
+  if (!newMail.includes("@")) {
+    alert("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+    return;
+  }
   let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);  // Create new contact with parameters
   await currentUser.contacts.push(createdContact);  // create new contact
   await currentUser.save();  // Save new contact for currentUser
