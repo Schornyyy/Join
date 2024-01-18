@@ -51,7 +51,8 @@ function deleteContact(contactId) {  // Delete contact function on desktop view
       saveAndLogDeletedContact(deletedContact);  // Save deleted contact
   } catch (error) {
       handleDeleteError(error);  // Handle deleted contact error
-  }  
+  }
+  clearAddContactDesktopRightSideContainer();  // Clear addContactDesktopRightSideContainer
   contactsInit();  // contacts init to show changes
 }
 
@@ -78,6 +79,11 @@ function saveAndLogDeletedContact(deletedContact) {  // Save deleted contact
   
 function handleDeleteError(error) {  // Catch error
   console.error("Fehler beim Löschen des Kontakts:", error);
+}
+
+function clearAddContactDesktopRightSideContainer() {
+  let addContactDesktopRightSideContainer = document.getElementById("contactsContentRightSideContactDataContainerID");
+  addContactDesktopRightSideContainer.innerHTML = "";
 }
 // -------------------------------------------------------------------------------
 
