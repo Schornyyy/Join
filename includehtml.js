@@ -1,9 +1,15 @@
+/**
+ * Starts all processes.
+ */
 async function init() {
   await includeHTML();
   await loadData();
   initSummeryData();
 }
 
+/**
+ * Initializes all documents.
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
@@ -19,11 +25,9 @@ async function includeHTML() {
 }
 
 /**
- * Wird beim MenuItem click ausgeführt um den Content zu laden.
- *
+ * Executed when MenuItem click to load the content.
  * @param {String} contentView - <Board|Add Tasks|Contacts|Summary>
  */
-
 async function includeContentHTML(contentView) {
   let content = document.getElementById("content");
   content.innerHTML = "";
@@ -88,7 +92,7 @@ async function includeContentHTML(contentView) {
 }
 
 /**
- * Included HTML Content und returnt diesen.
+ * Include HTML Content and return.
  * @param {*} path - Path to template.
  * @returns - returns response Text
  */
