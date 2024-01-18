@@ -25,7 +25,8 @@ function initializeView() {  // Check if mobile or desktop view for css media qu
     hideOverlay();   
   } else {      
     renderContactsDesktop();  // Render contacts for desktop view
-    showContactsContentRightSideDesktop();    
+    showContactsContentRightSideDesktop();
+    changeScrollbar();
   }
   contactsContentBackgroundColorWhite();  
   window.addEventListener('resize', contactsInit);  // Add event listener for window resize
@@ -96,6 +97,20 @@ function singleMemberToHTMLOpenContactDesktop(member, index) {  // Show the colo
             ${getFirstLettersOfName(member.name)}
       </div>
   `;
+}
+
+function changeScrollbar() {
+  document.addEventListener("DOMContentLoaded", function() {
+    const contactsContainer = document.querySelector('.contacts-container');
+  
+    contactsContainer.addEventListener('mouseenter', function() {
+      contactsContainer.classList.add('custom-scrollbar');
+    });
+  
+    contactsContainer.addEventListener('mouseleave', function() {
+      contactsContainer.classList.remove('custom-scrollbar');
+    });
+  });
 }
 // -----------------------------------------------------------------------------------
 

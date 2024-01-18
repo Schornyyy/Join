@@ -46,7 +46,7 @@ body {
 
 .main-container {
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /*************** HEADLINE SECTION ***************/
