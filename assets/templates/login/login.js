@@ -1,3 +1,8 @@
+/**
+ * Validate user befor login.
+ * Remember user in local storage.
+ * @returns Else, then error message.
+ */
 async function login() {
   let loginInput = document.getElementById("login-input-email");
   let loginPasswordInput = document.getElementById("login-input-password");
@@ -8,7 +13,6 @@ async function login() {
   let user = await findUserByEmail(loginInput.value);
   if (user == null) {
     console.log("No user Found!");
-    // TOOOOOO      DOOOOOOO -------------------------------------------------------
     return;
   }
   console.log(user);
@@ -32,6 +36,11 @@ async function login() {
   window.location.assign("./../../../index.html");
 }
 
+/**
+ * Find currently user in backend.
+ * @param {currently email from input} email
+ * @returns Boolean
+ */
 async function findUserByEmail(email) {
   let u = {};
   users.map((user) => {
@@ -44,6 +53,10 @@ async function findUserByEmail(email) {
   return u;
 }
 
+/**
+ * Manual verification of correct entry of email and password fields.
+ * @returns Else, then error message.
+ */
 function validateLoginForm() {
   let loginInput = document.getElementById("login-input-email");
   let loginPasswordInput = document.getElementById("login-input-password");
@@ -61,10 +74,12 @@ function validateLoginForm() {
   }
 
   showErrorBorder("[data-login]", true);
-
   return c;
 }
 
+/**
+ * Remember checked for last / currently user.
+ */
 function handleRememberme() {
   let e = document.getElementById("rememberMe");
   let checked = e.hasAttribute("checked") ? true : false;
@@ -73,13 +88,15 @@ function handleRememberme() {
     : e.setAttribute("checked", "");
 }
 
+/**
+ * Guest access to test the application.
+ */
 function loginAsGuest() {
   let loginEmailInput = document.getElementById("login-input-email");
   let loginPasswordInout = document.getElementById("login-input-password");
   let loginBtn = document.getElementById("login-btn");
   loginEmailInput.value = "Guest@test.de";
   loginPasswordInout.value = "test";
-
   loginBtn.click();
 }
 
