@@ -173,13 +173,13 @@ function deleteFirstContact() {
 /**
  * Developer tool (only for developer, not needed for the project himself). Clear the lokal storage.
  */
-async function deleteContactDataById() {  // Function deleteContactDataById is for clear lokalStorage if one Kontact need to delete manuel without contact ID
+async function deleteContactDataById() {
   try {
-    localStorage.clear();  // Clear all Data in localStorage
-    contactsData = await fetchContactsData();  // Fetch data from server
-    localStorage.setItem('contactsData', JSON.stringify(contactsData));  // Save new data in localStorage
+    localStorage.clear();
+    contactsData = await fetchContactsData();
+    localStorage.setItem('contactsData', JSON.stringify(contactsData));
     console.log("Kontakt-Daten wurden erfolgreich gelöscht und neu geladen.");
-  } catch (error) {  // catch error
+  } catch (error) {
     console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
   }
 }
