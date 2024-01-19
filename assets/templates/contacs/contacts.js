@@ -49,7 +49,7 @@ function handleAddContactClick() {
 
 /**
  * Delete contact function on desktop view
- * @param {string} contactId
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function deleteContact(contactId) {
   if (!validateContactId(contactId)) return;
@@ -72,7 +72,7 @@ function deleteContact(contactId) {
 
 /**
  * Validate contact ID if exist
- * @param {string} contactId
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function validateContactId(contactId) {
   if (!contactId) {
@@ -84,7 +84,7 @@ function validateContactId(contactId) {
 
 /**
  * Find contact ID
- * @param {string} contactId
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function findContactIndex(contactId) {
   return currentUser.contacts.findIndex((contact) => contact.id === contactId);
@@ -92,7 +92,7 @@ function findContactIndex(contactId) {
 
 /**
  * Remove contact
- * @param {string} contactIndex
+ * @param {string} contactIndex - This is the contact ID example "5"
  */
 function removeContact(contactIndex) {
   return currentUser.contacts.splice(contactIndex, 1)[0];
@@ -100,7 +100,7 @@ function removeContact(contactIndex) {
 
 /**
  * Save deleted contact
- * @param {string} deletedContact
+ * @param {string} deletedContact - This is the deleted contact example "Kevin Mayer"
  */
 function saveAndLogDeletedContact(deletedContact) {
   currentUser.save();
@@ -109,7 +109,7 @@ function saveAndLogDeletedContact(deletedContact) {
 
 /**
  * Catch error
- * @param {string} error
+ * @param {string} error - Show error if the contact can´t be deleted
  */
 function handleDeleteError(error) {
   console.error("Fehler beim Löschen des Kontakts:", error);
@@ -125,8 +125,8 @@ function clearAddContactDesktopRightSideContainer() {
 
 /**
  * Show the color from user image background html
- * @param {string} member
- * @param {string} index
+ * @param {string} member - This is the user or contact name
+ * @param {string} index - This is the ID for the user or contact
  */
 function singleMemberToHTMLOpenContactDesktop(member, index) {
   let textcolor;
