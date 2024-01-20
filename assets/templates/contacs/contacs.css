@@ -1313,6 +1313,10 @@
   .addContactInputPhoneMobile {
     width: 230px;
   }
+
+  .dropdown-trigger {
+    margin-top: 13em;
+  }
 }
 
 ::-webkit-scrollbar {
