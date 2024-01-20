@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: contactsMobile2.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: contactsMobile2.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Validate contact ID if exist
+ * @param {string} contactId - This is the contact ID example "5"
+ */
+function validateContactId(contactId) {
+    if (!contactId) {
+        console.error("Invalid contact ID");
+        return false;
+    }
+    return true;
+  }
+  
+  /**
+   * Find contact ID
+   * @param {string} contactId - This is the contact ID example "5"
+   */
+  function findContactIndex(contactId) {
+    return currentUser.contacts.findIndex((contact) => contact.id === contactId);
+  }
+  
+  /**
+   * Remove contact
+   * @param {string} contactIndex - This is the contact ID example "5"b
+   */
+  function removeContact(contactIndex) {
+    return currentUser.contacts.splice(contactIndex, 1)[0];
+  }
+  
+  /**
+   * Save deleted contact
+   * @param {string} deletedContact - This is the deleted contact data
+   */
+  function saveAndLogDeletedContact(deletedContact) {  // 
+    currentUser.save();
+    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+  }
+  
+  /**
+   * Catch error
+   */
+  function handleDeleteError(error) {
+    console.error("Fehler beim Löschen des Kontakts:", error);
+  }
+  
+  /**
+   * Show clicked contact details for mobile view
+   * @param {string} contactId - This is the contact ID example "5"
+   */
+  function openContactScreenMobile(contactId) {
+    const content = document.getElementById("contactsContent");
+    const selectedContact = findSelectedContact(contactId);
+    if (!selectedContact) {
+        handleContactNotFound();
+        return;
+    }
+    content.innerHTML = createContactScreenHTML(selectedContact);
+    setupContactScreen(selectedContact.id);
+    triggerSlideInAnimation();
+  }
+  
+  /**
+   * Setup function to finish open contact screen mobile on mobile view
+   * @param {string} contactId - This is the contact ID example "5"
+   */
+  function setupContactScreen(contactId) {
+    console.log(contactId);
+    showHeaderAndFooter();
+    contactsContentBackgroundColorWhiteGray();
+    addDropdownMenuClickListener();
+  }
+  
+  /**
+   * Find the clicked contactID
+   * @param {string} contactId - This is the contact ID example "5"
+   */
+  function findSelectedContact(contactId) {  // 
+    return currentUser.contacts.find(contact => contact.id === contactId);
+  }
+  
+  /**
+   * Generate HTML for function createContactScreenHTML on mobile view
+   * @param {string} selectedContact - This is the selected contact to open
+   */
+  function createContactScreenHTML(selectedContact) {
+    return /*html*/ `
+      &lt;div class="openContactContainerHeader">                            
+          &lt;div class="openContactBlockHeader">
+              &lt;div>
+                  &lt;p class="openContactH1">Contacts&lt;/p>
+                  &lt;p class="openContactText">Better with a team!&lt;/p>                              
+                  &lt;img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">                                                                        
+              &lt;/div>
+              &lt;div class="arrorLeftContainer">
+                  &lt;div onclick="contactsInit()">
+                      &lt;img src="../assets/img/contact/arrow-left-line.svg" alt="">
+                  &lt;/div>
+              &lt;/div>                                                                
+          &lt;/div>                    
+      &lt;/div>  
+      &lt;div class="openContactContainerFooter">
+          &lt;div class="openContactUserImageAndNameContainer"> 
+              ${singleMemberToHTML(selectedContact, 0)}
+              &lt;h2 class="openContactH2">${selectedContact.name}&lt;/h2>
+          &lt;/div>
+          &lt;p class="openContactInformation">Contact Information&lt;/p>
+          &lt;p class="openContactEmail">Email&lt;/p>
+          &lt;a class="openContactEmailLink" href="mailto:${selectedContact.email}">${selectedContact.email}&lt;/a>
+          &lt;p class="openContactPhoneText">Phone&lt;/p>
+          &lt;p class="openContactPhoneNumber">${selectedContact.phone}&lt;/p>        
+      &lt;/div>  
+      &lt;div class="dropdown-container" id="contactOptionsDropdownContainer">
+          &lt;div class="dropdown-triggerContainer">
+            &lt;div class="dropdown-trigger" onclick="toggleDropdownMenu()">
+                &lt;img id="menuContactOptionsButton" src="../assets/img/contact/menuContactOptionsButtonImg.svg" alt="">
+            &lt;/div>
+          &lt;/div>
+          &lt;div class="dropdown-menu" id="contactOptionsDropdown">
+              &lt;div class="dropdown-option" data-value="edit" onclick="editContactScreen(${selectedContact.id})">
+                  &lt;img src="../assets/img/contact/editContactsDropDownIcon.svg" alt="Edit Contact">
+              &lt;/div>            
+              &lt;div class="dropdown-option" data-value="delete" onclick="deleteContactMobile(${selectedContact.id})">
+                  &lt;img src="../assets/img/contact/DeleteContactDropwDownIcon.svg" alt="Delete Contact">
+              &lt;/div>
+          &lt;/div>
+      &lt;/div>
+    `;
+  }
+  
+  /**
+   * Slide in animation call for class: contactsContent for openContactScreenMobile function
+   */
+  function triggerSlideInAnimation() {
+    const content = document.getElementById("contactsContent");
+    setTimeout(() => {
+        content.classList.add("slideInContactsContentMobile");
+    }, 10);
+    setTimeout(() => {
+        content.classList.remove("slideInContactsContentMobile");
+    }, 2000);
+  }
+  
+  /**
+   * Function to generate user image with random background-color on mobile view
+   */
+  function singleMemberToHTMLOpenContactMobile(member, index) {
+    let textcolor;
+    let iconRightStep = 10;
+    if (!isColorLight(member.colorCode)) textcolor = 'white';
+    return `
+        &lt;div class="openContactUserImgMobile" style="background-color: ${member.colorCode};color:${textcolor};right:${index * iconRightStep}px">
+              ${getFirstLettersOfName(member.name)}
+        &lt;/div>
+    `;
+  }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createContactScreenHTML">createContactScreenHTML</a></li><li><a href="global.html#findContactIndex">findContactIndex</a></li><li><a href="global.html#findSelectedContact">findSelectedContact</a></li><li><a href="global.html#handleDeleteError">handleDeleteError</a></li><li><a href="global.html#openContactScreenMobile">openContactScreenMobile</a></li><li><a href="global.html#removeContact">removeContact</a></li><li><a href="global.html#saveAndLogDeletedContact">saveAndLogDeletedContact</a></li><li><a href="global.html#setupContactScreen">setupContactScreen</a></li><li><a href="global.html#singleMemberToHTMLOpenContactMobile">singleMemberToHTMLOpenContactMobile</a></li><li><a href="global.html#triggerSlideInAnimation">triggerSlideInAnimation</a></li><li><a href="global.html#validateContactId">validateContactId</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 20 2024 23:06:48 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

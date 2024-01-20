@@ -23,7 +23,7 @@ function findOldContactDesktop(contactId) {
    * Overwrite the old contact data with the new contact data
    * @param {string} contactId - This is the contact ID example "5"
    * @param {string} updatedInputs - This are the new contact / email / phone number
-   * @param {boolean} hasChanged - example {hasNameChanged: false, hasMailChanged: false, hasPhoneChanged: true}
+   * @param {boolean} hasChanged - Example {hasNameChanged: false, hasMailChanged: false, hasPhoneChanged: true}
    */
   function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {    
     return currentUser.contacts.map((contact) =>

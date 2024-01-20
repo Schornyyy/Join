@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: contactsMobile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: contactsMobile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
   * Change background color to white or grey for contacts content on mobile view
   */
 function contactsContentBackgroundColorWhiteGray() {
@@ -65,7 +93,7 @@ function renderAddContactButton() {
   const addContactButtonContainer = document.createElement("div");
   addContactButtonContainer.classList.add("addContactButtonContainerMobile");
   addContactButtonContainer.innerHTML =/*html*/ `
-    <img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">`;
+    &lt;img src="../assets/img/contact/addContactButtonMobile.svg" class="addContactImage" onclick="handleAddContactClick()">`;
   content.appendChild(addContactButtonContainer);
 }
 
@@ -89,11 +117,11 @@ function updateContactsByFirstLetter(contactsByFirstLetter, firstLetter, oneCont
   */
 function createLetterAndContactsContainer(firstLetter) {  // Create div container for letters in HTML
   return /*html*/ `
-    <div class="letterAndContactsContainer">
-      <div class="letter-column">
-        <h2 class="contact-first-letter">${firstLetter}</h2>
-      </div>
-    </div>
+    &lt;div class="letterAndContactsContainer">
+      &lt;div class="letter-column">
+        &lt;h2 class="contact-first-letter">${firstLetter}&lt;/h2>
+      &lt;/div>
+    &lt;/div>
   `;
 }
 
@@ -103,15 +131,15 @@ function createLetterAndContactsContainer(firstLetter) {  // Create div containe
   */
 function createOneContactContainer(oneContact) {
   return /*html*/ `
-    <div class="oneContactContainer" onclick="openContactScreenMobile(${oneContact.id})">
-      <div>
+    &lt;div class="oneContactContainer" onclick="openContactScreenMobile(${oneContact.id})">
+      &lt;div>
         ${singleMemberToHTML(oneContact, 0)}
-      </div>
-      <div class="contact-info-container">
-        <h2 class="oneContactContainerH2Desktop">${oneContact.name}</h2>
-        <a class="oneContactContainerAElement">${oneContact.email}</a>
-      </div>
-    </div>
+      &lt;/div>
+      &lt;div class="contact-info-container">
+        &lt;h2 class="oneContactContainerH2Desktop">${oneContact.name}&lt;/h2>
+        &lt;a class="oneContactContainerAElement">${oneContact.email}&lt;/a>
+      &lt;/div>
+    &lt;/div>
   `;
 }
 
@@ -147,27 +175,27 @@ function createAddContactScreenHTML() {
   */
 function addContactFormMobileHTML() {
   return /*html*/ `
-    <div class="addContactContainerHeader">
-      <div class="addContactCloseXContainer">
-        <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
-      </div>
-      <div class="addContactBlockHeader">
-        <p class="addContactH1">Add contact</p>
-        <p class="addContactText">Tasks are better with a team!</p>
-        <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
-      </div>
-      <div>
-        <img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
-      </div>
-    </div>
-    <form id="addContactFormMobileID" onsubmit="createContactMobile()">
-      <div class="addContactContainerFooter">
-        <input class="addContactInputNameMobile" type="text" required placeholder="Name">
-        <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
-        <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
-        <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">
-      </div>
-    </form>
+    &lt;div class="addContactContainerHeader">
+      &lt;div class="addContactCloseXContainer">
+        &lt;button class="addContactCloseXButtonMobile" onclick="contactsInit()">X&lt;/button>
+      &lt;/div>
+      &lt;div class="addContactBlockHeader">
+        &lt;p class="addContactH1">Add contact&lt;/p>
+        &lt;p class="addContactText">Tasks are better with a team!&lt;/p>
+        &lt;img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">
+      &lt;/div>
+      &lt;div>
+        &lt;img class="addContactBlankUserImg" src="../assets/img/contact/addContactBlankUserImg.svg" alt="">
+      &lt;/div>
+    &lt;/div>
+    &lt;form id="addContactFormMobileID" onsubmit="createContactMobile()">
+      &lt;div class="addContactContainerFooter">
+        &lt;input class="addContactInputNameMobile" type="text" required placeholder="Name">
+        &lt;input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
+        &lt;input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
+        &lt;img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">
+      &lt;/div>
+    &lt;/form>
   `;
 }
 
@@ -237,29 +265,29 @@ function findSelectedContact(contactId) {  //
  */
 function createEditContactHTML(selectedContact) {
   return /*html*/ `
-    <div class="addContactContainerHeader">
-      <div class="addContactCloseXContainer">
-        <button class="addContactCloseXButtonMobile" onclick="contactsInit()">X</button>
-      </div>
-      <div class="addContactBlockHeader">
-        <p class="addContactH1">Edit contact</p>
-        <img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">          
-      </div>
-    </div>
-    <div class="addContactBlankUserImg">        
+    &lt;div class="addContactContainerHeader">
+      &lt;div class="addContactCloseXContainer">
+        &lt;button class="addContactCloseXButtonMobile" onclick="contactsInit()">X&lt;/button>
+      &lt;/div>
+      &lt;div class="addContactBlockHeader">
+        &lt;p class="addContactH1">Edit contact&lt;/p>
+        &lt;img class="addContactBlueStroked" src="../assets/img/contact/addContactBlueStroked.svg" alt="">          
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="addContactBlankUserImg">        
       ${singleMemberToHTMLOpenContactMobile(selectedContact, 0)}
-    </div>
-    <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
-      <div class="addContactContainerFooter">
-        <input class="addContactInputNameMobile" type="text" required pattern="[A-Za-z]+" placeholder="Name" value="${selectedContact.name}">
-        <input class="addContactInputMailAddresssMobile" type="email" required placeholder="E Mail" value="${selectedContact.email}">
-        <input class="addContactInputPhoneMobile" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
-        <div>
-          <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
-          <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">
-        </div>
-      </div>
-    </form>
+    &lt;/div>
+    &lt;form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
+      &lt;div class="addContactContainerFooter">
+        &lt;input class="addContactInputNameMobile" type="text" required pattern="[A-Za-z]+" placeholder="Name" value="${selectedContact.name}">
+        &lt;input class="addContactInputMailAddresssMobile" type="email" required placeholder="E Mail" value="${selectedContact.email}">
+        &lt;input class="addContactInputPhoneMobile" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
+        &lt;div>
+          &lt;img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
+          &lt;img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
   `;
 }
 
@@ -319,8 +347,8 @@ function validateInputs(updatedInputs) {
 function findExistingContact(updatedInputs, contactId) {
   return currentUser.contacts.find(
       (contact) =>
-          contact.name === updatedInputs.updatedName &&
-          contact.email === updatedInputs.updatedMail &&
+          contact.name === updatedInputs.updatedName &amp;&amp;
+          contact.email === updatedInputs.updatedMail &amp;&amp;
           contact.id !== contactId
   );
 }
@@ -395,4 +423,26 @@ function deleteContactMobile(contactId) {
       handleDeleteError(error);
   }  
   contactsInit();
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addContactFormMobileHTML">addContactFormMobileHTML</a></li><li><a href="global.html#addContactScreen">addContactScreen</a></li><li><a href="global.html#checkForChanges">checkForChanges</a></li><li><a href="global.html#constForCreateContactMobile">constForCreateContactMobile</a></li><li><a href="global.html#contactsContentBackgroundColorWhite">contactsContentBackgroundColorWhite</a></li><li><a href="global.html#contactsContentBackgroundColorWhiteGray">contactsContentBackgroundColorWhiteGray</a></li><li><a href="global.html#createAddContactScreenHTML">createAddContactScreenHTML</a></li><li><a href="global.html#createContactMobile">createContactMobile</a></li><li><a href="global.html#createEditContactHTML">createEditContactHTML</a></li><li><a href="global.html#createLetterAndContactsContainer">createLetterAndContactsContainer</a></li><li><a href="global.html#createOneContactContainer">createOneContactContainer</a></li><li><a href="global.html#deleteContactMobile">deleteContactMobile</a></li><li><a href="global.html#editContactScreen">editContactScreen</a></li><li><a href="global.html#findExistingContact">findExistingContact</a></li><li><a href="global.html#findOldContact">findOldContact</a></li><li><a href="global.html#findSelectedContact">findSelectedContact</a></li><li><a href="global.html#getUpdatedInputs">getUpdatedInputs</a></li><li><a href="global.html#handleContactNotFound">handleContactNotFound</a></li><li><a href="global.html#hideHeaderAndFooter">hideHeaderAndFooter</a></li><li><a href="global.html#hidecontactsContentRightSideDesktop">hidecontactsContentRightSideDesktop</a></li><li><a href="global.html#renderAddContactButton">renderAddContactButton</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderContactsByFirstLetter">renderContactsByFirstLetter</a></li><li><a href="global.html#saveAndInit">saveAndInit</a></li><li><a href="global.html#showHeaderAndFooter">showHeaderAndFooter</a></li><li><a href="global.html#updateContactMobile">updateContactMobile</a></li><li><a href="global.html#updateContactsByFirstLetter">updateContactsByFirstLetter</a></li><li><a href="global.html#updateContactsData">updateContactsData</a></li><li><a href="global.html#validateInputs">validateInputs</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 20 2024 23:06:38 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
