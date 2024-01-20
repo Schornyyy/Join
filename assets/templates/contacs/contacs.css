@@ -1197,6 +1197,12 @@
   }  
 }
 
+@media only screen and (max-width: 1900px) and (min-width: 1200px) {
+  .addContactBlankUserImgContainer {
+    margin-left: 70px;
+}
+}
+
 @media only screen and (max-width: 1200px) {
   .addContactBlankUserImgContainer {
     display: flex;
@@ -1308,8 +1314,6 @@
     width: 230px;
   }
 }
-
-
 
 ::-webkit-scrollbar {
   width: 16px;
