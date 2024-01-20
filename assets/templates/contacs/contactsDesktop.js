@@ -36,7 +36,7 @@ function groupContactsByFirstLetter() {
 
 /**
  * Generate HTML for the letters
- * @param {string} firstLetter
+ * @param {string} firstLetter - This is the first letter from contact name
  */
 function createLetterContainer(firstLetter) {
     return /*html*/ `
@@ -50,7 +50,7 @@ function createLetterContainer(firstLetter) {
 
 /**
  * Generate HTML for each contact
- * @param {string} oneContact
+ * @param {string} oneContact - One contact data oneContact.id / oneContact color / oneContact.name / oneContact.email
  */
 function createContactContainer(oneContact) {
     return /*html*/ `
@@ -68,8 +68,8 @@ function createContactContainer(oneContact) {
 
 /**
  * Add each contact to the section on desktop view
- * @param {string} content
- * @param {string} contactsByFirstLetter
+ * @param {string} content - contactsContent div container
+ * @param {string} contactsByFirstLetter - Sorted contacts by first letter
  */
 function renderContactsByFirstLetter(content, contactsByFirstLetter) {  // 
     Object.values(contactsByFirstLetter).forEach((section) => {
@@ -95,9 +95,9 @@ function renderAddContactButtonDesktop() {
 
 /**
  * Show clicked contact details for desktop view
- * @param {string} contactId 
+ * @param {string} contactId - This is the contact ID example "5"
  */
-function openContactScreenDesktop(contactId) {  // 
+function openContactScreenDesktop(contactId) {
   const content = document.getElementById("contactsContentRightSideID");
   const selectedContact = currentUser.contacts.find(contact => contact.id === contactId);
   if (lastClickedContactId !== contactId) {
@@ -114,7 +114,7 @@ function openContactScreenDesktop(contactId) {  //
 
 /**
  * If contact is not clicked set background-color to white and set text color to black
- * @param {string} contactId 
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function openContactsScreenDesktopChangeColorWhite(contactId) {
   const lastClickedContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
@@ -129,9 +129,9 @@ function openContactsScreenDesktopChangeColorWhite(contactId) {
 
 /**
  * If contact is clicked set background-color to grey/black and set text color to white
- * @param {string} contactId 
+ * @param {string} contactId - This is the contact ID example "5"
  */
-function openContactsScreenDesktopChangeColorBlack(contactId) {  // 
+function openContactsScreenDesktopChangeColorBlack(contactId) {
   if (contactId) {
     const currentContactContainer = document.querySelector(`.oneContactContainer[data-contact-id="${contactId}"]`);
     if (currentContactContainer) {
@@ -146,10 +146,10 @@ function openContactsScreenDesktopChangeColorBlack(contactId) {  //
 
 /**
  * Generate HTML for clicked contact details
- * @param {string} content
- * @param {string} selectedContact
+ * @param {string} content - contactsContent div container
+ * @param {string} selectedContact - This is the selected contact to open
  */
-function openContactScreenDesktopHTML(content, selectedContact) {  // 
+function openContactScreenDesktopHTML(content, selectedContact) {
   content.innerHTML = /*html*/ `
     <div class="contactsContentRightSideHeadLine">
         <h1 class="contactsContentRightSideH1">
@@ -204,7 +204,7 @@ function addContactShowOverlayDesktop() {
 
 /**
  * Generate HTML for add contact show overlay desktop
- * @param {string} overlayContent
+ * @param {string} overlayContent - Overlay div container
  */
 function generateHTMLAddContactShowOverlayDesktop(overlayContent) {
   overlayContent.innerHTML = /*html*/ `
@@ -269,7 +269,7 @@ async function createContactDesktop() {
 }
 
 /**
- * Const for create contact desktop view
+ * Const function for create contact desktop view
  */
 function constForCreateContactDesktop() {
   const nameInput = document.querySelector(".addContactInputNameDesktop");
@@ -293,7 +293,7 @@ function hideOverlay() {
 
 /**
  * Edit contact desktop Screen for desktop view
- * @param {string} contactId
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function editContactDestop(contactId) {
   const selectedContact = currentUser.contacts.find(
@@ -311,8 +311,8 @@ function editContactDestop(contactId) {
 
 /**
  * Generate HTML for editContactDestop
- * @param {string} overlayContent
- * @param {string} selectedContact
+ * @param {string} overlayContent - Overlay div container
+ * @param {string} selectedContact - This is the selected contact to open
  */
 function generateHTMLEditContactDesktop(overlayContent, selectedContact) {
   overlayContent.innerHTML = /*html*/ `
@@ -351,7 +351,7 @@ function generateHTMLEditContactDesktop(overlayContent, selectedContact) {
 
 /**
  * Update function if already exist contact was edit
- * @param {string} contactId
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function updateContactDesktop(contactId) {
   const updatedInputs = getUpdatedInputsDesktop();
@@ -382,8 +382,8 @@ function getUpdatedInputsDesktop() {
 
 /**
  * Get the contact to edit
- * @param {string} updatedInputs
- * @param {string} contactId
+ * @param {string} updatedInputs - Here are the new contact name / the new contact email / the new contact phone number
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function findExistingContactDesktop(updatedInputs, contactId) {
   return currentUser.contacts.find(

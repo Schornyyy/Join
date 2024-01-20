@@ -157,7 +157,7 @@ function changeScrollbar() {
 }
 
 /**
- * Developer tool (only for developer, not needed for the project himself). Function to delete a contact without an id.
+ * Developer tool (only for developer, not needed for the project himself). Function to delete a contact without an id
  */
 function deleteFirstContact() {
   if (currentUser.contacts.length > 0) {
@@ -171,7 +171,7 @@ function deleteFirstContact() {
 
 
 /**
- * Developer tool (only for developer, not needed for the project himself). Clear the lokal storage.
+ * Developer tool (only for developer, not needed for the project himself). Clear the lokal storage
  */
 async function deleteContactDataById() {
   try {

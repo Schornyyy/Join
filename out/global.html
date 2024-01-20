@@ -104,7 +104,7 @@
     
 
     
-    <h4 class="name" id="changeScrollbar"><span class="type-signature"></span>changeScrollbar<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addDropdownMenuClickListener"><span class="type-signature"></span>addDropdownMenuClickListener<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -112,7 +112,7 @@
 
 
 <div class="description">
-    Add change scrollbar to event listener or remove it
+    Drop down menu click event listener
 </div>
 
 
@@ -156,7 +156,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line145">line 145</a>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -192,7 +192,7 @@
     
 
     
-    <h4 class="name" id="clearAddContactDesktopRightSideContainer"><span class="type-signature"></span>clearAddContactDesktopRightSideContainer<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="checkForChangesDesktop"><span class="type-signature"></span>checkForChangesDesktop<span class="signature">(oldContact, updatedInputs)</span><span class="type-signature"></span></h4>
     
 
     
@@ -200,7 +200,167 @@
 
 
 <div class="description">
-    Clear add contact desktop right side container
+    Check if contact data changed
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>oldContact</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This are the old contact name / emal / phone number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>updatedInputs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This are the new contact / email / phone number</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeAllDropdowns"><span class="type-signature"></span>closeAllDropdowns<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Close all other drop down menus
 </div>
 
 
@@ -244,7 +404,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line121">line 121</a>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -280,7 +440,7 @@
     
 
     
-    <h4 class="name" id="contactsInit"><span class="type-signature">(async) </span>contactsInit<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findOldContactDesktop"><span class="type-signature"></span>findOldContactDesktop<span class="signature">(contactId)</span><span class="type-signature"></span></h4>
     
 
     
@@ -288,95 +448,7 @@
 
 
 <div class="description">
-    initialize all contacts for the current user
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="deleteContact"><span class="type-signature"></span>deleteContact<span class="signature">(contactId)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Delete contact function on desktop view
+    Find the contact by ID
 </div>
 
 
@@ -469,7 +541,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line54">line 54</a>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -505,7 +577,7 @@
     
 
     
-    <h4 class="name" id="deleteContactDataById"><span class="type-signature">(async) </span>deleteContactDataById<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="handleDocumentClick"><span class="type-signature"></span>handleDocumentClick<span class="signature">(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick)</span><span class="type-signature"></span></h4>
     
 
     
@@ -513,7 +585,464 @@
 
 
 <div class="description">
-    Developer tool (only for developer, not needed for the project himself). Clear the lokal storage.
+    Handle click on drop down menu option
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dropdownContainer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Drop down div Container</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addContactButtonContainerMobile</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Render the contact button container mobile</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleDocumentClick</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Remove or add the event listener for the drop down menu</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="handleDropdownOptionClick"><span class="type-signature"></span>handleDropdownOptionClick<span class="signature">(action)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Handle drop down menu option clicked
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>action</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edit or delete click from user</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line129">line 129</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="saveAndInitDesktop"><span class="type-signature"></span>saveAndInitDesktop<span class="signature">(updatedContactsData)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Save the edit contact at the current user
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>updatedContactsData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Includes the updated contacts data name / email / phone number</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toggleDropdownMenu"><span class="type-signature"></span>toggleDropdownMenu<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Controll if the drop down menu are close or open
 </div>
 
 
@@ -557,7 +1086,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line176">line 176</a>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -593,7 +1122,7 @@
     
 
     
-    <h4 class="name" id="deleteFirstContact"><span class="type-signature"></span>deleteFirstContact<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateContactsDataDesktop"><span class="type-signature"></span>updateContactsDataDesktop<span class="signature">(contactId, updatedInputs, hasChanged)</span><span class="type-signature"></span></h4>
     
 
     
@@ -601,95 +1130,7 @@
 
 
 <div class="description">
-    Developer tool (only for developer, not needed for the project himself). Function to delete a contact without an id.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line162">line 162</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="findContactIndex"><span class="type-signature"></span>findContactIndex<span class="signature">(contactId)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Find contact ID
+    Overwrite the old contact data with the new contact data
 </div>
 
 
@@ -745,212 +1186,10 @@
         </tr>
 
     
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line89">line 89</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="handleAddContactClick"><span class="type-signature"></span>handleAddContactClick<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This function is called in HTML-Code and shows the "add contact screen" to add a new contact person
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line46">line 46</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="handleDeleteError"><span class="type-signature"></span>handleDeleteError<span class="signature">(error)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Catch error
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
 
         <tr>
             
-                <td class="name"><code>error</code></td>
+                <td class="name"><code>updatedInputs</code></td>
             
 
             <td class="type">
@@ -966,7 +1205,30 @@
 
             
 
-            <td class="description last">Show error if the contact can´t be deleted</td>
+            <td class="description last">This are the new contact / email / phone number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hasChanged</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">example {hasNameChanged: false, hasMailChanged: false, hasPhoneChanged: true}</td>
         </tr>
 
     
@@ -1007,754 +1269,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line114">line 114</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="initializeContactId"><span class="type-signature"></span>initializeContactId<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Get contact ID´s
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line21">line 21</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="initializeView"><span class="type-signature"></span>initializeView<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if mobile or desktop view for css media querry
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="removeContact"><span class="type-signature"></span>removeContact<span class="signature">(contactIndex)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Remove contact
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>contactIndex</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is the contact ID example "5"</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line97">line 97</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="saveAndLogDeletedContact"><span class="type-signature"></span>saveAndLogDeletedContact<span class="signature">(deletedContact)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Save deleted contact
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>deletedContact</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is the deleted contact example "Kevin Mayer"</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line105">line 105</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="singleMemberToHTMLOpenContactDesktop"><span class="type-signature"></span>singleMemberToHTMLOpenContactDesktop<span class="signature">(member, index)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Show the color from user image background html
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>member</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is the user or contact name</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is the ID for the user or contact</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line131">line 131</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="validateContactId"><span class="type-signature"></span>validateContactId<span class="signature">(contactId)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Validate contact ID if exist
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>contactId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is the contact ID example "5"</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contacts.js.html">contacts.js</a>, <a href="contacts.js.html#line77">line 77</a>
+        <a href="contactsDesktop2.js.html">contactsDesktop2.js</a>, <a href="contactsDesktop2.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -1800,13 +1315,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#changeScrollbar">changeScrollbar</a></li><li><a href="global.html#clearAddContactDesktopRightSideContainer">clearAddContactDesktopRightSideContainer</a></li><li><a href="global.html#contactsInit">contactsInit</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteContactDataById">deleteContactDataById</a></li><li><a href="global.html#deleteFirstContact">deleteFirstContact</a></li><li><a href="global.html#findContactIndex">findContactIndex</a></li><li><a href="global.html#handleAddContactClick">handleAddContactClick</a></li><li><a href="global.html#handleDeleteError">handleDeleteError</a></li><li><a href="global.html#initializeContactId">initializeContactId</a></li><li><a href="global.html#initializeView">initializeView</a></li><li><a href="global.html#removeContact">removeContact</a></li><li><a href="global.html#saveAndLogDeletedContact">saveAndLogDeletedContact</a></li><li><a href="global.html#singleMemberToHTMLOpenContactDesktop">singleMemberToHTMLOpenContactDesktop</a></li><li><a href="global.html#validateContactId">validateContactId</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addDropdownMenuClickListener">addDropdownMenuClickListener</a></li><li><a href="global.html#checkForChangesDesktop">checkForChangesDesktop</a></li><li><a href="global.html#closeAllDropdowns">closeAllDropdowns</a></li><li><a href="global.html#findOldContactDesktop">findOldContactDesktop</a></li><li><a href="global.html#handleDocumentClick">handleDocumentClick</a></li><li><a href="global.html#handleDropdownOptionClick">handleDropdownOptionClick</a></li><li><a href="global.html#saveAndInitDesktop">saveAndInitDesktop</a></li><li><a href="global.html#toggleDropdownMenu">toggleDropdownMenu</a></li><li><a href="global.html#updateContactsDataDesktop">updateContactsDataDesktop</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 20 2024 00:13:23 GMT+0100 (Mitteleuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 20 2024 22:07:32 GMT+0100 (Mitteleuropäische Normalzeit)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,6 +1,6 @@
 /**
  * Find the contact by ID
- * @param {string} contactId
+ * @param {string} contactId - This is the contact ID example "5"
  */
 function findOldContactDesktop(contactId) {
     return currentUser.contacts.find((contact) => contact.id === contactId);
@@ -8,8 +8,8 @@ function findOldContactDesktop(contactId) {
   
   /**
    * Check if contact data changed
-   * @param {string} oldContact
-   * @param {string} updatedInputs
+   * @param {string} oldContact - This are the old contact name / emal / phone number
+   * @param {string} updatedInputs - This are the new contact / email / phone number
    */
   function checkForChangesDesktop(oldContact, updatedInputs) {
     return {
@@ -21,26 +21,26 @@ function findOldContactDesktop(contactId) {
   
   /**
    * Overwrite the old contact data with the new contact data
-   * @param {string} contactId
-   * @param {string} updatedInputs
-   * @param {string} hasChanged
+   * @param {string} contactId - This is the contact ID example "5"
+   * @param {string} updatedInputs - This are the new contact / email / phone number
+   * @param {boolean} hasChanged - example {hasNameChanged: false, hasMailChanged: false, hasPhoneChanged: true}
    */
-  function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {
+  function updateContactsDataDesktop(contactId, updatedInputs, hasChanged) {    
     return currentUser.contacts.map((contact) =>
         contact.id === contactId
-            ? {
+            ? {              
               ...contact,
               name: hasChanged.hasNameChanged ? updatedInputs.updatedName : contact.name,
               email: hasChanged.hasMailChanged ? updatedInputs.updatedMail : contact.email,
               phone: hasChanged.hasPhoneChanged ? updatedInputs.updatedPhone : contact.phone
               }
         : contact
-    );
+    );    
   }
   
   /**
    * Save the edit contact at the current user
-   * @param {string} updatedContactsData 
+   * @param {string} updatedContactsData - Includes the updated contacts data name / email / phone number
    */
   function saveAndInitDesktop(updatedContactsData) {
     currentUser.contacts = updatedContactsData;
@@ -60,26 +60,27 @@ function findOldContactDesktop(contactId) {
       console.error("Dropdown trigger or menu not found");
       return;
     }
+  
   /**
    * Drop down menu click event listener
-   * @param {string} event
+   * @param {string} event - Add the drop down menu to the event listener
    */
-    const handleDocumentClick = function (event) {  // Check if drop down menu clicked if not close it
+    const handleDocumentClick = function (event) {
       if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
         dropdownMenu.style.display = "none";
         document.removeEventListener("click", handleDocumentClick);
       }
     };
-    dropdownTrigger.addEventListener("click", function (event) {  // Check if drop down menu clicked than show drop down menu options
+    dropdownTrigger.addEventListener("click", function (event) {
       const isDropdownVisible = (dropdownMenu.style.display === "block");    
-      if (!isDropdownVisible) {  // If drop down menu visible
-        closeAllDropdowns();  // Close all other drop down menus
+      if (!isDropdownVisible) { 
+        closeAllDropdowns();
       }
-      dropdownMenu.style.display = isDropdownVisible ? "none" : "block";  // If drop down menu visible than add to event listener
+      dropdownMenu.style.display = isDropdownVisible ? "none" : "block";
       if (!isDropdownVisible) {
         document.addEventListener("click", handleDocumentClick);
       }
-      event.stopPropagation();  // Stopp all other click events from parent element
+      event.stopPropagation();
     });
   }
   
@@ -95,19 +96,20 @@ function findOldContactDesktop(contactId) {
   }
   
   /**
-   * Close all other drop down menus
-   * @param {string} dropdownContainer
-   * @param {string} addContactButtonContainerMobile
-   * @param {string} handleDocumentClick
+   * Handle click on drop down menu option
+   * @param {string} dropdownContainer - Drop down div Container
+   * @param {string} addContactButtonContainerMobile - Render the contact button container mobile
+   * @param {string} handleDocumentClick - Remove or add the event listener for the drop down menu
    */
-  function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {  // Handle click on drop down mneu option
+  function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
+    console.log(handleDocumentClick);
     return function (event) {
       const dropdownMenu = document.getElementById("contactOptionsDropdown");
       if (!dropdownContainer.contains(event.target) &&
         !addContactButtonContainerMobile.contains(event.target) &&
         !dropdownMenu.contains(event.target)) {
         dropdownMenu.style.display = "none";
-        document.removeEventListener("click", handleDocumentClick);  // Remove the eventlistener because one option is clicked
+        document.removeEventListener("click", handleDocumentClick);
       }
     };
   }
@@ -122,7 +124,7 @@ function findOldContactDesktop(contactId) {
   
   /**
    * Handle drop down menu option clicked
-   * @param {string} action
+   * @param {string} action - Edit or delete click from user
    */
   function handleDropdownOptionClick(action) {
     if (action === "edit") {
