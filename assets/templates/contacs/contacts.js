@@ -103,8 +103,7 @@ function removeContact(contactIndex) {
  * @param {string} deletedContact - This is the deleted contact example "Kevin Mayer"
  */
 function saveAndLogDeletedContact(deletedContact) {
-  currentUser.save();
-  console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+  currentUser.save();  
 }
 
 /**
@@ -144,12 +143,10 @@ function singleMemberToHTMLOpenContactDesktop(member, index) {
  */
 function changeScrollbar() {
   document.addEventListener("DOMContentLoaded", function() {
-    const contactsContainer = document.querySelector('.contacts-container');
-  
+    const contactsContainer = document.querySelector('.contacts-container');  
     contactsContainer.addEventListener('mouseenter', function() {
       contactsContainer.classList.add('custom-scrollbar');
-    });
-  
+    });  
     contactsContainer.addEventListener('mouseleave', function() {
       contactsContainer.classList.remove('custom-scrollbar');
     });
@@ -177,8 +174,7 @@ async function deleteContactDataById() {
   try {
     localStorage.clear();
     contactsData = await fetchContactsData();
-    localStorage.setItem('contactsData', JSON.stringify(contactsData));
-    console.log("Kontakt-Daten wurden erfolgreich gelöscht und neu geladen.");
+    localStorage.setItem('contactsData', JSON.stringify(contactsData));    
   } catch (error) {
     console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
   }

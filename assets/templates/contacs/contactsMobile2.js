@@ -30,9 +30,8 @@ function validateContactId(contactId) {
    * Save deleted contact
    * @param {string} deletedContact - This is the deleted contact data
    */
-  function saveAndLogDeletedContact(deletedContact) {  // 
-    currentUser.save();
-    console.log(`Kontakt "${deletedContact.name}" wurde erfolgreich gelöscht.`);
+  function saveAndLogDeletedContact(deletedContact) {
+    currentUser.save();    
   }
   
   /**
@@ -54,7 +53,7 @@ function validateContactId(contactId) {
         return;
     }
     content.innerHTML = createContactScreenHTML(selectedContact);
-    setupContactScreen(selectedContact.id);
+    setupContactScreen();
     triggerSlideInAnimation();
   }
   
@@ -62,8 +61,7 @@ function validateContactId(contactId) {
    * Setup function to finish open contact screen mobile on mobile view
    * @param {string} contactId - This is the contact ID example "5"
    */
-  function setupContactScreen(contactId) {
-    console.log(contactId);
+  function setupContactScreen() {    
     showHeaderAndFooter();
     contactsContentBackgroundColorWhiteGray();
     addDropdownMenuClickListener();
