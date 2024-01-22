@@ -66,3 +66,10 @@ function changeHeaderImageBack(element) {
     img.src = "assets/img/header/headerCurrentGuestImage.svg";
   }
 }
+
+function loadHeaderProfileInitials() {
+  const profileImg = document.getElementById("header_profile");
+  if(currentUser != null || currentUser.name != "") {
+    profileImg.innerHTML = getInitialsByContact(currentUser.name)
+  }
+}
