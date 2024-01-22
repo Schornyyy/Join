@@ -45,13 +45,12 @@ function showGreetScreen() {
 async function greetUser() {
   let greetingEles = document.getElementsByClassName("summery-greetX");
   let userName = await currentUser.name;
+  if (userName.match("Guest Master")) {
+    userName = "";
+  }
 
   Array.from(greetingEles).forEach((ele) => {
-    if (userName.match("Guest Master")) {
-      userName = "";
-    } else {
-      ele.innerHTML = userName;
-    }
+    ele.innerHTML = userName;
   });
 }
 
