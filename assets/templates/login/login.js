@@ -11,6 +11,7 @@ async function login() {
 
   if (!validated) return;
   let user = await findUserByEmail(loginInput.value);
+  console.log(user);
   if (user == null) {
     console.log("No user Found!");
     return;
@@ -42,6 +43,7 @@ async function login() {
  * @returns Boolean
  */
 async function findUserByEmail(email) {
+  /*
   let u = {};
   users.map((user) => {
     if (user["email"] != null && user["email"] == email) {
@@ -51,6 +53,8 @@ async function findUserByEmail(email) {
     }
   });
   return u;
+*/
+return users.find(userI => userI.email==email);
 }
 
 /**
