@@ -14,7 +14,8 @@ function handleSubMenu() {
   let slideOnMobeil = !mobile
     ? headerSubMenu.classList.add("slideInMenu")
     : headerSubMenu.classList.remove("slideInMenu");
-  let clickedEld = document.getElementById("header-profile-menu");
+  let clickedEld = document.getElementById("header_profile");
+  // let clickedEld = document.getElementById("header-profile-menu");
   let logoutBtn = document.getElementById("header-logout");
   let todosSummery = document.querySelectorAll(".summaryToDoSum");
   logoutBtn.addEventListener("click", (e) => {
