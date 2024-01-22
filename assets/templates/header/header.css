@@ -75,6 +75,24 @@
     cursor: pointer;
   }
 
+  .userIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 8px;
+    height: 32px;
+    width: 32px;
+    margin-right: 24px;
+    color: #29abe2;
+  }
+
+  .user-icon:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+  }
+
   .userSymbolContainer {
     display: flex;
     align-items: center;
@@ -153,6 +171,24 @@
   .userLogoImg {
     width: 2.5rem;
     height: 2.5rem;
+    cursor: pointer;
+  }
+
+  .userIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 8px;
+    height: 32px;
+    width: 32px;
+    margin-right: 24px;
+    color: #29abe2;
+  }
+
+  .user-icon:hover {
+    background-color: rgba(0, 0, 0, 0.08);
     cursor: pointer;
   }
 
