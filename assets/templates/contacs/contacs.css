@@ -155,14 +155,14 @@
 
   .addContactButtonContainerMobile {
     display: flex;
-    justify-content: right;
-    align-items: center;
-    position: sticky;
+    justify-content: flex-end;
+    align-items: center;    
     bottom: 80px;
     right: 32px;
     cursor: pointer;
-    margin-top: 4em;
+    margin-top: 12em;
     margin-right: 1em;
+    height: 80vh;
   }
 
   .addContactButtonContainerDesktop {
@@ -1241,6 +1241,18 @@
 }
 
 @media only screen and (max-width: 900px) and (min-width: 751px) {
+  .addContactButtonContainerMobile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    bottom: 80px;
+    right: 32px;
+    cursor: pointer;
+    margin-top: 30em;
+    margin-right: 1em;
+    height: 80vh;
+}
+
   .addContactButtonDesktop {    
     width: 352px;
     height: 56px;    
@@ -1281,6 +1293,18 @@
   .dropdown-trigger {
     margin-top: 22em!important;
   }
+
+  .addContactButtonContainerMobile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    bottom: 80px;
+    right: 32px;
+    cursor: pointer;
+    margin-top: 30em;
+    margin-right: 1em;
+    height: 80vh;
+}
 }
 
 @media only screen and (max-width: 750px) {
