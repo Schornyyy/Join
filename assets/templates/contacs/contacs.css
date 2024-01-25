@@ -156,13 +156,10 @@
   .addContactButtonContainerMobile {
     display: flex;
     justify-content: flex-end;
-    align-items: center;    
-    bottom: 80px;
-    right: 32px;
-    cursor: pointer;
-    margin-top: 12em;
+    align-items: center; 
+    cursor: pointer;  
     margin-right: 1em;
-    height: 80vh;
+    height: 30vh;
   }
 
   .addContactButtonContainerDesktop {
@@ -1245,13 +1242,12 @@
   .addContactButtonContainerMobile {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    bottom: 80px;
-    right: 32px;
-    cursor: pointer;
-    margin-top: 30em;
-    margin-right: 1em;    
-}
+    align-items: center; 
+    cursor: pointer;  
+    margin-right: 1em;
+    margin-bottom: 8em;
+    height: 30vh;
+  }
 
   .addContactButtonDesktop {    
     width: 352px;
@@ -1297,12 +1293,11 @@
   .addContactButtonContainerMobile {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    bottom: 80px;
-    right: 32px;
-    cursor: pointer;
-    margin-top: 30em;
-    margin-right: 1em;    
+    align-items: center; 
+    cursor: pointer;  
+    margin-right: 1em;
+    margin-bottom: 6em;
+    height: 30vh;  
   }
 }
 
