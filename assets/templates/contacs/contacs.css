@@ -1249,8 +1249,7 @@
     right: 32px;
     cursor: pointer;
     margin-top: 30em;
-    margin-right: 1em;
-    height: 80vh;
+    margin-right: 1em;    
 }
 
   .addContactButtonDesktop {    
@@ -1302,9 +1301,8 @@
     right: 32px;
     cursor: pointer;
     margin-top: 30em;
-    margin-right: 1em;
-    height: 80vh;
-}
+    margin-right: 1em;    
+  }
 }
 
 @media only screen and (max-width: 750px) {
