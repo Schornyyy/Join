@@ -263,9 +263,9 @@ async function createContactDesktop() {
   let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);
   await currentUser.contacts.push(createdContact);
   await currentUser.save();
-  hideOverlay();
+  hideOverlay();v  
+  setTimeout(() => {contactsInit();}, 1000 * 1.5);
   clearAddContactDesktopRightSideContainer();
-  contactsInit();
 }
 
 /**
