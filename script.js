@@ -1,4 +1,5 @@
-const STORAGE_TOKEN = "MU03W9OLC4M9O5ZLSW91OZWGA938X4EBLQKC0CNW";
+// const STORAGE_TOKEN = "MU03W9OLC4M9O5ZLSW91OZWGA938X4EBLQKC0CNW";
+const STORAGE_TOKEN = "NHVJPHBLRQALJ98XTMXQA0FK8V369I8UCJ65G3KN";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 let users = [];
 let currentUser;
@@ -18,17 +19,34 @@ async function setItem(key, value) {
   }).then((res) => res.json());
 }
 
+// async function getItem(key) {
+//   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+//   let resp;
+//   await fetch(url).then((res) => {
+//     if (res.ok) {
+//       resp = res.json();
+//     } else {
+//       resp = res.status;
+//     }
+//   });
+//   return resp;
+// }
+
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-  let resp;
-  await fetch(url).then((res) => {
+
+  try {
+    const res = await fetch(url);
+
     if (res.ok) {
-      resp = res.json();
+      return res.json();
     } else {
-      resp = res.status;
+      return res.status;
     }
-  });
-  return resp;
+  } catch (error) {
+    console.error("Fehler beim Abrufen der Daten:", error);
+    return error;
+  }
 }
 
 /**

@@ -11,19 +11,25 @@ async function login() {
 
   if (!validated) return;
   let user = await findUserByEmail(loginInput.value);
-  console.log(user);
+
   if (user == null) {
     console.log("No user Found!");
     return;
   }
   console.log(user);
+
+  if (user == null) {
+    errorMsg.innerHTML = "No user found with this email address.";
+    return;
+  }
+
   if (!user.password.match(loginPasswordInput.value)) {
     errorMsg.innerHTML = "The password is incorrect!";
     return;
   }
 
   currentUser = user;
-  if (document.getElementById("rememberMe").hasAttribute("checked")) {
+  if (document.getElementById("rememberMe").checked) {
     localStorage.setItem(
       "userData",
       JSON.stringify({ ...user, remberMe: true, loginCount: 0 })
@@ -54,7 +60,7 @@ async function findUserByEmail(email) {
   });
   return u;
 */
-return users.find(userI => userI.email==email);
+  return users.find((userI) => userI.email == email);
 }
 
 /**
