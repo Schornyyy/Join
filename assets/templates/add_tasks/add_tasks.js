@@ -202,7 +202,6 @@ async function initEventListener() {
  * Cleared the Task Forms.
  */
 function clearTask() {
-try {
   document.getElementById("task-form-error").style = "color:red";
   document.getElementById("task-form-error").innerHTML = "";
   selectedCategory = null;
@@ -213,14 +212,12 @@ try {
   document.getElementById("form-desc").value = "";
   document.getElementById("form-title").value = "";
   document.getElementById("form-date").value = "";
-  document.getElementById("categorys-dropdow").innerHTML = "Select task category";
+  document.getElementById("categorys-dropdown").innerHTML = "Select task category";
 
   renderSubtaskHTML();
   renderAssignes();
   renderHTMLAssignedTo();
-} catch (error) {
-  
-}
+
 }
 
 /**
