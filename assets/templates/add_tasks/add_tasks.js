@@ -9,6 +9,7 @@ async function includeAddTaskFormTempalte() {
   let resp = await includeTemplate('./assets/templates/tasks_form.html')
   taskForm.innerHTML = resp;
   renderHTMLAssignedTo();
+  clickedPrio('prio-medium')
 }
 
 
@@ -217,6 +218,7 @@ function clearTask() {
   renderSubtaskHTML();
   renderAssignes();
   renderHTMLAssignedTo();
+  clickedPrio('prio-medium');
 
 }
 
