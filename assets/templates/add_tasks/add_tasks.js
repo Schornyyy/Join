@@ -285,14 +285,14 @@ function renderSubtaskHTML() {
                 onclick="changeSubtaskInput(this)"
               />
               <div class="subtask-fake-input-btns">
-                <button id="subtask-list-edit-btn" onclick='deleteSubtask(${index})'>
+                <button id="subtask-list-edit-btn" onclick='delete_Subtask(${index})'>
                   <img
                     src="./assets/img/add_tasks/edit_icon.svg"
                     id='subtask-img-${index}'
                   />
                 </button>
                 <div class="btn-divieder"></div>
-                <button id="subtask-list-trash-btn" onclick='deleteSubtask(${index})'>
+                <button id="subtask-list-trash-btn" onclick='delete_Subtask(${index})'>
                   <img
                     src="./assets/img/add_tasks/trash_icon.svg"
                     id='subtask-img2-${index}'
@@ -319,7 +319,7 @@ function changeSubtaskTitle(title, subtaskIndex) {
  * Delete the Subtasks with the ID.
  * @param {Number} subtaskIndex 
  */
-function deleteSubtask(subtaskIndex) {
+function delete_Subtask(subtaskIndex) {
   subtasks.splice(subtaskIndex, 1)
   renderSubtaskHTML();
 }
