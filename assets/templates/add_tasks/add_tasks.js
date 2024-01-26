@@ -189,7 +189,7 @@ async function initEventListener() {
     document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"
     console.log(task);
     clearTask();
-    
+    includeContentHTML('Board');
   })
 
   document.getElementById("subtask-submit-subtask").addEventListener("click", (e) => {
