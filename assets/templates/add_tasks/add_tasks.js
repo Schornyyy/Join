@@ -191,6 +191,7 @@ async function initEventListener() {
     console.log(task);
     clearTask();
     includeContentHTML('Board');
+    setActiveLink('nav-board');
   })
 
   document.getElementById("subtask-submit-subtask").addEventListener("click", (e) => {
