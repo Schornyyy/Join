@@ -60,6 +60,7 @@ async function greetUser() {
 async function initSummeryDataRest() {
   await greetUser();
   getTodosCounting();
+  getTodoStatusCounting("summery-todo-todos", "Open")
   getTodoStatusCounting("summery-done-todos", "done");
   getTodoStatusCounting("summery-process-tasks", "in progress");
   getTodoStatusCounting("summery-awaiting-task", "await feedback");
