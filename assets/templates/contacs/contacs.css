@@ -68,9 +68,10 @@
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactUserNameImg.svg");
-    background-size: contain;
+    background-size: 30px auto;
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: 5px;
     width: 364px;
     height: 41px;
     position: relative;
@@ -87,9 +88,10 @@
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactmailIcon.svg");
-    background-size: contain;
+    background-size: 30px auto;
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: 5px;
     width: 364px;
     height: 41px;
     position: relative;
@@ -106,9 +108,10 @@
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactPhoneIcon.svg");
-    background-size: contain;
+    background-size: 30px auto;
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: 5px;
     width: 364px;
     height: 41px;
     position: relative;
@@ -852,10 +855,11 @@
   .addContactInputNameDesktop {
     border: 1px solid #d1d1d1;
     border-radius: 5px;
-    background-image: url("../../img/contact/addContactUserNameImg.svg");
-    background-size: contain;
+    background-image: url(../../img/contact/addContactUserNameImg.svg);
+    background-size: 30px auto;
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: 10px;
     width: 422px;
     height: 50px;
     position: relative;
@@ -872,9 +876,10 @@
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactmailIcon.svg");
-    background-size: contain;
+    background-size: 30px auto;
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: 10px;
     width: 422px;
     height: 50px;
     position: relative;
@@ -891,9 +896,10 @@
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     background-image: url("../../img/contact/addContactPhoneIcon.svg");
-    background-size: contain;
+    background-size: 30px auto;
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: 10px;
     width: 422px;
     height: 50px;
     position: relative;
