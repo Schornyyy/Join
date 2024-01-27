@@ -817,8 +817,7 @@
   .addContactBlankUserImgContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    /* margin-left: 70px; */
+    align-items: center;    
     margin-bottom: 150px;
   }
 
@@ -1203,6 +1202,7 @@
 @media only screen and (max-width: 1900px) and (min-width: 1200px) {
   .addContactBlankUserImgContainer {
     margin-left: 70px;
+    margin-right: 70px;
 }
 }
 
