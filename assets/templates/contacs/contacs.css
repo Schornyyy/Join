@@ -159,7 +159,7 @@
   .addContactButtonContainerMobile {
     display: flex;
     justify-content: flex-end;
-    align-items: center; 
+    align-items: baseline;
     cursor: pointer;  
     margin-right: 1em;
     height: 30vh;
