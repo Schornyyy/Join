@@ -528,8 +528,7 @@
   }
 
   .addContactButtonContainerDesktop {
-    display: flex;
-    justify-content: center;
+    display: flex;    
     align-items: center;
     position: sticky;
     bottom: 32px;
