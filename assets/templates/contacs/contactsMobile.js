@@ -177,15 +177,15 @@ function addContactFormMobileHTML() {
 async function createContactMobile() {
   const { newName, newMail, newPhone } = constForCreateContactMobile();
   if (newName === "" || newMail === "" || newPhone === "") {
-    alert("Bitte füllen Sie alle Felder aus.");
+    
     return;
   }
   if (!/^\d+$/.test(newPhone)) {
-    alert("Bitte geben Sie eine gültige Telefonnummer (nur Ziffern) ein.");
+    
     return;
   }
   if (!newMail.includes("@")) {
-    alert("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+    
     return;
   }
   let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);
@@ -306,8 +306,7 @@ function getUpdatedInputs() {
  * @param {string} updatedInputs - This are the new contact / email / phone number
  */
 function validateInputs(updatedInputs) {
-  if (Object.values(updatedInputs).some(value => value === "")) {
-      alert("Bitte füllen Sie alle Felder aus.");
+  if (Object.values(updatedInputs).some(value => value === "")) {      
       return false;
   }
   return true;

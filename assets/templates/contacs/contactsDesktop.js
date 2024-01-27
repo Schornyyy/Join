@@ -249,15 +249,15 @@ async function createContactDesktop() {
   const { newName, newMail, newPhone } = constForCreateContactDesktop();
   if (newName === "" || newMail === "" || newPhone === "") {
     showErrorBorder("[data-contacts]", false)
-    alert("Bitte füllen Sie alle Felder aus.");
+    
     return;
   }
   if (!/^\d+$/.test(newPhone)) {
-    alert("Bitte geben Sie eine gültige Telefonnummer (nur Ziffern) ein.");
+    
     return;
   }
   if (!newMail.includes("@")) {
-    alert("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+    
     return;
   }
   let createdContact = new Contact(newName, newMail, newPhone, getRandomColorHex(), currentUser.name, currentUser.contacts.length + 1);
@@ -334,13 +334,15 @@ function generateHTMLEditContactDesktop(overlayContent, selectedContact) {
           </div>
           <div id="editContactDestopID">
             <div class="addContactContainerFooter">
-                <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.name}"> 
-                <input class="addContactInputMailAddresssDesktop" type="text" required placeholder="E Mail" value="${selectedContact.email}">
-                <input class="addContactInputPhoneDesktop" type="text" required placeholder="Phone" value="${selectedContact.phone}">
-                <div class="createContactButtonImgContainer">
-                    <button class="editContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
-                    <button class="saveContactButtonDesktop" onclick="updateContactDesktop(${selectedContact.id})">Save</button>
-                </div>                
+              <form id="addContactForm" onsubmit="event.preventDefault(); updateContactDesktop(${selectedContact.id})">
+                <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.name}">
+                <input class="addContactInputMailAddresssDesktop" type="email" required placeholder="E-Mail" value="${selectedContact.email}">
+                <input class="addContactInputPhoneDesktop" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
+                <div class="addContactButtonContainerDesktop">
+                  <button class="cancelContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
+                  <button class="createContactButton" type="submit">Save</button>
+                </div>
+              </form>
             </div>
         </div>
         </div>

@@ -46,8 +46,8 @@ function findOldContactDesktop(contactId) {
     currentUser.contacts = updatedContactsData;
     currentUser.save();
     clearAddContactDesktopRightSideContainer();
-    contactsInit();
     hideOverlay();
+    contactsInit();    
   }
   
   /**
