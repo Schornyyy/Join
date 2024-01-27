@@ -10,6 +10,17 @@ async function includeAddTaskFormTempalte() {
   taskForm.innerHTML = resp;
   renderHTMLAssignedTo();
   clickedPrio('prio-medium')
+  dueDateMinDate();
+
+  window.addEventListener('click', (e) => {
+    let dropdown = document.getElementById("aissgned-to-dropdown");
+    let dropwDownMenu = document.getElementById("assigned-to-dropdown-menu");
+
+
+    if(e.target != dropdown && dropwDownMenu != null && dropwDownMenu.classList.contains("show")) {
+      dropwDownMenu.classList.remove("show")
+    }
+  })
 }
 
 
@@ -141,6 +152,7 @@ function changeSubtaskImages(id, subtaskInput) {
 function validateForm() {
   let correct = true;
   let error = document.getElementById("task-form-error")
+  let dateInput = document.getElementById("form-date");
 
   if(!selectedPrio) {
     correct = false;
@@ -157,12 +169,27 @@ function validateForm() {
     error.innerHTML = "U must enter a Title!";
   }
 
-  if(document.getElementById("form-date") .value === "") {
+  if(dateInput.value === "") {
     correct = false;
     error.innerHTML = "U have to select a Due Date!"
   }
 
+  let dateNow = new Date().getTime();
+  let date = new Date(dateInput.value).getTime();
+  if(date < dateNow) {
+    correct = false;
+    error.innerHTML = "U must enter a Date in future!";
+  }
+
   return correct;
+}
+
+function dueDateMinDate() {
+  let dateInput = document.getElementById("form-date");
+  let currentDate = new Date();
+
+  let minDate = currentDate.toISOString().split('T')[0]
+  dateInput.setAttribute('min', minDate);
 }
 
 /**
@@ -196,7 +223,9 @@ async function initEventListener() {
 
   document.getElementById("subtask-submit-subtask").addEventListener("click", (e) => {
     e.preventDefault();
-    addSubtaskToList()
+    if(e.target.value != "") {
+      addSubtaskToList()
+    }
   })
 }
 

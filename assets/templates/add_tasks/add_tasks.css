@@ -183,7 +183,7 @@ button:focus {
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 150px;
-  width: 90%;
+  width: 92%;
 }
 
 #assigned-to-dropdown-menu label {
@@ -301,6 +301,7 @@ button:focus {
   margin-bottom: 3rem;
   display: flex;
   padding: 15px;
+  padding-bottom: 2rem;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -522,6 +523,7 @@ label[for="form-date"] {
 
   .add-tasks-board-footer {
     padding: 79px 96px;
+    padding-bottom: 0;
   }
 
   #tasks-form-cancel {
@@ -610,5 +612,9 @@ label[for="form-date"] {
   .assigned-to-task {
     padding: 16px;
     width: 100%;
+  }
+
+  #assigned-to-dropdown-menu {
+    width: 95%;
   }
 }
