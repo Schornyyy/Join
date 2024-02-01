@@ -155,7 +155,7 @@ function openContactScreenDesktopHTML(content, selectedContact) {
         <h1 class="contactsContentRightSideH1">
           Contacts
         </h1>
-        <img src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
+        <img class="contactsContentRightSideBlueStribeSvg" src="../../assets/img/contact/contactsContentRightSideBlueStripe.svg" alt="">        
         <p class="contactsContentRightSideHeadLinePElement">Better with a team</p>
     </div>  
     <div id="contactsContentRightSideContactDataContainerID">
@@ -218,13 +218,13 @@ function generateHTMLAddContactShowOverlayDesktop(overlayContent) {
         </div>
       </div>
       <div class="addContactDesktopRightSideContainer">
+        <div class="addContactCloseXContainer">
+          <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
+        </div>
         <div class="addContactBlankUserImgContainer">
           <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
         </div>
-        <div class="addContactDesktopRightSideContent">
-          <div class="addContactCloseXContainer">
-           <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
-          </div>
+        <div class="addContactDesktopRightSideContent">          
           <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
             <div class="addContactContainerFooter">
             <input class="addContactInputNameDesktop" type="text" required pattern="[A-Za-z]+" placeholder="Name" data-contacts>

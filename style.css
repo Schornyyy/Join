@@ -75,7 +75,7 @@ body::-webkit-scrollbar {
   border: 1px solid red;
 }
 
-@media only screen and (max-width: 1920px) and (min-width: 751px) {
+@media only screen and (max-width: 4000px) and (min-width: 751px) {
   .content {
     grid-area: drei;
   }

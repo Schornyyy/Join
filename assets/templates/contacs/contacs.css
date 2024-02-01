@@ -189,7 +189,7 @@
   }
 
   .contact-first-letter {
-    margin: 0; /* Delete margin of h2 */
+    margin: 0; /* Delete margin of h2 */    
   }
 
   .contacts-info-column {
@@ -461,7 +461,7 @@
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 /* Desktop view */
-@media only screen and (min-width: 961px) {
+@media only screen and (max-width: 4000px) and (min-width: 961px) {
   .content {
     overflow-y: hidden;
     overflow-x: hidden;
@@ -497,6 +497,7 @@
     margin: 10px;
     border-bottom: 2px solid #d1d1d1;
     padding-bottom: 10px;
+    font-size: 1.5vw;
   }
 
   .oneContactContainer {
@@ -534,11 +535,11 @@
     bottom: 32px;
     right: 32px;
     cursor: pointer;
-    margin-top: 2em;
+    margin-top: 2vh;
     margin-right: 60px;
     margin-left: 60px;
-    margin-bottom: 2rem;
-    height: 27px;
+    margin-bottom: 2vh;
+    height: 27px;    
   }
 
   .addContactImage {
@@ -572,14 +573,18 @@
     margin-top: 5em;
   }
 
+  .contactsContentRightSideBlueStribeSvg {
+    height: 4vw;
+  }
+
   .contactsContentRightSideH1 {
-    font-size: 61px;
+    font-size: 5vw;
     font-weight: 700;
     color: black;
   }
 
   .contactsContentRightSideHeadLinePElement {
-    font-size: 27px;
+    font-size: 2vw;
     font-weight: 400;
     color: black;
   }
@@ -614,8 +619,7 @@
   }
 
   .contactsContentRightSideEditButton {
-    height: 24px;
-    width: 62px;
+    height: 2vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -625,8 +629,7 @@
   }
 
   .contactsContentRightSideDeleteButton {
-    height: 24px;
-    width: 81px;
+    height: 2vw;    
     cursor: pointer;
     margin-left: 30px;
     transition: background-color 0.3s ease;
@@ -643,7 +646,7 @@
 
   .contactsContentRightSideContactInformationDesktopPText {
     color: black;
-    font-size: 20px;
+    font-size: 2.5vw;
     font-weight: 400;
   }
 
@@ -660,8 +663,9 @@
     cursor: pointer;
     text-decoration: none;
     color: #007cee;
-    margin-left: 2em;
+    margin-left: 2rem;
     cursor: pointer;
+    font-size: 1vw;
   }
 
   .openContactEmailLinkDesktop:hover {
@@ -675,7 +679,7 @@
 
   .openContactPhoneNumberDesktopPElement {
     color: black;
-    font-size: 16px;
+    font-size: 1.5vw;
     font-weight: 400;
   }
 
@@ -684,8 +688,13 @@
     margin-left: 2em;
   }
 
+  .contactsContentRightSideContactPhoneH2Desktop {
+    font-size: 1.5vw;
+    font-weight: 700;
+  }
+
   .contactsContentRightSideContactEmailH2 {
-    font-size: 16px;
+    font-size: 1.5vw;
     font-weight: 700;
   }
 
@@ -700,7 +709,7 @@
   }
 
   .openphoneNumberDesktopPElement {
-    font-size: 16;
+    font-size: 1.5vw;
     font-weight: 400;
   }
 
@@ -708,8 +717,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 352px;
-    height: 56px;
+    width: 20vw;
+    height: 4vw;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
     background-color: var(--light-grey);
     border: 0;
     border-radius: 10px;
@@ -773,8 +784,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 467px;
-    height: 594px;
+    min-width: 467px;    
     background-color: var(--light-grey);
     gap: 16px;
   }
@@ -839,7 +849,7 @@
   .addContactDesktopRightSideContent {
     display: flex;
     flex-direction: column;
-    flex: auto;
+    flex: auto;    
   }
 
   .addContactContainerFooter {
@@ -1093,6 +1103,115 @@
   }
 }
 
+@media only screen and (max-width: 4000px) and (min-width: 1900px) {
+  .openContactUserImg {
+    height: 240px;
+    width: 240px;
+    font-size: 2vw;
+  }
+
+  .openContactUserImgMobile {
+    height: 240px;
+    width: 240px;
+    font-size: 2vw;
+  }
+
+  .contactsContentRightSideUserNameH2 {
+    font-size: 2vw;
+  }
+
+  .addContactButtonContainerDesktop {
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+  }
+
+  .addContactButtonDesktop {
+    font-size: 1vw;
+  }
+
+  .addContactButtonDesktopImg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .overlay-content {
+    width: 80vw;
+  }
+
+  .overlay-card {
+    width: 80vw;
+  }
+
+  .addContactDesktopRightSideContainer {
+    display: flex;  
+    background-color: white;
+    width: 70vw;
+  }
+
+  #addContactForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addContactContainerFooter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addContactInputNameDesktop {
+    width: 900px;
+    height: 100px;
+    font-size: 1vw;
+    background-size: 60px;
+  }
+
+  .addContactInputMailAddresssDesktop {
+    width: 900px;
+    height: 100px;
+    font-size: 1vw;
+    background-size: 60px;
+  }
+
+  .addContactInputPhoneDesktop {
+    width: 900px;
+    height: 100px;
+    font-size: 1vw;
+    background-size: 60px;
+  }
+
+  .addContactDesktopLeftSideContainer {
+    min-width: 1433px;
+  }
+
+  .joinLogoGreyBackgroundImg {
+    width: 224px;
+    height: 268px;
+  }
+
+  .addContactDesktopLeftSideContainerH1 {
+    font-size: 3vw;
+  }
+
+  .addContactBlueStroked {
+    width: 4vw;
+  }
+
+  .cancelContactDesktopDeleteButton {
+    padding: 30px 48px 30px 48px;
+    font-size: 1vw;
+  }
+
+  .createContactButton {
+    padding: 30px 48px 30px 48px;
+    font-size: 1vw;
+  }
+
+  .addContactBlankUserImg {
+    height: 240px;
+    width: 240px;
+  }
+}
+
 @media only screen and (max-width: 1440px) and (min-width: 350px) {
   .addContactButtonContainerDesktop {
     display: flex;    
@@ -1200,10 +1319,34 @@
   }  
 }
 
+@media only screen and (max-width: 4000px) and (min-width: 1700px) {
+  .member-icon {
+    font-size: 2rem !important;
+    height: 80px !important;
+    width: 80px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 2px solid white;
+    position: relative;
+}
+
+.oneContactContainerH2Desktop {
+  font-size: 1.5vw;
+}
+
+.oneContactContainerAElement {
+  font-size: 1vw;
+}
+}
+
+
 @media only screen and (max-width: 1900px) and (min-width: 1200px) {
   .addContactBlankUserImgContainer {    
     margin-left: 70px;
     margin-right: 70px;
+    margin-top: 120px;
 }
 }
 
