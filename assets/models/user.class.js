@@ -33,8 +33,7 @@ class User {
    */
   async save() {
     let u = currentUser;
-    let cu = users.findIndex((a) => a.email == u.email);
-    console.log(cu);
+    let cu = users.findIndex((a) => a.email == u.email);    
     editUser(cu, u.toJSON());
     await setItem("users", users);
   }

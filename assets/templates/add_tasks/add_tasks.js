@@ -214,8 +214,7 @@ async function initEventListener() {
     currentUser.tasks.push(task);
     currentUser.save();
     document.getElementById("task-form-error").style = "color:green"
-    document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"
-    console.log(task);
+    document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"    
     clearTask();
     includeContentHTML('Board');
     setActiveLink('nav-board');

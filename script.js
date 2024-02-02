@@ -80,8 +80,7 @@ async function loadUsers() {
     users = [];
   } else {
     users = JSON.parse(usersResp.data.value);
-  }
-  console.log("loaded User: ", users);
+  }  
 }
 
 /**
@@ -95,8 +94,7 @@ async function loadDataToUser() {
   u.loadFromJSON(user);
   u.contacts = user.contacts;
   u.contacts = u.contacts.sort((a, b) => a.name.localeCompare(b.name));
-  currentUser = u;
-  console.log("User: ", u);
+  currentUser = u;  
 }
 
 /**
@@ -110,6 +108,5 @@ function editUser(contactIndex, obj) {
   let keys = Object.keys(obj);
   for (let index = 0; index < vals.length; index++) {
     contact[keys[index]] = vals[index];
-  }
-  console.log("Edited Contact: ", users);
+  }  
 }

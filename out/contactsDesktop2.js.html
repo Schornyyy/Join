@@ -129,8 +129,7 @@ function findOldContactDesktop(contactId) {
    * @param {string} addContactButtonContainerMobile - Render the contact button container mobile
    * @param {string} handleDocumentClick - Remove or add the event listener for the drop down menu
    */
-  function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {
-    console.log(handleDocumentClick);
+  function handleDocumentClick(dropdownContainer, addContactButtonContainerMobile, handleDocumentClick) {    
     return function (event) {
       const dropdownMenu = document.getElementById("contactOptionsDropdown");
       if (!dropdownContainer.contains(event.target) &amp;&amp;
@@ -155,10 +154,8 @@ function findOldContactDesktop(contactId) {
    * @param {string} action - Edit or delete click from user
    */
   function handleDropdownOptionClick(action) {
-    if (action === "edit") {
-      console.log("Edit Contact selected");  
-    } else if (action === "delete") {
-      console.log("Delete Contact selected");
+    if (action === "edit") {        
+    } else if (action === "delete") {      
     }  
     const dropdownMenu = document.getElementById("contactOptionsDropdown");
     dropdownMenu.style.display = "none";

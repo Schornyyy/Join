@@ -12,11 +12,9 @@ async function login() {
   if (!validated) return;
   let user = await findUserByEmail(loginInput.value);
 
-  if (user == null) {
-    console.log("No user Found!");
+  if (user == null) {    
     return;
-  }
-  console.log(user);
+  }  
 
   if (user == null) {
     errorMsg.innerHTML = "No user found with this email address.";

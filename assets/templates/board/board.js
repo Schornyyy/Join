@@ -303,8 +303,7 @@ function isColorLight(hexcode) {
         let b = parseInt(hexcode.slice(5), 16);
         var a = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
         return (a < 0.5);
-    } else {
-        console.log('isColorLight(): Achtung kein hexcode. Gebe einfach true zurück!');
+    } else {        
         return true;
     }
 }
@@ -865,7 +864,6 @@ function editSaveTask(taskID) {
 
 
 function testen() {
-    let x= document.getElementById('checkIcon0');
-    console.log(x);
+    let x= document.getElementById('checkIcon0');    
 }
 

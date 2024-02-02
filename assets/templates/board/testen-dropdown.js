@@ -3,8 +3,7 @@ function init() {
 }
 
 function addFocusHandler() {
-    let inputSelectMembersElement= document.getElementById('inputSelectMembers');
-    console.log(inputSelectMembersElement);
+    let inputSelectMembersElement= document.getElementById('inputSelectMembers');    
     inputSelectMembersElement.addEventListener('focusin', expandDropdown);
     inputSelectMembersElement.addEventListener('focusout', collapseDropdown);
 }
@@ -38,6 +37,5 @@ function collapseDropdown() {
 
 
 function testen() {
-    let inputSelectMembersElement= document.getElementById('inputSelectMembers');
-    console.log(inputSelectMembersElement);
+    let inputSelectMembersElement= document.getElementById('inputSelectMembers');    
 }
