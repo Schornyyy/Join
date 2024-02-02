@@ -105,8 +105,7 @@ function loginAsGuest() {
   let loginBtn = document.getElementById("login-btn");
   loginEmailInput.value = "Guest@test.de";
   loginPasswordInout.value = "test";
-  loginBtn.click();
-  addMenuImageButtonstoEventlistener();
+  loginBtn.click();  
 }
 
 function redirectToRegister() {
