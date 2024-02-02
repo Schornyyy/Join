@@ -535,7 +535,7 @@
     bottom: 32px;
     right: 32px;
     cursor: pointer;
-    margin-top: 2vh;
+    margin-top: 4vh;
     margin-right: 60px;
     margin-left: 60px;
     margin-bottom: 2vh;
@@ -842,8 +842,7 @@
     display: flex;
     justify-content: right;
     margin-top: 25px;
-    margin-right: 50px;
-    cursor: pointer;
+    margin-right: 50px;    
   }
 
   .addContactDesktopRightSideContent {

@@ -217,28 +217,28 @@ function generateHTMLAddContactShowOverlayDesktop(overlayContent) {
           <img class="addContactBlueStroked" src="../../assets/img/contact/addContactBlueStroked.svg" alt="">
         </div>
       </div>
-      <div class="addContactDesktopRightSideContainer">
-        <div class="addContactCloseXContainer">
-          <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
-        </div>
-        <div class="addContactBlankUserImgContainer">
-          <img class="addContactBlankUserImg" src="../../assets/img/contact/addContactBlankUserImg.svg" alt="">
-        </div>
-        <div class="addContactDesktopRightSideContent">          
-          <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
+      <div class="addContactDesktopRightSideContent">
+          <div class="addContactCloseXContainer">
+            <button class="addContactCloseXButton" onclick="hideOverlay()">X</button>
+          </div>
+          <div id="editContactDestopID">
+            <div class="addContactContainerFooter">
+            <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
             <div class="addContactContainerFooter">
             <input class="addContactInputNameDesktop" type="text" required pattern="[A-Za-z]+" placeholder="Name" data-contacts>
               <input class="addContactInputMailAddresssDesktop" type="email" required placeholder="E Mail" data-contacts>
               <input class="addContactInputPhoneDesktop" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" data-contacts>
               <div class="addContactButtonContainerDesktop">
                 <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
-                  <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
+                <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
                 </div>
               </div>
           </form>  
+            </div>
           </div>
         </div>
       </div>
+    </div>
     `;
 }
 
@@ -344,7 +344,7 @@ function generateHTMLEditContactDesktop(overlayContent, selectedContact) {
                 </div>
               </form>
             </div>
-        </div>
+          </div>
         </div>
       </div>
     </div>
