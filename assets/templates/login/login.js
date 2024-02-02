@@ -106,6 +106,7 @@ function loginAsGuest() {
   loginEmailInput.value = "Guest@test.de";
   loginPasswordInout.value = "test";
   loginBtn.click();
+  addMenuImageButtonstoEventlistener();
 }
 
 function redirectToRegister() {

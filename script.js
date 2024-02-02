@@ -58,17 +58,17 @@ async function loadData() {
     let data = JSON.parse(localStorage.getItem("userData"));
     if (data.loginCount == 2 && !data.remberMe) {
       localStorage.clear();
-      window.location.href = "/assets/templates/login/login.html";
+      // window.location.href = "/assets/templates/login/login.html";
     }
     data.loginCount++;
     localStorage.setItem("userData", JSON.stringify(data));
     await loadDataToUser();
-  } else if (
-    !window.location.href.match("/assets/templates/login/login.html") &&
-    !window.location.href.match("/assets/templates/register/register.html")
-  ) {
-    window.location.href = "/assets/templates/login/login.html";
-  }
+  } // else if (
+    // !window.location.href.match("/assets/templates/login/login.html") &&
+    // !window.location.href.match("/assets/templates/register/register.html")
+  // )  {
+   // window.location.href = "/assets/templates/login/login.html";
+  //}
 }
 
 /**

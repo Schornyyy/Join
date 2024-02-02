@@ -122,5 +122,5 @@ async function emailAlreadyTaken(email) {
  * Switch from the registration page back to the login page.
  */
 function redirectToLoin() {
-  window.location.assign("./../login/login.html");
+  // window.location.assign("./../login/login.html");
 }
