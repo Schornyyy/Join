@@ -111,3 +111,34 @@ function loginAsGuest() {
 function redirectToRegister() {
   window.location.assign("./../register/register.html");
 }
+
+function handleMenuItemClick(menuItemId) {  // Save the ID of the clicked menu item in localStorage  
+  localStorage.setItem("lastClickedMenuItem", menuItemId);
+}
+
+function loadContentBasedOnLastClickedMenuItem() {  
+  const lastClickedMenuItem = localStorage.getItem("lastClickedMenuItem");  // Check if a last clicked menu item is saved in localStorage
+  if (lastClickedMenuItem) {  // If a last clicked menu item is found, call the corresponding function    
+    switch (lastClickedMenuItem) {
+      case "nav-board":
+        includeContentHTML("Board");
+        setActiveLink("nav-board");
+        break;
+      case "nav-addTask":
+        includeContentHTML("Add Tasks");
+        setActiveLink("nav-addTask");
+        includeContentHTML("./assets/templates/footer/tasks_form.html");
+        break;
+      case "nav-contacts":
+        includeContentHTML("Contacts");
+        setActiveLink("nav-contacts");
+        break;      
+      default:        
+        includeContentHTML("Summary");  // Handle default case
+        setActiveLink("nav-summary");
+    }
+  } else {    
+    includeContentHTML("Summary");  // If no last clicked menu item is found, load the default content (Summary)
+    setActiveLink("nav-summary");
+  }
+}

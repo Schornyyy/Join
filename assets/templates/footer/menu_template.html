@@ -7,7 +7,7 @@
     <div
       class="menu-item menu-item activeLink"
       id="nav-summary"
-      onclick="includeContentHTML('Summary'); setActiveLink('nav-summary')"
+      onclick="includeContentHTML('Summary'); setActiveLink('nav-summary'); handleMenuItemClick('nav-summary');"
     >
       <div class="footerHoverBox">
         <img src="./assets/img/footer/summary_icon.svg" alt="Summary Icon" />
@@ -17,7 +17,7 @@
     <div
       class="menu-item"
       id="nav-board"
-      onclick="includeContentHTML('Board'); setActiveLink('nav-board')"
+      onclick="includeContentHTML('Board'); setActiveLink('nav-board'); handleMenuItemClick('nav-board');"
     >
       <div class="footerHoverBox">
         <img src="assets/img/footer/Vector.svg" alt="Summary Icon" />
@@ -28,7 +28,7 @@
       class="menu-item"
       id="nav-addTask"
       onclick="includeContentHTML('Add Tasks'); setActiveLink('nav-addTask');
-    includeContentHTML('./assets/templates/footer/tasks_form.html')"
+    includeContentHTML('./assets/templates/footer/tasks_form.html'); handleMenuItemClick('nav-addTask');"
     >
       <div class="footerHoverBox">
         <img src="./assets/img/footer/add_tasks_icon.svg" alt="Summary Icon" />
@@ -38,7 +38,7 @@
     <div
       class="menu-item"
       id="nav-contacts"
-      onclick="includeContentHTML('Contacts'); setActiveLink('nav-contacts')"
+      onclick="includeContentHTML('Contacts'); setActiveLink('nav-contacts'); handleMenuItemClick('nav-contacts');"
     >
       <div class="footerHoverBox">
         <img src="./assets/img/footer/contacts_icon.svg" alt="Summary Icon" />

@@ -5,7 +5,8 @@ async function init() {
   await includeHTML();
   await loadData();
   initSummeryData();
-  loadHeaderProfileInitials()
+  loadHeaderProfileInitials();
+  loadContentBasedOnLastClickedMenuItem();
 }
 
 /**
