@@ -1,4 +1,22 @@
 let showedLoginGreeting = false;
+let isSummaryPageActive = "";
+
+function checkIsSummaryPageActive() {
+  window.onload = function() {    
+    if (localStorage.getItem('isSummaryPageActive') === 'true') {
+      isSummaryPageActive = true;
+    } else {
+      isSummaryPageActive = false;
+    }  
+    if (isSummaryPageActive) {      
+      showSummaryPage();
+      includeContentHTML('Summary');
+      setActiveLink('nav-summary');
+      handleMenuItemClick('nav-summary');    
+    }
+  };
+}
+
 
 /**
  * Show your greeting after login.
@@ -57,15 +75,15 @@ async function greetUser() {
  * Gets the current tasks.
  */
 async function initSummeryDataRest() {
-  await greetUser();
-  setTimeout(() => {
-    getTodosCounting();
-    getTodoStatusCounting("summery-todo-todos", "Open")
-    getTodoStatusCounting("summery-done-todos", "done");
-    getTodoStatusCounting("summery-process-tasks", "in progress");
-    getTodoStatusCounting("summery-awaiting-task", "await feedback");
-    getUrgentTask();
-  }, 1000);
+  if (isSummaryPageActive) {
+      await greetUser();      
+      getTodosCounting();
+      getTodoStatusCounting("summery-todo-todos", "Open")
+      getTodoStatusCounting("summery-done-todos", "done");
+      getTodoStatusCounting("summery-process-tasks", "in progress");
+      getTodoStatusCounting("summery-awaiting-task", "await feedback");
+      getUrgentTask();
+  }
 }
 
 /**
@@ -73,8 +91,7 @@ async function initSummeryDataRest() {
  */
 function getTodosCounting() {
   let summeryTodoSize = document.querySelectorAll("[data-todos]");
-  summeryTodoSize.forEach((ele) => {
-    ele.innerHTML = "";
+  summeryTodoSize.forEach((ele) => {    
     ele.innerHTML = "" + currentUser.tasks.length;
   });
 }
@@ -163,4 +180,14 @@ function changeImageBack(element) {
   } else if (img.classList.contains("checkImage")) {
     img.src = "assets/img/summary/summaryCheckGray.svg";
   }
+}
+
+function showSummaryPage() {
+  isSummaryPageActive = true;
+  localStorage.setItem('isSummaryPageActive', 'true');  
+}
+
+function showOtherPage() {
+  isSummaryPageActive = false;
+  localStorage.setItem('isSummaryPageActive', 'false');  
 }
