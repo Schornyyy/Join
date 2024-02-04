@@ -59,12 +59,14 @@ async function greetUser() {
  */
 async function initSummeryDataRest() {
   await greetUser();
-  getTodosCounting();
-  getTodoStatusCounting("summery-todo-todos", "Open")
-  getTodoStatusCounting("summery-done-todos", "done");
-  getTodoStatusCounting("summery-process-tasks", "in progress");
-  getTodoStatusCounting("summery-awaiting-task", "await feedback");
-  getUrgentTask();
+  setTimeout(() => {
+    getTodosCounting();
+    getTodoStatusCounting("summery-todo-todos", "Open")
+    getTodoStatusCounting("summery-done-todos", "done");
+    getTodoStatusCounting("summery-process-tasks", "in progress");
+    getTodoStatusCounting("summery-awaiting-task", "await feedback");
+    getUrgentTask();
+  }, 1000);
 }
 
 /**
@@ -85,10 +87,13 @@ function getTodosCounting() {
  */
 function getTodoStatusCounting(eleId, status) {
   let doneTodosEle = document.getElementById(eleId);
-  doneTodosEle.innerHTML = "";
-  let arr = currentUser.tasks;
-  arr = arr.filter((a) => a.status.match(status));
-  doneTodosEle.innerHTML = arr.length;
+  if (doneTodosEle) {
+    let arr = currentUser.tasks;
+    arr = arr.filter((a) => a.status.match(status));
+    doneTodosEle.innerHTML = arr.length;
+  } else {
+    console.error("Element with ID " + eleId + " not found.");
+  }
 }
 
 /**
