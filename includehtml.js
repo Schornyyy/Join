@@ -33,7 +33,6 @@ async function includeHTML() {
 async function includeContentHTML(contentView) {
   let content = document.getElementById("content");
   content.innerHTML = "";
-
   switch (contentView) {
     case "Board":
       var includedContent = await includeTemplate(
@@ -42,7 +41,6 @@ async function includeContentHTML(contentView) {
       content.innerHTML = includedContent;
       boardInit();
       break;
-
     case "Add Tasks":
       var includedContent = await includeTemplate(
         "./assets/templates/add_tasks/add_tasks_template.html"
@@ -51,7 +49,6 @@ async function includeContentHTML(contentView) {
       await includeAddTaskFormTempalte();
       initEventListener();
       break;
-
     case "Contacts":
       var includedContent = await includeTemplate(
         "./assets/templates/contacs/contacts_template.html"
@@ -59,28 +56,24 @@ async function includeContentHTML(contentView) {
       content.innerHTML = includedContent;
       contactsInit();
       break;
-
     case "Privacy Policy":
       var includedContent = await includeTemplate(
         "./assets/templates/privacy_policy/privacy_policy_internal.html"
       );
       content.innerHTML = includedContent;
       break;
-
     case "Legal notice":
       var includedContent = await includeTemplate(
         "./assets/templates/legal_notice/legal_notice_internal.html"
       );
       content.innerHTML = includedContent;
       break;
-
     case "Help":
       var includedContent = await includeTemplate(
         "./assets/templates/help/help.html"
       );
       content.innerHTML = includedContent;
       break;
-
     case "Summary":
       var includedContent = await includeTemplate(
         "./assets/templates/summary/summary_template.html"

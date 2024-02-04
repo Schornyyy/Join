@@ -20,7 +20,6 @@ async function initSummeryData() {
 function showGreetScreen() {
   let screen = document.getElementById("summary-greet-user-screen");
   screen.classList.add("showScreen");
-
   setTimeout(() => {
     screen.classList.remove("showScreen");
   }, 2500);
