@@ -1,21 +1,10 @@
 let showedLoginGreeting = false;
-let isSummaryPageActive = "";
+let isSummaryPageActive = true;
 
-function checkIsSummaryPageActive() {
-  window.onload = function() {    
-    if (localStorage.getItem('isSummaryPageActive') === 'true') {
-      isSummaryPageActive = true;
-    } else {
-      isSummaryPageActive = false;
-    }  
-    if (isSummaryPageActive) {      
-      showSummaryPage();
-      includeContentHTML('Summary');
-      setActiveLink('nav-summary');
-      handleMenuItemClick('nav-summary');    
-    }
-  };
-}
+window.onload = function() {    
+  initSummeryData();
+};
+
 
 
 /**
@@ -86,13 +75,23 @@ async function initSummeryDataRest() {
   }
 }
 
+
+
 /**
  * The current open tasks.
- */
+*/
 function getTodosCounting() {
   let summeryTodoSize = document.querySelectorAll("[data-todos]");
+  let count = currentUser.tasks.length; // Anzahl der Aufgaben des aktuellen Benutzers
+
+  // Das Ergebnis in die globale Variable speichern
+  toDoCountNumber = count;
+
+  // Das Ergebnis im localStorage speichern
+  localStorage.setItem('todoCount', count);
+
   summeryTodoSize.forEach((ele) => {    
-    ele.innerHTML = "" + currentUser.tasks.length;
+      ele.innerHTML = "" + count;
   });
 }
 
@@ -107,8 +106,6 @@ function getTodoStatusCounting(eleId, status) {
     let arr = currentUser.tasks;
     arr = arr.filter((a) => a.status.match(status));
     doneTodosEle.innerHTML = arr.length;
-  } else {
-    console.error("Element with ID " + eleId + " not found.");
   }
 }
 
@@ -116,25 +113,28 @@ function getTodoStatusCounting(eleId, status) {
  * Get the current urgent task and next nearest date.
  */
 function getUrgentTask() {
-  let summerUrgentDateEle = document.getElementById("summery-urgent-date");
-  let tasks = currentUser.tasks;
-  let firstDate = new Date();
-  const options = { year: "numeric", month: "long", day: "numeric" };
-
-  tasks.forEach((task) => {
-    let dueDate = new Date(task.dueDate);
-    let today = new Date();
-    if (firstDate <= dueDate) {
-      if (today >= dueDate) {
-        firstDate = dueDate;
-      }
-    }
-  });
-  summerUrgentDateEle.innerHTML = firstDate.toLocaleDateString(
-    "en-US",
-    options
-  );
-  getTasksonDate(firstDate);
+  try {
+      let summerUrgentDateEle = document.getElementById("summery-urgent-date");
+      let tasks = currentUser.tasks;
+      let firstDate = new Date();
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      tasks.forEach((task) => {
+          let dueDate = new Date(task.dueDate);
+          let today = new Date();
+          if (firstDate <= dueDate) {
+              if (today >= dueDate) {
+                  firstDate = dueDate;
+              }
+          }
+      });
+      summerUrgentDateEle.innerHTML = firstDate.toLocaleDateString(
+          "en-US",
+          options
+      );
+      getTasksonDate(firstDate);
+  } catch (error) {
+      
+  }
 }
 
 /**
