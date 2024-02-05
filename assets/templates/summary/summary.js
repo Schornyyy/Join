@@ -5,8 +5,6 @@ window.onload = function() {
   initSummeryData();
 };
 
-
-
 /**
  * Show your greeting after login.
  */
@@ -54,7 +52,6 @@ async function greetUser() {
   if (userName.match("Guest Master")) {
     userName = "";
   }
-
   Array.from(greetingEles).forEach((ele) => {
     ele.innerHTML = userName;
   });
@@ -75,21 +72,14 @@ async function initSummeryDataRest() {
   }
 }
 
-
-
 /**
  * The current open tasks.
 */
 function getTodosCounting() {
   let summeryTodoSize = document.querySelectorAll("[data-todos]");
-  let count = currentUser.tasks.length; // Anzahl der Aufgaben des aktuellen Benutzers
-
-  // Das Ergebnis in die globale Variable speichern
-  toDoCountNumber = count;
-
-  // Das Ergebnis im localStorage speichern
+  let count = currentUser.tasks.length;  
+  toDoCountNumber = count;  
   localStorage.setItem('todoCount', count);
-
   summeryTodoSize.forEach((ele) => {    
       ele.innerHTML = "" + count;
   });
