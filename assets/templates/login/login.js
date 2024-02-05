@@ -8,24 +8,19 @@ async function login() {
   let loginPasswordInput = document.getElementById("login-input-password");
   let errorMsg = document.getElementById("login-error");
   let validated = validateLoginForm();
-
   if (!validated) return;
   let user = await findUserByEmail(loginInput.value);
-
   if (user == null) {    
     return;
-  }  
-
+  }
   if (user == null) {
     errorMsg.innerHTML = "No user found with this email address.";
     return;
   }
-
   if (!user.password.match(loginPasswordInput.value)) {
     errorMsg.innerHTML = "The password is incorrect!";
     return;
   }
-
   currentUser = user;
   if (document.getElementById("rememberMe").checked) {
     localStorage.setItem(
@@ -47,17 +42,6 @@ async function login() {
  * @returns Boolean
  */
 async function findUserByEmail(email) {
-  /*
-  let u = {};
-  users.map((user) => {
-    if (user["email"] != null && user["email"] == email) {
-      u = user;
-    } else {
-      u = null;
-    }
-  });
-  return u;
-*/
   return users.find((userI) => userI.email == email);
 }
 
@@ -70,17 +54,12 @@ function validateLoginForm() {
   let loginPasswordInput = document.getElementById("login-input-password");
   let errorMsg = document.getElementById("login-error");
   let c = true;
-
   if (loginInput.value == "") {
     errorMsg.innerHTML = "U must enter a Email!";
-    c = false;
-  }
-
+    c = false;  }
   if (loginPasswordInput.value == "") {
     errorMsg.innerHTML = "U must enter a Password";
-    c = false;
-  }
-
+    c = false;  }
   showErrorBorder("[data-login]", true);
   return c;
 }
@@ -108,17 +87,27 @@ function loginAsGuest() {
   loginBtn.click();  
 }
 
+/**
+ * Redirect to Register
+ */
 function redirectToRegister() {
   window.location.assign("./../register/register.html");
 }
 
-function handleMenuItemClick(menuItemId) {  // Save the ID of the clicked menu item in localStorage  
+/**
+ * Save the ID of the clicked menu item in localStorage
+ * @param {Id from the clicked menu item} menuItemId
+ */
+function handleMenuItemClick(menuItemId) {  // 
   localStorage.setItem("lastClickedMenuItem", menuItemId);
 }
 
+/**
+ * Save the ID of the clicked menu item in localStorage
+ */
 function loadContentBasedOnLastClickedMenuItem() {  
-  const lastClickedMenuItem = localStorage.getItem("lastClickedMenuItem");  // Check if a last clicked menu item is saved in localStorage
-  if (lastClickedMenuItem) {  // If a last clicked menu item is found, call the corresponding function    
+  const lastClickedMenuItem = localStorage.getItem("lastClickedMenuItem");
+  if (lastClickedMenuItem) {
     switch (lastClickedMenuItem) {
       case "nav-board":
         includeContentHTML("Board");
@@ -134,11 +123,11 @@ function loadContentBasedOnLastClickedMenuItem() {
         setActiveLink("nav-contacts");
         break;      
       default:        
-        includeContentHTML("Summary");  // Handle default case
+        includeContentHTML("Summary");
         setActiveLink("nav-summary");
     }
   } else {    
-    includeContentHTML("Summary");  // If no last clicked menu item is found, load the default content (Summary)
+    includeContentHTML("Summary");
     setActiveLink("nav-summary");
   }
 }
