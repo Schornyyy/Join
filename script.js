@@ -1,4 +1,3 @@
-// const STORAGE_TOKEN = "MU03W9OLC4M9O5ZLSW91OZWGA938X4EBLQKC0CNW";
 const STORAGE_TOKEN = "NHVJPHBLRQALJ98XTMXQA0FK8V369I8UCJ65G3KN";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 let users = [];
@@ -10,8 +9,7 @@ let currentUser;
  * @param {string} value
  * @returns
  */
-async function setItem(key, value) {
-  //"users" -> array(User, User, User)
+async function setItem(key, value) {  
   const payload = { key, value, token: STORAGE_TOKEN };
   return fetch(STORAGE_URL, {
     method: "POST",
@@ -19,25 +17,10 @@ async function setItem(key, value) {
   }).then((res) => res.json());
 }
 
-// async function getItem(key) {
-//   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-//   let resp;
-//   await fetch(url).then((res) => {
-//     if (res.ok) {
-//       resp = res.json();
-//     } else {
-//       resp = res.status;
-//     }
-//   });
-//   return resp;
-// }
-
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-
   try {
     const res = await fetch(url);
-
     if (res.ok) {
       return res.json();
     } else {
@@ -57,18 +40,12 @@ async function loadData() {
   if (localStorage.getItem("userData") != null) {
     let data = JSON.parse(localStorage.getItem("userData"));
     if (data.loginCount == 2 && !data.remberMe) {
-      localStorage.clear();
-      // window.location.href = "/assets/templates/login/login.html";
+      localStorage.clear();      
     }
     data.loginCount++;
     localStorage.setItem("userData", JSON.stringify(data));
     await loadDataToUser();
-  } // else if (
-    // !window.location.href.match("/assets/templates/login/login.html") &&
-    // !window.location.href.match("/assets/templates/register/register.html")
-  // )  {
-   // window.location.href = "/assets/templates/login/login.html";
-  //}
+  }
 }
 
 /**
