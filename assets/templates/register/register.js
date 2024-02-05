@@ -7,9 +7,7 @@ async function registerUser() {
   let email = document.getElementById("register-email");
   let password = document.getElementById("register-password");
   let validated = await validateForm();
-
   if (!validated) return;
-
   let signedUpSuccessfully = document.getElementById("signedUpSuccessfully");
   signedUpSuccessfully.classList.add("signedUpAnimationDesktop");
 
@@ -54,28 +52,23 @@ async function validateForm() {
     .hasAttribute("checked");
   let registerName = document.getElementById("register-name");
   showErrorBorder("[data-register]", true);
-
   if (registerName == null || registerName.value == "") {
     errorMsg.innerHTML = "U must enter a Username!";
     c = false;
     return c;
   }
-
   if (email == null || email.value == "") {
     errorMsg.innerHTML = "U must enter a Email Adress!";
     c = false;
     return c;
   }
-
   if (emailTaken) {
     errorMsg.innerHTML = "A Account with this Email already exists";
     c = false;
     return c;
   }
-
   let password = document.getElementById("register-password");
   let password_confirm = document.getElementById("register-password-confirm");
-
   if (
     password == null ||
     password_confirm == null ||
@@ -86,19 +79,16 @@ async function validateForm() {
     c = false;
     return c;
   }
-
   if (password == null || !password.value.match(password_confirm.value)) {
     errorMsg.innerHTML = "Passwords dosnt match!";
     c = false;
     return c;
   }
-
   if (!checked) {
     errorMsg.innerHTML = "U must accept the privacy police";
     c = false;
     return c;
   }
-
   return c;
 }
 
@@ -110,17 +100,8 @@ async function validateForm() {
 async function emailAlreadyTaken(email) {
   let emails = await users.find((a) => a.email === email);
   let c = false;
-
   if (emails != null || emails != undefined) {
     c = true;
   }
-
   return c;
-}
-
-/**
- * Switch from the registration page back to the login page.
- */
-function redirectToLoin() {
-  // window.location.assign("./../login/login.html");
 }
