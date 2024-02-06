@@ -582,15 +582,15 @@ function editDialogToHTML(task) {
         <div class="edit-form">
             <div class="input-container">
                 <label for="inputTaskTitle">Title</label>
-                <input type="text" id="inputTaskTitle">
+                <input type="text" name="inputTaskTitle" id="inputTaskTitle">
             </div>
             <div class="input-container">
                 <label for="inputTaskDescription">Description</label>
-                <input type="text" id="inputTaskDescription">
+                <input type="text" name="inputTaskDescription" id="inputTaskDescription">
             </div>
             <div class="input-container">
                 <label for="inputTaskDuedate">Due Date</label>
-                <input type="date" id="inputTaskDuedate">
+                <input type="date" name="inputTaskDuedate" id="inputTaskDuedate">
             </div>
             <div class="input-container">
                 <label for="">Priority</label>
@@ -612,7 +612,7 @@ function editDialogToHTML(task) {
             <div class="input-container" id="inputContainerMembers">
                 <label for="">Assigned to</label>
                 <div class="input-wrapper edit-input-wrapper">
-                    <input class="input-select-members" type="text" placeholder="Select Contacts to assign" id="inputSelectMembers">
+                    <input class="input-select-members" type="text" placeholder="Select Contacts to assign" name="inputSelectMembers" id="inputSelectMembers">
                     <img src="./assets/img/board/dropdown-down-icon.svg" alt="dropdown-down" id="dropdownIcon">
                 </div>                
                 <div class="dropdown-menu reini-d-none" id="dropdownContacts">
@@ -625,7 +625,7 @@ function editDialogToHTML(task) {
             <div class="input-container">
                 <label for="">Subtask</label>
                 <div class="input-wrapper edit-input-wrapper">
-                    <input class="input-add-subtask" type="text" placeholder="Add new subtask" id="inputSubtask">
+                    <input class="input-add-subtask" type="text" placeholder="Add new subtask" name="inputSubtask" id="inputSubtask">
                     <img src="./assets/img/board/plus-icon.svg" alt="plus-icon" id="addSubtaskIcon" onclick="addSubtask(${task.id})">
                 </div>
                 <div class="edit-subtaskList" id="subtasksContainer">
@@ -767,7 +767,7 @@ function editSubtasksToHTML(task) {
             <li>
                 <div>
                     <span>&bull; </span><span id="subtaskTitle${i}">${subtask.title}</span>
-                    <input type="text" class="input-subtask reini-d-none" id="inputSubtask${i}">
+                    <input type="text" class="input-subtask reini-d-none" name="inputSubtask${i}" id="inputSubtask${i}">
                 </div>
                 <div class="edit-subtask-icon-container">
                     <img src="./assets/img/board/edit-icon.svg" alt="pencil-icon" id="pencilIcon${i}" onclick="editSubtaskStart(${i})">

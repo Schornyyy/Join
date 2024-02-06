@@ -4,13 +4,14 @@
     <div class="tasks-form-row-divieder"></div>
     <label for="form-title">
       <p>Title <span>*</span></p>
-      <input type="text" placeholder="Enter a title" required id="form-title" />
+      <input type="text" placeholder="Enter a title" required name="form-title" id="form-title" />
     </label>
     <label for="form-desc">
       <p>Description</p>
       <textarea
         placeholder="Enter a Description"
         required
+        name="form-desc"
         id="form-desc"
       ></textarea>
     </label>
@@ -20,12 +21,12 @@
         <div class="prio">
           <label
             for="prio-urgent"
-            class="prio-self"
+            class="prio-self"            
             onclick="clickedPrio('prio-urgent')"
             data-prio="prio"
             >Urgent <img src="./assets/img/add_tasks/prio_urgent.svg" alt=""
           /></label>
-          <input type="radio" id="prio-urgent" value="Urgent" />
+          <input type="radio" name="prio-urgent" id="prio-urgent" value="Urgent" />
         </div>
         <div class="prio">
           <label
@@ -34,7 +35,7 @@
             data-prio="prio"
             >Medium <img src="./assets/img/add_tasks/prio_medium.svg" alt="" />
           </label>
-          <input type="radio" id="prio-medium" value="Medium" />
+          <input type="radio" name="prio-medium" id="prio-medium" value="Medium" />
         </div>
         <div class="prio">
           <label
@@ -43,7 +44,7 @@
             data-prio="prio"
             >Low <img src="./assets/img/add_tasks/prio_low.svg" alt=""
           /></label>
-          <input type="radio" id="prio-low" value="Low" />
+          <input type="radio" name="prio-low" id="prio-low" value="Low" />
         </div>
       </div>
     </div>
@@ -53,6 +54,7 @@
         type="text"
         placeholder="dd/mm/yyyy"
         required
+        name="form-date"
         id="form-date"
         onfocus="(this.type='date')"
         onblur="(this.type='text')"
@@ -103,6 +105,7 @@
       <div class="dropdown subtasks-input">
         <input
           type="text"
+          name="subtasks-to-dropdown"
           id="subtasks-to-dropdown"
           placeholder="Add new Task"
           oninput="

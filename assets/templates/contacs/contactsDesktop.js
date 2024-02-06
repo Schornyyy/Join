@@ -225,9 +225,9 @@ function generateHTMLAddContactShowOverlayDesktop(overlayContent) {
             <div class="addContactContainerFooter">
             <form id="addContactShowOverlayDesktopID" onsubmit="createContactDesktop()">
             <div class="addContactContainerFooter">
-            <input class="addContactInputNameDesktop" type="text" required pattern="[A-Za-z]+" placeholder="Name" data-contacts>
-              <input class="addContactInputMailAddresssDesktop" type="email" required placeholder="E Mail" data-contacts>
-              <input class="addContactInputPhoneDesktop" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" data-contacts>
+            <input class="addContactInputNameDesktop" type="text" name="addContactInputNameDesktop" id="addContactInputNameDesktopID" required pattern="[A-Za-z]+" placeholder="Name" data-contacts>
+              <input class="addContactInputMailAddresssDesktop" name="addContactInputMailAddresssDesktop" id="addContactInputMailAddresssDesktopID" type="email" required placeholder="E Mail" data-contacts>
+              <input class="addContactInputPhoneDesktop" type="tel" name="addContactInputPhoneDesktop" id="addContactInputPhoneDesktopID" required pattern="[0-9]{1,}" placeholder="Phone" data-contacts>
               <div class="addContactButtonContainerDesktop">
                 <button class="cancelContactDesktopDeleteButton" onclick="hideOverlay()">Cancel</button>
                 <button class="createContactButton" onclick="createContactDesktop()">Create contact</button>
@@ -335,9 +335,9 @@ function generateHTMLEditContactDesktop(overlayContent, selectedContact) {
           <div id="editContactDestopID">
             <div class="addContactContainerFooter">
               <form id="addContactForm" onsubmit="event.preventDefault(); updateContactDesktop(${selectedContact.id})">
-                <input class="addContactInputNameDesktop" type="text" required placeholder="Name" value="${selectedContact.name}">
-                <input class="addContactInputMailAddresssDesktop" type="email" required placeholder="E-Mail" value="${selectedContact.email}">
-                <input class="addContactInputPhoneDesktop" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
+                <input class="addContactInputNameDesktop" type="text" name="editContactInputNameDesktop" id="editContactInputNameDesktopID" required placeholder="Name" value="${selectedContact.name}">
+                <input class="addContactInputMailAddresssDesktop" type="email" name="editContactInputMailAddresssDesktop" id="editContactInputMailAddresssDesktopID" required placeholder="E-Mail" value="${selectedContact.email}">
+                <input class="addContactInputPhoneDesktop" type="tel" name="editContactInputPhoneDesktop" id="editContactInputPhoneDesktopID" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
                 <div class="addContactButtonContainerDesktop">
                   <button class="cancelContactDesktopDeleteButton" onclick="deleteContact(${selectedContact.id})">Delete</button>
                   <button class="createContactButton" type="submit">Save</button>

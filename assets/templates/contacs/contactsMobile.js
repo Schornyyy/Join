@@ -162,9 +162,9 @@ function addContactFormMobileHTML() {
     </div>
     <form id="addContactFormMobileID" onsubmit="createContactMobile()">
       <div class="addContactContainerFooter">
-        <input class="addContactInputNameMobile" type="text" required placeholder="Name">
-        <input class="addContactInputMailAddresssMobile" type="text" required placeholder="E Mail">
-        <input class="addContactInputPhoneMobile" type="text" required placeholder="Phone">
+        <input class="addContactInputNameMobile" name="addContactInputNameMobile" id="addContactInputNameMobileID" type="text" required placeholder="Name">
+        <input class="addContactInputMailAddresssMobile" name="addContactInputMailAddresssMobile" id="addContactInputMailAddresssMobileID" type="text" required placeholder="E Mail">
+        <input class="addContactInputPhoneMobile" name="addContactInputPhoneMobile" id="addContactInputPhoneMobileID" type="text" required placeholder="Phone">
         <img class="createContactButtonImg" src="../assets/img/contact/createContactButton.svg" alt="" onclick="createContactMobile()">
       </div>
     </form>
@@ -251,9 +251,9 @@ function createEditContactHTML(selectedContact) {
     </div>
     <form id="editcontactFormMobileID" onsubmit="updateContactMobile(${selectedContact.id})">
       <div class="addContactContainerFooter">
-        <input class="addContactInputNameMobile" type="text" required pattern="[A-Za-z]+" placeholder="Name" value="${selectedContact.name}">
-        <input class="addContactInputMailAddresssMobile" type="email" required placeholder="E Mail" value="${selectedContact.email}">
-        <input class="addContactInputPhoneMobile" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
+        <input class="addContactInputNameMobile" name="editContactInputNameMobile" id="editContactInputNameMobileID" type="text" required pattern="[A-Za-z]+" placeholder="Name" value="${selectedContact.name}">
+        <input class="addContactInputMailAddresssMobile" name="editContactInputMailAddresssMobile" id="editContactInputMailAddresssMobileID" type="email" required placeholder="E Mail" value="${selectedContact.email}">
+        <input class="addContactInputPhoneMobile" name="editContactInputPhoneMobile" id="editContactInputPhoneMobileID" type="tel" required pattern="[0-9]{1,}" placeholder="Phone" value="${selectedContact.phone}">
         <div>
           <img class="createContactButtonImg" src="../assets/img/contact/editContactDeleteButtonImg.svg" alt="" onclick="deleteContact(${selectedContact.id})">
           <img class="createContactButtonImg" src="../assets/img/contact/editContactSaveButtonImg.svg" alt="" onclick="updateContactMobile(${selectedContact.id})">

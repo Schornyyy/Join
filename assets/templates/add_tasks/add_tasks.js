@@ -309,6 +309,7 @@ function renderSubtaskHTML() {
                 type="text"
                 value='${subtask.title}'
                 class="disabled-input"
+                name="subtask-${index}"
                 id='subtask-${index}'
                 onclick="changeSubtaskInput(this)"
               />
