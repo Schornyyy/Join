@@ -12,11 +12,20 @@ console.log(users);
  * @returns
  */
 async function setItem(key, value) {  
-  const payload = { key, value, token: STORAGE_TOKEN };
-  return fetch(STORAGE_URL, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  }).then((res) => res.json());
+  try {
+    const payload = { key, value, token: STORAGE_TOKEN };
+    const response = await fetch(STORAGE_URL, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });    
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error during setItem:', error);
+    throw error;
+  }
 }
 
 async function getItem(key) {

@@ -14,12 +14,13 @@ async function registerUser() {
   /**
    * If user registert, then switch to login.
    */
-  setTimeout(() => {
+  setTimeout(async () => {
     let user = new User(username.value, email.value, password.value, null);
     users.push(user);
     currentUser = user;
     console.log(user);
     currentUser.save();
+    await setItem(JSON.stringify(email), JSON.stringify(user));
     window.location.href = "/assets/templates/login/login.html";
     signedUpSuccessfully.classList.remove("signedUpAnimationDesktop");
   }, 1000 * 1.5);
