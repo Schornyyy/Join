@@ -28,6 +28,10 @@ async function setItem(key, value) {
   }
 }
 
+/**
+ * Get request to backend.
+ * @param {lokal storage key} key
+ */
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   try {
