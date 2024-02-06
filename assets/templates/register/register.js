@@ -18,6 +18,7 @@ async function registerUser() {
     let user = new User(username.value, email.value, password.value, null);
     users.push(user);
     currentUser = user;
+    console.log(user);
     currentUser.save();
     window.location.href = "/assets/templates/login/login.html";
     signedUpSuccessfully.classList.remove("signedUpAnimationDesktop");
