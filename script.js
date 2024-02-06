@@ -5,23 +5,24 @@ let currentUser;
 
 /**
  * Push request to backend.
+ * Either it is fulfilled successfully (resolved) or it fails (rejected).
  * @param {lokal storage key} key
  * @param {string} value
- * @returns
+ * @returns Promise: resolved or rejected.
  */
-async function setItem(key, value) {  
+async function setItem(key, value) {
   try {
     const payload = { key, value, token: STORAGE_TOKEN };
     const response = await fetch(STORAGE_URL, {
       method: "POST",
       body: JSON.stringify(payload),
-    });    
+    });
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error("Network response was not ok");
     }
     return await response.json();
   } catch (error) {
-    console.error('Error during setItem:', error);
+    console.error("Error during setItem:", error);
     throw error;
   }
 }
@@ -53,7 +54,7 @@ async function loadData() {
   if (localStorage.getItem("userData") != null) {
     let data = JSON.parse(localStorage.getItem("userData"));
     if (data.loginCount == 2 && !data.remberMe) {
-      localStorage.clear();      
+      localStorage.clear();
     }
     data.loginCount++;
     localStorage.setItem("userData", JSON.stringify(data));
@@ -70,7 +71,7 @@ async function loadUsers() {
     users = [];
   } else {
     users = JSON.parse(usersResp.data.value);
-  }  
+  }
 }
 
 /**
@@ -84,7 +85,7 @@ async function loadDataToUser() {
   u.loadFromJSON(user);
   u.contacts = user.contacts;
   u.contacts = u.contacts.sort((a, b) => a.name.localeCompare(b.name));
-  currentUser = u;  
+  currentUser = u;
 }
 
 /**
@@ -98,5 +99,5 @@ function editUser(contactIndex, obj) {
   let keys = Object.keys(obj);
   for (let index = 0; index < vals.length; index++) {
     contact[keys[index]] = vals[index];
-  }  
+  }
 }
