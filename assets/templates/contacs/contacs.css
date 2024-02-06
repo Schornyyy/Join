@@ -756,8 +756,7 @@
     justify-content: center;
   }
 
-  .overlay-content {
-    width: 1250px;
+  .overlay-content {    
     background: white;
     overflow: hidden;
     border-radius: 20px;
@@ -1179,7 +1178,12 @@
   }
 
   .addContactDesktopLeftSideContainer {
-    min-width: 1433px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 467px;    
+    background-color: var(--light-grey);
+    gap: 16px;
   }
 
   .joinLogoGreyBackgroundImg {
