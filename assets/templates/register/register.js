@@ -17,8 +17,7 @@ async function registerUser() {
   setTimeout(async () => {
     let user = new User(username.value, email.value, password.value, null);
     users.push(user);
-    currentUser = user;
-    console.log(user);
+    currentUser = user;    
     currentUser.save();
     await setItem(JSON.stringify(email), JSON.stringify(user));
     window.location.href = "/assets/templates/login/login.html";

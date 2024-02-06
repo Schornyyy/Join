@@ -3,26 +3,22 @@
  * Remember user in local storage.
  * @returns Else, then error message.
  */
-async function login() {
-  console.log("login begin");
+async function login() {  
   let loginInput = document.getElementById("login-input-email");
   let loginPasswordInput = document.getElementById("login-input-password");
   let errorMsg = document.getElementById("login-error");
   let validated = validateLoginForm();
   if (!validated) return;
   let user = await findUserByEmail(loginInput.value);
-  if (user == null) {
-    console.log("searching user by email");   
+  if (user == null) {       
     return;
   }
   if (user == null) {
-    errorMsg.innerHTML = "No user found with this email address.";
-    console.log("No user found with this email address.");
+    errorMsg.innerHTML = "No user found with this email address.";    
     return;
   }
   if (!user.password.match(loginPasswordInput.value)) {
-    errorMsg.innerHTML = "The password is incorrect!";
-    console.log("The password is incorrect!");
+    errorMsg.innerHTML = "The password is incorrect!";    
     return;
   }
   currentUser = user;
@@ -37,8 +33,7 @@ async function login() {
       JSON.stringify({ ...user, remberMe: false, loginCount: 0 })
     );
   }
-  window.location.assign("./../../../index.html");
-  console.log("login done");
+  window.location.assign("./../../../index.html");  
 }
 
 /**

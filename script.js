@@ -3,8 +3,6 @@ const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 let users = [];
 let currentUser;
 
-console.log(users);
-
 /**
  * Push request to backend.
  * @param {lokal storage key} key
