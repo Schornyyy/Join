@@ -578,13 +578,13 @@
   }
 
   .contactsContentRightSideH1 {
-    font-size: 5vw;
+    font-size: 4vw;
     font-weight: 700;
     color: black;
   }
 
   .contactsContentRightSideHeadLinePElement {
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: 400;
     color: black;
   }
@@ -610,7 +610,7 @@
   }
 
   .contactsContentRightSideUserNameH2 {
-    font-size: 47px;
+    font-size: 40px;
     font-weight: 500;
   }
 
@@ -1101,17 +1101,17 @@
   }
 }
 
-@media only screen and (max-width: 4000px) and (min-width: 1900px) {
+@media only screen and (max-width: 4000px) and (min-width: 2500px) {
   .openContactUserImg {
-    height: 240px;
-    width: 240px;
-    font-size: 2vw;
+    height: 180px;
+    width: 180px;
+    font-size: 1.5vw;
   }
 
   .openContactUserImgMobile {
-    height: 240px;
-    width: 240px;
-    font-size: 2vw;
+    height: 180px;
+    width: 180px;
+    font-size: 1.5vw;
   }
 
   .contactsContentRightSideUserNameH2 {
@@ -1322,7 +1322,7 @@
   }  
 }
 
-@media only screen and (max-width: 4000px) and (min-width: 1700px) {
+@media only screen and (max-width: 4000px) and (min-width: 2500px) {
   .member-icon {
     font-size: 2rem !important;
     height: 80px !important;
