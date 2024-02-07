@@ -101,3 +101,11 @@ function editUser(contactIndex, obj) {
     contact[keys[index]] = vals[index];
   }
 }
+
+function removeEventlistenerForContactsResize() {
+  if (typeof contactsInit === 'function') {
+    window.removeEventListener('resize', contactsInit);
+  } else {
+    console.warn('Event listener for contactsInit not found.');
+  }
+}

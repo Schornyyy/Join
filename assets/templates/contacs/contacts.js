@@ -1,18 +1,18 @@
 let nextContactId; // ID-counter for next contact-ID
 let lastClickedContactId; // Last clicked contact-ID
-let currentMenuItem = ''; // Variable for last clicked mneu item
+let currentMenuItem = 'nav-contacts'; // Variable zum Verfolgen des aktuellen Menüpunkts
 
 /**
  * initialize all contacts for the current user
  */
 async function contactsInit() {
   try {   
-    initializeContactId();    
+    initializeContactId();
+    initializeView();
     showHeaderAndFooter();
     renderAddContactButton();
-    initializeView();
   } catch (error) {
-    console.error("Fehler beim Initialisieren der Kontakte:", error);
+        
   }
 }
 
@@ -37,29 +37,11 @@ function initializeView() {
     showContactsContentRightSideDesktop();
     changeScrollbar();
   }
-  contactsContentBackgroundColorWhite();
-  addMenuClickListener();
+  contactsContentBackgroundColorWhite();  
+  window.addEventListener('resize', contactsInit);
 }
 
-// Funktion zum Hinzufügen eines Event-Listeners für das Klicken auf andere Menüpunkte
-function addMenuClickListener() {
-  const menuItems = document.querySelectorAll('.menu-item');
-  menuItems.forEach(item => {
-    item.addEventListener('click', function(event) {
-      const clickedMenuItemId = event.target.id;
-      if (clickedMenuItemId !== 'nav-contacts') {
-        currentMenuItem = clickedMenuItemId;
-      }
-    });
-  });
-}
- 
-/**
- * initializeView call only if currentMenuItem= 'nav-contacts'
- */
-if (currentMenuItem === 'nav-contacts') {
-  initializeView();
-}
+
 
 /**
  * This function is called in HTML-Code and shows the "add contact screen" to add a new contact person
@@ -187,6 +169,7 @@ function deleteFirstContact() {
   contactsInit();
 }
 
+
 /**
  * Developer tool (only for developer, not needed for the project himself). Clear the lokal storage
  */
@@ -198,36 +181,4 @@ async function deleteContactDataById() {
   } catch (error) {
     console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
   }
-}
-
-/**
- * Delete contact by name
- * @param {string} name - The name of the contact to delete
- */
-function deleteContactByName(name) {
-  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
-  if (!confirmDelete) return;
-
-  try {
-    const contactIndex = findContactIndexByName(name);
-    if (contactIndex === -1) {
-      console.error("Selected contact not found in currentUser.contacts.");
-      return;
-    }
-
-    const deletedContact = removeContact(contactIndex);
-    saveAndLogDeletedContact(deletedContact);
-  } catch (error) {
-    handleDeleteError(error);
-  } 
-  contactsInit();
-}
-
-/**
- * Find contact index by name
- * @param {string} name - The name of the contact to find
- * @returns {number} - The index of the contact in the currentUser.contacts array
- */
-function findContactIndexByName(name) {
-  return currentUser.contacts.findIndex((contact) => contact.name === name);
 }
