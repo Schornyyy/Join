@@ -199,3 +199,35 @@ async function deleteContactDataById() {
     console.error("Fehler beim Löschen und Neu Laden der Kontakt-Daten:", error);
   }
 }
+
+/**
+ * Delete contact by name
+ * @param {string} name - The name of the contact to delete
+ */
+function deleteContactByName(name) {
+  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");
+  if (!confirmDelete) return;
+
+  try {
+    const contactIndex = findContactIndexByName(name);
+    if (contactIndex === -1) {
+      console.error("Selected contact not found in currentUser.contacts.");
+      return;
+    }
+
+    const deletedContact = removeContact(contactIndex);
+    saveAndLogDeletedContact(deletedContact);
+  } catch (error) {
+    handleDeleteError(error);
+  } 
+  contactsInit();
+}
+
+/**
+ * Find contact index by name
+ * @param {string} name - The name of the contact to find
+ * @returns {number} - The index of the contact in the currentUser.contacts array
+ */
+function findContactIndexByName(name) {
+  return currentUser.contacts.findIndex((contact) => contact.name === name);
+}
