@@ -169,7 +169,7 @@ function progressToHTML(task) {
         return `
             <div class="progress-container">
                 <progress class="progress-bar" value="${amountOfFinishedSubtasks}" max="${amountOfSubtasks}"></progress>
-                <label for="progressBar"><span>${amountOfFinishedSubtasks}</span>/<span>${amountOfSubtasks}</span>Subtasks</label>
+                <span><span>${amountOfFinishedSubtasks}</span>/<span>${amountOfSubtasks}</span>Subtasks</span>
             </div>
         `;
     } else
