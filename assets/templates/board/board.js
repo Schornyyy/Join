@@ -593,7 +593,7 @@ function editDialogToHTML(task) {
                 <input type="date" name="inputTaskDuedate" id="inputTaskDuedate">
             </div>
             <div class="input-container">
-                <label for="">Priority</label>
+                <label for="prioButtonUrgent">Priority</label>
                 <div class="input-prio-container">
                     <div class="input-prio-button" id="prioButtonUrgent" onclick="editSetPrioButton('prio-urgent')">
                         <span>Urgent</span>
@@ -610,7 +610,7 @@ function editDialogToHTML(task) {
                 </div>
             </div>
             <div class="input-container" id="inputContainerMembers">
-                <label for="">Assigned to</label>
+                <label for="inputSelectMembers">Assigned to</label>
                 <div class="input-wrapper edit-input-wrapper">
                     <input class="input-select-members" type="text" placeholder="Select Contacts to assign" name="inputSelectMembers" id="inputSelectMembers">
                     <img src="./assets/img/board/dropdown-down-icon.svg" alt="dropdown-down" id="dropdownIcon">
@@ -623,7 +623,7 @@ function editDialogToHTML(task) {
                 </div>
             </div>
             <div class="input-container">
-                <label for="">Subtask</label>
+                <label for="inputSubtask">Subtask</label>
                 <div class="input-wrapper edit-input-wrapper">
                     <input class="input-add-subtask" type="text" placeholder="Add new subtask" name="inputSubtask" id="inputSubtask">
                     <img src="./assets/img/board/plus-icon.svg" alt="plus-icon" id="addSubtaskIcon" onclick="addSubtask(${task.id})">
