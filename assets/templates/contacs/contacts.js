@@ -1,15 +1,16 @@
 let nextContactId; // ID-counter for next contact-ID
 let lastClickedContactId; // Last clicked contact-ID
+let currentMenuItem = ''; // Variable for last clicked mneu item
 
 /**
  * initialize all contacts for the current user
  */
 async function contactsInit() {
   try {   
-    initializeContactId();
-    initializeView();
+    initializeContactId();    
     showHeaderAndFooter();
     renderAddContactButton();
+    initializeView();
   } catch (error) {
     console.error("Fehler beim Initialisieren der Kontakte:", error);
   }
@@ -36,8 +37,28 @@ function initializeView() {
     showContactsContentRightSideDesktop();
     changeScrollbar();
   }
-  contactsContentBackgroundColorWhite();  
-  window.addEventListener('resize', contactsInit);
+  contactsContentBackgroundColorWhite();
+  addMenuClickListener();
+}
+
+// Funktion zum Hinzufügen eines Event-Listeners für das Klicken auf andere Menüpunkte
+function addMenuClickListener() {
+  const menuItems = document.querySelectorAll('.menu-item');
+  menuItems.forEach(item => {
+    item.addEventListener('click', function(event) {
+      const clickedMenuItemId = event.target.id;
+      if (clickedMenuItemId !== 'nav-contacts') {
+        currentMenuItem = clickedMenuItemId;
+      }
+    });
+  });
+}
+ 
+/**
+ * initializeView call only if currentMenuItem= 'nav-contacts'
+ */
+if (currentMenuItem === 'nav-contacts') {
+  initializeView();
 }
 
 /**
@@ -165,7 +186,6 @@ function deleteFirstContact() {
   }
   contactsInit();
 }
-
 
 /**
  * Developer tool (only for developer, not needed for the project himself). Clear the lokal storage
