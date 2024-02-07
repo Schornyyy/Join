@@ -20,20 +20,29 @@ class User {
    * @param {JSON Object} obj
    */
   loadFromJSON(obj) {
-    (this.name = obj.name),
-      (this.email = obj.email),
-      (this.password = obj.password),
-      (this.colorCode = obj.colorCode),
-      (this.contacts = obj.contacts),
-      (this.tasks = obj.tasks);
+    this.name = obj.name;
+    this.email = obj.email;
+    this.password = obj.password;
+    this.colorCode = obj.colorCode;
+    this.contacts = obj.contacts;
+    this.tasks = obj.tasks;
   }
+
+  // loadFromJSON(obj) {
+  //   (this.name = obj.name),
+  //     (this.email = obj.email),
+  //     (this.password = obj.password),
+  //     (this.colorCode = obj.colorCode),
+  //     (this.contacts = obj.contacts),
+  //     (this.tasks = obj.tasks);
+  // }
 
   /**
    * Save the current user to prepare it for the backend.
    */
   async save() {
     let u = currentUser;
-    let cu = users.findIndex((a) => a.email == u.email);    
+    let cu = users.findIndex((a) => a.email == u.email);
     editUser(cu, u.toJSON());
     await setItem("users", users);
   }
