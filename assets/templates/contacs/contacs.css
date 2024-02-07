@@ -1453,6 +1453,10 @@
     margin-bottom: 6em;
     height: 30vh;  
   }
+
+  .addContactCloseXContainer {
+    top: 6em;
+  }
 }
 
 @media only screen and (max-width: 750px) {
