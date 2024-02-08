@@ -731,14 +731,20 @@ function editMembersToHTML(memberMails) {
 
 function editSingleMemberToHTML(member) {
   let textcolor;
-  if (!isColorLight(member.colorCode)) textcolor = "white";
-  return `
+  try {
+    if (member && member.colorCode) {
+      if (!isColorLight(member.colorCode)) textcolor = "white";
+      return `
         <div class="member-icon" style="background-color:${
           member.colorCode
-        };color:${textcolor};">
-            ${getFirstLettersOfName(member.name)}
+        };color:${textcolor || "black"};">
+          ${getFirstLettersOfName(member.name)}
         </div>
-    `;
+      `;
+    }
+  } catch (error) {    
+    
+  }
 }
 
 function reloadTaskMembersContainer() {
