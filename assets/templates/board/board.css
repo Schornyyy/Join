@@ -34,7 +34,7 @@ body {
 }
 
 .category-technical-task {
-  background-color: var(--reini-category-turquoise);
+  background-color: #1FD7C1; 
 }
 
 .category-user-story {

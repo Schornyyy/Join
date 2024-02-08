@@ -22,7 +22,7 @@ function singleTaskToHTML(task) {
               <img src="${getPrioImgURL(task)}" alt="prio img">
             </div>
           </div>
-  `;
+  `;  
 }
 
 function progressToHTML(task) {

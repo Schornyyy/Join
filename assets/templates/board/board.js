@@ -47,11 +47,14 @@ function renderBoard() {
 
 function renderTasks(containerID, status) {
   let cardContainer = document.getElementById(containerID);
-  // let tasksStatus = getTasksFromStatus(tasksDatasource, status);
   let tasksStatus = getTasksFromStatus(tasksDatasourceFiltered, status);
   cardContainer.innerHTML = tasksToHML(tasksStatus);
   if (tasksStatus.length == 0)
     cardContainer.innerHTML += cardContainerEmptyToHTML();
+
+  // Iteriere durch alle neu hinzugefügten <p> Elemente und weise Kategorienklassen zu
+  let taskParagraphs = cardContainer.querySelectorAll('p.task-category');
+  taskParagraphs.forEach(assignTaskCategory);
 }
 
 //////////////// GETTER
@@ -136,14 +139,24 @@ function getContactByEmail(email) {
 }
 
 function getCategoryClass(task) {
-  // CSS Klasse für Kategorie von Aufgabe bekommen
-  return "category-user-story";
+  // CSS Klasse für Kategorie von Aufgabe bekommen  
+  return "category-user-story";  
 }
 
-function categoryToHTML(task) {
+function categoryToHTML(task) {  
   return `<p class="task-category ${getCategoryClass(task)}">${
     task.category
-  }</p>`;
+  }</p>`;  
+}
+
+function assignTaskCategory(taskElement) {
+  let taskType = taskElement.textContent;
+  if (taskType === 'Technical Task') {
+      taskElement.classList.add('category-technical-task');
+      taskElement.classList.remove('category-user-story');
+  } else if (taskType === 'User Story') {
+      taskElement.classList.add('category-user-story');
+  }
 }
 
 function membersToHTML(task) {
