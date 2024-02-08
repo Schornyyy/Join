@@ -44,7 +44,7 @@
     padding: 5px;
 }
 
-.detail-close-icon:hover {
+.detail-close-icon {
     cursor: pointer;
 }
 
@@ -143,6 +143,10 @@
 .edit-header {
     display: flex;
     justify-content: right;
+}
+
+.edit-close-icon {
+    cursor: pointer;
 }
 
 .edit-form {
