@@ -46,7 +46,7 @@ function logout() {
 }
 
 function loadHeaderProfileInitials() {
-  const profileImg = document.getElementById("headerProfile");
+  const profileImg = document.getElementById("header_profile");
   if (currentUser != null || currentUser.name != "") {
     profileImg.innerHTML = getInitialsByContact(currentUser.name);
   }
