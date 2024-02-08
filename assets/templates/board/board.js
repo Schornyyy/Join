@@ -543,9 +543,9 @@ function editDialogToHTML(task) {
                 <input type="date" name="inputTaskDuedate" id="inputTaskDuedate">
             </div>
             <div class="input-container">
-                <label for="prioButtonUrgent">Priority</label>
+                <span> for="prioButtonUrgent">Priority</span>
                 <div class="input-prio-container">
-                    <div class="input-prio-button" id="prioButtonUrgent" onclick="editSetPrioButton('prio-urgent')">
+                    <div class="input-prio-button" name="prioButtonUrgent" id="prioButtonUrgent" onclick="editSetPrioButton('prio-urgent')">
                         <span>Urgent</span>
                         <img class="prio-icon" src="./assets/img/board/prio-urgent-icon.svg" alt="urgent-icon" id="prioButtonIconUrgent">
                     </div>
