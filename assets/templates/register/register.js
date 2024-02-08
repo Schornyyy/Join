@@ -17,7 +17,7 @@ async function registerUser() {
   setTimeout(async () => {
     let user = new User(username.value, email.value, password.value, null);
     users.push(user);
-    currentUser = user;    
+    currentUser = user;
     currentUser.save();
     await setItem(JSON.stringify(email), JSON.stringify(user));
     window.location.href = "/assets/templates/login/login.html";
@@ -105,4 +105,29 @@ async function emailAlreadyTaken(email) {
     c = true;
   }
   return c;
+}
+
+/**
+ * switch back from register page to login page.
+ */
+function redirectToLoin() {
+  window.location.assign("./../login/login.html");
+}
+
+/**
+ * To hide or show currentpassword in any fild.
+ * @param {each input from origin HTML-element} passwordId
+ * @param {each inputImage from origin HTML-element} imageId
+ */
+function changeToShowCurrentPassword(passwordId, imageId) {
+  let hideThePassword = document.getElementById(passwordId);
+  let hideThePasswordImage = document.getElementById(imageId);
+
+  if (hideThePassword.type == "password") {
+    hideThePassword.type = "text";
+    hideThePasswordImage.src = "/assets/img/login/lock.svg";
+  } else {
+    hideThePassword.type = "password";
+    hideThePasswordImage.src = "/assets/img/login/visibility_off.svg";
+  }
 }

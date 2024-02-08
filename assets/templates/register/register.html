@@ -25,7 +25,8 @@
         <div class="headerRegisterBox">
           <img
             class="backToLoginMobile"
-            src="../../../assets/img/register/arrow-left-line.svg"            
+            src="../../../assets/img/register/arrow-left-line.svg"
+            onclick="redirectToLoin()"
           />
           <div class="headerRegister">
             <h1>Sign up</h1>
@@ -88,7 +89,9 @@
           <img
             style="padding-right: 3px"
             class="inpIconStyle"
-            src="../../../assets/img/login/lock.svg"
+            id="signUpPasswordImage"
+            src="../../../assets/img/login/visibility_off.svg"
+            onclick="changeToShowCurrentPassword('register-password', 'signUpPasswordImage')"
           />
         </div>
 
@@ -112,7 +115,9 @@
           <img
             style="padding-right: 3px"
             class="inpIconStyle"
-            src="../../../assets/img/login/lock.svg"
+            id="signUpConfirmPasswordImage"
+            src="../../../assets/img/login/visibility_off.svg"
+            onclick="changeToShowCurrentPassword('register-password-confirm', 'signUpConfirmPasswordImage')"
           />
         </div>
 
