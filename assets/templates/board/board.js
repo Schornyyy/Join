@@ -696,8 +696,7 @@ function collapseDropdown() {
 
 //////////////// MEMBER CONTAINER
 
-function editMembersToHTML(memberMails) {
-  console.log(memberMails);
+function editMembersToHTML(memberMails) {  
   let output = "";
   for (let i = 0; i < memberMails.length; i++) {
     let member = getContactByEmail(memberMails[i]);
