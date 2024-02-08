@@ -235,24 +235,6 @@ function moveTask(task, status) {
   currentUser.save();
 }
 
-////////////////////////////////////////////////
-//////////////////// FILTER ////////////////////
-////////////////////////////////////////////////
-
-function addKeyupListener() {
-  let inputFilterphrase = document.getElementById("inputFilterphrase");
-  inputFilterphrase.addEventListener("keyup", () => {
-    filterTasks(inputFilterphrase.value);
-  });
-}
-
-function filterTasks(phrase) {
-  tasksDatasourceFiltered = tasksDatasource.filter((task) =>
-    task.title.toLowerCase().includes(phrase.toLowerCase())
-  );
-  renderBoard();
-}
-
 //////////////////////////////////////////////
 //////////////////// MISC ////////////////////
 //////////////////////////////////////////////
