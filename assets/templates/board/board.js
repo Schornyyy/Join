@@ -437,7 +437,7 @@ let contactsSelected;
 
 //////////////// SHOW HIDE EDIT
 
-function showDialogEdit(taskID) {
+async function showDialogEdit(taskID) {
   let detailDialog = document.getElementById("detailDialog");
   let editDialog = document.getElementById("editDialog");
   showDialogContainer();
@@ -446,7 +446,7 @@ function showDialogEdit(taskID) {
 
   let task = tasksDatasource.find((taskElem) => taskElem.id == taskID);
   setContactsSelected(task);
-  editDialog.innerHTML = editDialogToHTML(task);
+  editDialog.innerHTML = await editDialogToHTML(task);
   editDialogFillInputs(task);
   addDropdownClickHandler(taskID);
 }
@@ -697,6 +697,7 @@ function collapseDropdown() {
 //////////////// MEMBER CONTAINER
 
 function editMembersToHTML(memberMails) {
+  console.log(memberMails);
   let output = "";
   for (let i = 0; i < memberMails.length; i++) {
     let member = getContactByEmail(memberMails[i]);
@@ -710,35 +711,35 @@ function editMembersToHTML(memberMails) {
  * @param {*} member
  * @returns
  */
-function editSingleMemberToHTML(member) {
-  console.log(member);
-  let textcolor;
-  if (member && member.colorCode) {
-    if (!isColorLight(member.colorCode)) textcolor = "white";
-    return `
-      <div class="member-icon" style="background-color:${
-        member.colorCode
-      };color:${textcolor || "black"};">
-        ${getFirstLettersOfName(member.name)}
-      </div>
-    `;
-  } else {
-    console.log("Probleme was.");
-    return "";
-  }
-}
-
 // function editSingleMemberToHTML(member) {
+//   console.log(member);
 //   let textcolor;
-//   if (!isColorLight(member.colorCode)) textcolor = "white";
-//   return `
-//         <div class="member-icon" style="background-color:${
-//           member.colorCode
-//         };color:${textcolor};">
-//             ${getFirstLettersOfName(member.name)}
-//         </div>
+//   if (member && member.colorCode) {
+//     if (!isColorLight(member.colorCode)) textcolor = "white";
+//     return `
+//       <div class="member-icon" style="background-color:${
+//         member.colorCode
+//       };color:${textcolor || "black"};">
+//         ${getFirstLettersOfName(member.name)}
+//       </div>
 //     `;
+//   } else {
+//     console.log("Probleme was.");
+//     return "";
+//   }
 // }
+
+function editSingleMemberToHTML(member) {
+  let textcolor;
+  if (!isColorLight(member.colorCode)) textcolor = "white";
+  return `
+        <div class="member-icon" style="background-color:${
+          member.colorCode
+        };color:${textcolor};">
+            ${getFirstLettersOfName(member.name)}
+        </div>
+    `;
+}
 
 function reloadTaskMembersContainer() {
   let elem = document.getElementById("editTaskMembersContainer");
