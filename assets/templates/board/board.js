@@ -437,16 +437,15 @@ let contactsSelected;
 
 //////////////// SHOW HIDE EDIT
 
-async function showDialogEdit(taskID) {
+function showDialogEdit(taskID) {
   let detailDialog = document.getElementById("detailDialog");
   let editDialog = document.getElementById("editDialog");
   showDialogContainer();
   detailDialog.classList.add("reini-d-none");
   editDialog.classList.remove("reini-d-none");
-
   let task = tasksDatasource.find((taskElem) => taskElem.id == taskID);
   setContactsSelected(task);
-  editDialog.innerHTML = await editDialogToHTML(task);
+  editDialog.innerHTML = editDialogToHTML(task);
   editDialogFillInputs(task);
   addDropdownClickHandler(taskID);
 }
@@ -696,7 +695,11 @@ function collapseDropdown() {
 
 //////////////// MEMBER CONTAINER
 
-function editMembersToHTML(memberMails) {  
+function editMembersToHTML(memberMails) {
+  console.log(memberMails);
+  if (memberMails.length === 0) {
+    return ""; // Return empty string if no contacts selected
+  }
   let output = "";
   for (let i = 0; i < memberMails.length; i++) {
     let member = getContactByEmail(memberMails[i]);
