@@ -444,8 +444,7 @@ function showDialogEdit(taskID) {
   detailDialog.classList.add("reini-d-none");
   editDialog.classList.remove("reini-d-none");
   let task = tasksDatasource.find((taskElem) => taskElem.id == taskID);
-  setContactsSelected(task);
-  console.log(task);
+  setContactsSelected(task);  
   editDialog.innerHTML = editDialogToHTML(task);
   editDialogFillInputs(task);
   addDropdownClickHandler(taskID);
@@ -696,8 +695,7 @@ function collapseDropdown() {
 
 //////////////// MEMBER CONTAINER
 
-function editMembersToHTML(memberMails) {
-  console.log(memberMails);
+function editMembersToHTML(memberMails) {  
   if (memberMails.length === 0) {
     return ""; // Return empty string if no contacts selected
   }
@@ -743,8 +741,7 @@ function editSingleMemberToHTML(member) {
         ${getFirstLettersOfName(member.name)}
       </div>
     `;
-  }
-  // Falls member oder member.colorCode undefined ist, wird nichts zurückgegeben
+  }  
   return '';
 }
 
