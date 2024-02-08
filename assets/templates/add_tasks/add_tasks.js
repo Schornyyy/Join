@@ -200,7 +200,7 @@ async function initEventListener() {
     let validatet = validateForm();
     if(!validatet) return;
     let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value; 
-    let taskDesc = document.getElementById("form-desc").value == "" ? "" : document.getElementById("form-desc").value; 
+    let taskDesc = document.getElementById("descriptionID").value == "" ? "" : document.getElementById("descriptionID").value; 
     let prio = selectedPrio;
     let dueDate = document.getElementById("form-date").value;
     let category = selectedCategory;
@@ -239,7 +239,7 @@ function clearTask() {
   selectedPrio = null;
   subtasks = []
   assigendContacts = [];
-  document.getElementById("form-desc").value = "";
+  document.getElementById("descriptionID").value = "";
   document.getElementById("form-title").value = "";
   document.getElementById("form-date").value = "";
   document.getElementById("categorys-dropdown").innerHTML = "Select task category";

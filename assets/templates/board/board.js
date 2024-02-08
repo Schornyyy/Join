@@ -445,6 +445,7 @@ function showDialogEdit(taskID) {
   editDialog.classList.remove("reini-d-none");
   let task = tasksDatasource.find((taskElem) => taskElem.id == taskID);
   setContactsSelected(task);
+  console.log(task);
   editDialog.innerHTML = editDialogToHTML(task);
   editDialogFillInputs(task);
   addDropdownClickHandler(taskID);
@@ -732,22 +733,21 @@ function editMembersToHTML(memberMails) {
 // }
 
 function editSingleMemberToHTML(member) {
-  let textcolor;
-  try {
-    if (member && member.colorCode) {
-      if (!isColorLight(member.colorCode)) textcolor = "white";
-      return `
-        <div class="member-icon" style="background-color:${
-          member.colorCode
-        };color:${textcolor || "black"};">
-          ${getFirstLettersOfName(member.name)}
-        </div>
-      `;
-    }
-  } catch (error) {    
-    
+  let textcolor;  
+  if (member && member.colorCode) {
+    if (!isColorLight(member.colorCode)) textcolor = "white";
+    return `
+      <div class="member-icon" style="background-color:${
+        member.colorCode
+      };color:${textcolor || "black"};">
+        ${getFirstLettersOfName(member.name)}
+      </div>
+    `;
   }
+  // Falls member oder member.colorCode undefined ist, wird nichts zurückgegeben
+  return '';
 }
+
 
 function reloadTaskMembersContainer() {
   let elem = document.getElementById("editTaskMembersContainer");
