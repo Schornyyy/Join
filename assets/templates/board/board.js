@@ -310,7 +310,7 @@ function deleteTask(taskID) {
   task = getTaskById(taskID);
   index = tasksDatasource.indexOf(task);
   tasksDatasource.splice(index, 1);
-  hideDialog();  
+  hideDialog();
   currentUser.save();
 }
 
