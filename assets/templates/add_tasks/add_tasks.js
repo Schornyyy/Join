@@ -206,7 +206,7 @@ async function initEventListener() {
     let category = selectedCategory;
     let subs = subtasks;
 
-    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name); 
+    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length, "Open", currentUser.name); 
     task.setPrio(prio);
     task.assignedTo = assigendContacts;
     taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc);
