@@ -25,6 +25,8 @@ function singleTaskToHTML(task) {
   `;  
 }
 
+// ${task.assignedTo}
+
 function progressToHTML(task) {
   let amountOfSubtasks = getAmountOfSubtasks(task);
   if (amountOfSubtasks > 0) {
