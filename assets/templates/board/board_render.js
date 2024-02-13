@@ -5,7 +5,8 @@
  * @returns 
  */
 function singleTaskToHTML(task) {
-  return `
+  console.log("singleTaskToHTML(task)" , task);
+    return `
           <div class="task-card dragItem" 
               onclick="showDialogDetail(${task.id})"
               draggable="true"
@@ -24,7 +25,7 @@ function singleTaskToHTML(task) {
           </div>
   `;  
 }
-
+// ${detailMembersToHTML(task)}
 // ${task.assignedTo}
 
 function progressToHTML(task) {

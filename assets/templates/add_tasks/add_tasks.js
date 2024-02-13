@@ -218,6 +218,7 @@ async function initEventListener() {
     clearTask();
     includeContentHTML('Board');
     setActiveLink('nav-board');
+    console.log("initEventListener() task.assignedTo" , task.assignedTo);
   })
 
   document.getElementById("subtask-submit-subtask").addEventListener("click", (e) => {
@@ -431,7 +432,7 @@ async function addToAssigned(contact, index) {
     parentTableRow.classList.add("addedToAssigned");
     checkBox.setAttribute("checked", true);
   }
-  renderAssignes()
+  renderAssignes();
 }
 
 /**

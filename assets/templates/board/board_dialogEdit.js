@@ -301,6 +301,7 @@
   // }
   
   function editSingleMemberToHTML(member) {
+    // console.log(contactsSelected);
     let textcolor;  
     if (member && member.colorCode) {
       if (!isColorLight(member.colorCode)) textcolor = "white";
@@ -318,7 +319,11 @@
   
   function reloadTaskMembersContainer() {
     let elem = document.getElementById("editTaskMembersContainer");
-    elem.innerHTML = editMembersToHTML(contactsSelected);
+    if (contactsSelected && contactsSelected.length > 0) {
+      elem.innerHTML = editMembersToHTML(contactsSelected);
+    } else {
+      console.log("reloadTaskMembersContainer" , contactsSelected);
+    }
   }
   
   //////////////// SUBTASKS
