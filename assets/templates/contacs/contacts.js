@@ -41,8 +41,6 @@ function initializeView() {
   window.addEventListener('resize', contactsInit);
 }
 
-
-
 /**
  * This function is called in HTML-Code and shows the "add contact screen" to add a new contact person
  */
@@ -168,7 +166,6 @@ function deleteFirstContact() {
   }
   contactsInit();
 }
-
 
 /**
  * Developer tool (only for developer, not needed for the project himself). Clear the lokal storage
