@@ -367,7 +367,7 @@
     position: fixed;
     display: none; /* standard dont show drop down container */
     overflow-x: hidden;
-    bottom: 4rem;
+    bottom: 5rem;
     right: 0.5rem;
   }
 
