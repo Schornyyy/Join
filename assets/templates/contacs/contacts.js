@@ -62,9 +62,9 @@ function showDeleteConfirmationModal(contactId) {
   modal.classList.add("modal");
   modal.innerHTML = /*html*/ `
     <div class="modal-content">
-      <p class="removeContactConfirmationText">Remove Contact?</p>
+      <p class="removeContactConfirmationText">Delete Contact?</p>
       <div class="cancelContactDesktopDeleteButtonConfirmationContainer">
-        <button class="cancelContactDesktopDeleteButton" onclick="confirmDeleteContact('${contactId}')">Remove</button>
+        <button class="cancelContactDesktopDeleteButton" onclick="confirmDeleteContact('${contactId}')">Delete</button>
         <button class="cancelContactDesktopDeleteButton" onclick="cancelDelete()">Cancel</button>
       </div>
       

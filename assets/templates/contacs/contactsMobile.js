@@ -365,33 +365,11 @@ function updateContactsData(contactId, updatedInputs, hasChanged) {
 }
 
 /**
-   * Save the edit contact at the current user
-   * @param {string} updatedContactsData - Includes the updated contacts data name / email / phone number
-   */
+ * Save the edit contact at the current user
+ * @param {string} updatedContactsData - Includes the updated contacts data name / email / phone number
+ */
 function saveAndInit(updatedContactsData) {
   currentUser.contacts = updatedContactsData;
   currentUser.save();
-  contactsInit();
-}
-
-/**
- * Delete contact function on mobile view
- * @param {string} contactId - This is the contact ID example "5"
- */
-function deleteContactMobile(contactId) {
-  if (!validateContactId(contactId)) return;
-  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
-  if (!confirmDelete) return;  
-  try {
-      const contactIndex = findContactIndex(contactId);  
-      if (contactIndex === -1) {
-          console.error("Selected contact not found in currentUser.contacts.");
-          return;
-      }      
-      const deletedContact = removeContact(contactIndex);
-      saveAndLogDeletedContact(deletedContact);
-  } catch (error) {
-      handleDeleteError(error);
-  }  
   contactsInit();
 }
