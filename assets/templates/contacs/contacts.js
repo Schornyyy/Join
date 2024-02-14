@@ -53,22 +53,55 @@ function handleAddContactClick() {
  * @param {string} contactId - This is the contact ID example "5"
  */
 function deleteContact(contactId) {
-  if (!validateContactId(contactId)) return;
-  const confirmDelete = confirm("Möchten Sie diesen Kontakt wirklich löschen?");  
-  if (!confirmDelete) return;  
+  if (!validateContactId(contactId)) return;  
+  showDeleteConfirmationModal(contactId);
+}
+
+function showDeleteConfirmationModal(contactId) {
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  modal.innerHTML = /*html*/ `
+    <div class="modal-content">
+      <p class="removeContactConfirmationText">Remove Contact?</p>
+      <div class="cancelContactDesktopDeleteButtonConfirmationContainer">
+        <button class="cancelContactDesktopDeleteButton" onclick="confirmDeleteContact('${contactId}')">Remove</button>
+        <button class="cancelContactDesktopDeleteButton" onclick="cancelDelete()">Cancel</button>
+      </div>
+      
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function confirmDeleteContact(contactId) {
   try {
-      const contactIndex = findContactIndex(contactId);
-      if (contactIndex === -1) {
-          console.error("Selected contact not found in currentUser.contacts.");
-          return;
-      }      
-      const deletedContact = removeContact(contactIndex);
-      saveAndLogDeletedContact(deletedContact);
+    const contactIndex = findContactIndex(contactId);
+    if (contactIndex === -1) {
+      console.error("Selected contact not found in currentUser.contacts.");
+      return;
+    }
+    const deletedContact = removeContact(contactIndex);
+    saveAndLogDeletedContact(deletedContact);
   } catch (error) {
-      handleDeleteError(error);
+    handleDeleteError(error);
   }
   clearAddContactDesktopRightSideContainer();
   contactsInit();
+
+  // Hier wird das Modale geschlossen, nachdem der Kontakt gelöscht wurde
+  closeDeleteConfirmationModal();
+}
+
+function cancelDelete() {
+  // Hier wird das Modale geschlossen, wenn der Benutzer den Löschvorgang abbricht
+  closeDeleteConfirmationModal();
+}
+
+function closeDeleteConfirmationModal() {
+  const modal = document.querySelector(".modal");
+  if (modal) {
+    modal.remove();
+  }
 }
 
 /**
