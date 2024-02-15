@@ -196,46 +196,40 @@ function dueDateMinDate() {
  * Adds EventListener
  */
 async function initEventListener() {
-  document.getElementById("tasks-form-submit").addEventListener("click", (e) => {
-    let validatet = validateForm();
-    if(!validatet) return;
-    let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value; 
-    let taskDesc = document.getElementById("descriptionID").value == "" ? "" : document.getElementById("descriptionID").value; 
-    let prio = selectedPrio;
-    let dueDate = document.getElementById("form-date").value;
-    let category = selectedCategory;
-    let subs = subtasks;
-    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name, assigendContacts); // Deklaration der task-Variable hier
-    task.setPrio(prio);
-    task.assignedTo = assigendContacts; // Zuweisung der zugewiesenen Kontakte hier
-    
-    taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc);
-    subs.length > 0 ? task.subtasks = subs : subs = [];
-    currentUser.tasks.push(task);
-    currentUser.save();
-    document.getElementById("task-form-error").style = "color:green"
-    document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"    
-    // clearTask();
-    includeContentHTML('Board');
-    setActiveLink('nav-board'); 
-    console.log("initEventListener() task.assignedTo", task.assignedTo);
-  })
-  autoEditSaveTask(task);
+  let validatet = validateForm();
+  if(!validatet) return;
+  let taskTitle = document.getElementById("form-title").value == "" ? "" : document.getElementById("form-title").value; 
+  let taskDesc = document.getElementById("descriptionID").value == "" ? "" : document.getElementById("descriptionID").value; 
+  let prio = selectedPrio;
+  let dueDate = document.getElementById("form-date").value;
+  let category = selectedCategory;
+  let subs = subtasks;
+  let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name, assigendContacts); // Deklaration der task-Variable hier
+  task.setPrio(prio);
+  task.assignedTo = assigendContacts; // Zuweisung der zugewiesenen Kontakte hier    
+  taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc);
+  subs.length > 0 ? task.subtasks = subs : subs = [];
+  await currentUser.tasks.push(task);
+  await currentUser.save();
+  document.getElementById("task-form-error").style = "color:green"
+  document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"    
+  clearTask();
+  await includeContentHTML('Board');
+  setActiveLink('nav-board');
+  displayAssignedContacts(task);
+  console.log("initEventListener() task.assignedTo", task.assignedTo);
   console.log("async function initEventListener()" , task);
 }
 
-async function autoEditSaveTask(task) {  
-  let inputTaskTitle = task.title;
-  let inputTaskDescription = task.description;
-  let inputTaskDuedate = task.dueDate;  
-  task.assignedTo = []; 
-  for (let i = 0; i < assigendContacts.length; i++) {
-    task.assignedTo.push(assigendContacts[i]);
-  }  
-  task.title = inputTaskTitle;
-  task.description = inputTaskDescription;
-  task.dueDate = inputTaskDuedate;
-  currentUser.save();  
+function displayAssignedContacts(task) {
+  // Rufen Sie die HTML-Elemente ab, in die die Mitglieder eingefügt werden sollen
+  let membersContainer = document.querySelector(`#taskCard${task.id} .members-container`);
+  // Erstellen Sie das HTML für jeden ausgewählten Kontakt und fügen Sie es dem Container hinzu
+  for (let i = 0; i < task.assignedTo.length; i++) {
+    let member = task.assignedTo[i];
+    let memberHTML = singleMemberToHTML(member, i);
+    membersContainer.insertAdjacentHTML('beforeend', memberHTML);
+  }
 }
 
 /**
@@ -253,7 +247,6 @@ function clearTask() {
   document.getElementById("form-title").value = "";
   document.getElementById("form-date").value = "";
   document.getElementById("categorys-dropdown").innerHTML = "Select task category";
-
   renderSubtaskHTML();
   renderAssignes();
   renderHTMLAssignedTo();
@@ -442,6 +435,7 @@ async function addToAssigned(contact, index) {
     checkBox.setAttribute("checked", true);
   }
   renderAssignes();
+  // console.log("async function addToAssigned(contact, index)" , "Wann wird diese funktion ausgeführt?");
 }
 
 /**

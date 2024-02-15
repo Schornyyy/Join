@@ -14,8 +14,7 @@ function boardInit() {
   tasksDatasourceFiltered = tasksDatasource;
   contactsDatasource = currentUser.contacts;
   renderBoard();
-  boardInitDragAndDrop();
-  addKeyupListener();
+  boardInitDragAndDrop();  
 }
 
 //////////////// RENDER
@@ -84,7 +83,7 @@ function getMembers(task) {
     // output.push(contactsDatasource.find(contact => contact.email == eMail));
     let contact = contactsDatasource.find((contact) => contact.email == eMail);
     if (contact) output.push(contact);
-    console.log("function getMembers(task)" , task.assignedTo)
+    // console.log("function getMembers(task)" , task.assignedTo)
   }
   return output;
 }
@@ -144,6 +143,7 @@ function assignTaskCategory(taskElement) {
 }
 
 function membersToHTML(task) {
+  console.log("membersToHTML(task)2");
   let members = getMembers(task);
   let output = "";
   let i = 0;
@@ -156,6 +156,7 @@ function membersToHTML(task) {
 }
 
 function singleMemberToHTML(member, index) {
+  console.log("singleMemberToHTML(member, index)3");
   let textcolor;
   let iconRightStep = 10;
   if (!isColorLight(member.colorCode)) textcolor = "white";
