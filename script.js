@@ -51,14 +51,22 @@ async function getItem(key) {
  */
 async function loadData() {
   await loadUsers();
-  if (localStorage.getItem("userData") != null) {
-    let data = JSON.parse(localStorage.getItem("userData"));
-    if (data.loginCount == 2 && !data.remberMe) {
-      localStorage.clear();
+  if (localStorage.getItem("userData") === null) {    
+    if (!window.location.href.includes("login.html")) {
+      window.location.href = "/assets/templates/login/login.html";
     }
-    data.loginCount++;
-    localStorage.setItem("userData", JSON.stringify(data));
-    await loadDataToUser();
+  } else {    
+    let data = JSON.parse(localStorage.getItem("userData"));
+    if (data.loginCount == 2 && !data.rememberMe) {
+      localStorage.clear();
+      if (!window.location.href.includes("login.html")) {
+        window.location.href = "/assets/templates/login/login.html";
+      }
+    } else {
+      data.loginCount++;
+      localStorage.setItem("userData", JSON.stringify(data));
+      await loadDataToUser();
+    }
   }
 }
 
