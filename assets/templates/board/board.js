@@ -84,6 +84,7 @@ function getMembers(task) {
     // output.push(contactsDatasource.find(contact => contact.email == eMail));
     let contact = contactsDatasource.find((contact) => contact.email == eMail);
     if (contact) output.push(contact);
+    console.log("function getMembers(task)" , task.assignedTo)
   }
   return output;
 }

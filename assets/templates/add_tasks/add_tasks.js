@@ -205,28 +205,37 @@ async function initEventListener() {
     let dueDate = document.getElementById("form-date").value;
     let category = selectedCategory;
     let subs = subtasks;
-
-    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name); 
+    let task = new Task(taskTitle, dueDate, category, currentUser.tasks.length+1, "Open", currentUser.name, assigendContacts); // Deklaration der task-Variable hier
     task.setPrio(prio);
-    task.assignedTo = assigendContacts;
+    task.assignedTo = assigendContacts; // Zuweisung der zugewiesenen Kontakte hier
+    
     taskDesc == "" ? task.setDescription("") : task.setDescription(taskDesc);
-    subs.length > 0 ? task.subtasks = subs : subs  =[];
+    subs.length > 0 ? task.subtasks = subs : subs = [];
     currentUser.tasks.push(task);
     currentUser.save();
     document.getElementById("task-form-error").style = "color:green"
     document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"    
-    clearTask();
+    // clearTask();
     includeContentHTML('Board');
-    setActiveLink('nav-board');
-    console.log("initEventListener() task.assignedTo" , task.assignedTo);
+    setActiveLink('nav-board'); 
+    console.log("initEventListener() task.assignedTo", task.assignedTo);
   })
+  autoEditSaveTask(task);
+  console.log("async function initEventListener()" , task);
+}
 
-  document.getElementById("subtask-submit-subtask").addEventListener("click", (e) => {
-    e.preventDefault();
-    if(e.target.value != "") {
-      addSubtaskToList()
-    }
-  })
+async function autoEditSaveTask(task) {  
+  let inputTaskTitle = task.title;
+  let inputTaskDescription = task.description;
+  let inputTaskDuedate = task.dueDate;  
+  task.assignedTo = []; 
+  for (let i = 0; i < assigendContacts.length; i++) {
+    task.assignedTo.push(assigendContacts[i]);
+  }  
+  task.title = inputTaskTitle;
+  task.description = inputTaskDescription;
+  task.dueDate = inputTaskDuedate;
+  currentUser.save();  
 }
 
 /**
