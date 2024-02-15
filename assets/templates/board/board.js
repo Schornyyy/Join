@@ -14,7 +14,8 @@ function boardInit() {
   tasksDatasourceFiltered = tasksDatasource;
   contactsDatasource = currentUser.contacts;
   renderBoard();
-  boardInitDragAndDrop();  
+  boardInitDragAndDrop();
+  displayAssignedContactsForAllTasks();  
 }
 
 //////////////// RENDER

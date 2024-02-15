@@ -213,22 +213,93 @@ async function initEventListener() {
   await currentUser.save();
   document.getElementById("task-form-error").style = "color:green"
   document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"    
-  clearTask();
+  // clearTask();
   await includeContentHTML('Board');
   setActiveLink('nav-board');
   displayAssignedContacts(task);
+  saveAssignedContactsToBackend(task);
   console.log("initEventListener() task.assignedTo", task.assignedTo);
   console.log("async function initEventListener()" , task);
 }
 
-function displayAssignedContacts(task) {
+async function saveAssignedContactsToLocalStorage(task) {
+  try {
+    localStorage.setItem(`task_${task.id}_assigned_contacts`, JSON.stringify(task.assignedTo));
+  } catch (error) {
+    console.error("Error saving assigned contacts to LocalStorage:", error);
+  }
+}
+
+// Beim Laden der Seite die ausgewählten Kontakte aus dem LocalStorage abrufen
+function getAssignedContactsFromLocalStorage(task) {
+  try {
+    const contacts = localStorage.getItem(`task_${task.id}_assigned_contacts`);
+    return contacts ? JSON.parse(contacts) : [];
+  } catch (error) {
+    console.error("Error getting assigned contacts from LocalStorage:", error);
+    return [];
+  }
+}
+
+async function saveAssignedContactsToBackend(task) {
+  try {
+    const key = `taskContacts_${task.id}`;
+    const value = JSON.stringify(task.assignedTo);
+    await setItem(key, value);
+    console.log(`Assigned contacts for task ${task.id} saved to backend.`);
+  } catch (error) {
+    console.error("Error saving assigned contacts to backend:", error);    
+  }
+}
+
+async function getAssignedContactsFromBackend(task) {
+  try {
+    const key = `taskContacts_${task.id}`;
+    const response = await getItem(key);
+    if (response && response.value) {
+      const contacts = JSON.parse(response.value);
+      task.assignedTo = contacts;
+      console.log(`Assigned contacts for task ${task.id} retrieved from backend.`);
+    }
+  } catch (error) {
+    console.error("Error retrieving assigned contacts from backend:", error);    
+  }
+}
+
+async function displayAssignedContacts(task) {
   // Rufen Sie die HTML-Elemente ab, in die die Mitglieder eingefügt werden sollen
   let membersContainer = document.querySelector(`#taskCard${task.id} .members-container`);
+  // Löschen Sie zuerst den vorhandenen Inhalt, um doppelte Einträge zu vermeiden
+  membersContainer.innerHTML = "";
   // Erstellen Sie das HTML für jeden ausgewählten Kontakt und fügen Sie es dem Container hinzu
   for (let i = 0; i < task.assignedTo.length; i++) {
     let member = task.assignedTo[i];
     let memberHTML = singleMemberToHTML(member, i);
     membersContainer.insertAdjacentHTML('beforeend', memberHTML);
+  }
+  // Speichern Sie die zugewiesenen Kontakte im Backend
+  await saveAssignedContactsToBackend(task);
+}
+
+async function displayAssignedContactsForAllTasks() {
+  try {
+    // Durchlaufen Sie alle Tasks
+    for (const task of currentUser.tasks) {
+      // Rufen Sie die HTML-Elemente ab, in die die Mitglieder eingefügt werden sollen
+      let membersContainer = document.querySelector(`#taskCard${task.id} .members-container`);
+      // Löschen Sie zuerst den vorhandenen Inhalt, um doppelte Einträge zu vermeiden
+      membersContainer.innerHTML = "";
+      // Erstellen Sie das HTML für jeden ausgewählten Kontakt und fügen Sie es dem Container hinzu
+      for (let i = 0; i < task.assignedTo.length; i++) {
+        let member = task.assignedTo[i];
+        let memberHTML = singleMemberToHTML(member, i);
+        membersContainer.insertAdjacentHTML('beforeend', memberHTML);
+      }
+      // Speichern Sie die zugewiesenen Kontakte im Backend
+      await saveAssignedContactsToBackend(task);
+    }
+  } catch (error) {
+    console.error("Error displaying assigned contacts for all tasks:", error);
   }
 }
 
