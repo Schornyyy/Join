@@ -213,7 +213,7 @@ async function initEventListener() {
   await currentUser.save();
   document.getElementById("task-form-error").style = "color:green"
   document.getElementById("task-form-error").innerHTML = "Du hast den Task erfolgreich erstellt!"    
-  // clearTask();
+  clearTask();
   await includeContentHTML('Board');
   setActiveLink('nav-board');
   displayAssignedContacts(task);
@@ -479,8 +479,7 @@ function renderHTMLListElementOfAssigned(contact, index) {
           <p class="assignedTo-initials-container" style='background-color: ${contact.colorCode}'>${initials}</p>
           ${contact.name}
         </div>
-        <input type="checkbox" name="check" id='contact${index}' class="assignedTo-checkbox">
-      
+        <input type="checkbox" name="check" id='contact${index}' class="assignedTo-checkbox">      
   </li>
   `;
 }
@@ -501,7 +500,7 @@ async function addToAssigned(contact, index) {
     parentTableRow.classList.remove("addedToAssigned")
     checkBox.removeAttribute("checked");
   } else {
-    assigendContacts.push(contact)
+    assigendContacts.push(contact);
     parentTableRow.classList.add("addedToAssigned");
     checkBox.setAttribute("checked", true);
   }
